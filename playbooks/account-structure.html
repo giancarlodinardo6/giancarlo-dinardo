@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How I Structure a Meta Account So Testing and Scaling Don't Fight Each Other — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --amber-light: #F5ECD8;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    padding: 24px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+  .nav-back { font-size: 13px; color: var(--ink-60); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .nav-back:hover { color: var(--ink); }
+
+  .hero {
+    padding: 80px 48px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: ''; display: inline-block;
+    width: 24px; height: 1px; background: var(--ink-30);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4.5vw, 54px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--amber); }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual: three campaign model */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,122,26,0.25) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute; bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,213,192,0.15) 0%, transparent 70%);
+  }
+  .hero-visual-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px;
+  }
+  .campaign-stack {
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative; z-index: 1;
+  }
+  .campaign-row {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .campaign-row.abo { background: rgba(184,122,26,0.15); border-color: rgba(184,122,26,0.25); }
+  .campaign-row.cbo { background: rgba(58,125,110,0.15); border-color: rgba(58,125,110,0.25); }
+  .campaign-row.lost { background: rgba(200,213,192,0.08); border-color: rgba(200,213,192,0.15); }
+  .campaign-row-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .campaign-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.9); }
+  .campaign-tag {
+    font-size: 10px; font-weight: 500; padding: 2px 8px;
+    border-radius: 20px; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .abo .campaign-tag { background: rgba(184,122,26,0.35); color: #D4A855; }
+  .cbo .campaign-tag { background: rgba(58,125,110,0.35); color: #7ABFB5; }
+  .lost .campaign-tag { background: rgba(200,213,192,0.2); color: rgba(200,213,192,0.8); }
+  .campaign-desc { font-size: 11px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+  .hero-visual-footer {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+    position: relative; z-index: 1;
+  }
+
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-30); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block;
+    width: 20px; height: 1px; background: var(--ink-30);
+  }
+
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 400; line-height: 1.2;
+    letter-spacing: -0.01em; color: var(--ink); margin-bottom: 24px;
+  }
+
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.75; font-weight: 300; max-width: 620px; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* WHY */
+  .why-section {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .principle-box {
+    background: var(--amber-light);
+    border-radius: 16px;
+    padding: 36px;
+    border-left: 3px solid var(--amber);
+  }
+  .principle-box-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--amber);
+    margin-bottom: 16px; font-weight: 500;
+  }
+  .principle-box p {
+    font-size: 17px; font-family: var(--serif);
+    line-height: 1.5; color: var(--ink); font-style: italic;
+    margin-bottom: 16px;
+  }
+  .principle-box-sub { font-size: 14px; color: var(--ink-60); font-family: var(--sans); }
+
+  /* CAMPAIGNS SECTION */
+  .campaigns-section {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .campaigns-header {
+    margin-bottom: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+
+  .flag-tag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    padding: 3px 8px; border-radius: 20px;
+    background: var(--amber-light); color: var(--amber);
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .campaign-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .campaign-card {
+    border-radius: 18px;
+    padding: 32px;
+    border: 1px solid var(--ink-10);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .campaign-card.abo-card { background: var(--amber-light); border-color: rgba(184,122,26,0.2); }
+  .campaign-card.cbo-card { background: var(--teal-light); border-color: rgba(58,125,110,0.2); }
+  .campaign-card.lost-card { background: var(--sage-light); border-color: rgba(200,213,192,0.4); }
+
+  .campaign-card-badge {
+    font-size: 10px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 4px 10px; border-radius: 20px;
+    display: inline-block; align-self: flex-start;
+  }
+  .abo-card .campaign-card-badge { background: rgba(184,122,26,0.2); color: var(--amber); }
+  .cbo-card .campaign-card-badge { background: rgba(58,125,110,0.2); color: var(--teal); }
+  .lost-card .campaign-card-badge { background: rgba(200,213,192,0.4); color: #5a7d52; }
+
+  .campaign-card-title {
+    font-family: var(--serif); font-size: 20px;
+    font-weight: 400; color: var(--ink); line-height: 1.3;
+  }
+
+  .campaign-card-rules {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .campaign-rule {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .campaign-rule-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    margin-top: 8px; flex-shrink: 0;
+  }
+  .abo-card .campaign-rule-dot { background: var(--amber); }
+  .cbo-card .campaign-rule-dot { background: var(--teal); }
+  .lost-card .campaign-rule-dot { background: #5a7d52; }
+  .campaign-rule-text { font-size: 13px; color: var(--ink-60); line-height: 1.6; }
+  .campaign-rule-text strong { color: var(--ink); font-weight: 500; }
+
+  /* CBO VS ABO */
+  .decision-section {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .decision-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .decision-card {
+    background: white;
+    border-radius: 16px;
+    padding: 36px;
+    border: 1px solid var(--ink-10);
+  }
+  .decision-card-label {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 16px;
+  }
+  .decision-card-title {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .decision-card-desc {
+    font-size: 14px; color: var(--ink-60); line-height: 1.7; margin-bottom: 20px;
+  }
+  .decision-when-label {
+    font-size: 11px; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--ink-30); margin-bottom: 10px;
+  }
+  .decision-when-item {
+    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px;
+  }
+  .decision-when-dot {
+    width: 5px; height: 5px; border-radius: 50%; margin-top: 8px; flex-shrink: 0;
+  }
+  .decision-when-text { font-size: 13px; color: var(--ink-60); line-height: 1.6; }
+
+  /* OVERRIDE SECTION */
+  .override-section {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .override-cases {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .override-case {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    border: 1px solid var(--ink-10);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .override-case-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--ink-10);
+    line-height: 1;
+    min-width: 28px;
+  }
+  .override-case-content {}
+  .override-case-title {
+    font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px;
+  }
+  .override-case-desc {
+    font-size: 13px; color: var(--ink-60); line-height: 1.65;
+  }
+  .override-case-flag {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    padding: 2px 7px; border-radius: 20px;
+    background: var(--amber-light); color: var(--amber);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px;
+  }
+
+  .override-principle {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px;
+    color: white;
+  }
+  .override-principle-label {
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: rgba(255,255,255,0.4);
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .override-principle p {
+    font-size: 17px; font-family: var(--serif);
+    line-height: 1.55; color: rgba(255,255,255,0.9);
+    font-style: italic; margin-bottom: 20px;
+  }
+  .override-principle-sub {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    font-family: var(--sans); font-style: normal; line-height: 1.65;
+  }
+
+  /* BEFORE / AFTER */
+  .before-after {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .ba-card { border-radius: 20px; padding: 40px; }
+  .ba-card.before { background: var(--rust-light); border: 1px solid rgba(184,92,56,0.15); }
+  .ba-card.after { background: var(--teal-light); border: 1px solid rgba(58,125,110,0.15); }
+  .ba-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 28px; }
+  .before .ba-label { color: var(--rust); }
+  .after .ba-label { color: var(--teal); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; gap: 12px; align-items: flex-start; }
+  .ba-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
+  .before .ba-dot { background: var(--rust); }
+  .after .ba-dot { background: var(--teal); }
+  .ba-item div:last-child { font-size: 14px; line-height: 1.65; color: var(--ink); }
+
+  /* CTA */
+  .cta-section {
+    background: var(--ink);
+    margin: 80px 48px;
+    border-radius: 24px;
+    padding: 80px 48px;
+    text-align: center;
+    max-width: 1104px;
+    margin-left: auto; margin-right: auto;
+  }
+  .cta-h2 {
+    font-family: var(--serif); font-size: clamp(30px, 4vw, 46px);
+    font-weight: 400; color: white; line-height: 1.2;
+    letter-spacing: -0.02em; margin-bottom: 20px;
+  }
+  .cta-h2 em { font-style: italic; color: var(--amber); opacity: 0.9; }
+  .cta-desc { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .cta-btn {
+    display: inline-block; background: white; color: var(--ink);
+    font-size: 14px; font-weight: 500; padding: 14px 32px;
+    border-radius: 40px; text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+
+  .section-divider {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 48px; height: 1px;
+    background: var(--ink-10);
+  }
+
+  @media (max-width: 900px) {
+    .hero, .why-section, .campaigns-header, .decision-grid, .override-section, .before-after { grid-template-columns: 1fr; }
+    .campaign-cards { grid-template-columns: 1fr; }
+    .hero, .campaigns-section, .decision-section, .override-section, .before-after { padding-left: 24px; padding-right: 24px; }
+    .hero { padding-top: 60px; min-height: auto; }
+    nav { padding: 20px 24px; }
+    .cta-section { margin: 40px 24px; padding: 60px 32px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-label">Playbooks / Account Structure</div>
+    <h1>How I structure a Meta account so testing and scaling don't <em>fight each other</em></h1>
+    <p class="hero-desc">The most common account structure mistake isn't using the wrong campaign type. It's putting testing and scaling in the same place and expecting both to work.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Vertical</div>
+        <div class="hero-meta-value">Lead gen + eCommerce</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Topic</div>
+        <div class="hero-meta-value">Campaign architecture</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Read time</div>
+        <div class="hero-meta-value">8 min</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Three-campaign model</div>
+    <div class="campaign-stack">
+      <div class="campaign-row abo">
+        <div class="campaign-row-top">
+          <div class="campaign-name">ABO Testing</div>
+          <div class="campaign-tag">Test</div>
+        </div>
+        <div class="campaign-desc">One ad set per concept. Fixed budgets. Equal exposure across ideas.</div>
+      </div>
+      <div class="campaign-row cbo">
+        <div class="campaign-row-top">
+          <div class="campaign-name">CBO Scaling</div>
+          <div class="campaign-tag">Scale</div>
+        </div>
+        <div class="campaign-desc">Proven winners only. Algorithm allocates across a pool it can trust.</div>
+      </div>
+      <div class="campaign-row lost">
+        <div class="campaign-row-top">
+          <div class="campaign-name">Lost Batch</div>
+          <div class="campaign-tag">Revival</div>
+        </div>
+        <div class="campaign-desc">Failed ads at cost cap. Passive. Finds late converters without touching main budget.</div>
+      </div>
+    </div>
+    <div class="hero-visual-footer">Each campaign has one job — and only one</div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section">
+  <div>
+    <div class="section-label">Why this matters</div>
+    <h2 class="section-h2">When testing and scaling share the same space, your winners suffocate your tests.</h2>
+    <p class="prose">The algorithm has no reason to spend on an unproven concept when it has a proven one sitting next to it. The new creative gets a few impressions, generates no signal, and gets read as underperforming. You turn it off. Then you wonder why you can't find new winners.</p>
+    <p class="prose">The fix isn't complicated. Testing and scaling need different structures, different budgets, and different rules. Once that separation exists, both work better because neither is competing with the other for resources.</p>
+  </div>
+  <div>
+    <div class="principle-box">
+      <div class="principle-box-label">The core principle</div>
+      <p>"Separation isn't overhead. It's the thing that makes both sides of the account function."</p>
+      <p class="principle-box-sub">Mixing testing and scaling doesn't save budget — it just makes both less effective. Testing never gets fair exposure. Scaling never gets a clean pool of proven creative. Keeping them separate is what makes the data readable.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- THREE CAMPAIGNS -->
+<section class="campaigns-section">
+  <div class="campaigns-header">
+    <div>
+      <div class="section-label">The model</div>
+      <h2 class="section-h2">Three campaigns, three jobs</h2>
+    </div>
+    <!-- ⚑ GENERATED DETAIL — Item 42 in tracker -->
+    <p class="prose"><span class="flag-tag">⚑ Confirm spend tier</span> At the $30k to $100k monthly spend tier, where most of the lead gen accounts I managed sat, this three-campaign model was the baseline. The principle scales both up and down — the structure is the same, the budget levels shift.</p>
+  </div>
+
+  <div class="campaign-cards">
+    <!-- ABO -->
+    <div class="campaign-card abo-card">
+      <div class="campaign-card-badge">Campaign 1</div>
+      <div class="campaign-card-title">ABO Testing</div>
+      <div class="campaign-card-rules">
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">One ad set per concept or angle — not one ad set per batch</div>
+        </div>
+        <!-- ⚑ GENERATED BENCHMARK — Item 43 in tracker -->
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text"><strong>⚑ Confirm:</strong> $100–200/day per ad set — enough for real signal without overcommitting</div>
+        </div>
+        <!-- ⚑ GENERATED BENCHMARK — Item 44 in tracker -->
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text"><strong>⚑ Confirm:</strong> Minimum 3 days before reading results — below that you're reacting to noise</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Winners promoted to scaling campaign via post ID — social proof carries over</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">ABO enforces equal budget distribution — CBO can't give you that during testing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CBO -->
+    <div class="campaign-card cbo-card">
+      <div class="campaign-card-badge">Campaign 2</div>
+      <div class="campaign-card-title">CBO Scaling</div>
+      <div class="campaign-card-rules">
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Proven winners only — nothing untested lives here</div>
+        </div>
+        <!-- ⚑ GENERATED DETAIL — Item 45 in tracker -->
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text"><strong>⚑ Confirm cadence:</strong> New ad set added monthly with fresh batch of winners from testing</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Older ad sets get max spend limits so they don't absorb everything</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Newer ad sets get min spend limits so they actually get spend</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">When one ad fatigues, it's only carrying a portion of spend — not the whole account</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOST BATCH -->
+    <div class="campaign-card lost-card">
+      <div class="campaign-card-badge">Campaign 3</div>
+      <div class="campaign-card-title">Lost Batch</div>
+      <div class="campaign-card-rules">
+        <!-- ⚑ GENERATED CONCEPT — Item 46 in tracker -->
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text"><strong>⚑ Confirm:</strong> Failed ads don't get deleted — they go here</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Lost cost cap keeps CPAs low and keeps the campaign from touching real budget</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Runs passively to find late converters — concepts that didn't win in testing but occasionally find traction later</div>
+        </div>
+        <div class="campaign-rule">
+          <div class="campaign-rule-dot"></div>
+          <div class="campaign-rule-text">Some accounts keep it running continuously. Others activate it during dips. Either works.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CBO vs ABO DECISION -->
+<section class="decision-section">
+  <div class="section-label">The decision</div>
+  <h2 class="section-h2">CBO vs ABO — they do different jobs</h2>
+  <p class="prose">The debate in most paid social circles frames this as one or the other. It isn't. The question is which tool belongs at which stage. Using CBO to test untested creative is feeding an optimization engine with nothing to optimize against.</p>
+
+  <div class="decision-grid">
+    <div class="decision-card">
+      <div class="decision-card-label">CBO works when</div>
+      <div class="decision-card-title">You have a pool of proven winners</div>
+      <div class="decision-card-desc">CBO is an optimization tool. Feed it strong creative and it finds the best allocation across them. Feed it untested creative and it over-indexes on whatever has the most existing signal — usually your oldest ad.</div>
+      <div class="decision-when-label">Best for</div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--teal);"></div>
+        <div class="decision-when-text">5–10+ proven concepts with real performance history</div>
+      </div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--teal);"></div>
+        <div class="decision-when-text">Scaling phase where budget allocation decisions can be trusted to the algorithm</div>
+      </div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--teal);"></div>
+        <div class="decision-when-text">Accounts where the priority is maximizing output from known winners</div>
+      </div>
+    </div>
+    <div class="decision-card">
+      <div class="decision-card-label">ABO works when</div>
+      <div class="decision-card-title">You need to test 20+ concepts monthly</div>
+      <div class="decision-card-desc">The algorithm won't give new concepts equal exposure on its own. ABO enforces it with budget controls at the ad set level. This is what makes the testing data comparable across concepts.</div>
+      <div class="decision-when-label">Best for</div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--amber);"></div>
+        <div class="decision-when-text">Active testing phases with multiple new concepts in rotation</div>
+      </div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--amber);"></div>
+        <div class="decision-when-text">Accounts that need segmented performance data by persona or angle</div>
+      </div>
+      <div class="decision-when-item">
+        <div class="decision-when-dot" style="background: var(--amber);"></div>
+        <div class="decision-when-text">Situations where equal exposure matters more than optimal allocation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- OVERRIDE -->
+<section class="override-section">
+  <div>
+    <div class="section-label">When to intervene</div>
+    <h2 class="section-h2">When your information beats what the algorithm has access to</h2>
+    <p class="prose">Meta's automation is built on the data Meta has. It doesn't know your margin structure, your seasonal context, or what your MTA data is showing. There are legitimate cases to override. Here are the ones I've encountered.</p>
+  </div>
+
+  <div>
+    <div class="override-cases">
+      <!-- ⚑ GENERATED SCENARIOS — Item 47 in tracker -->
+      <div class="override-case">
+        <div class="override-case-num">1</div>
+        <div class="override-case-content">
+          <div class="override-case-title">Margin mix</div>
+          <div class="override-case-desc">The algorithm is concentrating spend on an ad driving a lower-margin product. You want to push toward a higher-margin creative. Meta doesn't know your P&L.</div>
+          <div class="override-case-flag">⚑ Confirm encountered</div>
+        </div>
+      </div>
+      <div class="override-case">
+        <div class="override-case-num">2</div>
+        <div class="override-case-content">
+          <div class="override-case-title">External context shift</div>
+          <div class="override-case-desc">A seasonality window, a competitor stumble, or a cultural moment. The algorithm responds to signals inside Meta. You have context it doesn't.</div>
+          <div class="override-case-flag">⚑ Confirm encountered</div>
+        </div>
+      </div>
+      <div class="override-case">
+        <div class="override-case-num">3</div>
+        <div class="override-case-content">
+          <div class="override-case-title">MTA and in-platform data disagree</div>
+          <div class="override-case-desc">Your multi-touch attribution is showing strong performance on an ad that Meta's pixel is underreporting due to tracking loss. Override the allocation and back what the fuller picture is showing.</div>
+          <div class="override-case-flag">⚑ Confirm encountered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Without this structure</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Testing and scaling compete for the same budget — new concepts get buried before they've had enough spend to mean anything</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>One or two ads carry the entire account — when they fatigue, the whole account drops sharply</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The algorithm gets all the creative allocation decisions, including ones where you have better context</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>CBO runs untested creative through an optimization engine with nothing to optimize against</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Failed ads disappear rather than being retained and given a second context to find traction in</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">With this structure</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Testing gets protected budget in ABO — every concept gets a fair read before a verdict is called</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Scaling runs in CBO where the algorithm does what it does best: allocate across a pool it can trust</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Monthly ad set launches in the scaling campaign prevent top-heaviness — no single ad carries everything</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Manual overrides are reserved for the cases where your information genuinely beats what the algorithm has access to</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The account is resilient — when one ad fatigues, it's a fraction of total spend, not the whole thing</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.3);">
+    <span style="display:inline-block; width:20px; height:1px; background:rgba(255,255,255,0.2);"></span>
+    Work with me
+  </div>
+  <h2 class="cta-h2">Testing and scaling running into<br>each other in your <em>account</em>?</h2>
+  <p class="cta-desc">I apply this structure across lead gen and eCommerce accounts. If your tests aren't getting fair exposure or your scaling campaign is depending on one or two ads to carry everything, let's talk.</p>
+  <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

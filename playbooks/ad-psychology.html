@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ads That Scale Earn the Right to Sell First. Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 0 48px 32px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-30); }
+  .breadcrumb a { color: var(--ink-30); text-decoration: none; transition: color 0.15s; }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: var(--rust); }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual — brain processing order */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  .brain-order { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+  .bo-step { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
+  .bo-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 12px; }
+  .bo-step.relevance .bo-num { background: rgba(184,92,56,0.3); color: #E8967A; }
+  .bo-step.story .bo-num { background: rgba(58,125,110,0.3); color: #7ABFB5; }
+  .bo-step.solution .bo-num { background: rgba(184,122,26,0.3); color: #D4A847; }
+  .bo-content { padding: 12px 14px; border-radius: 10px; }
+  .bo-step.relevance .bo-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
+  .bo-step.story .bo-content { background: rgba(58,125,110,0.1); border: 1px solid rgba(58,125,110,0.15); }
+  .bo-step.solution .bo-content { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
+  .bo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 3px; }
+  .bo-step.relevance .bo-label { color: rgba(232,150,122,0.6); }
+  .bo-step.story .bo-label { color: rgba(122,191,181,0.6); }
+  .bo-step.solution .bo-label { color: rgba(212,168,71,0.6); }
+  .bo-question { font-size: 12px; line-height: 1.4; }
+  .bo-step.relevance .bo-question { color: rgba(232,150,122,0.8); }
+  .bo-step.story .bo-question { color: rgba(122,191,181,0.8); }
+  .bo-step.solution .bo-question { color: rgba(212,168,71,0.8); }
+  .bo-fail { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 4px; font-style: italic; }
+  .bo-step.solution .bo-fail { display: none; }
+
+  .bo-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 2px 0 2px 42px; }
+
+  .bo-warning { margin-top: 8px; padding: 10px 14px; background: rgba(255,255,255,0.04); border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-style: italic; position: relative; z-index: 1; }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── FOUR MECHANISMS — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .mechanisms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .mechanism-card { background: #fff; border-radius: 12px; padding: 32px 28px; position: relative; }
+  .mc-accent { position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; border-radius: 50%; }
+  .mechanism-card:nth-child(1) .mc-accent { background: var(--rust); }
+  .mechanism-card:nth-child(2) .mc-accent { background: var(--teal); }
+  .mechanism-card:nth-child(3) .mc-accent { background: var(--amber); }
+  .mechanism-card:nth-child(4) .mc-accent { background: #7B6FCC; }
+  .mc-num { font-family: var(--serif); font-size: 48px; color: var(--ink-10); line-height: 1; margin-bottom: 6px; font-style: italic; }
+  .mc-type { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+  .mc-name { font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .mc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 16px; }
+  .mc-contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .mc-wrong { font-size: 12px; padding: 10px 12px; background: rgba(184,92,56,0.06); border: 1px solid rgba(184,92,56,0.12); border-radius: 8px; line-height: 1.5; color: var(--ink-60); }
+  .mc-right { font-size: 12px; padding: 10px 12px; background: rgba(58,125,110,0.06); border: 1px solid rgba(58,125,110,0.12); border-radius: 8px; line-height: 1.5; color: var(--ink-60); }
+  .mc-contrast-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; font-weight: 500; }
+  .mc-wrong .mc-contrast-label { color: var(--rust); }
+  .mc-right .mc-contrast-label { color: var(--teal); }
+
+  /* ── SCRIPT ARCHITECTURE — DARK ── */
+  .architecture-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .arch-inner { max-width: 1200px; margin: 0 auto; }
+  .arch-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .arch-header .section-label { color: rgba(255,255,255,0.3); }
+  .arch-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .arch-header .section-h2 { color: #fff; }
+  .arch-header .prose { color: rgba(255,255,255,0.5); }
+
+  .arch-flow { display: flex; flex-direction: column; gap: 4px; }
+  .arch-stage { display: grid; grid-template-columns: 180px 1fr; gap: 0; }
+  .arch-stage-meta { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid rgba(255,255,255,0.06); }
+  .arch-stage-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); margin-bottom: 4px; font-weight: 500; }
+  .arch-stage-name { font-size: 14px; font-weight: 500; color: #fff; }
+  .arch-stage-content { padding: 20px 28px; }
+  .arch-stage-mechanism { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 6px; }
+  .arch-stage-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; font-weight: 300; }
+  .arch-stage-example { margin-top: 10px; font-family: var(--serif); font-size: 13px; font-style: italic; color: rgba(255,255,255,0.35); line-height: 1.5; }
+
+  .arch-stage.opening { background: rgba(184,92,56,0.06); border-left: 3px solid rgba(184,92,56,0.3); border-radius: 12px 12px 0 0; }
+  .arch-stage.middle { background: rgba(255,255,255,0.03); border-left: 3px solid rgba(255,255,255,0.06); }
+  .arch-stage.objection { background: rgba(58,125,110,0.06); border-left: 3px solid rgba(58,125,110,0.2); }
+  .arch-stage.close { background: rgba(184,122,26,0.06); border-left: 3px solid rgba(184,122,26,0.25); border-radius: 0 0 12px 12px; }
+
+  .arch-stage.opening .arch-stage-mechanism { color: rgba(232,150,122,0.5); }
+  .arch-stage.middle .arch-stage-mechanism { color: rgba(255,255,255,0.25); }
+  .arch-stage.objection .arch-stage-mechanism { color: rgba(122,191,181,0.5); }
+  .arch-stage.close .arch-stage-mechanism { color: rgba(212,168,71,0.5); }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+
+  .script-breakdown { display: flex; flex-direction: column; gap: 3px; border-radius: 14px; overflow: hidden; border: 1px solid var(--ink-10); }
+  .sb-row { display: grid; grid-template-columns: 120px 1fr 1fr; gap: 0; }
+  .sb-stage { padding: 16px 18px; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; display: flex; align-items: center; border-right: 1px solid var(--ink-10); }
+  .sb-script { padding: 16px 18px; font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink); line-height: 1.6; border-right: 1px solid var(--ink-10); }
+  .sb-mechanism { padding: 16px 18px; font-size: 12px; color: var(--ink-60); line-height: 1.5; font-weight: 300; }
+  .sb-row.header { background: var(--ink-06); }
+  .sb-row.header .sb-stage, .sb-row.header .sb-script, .sb-row.header .sb-mechanism { font-family: var(--sans); font-style: normal; font-size: 10px; color: var(--ink-30); padding: 10px 18px; }
+  .sb-row.opening { background: rgba(184,92,56,0.04); }
+  .sb-row.opening .sb-stage { color: var(--rust); }
+  .sb-row.middle { background: var(--ink-06); }
+  .sb-row.middle .sb-stage { color: var(--ink-60); }
+  .sb-row.objection { background: rgba(58,125,110,0.04); }
+  .sb-row.objection .sb-stage { color: var(--teal); }
+  .sb-row.close { background: rgba(184,122,26,0.04); }
+  .sb-row.close .sb-stage { color: var(--amber); }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  @media (max-width: 900px) {
+    .hero, .why-section, .arch-header, .fw-top, .worked-header { grid-template-columns: 1fr; }
+    .mechanisms-grid, .before-after { grid-template-columns: 1fr; }
+    .arch-stage, .sb-row { grid-template-columns: 1fr; }
+    .arch-stage-meta { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    nav, .breadcrumb, .hero, .why-section, .worked-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .architecture-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Ad Psychology</span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Ad Psychology</div>
+    <h1>Ads that scale earn the right to sell.<br><em>Most ads try to sell first.</em></h1>
+    <p class="hero-desc">The brain processes an ad in a specific order: self-relevance, then story, then solution. Open with the product and you've skipped the first two steps. The viewer isn't ready to be sold to. You haven't earned it yet.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">eCommerce · Lead Gen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Script structure · Ad psychology</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">How the brain processes an ad, in order</div>
+    <div class="brain-order">
+      <div class="bo-step relevance">
+        <div class="bo-num">1</div>
+        <div class="bo-content">
+          <div class="bo-label">Self-relevance</div>
+          <div class="bo-question">"How will this help me? Is this for someone like me?"</div>
+          <div class="bo-fail">Skip this → viewer never engages with what follows</div>
+        </div>
+      </div>
+      <hr class="bo-divider"/>
+      <div class="bo-step story">
+        <div class="bo-num">2</div>
+        <div class="bo-content">
+          <div class="bo-label">Story</div>
+          <div class="bo-question">"Who has this happened to? Has someone been where I am?"</div>
+          <div class="bo-fail">Skip this → product feels like a pitch, not a solution</div>
+        </div>
+      </div>
+      <hr class="bo-divider"/>
+      <div class="bo-step solution">
+        <div class="bo-num">3</div>
+        <div class="bo-content">
+          <div class="bo-label">Solution</div>
+          <div class="bo-question">"How does it work? Why is this one different?"</div>
+        </div>
+      </div>
+    </div>
+    <div class="bo-warning">Most ads open here, at step 3. The viewer skips steps 1 and 2. So does the ad. Nobody's ready.</div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-desc">Psychological mechanisms</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-desc">Steps before the product</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2×</div>
+        <div class="hero-stat-desc">Loss hurts more than gain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The contract</div>
+    <h2 class="section-h2">The viewer didn't open their feed to be sold to. You need permission before you pitch.</h2>
+    <p class="prose">Every ad has an implicit contract with whoever sees it. The viewer gives you their attention, and in return, the ad has to give them something worth watching before it asks them to do anything. Most ads break this contract in the first five seconds by opening with the product, the brand, or the offer before the viewer has any reason to care.</p>
+    <p class="prose" style="margin-top:16px">The brain's processing order matters here. Self-relevance comes first. Before the viewer has consciously decided to watch, they've already asked "is this for me?" If the opening doesn't answer that question with a yes, attention moves on. Story comes second. Once someone feels the ad might be relevant, they need to see themselves or someone like them in it before they'll engage with what's being offered. Solution comes last. By the time the product appears, the viewer should already understand why they need it, have seen that someone else has been where they are, and be ready to receive it.</p>
+    <p class="prose" style="margin-top:16px">Opening with the product skips the first two steps entirely. The viewer isn't primed. Their objections haven't been handled. They have no reason to trust the solution because they haven't been given any reason to believe the problem was understood. The product enters before it's been earned, and the viewer, who didn't open their feed to shop, leaves.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">Why most ad scripts are structured backwards</div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">01, The product enters too early</div>
+        <div class="why-card-desc">The most common structure is: problem → product → proof. This makes logical sense from the brand's perspective, here's the problem, here's our solution, here's why it works. It makes no psychological sense from the viewer's perspective, who hasn't yet been given a reason to trust the problem framing or the solution claim.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">02, Objections come after the pitch</div>
+        <div class="why-card-desc">Most scripts handle objections at the end, after the product has been introduced and the viewer has already formed their doubts. By then, the defensive response is fully formed and the rebuttal reads as sales copy. Objections resolved before the pitch lands differently: the doubt never fully forms, and the answer feels like understanding rather than deflection.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #B8A0F0;">
+        <div class="why-card-label" style="color:#B8A0F0;">03, The viewer's prior attempts are ignored</div>
+        <div class="why-card-desc">Anyone who's in the market for a product has almost certainly already tried to solve the problem, with a competitor, a DIY approach, or just ignoring it. Opening with a direct pitch implicitly says their attempts didn't matter, which triggers a defensive response. Acknowledging the attempts first validates the effort before presenting the alternative. That's a different conversation entirely.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOUR MECHANISMS, SAGE ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The mechanisms</div>
+        <h2 class="section-h2">Four psychological mechanisms.<br>All present in ads that scale.</h2>
+      </div>
+      <p class="prose">These aren't copywriting tactics. They're descriptions of how people make decisions in environments they didn't choose to be sold in. The ads that consistently scale aren't written around clever copy. They're written around an accurate model of what the viewer is experiencing and what they need to hear before they're ready to act. Each mechanism addresses a different psychological barrier between the viewer and the purchase.</p>
+    </div>
+
+    <div class="mechanisms-grid">
+      <div class="mechanism-card">
+        <div class="mc-accent"></div>
+        <div class="mc-num">01</div>
+        <div class="mc-type">Mechanism</div>
+        <div class="mc-name">Identity Protection</div>
+        <div class="mc-desc">When someone has already tried to solve a problem and failed, a direct product pitch triggers a defensive response. Nobody wants to hear that the solution they tried didn't work because they chose poorly. Winning scripts validate the attempt before presenting the alternative. They make the failure the system's fault, not the viewer's, so the viewer can receive the new solution without having to admit they were wrong.</div>
+        <div class="mc-contrast">
+          <div class="mc-wrong">
+            <div class="mc-contrast-label">Triggers defence</div>
+            "You have a problem. Here's the solution."
+          </div>
+          <div class="mc-right">
+            <div class="mc-contrast-label">Validates first</div>
+            "You've tried everything. It wasn't working because of X, not because of you."
+          </div>
+        </div>
+      </div>
+
+      <div class="mechanism-card">
+        <div class="mc-accent"></div>
+        <div class="mc-num">02</div>
+        <div class="mc-type">Mechanism</div>
+        <div class="mc-name">The Knowledge Gap</div>
+        <div class="mc-desc">Every ad that scales introduces something the viewer has never heard before, a named concept, a mechanism, a way of framing the problem that's unfamiliar. This triggers what psychologists call the Zeigarnik Effect: the brain registers an open loop and won't settle until it's closed. The viewer keeps watching not because they want to buy, but because they need to understand. And once the concept is named and the product positioned as its delivery vehicle, there's nowhere else to get it.</div>
+        <div class="mc-contrast">
+          <div class="mc-wrong">
+            <div class="mc-contrast-label">Familiar → scrollable</div>
+            "Our formula targets inflammation for fast relief."
+          </div>
+          <div class="mc-right">
+            <div class="mc-contrast-label">Unfamiliar → loop opens</div>
+            "Most joint pain treatments address the symptom. Ours targets collagen depletion at the source."
+          </div>
+        </div>
+      </div>
+
+      <div class="mechanism-card">
+        <div class="mc-accent"></div>
+        <div class="mc-num">03</div>
+        <div class="mc-type">Mechanism</div>
+        <div class="mc-name">Vicarious Skepticism</div>
+        <div class="mc-desc">The most persuasive objection handling is the kind the viewer watches someone else work through. In a podcast or interview format, when one person voices the doubt and another responds, the viewer's own objection gets resolved before it has fully formed. This is more effective than addressing objections directly because people are more persuaded by watching someone else change their mind than by being told their doubt is mistaken. The conversation does the trust-building; the viewer just overhears it.</div>
+        <div class="mc-contrast">
+          <div class="mc-wrong">
+            <div class="mc-contrast-label">Defensive response</div>
+            "You might be thinking this sounds expensive, but..."
+          </div>
+          <div class="mc-right">
+            <div class="mc-contrast-label">Overheard resolution</div>
+            Person B: "Sounds expensive." Person A: "I thought so too. Then I did the math on what I was spending on X every month."
+          </div>
+        </div>
+      </div>
+
+      <div class="mechanism-card">
+        <div class="mc-accent"></div>
+        <div class="mc-num">04</div>
+        <div class="mc-type">Mechanism</div>
+        <div class="mc-name">Loss Aversion</div>
+        <div class="mc-desc">Loss is a more powerful motivator than equivalent gain. Kahneman's prospect theory puts the ratio at roughly two to one. Ads that close on what not buying costs tap into a significantly stronger lever than ads that close on what buying gains. The best version of this isn't fear-mongering: it's making the compounding cost of inaction viscerally concrete. Every week that passes without the product, the problem gets measurably worse. The viewer isn't just missing out on a benefit. They're actively falling further behind by doing nothing.</div>
+        <div class="mc-contrast">
+          <div class="mc-wrong">
+            <div class="mc-contrast-label">Gain framing</div>
+            "Buy now and get results in 30 days."
+          </div>
+          <div class="mc-right">
+            <div class="mc-contrast-label">Loss framing</div>
+            "Every week without this, your dog's joints are compounding the problem. How old is your dog? That's how many weeks of damage you can't undo."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCRIPT ARCHITECTURE, DARK ═══ -->
+<section class="architecture-section">
+  <div class="arch-inner">
+    <div class="arch-header">
+      <div>
+        <div class="section-label">The architecture</div>
+        <h2 class="section-h2">Where each mechanism lives in the script</h2>
+      </div>
+      <p class="prose">The four mechanisms aren't interchangeable. Each one belongs in a specific part of the script. The opening earns attention and self-relevance. The middle section earns the product by building the case before it appears. Objection handling runs through the conversation, not at the end. The close removes the final barrier by reframing inaction as loss. Layering all four in the right order is what separates scripts that convert from scripts that inform.</p>
+    </div>
+
+    <div class="arch-flow">
+      <div class="arch-stage opening">
+        <div class="arch-stage-meta">
+          <div class="arch-stage-label">Script position</div>
+          <div class="arch-stage-name">The opening</div>
+        </div>
+        <div class="arch-stage-content">
+          <div class="arch-stage-mechanism" >Identity protection + self-relevance</div>
+          <div class="arch-stage-desc">Establish that this ad is for someone like the viewer. Validate that they've tried to solve the problem before and that the difficulty wasn't their fault. The viewer's guard comes down before the product has been mentioned. They're now watching as a participant, not as a skeptic.</div>
+          <div class="arch-stage-example">"I tried everything for my dog's anxiety, toys, training, every product on Amazon. Nothing worked for more than a week."</div>
+        </div>
+      </div>
+
+      <div class="arch-stage middle">
+        <div class="arch-stage-meta">
+          <div class="arch-stage-label">Script position</div>
+          <div class="arch-stage-name">The middle</div>
+        </div>
+        <div class="arch-stage-content">
+          <div class="arch-stage-mechanism">Knowledge gap + unique mechanism</div>
+          <div class="arch-stage-desc">Introduce the named concept that explains why everything else failed and why this solution is different. The product doesn't appear yet, the mechanism does. The open loop is created here and held open. By the time the product enters, it's positioned as the only delivery vehicle for a concept the viewer now understands and needs.</div>
+          <div class="arch-stage-example">"Turns out the issue wasn't behaviour. It was something called occupational drive, the instinct to chew as a calming mechanism. Nobody was addressing that."</div>
+        </div>
+      </div>
+
+      <div class="arch-stage objection">
+        <div class="arch-stage-meta">
+          <div class="arch-stage-label">Script position</div>
+          <div class="arch-stage-name">Throughout</div>
+        </div>
+        <div class="arch-stage-content">
+          <div class="arch-stage-mechanism">Vicarious skepticism</div>
+          <div class="arch-stage-desc">In conversation and interview formats, objections get voiced and resolved through dialogue before the viewer has fully formed their own version of the same doubt. Price, efficacy, prior failure: all of it comes up naturally through the conversation rather than as a rebuttal block at the end. The key is that the objection comes from inside the conversation, not from the brand addressing the camera.</div>
+          <div class="arch-stage-example">"Sounds like another supplement." / "I thought the same. But this isn't a supplement, it's a delivery mechanism for something the dog's instinct was already asking for."</div>
+        </div>
+      </div>
+
+      <div class="arch-stage close">
+        <div class="arch-stage-meta">
+          <div class="arch-stage-label">Script position</div>
+          <div class="arch-stage-name">The close</div>
+        </div>
+        <div class="arch-stage-content">
+          <div class="arch-stage-mechanism">Loss aversion</div>
+          <div class="arch-stage-desc">Make the cost of inaction concrete and compounding. Not fear, specificity. The viewer should be able to calculate what doing nothing costs, in real terms, by the time the CTA appears. The product is no longer a purchase; it's a correction. Not buying is the decision that has a cost. Buying is the one that stops the loss.</div>
+          <div class="arch-stage-example">"Every week that passes, that drive goes unaddressed. How old is your dog? Multiply that by 52. That's how many weeks of compounding anxiety you're working against."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKED EXAMPLE ═══ -->
+<section class="worked-section">
+  <div class="worked-header">
+    <div>
+      <div class="section-label">Worked example</div>
+      <h2 class="section-h2">The same script, annotated by mechanism</h2>
+    </div>
+    <p class="prose">This is a representative home services lead gen script, bathroom remodel, homeowner audience, mapped against the four mechanisms. The specific lines are illustrative, but the structure and the mechanism at each stage are accurate to how a well-built script layers them. The point isn't the category. It's the sequence.</p>
+  </div>
+
+  <div class="script-breakdown">
+    <div class="sb-row header">
+      <div class="sb-stage">Stage</div>
+      <div class="sb-script">Script line</div>
+      <div class="sb-mechanism">Mechanism doing the work</div>
+    </div>
+    <div class="sb-row opening">
+      <div class="sb-stage">Opening</div>
+      <div class="sb-script">"We got three quotes for our bathroom last year. They were $8,000 apart. We had no idea who to trust or why the prices were so different."</div>
+      <div class="sb-mechanism">Identity protection, validates the experience of confusion and distrust. The viewer who's been through this feels seen before a product has been mentioned.</div>
+    </div>
+    <div class="sb-row middle">
+      <div class="sb-stage">Middle</div>
+      <div class="sb-script">"Turns out most contractors price by gut feel. There's no standard. The ones charging more aren't necessarily better, they've just learned to charge more."</div>
+      <div class="sb-mechanism">Knowledge gap, names a mechanism (non-standardised pricing) the viewer suspected but never had confirmed. The loop opens. Now they need to know what to do about it.</div>
+    </div>
+    <div class="sb-row objection">
+      <div class="sb-stage">Mid / dialogue</div>
+      <div class="sb-script">"Getting a guaranteed quote sounds like something big companies only do." / "That's what I assumed. But it's actually how smaller contractors win work from bigger ones."</div>
+      <div class="sb-mechanism">Vicarious skepticism, the objection ("sounds exclusive") is voiced and resolved conversationally before the viewer fully forms it themselves.</div>
+    </div>
+    <div class="sb-row close">
+      <div class="sb-stage">Close</div>
+      <div class="sb-script">"Every month you wait, material costs go up. Labour's the same. The bathroom you can afford right now costs more in six months. The quote locks it in."</div>
+      <div class="sb-mechanism">Loss aversion, inaction has a specific, compounding cost. Not buying means actively falling further behind. The CTA becomes a correction, not a purchase.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CROSSREF ═══ -->
+<div style="max-width: 1200px; margin: 0 auto 80px; padding: 0 48px;">
+  <div style="background: #E4EDE0; border-radius: 14px; padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgba(200,213,192,0.4);">
+    <div style="font-size: 16px; margin-top: 2px;">→</div>
+    <div>
+      <div style="font-size: 13px; font-weight: 500; color: #1C1C1A; margin-bottom: 4px;">The psychology explains why each block works. The Creative Construction playbook covers how to build them.</div>
+      <div style="font-size: 13px; color: rgba(28,28,26,0.6); line-height: 1.65;">This piece covers the psychological mechanisms behind ads that scale. The Creative Construction playbook covers the structural building blocks (hook, problem, solution, benefit, proof, CTA) and how to evaluate and iterate on each one independently. The two pieces read well together: one gives you the reasoning, the other gives you the architecture. <a href="/playbooks/creative-construction" style="color: #3A7D6E; font-weight: 500; text-decoration: none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Script built around the product</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Opens with the product or the problem statement, viewer has no reason to engage before they're asked to care</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Objections handled after the pitch, by then the defensive response is already fully formed</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Prior attempts ignored, viewer's history of trying and failing is treated as irrelevant</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Close built around gain, "buy now and get X", the weaker motivator of the two</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>No named mechanism, the product is positioned against competitors, not against a concept only it can deliver</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">Script built around the viewer</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Opens with self-relevance and identity protection, the viewer feels understood before the product appears</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Objections woven through dialogue, resolved before they fully form, through conversation rather than rebuttals</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Prior attempts validated, failure is reframed as the system's fault, so the viewer can receive the new solution without defensiveness</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Close built around loss, inaction has a specific, compounding cost the viewer can calculate</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Named mechanism introduced in the middle, the product becomes the only delivery vehicle for something the viewer now understands they need</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">What's next</div>
+    <h2 class="cta-h2">The script earns the sale.<br><em>The hook earns the script.</em></h2>
+    <p class="cta-desc">The four mechanisms only work if the viewer makes it past the hook. See how the hook writing playbook determines who stops and whether they're worth selling to before the script begins.</p>
+    <a href="../playbooks/index.html" class="cta-btn">
+      Back to Playbooks
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

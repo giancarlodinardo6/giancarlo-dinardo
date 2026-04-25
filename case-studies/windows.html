@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alenco Windows — Case Study | Giancarlo</title>
+        <style>
+    /* ── VARIABLES ──────────────────────────────────────────────────────── */
+    :root {
+      --cream: #F5F2EC;
+      --ink: #1C1C1A;
+      --ink-60: rgba(28,28,26,0.6);
+      --ink-30: rgba(28,28,26,0.3);
+      --ink-10: rgba(28,28,26,0.08);
+      --ink-06: rgba(28,28,26,0.05);
+      --sage: #C8D5C0;
+      --sage-light: #E4EDE0;
+      --rust: #B85C38;
+      --rust-light: #F0E4DC;
+      --teal: #3A7D6E;
+      --teal-light: #D8EDEA;
+      --amber: #B87A1A;
+      --amber-light: #F5ECD8;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ────────────────────────────────────────────────────────────── */
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+    .nav-back { font-size: 13px; color: var(--ink-60); text-decoration: none; }
+    .nav-back:hover { color: var(--ink); }
+
+    /* ── SECTION LABEL ──────────────────────────────────────────────────── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-30);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--ink-30);
+    }
+
+    /* ── PROSE ──────────────────────────────────────────────────────────── */
+    .prose {
+      font-size: 16px;
+      color: var(--ink-60);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 620px;
+    }
+    .prose + .prose { margin-top: 20px; }
+
+    /* ── HERO ───────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 48px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      min-height: 70vh;
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-60);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--ink-30);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(38px, 4.8vw, 58px);
+      line-height: 1.1;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--rust); }
+    .hero-desc {
+      font-size: 17px;
+      color: var(--ink-60);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      padding-top: 32px;
+      border-top: 1px solid var(--ink-10);
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {}
+    .hero-meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--ink-30);
+      margin-bottom: 4px;
+    }
+    .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+    /* Dark card */
+    .hero-visual {
+      background: var(--ink);
+      border-radius: 20px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%);
+    }
+    .hero-visual::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: 40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%);
+    }
+    .hero-visual-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-stat-grid {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-stat { flex: 1; min-width: 100px; }
+    .hero-stat-num {
+      font-family: var(--serif);
+      font-size: 48px;
+      font-style: italic;
+      color: white;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.4;
+    }
+    .hero-visual-footer {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── CONTEXT ────────────────────────────────────────────────────────── */
+    .context-section {
+      padding: 120px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .context-callout {
+      background: var(--rust-light);
+      border-radius: 16px;
+      padding: 36px;
+      border-left: 3px solid var(--rust);
+    }
+    .context-callout-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--rust);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .context-callout p {
+      font-size: 17px;
+      font-family: var(--serif);
+      line-height: 1.5;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .context-callout-sub {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--ink-60);
+      font-family: var(--sans);
+      font-style: normal;
+      line-height: 1.65;
+    }
+
+    /* ── APPROACH ───────────────────────────────────────────────────────── */
+    .approach-section {
+      padding: 80px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .process-steps { display: flex; flex-direction: column; gap: 24px; }
+    .process-step { display: flex; gap: 20px; align-items: flex-start; }
+    .process-step-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-30);
+      min-width: 40px;
+      padding-top: 2px;
+    }
+    .process-step-content {}
+    .process-step-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+    .process-step-desc { font-size: 14px; color: var(--ink-60); line-height: 1.65; }
+
+    /* ── CREATIVE ───────────────────────────────────────────────────────── */
+    .creative-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .creative-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .creative-card {
+      background: white;
+      border-radius: 14px;
+      padding: 28px;
+      border: 1px solid var(--ink-10);
+    }
+    .creative-card-tag {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .creative-card-tag.winner { background: var(--teal-light); color: var(--teal); }
+    .creative-card-tag.tested { background: var(--ink-10); color: var(--ink-30); }
+    .creative-card-tag.learning { background: var(--amber-light); color: var(--amber); }
+    .creative-card-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+    .creative-card-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; }
+    .creative-card-metric {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--ink-10);
+      font-size: 12px;
+      color: var(--ink-30);
+    }
+    .creative-card-metric strong { color: var(--ink); font-weight: 500; }
+
+    /* ── RESULTS ────────────────────────────────────────────────────────── */
+    .results-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+    .results-inner { max-width: 1200px; margin: 0 auto; }
+    .results-inner .section-label { color: rgba(255,255,255,0.3); }
+    .results-inner .section-label::before { background: rgba(255,255,255,0.2); }
+    .results-inner h2 { color: white; margin-bottom: 16px; font-family: var(--serif); font-size: clamp(28px,3.2vw,40px); font-weight: 400; letter-spacing: -0.01em; }
+    .results-inner .prose { color: rgba(255,255,255,0.5); max-width: 620px; }
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 40px;
+    }
+    .result-stat { background: rgba(255,255,255,0.04); padding: 32px 28px; }
+    .result-num {
+      font-family: var(--serif);
+      font-size: 40px;
+      font-style: italic;
+      color: white;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .result-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 8px;
+    }
+    .result-context { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-weight: 300; }
+
+    /* ── LEARNED ────────────────────────────────────────────────────────── */
+    .learned-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .learned-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px,3.2vw,40px);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .learned-section h2 em { font-style: italic; color: var(--teal); }
+    .learned-items { display: flex; flex-direction: column; gap: 32px; max-width: 680px; }
+    .learned-item { display: flex; gap: 24px; align-items: flex-start; }
+    .learned-num {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-30);
+      min-width: 28px;
+      padding-top: 3px;
+    }
+    .learned-text { font-size: 15px; color: var(--ink-60); line-height: 1.7; font-weight: 300; }
+    .learned-text strong { color: var(--ink); font-weight: 500; }
+
+    /* ── BEFORE / AFTER ─────────────────────────────────────────────────── */
+    .before-after {
+      padding: 80px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .ba-card { border-radius: 20px; padding: 40px; }
+    .ba-card.before { background: var(--rust-light); border: 1px solid rgba(184,92,56,0.15); }
+    .ba-card.after { background: var(--teal-light); border: 1px solid rgba(58,125,110,0.15); }
+    .ba-label {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+    .before .ba-label { color: var(--rust); }
+    .after .ba-label { color: var(--teal); }
+    .ba-items { display: flex; flex-direction: column; gap: 14px; }
+    .ba-item { display: flex; gap: 12px; align-items: flex-start; }
+    .ba-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
+    .before .ba-dot { background: var(--rust); }
+    .after .ba-dot { background: var(--teal); }
+    .ba-item div:last-child { font-size: 14px; line-height: 1.65; color: var(--ink); }
+
+    /* ── DISCLOSURE ─────────────────────────────────────────────────────── */
+    .disclosure {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      font-size: 12px;
+      color: var(--ink-30);
+      font-style: italic;
+      line-height: 1.6;
+      border-top: 1px solid var(--ink-10);
+      padding-top: 32px;
+    }
+
+    /* ── CTA ────────────────────────────────────────────────────────────── */
+    .cta-section {
+      background: var(--ink);
+      margin: 0 auto 80px;
+      border-radius: 24px;
+      padding: 80px 48px;
+      text-align: center;
+      max-width: 1104px;
+    }
+    .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px,4vw,48px);
+      font-weight: 400;
+      color: white;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .cta-h2 em { font-style: italic; color: var(--teal); opacity: 0.9; }
+    .cta-desc { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    /* ── PLACEHOLDER FLAG ───────────────────────────────────────────────── */
+    .confirm {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: #F5ECD8;
+      color: #B87A1A;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── DIVIDER ────────────────────────────────────────────────────────── */
+    .divider { max-width: 1200px; margin: 0 auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero, .context-section, .approach-section, .before-after {
+        grid-template-columns: 1fr;
+      }
+      .creative-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 60px 24px 0; min-height: auto; }
+      nav,
+      .context-section,
+      .approach-section,
+      .creative-section,
+      .before-after,
+      .learned-section,
+      .disclosure { padding-left: 24px; padding-right: 24px; }
+      .results-section { padding-left: 24px; padding-right: 24px; }
+      .cta-section { margin: 40px 24px; padding: 60px 32px; }
+      .hero-stat-grid { gap: 20px; }
+    }
+  </style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+  <!-- NAV -->
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-label">Case Studies / Windows &amp; Doors</div>
+      <h1>Knowing when to <em>stop spending</em> is how CPL dropped 24%</h1>
+      <p class="hero-desc">A regional window contractor had the creative assets and the market demand. What it lacked was focus. A structured consolidation fixed the account without adding a single new campaign.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Vertical</div>
+          <div class="hero-meta-value">Windows &amp; Doors</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Platform</div>
+          <div class="hero-meta-value">Meta</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Monthly Spend</div>
+          <div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$8k–$14k</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Role</div>
+          <div class="hero-meta-value">Lead Media Buyer</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-visual-label">Eight-month performance delta</div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat">
+          <div class="hero-stat-num">24%</div>
+          <div class="hero-stat-label">CPL reduction<br>$255 to $194</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">+10pt</div>
+          <div class="hero-stat-label">Set rate lift<br>18% to 28%</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">16%</div>
+          <div class="hero-stat-label">Duplicate leads<br>eliminated</div>
+        </div>
+      </div>
+      <div class="hero-visual-footer">Kansas / Missouri / Illinois</div>
+    </div>
+  </section>
+
+  <div style="height:80px;"></div>
+  <div class="divider"></div>
+
+  <!-- CONTEXT -->
+  <section class="context-section">
+    <div>
+      <div class="section-label">The Situation</div>
+      <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">The account was generating leads. The math just didn't work.</h2>
+      <p class="prose">CPL had drifted to $255. Cost-per-demo was above the $750 target. The set rate, the share of leads that booked a sales appointment, had fallen to around 18%. On paper, volume looked acceptable.</p>
+      <p class="prose" style="margin-top:20px;">Underneath, too many campaigns were competing with each other. Budgets were spread across unvalidated geographies. The best creatives had been running long enough that frequency was quietly eroding performance. Nobody had applied a consistent framework to decide what stays on and what comes off.</p>
+      <p class="prose" style="margin-top:20px;">The account kept growing horizontally: more campaigns, more adsets, more markets. What it needed was the vertical discipline of cutting what wasn't earning its budget.</p>
+    </div>
+    <div>
+      <div class="context-callout">
+        <div class="context-callout-label">Core constraint</div>
+        <p>Three problems running at once: inflated CPL, falling set rate, and a 16% duplicate lead rate that made everything look better than it was.</p>
+        <div class="context-callout-sub">
+          <strong>Set rate</strong> is the percentage of leads that book a sales appointment. <strong>Cost-of-marketing (CoM%)</strong> is total ad spend divided by revenue generated. In home improvement lead gen, CoM% is the primary profitability signal at the business level.
+        </div>
+      </div>
+
+      <div style="margin-top:24px; background:white; border-radius:16px; padding:28px; border:1px solid var(--ink-10);">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-30); margin-bottom:16px; font-weight:500;">Baseline metrics</div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
+            <span style="font-size:14px; color:var(--ink-60);">Cost per lead</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">$255</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
+            <span style="font-size:14px; color:var(--ink-60);">Set rate</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">~18%</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
+            <span style="font-size:14px; color:var(--ink-60);">Duplicate lead rate</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">16%</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-size:14px; color:var(--ink-60);">Cost of marketing %</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);"><span class="confirm">⚑ Confirm</span>~29%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- APPROACH -->
+  <section class="approach-section">
+    <div>
+      <div class="section-label">The Approach</div>
+      <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Four decisions, applied in sequence.</h2>
+      <p class="prose">Every strategic move came from the data already in the account. No new campaigns launched until the existing structure was cleaned up and the budget freed from underperformers had somewhere productive to go.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-content">
+          <div class="process-step-name">Enforce the decision tree</div>
+          <div class="process-step-desc">Every live ad and adset was evaluated against four thresholds: CPL below $170, set rate above 24%, cost-per-demo below $750, CoM% below 23%. Anything failing two or more thresholds across a 28-day and a trailing 14-day window was cut. The rule sounds mechanical. The discipline is not making exceptions for ads that feel like they're about to turn around.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-content">
+          <div class="process-step-name">Concentrate budget by geography</div>
+          <div class="process-step-desc">Kansas had consistently produced the best cost-per-sold metrics. It got its own dedicated adset instead of competing inside a general campaign. Budget freed from cuts went there first.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-content">
+          <div class="process-step-name">Rebuild retargeting as ABO</div>
+          <div class="process-step-desc">The existing retargeting ran as a CBO with two adsets of very different sizes sharing one budget. A CBO almost always starves the smaller, hotter audience. Moving to ABO gave each temperature its own daily budget and predictable delivery.</div>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-content">
+          <div class="process-step-name">Switch to county-level CBOs with callouts</div>
+          <div class="process-step-desc">A zip-level analysis showed certain counties were dragging account CPL without contributing proportionate volume. County-level CBOs with location callouts in the creative improved relevance and reduced out-of-area lead contamination. Airport-proximity zips were excluded.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CREATIVE -->
+  <section class="creative-section">
+    <div class="section-label">Creative</div>
+    <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">Two winners. Everything else came off.</h2>
+    <p class="prose">The data had already identified what worked. The strategy was to stop running underperforming ads alongside the winners and use the freed budget to run a structured copy test on top of them.</p>
+    <div class="creative-grid">
+      <div class="creative-card">
+        <span class="creative-card-tag winner">Winner</span>
+        <div class="creative-card-title">Candid static — Brown Door</div>
+        <div class="creative-card-desc">Homeowner photographed in front of their home. Authentic, unposed, property-focused. Outperformed studio and graphic formats consistently across Kansas and Missouri markets.</div>
+        <div class="creative-card-metric">Best performance in <strong>Kansas broad 35+</strong> adset</div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag winner">Winner</span>
+        <div class="creative-card-title">New Candid 2</div>
+        <div class="creative-card-desc">Second candid variant proving itself across both Kansas and Missouri in broad adsets. Sufficient volume to trust the pattern across multiple markets before scaling.</div>
+        <div class="creative-card-metric">Strong across <strong>Kansas + Missouri broad</strong></div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag learning">Learning</span>
+        <div class="creative-card-title">Cost-angle copy test</div>
+        <div class="creative-card-desc">Tested copy emphasising actual project affordability instead of percentage-off incentives. Early results showed a lower duplicate rate and higher set rate, suggesting better lead quality at the top of funnel.</div>
+        <div class="creative-card-metric">Tracked as <strong>separate test track</strong> from incentive copy</div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag tested">Tested</span>
+        <div class="creative-card-title">Heavy incentive copy</div>
+        <div class="creative-card-desc">50%-off hook both in headline and primary text. Generated volume but set rate suffered. When the ad's entire value proposition is the discount, the leads who respond are there for the discount, not the product.</div>
+        <div class="creative-card-metric">Set rate <strong>below 12%</strong> on this variant</div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag winner">Winner</span>
+        <div class="creative-card-title">3-requirements timelapse video</div>
+        <div class="creative-card-desc">State-specific hook qualifying leads by location and window age. Proven format across multiple accounts in the vertical. Used as primary creative in the state CBO rebuild alongside the candid door variant.</div>
+        <div class="creative-card-metric">Deployed in <strong>State CBO</strong> in 1:1 and 9:16</div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag tested">Tested</span>
+        <div class="creative-card-title">Group staff collage</div>
+        <div class="creative-card-desc">Team photography in collage format. Tested in Kansas-specific adset. Showed early promise in the 560k–650k audience bracket at 35+. Held for further evaluation before scaling.</div>
+        <div class="creative-card-metric">Kansas audience <strong>560k–650k, 35+</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RESULTS -->
+  <section class="results-section">
+    <div class="results-inner">
+      <div class="section-label">Results</div>
+      <h2>The numbers moved. More importantly, so did the sales team's experience.</h2>
+      <p class="prose">CPL dropped from $255 to $194 over the consolidation period. Set rate recovered from 18% to around 28% as lead quality improved alongside targeting precision. For the client's sales team, the shift was felt before it was fully measured: fewer calls that went nowhere, more homeowners who were in-area and expecting a callback.</p>
+      <div class="results-grid">
+        <div class="result-stat">
+          <div class="result-num">$194</div>
+          <div class="result-label">Cost per lead</div>
+          <div class="result-context">Down from $255 at peak</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-num">28%</div>
+          <div class="result-label">Set rate</div>
+          <div class="result-context">Up from ~18% at baseline</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>$780</div>
+          <div class="result-label">Cost per demo</div>
+          <div class="result-context">Down from ~$930, toward $750 target</div>
+        </div>
+        <div class="result-stat">
+          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>21%</div>
+          <div class="result-label">Cost of marketing %</div>
+          <div class="result-context">Down from ~29%, within target range</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I LEARNED -->
+  <section class="learned-section">
+    <div class="section-label">What I Took From This</div>
+    <h2>Three things that now inform <em>every account</em> I run.</h2>
+    <div class="learned-items">
+      <div class="learned-item">
+        <div class="learned-num">1.</div>
+        <div class="learned-text"><strong>The decision tree only works if you apply it without exceptions.</strong> Every account has ads that feel like they're about to turn around. The ones that consistently failed two or more thresholds across multiple time windows never did. Cutting faster is always the right call.</div>
+      </div>
+      <div class="learned-item">
+        <div class="learned-num">2.</div>
+        <div class="learned-text"><strong>Geographic concentration beats geographic ambition at most budget levels.</strong> The Kansas campaign outperformed broad multi-state campaigns not because the market was inherently better, but because creative, copy, and budget were aligned to one geography. Alignment compounds.</div>
+      </div>
+      <div class="learned-item">
+        <div class="learned-num">3.</div>
+        <div class="learned-text"><strong>Duplicate lead rate is an underestimated CPL distorter.</strong> At 16%, the account looked healthier than it was. Roughly 1 in 6 leads was a repeat submission inflating volume metrics and masking real set rate performance. Fixing the exclusion lists improved downstream numbers without touching a single campaign.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BEFORE / AFTER -->
+  <section class="before-after">
+    <div class="ba-card before">
+      <div class="ba-label">Before the work</div>
+      <div class="ba-items">
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>CPL at $255 with no systematic framework for deciding when to cut</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Set rate at 18%, with strong lead volume masking poor lead quality</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>16% duplicate lead rate inflating volume metrics across the account</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Retargeting CBO starving the hottest bottom-funnel audiences of budget</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Budget spread thinly across all-zips campaigns with no geo concentration</div>
+        </div>
+      </div>
+    </div>
+    <div class="ba-card after">
+      <div class="ba-label">After the work</div>
+      <div class="ba-items">
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>CPL at $194, driven by cutting underperformers and concentrating on validated markets</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Set rate recovered to ~28% as in-area lead quality improved</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Duplicate rate reduced to ~9% following exclusion list rebuild</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>Retargeting rebuilt as ABO with each audience temperature on its own budget</div>
+        </div>
+        <div class="ba-item">
+          <div class="ba-dot"></div>
+          <div>County-level CBOs with geo callouts focused spend on the highest-converting markets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CROSSREFS -->
+  <div style="max-width:1200px; margin:0 auto; padding:0 48px 48px; display:flex; flex-direction:column; gap:12px;">
+    <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
+      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div>
+        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">The first question before touching anything: creative problem or structure problem?</div>
+        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Diagnosis playbook covers how to separate creative performance from media buying performance before drawing any conclusions. The thresholds and decision logic used in this account came from running that process first. <a href="/playbooks/diagnosis" style="color:#3A7D6E; font-weight:500; text-decoration:none;">Read it →</a></div>
+      </div>
+    </div>
+    <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
+      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div>
+        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">How the ABO rebuild and county CBO structure work in practice</div>
+        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers the three-campaign model, the CBO versus ABO decision, and how to give testing and scaling separate infrastructure so they stop competing for the same budget. <a href="/playbooks/account-structure" style="color:#3A7D6E; font-weight:500; text-decoration:none;">Read it →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DISCLOSURE -->
+  <div class="disclosure" style="margin-top:32px;">
+    Figures marked ⚑ Confirm were reconstructed from campaign notes and memory. They are directional estimates consistent with industry benchmarks for this vertical. All confirmed figures are presented without a flag.
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <div class="cta-section">
+      <div class="cta-h2">Want this kind of <em>structured clarity</em> on your account?</div>
+      <p class="cta-desc">I run paid social for home improvement companies that are serious about scaling. If your CPL is drifting or your set rate doesn't match your lead volume, let's talk.</p>
+      <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+    </div>
+  </div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

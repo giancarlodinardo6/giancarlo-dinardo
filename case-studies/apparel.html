@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vault Basics Apparel — Case Study | Giancarlo</title>
+        <style>
+    :root{--cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);--ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.05);--sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;--teal:#3A7D6E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}.nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}.nav-back:hover{color:var(--ink);}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}.prose+.prose{margin-top:20px;}
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+    .hero h1 em{font-style:italic;color:var(--rust);}
+    .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
+    .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
+    .hero-stat{flex:1;min-width:100px;}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
+    .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
+    .context-callout p{font-size:17px;font-family:var(--serif);line-height:1.5;color:var(--ink);font-style:italic;}
+    .context-callout-sub{margin-top:16px;font-size:14px;color:var(--ink-60);font-family:var(--sans);font-style:normal;line-height:1.65;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .process-steps{display:flex;flex-direction:column;gap:24px;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:40px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+    .creative-card{background:white;border-radius:14px;padding:28px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
+    .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-item{display:flex;gap:24px;align-items:flex-start;}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+    .before-after{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .ba-card{border-radius:20px;padding:40px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.15);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(58,125,110,0.15);}
+    .ba-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:28px;}
+    .before .ba-label{color:var(--rust);}.after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:14px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
+    .before .ba-dot{background:var(--rust);}.after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
+    .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+    .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
+    .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
+    .cta-h2 em{font-style:italic;color:var(--teal);opacity:0.9;}
+    .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
+    .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
+  </style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<section class="hero">
+  <div>
+    <div class="hero-label">Case Studies / DTC Apparel</div>
+    <h1>An identity brand trying to scale with <em>product ads</em>.</h1>
+    <p class="hero-desc">A lifestyle basics brand was running creative that showed the clothes and described the fabric. The product was the brand. The creative treated it like a commodity. Shifting from product ads to identity ads changed what the data looked like.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Elevated Basics / DTC Apparel</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$6k-$10k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value">2025 Consulting</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Ten-week creative repositioning</div>
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
+    </div>
+    <div class="hero-visual-footer">Same clothes. Different creative premise. Different buyer.</div>
+  </div>
+</section>
+
+<section class="context-section">
+  <div>
+    <div class="section-label">The Situation</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The brand had a clear identity. The creative had not found it yet.</h2>
+    <p class="prose">The brand was selling elevated basics. Heavyweight hoodies, quality socks, simple tees designed to last. Their positioning was about not needing more, buying less but buying better. That is a strong angle. It is also an angle that requires a specific type of creative to work.</p>
+    <p class="prose">What was running was product creative. Flat lays, fabric close-ups, product copy in the headline. The ads were describing the clothes instead of describing the person who wears them. The buyer this brand was built for does not respond to fabric weight in the headline. They respond to recognising themselves in the ad before the product appears.</p>
+    <p class="prose">ROAS was hovering around <span class="confirm">⚑ Confirm</span>1.4. Click-through was fine. Add-to-cart was reasonable. Purchase conversion was low. The creative was finding people. It was finding the wrong people. The ones who did purchase were churning at higher rates and had lower average order values than the brand's organic buyers, suggesting the ad buyer and the brand's real customer were not the same person.</p>
+  </div>
+  <div>
+    <div class="context-callout">
+      <div class="context-callout-label">Core constraint</div>
+      <p>"A brand built around identity needs creative that makes the buyer feel seen before showing them the product. Product ads find product buyers. That is not who this brand is for."</p>
+      <div class="context-callout-sub">The gap between organic customer behavior and paid acquisition behavior was the diagnostic signal. The organic buyer had higher AOV and lower return rate. They found the brand through a different door. The creative's job was to open that door at scale.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="approach-section">
+  <div>
+    <div class="section-label">The Approach</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Find the identity buyer. Build creative for them specifically. Test until the algorithm can find more.</h2>
+    <p class="prose">The organic customer data was the brief. People who bought through the brand's organic content were describing themselves in a specific way: less clutter, more intention, done with fast fashion. The paid creative needed to open with that person's self-image, not with the hoodie's weight in grams.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-step-num">01</div>
+      <div>
+        <div class="process-step-name">Read organic content comments for self-image language</div>
+        <div class="process-step-desc">The brand's organic posts had a comments section that was essentially a brief. People describing their philosophy around buying, what they had stopped doing, what the brand represented to them. That language was the hook material. Not the fabric weight. Not the number of washes it would survive.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">02</div>
+      <div>
+        <div class="process-step-name">Build identity-led hooks and test against product hooks</div>
+        <div class="process-step-desc">Ran a structured hook test. Four versions of the same ad body: identity hook (calling out the buyer who was done replacing cheap basics every six months), curiosity hook (what happens when you stop buying clothes and start buying the same five things forever), contrast hook (comparing the drawer full of unworn stuff to three things worn on repeat), and the original product hook (heavyweight hoodie, reinforced seams, built to last). Same body, same CTA, same budget allocation.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">03</div>
+      <div>
+        <div class="process-step-name">Test systematically, one variable at a time</div>
+        <div class="process-step-desc">Once the identity hook established itself as the winning angle, ran systematic variations. Hook copy on the winning visual. Same hook on a different visual context. UGC version of the winning concept. Each test changed one thing. The goal was not to find another winner. It was to understand which element of the winner was doing the work so the next brief could build from that foundation.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">04</div>
+      <div>
+        <div class="process-step-name">Monitor creative fatigue at the concept level</div>
+        <div class="process-step-desc">Apparel creative fatigues differently than home improvement. The audience is broader but the identity signal is narrower. Watched frequency at the concept level and set up variation briefs to go out at the two-week mark on anything scaling, before frequency crossed 2.5. The goal was to extend the identity angle into new visual contexts rather than replacing it when it faded.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="creative-section">
+  <div class="section-label">Creative</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">Four hooks, one insight: the buyer responds to self-recognition before product features.</h2>
+  <p class="prose">The hook test ran for three weeks. The finding was clear before the end of week two. Identity and curiosity hooks were finding a buyer who purchased at a higher AOV and returned less. Product hooks were finding a buyer who purchased once and disappeared. The creative was selecting for two different people.</p>
+  <div class="creative-grid">
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">Identity hook: done replacing basics</div>
+      <div class="creative-card-desc">Opened with a direct call-out: "If you have been replacing the same cheap hoodie every year, this is for you." No product mention, no brand name. The viewer who recognised themselves in that description was already leaning in. By the time the product appeared it was positioned as the solution to something they had already named.</div>
+      <div class="creative-card-metric"><strong>2.4x ROAS</strong> vs product hook control. AOV 22% higher than account average on this creative.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">Curiosity hook: the five-thing wardrobe</div>
+      <div class="creative-card-desc">Opened with a question about what it would look like to own only five pieces of clothing and wear all of them. No product appearance until fifteen seconds in. The buyer who found this interesting was the exact buyer the brand was built for. The algorithm found them because the hook was specific enough to select against the impulse buyer.</div>
+      <div class="creative-card-metric"><strong>Strong hook retention.</strong> High average play time. Buyers who stayed through the concept converted at a higher rate than the identity hook.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Contrast hook: the drawer full of stuff</div>
+      <div class="creative-card-desc">Visual opening on a drawer full of clothes that never get worn, then panning to three items on a hook. The contrast was the point. Performed well on hook rate. Purchase conversion was lower than the identity hook. The contrast buyer was interested in the concept but not as committed to the identity as the direct call-out reached.</div>
+      <div class="creative-card-metric"><strong>High hook rate,</strong> lower CVR than identity and curiosity hooks. Different buyer mindset.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested (original control)</div>
+      <div class="creative-card-title">Product hook: heavyweight construction</div>
+      <div class="creative-card-desc">The existing creative. Led with product quality signals: fabric weight, stitching detail, reinforced seams. The buyer it found purchased at a lower AOV and had a higher return rate than the identity creative buyers. The product hook was not reaching the wrong audience. It was reaching a different segment of the right category with lower intent.</div>
+      <div class="creative-card-metric"><strong>Lower ROAS, lower AOV</strong> than identity hooks. Kept for remarketing where product detail is appropriate.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner (format)</div>
+      <div class="creative-card-title">UGC day-in-the-life video</div>
+      <div class="creative-card-desc">Creator showing the same three items worn in different contexts across a week. No script about the brand. Just the product being used as a real person uses it. The format removed the advertising layer. The viewer could see the product in a context they could imagine themselves in rather than in a context designed to sell.</div>
+      <div class="creative-card-metric"><strong>Highest CVR</strong> of any format. Lower hook rate but the viewer who stayed through was the right buyer.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Fabric quality static</div>
+      <div class="creative-card-desc">Close-up of material texture with quality copy in the headline. Reached buyers who responded to craft signals. Good hook rate among a specific segment. Purchase rate was below the identity creative consistently. The quality buyer wanted proof before the brand had earned the right to make claims. The identity hook earned that right first.</div>
+      <div class="creative-card-metric"><strong>Quality signal works,</strong> but needs identity to come first. Better as a second or third touch than a cold opener.</div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section">
+  <div class="results-inner">
+    <div class="section-label">Results</div>
+    <h2>The ROAS improved. The buyer quality improved more.</h2>
+    <p class="prose">Ten weeks in. The shift in creative was not just a ROAS improvement. The buyer the identity creative reached had a meaningfully higher AOV and a lower return rate than the product creative buyer. The account was now finding the person the brand was built for at scale.</p>
+    <div class="results-grid">
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>2.4x</div>
+        <div class="result-label">ROAS</div>
+        <div class="result-context">Identity-led creative vs product-led control. Same landing page, same price point.</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">+22%</div>
+        <div class="result-label">Average order value</div>
+        <div class="result-context">Identity buyer segment vs product hook buyer segment</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>lower</div>
+        <div class="result-label">Return rate</div>
+        <div class="result-context">Identity creative buyers returned less than product hook buyers over the same period</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">4</div>
+        <div class="result-label">Hook types tested</div>
+        <div class="result-context">Identity and curiosity hooks promoted to scale. Product hook kept for warm retargeting only.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="learned-section">
+  <h2>What I took from <em>this one</em></h2>
+  <div class="learned-items">
+    <div class="learned-item">
+      <div class="learned-num">01</div>
+      <div class="learned-text"><strong>The hook selects for a buyer type, not just a volume of buyers.</strong> The product hook and the identity hook found different people at similar CPMs. The identity buyer spent more, returned less, and behaved more like the brand's organic customer. The hook was not just stopping the scroll. It was selecting against the wrong buyer before the click.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">02</div>
+      <div class="learned-text"><strong>Organic customer behavior is the paid creative brief.</strong> The brand's organic buyers were describing themselves in a specific way in comments and reviews. That language was the hook. Not the fabric weight. Not the number of washes survived. The person the brand was built for had a self-image and the creative needed to reflect it back before showing them anything to buy.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">03</div>
+      <div class="learned-text"><strong>Testing one variable at a time produces knowledge, not just winners.</strong> The systematic approach meant that by week six I knew exactly which element of the identity hook was doing the work. The call-out in the first line was more important than the visual context. That meant every subsequent brief started from a confirmed insight rather than a fresh hypothesis. The knowledge compounded.</div>
+    </div>
+  </div>
+</section>
+
+<div class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Before the repositioning</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Product-led creative describing fabric and construction to a buyer who had not yet been given a reason to care</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Paid buyer behaving differently from organic buyer: lower AOV, higher return rate, lower repeat purchase</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>ROAS at approximately 1.4 with no clear signal on why the creative was not converting at a higher rate</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Hook type treated as a copy execution question rather than a buyer selection decision</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Creative fatigue managed reactively, with new concepts launched when performance dropped rather than before it did</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">After the repositioning</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Identity and curiosity hooks opening with self-recognition before any product mention, finding the buyer the brand was built for</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Paid buyer AOV within range of organic buyer AOV for the first time in the account's history</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>ROAS at 2.4x on identity creative with the algorithm consistently finding higher-value buyers</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Systematic testing producing documented knowledge: which hook element was doing the work and why</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Variation briefs going out at the two-week mark on scaling creative, extending runway before frequency built</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">Why hook type is a targeting decision, not a copy decision</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hooks Are Targeting playbook covers how different hook types signal different buyer states to the algorithm and qualify different people. The AOV and return rate difference between the identity hook buyer and the product hook buyer is exactly what that piece explains. <a href="/playbooks/hooks-are-targeting" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How systematic testing produces knowledge rather than just winners</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Systematic Testing playbook covers how to structure tests so each round starts from a better position than the last, isolating one variable at a time so performance differences are attributable and the next brief is informed by what the last one proved. <a href="/playbooks/systematic-testing" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to read creative fatigue before it shows up in the performance numbers</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Fatigue playbook covers the video metrics sequence, the four misreads that cost accounts money, and the frequency thresholds that signal when to launch variations before performance starts dropping. <a href="/playbooks/creative-fatigue" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. ROAS differential (2.4x), AOV improvement (22%), and return rate directional improvement are estimates based on the documented trajectory. Hook test structure, identity vs product buyer distinction, and systematic testing approach are accurate to the engagement.</div>
+
+<div class="cta-wrap">
+  <div class="cta-section">
+    <h2 class="cta-h2">Running an identity brand with <em>product ads</em>?</h2>
+    <p class="cta-desc">If your paid buyer does not behave like your organic buyer, the creative is selecting for the wrong person. The hook type is usually where that happens. It is also where it is easiest to fix.</p>
+    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+  </div>
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

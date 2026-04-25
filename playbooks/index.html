@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbooks — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .pb-hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
+  .pb-hub-card { background:rgba(255,255,255,0.4); border:1px solid var(--line); border-radius:var(--radius-lg); padding:18px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; min-height:190px; transition:transform 0.15s,background 0.15s; }
+  .pb-hub-card:hover { background:#fff; transform:translateY(-1px); }
+  .pb-tile { width:40px; height:40px; border-radius:5px; display:grid; place-items:center; font-size:20px; line-height:1; }
+  .pb-hub-title { font-family:var(--serif); font-size:15px; line-height:1.3; font-weight:500; color:var(--ink); }
+  .pb-hub-intro { font-family:var(--serif); font-size:12.5px; line-height:1.5; color:var(--ink-2); flex:1; }
+  .pb-hub-meta { display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-top:auto; }
+  .pb-pill { padding:2px 8px; border:1px solid var(--line-2); border-radius:999px; background:#fff; color:var(--ink-2); }
+  .section-divider { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:40px 0 0; padding-bottom:10px; border-bottom:1px solid var(--line); display:block; }
+  @media(max-width:700px){ .pb-hub-grid{grid-template-columns:1fr 1fr} }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+<div class="page">
+  <div style="max-width:var(--max);margin:0 auto;padding:40px 48px 0">
+
+    <h1 style="font-family:var(--display);font-weight:400;font-size:72px;line-height:0.95;letter-spacing:-0.02em;margin:0 0 20px">Play<em style="font-style:italic;color:var(--muted)">books</em></h1>
+    <p style="font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0 0 36px">Recurring decisions in paid social that most people handle differently each time. These are the frameworks I've settled on — for diagnosis, creative testing, hooks, fatigue, and extension.</p>
+
+    <span class="section-divider">Diagnosis & strategy</span>
+    <div class="pb-hub-grid">
+      <a href="diagnosis.html" class="pb-hub-card">
+        <div class="pb-tile tile-black">🔍</div>
+        <div class="pb-hub-title">The first thing I do when a Meta account stops performing</div>
+        <div class="pb-hub-intro">A first-principles diagnostic flow for separating structure problems from creative problems.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="account-structure.html" class="pb-hub-card">
+        <div class="pb-tile tile-lav">🏗</div>
+        <div class="pb-hub-title">How campaign structure either supports or fights the creative</div>
+        <div class="pb-hub-intro">The structural decisions that determine whether creative has room to work or gets strangled before it can signal.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="systematic-testing.html" class="pb-hub-card">
+        <div class="pb-tile tile-butter">🧪</div>
+        <div class="pb-hub-title">Stop testing to win. Start testing to learn.</div>
+        <div class="pb-hub-intro">Building a testing structure that actually produces signal instead of just producing winners.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+    </div>
+
+    <span class="section-divider">Creative</span>
+    <div class="pb-hub-grid">
+      <a href="creative-fatigue.html" class="pb-hub-card">
+        <div class="pb-tile tile-pink">📉</div>
+        <div class="pb-hub-title">Most accounts misread their creative data. Here's how to fix that.</div>
+        <div class="pb-hub-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="creative-diversity.html" class="pb-hub-card">
+        <div class="pb-tile tile-mint">🎯</div>
+        <div class="pb-hub-title">Creative diversity isn't a best practice. It's how targeting works now.</div>
+        <div class="pb-hub-intro">Why angle breadth and variation now do the work that audience targeting used to do.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="hooks-are-targeting.html" class="pb-hub-card">
+        <div class="pb-tile tile-clay">🎣</div>
+        <div class="pb-hub-title">Why the hook is the real targeting layer in a broad Meta account</div>
+        <div class="pb-hub-intro">When targeting is broad, the hook does the qualifying. How to write hooks that stop the right person.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="hook-writing.html" class="pb-hub-card">
+        <div class="pb-tile tile-black">✍</div>
+        <div class="pb-hub-title">How I write hooks that stop the scroll without tricking the wrong person</div>
+        <div class="pb-hub-intro">The actual process behind hook development — from brief to variation to signal reading.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="creative-construction.html" class="pb-hub-card">
+        <div class="pb-tile tile-lav">🧱</div>
+        <div class="pb-hub-title">How a strong ad is actually built, layer by layer</div>
+        <div class="pb-hub-intro">The anatomy of a paid social ad — how hook, body, and offer interact to produce or lose the sale.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="ad-psychology.html" class="pb-hub-card">
+        <div class="pb-tile tile-butter">🧠</div>
+        <div class="pb-hub-title">The psychological levers that make paid social creative work</div>
+        <div class="pb-hub-intro">Why certain creative choices move people and others don't — applied to real Meta ad decisions.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+    </div>
+
+    <span class="section-divider">Scaling & optimization</span>
+    <div class="pb-hub-grid">
+      <a href="winner-extension.html" class="pb-hub-card">
+        <div class="pb-tile tile-mint">📈</div>
+        <div class="pb-hub-title">What to do when a winning ad starts to slow down</div>
+        <div class="pb-hub-intro">How to extend a winner's life through variation before the account loses signal entirely.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="coverage-gap.html" class="pb-hub-card">
+        <div class="pb-tile tile-pink">🗂</div>
+        <div class="pb-hub-title">Finding the audience segments the account is not reaching</div>
+        <div class="pb-hub-intro">How to identify coverage gaps before they show up as performance drops.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="natural-cac.html" class="pb-hub-card">
+        <div class="pb-tile tile-clay">💰</div>
+        <div class="pb-hub-title">Why fighting the platform on acquisition cost is usually the wrong move</div>
+        <div class="pb-hub-intro">The natural CAC concept — and why making LTV work at the platform's price is a better strategy than pushing CPA down.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+    </div>
+
+    <span class="section-divider">AI & workflows</span>
+    <div class="pb-hub-grid">
+      <a href="ai-workflow.html" class="pb-hub-card">
+        <div class="pb-tile tile-black">⚙</div>
+        <div class="pb-hub-title">How I use AI to speed up research, brief writing, and creative iteration</div>
+        <div class="pb-hub-intro">The actual workflow — which steps benefit from AI, which still need judgment, and how to structure the handoff.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+      <a href="comment-response-ads.html" class="pb-hub-card">
+        <div class="pb-tile tile-lav">💬</div>
+        <div class="pb-hub-title">Turning comment sections into creative intelligence</div>
+        <div class="pb-hub-intro">How to mine comment data from organic and paid posts to find angles the brief never surfaced.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+    </div>
+
+  </div>
+</div>
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

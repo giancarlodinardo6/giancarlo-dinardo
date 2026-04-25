@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stop Testing to Win. Start Testing to Learn. — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 0 48px 32px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-30); }
+  .breadcrumb a { color: var(--ink-30); text-decoration: none; transition: color 0.15s; }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: var(--rust); }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual — two testing approaches compared */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  .testing-compare { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+  .tc-col { display: flex; flex-direction: column; gap: 8px; }
+  .tc-col-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; font-weight: 500; }
+  .tc-col-label.random { color: rgba(232,150,122,0.6); }
+  .tc-col-label.systematic { color: rgba(122,191,181,0.6); }
+  .tc-item { padding: 9px 12px; border-radius: 7px; font-size: 12px; line-height: 1.4; }
+  .tc-item.random { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); color: rgba(232,150,122,0.7); }
+  .tc-item.systematic { background: rgba(58,125,110,0.1); border: 1px solid rgba(58,125,110,0.15); color: rgba(122,191,181,0.7); }
+  .tc-result { margin-top: 4px; padding: 10px 12px; border-radius: 7px; font-size: 12px; font-weight: 500; }
+  .tc-result.random { background: rgba(184,92,56,0.12); color: #E8967A; }
+  .tc-result.systematic { background: rgba(58,125,110,0.12); color: #7ABFB5; }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── FRAMEWORK — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .framework-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .fw-card { background: #fff; border-radius: 12px; padding: 28px 24px; position: relative; }
+  .fwc-accent { position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; border-radius: 50%; }
+  .fw-card:nth-child(1) .fwc-accent { background: var(--rust); }
+  .fw-card:nth-child(2) .fwc-accent { background: var(--teal); }
+  .fw-card:nth-child(3) .fwc-accent { background: var(--amber); }
+  .fwc-num { font-family: var(--serif); font-size: 48px; color: var(--ink-10); line-height: 1; margin-bottom: 8px; font-style: italic; }
+  .fwc-phase { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+  .fwc-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .fwc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 14px; }
+  .fwc-output { font-size: 12px; padding: 10px 12px; background: var(--ink-06); border-radius: 8px; line-height: 1.5; }
+  .fwc-output-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+
+  /* ── VARIABLE ISOLATION — DARK ── */
+  .isolation-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .isolation-inner { max-width: 1200px; margin: 0 auto; }
+  .isolation-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .isolation-header .section-label { color: rgba(255,255,255,0.3); }
+  .isolation-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .isolation-header .section-h2 { color: #fff; }
+  .isolation-header .prose { color: rgba(255,255,255,0.5); }
+
+  .isolation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .isolation-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px 24px; }
+  .ic-variable { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 12px; font-weight: 500; }
+  .ic-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+  .ic-how { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; margin-bottom: 14px; }
+  .ic-learning { font-size: 12px; padding: 10px 14px; background: rgba(58,125,110,0.1); border-left: 2px solid rgba(122,191,181,0.4); border-radius: 0 8px 8px 0; color: rgba(122,191,181,0.8); line-height: 1.5; }
+  .ic-learning-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(122,191,181,0.5); margin-bottom: 4px; }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+
+  .test-sequence { display: flex; flex-direction: column; gap: 16px; }
+  .ts-item { display: grid; grid-template-columns: 80px 1fr 1fr; gap: 20px; align-items: start; padding: 24px; background: var(--ink-06); border-radius: 12px; border: 1px solid var(--ink-10); }
+  .ts-round { font-family: var(--serif); font-size: 13px; color: var(--ink-30); font-style: italic; padding-top: 2px; }
+  .ts-test { }
+  .ts-test-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 6px; font-weight: 500; }
+  .ts-test-desc { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+  .ts-test-detail { font-size: 13px; color: var(--ink-60); font-weight: 300; line-height: 1.5; }
+  .ts-learning { }
+  .ts-learning-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px; font-weight: 500; }
+  .ts-learning-desc { font-size: 13px; color: var(--ink-60); font-weight: 300; line-height: 1.6; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .isolation-header, .fw-top, .worked-header { grid-template-columns: 1fr; }
+    .framework-grid, .isolation-grid { grid-template-columns: 1fr; }
+    .ts-item { grid-template-columns: 1fr; }
+    .before-after { grid-template-columns: 1fr; }
+    nav, .breadcrumb, .hero, .why-section, .worked-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .isolation-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ NAV ═══ -->
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Systematic Testing</span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Testing Strategy</div>
+    <h1>Stop testing to win.<br><em>Start testing to learn.</em></h1>
+    <p class="hero-desc">Most brands run creative tests hoping to stumble onto a winner. Systematic testing produces something more valuable — compound knowledge about what works in your specific market, built test by test.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">eCommerce · Lead Gen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Creative testing discipline</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">Two testing approaches — after three months</div>
+    <div class="testing-compare">
+      <div class="tc-col">
+        <div class="tc-col-label random">Random testing</div>
+        <div class="tc-item random">50 ideas launched without a pattern</div>
+        <div class="tc-item random">2 winners found</div>
+        <div class="tc-item random">Can't explain why they won</div>
+        <div class="tc-item random">Next round starts from zero</div>
+        <div class="tc-result random">Outcome: a list of winners</div>
+      </div>
+      <div class="tc-col">
+        <div class="tc-col-label systematic">Systematic testing</div>
+        <div class="tc-item systematic">20 tests built from a control</div>
+        <div class="tc-item systematic">5 learnings documented</div>
+        <div class="tc-item systematic">Each learning informs the next test</div>
+        <div class="tc-item systematic">Next round starts smarter</div>
+        <div class="tc-result systematic">Outcome: a compounding playbook</div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-desc">Variable per test</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-desc">Compounding value</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">every</div>
+        <div class="hero-stat-desc">Test teaches something</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The distinction</div>
+    <h2 class="section-h2">Every test should make the next one smarter.</h2>
+    <p class="prose">There's a version of creative testing that most accounts run: launch a batch of ads, see what gets traction, kill what doesn't, and repeat. It finds winners. The problem is that it doesn't explain them. You know what worked; you don't know why. The next round starts from the same uncertainty as the last one.</p>
+    <p class="prose" style="margin-top:16px">Systematic testing looks different from the outside — same volume, often fewer ads — but the structure changes what you get back. You start from a control: your current best-performing ad, stripped down to understand what's actually driving results. The hook. The problem it addresses. The way social proof is used. The offer framing. You isolate one of those variables and test it against the control. Whatever you learn, you know it's attributable — because only one thing changed.</p>
+    <p class="prose" style="margin-top:16px">After a few months of this, something different happens. You have a body of knowledge, not a list of winners. You know which hook types convert in your category. You know whether social proof or product demonstration works better at the awareness level you're targeting. You know which offer framing closes. That knowledge compounds — it makes every brief better, every production decision cheaper, every future test more efficient.</p>
+    <p class="prose" style="margin-top:16px">Across the lead gen accounts I managed, the shift to systematic testing didn't produce more winners in the short term. It produced fewer losers over time, because the briefs got tighter as the knowledge built up. That's a different value proposition than finding a winner — and a more durable one.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">Why random testing is so persistent</div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">01 — Winners feel like validation</div>
+        <div class="why-card-desc">When a random test produces a winner, it feels like the process worked. It did — it found a winner. But it didn't teach you anything about why that winner won, which means the next brief is no smarter than the last one was.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">02 — Volume gets confused with strategy</div>
+        <div class="why-card-desc">Launching 50 ads sounds like a rigorous testing programme. But if those 50 ads don't have a shared structure — a common variable being tested across them — the data they produce can't be read together. You get 50 individual results, not 50 data points in a single argument.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #B8A0F0;">
+        <div class="why-card-label" style="color:#B8A0F0;">03 — The control gets skipped</div>
+        <div class="why-card-desc">Without a control — a known quantity to test against — there's no way to measure what changed. Two ads that both perform well might be responding to completely different things. You need a baseline that stays constant while one variable moves. Without it, every result is ambiguous.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FRAMEWORK — SAGE ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The framework</div>
+        <h2 class="section-h2">Three phases.<br>One compounding system.</h2>
+      </div>
+      <p class="prose">Systematic testing isn't a different volume of testing — it's a different structure. The same number of ads can produce ten times more usable knowledge if they're built with a shared logic. These three phases form the cycle: establish a control, isolate variables, document learnings so each round starts from a better position than the last.</p>
+    </div>
+
+    <div class="framework-grid">
+      <div class="fw-card">
+        <div class="fwc-accent"></div>
+        <div class="fwc-num">01</div>
+        <div class="fwc-phase">Phase</div>
+        <div class="fwc-name">Establish the control</div>
+        <div class="fwc-desc">Before you test anything, you need to know what you're testing against. Take your current best-performing ad and deconstruct it: what's the hook doing, what problem is it addressing, what type of social proof is it using, how is the offer framed? That deconstruction is the map of variables available to test. The control isn't a constraint — it's what makes every test readable.</div>
+        <div class="fwc-output">
+          <div class="fwc-output-label">What you get</div>
+          A documented breakdown of what's driving your control's performance — and a list of variables to test systematically against it.
+        </div>
+      </div>
+
+      <div class="fw-card">
+        <div class="fwc-accent"></div>
+        <div class="fwc-num">02</div>
+        <div class="fwc-phase">Phase</div>
+        <div class="fwc-name">Isolate one variable per test</div>
+        <div class="fwc-desc">Change one thing at a time. This is the discipline that makes systematic testing feel slower in the short term and produce more in the long term. If you change the hook and the social proof format in the same test, a performance difference could be from either — or neither. Isolation is what makes the result attributable. One variable. One answer.</div>
+        <div class="fwc-output">
+          <div class="fwc-output-label">What you get</div>
+          A clean answer to a specific question — not a result that could have three explanations.
+        </div>
+      </div>
+
+      <div class="fw-card">
+        <div class="fwc-accent"></div>
+        <div class="fwc-num">03</div>
+        <div class="fwc-phase">Phase</div>
+        <div class="fwc-name">Document learnings, not just results</div>
+        <div class="fwc-desc">A winner is a result. A learning is an explanation of why. "Pain-point hooks outperform social proof hooks in the awareness phase for this product" is a learning — it's applicable to future briefs, future products, future account decisions. "Ad A beat Ad B" is a result — it's only useful for the next decision about those two ads. Document what the result means, not just what happened.</div>
+        <div class="fwc-output">
+          <div class="fwc-output-label">What you get</div>
+          A growing body of knowledge about what works in your market — applicable beyond any individual campaign.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ VARIABLE ISOLATION — DARK ═══ -->
+<section class="isolation-section">
+  <div class="isolation-inner">
+    <div class="isolation-header">
+      <div>
+        <div class="section-label">What to test</div>
+        <h2 class="section-h2">The five variables worth isolating</h2>
+      </div>
+      <p class="prose">Not all variables produce equally useful learnings. These are the five that tell you the most — the ones where a clean result from a well-structured test actually changes how you brief and produce future creative.</p>
+    </div>
+
+    <div class="isolation-grid">
+      <div class="isolation-card">
+        <div class="ic-variable">Variable 01</div>
+        <div class="ic-title">The hook type</div>
+        <div class="ic-how">Keep the body, offer, and visual style identical. Change only the first three seconds — different hook type, same concept. This tells you which emotional entry point finds the right audience for this product.</div>
+        <div class="ic-learning">
+          <div class="ic-learning-label">Learning it produces</div>
+          Which hook type reaches buyers — not just which opening line performs better.
+        </div>
+      </div>
+
+      <div class="isolation-card">
+        <div class="ic-variable">Variable 02</div>
+        <div class="ic-title">The problem being named</div>
+        <div class="ic-how">Same hook type, same format, different pain point addressed in the body. This tells you which problem your audience most wants solved — which is often different from the one your team assumes is most important.</div>
+        <div class="ic-learning">
+          <div class="ic-learning-label">Learning it produces</div>
+          Which pain point drives purchase — the insight that should inform every future brief for this product.
+        </div>
+      </div>
+
+      <div class="isolation-card">
+        <div class="ic-variable">Variable 03</div>
+        <div class="ic-title">The social proof format</div>
+        <div class="ic-how">Customer testimonial vs. review screenshot vs. transformation story vs. expert credibility. Same hook, same offer — different proof mechanism. This tells you what kind of evidence this audience trusts and responds to.</div>
+        <div class="ic-learning">
+          <div class="ic-learning-label">Learning it produces</div>
+          Which proof format builds enough trust to close — critical for high-consideration categories.
+        </div>
+      </div>
+
+      <div class="isolation-card">
+        <div class="ic-variable">Variable 04</div>
+        <div class="ic-title">The offer framing</div>
+        <div class="ic-how">Same product, same price — different way of presenting the offer. Free consultation vs. guaranteed quote vs. limited availability. This isn't about the offer itself; it's about how presenting the same offer differently changes conversion rate.</div>
+        <div class="ic-learning">
+          <div class="ic-learning-label">Learning it produces</div>
+          Which offer framing closes — distinct from which product or price point closes.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKED EXAMPLE ═══ -->
+<section class="worked-section">
+  <div class="worked-header">
+    <div>
+      <div class="section-label">Worked example</div>
+      <h2 class="section-h2">What a three-month testing sequence looks like</h2>
+    </div>
+    <p class="prose">This is the testing sequence I ran across a bathroom remodel lead gen account over a three-month period. Each round started from the learning of the previous one — so by month three, the briefs were significantly tighter than they were in month one. The specific results are approximate; the sequencing logic is accurate.</p>
+  </div>
+
+  <div class="test-sequence">
+    <div class="ts-item">
+      <div class="ts-round">Month one</div>
+      <div class="ts-test">
+        <div class="ts-test-label">Test</div>
+        <div class="ts-test-desc">Hook type — curiosity vs. call-out vs. problem stack</div>
+        <div class="ts-test-detail">Held body, offer, and format constant. Three ad sets, one per hook type, equal budget, two-week window. Isolated to a separate campaign so control creative couldn't interfere.</div>
+      </div>
+      <div class="ts-learning">
+        <div class="ts-learning-label">Learning</div>
+        <div class="ts-learning-desc">Problem stack hook produced the lowest cost per booked call. The homeowners who stopped were already frustrated — recognition before selling worked better than creating curiosity. Every brief from this point started with a problem stack.</div>
+      </div>
+    </div>
+
+    <div class="ts-item">
+      <div class="ts-round">Month two</div>
+      <div class="ts-test">
+        <div class="ts-test-label">Test</div>
+        <div class="ts-test-desc">Pain point — layout frustration vs. outdated fixtures vs. resale value</div>
+        <div class="ts-test-detail">Used winning hook type from month one. Changed only the problem named in the body copy. Three variations against the same offer and CTA. Tested which pain point the audience most wanted addressed.</div>
+      </div>
+      <div class="ts-learning">
+        <div class="ts-learning-label">Learning</div>
+        <div class="ts-learning-desc">Resale value outperformed on cost per lead but underperformed on appointment show rate — the people who clicked on a resale value angle were earlier in the process and harder to close. Layout frustration produced fewer leads but they showed up ready to commit. We optimised for show rate, not CPL, because a lower-cost lead who doesn't show is worth less than a higher-cost one who does. Layout frustration became the control.</div>
+      </div>
+    </div>
+
+    <div class="ts-item">
+      <div class="ts-round">Month three</div>
+      <div class="ts-test">
+        <div class="ts-test-label">Test</div>
+        <div class="ts-test-desc">Social proof format — homeowner testimonial vs. before/after photo vs. contractor credibility</div>
+        <div class="ts-test-detail">Used winning hook type and pain point from months one and two. Changed only the proof mechanism. Tested whether peer evidence or authority evidence built more trust for this audience.</div>
+      </div>
+      <div class="ts-learning">
+        <div class="ts-learning-label">Learning</div>
+        <div class="ts-learning-desc">Before/after photo outperformed both. For a visual transformation product, seeing the result was more persuasive than hearing about it. Combined with the layout frustration hook, this became the control for month four. It stayed the top performer for the next two months.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Testing to win</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Each round starts from scratch — no accumulated knowledge to build from</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>High volume of tests with low structural overlap — results can't be read together</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Winners are identified but not understood — the brief for the next round is as uncertain as the last one</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>A performance dip means starting over, because there's no documented playbook to draw from</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Testing budget produces a list of results — not intelligence that transfers across campaigns</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">Testing to learn</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Each round starts from the previous round's learning — briefs get tighter over time, not just bigger</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Fewer tests produce more usable knowledge — because each one is built to answer a specific question</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Winners are documented with an explanation — which makes them replicable across future campaigns and products</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>A performance dip has a starting point for diagnosis — the playbook shows what's been proven to work and what hasn't been tested yet</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Testing budget becomes an intelligence asset — knowledge about the market that compounds with every round</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">What's next</div>
+    <h2 class="cta-h2">The test that teaches you something<br>is worth more than the one that <em>wins</em>.</h2>
+    <p class="cta-desc">Systematic testing starts with knowing what you're testing against. See how the Creative Strategy Map gives you the variables before the test begins.</p>
+    <a href="../playbooks/index.html" class="cta-btn">
+      Back to Playbooks
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How I Use AI in My Creative Workflow — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 0 48px 32px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-30); }
+  .breadcrumb a { color: var(--ink-30); text-decoration: none; transition: color 0.15s; }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: var(--rust); }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual — workflow pipeline */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  .pipeline { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .pipeline-stage { display: flex; align-items: center; gap: 12px; }
+  .ps-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .ps-icon.ai { background: rgba(184,92,56,0.2); }
+  .ps-icon.human { background: rgba(58,125,110,0.2); }
+  .ps-icon.both { background: rgba(184,122,26,0.2); }
+  .ps-content { flex: 1; padding: 10px 14px; border-radius: 8px; }
+  .ps-content.ai { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
+  .ps-content.human { background: rgba(58,125,110,0.1); border: 1px solid rgba(58,125,110,0.15); }
+  .ps-content.both { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
+  .ps-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 2px; }
+  .ps-content.ai .ps-label { color: rgba(232,150,122,0.6); }
+  .ps-content.human .ps-label { color: rgba(122,191,181,0.6); }
+  .ps-content.both .ps-label { color: rgba(212,168,71,0.6); }
+  .ps-name { font-size: 12px; line-height: 1.4; }
+  .ps-content.ai .ps-name { color: rgba(232,150,122,0.8); }
+  .ps-content.human .ps-name { color: rgba(122,191,181,0.8); }
+  .ps-content.both .ps-name { color: rgba(212,168,71,0.8); }
+  .pipeline-arrow { width: 32px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.15); margin-left: 0; }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── WORKFLOW STAGES — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .stages-list { display: flex; flex-direction: column; gap: 16px; }
+  .stage-card { background: #fff; border-radius: 12px; padding: 28px 28px; display: grid; grid-template-columns: 48px 1fr 1fr; gap: 24px; align-items: start; }
+  .stage-num { font-family: var(--serif); font-size: 36px; color: var(--ink-10); line-height: 1; font-style: italic; }
+  .stage-ai { }
+  .stage-ai-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rust); margin-bottom: 6px; font-weight: 500; }
+  .stage-ai-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .stage-ai-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; }
+  .stage-human { }
+  .stage-human-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px; font-weight: 500; }
+  .stage-human-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .stage-human-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; }
+
+  /* ── WORKED EXAMPLE — DARK ── */
+  .worked-section-dark { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .worked-inner { max-width: 1200px; margin: 0 auto; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .worked-header .section-label { color: rgba(255,255,255,0.3); }
+  .worked-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .worked-header .section-h2 { color: #fff; }
+  .worked-header .prose { color: rgba(255,255,255,0.5); }
+
+  .prompt-example { display: flex; flex-direction: column; gap: 20px; }
+  .pe-stage { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: start; }
+  .pe-stage-label { padding-top: 16px; }
+  .pe-stage-name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); font-weight: 500; margin-bottom: 4px; }
+  .pe-stage-role { font-size: 12px; }
+  .pe-stage-role.ai-role { color: rgba(232,150,122,0.6); }
+  .pe-stage-role.human-role { color: rgba(122,191,181,0.6); }
+  .pe-content { padding: 20px 22px; border-radius: 10px; }
+  .pe-content.ai-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
+  .pe-content.human-content { background: rgba(58,125,110,0.1); border: 1px solid rgba(58,125,110,0.15); }
+  .pe-content-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 500; }
+  .pe-content.ai-content .pe-content-label { color: rgba(232,150,122,0.5); }
+  .pe-content.human-content .pe-content-label { color: rgba(122,191,181,0.5); }
+  .pe-content-text { font-size: 13px; line-height: 1.7; }
+  .pe-content.ai-content .pe-content-text { color: rgba(232,150,122,0.8); }
+  .pe-content.human-content .pe-content-text { color: rgba(122,191,181,0.8); }
+
+  /* ── WHAT AI CANNOT DO ── */
+  .limits-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .limits-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+  .limits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .limit-card { border-radius: 12px; padding: 28px 24px; background: var(--ink-06); border: 1px solid var(--ink-10); }
+  .lc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 10px; font-weight: 500; }
+  .lc-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+  .lc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.7; font-weight: 300; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .worked-header, .fw-top, .limits-header { grid-template-columns: 1fr; }
+    .stage-card { grid-template-columns: 1fr; }
+    .limits-grid, .before-after { grid-template-columns: 1fr; }
+    .pe-stage { grid-template-columns: 1fr; }
+    nav, .breadcrumb, .hero, .why-section, .limits-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .worked-section-dark { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ NAV ═══ -->
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>AI Creative Workflow</span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / AI Workflow</div>
+    <h1>AI does the research.<br><em>You make the calls.</em></h1>
+    <p class="hero-desc">The question isn't whether to use AI in your creative workflow. It's knowing exactly where it helps and where it doesn't. Get that wrong and you end up with faster mediocrity instead of faster quality.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Tools</div>
+        <div class="hero-meta-value">Claude · ChatGPT</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Research · Angle development · Audit</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">Where AI earns its place in the workflow</div>
+    <div class="pipeline">
+      <div class="pipeline-stage">
+        <div class="ps-icon ai">🔍</div>
+        <div class="ps-content ai">
+          <div class="ps-label">AI-led</div>
+          <div class="ps-name">Deep research — reviews, competitor ads, category patterns</div>
+        </div>
+      </div>
+      <div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div>
+      <div class="pipeline-stage">
+        <div class="ps-icon ai">💡</div>
+        <div class="ps-content ai">
+          <div class="ps-label">AI-led</div>
+          <div class="ps-name">Angle ideation — surface patterns, generate hypotheses</div>
+        </div>
+      </div>
+      <div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div>
+      <div class="pipeline-stage">
+        <div class="ps-icon both">⚡</div>
+        <div class="ps-content both">
+          <div class="ps-label">Human judgment</div>
+          <div class="ps-name">Strategy — select angles, brief creative, decide what to test</div>
+        </div>
+      </div>
+      <div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div>
+      <div class="pipeline-stage">
+        <div class="ps-icon human">✍️</div>
+        <div class="ps-content human">
+          <div class="ps-label">Human-led</div>
+          <div class="ps-name">Production — scripts, briefing creators, editing</div>
+        </div>
+      </div>
+      <div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div>
+      <div class="pipeline-stage">
+        <div class="ps-icon both">📊</div>
+        <div class="ps-content both">
+          <div class="ps-label">AI-assisted</div>
+          <div class="ps-name">Audit — diagnose underperforming creatives against benchmarks</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-desc">Workflow stages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-desc">Where AI leads</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-desc">Where humans decide</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The framing</div>
+    <h2 class="section-h2">Faster research. Sharper briefs. The same human judgment.</h2>
+    <p class="prose">The most common mistake I see with AI in creative workflows is using it as a content generator. You prompt it for ad copy, it gives you something that sounds plausible, you clean it up and send it to production. The problem is that the output is only as good as the input — and if you haven't done the research to know what angle to pursue, the AI is just generating plausible-sounding guesses faster than you could write them yourself.</p>
+    <p class="prose" style="margin-top:16px">The better use is as a research accelerator. AI can process a product's review landscape in minutes — categorising thousands of comments by persona, by buying reason, by objection type — work that would take a strategist hours to do manually. It can surface patterns in competitor ad copy that would take days to spot through manual review. It can take your documented research process and critique it against known direct response principles, flagging where you're missing angles or making assumptions without evidence.</p>
+    <p class="prose" style="margin-top:16px">What it can't do is decide what matters. It can surface that 40% of reviews mention durability concerns — but whether that's the dominant concern for your target buyer, or a secondary one that's being drowned out by vocal edge cases, requires judgment about who your buyer actually is. That judgment is yours. AI gets you to the decision point faster. It doesn't make the decision for you.</p>
+    <p class="prose" style="margin-top:16px">The workflow below reflects how I actually use these tools: front-loaded on research and angle ideation, where AI has a genuine edge, and human-led from strategy through production, where it doesn't. The goal is better briefs in less time — not faster creative that skips the thinking.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">Where AI genuinely helps vs. where it doesn't</div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">Helps — pattern recognition at scale</div>
+        <div class="why-card-desc">Processing hundreds of reviews, comments, or competitor ads to find recurring themes. Spotting what language buyers use to describe their problem. Surfacing patterns a human analyst would miss or take days to find manually.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">Helps — structured angle generation</div>
+        <div class="why-card-desc">Given a rich research brief, AI can generate a wide range of angle hypotheses across hook types, personas, and awareness levels — more options than a solo strategist would write in the same time. The output needs editing and selection, but the raw material is useful.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid rgba(255,255,255,0.15);">
+        <div class="why-card-label" style="color:rgba(255,255,255,0.4);">Doesn't help — creative judgment</div>
+        <div class="why-card-desc">Knowing which angle fits which buyer at which moment. Understanding whether a hook is too broad or too niche for the account's goals. Reading whether copy sounds like a real person or like an ad. These require experience and market knowledge AI doesn't have.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid rgba(255,255,255,0.15);">
+        <div class="why-card-label" style="color:rgba(255,255,255,0.4);">Doesn't help — production</div>
+        <div class="why-card-desc">Scripts need human editing. Creator briefs need tone and context a prompt can't fully capture. Visual direction, casting, pacing decisions — all require a human in the loop who understands both the brand and the platform. AI-generated video scripts are usually detectable. That's a problem when native authenticity is the goal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKFLOW STAGES — SAGE ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The workflow</div>
+        <h2 class="section-h2">Four stages.<br>Two where AI leads.</h2>
+      </div>
+      <p class="prose">This is the workflow I use when approaching a new product or a new account from scratch — no historical data, no existing winners. The AI-led stages compress the research phase dramatically. The human-led stages are where the strategic and creative quality actually gets made. Each stage feeds the next; shortcutting any of them produces weaker output at the next stage.</p>
+    </div>
+
+    <div class="stages-list">
+      <div class="stage-card">
+        <div class="stage-num">01</div>
+        <div class="stage-ai">
+          <div class="stage-ai-label">AI leads</div>
+          <div class="stage-ai-name">Deep research</div>
+          <div class="stage-ai-desc">Feed the product's review landscape into a structured prompt — ask AI to categorise reviews by persona type, buying reason, and objection. Do the same with competitor ad copy from the Meta Ad Library. Ask it to identify what angles competitors are running and, more usefully, what angles are missing — the objections nobody is addressing, the buyer type nobody is speaking to.</div>
+        </div>
+        <div class="stage-human">
+          <div class="stage-human-label">What you add</div>
+          <div class="stage-human-name">Prioritisation</div>
+          <div class="stage-human-desc">AI surfaces patterns. You decide which ones are strategic — which gaps are worth pursuing based on your understanding of the buyer, the competitive landscape, and the account's goals. The research doesn't tell you what to do with it. That's your call.</div>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">02</div>
+        <div class="stage-ai">
+          <div class="stage-ai-label">AI assists</div>
+          <div class="stage-ai-name">Angle and hook ideation</div>
+          <div class="stage-ai-desc">Given the research output, prompt AI to generate angle hypotheses across multiple hook types — emotional, curiosity, call-out, myth-busting, problem stack. Ask it to vary by awareness level: how would this product be positioned for someone who doesn't know they have a problem vs. someone actively comparing options? Generate broadly, then cut hard.</div>
+        </div>
+        <div class="stage-human">
+          <div class="stage-human-label">What you add</div>
+          <div class="stage-human-name">Selection and specificity</div>
+          <div class="stage-human-desc">AI generates plausible hooks. You assess them against what you know about the buyer — whether the emotional register is right, whether the specificity level will find the right audience, whether the language sounds like someone who would actually buy this product. Most of what AI generates gets cut. That's expected.</div>
+        </div>
+      </div>
+
+      <div class="stage-card" style="grid-template-columns: 48px 1fr;">
+        <div class="stage-num">03</div>
+        <div class="stage-human">
+          <div class="stage-human-label">Human leads — no AI involvement</div>
+          <div class="stage-human-name">Strategy and briefing</div>
+          <div class="stage-human-desc">This stage doesn't involve AI. You take the selected angles and build a creative brief that specifies hook type, awareness level, persona, pain point, proof format, and offer framing. The brief is the creative strategy made concrete — it's what gets handed to a creator or a designer. AI can draft copy from a brief, but the brief itself requires strategic judgment that AI can't supply. The quality of the brief determines the quality of everything downstream. A brief that specifies the emotional entry point, the buyer's state at the point of seeing the ad, and the specific proof format required is a creative brief. A brief that says "make it engaging and relatable" is not.</div>
+        </div>
+      </div>
+
+      <div class="stage-card">
+        <div class="stage-num">04</div>
+        <div class="stage-ai">
+          <div class="stage-ai-label">AI assists</div>
+          <div class="stage-ai-name">Creative audit</div>
+          <div class="stage-ai-desc">Once ads are live and have accumulated data, AI can help diagnose underperformers systematically. Give it the creative details, the performance metrics, and the benchmark targets — ask it to work through the metric sequence (hook rate, hold rate, CTR, CVR) and identify where the creative is losing people. It's faster than doing this manually across a large creative slate.</div>
+        </div>
+        <div class="stage-human">
+          <div class="stage-human-label">What you add</div>
+          <div class="stage-human-name">Contextual interpretation</div>
+          <div class="stage-human-desc">AI can flag that hook rate is below benchmark. It can't tell you whether that's because the hook is wrong for this buyer or because the audience has already seen this angle four times. The data diagnosis narrows the problem. The fix still requires your judgment about what's actually happening in the account.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKED EXAMPLE — DARK ═══ -->
+<section class="worked-section-dark">
+  <div class="worked-inner">
+    <div class="worked-header">
+      <div>
+        <div class="section-label">Worked example</div>
+        <h2 class="section-h2">What the research stage looks like in practice</h2>
+      </div>
+      <p class="prose">This is a condensed version of the research stage as I ran it approaching a home security lead gen account — an account where we had no historical data and needed to build a creative strategy from scratch. The prompts are paraphrased; the output types and the human decisions they required are accurate.</p>
+    </div>
+
+    <div class="prompt-example">
+      <div class="pe-stage">
+        <div class="pe-stage-label">
+          <div class="pe-stage-name">Stage 01</div>
+          <div class="pe-stage-role ai-role">AI-led research</div>
+        </div>
+        <div class="pe-content ai-content">
+          <div class="pe-content-label">Prompt input</div>
+          <div class="pe-content-text">Here are 200 reviews from home security product listings on Amazon and Google. Categorise them by: the primary reason someone bought, the primary concern before buying, and any recurring language around fear, safety, or peace of mind. Identify the top three buyer personas implied by the language used.</div>
+        </div>
+      </div>
+
+      <div class="pe-stage">
+        <div class="pe-stage-label">
+          <div class="pe-stage-name">AI output</div>
+          <div class="pe-stage-role ai-role">Pattern summary</div>
+        </div>
+        <div class="pe-content ai-content">
+          <div class="pe-content-label">What it surfaced</div>
+          <div class="pe-content-text">Three distinct buyer types emerged: recent incident buyers (triggered by a break-in nearby or personal experience), proactive protectors (planning ahead, often new homeowners), and remote monitors (primary concern was checking in on family or property while away). The language split clearly — incident buyers used fear-adjacent words, remote monitors used control and visibility language.</div>
+        </div>
+      </div>
+
+      <div class="pe-stage">
+        <div class="pe-stage-label">
+          <div class="pe-stage-name">Human decision</div>
+          <div class="pe-stage-role human-role">Strategic selection</div>
+        </div>
+        <div class="pe-content human-content">
+          <div class="pe-content-label">What I did with it</div>
+          <div class="pe-content-text">The incident buyer persona was the clearest brief — high urgency, specific emotional state, a hook almost wrote itself. But it also had the most competition: every home security brand was already running fear-based creative. The remote monitor angle was underserved in competitor ads and matched a segment that was growing. We prioritised that persona for the first test wave, specifically because the category wasn't there yet.</div>
+        </div>
+      </div>
+
+      <div class="pe-stage">
+        <div class="pe-stage-label">
+          <div class="pe-stage-name">Stage 02</div>
+          <div class="pe-stage-role ai-role">Angle ideation</div>
+        </div>
+        <div class="pe-content ai-content">
+          <div class="pe-content-label">Prompt input</div>
+          <div class="pe-content-text">Based on the remote monitor persona — someone who wants to check in on their home or family while away — generate 10 hook hypotheses across these types: emotional driver, curiosity-led, direct call-out, and problem stack. Vary awareness level: some for someone who hasn't considered a home camera, some for someone actively comparing options.</div>
+        </div>
+      </div>
+
+      <div class="pe-stage">
+        <div class="pe-stage-label">
+          <div class="pe-stage-name">Human decision</div>
+          <div class="pe-stage-role human-role">Selection and edit</div>
+        </div>
+        <div class="pe-content human-content">
+          <div class="pe-content-label">What I kept</div>
+          <div class="pe-content-text">Of ten hooks, two were worth testing. The rest were either too generic, too long to work as a visual hook, or used language that didn't sound like the buyer's own words. The two I kept were rewritten significantly before going into the brief — the AI gave me the angle direction; the specific line required editing to not sound like an ad. That edit is not a small thing. It's where the actual creative quality gets made.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHAT AI CANNOT DO ═══ -->
+<section class="limits-section">
+  <div class="limits-header">
+    <div>
+      <div class="section-label">The limits</div>
+      <h2 class="section-h2">What the workflow doesn't change</h2>
+    </div>
+    <p class="prose">Being clear about where AI doesn't help is as important as knowing where it does. These are the four things that remain entirely human in this workflow — not because the tools aren't capable enough yet, but because they require judgment that's contextual, strategic, and market-specific in ways that general-purpose AI can't replicate.</p>
+  </div>
+
+  <div class="limits-grid">
+    <div class="limit-card">
+      <div class="lc-label">Limit 01</div>
+      <div class="lc-title">Knowing which angle fits this buyer at this moment</div>
+      <div class="lc-desc">AI can generate a list of plausible angles. It can't tell you whether a fear-based hook is appropriate for a category that's already oversaturated with fear-based creative, or whether a curiosity hook would outperform a call-out hook for a buyer who's already actively looking. That requires knowledge of the competitive landscape and the buyer's real state — which comes from time spent in the category.</div>
+    </div>
+
+    <div class="limit-card">
+      <div class="lc-label">Limit 02</div>
+      <div class="lc-title">Recognising when copy sounds like an ad</div>
+      <div class="lc-desc">AI-generated copy tends toward a particular cadence — declarative, slightly elevated, structurally predictable. On Meta, where native content outperforms polished advertising, this cadence is a liability. The edit that makes AI-generated copy sound like a real person talking about a real problem is not cosmetic. It's the difference between creative that converts and creative that gets scrolled past. This judgment is human.</div>
+    </div>
+
+    <div class="limit-card">
+      <div class="lc-label">Limit 03</div>
+      <div class="lc-title">Deciding what the test is actually testing</div>
+      <div class="lc-desc">AI can help structure a testing plan, but the decision about which variable matters most — which gap in your knowledge would be most valuable to close right now — requires strategic prioritisation that's specific to the account and the moment. The same testing structure produces different value depending on what you already know and what you need to find out next.</div>
+    </div>
+
+    <div class="limit-card">
+      <div class="lc-label">Limit 04</div>
+      <div class="lc-title">Reading performance in context</div>
+      <div class="lc-desc">AI can identify that CTR dropped 20% week over week. It can't tell you whether that's creative fatigue, an audience saturation problem, a seasonal effect, or something that changed in the competitive auction. Reading performance in context — knowing what's normal for this account at this time — requires pattern recognition that's built over time in accounts, not synthesised from general knowledge.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">AI as a content generator</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Prompts written without research input — output is plausible-sounding guesses at scale</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>AI copy goes to production with light editing — the cadence and phrasing read as generated</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Speed increases but brief quality doesn't — faster output of the same uncertain thinking</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Research stage skipped or compressed — AI is asked to invent angles rather than surface real ones</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Human judgment displaced rather than supported — the strategist becomes a prompt engineer</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">AI as a research accelerator</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Research prompts are built with real data — reviews, competitor ads, comment mining — so output reflects actual buyer language</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>AI output is treated as raw material, not copy — significant human editing before anything goes to a creator</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Research stage is faster, so more time is available for the brief and the strategy — where quality actually gets made</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Angle ideation covers more ground than a solo strategist could in the same time — without skipping the human selection step</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Creative audit is structured and consistent — AI applies the same diagnostic questions to every ad, flagging what a manual review might miss</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">What's next</div>
+    <h2 class="cta-h2">Better research leads to<br><em>better briefs</em>. That's the whole argument.</h2>
+    <p class="cta-desc">The angles AI surfaces still need a strategy to organise them. See how the Creative Strategy Map structures angle selection before anything goes into production.</p>
+    <a href="../playbooks/index.html" class="cta-btn">
+      Back to Playbooks
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

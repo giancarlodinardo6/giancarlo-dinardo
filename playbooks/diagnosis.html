@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The First Thing I Do When a Meta Account Stops Performing — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --amber-light: #F5ECD8;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 80px 48px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(38px, 4.8vw, 58px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 400;
+  }
+
+  /* Hero visual: three-act diagnostic */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,125,110,0.3) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%);
+  }
+  .hero-visual-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+  }
+  .hero-acts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-act {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .hero-act.act1 { background: rgba(58,125,110,0.15); border-color: rgba(58,125,110,0.25); }
+  .hero-act.act2 { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.06); }
+  .hero-act.act3 { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.06); }
+  .hero-act-num {
+    font-family: var(--serif);
+    font-size: 11px;
+    font-style: italic;
+    color: rgba(255,255,255,0.3);
+    min-width: 20px;
+  }
+  .hero-act-content { flex: 1; }
+  .hero-act-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2px;
+  }
+  .hero-act.act2 .hero-act-title,
+  .hero-act.act3 .hero-act-title { color: rgba(255,255,255,0.35); }
+  .hero-act-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+  }
+  .hero-act.act2 .hero-act-subtitle,
+  .hero-act.act3 .hero-act-subtitle { color: rgba(255,255,255,0.2); }
+  .hero-act-tag {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .act1 .hero-act-tag { background: rgba(58,125,110,0.3); color: #7ABFB5; }
+  .act2 .hero-act-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.25); }
+  .act3 .hero-act-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.25); }
+
+  .hero-visual-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* NAV */
+  nav {
+    padding: 24px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--ink-60);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-back {
+    font-size: 13px;
+    color: var(--ink-60);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-back:hover { color: var(--ink); }
+
+  /* SECTIONS */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+
+  .prose {
+    font-size: 16px;
+    color: var(--ink-60);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 620px;
+  }
+  .prose + .prose { margin-top: 16px; }
+
+  /* WHY SECTION */
+  .why-section {
+    padding: 120px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .why-callout {
+    background: var(--teal-light);
+    border-radius: 16px;
+    padding: 40px;
+    border-left: 3px solid var(--teal);
+  }
+  .why-callout-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .why-callout p {
+    font-size: 18px;
+    font-family: var(--serif);
+    line-height: 1.5;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .why-callout-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--ink-60);
+    font-style: normal;
+    font-family: var(--sans);
+  }
+
+  /* ACT SECTIONS */
+  .act-section {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .act-section + .act-section {
+    padding-top: 0;
+  }
+
+  .act-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    margin-bottom: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--ink-10);
+  }
+  .act-num-large {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-style: italic;
+    line-height: 1;
+    color: var(--ink-10);
+    min-width: 80px;
+    user-select: none;
+  }
+  .act-header-content { flex: 1; }
+
+  .act-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Scenario card */
+  .scenario-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid var(--ink-10);
+    position: relative;
+  }
+  .scenario-card-label {
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-30);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scenario-card-label::before {
+    content: '';
+    width: 16px;
+    height: 1px;
+    background: var(--ink-30);
+    display: inline-block;
+  }
+  .scenario-flag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: var(--amber-light);
+    color: var(--amber);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .scenario-text {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .scenario-highlight {
+    background: var(--teal-light);
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 14px;
+    color: var(--teal);
+    font-weight: 500;
+    font-style: italic;
+    border-left: 2px solid var(--teal);
+  }
+
+  /* Checklist */
+  .check-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .check-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .check-marker {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+  .check-text {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.65;
+  }
+  .check-label {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* Video metrics */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .metric-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid var(--ink-10);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .metric-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .metric-icon.teal { background: var(--teal-light); }
+  .metric-icon.amber { background: var(--amber-light); }
+  .metric-icon.rust { background: var(--rust-light); }
+  .metric-content {}
+  .metric-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .metric-desc {
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.55;
+  }
+
+  /* Ratio callout */
+  .ratio-callout {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 28px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    color: white;
+  }
+  .ratio-left {
+    text-align: center;
+    min-width: 80px;
+  }
+  .ratio-formula {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 6px;
+  }
+  .ratio-values {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .ratio-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.1);
+  }
+  .ratio-right {}
+  .ratio-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .ratio-row:last-child { margin-bottom: 0; }
+  .ratio-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 20px;
+    min-width: 60px;
+    text-align: center;
+  }
+  .ratio-tag.good { background: rgba(58,125,110,0.3); color: #7ABFB5; }
+  .ratio-tag.bad { background: rgba(184,92,56,0.3); color: #E8967A; }
+  .ratio-label { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+  /* Kill decision */
+  .kill-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .kill-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    position: relative;
+  }
+  .kill-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 44px;
+    bottom: -24px;
+    width: 1px;
+    background: var(--ink-10);
+  }
+  .kill-step + .kill-step { margin-top: 24px; }
+  .kill-step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--ink-10);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-60);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .kill-step-content {}
+  .kill-step-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    padding-top: 10px;
+  }
+  .kill-step-desc {
+    font-size: 14px;
+    color: var(--ink-60);
+    line-height: 1.65;
+  }
+
+  /* Kill outcome table */
+  .outcome-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .outcome-table thead th {
+    background: var(--ink);
+    color: rgba(255,255,255,0.7);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .outcome-table tbody tr {
+    border-bottom: 1px solid var(--ink-10);
+    background: white;
+  }
+  .outcome-table tbody tr:last-child { border-bottom: none; }
+  .outcome-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--ink-60);
+    vertical-align: top;
+  }
+  .outcome-table td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .outcome-action {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .action-keep { background: var(--teal-light); color: var(--teal); }
+  .action-fix { background: var(--amber-light); color: var(--amber); }
+  .action-kill { background: var(--rust-light); color: var(--rust); }
+
+  /* Section divider */
+  .act-divider {
+    max-width: 1200px;
+    margin: 0 auto 0;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .act-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--ink-10);
+  }
+  .act-divider-label {
+    font-size: 11px;
+    color: var(--ink-30);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* BEFORE / AFTER */
+  .before-after {
+    padding: 80px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .ba-card {
+    border-radius: 20px;
+    padding: 40px;
+  }
+  .ba-card.before {
+    background: var(--rust-light);
+    border: 1px solid rgba(184,92,56,0.15);
+  }
+  .ba-card.after {
+    background: var(--teal-light);
+    border: 1px solid rgba(58,125,110,0.15);
+  }
+  .ba-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 28px;
+  }
+  .before .ba-label { color: var(--rust); }
+  .after .ba-label { color: var(--teal); }
+
+  .ba-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ba-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .ba-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    margin-top: 9px;
+    flex-shrink: 0;
+  }
+  .before .ba-dot { background: var(--rust); }
+  .after .ba-dot { background: var(--teal); }
+  .ba-item div:last-child {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--ink);
+    margin: 80px 48px;
+    border-radius: 24px;
+    padding: 80px 48px;
+    text-align: center;
+    max-width: 1104px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    color: white;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .cta-h2 em {
+    font-style: italic;
+    color: var(--teal);
+    opacity: 0.9;
+  }
+  .cta-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: white;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 32px;
+    border-radius: 40px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s;
+  }
+  .cta-btn:hover { opacity: 0.85; }
+
+  /* Cross-ref box */
+  .crossref {
+    background: var(--sage-light);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border: 1px solid rgba(200,213,192,0.4);
+  }
+  .crossref-icon {
+    font-size: 16px;
+    margin-top: 2px;
+  }
+  .crossref-text {
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.6;
+  }
+  .crossref-text strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .hero, .why-section, .act-body, .before-after {
+      grid-template-columns: 1fr;
+    }
+    .hero { padding: 60px 24px 0; min-height: auto; }
+    .why-section, .act-section, .before-after { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 20px 24px; }
+    .cta-section { margin: 40px 24px; padding: 60px 32px; }
+    .act-divider { padding: 0 24px; }
+    .act-header { flex-direction: column; gap: 16px; }
+    .act-num-large { font-size: 48px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- NAV -->
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-label">Playbooks / Diagnosis</div>
+    <h1>The first thing I do when a Meta account stops <em>performing</em></h1>
+    <p class="hero-desc">Before touching a brief or changing a bid strategy, there's one question worth answering first: is this actually a creative problem? Half the time it isn't — and the accounts that skip this question spend months fixing the wrong thing.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Vertical</div>
+        <div class="hero-meta-value">Lead gen + eCommerce</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Topic</div>
+        <div class="hero-meta-value">Account diagnosis</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Read time</div>
+        <div class="hero-meta-value">5 min</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Three-level diagnosis framework</div>
+    <div class="hero-acts">
+      <div class="hero-act act1">
+        <div class="hero-act-num">01</div>
+        <div class="hero-act-content">
+          <div class="hero-act-title">Account level</div>
+          <div class="hero-act-subtitle">Creative problem or media buying problem?</div>
+        </div>
+        <div class="hero-act-tag">Macro</div>
+      </div>
+      <div class="hero-act act2">
+        <div class="hero-act-num">02</div>
+        <div class="hero-act-content">
+          <div class="hero-act-title">Video level</div>
+          <div class="hero-act-subtitle">Where exactly is the ad losing people?</div>
+        </div>
+        <div class="hero-act-tag">Metric</div>
+      </div>
+      <div class="hero-act act3">
+        <div class="hero-act-num">03</div>
+        <div class="hero-act-content">
+          <div class="hero-act-title">Ad level</div>
+          <div class="hero-act-subtitle">When do you actually turn it off?</div>
+        </div>
+        <div class="hero-act-tag">Decision</div>
+      </div>
+    </div>
+    <div class="hero-visual-footer">This piece covers Act 01. Acts 02 and 03 are covered in the Creative Fatigue playbook.</div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section">
+  <div>
+    <div class="section-label">Why this matters</div>
+    <h2 class="section-h2">Creative and media buying drive the same metrics. That's what makes the wrong diagnosis so easy to make.</h2>
+    <p class="prose">When a Meta account starts bleeding, CPAs climbing and ROAS dropping, the instinct is to fix the creative. Brief something new, try a different hook, swap the thumbnail. Sometimes that's right. But half the time it isn't, and the accounts stuck in that loop for months are almost always the ones that never stopped to ask which problem they actually have.</p>
+    <p class="prose">Creative and media buying drive the same output metrics. A bad CPA could mean the ad isn't resonating. It could equally mean the ad never got a fair chance because the structure around it was broken. Running to production when the real problem is structure wastes time and budget. Running to structure when the real problem is creative does the same in the other direction.</p>
+    <p class="prose">The account-level question comes first — before video metrics, before kill decisions. Those are downstream. This is the question that determines whether everything downstream is even the right thing to be looking at.</p>
+  </div>
+  <div>
+    <div class="why-callout">
+      <div class="why-callout-label">The core mistake</div>
+      <p>"Measure creative performance and media buying performance separately — or you'll fix the wrong thing."</p>
+      <p class="why-callout-sub">Even when one person is managing both, the metrics need to be read independently. Conflating them means diagnosing the wrong layer and spending production budget on a problem that lives in the account structure.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 1 -->
+<div class="act-divider">
+  <div class="act-divider-line"></div>
+  <div class="act-divider-label">Act 01</div>
+  <div class="act-divider-line"></div>
+</div>
+
+<section class="act-section">
+  <div class="act-header">
+    <div class="act-num-large">01</div>
+    <div class="act-header-content">
+      <div class="section-label">Account level</div>
+      <h2 class="section-h2">Creative problem or media buying problem?</h2>
+      <p class="prose">Before touching a brief or changing a bid strategy, find out which category the problem actually falls into. The signals are different and so are the fixes.</p>
+    </div>
+  </div>
+
+  <div class="act-body">
+    <div>
+      <!-- ⚑ GENERATED SCENARIO — Item 39 in tracker -->
+      <div class="scenario-card">
+        <div class="scenario-card-label">Account scenario</div>
+        <span class="scenario-flag">⚑ Generated — replace with real account experience</span>
+        <p class="scenario-text">A lead gen account I worked with had been producing new creative consistently. Three to four new concepts a month, decent production quality, angles that made sense on paper. CPAs had been drifting up for six weeks. The assumption was that the creative had gone stale and we needed a new direction.</p>
+        <p class="scenario-text">When I pulled the data, one ad was consuming over 70% of total budget. The new concepts being launched were getting a few hundred dollars across three days and then getting buried.</p>
+        <div class="scenario-highlight">They weren't failing. They were starving. The algorithm had a comfortable winner and no incentive to explore anything new. The creative wasn't the problem. The structure was.</div>
+      </div>
+    </div>
+
+    <div>
+      <p class="prose" style="margin-bottom: 28px;">Creative performance and media buying performance need to be measured separately even when they're managed by the same person. A few things worth checking before drawing any conclusions:</p>
+      <div class="check-list">
+        <div class="check-item">
+          <div class="check-marker"></div>
+          <div class="check-text"><span class="check-label">Budget concentration.</span> Are top ads consuming most of the spend while newer creative sits untouched? That's a structure problem — the algorithm is protecting existing winners at the expense of learning anything new.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-marker"></div>
+          <div class="check-text"><span class="check-label">Hit rate context.</span> A 5% hit rate from 60 ads launched is a different situation from a 5% hit rate from 8. One is a coverage problem. The other might actually be a quality problem.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-marker"></div>
+          <div class="check-text"><span class="check-label">CPM trend.</span> CPMs climbing while the creative pool stays the same points to audience saturation — a structure and diversity problem. More volume of the same creative doesn't fix it.</div>
+        </div>
+        <div class="check-item">
+          <div class="check-marker"></div>
+          <div class="check-text"><span class="check-label">Budget allocation.</span> Spend scattered across mediocre performers rather than concentrated on the strongest ads is an allocation problem. Fixing the brief won't touch it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSSREF TO CREATIVE FATIGUE -->
+<section style="padding: 0 48px 80px; max-width: 1200px; margin: 0 auto;">
+  <div style="background: var(--teal-light); border-radius: 16px; padding: 40px; border: 1px solid rgba(58,125,110,0.2);">
+    <div class="section-label" style="margin-bottom: 20px;">Once you know it's a creative problem</div>
+    <h2 class="section-h2" style="margin-bottom: 20px;">The next two questions are covered in the Creative Fatigue playbook</h2>
+    <p class="prose" style="margin-bottom: 32px;">Once the account-level question is answered and the problem is confirmed as creative rather than structural, the diagnosis moves to the video level and the individual ad level. Those two layers have their own frameworks and their own sequencing — and they're covered in more depth in a dedicated piece.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--ink-10);">
+        <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 10px;">Act 02 — Video level</div>
+        <div style="font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px;">Where exactly is the ad losing people?</div>
+        <div style="font-size: 13px; color: var(--ink-60); line-height: 1.6;">3-second plays, ThruPlays, average play time — how to read video metrics in sequence and isolate exactly where the creative breaks down.</div>
+      </div>
+      <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--ink-10);">
+        <div style="font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 10px;">Act 03 — Ad level</div>
+        <div style="font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px;">When do you actually turn an ad off?</div>
+        <div style="font-size: 13px; color: var(--ink-60); line-height: 1.6;">Spend threshold, funnel metrics, CPA vs ROAS — the three-step kill decision sequence that most accounts skip by going straight to ROAS.</div>
+      </div>
+    </div>
+    <div style="margin-top: 24px;">
+      <a href="/playbooks/creative-fatigue" style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--teal); text-decoration: none;">Read the Creative Fatigue playbook →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Without this question</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>New creative gets briefed every time CPAs climb, without checking whether structure is the actual problem</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Budget sits scattered across mediocre performers while stronger ads go underfunded — a structure problem that looks like a creative one</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>CPMs climb and get blamed on creative fatigue when the real issue is audience saturation from insufficient creative diversity</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Production spend goes into a new creative brief that wouldn't have moved the needle on a structural problem</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The account stays in a loop — new creative, same result, no clearer understanding of why</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">With this question answered first</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Creative performance and media buying performance get measured separately before anything gets changed</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The response matches the actual problem — structural fixes for structural problems, creative fixes for creative ones</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Budget concentration issues get caught before they're misread as creative failure</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Hit rate gets read in context — low hit rate from low testing volume is a different problem from low hit rate from weak concepts</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Production budget only gets spent when creative is confirmed as the actual problem layer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.3);">
+    <span style="display:inline-block; width:20px; height:1px; background:rgba(255,255,255,0.2);"></span>
+    Work with me
+  </div>
+  <h2 class="cta-h2">Not sure whether you have a creative problem<br>or a <em>structure</em> problem?</h2>
+  <p class="cta-desc">This is the first question I answer in every account before touching anything else. If your account is underperforming and the cause isn't clear, let's start here.</p>
+  <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

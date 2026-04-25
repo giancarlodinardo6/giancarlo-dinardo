@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frameworks — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+<div class="page">
+  <div class="fh-hero">
+    <h1>Frame<em>works</em></h1>
+    <div class="meta">
+      <span>2 FRAMEWORKS</span>
+      <span>4–5 LAYERS EACH</span>
+    </div>
+  </div>
+  <div class="fh-intro">
+    <p>Before I write a single ad, I build a map. These are the two worked examples — one for roofing lead gen, one for a DTC toy brand. The logic is the same in both: persona, awareness level, pain point, angle.</p>
+    <p>The frameworks exist because briefs written without this structure tend to describe the product rather than the buyer. The map forces the reasoning to happen before production, not during it.</p>
+  </div>
+  <div class="fh-list-wrap">
+    <div class="fh-list-head">
+      <h2>The work</h2>
+      <div class="meta">LAYERS · CREATIVE DIRECTIONS</div>
+    </div>
+    <a href="roofing-lead-gen.html" class="fh-card" style="text-decoration:none;color:inherit">
+      <div class="tile tile-mint" style="width:64px;height:64px;border-radius:8px;font-size:28px">🗺</div>
+      <div class="body">
+        <div class="kicker">CREATIVE STRATEGY MAP · HOME SERVICES · LEAD GEN</div>
+        <div class="t">Before I write a single ad, I build this map</div>
+        <div class="sub">The creative strategy map worked through a roofing lead gen account. Four layers, three personas, fifteen creative directions.</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">4</div><div class="k">LAYERS</div></div>
+        <div class="stat"><div class="n">15</div><div class="k">DIRECTIONS</div></div>
+      </div>
+    </a>
+    <a href="dtc-drone.html" class="fh-card" style="text-decoration:none;color:inherit">
+      <div class="tile tile-butter" style="width:64px;height:64px;border-radius:8px;font-size:28px">🗺</div>
+      <div class="body">
+        <div class="kicker">CREATIVE STRATEGY MAP · DTC · ECOMMERCE</div>
+        <div class="t">When the buyer isn't the user, everything changes</div>
+        <div class="sub">The same map extended with a timing layer, worked through a DTC drone brand. Five layers, four personas, sixty creative directions.</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">5</div><div class="k">LAYERS</div></div>
+        <div class="stat"><div class="n">60</div><div class="k">DIRECTIONS</div></div>
+      </div>
+    </a>
+  </div>
+</div>
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

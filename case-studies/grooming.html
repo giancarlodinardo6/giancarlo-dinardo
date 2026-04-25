@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grova Grooming — Case Study | Giancarlo</title>
+        <style>
+    :root{--cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);--ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.05);--sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;--teal:#3A7D6E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}.nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}.nav-back:hover{color:var(--ink);}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}.prose+.prose{margin-top:20px;}
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+    .hero h1 em{font-style:italic;color:var(--rust);}
+    .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
+    .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
+    .hero-stat{flex:1;min-width:100px;}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
+    .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
+    .context-callout p{font-size:17px;font-family:var(--serif);line-height:1.5;color:var(--ink);font-style:italic;}
+    .context-callout-sub{margin-top:16px;font-size:14px;color:var(--ink-60);font-family:var(--sans);font-style:normal;line-height:1.65;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .process-steps{display:flex;flex-direction:column;gap:24px;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:40px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+    .creative-card{background:white;border-radius:14px;padding:28px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
+    .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-item{display:flex;gap:24px;align-items:flex-start;}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+    .before-after{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .ba-card{border-radius:20px;padding:40px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.15);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(58,125,110,0.15);}
+    .ba-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:28px;}
+    .before .ba-label{color:var(--rust);}.after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:14px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
+    .before .ba-dot{background:var(--rust);}.after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
+    .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+    .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
+    .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
+    .cta-h2 em{font-style:italic;color:var(--teal);opacity:0.9;}
+    .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
+    .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
+  </style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<section class="hero">
+  <div>
+    <div class="hero-label">Case Studies / DTC Personal Care</div>
+    <h1>Good product. Generic ads. The creative was not <em>earning the sale</em>.</h1>
+    <p class="hero-desc">A men's grooming brand had a solid product and a Meta account that looked like it was working until you read the data carefully. The creative was getting attention. It was not converting it. Rebuilding the script structure around how the buyer actually thinks changed that.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Men's Grooming / DTC</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$8k-$14k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value">2025 Consulting</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Eight-week creative rebuild</div>
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>41%</div><div class="hero-stat-label">CVR improvement</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2.8x</div><div class="hero-stat-label">ROAS on new scripts vs control</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Psychological mechanisms layered into new scripts</div></div>
+    </div>
+    <div class="hero-visual-footer">The product did not change. The script structure did.</div>
+  </div>
+</section>
+
+<section class="context-section">
+  <div>
+    <div class="section-label">The Situation</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that didn't tell two different stories.</h2>
+    <p class="prose">The account had been running for about four months when I came in for a consulting engagement. CPM was reasonable. Hook rate was fine. The creative was stopping people.</p>
+    <p class="prose">The problem was downstream. Click-through was solid but purchase conversion rate on the landing page was low. Add-to-cart rate was decent. Checkout to purchase was the gap. Somewhere between the ad and the buy button, people were losing confidence in the product.</p>
+    <p class="prose">When I read through the creative, the issue was visible immediately. Every script opened with the product. Feature led. "Our formula contains X." "Developed with Y." The viewer had not been given a reason to care about any of that before being told what was in it. The ad was pitching before it had earned the right to.</p>
+  </div>
+  <div>
+    <div class="context-callout">
+      <div class="context-callout-label">Core constraint</div>
+      <p>"The ad was getting attention and not converting it. That gap almost always lives in the script structure, not the media buying."</p>
+      <div class="context-callout-sub">Men's grooming is a category with high skepticism and a lot of prior failed attempts for the buyer. Someone who has tried three beard oils that did not work is not going to be moved by ingredient claims in the first ten seconds. The script has to validate the failed attempts before the product makes sense.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="approach-section">
+  <div>
+    <div class="section-label">The Approach</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Rebuild the script to match how the buyer actually thinks, not how the brand wants to present.</h2>
+    <p class="prose">The brand had a real product. The creative was just introducing it wrong. Rebuilding the scripts meant understanding the psychological sequence a buyer needs to go through before a purchase makes sense to them. That sequence was not what the existing creative was following.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-step-num">01</div>
+      <div>
+        <div class="process-step-name">Read the reviews for failed attempts</div>
+        <div class="process-step-desc">The reviews on the product page and on competitor products were full of prior failure language. "I have tried four of these." "Nothing worked until." That pattern was the most important thing to understand before writing a word. The buyer coming in already had a graveyard of products that did not work. The script had to acknowledge that before presenting anything else.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">02</div>
+      <div>
+        <div class="process-step-name">Restructure scripts around the psychological sequence</div>
+        <div class="process-step-desc">New script structure: open with identity validation (acknowledge the experience of trying things that didn't work, without blame), move to a named mechanism that explains why the previous attempts failed and why this one is different, handle the price or commitment objection through dialogue before the viewer fully forms it, close on what inaction is costing rather than what purchase gains. That sequence is how a good sale happens. The scripts were not following it.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">03</div>
+      <div>
+        <div class="process-step-name">Test UGC against studio with the same new script</div>
+        <div class="process-step-desc">Ran the new script in two formats: a studio shoot with the brand's existing creator and a raw UGC version shot on a phone. In this category, UGC outperformed studio on both ROAS and CVR. The rawer format fit the trust gap the buyer had coming in. A polished studio ad in men's grooming reads as advertising before the hook has landed.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">04</div>
+      <div>
+        <div class="process-step-name">Hook testing once the script was proven</div>
+        <div class="process-step-desc">Once the new script structure had produced a confirmed winner, ran hook variations on top of it. Identity hook calling out the buyer type, curiosity hook naming the mechanism without revealing it, emotional hook leading with the frustration of having tried things that didn't work. Each found a slightly different buyer at a slightly different stage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="creative-section">
+  <div class="section-label">Creative</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">What changed when the script stopped leading with the product.</h2>
+  <p class="prose">The creative that was running before the rebuild was technically fine. Good production, clear product shots, reasonable copy. The problem was structural. Rebuilding around the buyer's psychological sequence rather than the brand's preferred presentation order was the only change that mattered.</p>
+  <div class="creative-grid">
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">UGC identity protection script</div>
+      <div class="creative-card-desc">Opened with a man describing all the beard products that had let him down. Named the category skepticism directly. No product mention in the first fifteen seconds. The viewer who recognised himself in that description was already engaged before the solution appeared.</div>
+      <div class="creative-card-metric"><strong>2.8x ROAS</strong> vs the original studio control. CVR up 41% on the landing page.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">Knowledge gap mechanism video</div>
+      <div class="creative-card-desc">Opened with a question about why most beard oils sit on top of the hair instead of absorbing. Named the mechanism (molecular weight of the carrier oil) before naming the product. The named mechanism created a loop the viewer needed to close. By the time the product appeared it was the answer to something they already wanted to understand.</div>
+      <div class="creative-card-metric"><strong>Strong hook retention.</strong> High average play time. Viewer who stayed through the mechanism converted at a meaningfully higher rate.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Objection dialogue UGC</div>
+      <div class="creative-card-desc">Two-person format with one person raising the price objection and the other resolving it conversationally. The objection was voiced before the viewer had fully formed it themselves. Strong in retargeting where the product was already known. Weaker on cold traffic where the brand needed to earn trust before the price conversation made sense.</div>
+      <div class="creative-card-metric"><strong>Strong in retargeting.</strong> Cold traffic needed the identity and mechanism steps first.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested (original control)</div>
+      <div class="creative-card-title">Studio product-led feature video</div>
+      <div class="creative-card-desc">The original creative. Professional lighting, clear product demonstration, ingredient callouts in the first ten seconds. Fine production quality. Led with what the brand wanted to say rather than what the buyer needed to hear first. Remained in the account as a product education asset for warm audiences.</div>
+      <div class="creative-card-metric"><strong>Outperformed by new scripts</strong> on cold traffic. Kept for warm audiences who already understood the product.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Loss aversion close test</div>
+      <div class="creative-card-desc">Variation on the winning script where the close focused on what continuing to use the wrong products was costing in terms of beard health degradation over time rather than what purchase would gain. Performed marginally better than the gain-framed close on the same script. Worth applying as the default close structure going forward.</div>
+      <div class="creative-card-metric"><strong>Marginally better CVR</strong> than gain-framed close on the same script body.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested</div>
+      <div class="creative-card-title">Lifestyle aesthetic static</div>
+      <div class="creative-card-desc">Product in a styled bathroom setting, no copy besides the tagline, clean visual. Tested as a brand awareness format rather than a conversion asset. Click-through was low. Men's grooming purchases on Meta are driven by the argument in the video, not by seeing a well-lit product. Excluded from the direct response mix.</div>
+      <div class="creative-card-metric"><strong>Low CTR.</strong> Category requires the argument to be made before the click.</div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section">
+  <div class="results-inner">
+    <div class="section-label">Results</div>
+    <h2>The script structure changed. The conversion rate followed.</h2>
+    <p class="prose">Eight weeks from the start of the engagement. The product, the price point, the landing page, and the budget were all the same. The creative structure was the only variable that changed.</p>
+    <div class="results-grid">
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>41%</div>
+        <div class="result-label">CVR improvement</div>
+        <div class="result-context">New scripts vs original studio control on same landing page</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">2.8x</div>
+        <div class="result-label">ROAS on winning scripts</div>
+        <div class="result-context">Identity protection UGC vs product-led studio control</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>$38</div>
+        <div class="result-label">Cost per purchase</div>
+        <div class="result-context">Down from ~$64 before the script rebuild</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">3</div>
+        <div class="result-label">Script templates</div>
+        <div class="result-context">Identity, mechanism, and objection dialogue. Reusable across any new product in the range.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="learned-section">
+  <h2>What I took from <em>this one</em></h2>
+  <div class="learned-items">
+    <div class="learned-item">
+      <div class="learned-num">01</div>
+      <div class="learned-text"><strong>The gap between hook rate and purchase conversion rate is almost always in the script structure.</strong> This account was stopping people. They were clicking. They were adding to cart. They were not buying. That pattern points to the argument being made in the wrong order, not to a product problem or a landing page problem. The script was pitching before the viewer had a reason to trust the pitch.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">02</div>
+      <div class="learned-text"><strong>In high-skepticism categories, the failed attempt is the brief.</strong> Men's grooming is a space where the buyer has almost certainly tried something similar and been disappointed. That experience is sitting between them and your product. The script that validates it first and then explains why this time is different converts better than the script that ignores it and leads with ingredients. The prior failure is not an obstacle. It is the opening line.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">03</div>
+      <div class="learned-text"><strong>UGC beats studio in categories where trust is the bottleneck.</strong> The same script in a polished studio format and a raw phone-shot format produced meaningfully different results. The format signals something before the words land. In a category where the buyer is already skeptical, a studio ad reads as a brand trying to sell them something. A real person talking to a phone reads as someone who found something that worked.</div>
+    </div>
+  </div>
+</section>
+
+<div class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Before the rebuild</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Scripts opening with product features and ingredients before the viewer had a reason to care about either</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Strong hook rate and click-through with a conversion rate that did not match them</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Studio-only format carrying all the creative load in a category where raw UGC performs better on cold traffic</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Price objection never addressed in the script, left to the landing page to handle alone</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Close built around product benefits rather than what staying with the current routine was costing</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">After the rebuild</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Scripts opening with identity validation, acknowledging the buyer's prior failed attempts before introducing the product</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Named mechanism introduced in the middle, creating a knowledge gap the viewer needed the product to close</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>UGC format running alongside studio, with UGC carrying cold traffic and studio kept for warm retargeting</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Objection dialogue woven into the script through conversation rather than addressed as a rebuttal block at the end</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Loss aversion close making inaction concrete rather than asking the viewer to imagine a better outcome</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">The four psychological mechanisms behind scripts that convert</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Ad Psychology playbook covers identity protection, knowledge gap, vicarious skepticism, and loss aversion: the four mechanisms layered into the winning scripts in this case. It explains where each belongs in the script and why the sequence matters. <a href="/playbooks/ad-psychology" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How hook type selection determines which buyer shows up</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hook Writing playbook covers the three ingredients a hook needs (relevance, curiosity, emotion), how to brief the visual alongside the copy, and why the hook determines the creative direction rather than following from it. <a href="/playbooks/hook-writing" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to build and evaluate each block of an ad independently</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Construction playbook covers the building blocks model: how to evaluate which part of a script is failing rather than scrapping the whole concept, and how to give feedback to editors at the frame level rather than the direction level. <a href="/playbooks/creative-construction" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. CVR improvement (41%), ROAS differential (2.8x), and cost per purchase endpoint are directional estimates based on the documented performance trajectory. Script structure, psychological mechanism layering, and UGC vs studio findings are accurate to the engagement.</div>
+
+<div class="cta-wrap">
+  <div class="cta-section">
+    <h2 class="cta-h2">Getting clicks but not <em>converting them</em>?</h2>
+    <p class="cta-desc">If your hook rate is healthy and your purchase conversion is not, the problem is almost always the script structure, not the media buying. This is fixable without touching the product or the landing page.</p>
+    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+  </div>
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

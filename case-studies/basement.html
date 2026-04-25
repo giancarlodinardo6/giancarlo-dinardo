@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premier Basement Systems — Case Study | Giancarlo</title>
+        <style>
+    :root{--cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);--ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.05);--sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;--teal:#3A7D6E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}
+    .nav-back:hover{color:var(--ink);}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}
+    .prose+.prose{margin-top:20px;}
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+    .hero h1 em{font-style:italic;color:var(--rust);}
+    .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
+    .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
+    .hero-stat{flex:1;min-width:100px;}
+    .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
+    .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
+    .context-callout p{font-size:17px;font-family:var(--serif);line-height:1.5;color:var(--ink);font-style:italic;}
+    .context-callout-sub{margin-top:16px;font-size:14px;color:var(--ink-60);font-family:var(--sans);font-style:normal;line-height:1.65;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .process-steps{display:flex;flex-direction:column;gap:24px;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:40px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+    .creative-card{background:white;border-radius:14px;padding:28px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
+    .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-item{display:flex;gap:24px;align-items:flex-start;}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+    .before-after{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .ba-card{border-radius:20px;padding:40px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.15);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(58,125,110,0.15);}
+    .ba-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:28px;}
+    .before .ba-label{color:var(--rust);}
+    .after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:14px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
+    .before .ba-dot{background:var(--rust);}
+    .after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
+    .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+    .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
+    .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
+    .cta-h2 em{font-style:italic;color:var(--teal);opacity:0.9;}
+    .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
+    .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+    @media(max-width:900px){
+      .hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}
+      .creative-grid{grid-template-columns:1fr;}
+      .results-grid{grid-template-columns:1fr 1fr;}
+      .hero{padding:60px 24px 0;min-height:auto;}
+      nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}
+      .results-section{padding-left:24px;padding-right:24px;}
+      .cta-section{margin:40px 24px;padding:60px 32px;}
+    }
+  </style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<section class="hero">
+  <div>
+    <div class="hero-label">Case Studies / Basement Renovation</div>
+    <h1>No historical data. Built the <em>creative map</em> before spending a dollar.</h1>
+    <p class="hero-desc">A basement renovation account came in as a clean slate. No prior campaign history, no existing winners, no data to learn from. The research phase determined everything that followed.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Basement Renovation</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$10k-$15k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Role</div><div class="hero-meta-value">Lead Media Buyer</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">First ninety days</div>
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>$187</div><div class="hero-stat-label">CPL by week eight</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Personas identified in pre-launch research</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">14</div><div class="hero-stat-label">Creative concepts launched in first 60 days</div></div>
+    </div>
+    <div class="hero-visual-footer">Research built the map. Testing confirmed which territory to own.</div>
+  </div>
+</section>
+
+<section class="context-section">
+  <div>
+    <div class="section-label">The Situation</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Starting from zero is actually a gift if you treat it like one.</h2>
+    <p class="prose">Most accounts I walk into have history. Usually that means there is something to learn from and something to undo. This one had neither. The client had not run paid social before. No pixel data, no audience insights, no creative performance to reference.</p>
+    <p class="prose">The instinct when there is nothing to inherit is to launch quickly and let the data teach you. That is backwards. The faster you can describe the person you are trying to reach, the problem they are sitting on, and the specific moment they are likely to see your ad, the better your first batch of creative will be. The research phase is not a delay. It is the brief.</p>
+    <p class="prose">Basement renovation is a category where the emotional and financial stakes are both high. Homeowners have usually been thinking about it for a long time before they do anything about it. Understanding what is keeping them in place and what finally moves them is the entire creative challenge.</p>
+  </div>
+  <div>
+    <div class="context-callout">
+      <div class="context-callout-label">Core constraint</div>
+      <p>"Without data, the research is the data. Skipping it means briefing creative for an audience you have not described yet."</p>
+      <div class="context-callout-sub">Basement renovation has a longer consideration window than most home improvement categories. The homeowner who calls today has usually been thinking about it for six to eighteen months. The creative that reaches them at the right moment needs to meet them where they actually are, not where you want them to be.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="approach-section">
+  <div>
+    <div class="section-label">The Approach</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Research first. Then build the map. Then brief.</h2>
+    <p class="prose">Spent two weeks before any campaign went live doing the work that would determine what creative to test. Review mining, comment section analysis on competitor ads, and three buyer personas mapped across five awareness stages each. The map determined what we launched. Testing determined what we scaled.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-step-num">01</div>
+      <div>
+        <div class="process-step-name">Mine reviews and competitor comments for language</div>
+        <div class="process-step-desc">Pulled Google reviews for regional basement contractors and went through the comment sections on the five highest-spending competitor ads in the area. Looked for the specific language homeowners used before they had been exposed to marketing copy. The objections, the fears, the specific situations that drove the call. That language went directly into the briefs.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">02</div>
+      <div>
+        <div class="process-step-name">Map three personas across awareness stages</div>
+        <div class="process-step-desc">Three distinct buyer types emerged from the research: the homeowner who had been ignoring a moisture issue and was now worried about it seriously, the one planning to convert the basement into usable living space, and the one with a teenager or aging parent who needed the square footage now. Each had a different emotional entry point and a different objection to address.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">03</div>
+      <div>
+        <div class="process-step-name">Brief 14 concepts across the three personas</div>
+        <div class="process-step-desc">Each concept was built for a specific persona at a specific awareness stage. Not a batch of ads that could theoretically reach anyone. Concepts for the moisture-aware homeowner used very different language and visual context than concepts for the space-conversion buyer. The map made this systematic rather than intuitive.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">04</div>
+      <div>
+        <div class="process-step-name">Test in ABO with equal exposure, read at week four</div>
+        <div class="process-step-desc">All 14 concepts went into an ABO testing campaign with equal daily budgets. Set a minimum of four days per concept before drawing any conclusions. At week four, read the data at the set rate level alongside CPL. Promoted the three clearest performers to a CBO scaling campaign and began the second testing round.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="creative-section">
+  <div class="section-label">Creative</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">What the research predicted and what the data confirmed.</h2>
+  <p class="prose">The research had suggested moisture concern was the highest-intent persona. Homeowners already sitting on a problem they had been avoiding were more likely to call than homeowners who were in the planning phase. That assumption held. The concepts built for the moisture-aware buyer produced better set rates than the space-conversion concepts even when CPL was similar.</p>
+  <div class="creative-grid">
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">Moisture urgency video</div>
+      <div class="creative-card-desc">Open on visible water damage and damp walls. Voiceover from a homeowner describing how long they had been putting off the call. No product push in the first ten seconds. The problem needed to be felt before the solution appeared.</div>
+      <div class="creative-card-metric"><strong>Strongest set rate</strong> of the first batch. High-intent buyer identified in the research came through in the data.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner</div>
+      <div class="creative-card-title">Before and after transformation static</div>
+      <div class="creative-card-desc">Split image: unfinished or damaged basement on the left, finished functional space on the right. Clean, no copy overload. The image did the work. Picked up the space-conversion buyer who was earlier in the process but still qualified.</div>
+      <div class="creative-card-metric"><strong>Highest lead volume</strong> of the batch. Lower set rate than the moisture video but strong enough to keep running.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">3-requirements qualifier video</div>
+      <div class="creative-card-desc">Hook asking homeowners to confirm three things before watching: own their home, basement older than ten years, experienced recurring moisture. Filtered hard. Lower total lead volume but the leads that came through converted at a higher rate than anything else in the batch.</div>
+      <div class="creative-card-metric"><strong>Highest conversion rate</strong> on the back end despite lowest lead volume. Worth scaling in tighter markets.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Financing angle</div>
+      <div class="creative-card-desc">Monthly payment framing in headline and primary text. Generated leads but most of the volume was homeowners in the early research phase, not close to booking. Set rate was low. Kept as a retargeting option for warm audiences later in the funnel.</div>
+      <div class="creative-card-metric"><strong>Lower set rate</strong> than the problem-aware concepts. Consistent with the pattern across this vertical.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested</div>
+      <div class="creative-card-title">Space-conversion lifestyle video</div>
+      <div class="creative-card-desc">Home gym, playroom, teen bedroom. Aspirational framing focused on what the space becomes rather than the problem it solves. Reached a different buyer than the moisture concepts. Set rate was lower but the persona was real. Filed as a secondary creative direction once the primary persona was established.</div>
+      <div class="creative-card-metric"><strong>Different persona,</strong> lower urgency. Worth revisiting with a warmer audience.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested</div>
+      <div class="creative-card-title">Authority and warranty static</div>
+      <div class="creative-card-desc">Focused on years in business, number of projects completed, transferable warranty. Ran well in retargeting when people had already seen other creative. As a cold traffic first touch it underperformed. Too much assumed familiarity for someone seeing the brand for the first time.</div>
+      <div class="creative-card-metric"><strong>Cold traffic underperformed.</strong> Held for retargeting sequences.</div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section">
+  <div class="results-inner">
+    <div class="section-label">Results</div>
+    <h2>The research paid for itself in the first month.</h2>
+    <p class="prose">By the end of month two, the account had a clear creative hierarchy based on real performance data. The two-week pre-launch research phase meant the first batch of creative was built around real buyer language rather than assumptions. That showed up in how quickly the account found its footing.</p>
+    <div class="results-grid">
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>$187</div>
+        <div class="result-label">Cost per lead</div>
+        <div class="result-context">By week eight, from a standing start with no prior data</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">14</div>
+        <div class="result-label">Concepts launched</div>
+        <div class="result-context">First 60 days. Three promoted to scaling campaign at week four.</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>27%</div>
+        <div class="result-label">Set rate</div>
+        <div class="result-context">On winning concepts by end of month two</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">3</div>
+        <div class="result-label">Persona types</div>
+        <div class="result-context">Identified in research, all confirmed as distinct signals in live data</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="learned-section">
+  <h2>What I took from <em>this one</em></h2>
+  <div class="learned-items">
+    <div class="learned-item">
+      <div class="learned-num">01</div>
+      <div class="learned-text"><strong>Research is not a delay. It is the brief.</strong> The two weeks spent before launch were not preparation for the real work. They were the real work. Every brief that came from them was built around something a real person had actually said in a review or a comment section. That specificity showed up in the set rate from week one.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">02</div>
+      <div class="learned-text"><strong>Persona mapping determines creative priorities, not just creative variety.</strong> The three personas were not a way to make sure we covered everyone. They were a ranking. The moisture-aware homeowner was the highest-intent buyer and got the most creative attention in the first batch. That was a research conclusion, not a guess.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">03</div>
+      <div class="learned-text"><strong>Comment section language is the fastest research shortcut in a new vertical.</strong> The objections homeowners wrote under competitor ads were more specific and more emotionally honest than anything I could have generated from a brief alone. "I have been putting this off for two years because I do not know who to trust" became the opening line of the winning creative. It was written by the audience, not by me.</div>
+    </div>
+  </div>
+</section>
+
+<div class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Without the research phase</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Generic first batch based on assumed pain points rather than language homeowners actually use</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>No persona prioritisation, so production budget split evenly across buyer types with very different intent levels</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Two to three months of learning before the account found a creative direction that worked</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Competitor ad angles running without knowing whether they were working for competitors or just spending</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>No map to guide the second testing round once the first batch data came in</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">With the research phase</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>First batch built from verbatim buyer language pulled from reviews and competitor comment sections</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Three confirmed personas with distinct creative briefs and a clear hierarchy based on intent level</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Account found its footing at week four with three promotable winners from the first fourteen concepts</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Competitor comment audit surfaced the objections and questions that became hook material for round two</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The creative map from the research phase structured every subsequent brief through the engagement</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How the pre-launch research phase works as a structured process</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The AI Workflow playbook documents the four-stage research process used here: review mining, competitor analysis, persona extraction, and angle ideation. The research phase in this case study ran from that framework. <a href="/playbooks/ai-workflow" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How comment sections became brief inputs</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Comment Response Ads playbook covers how to mine comment sections for the three types of input that map directly to creative briefs: the objection, the question, and the controversy. The moisture hook in this case came from exactly that process. <a href="/playbooks/comment-response-ads" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">The persona and awareness mapping framework behind the creative brief</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The roofing framework piece shows how to build a creative strategy map from product selection through persona extraction to awareness-level thought mapping. This case study applied the same process to a different vertical before a single ad went live. <a href="/frameworks/roofing-lead-gen" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes. CPL and set rate are directional estimates consistent with the performance trajectory documented at the time. The persona research findings and creative hierarchy are accurate to the engagement.</div>
+
+<div class="cta-wrap">
+  <div class="cta-section">
+    <h2 class="cta-h2">Launching into a vertical with <em>no prior data</em>?</h2>
+    <p class="cta-desc">The research phase is where the creative strategy actually gets built. If you are starting from scratch or relaunching after a gap, the two weeks before the first campaign goes live are the most valuable two weeks of the engagement.</p>
+    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+  </div>
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

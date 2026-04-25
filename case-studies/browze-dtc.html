@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browze Home Organiser — Case Study | Giancarlo</title>
+        <style>
+    :root{--cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);--ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.05);--sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;--teal:#3A7D6E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;--serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}.nav-back:hover{color:var(--ink);}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}.prose+.prose{margin-top:20px;}
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+    .hero h1 em{font-style:italic;color:var(--rust);}
+    .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
+    .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
+    .hero-stat{flex:1;min-width:100px;}
+    .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
+    .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
+    .context-callout p{font-size:17px;font-family:var(--serif);line-height:1.5;color:var(--ink);font-style:italic;}
+    .context-callout-sub{margin-top:16px;font-size:14px;color:var(--ink-60);font-family:var(--sans);font-style:normal;line-height:1.65;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .process-steps{display:flex;flex-direction:column;gap:24px;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:40px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+    .creative-card{background:white;border-radius:14px;padding:28px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
+    .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-item{display:flex;gap:24px;align-items:flex-start;}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+    .before-after{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .ba-card{border-radius:20px;padding:40px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.15);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(58,125,110,0.15);}
+    .ba-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:28px;}
+    .before .ba-label{color:var(--rust);}.after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:14px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
+    .before .ba-dot{background:var(--rust);}.after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
+    .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+    .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
+    .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
+    .cta-h2 em{font-style:italic;color:var(--teal);opacity:0.9;}
+    .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
+    .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
+  </style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<section class="hero">
+  <div>
+    <div class="hero-label">Case Studies / DTC eCommerce</div>
+    <h1>One winning product, one winning ad, and a <em>frequency wall</em> building fast.</h1>
+    <p class="hero-desc">A home organisation product at Browze had found its footing. One creative was doing almost all the work. Scaling it harder was not the answer. Finding new audiences for the same product was.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">DTC Home Organisation</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Company</div><div class="hero-meta-value">Browze</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>2020</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Six-week expansion phase</div>
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>38%</div><div class="hero-stat-label">CPA improvement</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">New audience segments opened</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2.1x</div><div class="hero-stat-label">Spend increase sustained without frequency spike</div></div>
+    </div>
+    <div class="hero-visual-footer">Same product. More territory. Frequency held below 2.0 throughout.</div>
+  </div>
+</section>
+
+<section class="context-section">
+  <div>
+    <div class="section-label">The Situation</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The product was working. The creative pool was not keeping up with it.</h2>
+    <p class="prose">At Browze we ran multiple DTC products at the same time across different categories. When a product found traction, the natural instinct was to scale the budget behind the creative that was working. Most of the time, that is what we did.</p>
+    <p class="prose">This product was a compact wall-mounted organiser. It had a clear winner in a UGC video format, a <span class="confirm">⚑ Confirm</span>$28 to $34 price point, and strong conversion rates. We had been scaling it for about six weeks when the signals started shifting. Frequency was climbing. CPMs were rising faster than revenue was. The same creative reaching the same narrow slice of audience over and over.</p>
+    <p class="prose">Putting more budget into the winning ad was not the problem. Putting all of the budget into one creative that had already reached most of its available audience was. The product had more market than the creative was covering.</p>
+  </div>
+  <div>
+    <div class="context-callout">
+      <div class="context-callout-label">Core constraint</div>
+      <p>"One creative doing all the work means one audience getting all the impressions. When that audience is full, CPMs rise and the only lever left is a worse one."</p>
+      <div class="context-callout-sub">The organiser had at least three distinct buyer types based on the comment section and review language. The winning creative was built for one of them. The other two were untapped territory the algorithm had never received a signal for.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="approach-section">
+  <div>
+    <div class="section-label">The Approach</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Map what the winner had not covered. Build for that territory.</h2>
+    <p class="prose">The existing winner was a UGC video showing a cluttered kitchen counter getting organised. It reached homeowners in a domestic chaos context. That was one buyer. The comment section and reviews pointed to at least two others who had never been served a creative built specifically for them.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="process-step-num">01</div>
+      <div>
+        <div class="process-step-name">Audit the comment section for buyer types</div>
+        <div class="process-step-desc">Went through two weeks of comments on the winning ad and the product page reviews. Three distinct buyer patterns: the domestic organiser (the original buyer the ad was built for), the home office person looking for desk organisation, and the parent managing a shared family space. Each had different language, different urgency, and different objections.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">02</div>
+      <div>
+        <div class="process-step-name">Brief creative for the two uncovered buyer types</div>
+        <div class="process-step-desc">Built a separate brief for each uncovered buyer. Home office version opened with desk clutter and ended in a work-from-home setup. Family space version opened with shared counter space being fought over. Different visual context, different hook, different implicit use case. Same product. The algorithm would find different people with each one because the creative was meaningfully different.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">03</div>
+      <div>
+        <div class="process-step-name">Extend the winning format before replacing it</div>
+        <div class="process-step-desc">The original UGC video was not fatigued across all audiences, only within the narrow segment it had been hammering. Built two variations: same creator, different hook line. Same visual context, different angle on the problem. Extended its runway in the original audience segment while the new buyer-type creative found territory it had not touched yet.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="process-step-num">04</div>
+      <div>
+        <div class="process-step-name">Monitor frequency per creative, not account-wide</div>
+        <div class="process-step-desc">Account-wide frequency was the wrong metric to watch. What mattered was whether each creative was reaching audiences that had not seen it before. Set a per-creative frequency ceiling of 2.0. When any single piece crossed that in a 7-day window, new variations went in before performance started degrading.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="creative-section">
+  <div class="section-label">Creative</div>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">Same product. Three distinct creative territories. Each one a different audience the original winner never reached.</h2>
+  <p class="prose">The creative expansion was not about producing more of the same thing. It was about identifying what the winning ad had not covered and building specifically for that territory. Each new concept had to give the algorithm a signal that was clearly distinct from what was already running.</p>
+  <div class="creative-grid">
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner (original)</div>
+      <div class="creative-card-title">Kitchen counter chaos UGC</div>
+      <div class="creative-card-desc">Messy kitchen counter, real homeowner, product used as a solution in a domestic context. The creative the account was built on. Extended with two hook variations before it saturated the segment it had been running in.</div>
+      <div class="creative-card-metric"><strong>Original control.</strong> Hook variations extended lifespan by three additional weeks before frequency ceiling hit.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner (new territory)</div>
+      <div class="creative-card-title">Home office desk setup UGC</div>
+      <div class="creative-card-desc">Same product, different visual world. WFH desk with cable clutter and scattered supplies. The home office buyer was not the original audience but they were a large one. The algorithm had never received a signal that pointed at them. This creative changed that.</div>
+      <div class="creative-card-metric"><strong>CPA within 12% of the original winner.</strong> Opened a segment the account had never touched.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Family shared space UGC</div>
+      <div class="creative-card-desc">Countertop shared by multiple people, kids' items mixed with adult items. The family buyer was real based on the comment section but the product was a harder sell as a family solution than a personal one. Lower conversion rate, higher volume. Kept at a lower budget allocation.</div>
+      <div class="creative-card-metric"><strong>Real audience, lower intent.</strong> Better as a top-of-funnel seeder than a converter.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag winner">Winner (format)</div>
+      <div class="creative-card-title">Static before and after</div>
+      <div class="creative-card-desc">Split image with messy and organised versions side by side. No creator, no context required. Reached users who do not stop for video and performed well on placements where video was less competitive. Format diversity opened delivery to audiences video was not finding.</div>
+      <div class="creative-card-metric"><strong>Reached 30% incremental audience</strong> compared to the video-only mix.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag learning">Learning</div>
+      <div class="creative-card-title">Skepticism hook UGC</div>
+      <div class="creative-card-desc">Opened with a creator saying they had bought five organisers that ended up in a drawer. This one was different. The comment section had a version of this complaint running across multiple product pages. Strong hook rate. Conversion was lower than the problem-positive hooks. The skeptical buyer needs more convincing at the landing page level.</div>
+      <div class="creative-card-metric"><strong>Strong hook rate,</strong> weaker conversion. Landing page friction identified as the gap.</div>
+    </div>
+    <div class="creative-card">
+      <div class="creative-card-tag tested">Tested</div>
+      <div class="creative-card-title">Lifestyle aesthetic static</div>
+      <div class="creative-card-desc">Product in a minimal, styled setting. No clutter context, no before and after. Targeted the buyer who responds to aesthetic rather than problem-solving. Much lower conversion rate. The product sold best when the problem was visible. Aspiration without context did not convert this category.</div>
+      <div class="creative-card-metric"><strong>Lowest CPA of the batch.</strong> Category needs the problem to be visible in the creative.</div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section">
+  <div class="results-inner">
+    <div class="section-label">Results</div>
+    <h2>Spend scaled. Frequency held. CPA came down.</h2>
+    <p class="prose">The six-week expansion phase produced results that justified the approach. More budget behind more distinct creative signals meant the algorithm had new territory to find buyers in rather than narrowing into an already-saturated audience.</p>
+    <div class="results-grid">
+      <div class="result-stat">
+        <div class="result-num"><span class="confirm">⚑</span>38%</div>
+        <div class="result-label">CPA improvement</div>
+        <div class="result-context">From peak before the expansion to end of the six-week phase</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">2.1x</div>
+        <div class="result-label">Spend increase</div>
+        <div class="result-context">Sustained without frequency rising above 2.0 per creative</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">4</div>
+        <div class="result-label">New audience segments</div>
+        <div class="result-context">Home office, family space, video-resistant users, aesthetic buyers identified</div>
+      </div>
+      <div class="result-stat">
+        <div class="result-num">below 2.0</div>
+        <div class="result-label">Frequency per creative</div>
+        <div class="result-context">Maintained throughout the expansion phase by rotating new territory in before ceiling hit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="learned-section">
+  <h2>What I took from <em>this one</em></h2>
+  <div class="learned-items">
+    <div class="learned-item">
+      <div class="learned-num">01</div>
+      <div class="learned-text"><strong>A winning creative tells you about one audience, not the whole market.</strong> The kitchen counter UGC was a great ad. It also reached one specific type of buyer in one specific context. The product had more market than that. Building for the uncovered buyer types was not a hedge against the winner fading. It was the only way to scale without saturating the segment the winner had already found.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">02</div>
+      <div class="learned-text"><strong>Format diversity is reach diversity, not just creative variety.</strong> The static before and after reached 30% incremental audience compared to the video-only mix. Those were users the video creative was not finding, not because the product was wrong for them, but because the format was not competing for their attention on the placements they were on.</div>
+    </div>
+    <div class="learned-item">
+      <div class="learned-num">03</div>
+      <div class="learned-text"><strong>The comment section told me where to go next.</strong> Every buyer type that became a creative direction in this expansion was visible in the comment section before we built anything. The home office person was commenting on the original ad asking if it worked for desk use. The skeptical buyer was describing all the organisers they had bought that didn't work. The research was already done. I just had to read it.</div>
+    </div>
+  </div>
+</section>
+
+<div class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Before the expansion</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>One creative carrying most of the budget, building frequency fast in a single narrow audience segment</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>CPMs rising as the algorithm competed harder for a shrinking pool of unconverted users</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Two buyer types visible in the comment section with no creative built for either of them</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Scaling pressure being answered by putting more budget behind the same signal</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Format mix was video-only, missing the audience segment that does not stop for video</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">After the expansion</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>Three distinct creative territories running simultaneously with the algorithm finding distinct buyers for each one</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Frequency held below 2.0 per creative by monitoring at the individual ad level rather than account-wide</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Static format opened a 30% incremental audience the video-only mix was not reaching</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Spend doubled without CPA rising because new budget had new territory to work with</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Comment section audit established as a standing pre-expansion step for every product at scale</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">Why more creative volume does not fix a coverage problem</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Diversity playbook explains how the algorithm groups similar creative into the same delivery entity and why distinct signals, not just more ads, are what expand reach at scale. <a href="/playbooks/creative-diversity" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to map what your creative is not covering before it becomes a ceiling</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Coverage Gap playbook covers how to audit current creative against the full buyer territory available, identify which personas and angles are missing, and prioritise which gaps to fill first. <a href="/playbooks/coverage-gap" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to extend a winning creative before replacing it</div>
+      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Winner Extension playbook covers the four-week programme for extracting variations from a proven concept before it fatigues, isolating one variable at a time so each new version is built on what the original already proved. <a href="/playbooks/winner-extension" style="color:#3A7D6E;font-weight:500;text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from memory and campaign notes from the Browze period. CPA improvement and spend increase are directional estimates consistent with the trajectory documented at the time. Frequency ceiling methodology and creative expansion approach are accurate to the engagement.</div>
+
+<div class="cta-wrap">
+  <div class="cta-section">
+    <h2 class="cta-h2">Scaling a winning product but hitting a <em>frequency wall</em>?</h2>
+    <p class="cta-desc">The answer is almost never more budget behind the same creative. At Browze we ran this playbook across multiple products. If your CPMs are rising and your winner is doing all the work, the coverage map is where to start.</p>
+    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+  </div>
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Before I Write a Single Ad, I Build This Map — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 48px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-item {}
+  .hero-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 400;
+  }
+
+  /* Hero visual: the map card */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,92,56,0.3) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,125,110,0.25) 0%, transparent 70%);
+  }
+  .hero-visual-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 28px;
+  }
+  .hero-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-layer {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-layer-num {
+    font-family: var(--serif);
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    min-width: 16px;
+    font-style: italic;
+  }
+  .hero-layer-bar {
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-layer-bar.l1 { background: rgba(200,213,192,0.15); color: var(--sage); border: 1px solid rgba(200,213,192,0.2); }
+  .hero-layer-bar.l2 { background: rgba(184,92,56,0.15); color: #E8967A; border: 1px solid rgba(184,92,56,0.2); }
+  .hero-layer-bar.l3 { background: rgba(58,125,110,0.15); color: #7ABFB5; border: 1px solid rgba(58,125,110,0.2); }
+  .hero-layer-bar.l4 { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.08); }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 24px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat {}
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 48px;
+    height: 1px;
+    background: var(--ink-10);
+  }
+
+  /* ── ENTITY ID SECTION ── */
+  .entity-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .prose {
+    font-size: 16px;
+    color: var(--ink-60);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .prose + .prose { margin-top: 16px; }
+
+  /* Entity ID explainer card */
+  .entity-explainer {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px;
+    color: rgba(255,255,255,0.8);
+  }
+  .entity-explainer-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 28px;
+  }
+  .entity-viz {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .entity-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .entity-ad {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .entity-ad.bad {
+    background: rgba(184,92,56,0.15);
+    border: 1px solid rgba(184,92,56,0.3);
+    color: #E8967A;
+  }
+  .entity-ad.good {
+    background: rgba(58,125,110,0.15);
+    border: 1px solid rgba(58,125,110,0.3);
+    color: #7ABFB5;
+  }
+  .entity-id-badge {
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .entity-ad.bad .entity-id-badge { background: rgba(184,92,56,0.3); }
+  .entity-ad.good .entity-id-badge { background: rgba(58,125,110,0.3); }
+  .entity-row-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    margin: 4px 0 0;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .entity-insight {
+    padding: 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border-left: 2px solid var(--rust);
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .entity-insight strong {
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ── FRAMEWORK INTRO ── */
+  .full-width-section {
+    background: var(--sage-light);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .fw-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .fw-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .fw-layers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .fw-layer-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 20px;
+    position: relative;
+  }
+  .fw-layer-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--ink-10);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .fw-layer-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .fw-layer-desc {
+    font-size: 12px;
+    color: var(--ink-60);
+    line-height: 1.6;
+  }
+  .fw-layer-accent {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .fw-layer-card:nth-child(1) .fw-layer-accent { background: var(--sage); }
+  .fw-layer-card:nth-child(2) .fw-layer-accent { background: var(--rust); }
+  .fw-layer-card:nth-child(3) .fw-layer-accent { background: var(--teal); }
+  .fw-layer-card:nth-child(4) .fw-layer-accent { background: var(--ink-30); }
+
+  /* ── PERSONAS ── */
+  .personas-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+  }
+  .personas-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-bottom: 40px;
+    align-items: end;
+  }
+  .personas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .persona-card {
+    border-radius: 16px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .persona-card:nth-child(1) { background: #EDE8FF; }
+  .persona-card:nth-child(2) { background: var(--rust-light); }
+  .persona-card:nth-child(3) { background: var(--teal-light); }
+  .persona-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .persona-card:nth-child(1) .persona-icon { background: rgba(120,90,210,0.15); }
+  .persona-card:nth-child(2) .persona-icon { background: rgba(184,92,56,0.15); }
+  .persona-card:nth-child(3) .persona-icon { background: rgba(58,125,110,0.15); }
+  .persona-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .persona-trigger {
+    font-size: 13px;
+    color: var(--ink-60);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .persona-thought {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.5;
+    padding-top: 18px;
+    border-top: 1px solid rgba(28,28,26,0.1);
+  }
+  .persona-angle {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-60);
+    font-weight: 500;
+  }
+  .persona-angle::before {
+    content: '→';
+  }
+
+  /* ── AWARENESS MAP (Full-width dark) ── */
+  .awareness-section {
+    background: var(--ink);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .awareness-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .awareness-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .awareness-header .section-label { color: rgba(255,255,255,0.3); }
+  .awareness-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .awareness-header .section-h2 { color: #fff; }
+  .awareness-header .prose { color: rgba(255,255,255,0.5); }
+
+  .awareness-table-wrap {
+    overflow-x: auto;
+  }
+  .awareness-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 8px;
+    min-width: 700px;
+  }
+  .awareness-table th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    font-weight: 500;
+    padding: 12px 16px;
+    text-align: left;
+  }
+  .awareness-table th.persona-th {
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+  }
+  .awareness-table th.p1 { background: rgba(120,90,210,0.15); color: #B8A0F0; }
+  .awareness-table th.p2 { background: rgba(184,92,56,0.15); color: #E8967A; }
+  .awareness-table th.p3 { background: rgba(58,125,110,0.15); color: #7ABFB5; }
+
+  .awareness-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    border-radius: 8px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .awareness-table td.level-cell {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+    white-space: nowrap;
+    padding-top: 18px;
+    background: transparent;
+  }
+  .awareness-table td.p1-cell { background: rgba(120,90,210,0.08); color: rgba(255,255,255,0.65); }
+  .awareness-table td.p2-cell { background: rgba(184,92,56,0.08); color: rgba(255,255,255,0.65); }
+  .awareness-table td.p3-cell { background: rgba(58,125,110,0.08); color: rgba(255,255,255,0.65); }
+  .cell-thought {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  /* ── MATH SECTION ── */
+  .math-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .math-visual {
+    background: var(--sage-light);
+    border-radius: 20px;
+    padding: 48px;
+    text-align: center;
+  }
+  .math-equation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+  .math-pill {
+    background: #fff;
+    border-radius: 100px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .math-op {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--ink-30);
+    font-style: italic;
+  }
+  .math-result {
+    padding-top: 28px;
+    border-top: 1px solid rgba(28,28,26,0.1);
+  }
+  .math-result-num {
+    font-family: var(--serif);
+    font-size: 72px;
+    color: var(--ink);
+    line-height: 1;
+    font-style: italic;
+  }
+  .math-result-label {
+    font-size: 13px;
+    color: var(--ink-60);
+    margin-top: 6px;
+  }
+
+  /* ── PROCESS SECTION ── */
+  .process-section {
+    background: var(--cream);
+    border-top: 1px solid var(--ink-10);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .process-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--ink-10);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .process-step {
+    background: var(--cream);
+    padding: 36px 32px;
+    position: relative;
+  }
+  .process-step-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-30);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .process-step-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .process-step-desc {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── BEFORE/AFTER ── */
+  .before-after {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ba-card {
+    border-radius: 16px;
+    padding: 40px 36px;
+  }
+  .ba-card.before {
+    background: #F7F4EE;
+    border: 1px solid var(--ink-10);
+  }
+  .ba-card.after {
+    background: var(--ink);
+    color: #fff;
+  }
+  .ba-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ba-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    text-align: center;
+  }
+  .cta-inner {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner .section-label {
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    .hero, .entity-section, .math-section, .personas-header, .fw-top, .awareness-header, .process-header { grid-template-columns: 1fr; }
+    .personas-grid { grid-template-columns: 1fr; }
+    .fw-layers-grid { grid-template-columns: repeat(2, 1fr); }
+    .before-after { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .hero, .entity-section, .personas-section, .math-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .awareness-section, .process-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Frameworks / Home Services Lead Gen</div>
+    <h1>Before I write a single ad, I build <em>this map</em></h1>
+    <p class="hero-desc">Most accounts have a creative problem disguised as a performance problem. Here's the framework I built to fix that — worked through a roofing lead generation account.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Vertical</div>
+        <div class="hero-meta-value">Home Improvement · Roofing</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Goal</div>
+        <div class="hero-meta-value">Lead Generation</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-label">Creative Strategy Map · Roofing</div>
+    <div class="hero-layers">
+      <div class="hero-layer">
+        <span class="hero-layer-num">01</span>
+        <div class="hero-layer-bar l1">Product — Residential roof replacement</div>
+      </div>
+      <div class="hero-layer">
+        <span class="hero-layer-num">02</span>
+        <div class="hero-layer-bar l2">Persona — 3 distinct buyer types</div>
+      </div>
+      <div class="hero-layer">
+        <span class="hero-layer-num">03</span>
+        <div class="hero-layer-bar l3">Awareness — 5 levels per persona</div>
+      </div>
+      <div class="hero-layer">
+        <span class="hero-layer-num">04</span>
+        <div class="hero-layer-bar l4">Pain point — 1 primary angle each</div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">15</div>
+        <div class="hero-stat-desc">Creative directions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-desc">Personas mapped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-desc">Audience overlap</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="entity-section">
+  <div>
+    <div class="section-label">Why this matters</div>
+    <h2 class="section-h2">The problem hiding inside most Meta accounts</h2>
+    <p class="prose">At some point Meta advertising quietly changed, and most accounts didn't adjust.</p>
+    <p class="prose" style="margin-top:16px">For years the job was targeting. Find the right audience, build the right interest stack, dial in the lookalike. Creative mattered, but the audience was what you optimized. That's shifted. Meta's move to broader delivery means the algorithm now decides who sees your ads based on what those ads actually signal. Run an ad about storm damage and Meta finds people worried about storm damage. Run one about home value and it surfaces a completely different person — same campaign settings, different creative, different audience.</p>
+    <p class="prose" style="margin-top:16px">So the creative decisions you make before launch are, in practice, audience decisions. Most accounts haven't caught up to that yet.</p>
+    <p class="prose" style="margin-top:16px">Here's where it falls apart. When you run similar ads — same angle, same emotional hook, different headline — Meta groups them under the same entity ID. They share delivery, burn through the same audience segment together, and Meta's own data points to a roughly 45% drop in conversion likelihood after four exposures to the same ad. Tweaking a headline doesn't reset that. A different concept does.</p>
+    <p class="prose" style="margin-top:16px">Every account I've audited that can't scale past a certain point has the same thing going on: lots of ads, very few distinct signals. The framework below is how I solve that before a single ad goes into production.</p>
+  </div>
+  <div>
+    <div class="entity-explainer">
+      <div class="entity-explainer-title">Four reasons your creative pool is smaller than you think</div>
+      <div class="entity-viz">
+        <div style="display:flex;flex-direction:column;gap:10px;">
+
+          <div style="padding:14px 16px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:2px solid #7ABFB5;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#7ABFB5;margin-bottom:6px;font-weight:500;">01 — Creative is now targeting</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">The ad itself signals who sees it. Same angle = same audience reached, regardless of your targeting settings.</div>
+          </div>
+
+          <div style="padding:14px 16px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:2px solid #E8967A;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#E8967A;margin-bottom:6px;font-weight:500;">02 — Andromeda collapses duplicates</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Meta groups similar ads under the same entity ID. They share delivery and tap out the same segment together.</div>
+          </div>
+
+          <div style="padding:14px 16px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:2px solid #B8A0F0;">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:#B8A0F0;margin-bottom:6px;font-weight:500;">03 — Fatigue compounds fast</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">After four exposures to the same ad, conversion likelihood drops ~45%. Variations of the same concept share that counter.</div>
+          </div>
+
+          <div style="padding:14px 16px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:2px solid rgba(255,255,255,0.2);">
+            <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);margin-bottom:6px;font-weight:500;">04 — The algorithm needs distinct signals</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Meta optimizes across genuinely different creative. Without distinct concepts, there's nothing new for the system to learn from.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FRAMEWORK INTRO ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The framework</div>
+        <h2 class="section-h2">Four layers.<br>Infinite directions.</h2>
+      </div>
+      <p class="prose">I call it the creative strategy map. Four layers, worked through in order — Product, Persona, Awareness Level, Pain Point — and the output is a matrix of creative directions that don't overlap. Not a list to pick from. A structure that makes running out of angles impossible.</p>
+    </div>
+    <div class="fw-layers-grid">
+      <div class="fw-layer-card">
+        <div class="fw-layer-accent"></div>
+        <div class="fw-layer-num">01</div>
+        <div class="fw-layer-name">Product</div>
+        <div class="fw-layer-desc">Pick your strongest product or service. Build everything around that one thing first.</div>
+      </div>
+      <div class="fw-layer-card">
+        <div class="fw-layer-accent"></div>
+        <div class="fw-layer-num">02</div>
+        <div class="fw-layer-name">Persona</div>
+        <div class="fw-layer-desc">Identify 3–4 buyer types defined by why they buy — not demographics. The specific moment that pushes them toward a decision.</div>
+      </div>
+      <div class="fw-layer-card">
+        <div class="fw-layer-accent"></div>
+        <div class="fw-layer-num">03</div>
+        <div class="fw-layer-name">Awareness level</div>
+        <div class="fw-layer-desc">For each persona, map what they're thinking at every stage — unaware through most aware — in the first person.</div>
+      </div>
+      <div class="fw-layer-card">
+        <div class="fw-layer-accent"></div>
+        <div class="fw-layer-num">04</div>
+        <div class="fw-layer-name">Pain point</div>
+        <div class="fw-layer-desc">Find the primary angle per persona based on review frequency and competitive signal. One angle each. That's your creative brief.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERSONAS ═══ -->
+<section class="personas-section">
+  <div class="personas-header">
+    <div>
+      <div class="section-label">Layer 2</div>
+      <h2 class="section-h2">A persona isn't a demographic</h2>
+    </div>
+    <p class="prose">Age, income, homeowner status — that's not a persona. A persona is the specific thing pushing someone toward a decision. The moment that makes them search. Two people with identical demographics can be completely different buyers if the reason they're looking is different. For this roofing account, I mapped three personas that consistently drove volume.</p>
+  </div>
+  <div class="personas-grid">
+    <div class="persona-card">
+      <div class="persona-icon">🔒</div>
+      <div class="persona-name">The anxious procrastinator</div>
+      <div class="persona-trigger">The roof has issues and they know it. Cost, disruption, not knowing which contractor to trust — there's always a reason to wait. By the time they call, they've been sitting on this for months.</div>
+      <div class="persona-thought">"The shingles look rough but it's probably fine… right?"</div>
+      <div class="persona-angle">Primary angle: Fear of interior damage</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-icon">⚡</div>
+      <div class="persona-name">The crisis responder</div>
+      <div class="persona-trigger">Storm came through, water is coming in, and the call needs to happen today. There's no research phase, no comparison shopping. They need someone fast and they need to trust them immediately.</div>
+      <div class="persona-thought">"I need someone out here today, not next week."</div>
+      <div class="persona-angle">Primary angle: Urgency + trust gap</div>
+    </div>
+    <div class="persona-card">
+      <div class="persona-icon">📈</div>
+      <div class="persona-name">The value-conscious planner</div>
+      <div class="persona-trigger">Listing in 12 to 18 months. Not in crisis, but knows a flagged roof either kills offers or forces price concessions. This is a financial decision, not an emotional one.</div>
+      <div class="persona-thought">"Will a new roof actually increase what we get for the house?"</div>
+      <div class="persona-angle">Primary angle: Investment justification</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARENESS MAP ═══ -->
+<section class="awareness-section">
+  <div class="awareness-inner">
+    <div class="awareness-header">
+      <div>
+        <div class="section-label">Layer 3</div>
+        <h2 class="section-h2">What they're thinking at every stage</h2>
+      </div>
+      <p class="prose">For each persona, I map first-person thoughts across all five awareness levels — from completely unaware through ready to convert. Each cell is a distinct creative direction. Each one would trigger a different entity ID on Meta.</p>
+    </div>
+    <div class="awareness-table-wrap">
+      <table class="awareness-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="persona-th p1">The anxious procrastinator</th>
+            <th class="persona-th p2">The crisis responder</th>
+            <th class="persona-th p3">The value-conscious planner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="level-cell">Unaware</td>
+            <td class="p1-cell"><span class="cell-thought">"The shingles look a little rough but it's probably fine."</span></td>
+            <td class="p2-cell"><span class="cell-thought">"That was a bad storm last night."</span></td>
+            <td class="p3-cell"><span class="cell-thought">"We've been thinking about listing the house in the spring."</span></td>
+          </tr>
+          <tr>
+            <td class="level-cell">Problem aware</td>
+            <td class="p1-cell"><span class="cell-thought">"There's a stain on the ceiling. I keep ignoring it."</span></td>
+            <td class="p2-cell"><span class="cell-thought">"There's water coming in. This is bad."</span></td>
+            <td class="p3-cell"><span class="cell-thought">"The inspector flagged the roof. Buyers will notice."</span></td>
+          </tr>
+          <tr>
+            <td class="level-cell">Solution aware</td>
+            <td class="p1-cell"><span class="cell-thought">"I know I need a roofer — I just keep putting it off."</span></td>
+            <td class="p2-cell"><span class="cell-thought">"I need someone out here today, not next week."</span></td>
+            <td class="p3-cell"><span class="cell-thought">"A new roof could help us get asking price."</span></td>
+          </tr>
+          <tr>
+            <td class="level-cell">Product aware</td>
+            <td class="p1-cell"><span class="cell-thought">"I got one quote but haven't called them back."</span></td>
+            <td class="p2-cell"><span class="cell-thought">"I've seen their truck around. Are they legit?"</span></td>
+            <td class="p3-cell"><span class="cell-thought">"I've seen 3 quotes. Who gives me the best value?"</span></td>
+          </tr>
+          <tr>
+            <td class="level-cell">Most aware</td>
+            <td class="p1-cell"><span class="cell-thought">"Free inspection, no pressure? I'll do that."</span></td>
+            <td class="p2-cell"><span class="cell-thought">"Same-day response, licensed. I'm calling."</span></td>
+            <td class="p3-cell"><span class="cell-thought">"Financing available, warranty transferable. Easy decision."</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MATH ═══ -->
+<section class="math-section">
+  <div class="math-visual">
+    <div class="math-equation">
+      <div class="math-pill">3 personas</div>
+      <div class="math-op">×</div>
+      <div class="math-pill">5 awareness levels</div>
+      <div class="math-op">×</div>
+      <div class="math-pill">1 angle each</div>
+    </div>
+    <div class="math-result">
+      <div class="math-result-num">15</div>
+      <div class="math-result-label">distinct creative directions — before choosing a single format</div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">The math</div>
+    <h2 class="section-h2">Why this produces real diversity</h2>
+    <p class="prose">Three personas, five awareness levels, one primary angle each: that's 15 creative directions before format is even a consideration. Layer in format variation — UGC video, static, carousel, testimonial — and you have more combinations than any campaign exhausts in a quarter.</p>
+    <p class="prose" style="margin-top:16px">What matters is that each combination is structurally different. Not a different headline on the same concept. A different emotional entry point, a different assumed starting point, a different person. Meta sees them that way too — separate entity IDs, separate delivery, separate audience segments.</p>
+    <p class="prose" style="margin-top:16px">In practice I focus on two personas and their strongest angles rather than testing all 15 at once. Around 12 concepts with three hook variations each gives a serious testing pool without creating a production problem.</p>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <div class="section-label">How it works</div>
+        <h2 class="section-h2">The process, step by step</h2>
+      </div>
+      <p class="prose">Building this map manually used to take the better part of a week — pulling reviews, going through competitor creative, mapping audience psychology by hand. I now run most of the research phase through an AI workflow that cuts that down dramatically. The judgment calls are still mine. The legwork doesn't have to be.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">Step 01</div>
+        <div class="process-step-name">Product selection</div>
+        <div class="process-step-desc">Identify the strongest product or service — usually by conversion volume or margin. Build the entire map around that one offer. Everything else supports it in the funnel.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">Step 02</div>
+        <div class="process-step-name">Persona extraction from review data</div>
+        <div class="process-step-desc">Pull customer reviews from Google, Yelp, or third-party sites. Feed them into an AI workflow to cluster recurring motivations. Look for distinct buying triggers — not demographics.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">Step 03</div>
+        <div class="process-step-name">Awareness-level thought mapping</div>
+        <div class="process-step-desc">For each persona, generate first-person thoughts at every awareness stage. This is the creative brief. An ad for an unaware procrastinator and an ad for a most-aware procrastinator are completely different pieces of creative.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">Step 04</div>
+        <div class="process-step-name">Pain point prioritization</div>
+        <div class="process-step-desc">Identify the primary angle per persona — based on review frequency (which pain points come up most?) and competitive signal (which angles are competitors testing most?). One angle per persona. That's the creative focus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CROSSREF ═══ -->
+<div style="max-width:1200px; margin:0 auto; padding:0 48px 48px;">
+  <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
+    <div style="font-size:16px; margin-top:2px;">→</div>
+    <div>
+      <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">See this framework applied to a live roofing account at scale</div>
+      <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Long Home Roofing case study shows what active account management looks like once this map has been built — deconstructing one winning video into nine variants, giving five markets their own campaign architecture, and building the creative system to absorb a 5x spend increase. <a href="/case-studies/roofing" style="color:#3A7D6E; font-weight:500; text-decoration:none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Before this framework</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>The same ad with a different headline, running to the same audience, being called a test</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Meta grouping similar creatives together, sharing delivery, burning through the same segment</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>CPMs climbing as the pool dried up with nothing new to feed the algorithm</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Creative decisions made reactively — what performed last week, iterated, repeated until it stopped working</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>No visibility into which audience segments were never reached at all</div></div>
+    </div>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">With the creative strategy map</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><div>15+ creative directions mapped before anything goes into production</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Each one gets its own entity ID — separate delivery, separate segment, no overlap</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Clear picture of which personas and awareness stages are uncovered going into launch</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>The creative brief exists as a document you can hand to a team, not an instinct that lives in your head</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Research that used to take days now takes hours, without losing the strategic layer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label" style="justify-content:center; color:rgba(255,255,255,0.3);">
+      <span style="display:inline-block; width:20px; height:1px; background:rgba(255,255,255,0.2);"></span>
+      Work with me
+    </div>
+    <h2 class="cta-h2">Want this built for<br><em>your</em> account?</h2>
+    <p class="cta-desc">I apply this framework to every account I work with — lead gen or eCommerce.<br>If your creative is running but not really testing, let's talk.</p>
+    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

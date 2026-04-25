@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giancarlo Di Nardo — Performance-Led Creative Strategist</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  .v4-wrap { padding: 0 24px; }
+
+  .v2-masthead {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    padding: 36px 0 24px;
+    gap: 32px;
+  }
+  .v2-masthead h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 82px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .v2-masthead h1 em { font-style: italic; color: var(--muted); }
+  .v2-masthead .roleline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+  }
+  .v2-masthead .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    font-size: 10px;
+  }
+
+  /* Single-column main — no sidebar */
+  .v4-main {
+    margin-top: 28px;
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+  }
+
+  /* About card */
+  .v4-aboutcard {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 30px;
+    margin: 0 0 40px;
+  }
+  .v4-aboutcard .hdr {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .v4-aboutcard .hdr img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .v4-aboutcard .hdr .n {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .v4-aboutcard .hdr .r {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .v4-aboutcard .bio {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .v4-aboutcard .bio + .bio { margin-top: 12px; }
+  .v4-aboutcard .actions { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+
+  /* Archive */
+  .archive { padding: 8px 0 40px; }
+  .archive-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    gap: 24px;
+  }
+  .archive-head h2 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 44px;
+    letter-spacing: -0.015em;
+    margin: 0;
+    line-height: 1.05;
+  }
+  .archive-head .view-all {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--line-2);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .archive-head .view-all:hover { color: var(--ink); border-color: var(--ink); }
+
+  .arch-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+  }
+  .arch-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    cursor: pointer;
+    transition: padding 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .arch-item:hover { padding-left: 6px; }
+  .arch-item .at {
+    width: 56px;
+    height: 56px;
+    border-radius: 7px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    line-height: 1;
+  }
+  .arch-item .body { min-width: 0; }
+  .arch-item .yr {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 4px;
+  }
+  .arch-item .t {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  /* Playbook / framework cards */
+  .pb-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 48px 0 16px;
+  }
+  .pb-section-head h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 32px;
+    font-style: italic;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .pb-section-head .view-all {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-bottom: 1px solid var(--line-2);
+    padding-bottom: 1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .pb-section-head .view-all:hover { color: var(--ink); border-color: var(--ink); }
+
+  .pb-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .pb-card {
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    min-height: 200px;
+    transition: transform 0.15s, background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pb-card:hover { background: #fff; transform: translateY(-1px); }
+  .pb-tile {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .pb-title {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .pb-intro {
+    font-family: var(--serif);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    flex: 1;
+  }
+  .pb-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: auto;
+  }
+  .pb-pill {
+    padding: 2px 8px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--ink-2);
+  }
+
+  /* Hire closer */
+  .v3-hire {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 48px 0 0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.45);
+  }
+  .v3-hire > div { padding: 32px; }
+  .v3-hire .left { border-right: 1px solid var(--line); }
+  .v3-hire h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0 0 10px;
+    line-height: 1.1;
+  }
+  .v3-hire ul {
+    font-family: var(--serif);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    margin: 8px 0 16px;
+    padding-left: 16px;
+  }
+  .v3-hire .hlabel {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 700px) {
+    .v4-wrap { padding: 0 16px; }
+    .v2-masthead { grid-template-columns: 1fr; gap: 16px; padding: 24px 0 16px; }
+    .v2-masthead h1 { font-size: 42px; }
+    .v2-masthead .roleline { text-align: left; align-items: flex-start; }
+    .arch-list { grid-template-columns: 1fr; }
+    .arch-item { grid-template-columns: 44px 1fr; padding: 14px 0; gap: 12px; }
+    .arch-item .at { width: 44px; height: 44px; font-size: 20px; }
+    .pb-grid { grid-template-columns: 1fr 1fr; }
+    .v3-hire { grid-template-columns: 1fr; }
+    .v3-hire .left { border-right: 0; border-bottom: 1px solid var(--line); }
+    .v3-hire > div { padding: 24px; }
+    .archive-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .archive-head h2 { font-size: 28px; }
+  }
+  @media (max-width: 960px) and (min-width: 701px) {
+    .v2-masthead h1 { font-size: 56px; }
+    .pb-grid { grid-template-columns: 1fr 1fr; }
+    .v3-hire { grid-template-columns: 1fr; }
+    .v3-hire .left { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+<div class="page">
+<div class="v4-wrap">
+
+  <section class="v2-masthead">
+    <h1>Giancarlo Di Nardo, <em>performance-led creative strategist.</em></h1>
+    <div class="roleline">
+      <span class="status"><span class="status-dot"></span>AVAILABLE — FULL-TIME REMOTE</span>
+      <span>TORONTO — BUENOS AIRES</span>
+      <span>9+ YRS · FACEBOOK & INSTAGRAM ADS</span>
+    </div>
+  </section>
+
+  <div class="v4-main">
+
+    <!-- ABOUT CARD -->
+    <div class="v4-aboutcard">
+      <div class="hdr">
+        <img src="assets/profile.jpg" alt="Giancarlo Di Nardo">
+        <div>
+          <div class="n">GIANCARLO DI NARDO</div>
+          <div class="r">PERFORMANCE-LED CREATIVE STRATEGIST</div>
+        </div>
+      </div>
+      <p class="bio">Nine years running Facebook and Instagram accounts across lead gen and eCommerce — in-house and agency side, six-figure monthly spend, full ownership over strategy and results.</p>
+      <p class="bio">The work has always lived between performance and creative: I use data to decide what to test next, not just to report what ran. Right now I'm building AI-powered workflows that connect performance data to creative output in a way that's faster and repeatable.</p>
+      <div class="actions">
+        <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn">Download CV</a>
+        <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- CASE STUDIES -->
+    <section class="archive">
+      <div class="archive-head">
+        <h2>Case studies, <em>selected.</em></h2>
+        <a href="case-studies/index.html" class="view-all">View all →</a>
+      </div>
+      <div class="arch-list">
+
+        <!-- Lead gen: house icon -->
+        <a href="case-studies/windows.html" class="arch-item">
+          <div class="at tile-black">🪟</div>
+          <div class="body">
+            <div class="yr"><span>ALENCO</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">Knowing when to stop spending is how CPL dropped 24%</div>
+          </div>
+        </a>
+        <a href="case-studies/bath.html" class="arch-item">
+          <div class="at tile-black">🚿</div>
+          <div class="body">
+            <div class="yr"><span>ALENCO</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">Six states of data pointed to one clear winner</div>
+          </div>
+        </a>
+        <a href="case-studies/roofing.html" class="arch-item">
+          <div class="at tile-black">🏗️</div>
+          <div class="body">
+            <div class="yr"><span>LONG HOME</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">One winning video across 11 states is not a system.</div>
+          </div>
+        </a>
+        <a href="case-studies/basement.html" class="arch-item">
+          <div class="at tile-black">🏚️</div>
+          <div class="body">
+            <div class="yr"><span>PREMIER</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">No historical data. Built the creative map before spending a dollar.</div>
+          </div>
+        </a>
+        <a href="case-studies/epoxy.html" class="arch-item">
+          <div class="at tile-black">🧱</div>
+          <div class="body">
+            <div class="yr"><span>FLOOR ARMOR</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">The brief was fine. The structure was the problem.</div>
+          </div>
+        </a>
+        <a href="case-studies/kitchens.html" class="arch-item">
+          <div class="at tile-black">🍳</div>
+          <div class="body">
+            <div class="yr"><span>NDA</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
+            <div class="t">37% of leads were going nowhere. Here is how that gets fixed.</div>
+          </div>
+        </a>
+
+        <!-- DTC: shopping bag icon -->
+        <a href="case-studies/grooming.html" class="arch-item">
+          <div class="at tile-mint">🪒</div>
+          <div class="body">
+            <div class="yr"><span>NDA</span><span>•</span><span>DTC · PERSONAL CARE</span></div>
+            <div class="t">Good product. Generic ads. The creative was not earning the sale.</div>
+          </div>
+        </a>
+        <a href="case-studies/browze-dtc.html" class="arch-item">
+          <div class="at tile-mint">📦</div>
+          <div class="body">
+            <div class="yr"><span>BROWZE</span><span>•</span><span>DTC · ECOMMERCE</span></div>
+            <div class="t">One winning product, one winning ad, and a frequency wall building fast.</div>
+          </div>
+        </a>
+        <a href="case-studies/apparel.html" class="arch-item">
+          <div class="at tile-mint">👕</div>
+          <div class="body">
+            <div class="yr"><span>NDA</span><span>•</span><span>DTC · APPAREL</span></div>
+            <div class="t">An identity brand trying to scale with product ads.</div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- PLAYBOOKS & FRAMEWORKS -->
+    <div class="pb-section-head">
+      <h2>Playbooks &amp; frameworks</h2>
+      <a href="playbooks/index.html" class="view-all">View all →</a>
+    </div>
+    <div class="pb-grid">
+
+      <a href="playbooks/diagnosis.html" class="pb-card">
+        <div class="pb-tile tile-black">🔍</div>
+        <div class="pb-title">The first thing I do when a Meta account stops performing</div>
+        <div class="pb-intro">A first-principles diagnostic flow for separating structure problems from creative problems before changing the wrong thing.</div>
+        <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+
+      <a href="frameworks/roofing-lead-gen.html" class="pb-card">
+        <div class="pb-tile tile-mint">🗺</div>
+        <div class="pb-title">Before I write a single ad, I build this map</div>
+        <div class="pb-intro">The creative strategy map worked through a roofing lead gen account. Four layers, three personas, fifteen creative directions.</div>
+        <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
+      </a>
+
+      <a href="playbooks/creative-fatigue.html" class="pb-card">
+        <div class="pb-tile tile-pink">📉</div>
+        <div class="pb-title">Most accounts misread their creative data. Here's how to fix that.</div>
+        <div class="pb-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure before the account stalls.</div>
+        <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </a>
+
+      <a href="frameworks/dtc-drone.html" class="pb-card">
+        <div class="pb-tile tile-butter">🗺</div>
+        <div class="pb-title">When the buyer isn't the user, everything changes</div>
+        <div class="pb-intro">The same map extended with a timing layer. Five layers, four personas, sixty creative directions for a DTC brand.</div>
+        <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
+      </a>
+
+    </div>
+
+    <!-- HIRE SECTION -->
+    <section class="v3-hire">
+      <div class="left">
+        <div class="hlabel">For recruiters</div>
+        <h3>Full-time, remote, senior IC or lead.</h3>
+        <ul>
+          <li>Paid social ownership across Meta + auxiliary channels</li>
+          <li>Creative strategy and testing systems</li>
+          <li>Team-of-one, or leading 2–4 specialists</li>
+        </ul>
+        <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn">Download CV / Resume</a>
+      </div>
+      <div>
+        <div class="hlabel">For teams</div>
+        <h3>Audits, restructures, or embedded sprints.</h3>
+        <ul>
+          <li>Account + creative audits (2–3 wks)</li>
+          <li>Testing system buildouts (4–6 wks)</li>
+          <li>Embedded as fractional head of paid</li>
+        </ul>
+        <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Start a conversation</a>
+      </div>
+    </section>
+
+  </div><!-- end v4-main -->
+</div><!-- end v4-wrap -->
+</div><!-- end page -->
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+</footer>
+
+</body>
+</html>

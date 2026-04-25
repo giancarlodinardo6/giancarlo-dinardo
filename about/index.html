@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+  .about-grid { display:grid; grid-template-columns:1fr 300px; gap:72px; align-items:start; padding:40px 48px 80px; max-width:var(--max); margin:0 auto; }
+  .about-aside { position:sticky; top:24px; }
+  .aside-photo { width:100%; border-radius:12px; object-fit:cover; object-position:center top; margin-bottom:18px; filter:saturate(0.9); }
+  .aside-card { background:rgba(255,255,255,0.6); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .aside-row { display:flex; justify-content:space-between; align-items:center; padding:12px 18px; border-bottom:1px solid var(--line); }
+  .aside-row:last-child { border-bottom:none; }
+  .aside-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+  .aside-v { font-family:var(--serif); font-size:13.5px; color:var(--ink); }
+  .body-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:32px 0 10px; display:block; }
+  .body-label:first-child { margin-top:0; }
+  .body-p { font-family:var(--serif); font-size:16px; line-height:1.65; color:var(--ink-2); margin:0 0 14px; }
+  .exp-item { display:flex; gap:16px; padding:14px 0; border-bottom:1px dotted var(--line-2); }
+  .exp-item:last-child { border-bottom:none; }
+  .exp-year { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; color:var(--muted); min-width:70px; padding-top:2px; text-transform:uppercase; }
+  .exp-role { font-family:var(--serif); font-size:14.5px; color:var(--ink); font-weight:500; margin-bottom:2px; }
+  .exp-co { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
+  @media(max-width:900px){ .about-grid{grid-template-columns:1fr;gap:36px} .about-aside{position:static} }
+  @media(max-width:700px){ .about-grid{padding:28px 20px 60px} }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+<div class="about-grid">
+
+  <div class="about-body">
+    <span class="body-label">Background</span>
+    <p class="body-p">I come from paid social, but the work has always sat between performance and creative. I spend most of my time using performance data to guide what creative gets tested next and how it evolves over time.</p>
+    <p class="body-p">I've worked both in-house and at agencies, across eCommerce and lead generation, with full ownership over performance. Nine years running Meta campaigns — Facebook and Instagram — managing seven figures in ad spend and working closely across research, creative direction, and execution.</p>
+    <p class="body-p">More recently, I've been formalizing this way of working into AI-powered systems that help speed up research, testing, and creative production, while keeping decisions grounded in experience.</p>
+
+    <span class="body-label">What I actually do</span>
+    <p class="body-p">Most of my work is diagnosing why an account is underperforming and building the structure to fix it. That usually means looking at creative testing logic, campaign architecture, and message-market fit before touching any budget.</p>
+    <p class="body-p">The case studies on this site document that process across nine real accounts. The playbooks and frameworks are how I've systematized the recurring decisions so they don't have to be rebuilt from scratch each time.</p>
+
+    <span class="body-label">Experience</span>
+    <div>
+      <div class="exp-item">
+        <div class="exp-year">2023–2025</div>
+        <div><div class="exp-role">Senior Performance Marketing Specialist</div><div class="exp-co">Clever Digital Marketing</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2021–2023</div>
+        <div><div class="exp-role">Senior Media Buyer</div><div class="exp-co">Lavin Media</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2019–2021</div>
+        <div><div class="exp-role">Paid Social Strategist</div><div class="exp-co">Browze (In-house)</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2017–2019</div>
+        <div><div class="exp-role">Media Buyer</div><div class="exp-co">Rise Gear</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2015–2017</div>
+        <div><div class="exp-role">Digital Marketing Specialist</div><div class="exp-co">AN & Associates</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:flex;gap:10px;flex-wrap:wrap">
+      <a href="../assets/giancarlo-cv.pdf" class="btn">Download CV</a>
+      <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+
+  <aside class="about-aside">
+    <img src="../assets/profile.jpg" alt="Giancarlo Di Nardo" class="aside-photo">
+    <div class="aside-card">
+      <div class="aside-row">
+        <span class="aside-k">Based</span>
+        <span class="aside-v">Toronto — Buenos Aires</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Experience</span>
+        <span class="aside-v">9+ years</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Primary</span>
+        <span class="aside-v">Meta (FB + IG)</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Verticals</span>
+        <span class="aside-v">Lead gen · DTC</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Peak spend</span>
+        <span class="aside-v">$400k / mo</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Status</span>
+        <span class="aside-v"><span class="status-dot" style="margin-right:6px"></span>Open to roles</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

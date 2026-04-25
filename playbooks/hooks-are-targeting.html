@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Hook You Choose Is a Targeting Decision. Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb { max-width: 1200px; margin: 0 auto; padding: 0 48px 32px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-30); }
+  .breadcrumb a { color: var(--ink-30); text-decoration: none; transition: color 0.15s; }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: var(--rust); }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  /* Hook → audience diagram */
+  .hook-audience-viz { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .hav-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+  .hav-hook { padding: 10px 14px; border-radius: 8px; font-size: 12px; line-height: 1.4; font-style: italic; }
+  .hav-hook.emotional { background: rgba(184,92,56,0.15); border: 1px solid rgba(184,92,56,0.2); color: #E8967A; }
+  .hav-hook.curiosity { background: rgba(58,125,110,0.15); border: 1px solid rgba(58,125,110,0.2); color: #7ABFB5; }
+  .hav-hook.callout { background: rgba(184,122,26,0.15); border: 1px solid rgba(184,122,26,0.2); color: #D4A847; }
+  .hav-arrow { font-size: 14px; color: rgba(255,255,255,0.2); text-align: center; }
+  .hav-audience { padding: 10px 14px; border-radius: 8px; font-size: 11px; line-height: 1.4; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── HOOK TAXONOMY — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .hook-types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hook-type-card { background: #fff; border-radius: 12px; padding: 28px 24px; position: relative; }
+  .htc-accent { position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; border-radius: 50%; }
+  .hook-type-card:nth-child(1) .htc-accent { background: var(--rust); }
+  .hook-type-card:nth-child(2) .htc-accent { background: var(--teal); }
+  .hook-type-card:nth-child(3) .htc-accent { background: var(--amber); }
+  .hook-type-card:nth-child(4) .htc-accent { background: #7B6FCC; }
+  .hook-type-card:nth-child(5) .htc-accent { background: var(--ink-30); }
+  .htc-num { font-family: var(--serif); font-size: 48px; color: var(--ink-10); line-height: 1; margin-bottom: 6px; font-style: italic; }
+  .htc-type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+  .htc-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .htc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 14px; }
+  .htc-audience { font-size: 11px; padding: 8px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+  .htc-audience-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 3px; font-weight: 500; }
+  .htc-example { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--ink-60); margin-top: 10px; padding: 10px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+
+  /* ── PROOF FIRST — DARK SECTION ── */
+  .proof-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .proof-inner { max-width: 1200px; margin: 0 auto; }
+  .proof-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .proof-header .section-label { color: rgba(255,255,255,0.3); }
+  .proof-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .proof-header .section-h2 { color: #fff; }
+  .proof-header .prose { color: rgba(255,255,255,0.5); }
+
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .proof-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px 24px; }
+  .pc-step { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 12px; font-weight: 500; }
+  .pc-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+  .pc-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+  .pc-example { margin-top: 14px; padding: 10px 14px; background: rgba(255,255,255,0.04); border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-style: italic; }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+
+  .hook-comparison { display: flex; flex-direction: column; gap: 20px; }
+  .hc-product-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 20px; padding: 10px 16px; background: var(--ink-06); border-radius: 8px; display: inline-block; font-weight: 500; }
+  .hc-row { display: grid; grid-template-columns: 140px 1fr 1fr; gap: 16px; align-items: start; }
+  .hc-type-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-30); font-weight: 500; padding-top: 14px; }
+  .hc-hook { padding: 14px 16px; border-radius: 10px; font-family: var(--serif); font-size: 14px; font-style: italic; line-height: 1.5; }
+  .hc-hook.broad { background: var(--rust-light); color: var(--ink); border-left: 3px solid var(--rust); }
+  .hc-hook.specific { background: var(--teal-light); color: var(--ink); border-left: 3px solid var(--teal); }
+  .hc-outcome { padding: 14px 16px; border-radius: 10px; font-size: 13px; line-height: 1.6; }
+  .hc-outcome.broad { background: rgba(184,92,56,0.06); border: 1px solid rgba(184,92,56,0.12); color: var(--ink-60); }
+  .hc-outcome.specific { background: rgba(58,125,110,0.06); border: 1px solid rgba(58,125,110,0.12); color: var(--ink-60); }
+  .hc-outcome-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .hc-outcome.broad .hc-outcome-label { color: var(--rust); }
+  .hc-outcome.specific .hc-outcome-label { color: var(--teal); }
+  .hc-col-header { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); font-weight: 500; margin-bottom: 8px; }
+
+  /* ── PROCESS SECTION ── */
+  .process-section { background: var(--cream); border-top: 1px solid var(--ink-10); padding: 80px 48px; margin-bottom: 80px; }
+  .process-inner { max-width: 1200px; margin: 0 auto; }
+  .process-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+  .process-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--ink-10); border-radius: 16px; overflow: hidden; }
+  .process-step { background: var(--cream); padding: 36px 32px; }
+  .process-step-num { font-family: var(--serif); font-size: 13px; color: var(--ink-30); font-style: italic; margin-bottom: 12px; }
+  .process-step-name { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .process-step-desc { font-size: 14px; color: var(--ink-60); font-weight: 300; line-height: 1.7; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .proof-header, .fw-top, .worked-header, .process-header { grid-template-columns: 1fr; }
+    .hook-types-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .hc-row { grid-template-columns: 1fr; }
+    .hc-type-label { padding-top: 0; }
+    .process-steps, .before-after { grid-template-columns: 1fr; }
+    nav, .breadcrumb, .hero, .why-section, .worked-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .proof-section, .process-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ NAV ═══ -->
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Hooks Are Targeting</span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Creative Strategy</div>
+    <h1>The hook you write is a <em>targeting decision</em>.</h1>
+    <p class="hero-desc">The first three seconds of your ad don't just stop the scroll. They tell Meta's algorithm which kind of person to find, and keep finding. Choosing a hook type is choosing an audience.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">eCommerce · Lead Gen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Hook strategy · Ad copy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">Hook type → audience segment reached</div>
+    <div class="hook-audience-viz">
+      <div class="hav-row">
+        <div class="hav-hook emotional">"I didn't feel like myself for months. This changed everything."</div>
+        <div class="hav-arrow">→</div>
+        <div class="hav-audience">Identity-driven buyer. Emotional resonance over features. Longer consideration cycle.</div>
+      </div>
+      <div class="hav-row">
+        <div class="hav-hook curiosity">"The real reason your leads stop responding after day three."</div>
+        <div class="hav-arrow">→</div>
+        <div class="hav-audience">Problem-aware buyer actively looking for a cause. Analytical. Wants to understand before buying.</div>
+      </div>
+      <div class="hav-row">
+        <div class="hav-hook callout">"If you've replaced your roof in the last 10 years, read this."</div>
+        <div class="hav-arrow">→</div>
+        <div class="hav-audience">Qualified by the hook itself. Fewer stops, but almost all from buyers in the right window.</div>
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-desc">Hook types mapped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3s</div>
+        <div class="hero-stat-desc">To find the right person</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1st</div>
+        <div class="hero-stat-desc">Creative decision to make</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The argument</div>
+    <h2 class="section-h2">The hook isn't just an attention device. It's audience selection.</h2>
+    <p class="prose">Most people think about hooks as a creative challenge: how do I stop someone mid-scroll? That's a real question, but it's the wrong one to start with. The more important question is: which person do I want to stop?</p>
+    <p class="prose" style="margin-top:16px">Meta's algorithm uses the creative itself as the primary targeting signal under broad delivery. This is covered in detail in the Creative Diversity playbook, but the implication for hooks specifically is sharper than it sounds. The emotional register, the pain point named, the persona called out in the first three seconds tells the system which kind of person to find and keep finding. Two ads for the same product with different hook types aren't just stylistically different, they're pointing Meta at different audience segments.</p>
+    <p class="prose" style="margin-top:16px">Working on a flooring lead gen account, I ran this pattern deliberately. A broad curiosity hook, "most homeowners don't know this about hardwood floors", produced a wider pool of clicks at a higher cost per lead. A specific call-out hook, "if you're replacing flooring after water damage, here's what to ask your contractor", produced a narrower pool that converted at nearly double the rate. The body copy was almost identical. The hook changed who saw the ad. The audience change drove the performance difference.</p>
+    <p class="prose" style="margin-top:16px">This means hook selection is upstream of everything else in the creative process, before you think about format, before you think about body structure, before you think about the offer. Pick the hook type first, because that's where the audience decision actually gets made.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">Why the first three seconds carry this much weight</div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">01, Meta's delivery reads the opening</div>
+        <div class="why-card-desc">Under Andromeda, two ads that share a visually or tonally similar first three seconds get grouped into the same delivery entity. They find the same audience. A different hook type, different emotional register, different persona addressed, is what breaks that grouping and opens access to a different segment.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">02, Self-selection happens in the hook</div>
+        <div class="why-card-desc">A broad hook stops more people but attracts more of the wrong ones. A specific hook, one that names a situation, calls out a persona, or opens with a problem only a certain type of buyer would have, filters at the point of attention. The right people stop. The wrong ones scroll past. The qualification happens before the ad even begins to sell.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #B8A0F0;">
+        <div class="why-card-label" style="color:#B8A0F0;">03, The body can't fix a mismatched hook</div>
+        <div class="why-card-desc">If the hook attracts the wrong audience, the best body copy in the world can't convert them. This is the most common waste in creative production: excellent execution of the wrong opening move. Proving the hook works before investing in production, using statics to test angles cheaply, is how you avoid building the wrong thing at full cost.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOOK TAXONOMY, SAGE ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The framework</div>
+        <h2 class="section-h2">Five hook types.<br>Five different audiences.</h2>
+      </div>
+      <p class="prose">These aren't creative styles. They're targeting decisions. Each hook type signals a different emotional state to Meta's algorithm and attracts a different type of buyer. The right one for a given campaign depends on who you're trying to reach and where they are in the buying process, not on which hook "sounds best." Use these as a brief input, not a copywriting formula.</p>
+    </div>
+
+    <div class="hook-types-grid">
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">01</div>
+        <div class="htc-type-label">Hook type</div>
+        <div class="htc-name">Emotional driver</div>
+        <div class="htc-desc">Opens with a feeling, an identity, or a personal state rather than a product claim. Speaks to who the viewer is or wants to be. Works best for products where the emotional outcome matters more than the functional one.</div>
+        <div class="htc-audience">
+          <div class="htc-audience-label">Audience it finds</div>
+          Identity-motivated buyer. Emotionally engaged. Longer consideration, but stronger brand loyalty when converted.
+        </div>
+        <div class="htc-example">"I stopped dreading Monday mornings. Here's what changed."</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">02</div>
+        <div class="htc-type-label">Hook type</div>
+        <div class="htc-name">Curiosity-led</div>
+        <div class="htc-desc">Opens with an information gap, something the viewer doesn't know but suspects they should. Creates tension by naming a problem without immediately giving the solution. Works across most categories but particularly strong for problem-aware audiences.</div>
+        <div class="htc-audience">
+          <div class="htc-audience-label">Audience it finds</div>
+          Analytical buyer actively seeking answers. Problem-aware but solution-uncertain. Responds to education before selling.
+        </div>
+        <div class="htc-example">"The reason most roofing quotes come in $4,000 apart."</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">03</div>
+        <div class="htc-type-label">Hook type</div>
+        <div class="htc-name">Myth-busting</div>
+        <div class="htc-desc">Challenges a belief the viewer probably holds. Works by creating a moment of friction, the viewer has to stop to find out if they've been wrong about something. Strong for categories with a lot of existing noise or misinformation.</div>
+        <div class="htc-audience">
+          <div class="htc-audience-label">Audience it finds</div>
+          Skeptical buyer who's done some research. Has opinions. Needs to be challenged rather than reassured before they'll engage.
+        </div>
+        <div class="htc-example">"Epoxy flooring isn't actually low-maintenance. Here's what they don't tell you."</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">04</div>
+        <div class="htc-type-label">Hook type</div>
+        <div class="htc-name">Direct call-out</div>
+        <div class="htc-desc">Names a specific person, situation, or condition directly. "If you're a homeowner in [situation]..." or "For anyone who's tried [category] and been disappointed..." Stops fewer people overall but qualifies at the point of attention, the people who stop are almost all in the right segment.</div>
+        <div class="htc-audience">
+          <div class="htc-audience-label">Audience it finds</div>
+          Highly qualified buyer. Already situationally aware. Lower volume, higher intent, more efficient in competitive or high-ticket categories.
+        </div>
+        <div class="htc-example">"If your bathroom remodel quote came back over $20,000, read this before you sign."</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">05</div>
+        <div class="htc-type-label">Hook type</div>
+        <div class="htc-name">Problem stack</div>
+        <div class="htc-desc">Opens with a rapid list of symptoms or frustrations, no solution implied, just recognition. Works by making the viewer feel seen before you've said anything about the product. The power is in the specificity of the problems named: generic problems attract generic buyers.</div>
+        <div class="htc-audience">
+          <div class="htc-audience-label">Audience it finds</div>
+          Frustrated buyer who's been living with a problem. High emotional urgency. Responds to recognition before solution.
+        </div>
+        <div class="htc-example">"Still getting quotes that don't show up. Contractors who ghost. Jobs that take twice as long."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROOF FIRST, DARK SECTION ═══ -->
+<section class="proof-section">
+  <div class="proof-inner">
+    <div class="proof-header">
+      <div>
+        <div class="section-label">The process</div>
+        <h2 class="section-h2">Prove the hook before you build the ad</h2>
+      </div>
+      <p class="prose">Hook selection is a strategic decision, but it's still a hypothesis. Before committing to full video production or a UGC brief, prove the hook works cheaply. Static ads are the fastest way to test whether an angle finds the right audience, no production cost, no creator brief, just headline, product, and offer. If the static doesn't work, neither will the video built around the same hook.</p>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="pc-step">Step 01</div>
+        <div class="pc-title">Choose hook type based on buyer stage, not creative preference</div>
+        <div class="pc-desc">Map the hook type to where your target buyer is in the process. A problem-stack hook is wasted on a most-aware buyer who already knows they have the problem, they need a call-out hook that validates their situation and a specific offer. An emotional hook is wasted on a solution-aware buyer comparing options, they need data and differentiation. Start with buyer stage, not with what sounds most interesting to write.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Step 02</div>
+        <div class="pc-title">Test each hook type as a static before investing in production</div>
+        <div class="pc-desc">Launch 3–5 static variations, one per hook type, against the same offer and the same budget. Give each a week at modest spend. The one that shows the best combination of CTR and CVR (not hook rate alone) is the hook type that's found the right audience. That's the one worth building into video, into UGC, into the full production slate. At Browze this became a rule: statics proved the angle before any creator was briefed. It saved months of production on hooks that wouldn't have worked.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Step 03</div>
+        <div class="pc-title">Iterate on specificity, not just on wording</div>
+        <div class="pc-desc">When a hook type is working but performance could be stronger, the lever is usually specificity, not copy polish. A curiosity hook that says "most homeowners don't know this" is weaker than "most homeowners who've had a roof for more than 15 years don't know this." The more precisely the hook names the situation, the more precisely Meta finds the buyer. Vague hooks attract vague audiences.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Step 04</div>
+        <div class="pc-title">Run multiple hook types simultaneously for different buyer segments</div>
+        <div class="pc-desc">A single campaign with one hook type is reaching one slice of your addressable market. Running an emotional hook alongside a call-out hook alongside a myth-buster, in separate ad sets with minimum spend limits, is how you cover the full range of buyers in your category. Each hook finds a different person. Together they reach the market. This connects directly to the creative diversity argument: hook variety is one of the primary axes of meaningful differentiation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORKED EXAMPLE ═══ -->
+<section class="worked-section">
+  <div class="worked-header">
+    <div>
+      <div class="section-label">Worked example</div>
+      <h2 class="section-h2">Same product. Different hooks. Different buyers.</h2>
+    </div>
+    <p class="prose">This is the hook comparison exercise I ran on a flooring lead gen account, epoxy garage flooring, mid-market homeowner audience. The same offer, the same landing page, the same budget split across two hook types. The performance difference wasn't marginal. The audiences they found were different people at different stages of the buying process.</p>
+  </div>
+
+  <div class="hook-comparison">
+    <div class="hc-product-label">Product: Epoxy garage flooring · Lead gen · Mid-market homeowner</div>
+
+    <div style="display:grid;grid-template-columns:140px 1fr 1fr;gap:16px;margin-bottom:8px;">
+      <div></div>
+      <div class="hc-col-header">The hook</div>
+      <div class="hc-col-header">What it produced</div>
+    </div>
+
+    <div class="hc-row">
+      <div class="hc-type-label">Curiosity-led hook</div>
+      <div class="hc-hook broad">"Most homeowners don't know you can transform a garage floor in one weekend."</div>
+      <div class="hc-outcome broad">
+        <div class="hc-outcome-label">Result</div>
+        Strong hook rate, moderate CTR, high volume of leads, but cost per qualified appointment was elevated. Attracted a mix of serious buyers and people who were curious but not ready. Required more sales follow-up to qualify.
+      </div>
+    </div>
+
+    <div class="hc-row">
+      <div class="hc-type-label">Direct call-out hook</div>
+      <div class="hc-hook specific">"If your garage floor is cracked, stained, or you're embarrassed to open the door, this is for you."</div>
+      <div class="hc-outcome specific">
+        <div class="hc-outcome-label">Result</div>
+        Lower hook rate, lower raw volume, but cost per qualified appointment dropped significantly. The people who stopped were already at the point of frustration. Shorter path from ad to booked call. Higher close rate downstream.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS SECTION ═══ -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <div class="section-label">How to build this</div>
+        <h2 class="section-h2">Hook selection as a brief input</h2>
+      </div>
+      <p class="prose">Hook type selection should happen at the brief stage, before anything goes to a creator or a designer. It's a strategic decision, not a copy decision. These four questions will get you there faster than trying to write your way to a hook.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-name">Where is this buyer in the process?</div>
+        <div class="process-step-desc">Unaware buyers need a hook that names a problem they don't know they have. Problem-aware buyers need a hook that confirms their situation and creates urgency. Solution-aware buyers need differentiation. Most-aware buyers need an offer. The hook type follows directly from the awareness level. It's not a separate decision.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-name">What emotion or situation am I activating?</div>
+        <div class="process-step-desc">Every hook type activates something in the viewer, identity, curiosity, skepticism, recognition, frustration. Name the emotion or situation explicitly in the brief before you write the hook. "This hook should activate the frustration of a homeowner who's gotten three quotes and can't figure out why they're all so different" is a brief. "Make it attention-grabbing" is not.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-name">How specific does the qualifier need to be?</div>
+        <div class="process-step-desc">The more competitive the category, the more specific the hook needs to be to find the right buyer efficiently. In a saturated home services market, a generic curiosity hook is expensive because it attracts everyone. A call-out hook that names a specific situation is more expensive per impression, but the impressions it buys are worth more. Match specificity to category competition.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-name">Test the hook type, then the wording</div>
+        <div class="process-step-desc">Don't test five versions of the same hook type and call it a hook test. That tells you which wording works within one audience segment, it doesn't tell you whether a different hook type would find a better segment entirely. Test hook types first, with a representative execution of each. Then iterate on wording within the winner.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CROSSREF ═══ -->
+<div style="max-width: 1200px; margin: 0 auto 80px; padding: 0 48px;">
+  <div style="background: #E4EDE0; border-radius: 14px; padding: 24px 28px; display: flex; gap: 16px; align-items: flex-start; border: 1px solid rgba(200,213,192,0.4);">
+    <div style="font-size: 16px; margin-top: 2px;">→</div>
+    <div>
+      <div style="font-size: 13px; font-weight: 500; color: #1C1C1A; margin-bottom: 4px;">Once you know which hook type to choose, the Hook Writing playbook covers how to actually write it.</div>
+      <div style="font-size: 13px; color: rgba(28,28,26,0.6); line-height: 1.65;">This piece is about hook selection as a strategic decision. The Hook Writing playbook covers the three ingredients that make a hook work, how to brief the visual alongside the copy, and how to test hook variations as statics before anything goes to production. <a href="/playbooks/hook-writing" style="color: #3A7D6E; font-weight: 500; text-decoration: none;">Read it →</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Hook as a creative decision</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Hook written last, after format and concept, shaped by what sounds good rather than who it's targeting</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Multiple versions of the same hook type tested against each other, audience segment never changes</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>High hook rate celebrated as a win, regardless of whether the people stopping are buyers</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Full video production committed before the hook angle has been proven to find the right audience</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>One hook type running across all campaigns, same audience segment reached, no matter how many ads are live</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">Hook as a targeting decision</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Hook type chosen first, from buyer stage and awareness level, before format or copy is considered</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Different hook types running in separate ad sets, each finding a different buyer segment simultaneously</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Hook rate read alongside CVR, a lower hook rate from a specific hook can outperform a higher rate from a broad one</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Static tests prove the hook angle works before any video production is briefed or shot</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Hook type variety treated as a creative diversity lever, part of the strategy to reach more of the addressable market</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">What's next</div>
+    <h2 class="cta-h2">Choose the hook.<br>You've chosen <em>the audience</em>.</h2>
+    <p class="cta-desc">Hook selection is one input into a broader creative strategy. See how the full Creative Strategy Map organises all the decisions, before a single ad goes into production.</p>
+    <a href="../playbooks/index.html" class="cta-btn">
+      Back to Playbooks
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

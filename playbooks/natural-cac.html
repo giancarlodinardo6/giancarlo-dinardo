@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Meta Has a Price for Your Customer. Stop Arguing With It. — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #3A7D6E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-60);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink) !important;
+    background: var(--ink-10);
+    padding: 8px 18px;
+    border-radius: 100px;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-30);
+  }
+  .breadcrumb a {
+    color: var(--ink-30);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 400;
+  }
+
+  /* Hero visual — price floor diagram */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,122,26,0.2) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%);
+  }
+  .hero-visual-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Price floor visual */
+  .price-floor-viz {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 24px;
+  }
+  .pf-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .pf-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.3);
+    min-width: 90px;
+    text-align: right;
+  }
+  .pf-bar-wrap {
+    flex: 1;
+    height: 32px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+  .pf-bar {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .pf-bar.fighting { background: rgba(184,92,56,0.3); color: #E8967A; width: 35%; }
+  .pf-bar.at-floor { background: rgba(58,125,110,0.3); color: #7ABFB5; width: 100%; }
+  .pf-bar.above { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.3); width: 60%; }
+  .pf-value {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    min-width: 50px;
+  }
+  .pf-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 16px 0;
+  }
+  .pf-insight {
+    padding: 14px 16px;
+    background: rgba(58,125,110,0.12);
+    border-left: 2px solid #7ABFB5;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+  .pf-insight strong { color: #7ABFB5; font-weight: 500; }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 48px;
+    height: 1px;
+    background: var(--ink-10);
+  }
+
+  /* ── SECTION LABEL + H2 ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .prose {
+    font-size: 16px;
+    color: var(--ink-60);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .why-explainer {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .why-explainer-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 28px;
+  }
+  .why-card {
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .why-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── CONCEPT SECTION — SAGE ── */
+  .concept-section {
+    background: var(--sage-light);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .concept-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .concept-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .concept-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .cc-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--ink-10);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .cc-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .cc-desc {
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .cc-accent {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .concept-card:nth-child(1) .cc-accent { background: var(--rust); }
+  .concept-card:nth-child(2) .cc-accent { background: var(--teal); }
+  .concept-card:nth-child(3) .cc-accent { background: var(--amber); }
+
+  /* ── MATH SECTION ── */
+  .math-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .math-visual {
+    background: var(--sage-light);
+    border-radius: 20px;
+    padding: 48px;
+  }
+  .math-scenario {
+    margin-bottom: 32px;
+  }
+  .math-scenario-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .math-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--ink-10);
+    font-size: 14px;
+  }
+  .math-row:last-child { border-bottom: none; }
+  .math-row-label { color: var(--ink-60); font-weight: 300; }
+  .math-row-value { font-weight: 500; color: var(--ink); }
+  .math-row-value.good { color: var(--teal); }
+  .math-row-value.bad { color: var(--rust); }
+  .math-result-block {
+    padding: 20px 24px;
+    background: var(--ink);
+    border-radius: 12px;
+  }
+  .math-result-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 8px;
+  }
+  .math-result-value {
+    font-family: var(--serif);
+    font-size: 42px;
+    color: #7ABFB5;
+    line-height: 1;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .math-result-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.5;
+  }
+
+  /* ── DARK SECTION — WHAT TO DO ── */
+  .action-section {
+    background: var(--ink);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .action-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .action-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .action-header .section-label { color: rgba(255,255,255,0.3); }
+  .action-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .action-header .section-h2 { color: #fff; }
+  .action-header .prose { color: rgba(255,255,255,0.5); }
+
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .action-card {
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+  }
+  .action-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .action-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .action-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ba-card {
+    border-radius: 16px;
+    padding: 40px 36px;
+  }
+  .ba-card.before {
+    background: #F7F4EE;
+    border: 1px solid var(--ink-10);
+  }
+  .ba-card.after {
+    background: var(--ink);
+    color: #fff;
+  }
+  .ba-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ba-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    text-align: center;
+  }
+  .cta-inner {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner .section-label {
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-h2 em { font-style: italic; color: #7ABFB5; }
+  .cta-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .action-header, .concept-top, .math-section { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .action-grid { grid-template-columns: 1fr; }
+    .before-after { grid-template-columns: 1fr; }
+    nav, .breadcrumb, .hero, .why-section, .cta-section, .math-section { padding-left: 24px; padding-right: 24px; }
+    .concept-section, .action-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ NAV ═══ -->
+<!-- ═══ BREADCRUMB ═══ -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Natural CAC</span>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Performance Strategy</div>
+    <h1>Meta has a price for your customer. Stop <em>arguing with it</em>.</h1>
+    <p class="hero-desc">There's a number Meta will let you acquire customers at indefinitely. Push below it and the algorithm resists. Find it and accept it, and the scale becomes almost automatic. Here's how I think about that number.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">eCommerce · Lead Gen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Spend level</div>
+        <div class="hero-meta-value">Mid to high scale</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">CAC floor — three strategies compared</div>
+    <div class="price-floor-viz">
+      <div class="pf-row">
+        <div class="pf-label">Fighting it</div>
+        <div class="pf-bar-wrap">
+          <div class="pf-bar fighting">Constant friction</div>
+        </div>
+        <div class="pf-value" style="color:#E8967A;">Low spend</div>
+      </div>
+      <div class="pf-row">
+        <div class="pf-label">At the floor</div>
+        <div class="pf-bar-wrap">
+          <div class="pf-bar at-floor">Scale opens up</div>
+        </div>
+        <div class="pf-value" style="color:#7ABFB5;">Scales freely</div>
+      </div>
+      <div class="pf-row">
+        <div class="pf-label">Above floor</div>
+        <div class="pf-bar-wrap">
+          <div class="pf-bar above">Room to test</div>
+        </div>
+        <div class="pf-value" style="color:rgba(255,255,255,0.3);">Data builds</div>
+      </div>
+      <div class="pf-divider"></div>
+      <div class="pf-insight">
+        <strong>The floor is real.</strong> Meta knows the market rate for a buyer in your category. It factors in your creative quality, your relevance score, and the category-wide competition. That number exists whether you acknowledge it or not.
+      </div>
+    </div>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">1</div>
+        <div class="hero-stat-desc">Number to find</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-desc">Scale once found</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-desc">Point in fighting it</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The observation</div>
+    <h2 class="section-h2">The CPA you're chasing may not be the CPA you can have</h2>
+    <p class="prose">Running accounts at Browze at $300k to $600k a month gives you a lot of time with the algorithm. One of the patterns that became impossible to ignore was this: certain CPA targets would perform perfectly until you tried to scale, and then they'd fall apart. Not because the creative was wrong, not because the audience was exhausted — but because we were trying to buy customers at a price Meta simply wasn't going to sustain at higher volume.</p>
+    <p class="prose" style="margin-top:16px">Meta's auction knows things about your category that you don't. It's processed every conversion in your vertical, across every advertiser, at every spend level. It has a model of what a buyer in your space costs to acquire, and it price-discovers against that model continuously. When you set a target that's significantly below what that model says is realistic, the system doesn't fail gracefully — it restricts delivery, stops spending efficiently, and makes every optimization look like it's working until you check the actual cost basis.</p>
+    <p class="prose" style="margin-top:16px">The better question isn't "how do I get my CPA lower." It's "what's the CPA Meta will let me buy customers at indefinitely, and does my unit economics work at that number." If the answer is yes, you scale into it. If the answer is no, the creative and offer problem is upstream — not in the targeting.</p>
+    <p class="prose" style="margin-top:16px">This reframe matters because it changes where you spend your energy. Fighting the algorithm's price floor with bid adjustments and cost caps is usually a losing game at scale. Working on what determines that floor — your creative quality, your relevance to the audience, and the offer's conversion rate — is where the real leverage is.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">What actually determines your floor</div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">01 — Category competition</div>
+        <div class="why-card-desc">Every advertiser in your vertical is bidding for the same buyers. The more competitive the category, the higher the market rate. You can't opt out of this — you can only outperform others within it.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">02 — Your relevance and quality score</div>
+        <div class="why-card-desc">Meta adjusts your effective cost based on how well your ads engage the audiences they reach. High-quality, relevant creative reduces your effective floor. Generic creative raises it. This is the one variable you control.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #B8A0F0;">
+        <div class="why-card-label" style="color:#B8A0F0;">03 — Your conversion rate post-click</div>
+        <div class="why-card-desc">Meta optimizes for conversions, not clicks. If your landing page converts poorly, the algorithm has to find more clicks to hit the same number of purchases — which costs more. A better page lowers your effective CAC without touching a bid.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid rgba(184,122,26,0.8);">
+        <div class="why-card-label" style="color: var(--amber);">04 — Historical account performance</div>
+        <div class="why-card-desc">Accounts that have a track record of converting well get better auction treatment over time. This compounds in your favor — but only if you're not constantly disrupting the signal with erratic bidding strategies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONCEPT SECTION — SAGE ═══ -->
+<section class="concept-section">
+  <div class="concept-inner">
+    <div class="concept-top">
+      <div>
+        <div class="section-label">The framework</div>
+        <h2 class="section-h2">Three stances.<br>One right answer.</h2>
+      </div>
+      <p class="prose">Most accounts take one of three approaches to CAC targets. Only one of them scales. The difference isn't discipline or sophistication — it's whether you've accepted what the algorithm is trying to tell you, or whether you're still arguing with it.</p>
+    </div>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <div class="cc-accent"></div>
+        <div class="cc-num">01</div>
+        <div class="cc-name">Fighting the floor</div>
+        <div class="cc-desc">Setting a CPA target significantly below what Meta wants to sustain at your spend level. Delivery becomes inconsistent. Days where the account spends nothing. Days where CPA spikes. The instinct is to optimize harder — change the creative, adjust the bid, restructure the campaigns. Usually none of it works because the problem isn't the campaign, it's the expectation.</div>
+      </div>
+
+      <div class="concept-card">
+        <div class="cc-accent"></div>
+        <div class="cc-num">02</div>
+        <div class="cc-name">Finding the floor</div>
+        <div class="cc-desc">Running broad with enough creative volume to let the algorithm find its natural efficiency point, then observing where it consistently lands across different creative types and audiences. This number isn't a setting — it's a discovery. Once you see it repeat across enough tests, you know what you're working with. From there the question becomes: does your business model work at this number?</div>
+      </div>
+
+      <div class="concept-card">
+        <div class="cc-accent"></div>
+        <div class="cc-num">03</div>
+        <div class="cc-name">Building toward it</div>
+        <div class="cc-desc">If the floor is higher than your current unit economics allow, the answer isn't to fight the floor — it's to make the economics work at the real number. Better average order value, better post-purchase retention, a stronger offer. The levers are on the business side, not inside the Ads Manager. This is the harder conversation to have, but it's the right one.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MATH SECTION ═══ -->
+<section class="math-section">
+  <div class="math-visual">
+    <div class="math-scenario">
+      <div class="math-scenario-label">Scenario — Browze eCommerce · home & gadgets category</div>
+      <div class="math-row">
+        <span class="math-row-label">Product AOV</span>
+        <span class="math-row-value">$65</span>
+      </div>
+      <div class="math-row">
+        <span class="math-row-label">Target CPA (internal goal)</span>
+        <span class="math-row-value bad">$18</span>
+      </div>
+      <div class="math-row">
+        <span class="math-row-label">Meta's natural CAC (observed)</span>
+        <span class="math-row-value">$26</span>
+      </div>
+      <div class="math-row">
+        <span class="math-row-label">Gross margin at natural CAC</span>
+        <span class="math-row-value good">Still positive</span>
+      </div>
+      <div class="math-row">
+        <span class="math-row-label">Scale unlocked at natural CAC</span>
+        <span class="math-row-value good">Yes — delivery opened</span>
+      </div>
+    </div>
+    <div class="math-result-block">
+      <div class="math-result-label">The actual decision</div>
+      <div class="math-result-value">+$8</div>
+      <div class="math-result-desc">The $8 difference between the internal goal and reality was costing consistent delivery at scale. Accepting the real number — and making the unit economics work at it — was worth more than fighting to hit the lower target.</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-label">The math</div>
+    <h2 class="section-h2">The gap between your target and reality</h2>
+    <p class="prose">At Browze, this played out a few times across different product categories. We'd have a CPA target set based on internal margin requirements — a number that made sense on a spreadsheet. And the account would perform fine at lower spend. But when we tried to scale, delivery would degrade: inconsistent spend, rising CPMs, creative that worked at $500/day falling apart at $3k/day.</p>
+    <p class="prose" style="margin-top:16px">The fix, when we finally stopped trying to force the target, was to let the campaigns run broad with strong creative and observe where the algorithm settled. That number was almost always higher than the internal goal — but not so much higher that the unit economics broke. The question was whether we could build the business to accommodate it, not whether we could force Meta to ignore it.</p>
+    <p class="prose" style="margin-top:16px">The same pattern showed up across the lead gen accounts I managed. Home services in competitive markets — roofing, bathroom remodel, garage renovation — had floors that reflected how saturated those categories were on Meta. Fighting those floors with cost caps and aggressive targets produced inconsistent delivery. Working within them, while improving creative quality to compress costs at the margin, produced accounts that scaled predictably.</p>
+  </div>
+</section>
+
+<!-- ═══ WHAT TO DO — DARK SECTION ═══ -->
+<section class="action-section">
+  <div class="action-inner">
+    <div class="action-header">
+      <div>
+        <div class="section-label">What to do with this</div>
+        <h2 class="section-h2">Four places to put your energy</h2>
+      </div>
+      <p class="prose">Accepting the floor doesn't mean accepting the cost passively. It means redirecting your optimization energy to the variables that actually move the floor — rather than fighting a bid strategy battle you're unlikely to win at scale.</p>
+    </div>
+
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="action-num">01</div>
+        <div class="action-title">Discover it before you declare war on it</div>
+        <div class="action-desc">Run broad. Give the algorithm enough creative diversity to find efficient delivery without constraint. Watch where your CAC naturally lands across multiple creative types and spend levels. That pattern is your floor. It won't match your internal target exactly — it rarely does — but it tells you what you're actually working with.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-num">02</div>
+        <div class="action-title">Make the unit economics work at the real number</div>
+        <div class="action-desc">If your natural CAC is $30 and your current model only works at $20, the answer is upstream from Ads Manager. Higher AOV, better post-purchase flow, a bundle that changes the per-unit math. The business has to absorb the real cost of customer acquisition — or the creative and offer have to improve enough to move the floor itself.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-num">03</div>
+        <div class="action-title">Use creative quality to compress the floor</div>
+        <div class="action-desc">The one thing you genuinely control is how relevant and engaging your creative is to the audience Meta finds. High relevance scores lower your effective auction cost. Consistently strong creative builds account trust with the algorithm over time. This is the real CPA optimization lever — not bid strategy.</div>
+      </div>
+
+      <div class="action-card">
+        <div class="action-num">04</div>
+        <div class="action-title">Scale at the floor, not below it</div>
+        <div class="action-desc">Once you know the number and the economics work, the play is volume — more creative, more angles, more budget behind what's performing at the sustainable rate. The algorithm rewards advertisers who operate at their natural efficiency level. The delivery is cleaner, the data is more reliable, and the account compounds instead of fighting itself.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Fighting the floor</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Inconsistent delivery — days of near-zero spend followed by CPM spikes</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Winning creative at low spend deteriorates when you try to scale it</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Constant campaign restructuring that resets the learning phase without solving the core problem</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Optimization energy spent on bids and budgets instead of creative and offer</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>A ceiling on scale that feels like a creative problem but isn't</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">Working with the floor</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Consistent delivery — the algorithm has a target it can actually hit, so it spends smoothly</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Creative learnings compound — the same ad set keeps finding buyers as you increase budget</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Business decisions made with accurate data instead of artificially constrained targets</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Creative quality becomes the primary cost lever — which is a problem worth solving</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Scale that doesn't require constant intervention to sustain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">What's next</div>
+    <h2 class="cta-h2">The floor is information.<br>Use it <em>strategically</em>.</h2>
+    <p class="cta-desc">Understanding what Meta will sustainably charge you is the start. What you build at that number — the creative, the offer, the unit economics — is the real work.</p>
+    <a href="../playbooks/index.html" class="cta-btn">
+      Back to Playbooks
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

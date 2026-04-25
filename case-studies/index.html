@@ -6,14 +6,145 @@
 <title>Case Studies — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-  .arch-list { display:grid; grid-template-columns:1fr 1fr; gap:0 40px; }
-  .arch-item { display:grid; grid-template-columns:60px 1fr; gap:16px; padding:18px 0; border-top:1px solid var(--line); text-decoration:none; color:inherit; transition:padding 0.15s; }
-  .arch-item:hover { padding-left:6px; }
-  .arch-item .at { width:56px; height:56px; border-radius:7px; display:grid; place-items:center; font-size:24px; line-height:1; }
-  .arch-item .yr { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; margin-bottom:8px; display:flex; flex-wrap:wrap; column-gap:10px; row-gap:4px; }
-  .arch-item .t { font-family:var(--serif); font-size:17px; line-height:1.25; font-weight:500; color:var(--ink); margin:0; }
-  .section-intro { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:32px 0 6px; display:block; }
-  @media(max-width:700px){ .arch-list{grid-template-columns:1fr} .arch-item{grid-template-columns:44px 1fr;padding:14px 0;gap:12px} .arch-item .at{width:44px;height:44px;font-size:20px} .arch-item .t{font-size:15px} }
+  /* ── HUB LAYOUT ── */
+  .cs-wrap { max-width: var(--max); margin: 0 auto; padding: 40px 48px 80px; }
+
+  .cs-masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+    margin-bottom: 36px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .cs-masthead h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  .cs-masthead h1 em { font-style: italic; color: var(--muted); }
+  .cs-masthead .desc {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 560px;
+    margin: 0;
+  }
+  .cs-masthead .meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+    padding-bottom: 4px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-intro {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 36px 0 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-intro::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  /* ── GRID ── */
+  .arch-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+  }
+  .arch-item {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    padding: 20px 8px 20px 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    border-radius: 8px;
+    margin: 0 -8px 0 -8px;
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+    align-items: flex-start;
+  }
+  .arch-item:hover {
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+    padding-left: 10px;
+  }
+  .arch-item .at {
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .arch-item .yr {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 8px;
+    row-gap: 3px;
+  }
+  .arch-item .t {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .arch-item .metric {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  /* Tile colors */
+  .at-clay  { background: var(--tile-clay); }
+  .at-mint  { background: var(--tile-mint); }
+
+  @media (max-width: 700px) {
+    .cs-wrap { padding: 24px 16px 60px; }
+    .cs-masthead { grid-template-columns: 1fr; gap: 16px; }
+    .cs-masthead h1 { font-size: 42px; }
+    .cs-masthead .meta { text-align: left; }
+    .arch-list { grid-template-columns: 1fr; }
+    .arch-item { grid-template-columns: 44px 1fr; padding: 16px 8px 16px 0; gap: 14px; }
+    .arch-item .at { width: 44px; height: 44px; font-size: 20px; }
+    .arch-item .t { font-size: 15px; }
+  }
+  @media (max-width: 960px) and (min-width: 701px) {
+    .cs-masthead h1 { font-size: 52px; }
+  }
 </style>
 </head>
 <body>
@@ -39,107 +170,113 @@
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
-
 <script>
 (function(){
   var path = window.location.pathname;
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1){ link.classList.add('active'); }
   });
 })();
 </script>
-<div class="page">
-  <div style="max-width:var(--max);margin:0 auto;padding:40px 48px 0">
 
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px">
-      <h1 style="font-family:var(--display);font-weight:400;font-size:72px;line-height:0.95;letter-spacing:-0.02em;margin:0">Case studies, <em style="font-style:italic;color:var(--muted)">selected.</em></h1>
-      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-align:right">09 ENTRIES<br>UPDATED APR '25</div>
+<div class="page">
+  <div class="cs-wrap">
+
+    <div class="cs-masthead">
+      <div>
+        <h1>Case studies, <em>selected.</em></h1>
+        <p class="desc">Ten accounts across home services lead gen and DTC eCommerce. Each one documents the problem, the decisions made, and what actually moved.</p>
+      </div>
+      <div class="meta">9 ENTRIES<br>LEAD GEN + DTC</div>
     </div>
-    <p style="font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:20px 0 36px">Nine accounts across home services lead gen and DTC eCommerce. Each one documents the problem, the decisions made, and what actually moved.</p>
 
     <span class="section-intro">Home services · Lead gen</span>
     <div class="arch-list">
       <a href="windows.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">🪟</div>
         <div class="body">
-          <div class="yr"><span>ALENCO</span><span>•</span><span>WINDOWS & DOORS</span></div>
+          <div class="yr"><span>ALENCO</span><span>·</span><span>WINDOWS & DOORS</span></div>
           <div class="t">Knowing when to stop spending is how CPL dropped 24%</div>
+          <div class="metric">24% CPL reduction</div>
         </div>
       </a>
       <a href="bath.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">🚿</div>
         <div class="body">
-          <div class="yr"><span>ALENCO</span><span>•</span><span>BATH REMODELING</span></div>
+          <div class="yr"><span>ALENCO</span><span>·</span><span>BATH REMODELING</span></div>
           <div class="t">Six states of data pointed to one clear winner</div>
+          <div class="metric">19% CPL reduction</div>
         </div>
       </a>
       <a href="roofing.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">🏗️</div>
         <div class="body">
-          <div class="yr"><span>LONG HOME</span><span>•</span><span>ROOFING</span></div>
+          <div class="yr"><span>LONG HOME</span><span>·</span><span>ROOFING</span></div>
           <div class="t">One winning video across 11 states is not a system.</div>
+          <div class="metric">11 states mapped</div>
         </div>
       </a>
       <a href="basement.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">📐</div>
         <div class="body">
-          <div class="yr"><span>PREMIER</span><span>•</span><span>BASEMENT RENOVATION</span></div>
+          <div class="yr"><span>PREMIER</span><span>·</span><span>BASEMENT RENOVATION</span></div>
           <div class="t">No historical data. Built the creative map before spending a dollar.</div>
+          <div class="metric">$0 spent before map built</div>
         </div>
       </a>
       <a href="epoxy.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">🪣</div>
         <div class="body">
-          <div class="yr"><span>FLOOR ARMOR</span><span>•</span><span>EPOXY FLOORING</span></div>
+          <div class="yr"><span>FLOOR ARMOR</span><span>·</span><span>EPOXY FLOORING</span></div>
           <div class="t">The brief was fine. The structure was the problem.</div>
+          <div class="metric">31% CPL reduction</div>
         </div>
       </a>
       <a href="kitchens.html" class="arch-item">
-        <div class="at tile-black">🏠</div>
+        <div class="at at-clay">🍳</div>
         <div class="body">
-          <div class="yr"><span>NDA</span><span>•</span><span>KITCHEN REMODELING</span></div>
+          <div class="yr"><span>NDA</span><span>·</span><span>KITCHEN REMODELING</span></div>
           <div class="t">37% of leads were going nowhere. Here is how that gets fixed.</div>
+          <div class="metric">37% leads recovered</div>
         </div>
       </a>
     </div>
 
-    <span class="section-intro" style="margin-top:40px">DTC · eCommerce</span>
+    <span class="section-intro" style="margin-top:48px">DTC · eCommerce</span>
     <div class="arch-list">
       <a href="grooming.html" class="arch-item">
-        <div class="at tile-mint">🛍</div>
+        <div class="at at-mint">💈</div>
         <div class="body">
-          <div class="yr"><span>NDA</span><span>•</span><span>DTC PERSONAL CARE</span></div>
+          <div class="yr"><span>NDA</span><span>·</span><span>DTC PERSONAL CARE</span></div>
           <div class="t">Good product. Generic ads. The creative was not earning the sale.</div>
+          <div class="metric">+22% hook rate lift</div>
         </div>
       </a>
       <a href="browze-dtc.html" class="arch-item">
-        <div class="at tile-mint">🛍</div>
+        <div class="at at-mint">📦</div>
         <div class="body">
-          <div class="yr"><span>BROWZE</span><span>•</span><span>DTC ECOMMERCE</span></div>
+          <div class="yr"><span>BROWZE</span><span>·</span><span>DTC ECOMMERCE</span></div>
           <div class="t">One winning product, one winning ad, and a frequency wall building fast.</div>
+          <div class="metric">$16M revenue generated</div>
         </div>
       </a>
       <a href="apparel.html" class="arch-item">
-        <div class="at tile-mint">🛍</div>
+        <div class="at at-mint">👕</div>
         <div class="body">
-          <div class="yr"><span>NDA</span><span>•</span><span>DTC APPAREL</span></div>
+          <div class="yr"><span>NDA</span><span>·</span><span>DTC APPAREL</span></div>
           <div class="t">An identity brand trying to scale with product ads.</div>
+          <div class="metric">+18pt hook rate lift</div>
         </div>
       </a>
     </div>
 
   </div>
 </div>
+
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
-  <a href="index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
-    ALL CASES
-  </a>
 </footer>
 </body>
 </html>

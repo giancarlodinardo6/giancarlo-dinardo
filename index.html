@@ -6,13 +6,26 @@
 <title>Giancarlo Di Nardo — Performance-Led Creative Strategist</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-  .v4-wrap { padding: 0 24px; }
+  .v4-wrap { padding: 0 32px; max-width: 1320px; margin: 0 auto; }
+
+  /* Subtle grain texture on cream background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+  body > * { position: relative; z-index: 1; }
 
   .v2-masthead {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: end;
-    padding: 36px 0 24px;
+    padding: 20px 0 24px;
     gap: 32px;
   }
   .v2-masthead h1 {
@@ -48,7 +61,6 @@
     font-size: 10px;
   }
 
-  /* Single-column main — no sidebar */
   .v4-main {
     margin-top: 28px;
     border-top: 1px solid var(--line);
@@ -61,7 +73,8 @@
     border: 1px solid var(--line);
     border-radius: 14px;
     padding: 28px 30px;
-    margin: 0 0 40px;
+    margin: 0 0 48px;
+    max-width: 820px;
   }
   .v4-aboutcard .hdr {
     display: flex;
@@ -96,32 +109,31 @@
   .v4-aboutcard .bio {
     font-family: var(--serif);
     font-size: 16px;
-    line-height: 1.55;
+    line-height: 1.68;
     color: var(--ink-2);
     margin: 0;
   }
   .v4-aboutcard .bio + .bio { margin-top: 12px; }
   .v4-aboutcard .actions { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
 
-  /* Archive */
-  .archive { padding: 8px 0 40px; }
-  .archive-head {
+  /* Section head shared */
+  .section-head {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 24px;
     gap: 24px;
   }
-  .archive-head h2 {
+  .section-head h2 {
     font-family: var(--display);
     font-style: italic;
     font-weight: 400;
     font-size: 44px;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.022em;
     margin: 0;
     line-height: 1.05;
   }
-  .archive-head .view-all {
+  .section-head .view-all {
     font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.1em;
@@ -134,70 +146,149 @@
     border-bottom: 1px solid var(--line-2);
     padding-bottom: 1px;
     transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
   }
-  .archive-head .view-all:hover { color: var(--ink); border-color: var(--ink); }
+  .section-head .view-all:hover { color: var(--ink); border-color: var(--ink); }
 
-  .arch-list {
+  /* ── CASE STUDIES ── */
+  .archive { padding: 8px 0 48px; }
+
+  /* Featured two */
+  .feat-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 40px;
+    gap: 12px;
+    margin-bottom: 4px;
   }
-  .arch-item {
-    display: grid;
-    grid-template-columns: 60px 1fr;
-    gap: 16px;
-    padding: 18px 12px;
-    border-top: 1px solid var(--line);
+  .feat-card {
+    background: var(--tile-black);
+    border-radius: 12px;
+    padding: 26px 28px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     cursor: pointer;
-    transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
     text-decoration: none;
-    color: inherit;
-    border-radius: 8px;
-    margin: 0 -12px;
+    transition: opacity 0.18s;
   }
-  .arch-item:hover {
-    background: #fff;
-    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
-    transform: translateY(-1px);
-    padding-left: 20px;
+  .feat-card:hover { opacity: 0.86; }
+  .feat-card .kicker {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(241,236,226,0.4);
+    margin-bottom: 10px;
   }
-  .arch-item .at {
-    width: 56px;
-    height: 56px;
-    border-radius: 7px;
-    display: grid;
-    place-items: center;
-    font-size: 24px;
+  .feat-card .title {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.35;
+    color: #F1ECE2;
+    font-weight: 500;
+    flex: 1;
+  }
+  .feat-card .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+  }
+  .feat-card .metric-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 32px;
+    color: var(--tile-mint);
     line-height: 1;
   }
-  .arch-item .body { min-width: 0; }
-  .arch-item .yr {
+  .feat-card .metric-label {
     font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    margin-bottom: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 10px;
-    row-gap: 4px;
+    color: rgba(184,227,207,0.55);
+    margin-top: 4px;
   }
-  .arch-item .t {
-    font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.25;
-    font-weight: 500;
-    color: var(--ink);
-    margin: 0;
+  .feat-card .ghost-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 56px;
+    color: rgba(241,236,226,0.06);
+    line-height: 1;
+    align-self: flex-end;
   }
 
-  /* Playbook / framework cards */
+  /* Editorial rows */
+  .arch-rows { display: flex; flex-direction: column; }
+  .arch-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 120px;
+    gap: 20px;
+    align-items: center;
+    padding: 15px 10px;
+    border-top: 1px solid var(--line);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 7px;
+    margin: 0 -10px;
+    transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .arch-row:hover {
+    background: #fff;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+  }
+  .arch-row .row-num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--line-2);
+    line-height: 1;
+    text-align: center;
+  }
+  .arch-row .row-body .kicker {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .arch-row .row-body .title {
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .arch-row .row-metric {
+    text-align: right;
+  }
+  .arch-row .row-metric .mnum {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .arch-row .row-metric .mlabel {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 3px;
+  }
+
+  /* ── FRAMEWORKS & PLAYBOOKS ── */
+  .pb-section { margin-bottom: 48px; }
   .pb-section-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 48px 0 16px;
+    margin: 0 0 16px;
   }
   .pb-section-head h2 {
     font-family: var(--display);
@@ -205,7 +296,7 @@
     font-size: 32px;
     font-style: italic;
     margin: 0;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.018em;
   }
   .pb-section-head .view-all {
     font-family: var(--mono);
@@ -238,11 +329,11 @@
     gap: 10px;
     cursor: pointer;
     min-height: 200px;
-    transition: transform 0.15s, background 0.15s;
+    transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
     text-decoration: none;
     color: inherit;
   }
-  .pb-card:hover { background: #fff; transform: translateY(-1px); }
+  .pb-card:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
   .pb-tile {
     width: 40px;
     height: 40px;
@@ -262,7 +353,7 @@
   .pb-intro {
     font-family: var(--serif);
     font-size: 12.5px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--ink-2);
     flex: 1;
   }
@@ -285,12 +376,19 @@
     color: var(--ink-2);
   }
 
-  /* Hire closer */
+  /* Frameworks grid — 2 cards */
+  .fw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* Hire section */
   .v3-hire {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    margin: 48px 0 0;
+    margin: 0 0 0;
     border: 1px solid var(--line);
     border-radius: 14px;
     overflow: hidden;
@@ -305,6 +403,7 @@
     font-size: 30px;
     margin: 0 0 10px;
     line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   .v3-hire ul {
     font-family: var(--serif);
@@ -323,26 +422,35 @@
     margin-bottom: 10px;
   }
 
+  /* Divider between sections */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 48px 0;
+  }
+
   @media (max-width: 700px) {
     .v4-wrap { padding: 0 16px; }
-    .v2-masthead { grid-template-columns: 1fr; gap: 16px; padding: 24px 0 16px; }
+    .v2-masthead { grid-template-columns: 1fr; gap: 16px; padding: 16px 0; }
     .v2-masthead h1 { font-size: 42px; }
     .v2-masthead .roleline { text-align: left; align-items: flex-start; }
-    .arch-list { grid-template-columns: 1fr; }
-    .arch-item { grid-template-columns: 44px 1fr; padding: 14px 0; gap: 12px; }
-    .arch-item .at { width: 44px; height: 44px; font-size: 20px; }
+    .feat-row { grid-template-columns: 1fr; }
+    .arch-row { grid-template-columns: 32px 1fr; }
+    .arch-row .row-metric { display: none; }
     .pb-grid { grid-template-columns: 1fr 1fr; }
+    .fw-grid { grid-template-columns: 1fr; }
     .v3-hire { grid-template-columns: 1fr; }
     .v3-hire .left { border-right: 0; border-bottom: 1px solid var(--line); }
     .v3-hire > div { padding: 24px; }
-    .archive-head { flex-direction: column; align-items: flex-start; gap: 8px; }
-    .archive-head h2 { font-size: 28px; }
+    .section-head h2 { font-size: 28px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
   @media (max-width: 960px) and (min-width: 701px) {
     .v2-masthead h1 { font-size: 56px; }
     .pb-grid { grid-template-columns: 1fr 1fr; }
     .v3-hire { grid-template-columns: 1fr; }
     .v3-hire .left { border-right: 0; border-bottom: 1px solid var(--line); }
+    .arch-row .row-metric { display: none; }
   }
 </style>
 </head>
@@ -378,9 +486,7 @@
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1){ link.classList.add('active'); }
   });
 })();
 </script>
@@ -408,8 +514,8 @@
           <div class="r">PERFORMANCE-LED CREATIVE STRATEGIST</div>
         </div>
       </div>
-      <p class="bio">Nine years running Facebook and Instagram accounts across lead gen and eCommerce — in-house and agency side, six-figure monthly spend, full ownership over strategy and results.</p>
-      <p class="bio">The work has always lived between performance and creative: I use data to decide what to test next, not just to report what ran. Right now I'm building AI-powered workflows that connect performance data to creative output in a way that's faster and repeatable.</p>
+      <p class="bio">I've spent nine years running Facebook and Instagram accounts where the work never stayed in one lane. Lead gen one day, DTC the next, always with full ownership over what ran and why.</p>
+      <p class="bio">I use performance data to decide what creative gets tested next — not to explain what already happened. Right now I'm building workflows that make that loop faster and more repeatable for teams that can't afford to guess.</p>
       <div class="actions">
         <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn">Download CV</a>
         <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Get in touch</a>
@@ -418,117 +524,179 @@
 
     <!-- CASE STUDIES -->
     <section class="archive">
-      <div class="archive-head">
+      <div class="section-head">
         <h2>Case studies, <em>selected.</em></h2>
         <a href="case-studies/index.html" class="view-all">View all →</a>
       </div>
-      <div class="arch-list">
 
-        <!-- Lead gen: house icon -->
-        <a href="case-studies/windows.html" class="arch-item">
-          <div class="at tile-black">🪟</div>
-          <div class="body">
-            <div class="yr"><span>ALENCO</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">Knowing when to stop spending is how CPL dropped 24%</div>
+      <!-- Two featured -->
+      <div class="feat-row">
+        <a href="case-studies/epoxy.html" class="feat-card">
+          <div>
+            <div class="kicker">Floor Armor · Home Services · Lead Gen</div>
+            <div class="title">The brief was fine. The structure was the problem.</div>
+          </div>
+          <div class="bottom">
+            <div>
+              <div class="metric-num">31%</div>
+              <div class="metric-label">CPL reduction</div>
+            </div>
+            <div class="ghost-num">01</div>
           </div>
         </a>
-        <a href="case-studies/bath.html" class="arch-item">
-          <div class="at tile-black">🚿</div>
-          <div class="body">
-            <div class="yr"><span>ALENCO</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">Six states of data pointed to one clear winner</div>
+        <a href="case-studies/bath.html" class="feat-card">
+          <div>
+            <div class="kicker">Alenco · Home Services · Lead Gen</div>
+            <div class="title">Six states of data pointed to one clear winner.</div>
+          </div>
+          <div class="bottom">
+            <div>
+              <div class="metric-num">19%</div>
+              <div class="metric-label">CPL reduction</div>
+            </div>
+            <div class="ghost-num">02</div>
           </div>
         </a>
-        <a href="case-studies/roofing.html" class="arch-item">
-          <div class="at tile-black">🏗️</div>
-          <div class="body">
-            <div class="yr"><span>LONG HOME</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">One winning video across 11 states is not a system.</div>
-          </div>
-        </a>
-        <a href="case-studies/basement.html" class="arch-item">
-          <div class="at tile-black">🏚️</div>
-          <div class="body">
-            <div class="yr"><span>PREMIER</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">No historical data. Built the creative map before spending a dollar.</div>
-          </div>
-        </a>
-        <a href="case-studies/epoxy.html" class="arch-item">
-          <div class="at tile-black">🧱</div>
-          <div class="body">
-            <div class="yr"><span>FLOOR ARMOR</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">The brief was fine. The structure was the problem.</div>
-          </div>
-        </a>
-        <a href="case-studies/kitchens.html" class="arch-item">
-          <div class="at tile-black">🍳</div>
-          <div class="body">
-            <div class="yr"><span>NDA</span><span>•</span><span>HOME SERVICES · LEAD GEN</span></div>
-            <div class="t">37% of leads were going nowhere. Here is how that gets fixed.</div>
-          </div>
-        </a>
+      </div>
 
-        <!-- DTC: shopping bag icon -->
-        <a href="case-studies/grooming.html" class="arch-item">
-          <div class="at tile-mint">🪒</div>
-          <div class="body">
-            <div class="yr"><span>NDA</span><span>•</span><span>DTC · PERSONAL CARE</span></div>
-            <div class="t">Good product. Generic ads. The creative was not earning the sale.</div>
+      <!-- Editorial rows -->
+      <div class="arch-rows">
+        <a href="case-studies/windows.html" class="arch-row">
+          <div class="row-num">03</div>
+          <div class="row-body">
+            <div class="kicker">Alenco · Home Services · Lead Gen</div>
+            <div class="title">Knowing when to stop spending is how CPL dropped 24%</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">24%</div>
+            <div class="mlabel">CPL reduction</div>
           </div>
         </a>
-        <a href="case-studies/browze-dtc.html" class="arch-item">
-          <div class="at tile-mint">📦</div>
-          <div class="body">
-            <div class="yr"><span>BROWZE</span><span>•</span><span>DTC · ECOMMERCE</span></div>
-            <div class="t">One winning product, one winning ad, and a frequency wall building fast.</div>
+        <a href="case-studies/roofing.html" class="arch-row">
+          <div class="row-num">04</div>
+          <div class="row-body">
+            <div class="kicker">Long Home · Home Services · Lead Gen</div>
+            <div class="title">One winning video across 11 states is not a system.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">11</div>
+            <div class="mlabel">States mapped</div>
           </div>
         </a>
-        <a href="case-studies/apparel.html" class="arch-item">
-          <div class="at tile-mint">👕</div>
-          <div class="body">
-            <div class="yr"><span>NDA</span><span>•</span><span>DTC · APPAREL</span></div>
-            <div class="t">An identity brand trying to scale with product ads.</div>
+        <a href="case-studies/basement.html" class="arch-row">
+          <div class="row-num">05</div>
+          <div class="row-body">
+            <div class="kicker">Premier · Home Services · Lead Gen</div>
+            <div class="title">No historical data. Built the creative map before spending a dollar.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">$0</div>
+            <div class="mlabel">Spent before map built</div>
           </div>
         </a>
-
+        <a href="case-studies/kitchens.html" class="arch-row">
+          <div class="row-num">06</div>
+          <div class="row-body">
+            <div class="kicker">NDA · Home Services · Lead Gen</div>
+            <div class="title">37% of leads were going nowhere. Here is how that gets fixed.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">37%</div>
+            <div class="mlabel">Leads recovered</div>
+          </div>
+        </a>
+        <a href="case-studies/browze-dtc.html" class="arch-row">
+          <div class="row-num">07</div>
+          <div class="row-body">
+            <div class="kicker">Browze · DTC Ecommerce</div>
+            <div class="title">One winning product, one winning ad, and a frequency wall building fast.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">$16M</div>
+            <div class="mlabel">Revenue generated</div>
+          </div>
+        </a>
+        <a href="case-studies/grooming.html" class="arch-row">
+          <div class="row-num">08</div>
+          <div class="row-body">
+            <div class="kicker">NDA · DTC Personal Care</div>
+            <div class="title">Good product. Generic ads. The creative was not earning the sale.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">+22%</div>
+            <div class="mlabel">Hook rate lift</div>
+          </div>
+        </a>
+        <a href="case-studies/apparel.html" class="arch-row">
+          <div class="row-num">09</div>
+          <div class="row-body">
+            <div class="kicker">NDA · DTC Apparel</div>
+            <div class="title">An identity brand trying to scale with product ads.</div>
+          </div>
+          <div class="row-metric">
+            <div class="mnum">+18pt</div>
+            <div class="mlabel">Hook rate lift</div>
+          </div>
+        </a>
       </div>
     </section>
 
-    <!-- PLAYBOOKS & FRAMEWORKS -->
-    <div class="pb-section-head">
-      <h2>Playbooks &amp; frameworks</h2>
-      <a href="playbooks/index.html" class="view-all">View all →</a>
+    <hr class="section-divider">
+
+    <!-- FRAMEWORKS -->
+    <div class="pb-section">
+      <div class="pb-section-head">
+        <h2>Frameworks</h2>
+        <a href="frameworks/index.html" class="view-all">View all →</a>
+      </div>
+      <div class="fw-grid">
+        <a href="frameworks/roofing-lead-gen.html" class="pb-card">
+          <div class="pb-tile tile-mint">🗺</div>
+          <div class="pb-title">Before I write a single ad, I build this map</div>
+          <div class="pb-intro">The creative strategy map worked through a roofing lead gen account. Four layers, three personas, fifteen creative directions.</div>
+          <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
+        </a>
+        <a href="frameworks/dtc-drone.html" class="pb-card">
+          <div class="pb-tile tile-mint">🗺</div>
+          <div class="pb-title">When the buyer isn't the user, everything changes</div>
+          <div class="pb-intro">The same map extended with a timing layer. Five layers, four personas, sixty creative directions for a DTC brand.</div>
+          <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
+        </a>
+      </div>
     </div>
-    <div class="pb-grid">
 
-      <a href="playbooks/diagnosis.html" class="pb-card">
-        <div class="pb-tile tile-black">🔍</div>
-        <div class="pb-title">The first thing I do when a Meta account stops performing</div>
-        <div class="pb-intro">A first-principles diagnostic flow for separating structure problems from creative problems before changing the wrong thing.</div>
-        <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="frameworks/roofing-lead-gen.html" class="pb-card">
-        <div class="pb-tile tile-mint">🗺</div>
-        <div class="pb-title">Before I write a single ad, I build this map</div>
-        <div class="pb-intro">The creative strategy map worked through a roofing lead gen account. Four layers, three personas, fifteen creative directions.</div>
-        <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="playbooks/creative-fatigue.html" class="pb-card">
-        <div class="pb-tile tile-pink">📉</div>
-        <div class="pb-title">Most accounts misread their creative data. Here's how to fix that.</div>
-        <div class="pb-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure before the account stalls.</div>
-        <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="frameworks/dtc-drone.html" class="pb-card">
-        <div class="pb-tile tile-butter">🗺</div>
-        <div class="pb-title">When the buyer isn't the user, everything changes</div>
-        <div class="pb-intro">The same map extended with a timing layer. Five layers, four personas, sixty creative directions for a DTC brand.</div>
-        <div class="pb-meta"><span>FRAMEWORK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
+    <!-- PLAYBOOKS -->
+    <div class="pb-section">
+      <div class="pb-section-head">
+        <h2>Playbooks</h2>
+        <a href="playbooks/index.html" class="view-all">View all →</a>
+      </div>
+      <div class="pb-grid">
+        <a href="playbooks/diagnosis.html" class="pb-card">
+          <div class="pb-tile tile-black">🔍</div>
+          <div class="pb-title">The first thing I do when a Meta account stops performing</div>
+          <div class="pb-intro">A first-principles diagnostic flow for separating structure problems from creative problems before changing the wrong thing.</div>
+          <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+        </a>
+        <a href="playbooks/creative-fatigue.html" class="pb-card">
+          <div class="pb-tile tile-pink">📉</div>
+          <div class="pb-title">Most accounts misread their creative data. Here's how to fix that.</div>
+          <div class="pb-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure before the account stalls.</div>
+          <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+        </a>
+        <a href="playbooks/account-structure.html" class="pb-card">
+          <div class="pb-tile tile-black">🏗️</div>
+          <div class="pb-title">The three-campaign model that keeps testing and scaling from colliding</div>
+          <div class="pb-intro">Why CBO starves new creative and how separating the infrastructure fixes it without changing a single ad.</div>
+          <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+        </a>
+        <a href="playbooks/hooks-are-targeting.html" class="pb-card">
+          <div class="pb-tile tile-clay">🎯</div>
+          <div class="pb-title">Hooks are targeting. Most people treat them as copy.</div>
+          <div class="pb-intro">How different hook types signal different buyer stages to the algorithm — and why that gap shows up in set rate, not hook rate.</div>
+          <div class="pb-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+        </a>
+      </div>
     </div>
 
     <!-- HIRE SECTION -->
@@ -555,9 +723,9 @@
       </div>
     </section>
 
-  </div><!-- end v4-main -->
-</div><!-- end v4-wrap -->
-</div><!-- end page -->
+  </div>
+</div>
+</div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

@@ -20,7 +20,7 @@
     font-weight: 400;
     font-size: 82px;
     line-height: 0.95;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.028em;
     margin: 0;
     color: var(--ink);
   }
@@ -146,14 +146,21 @@
     display: grid;
     grid-template-columns: 60px 1fr;
     gap: 16px;
-    padding: 18px 0;
+    padding: 18px 12px;
     border-top: 1px solid var(--line);
     cursor: pointer;
-    transition: padding 0.15s;
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
     text-decoration: none;
     color: inherit;
+    border-radius: 8px;
+    margin: 0 -12px;
   }
-  .arch-item:hover { padding-left: 6px; }
+  .arch-item:hover {
+    background: #fff;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+    transform: translateY(-1px);
+    padding-left: 20px;
+  }
   .arch-item .at {
     width: 56px;
     height: 56px;

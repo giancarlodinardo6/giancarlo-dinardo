@@ -14,11 +14,13 @@
   --line:         #D9D2C2;
   --line-2:       #C4BCA8;
   --chip:         #FFFFFF;
+  --rust:         #B85C38;
+  --sage:         #8FAF8F;
+  --teal:         #5B9E9E;
   --tile-black:   #1A1916;
   --tile-pink:    #F2BFC4;
   --tile-lav:     #C6BCEE;
   --tile-mint:    #B8E3CF;
-  --tile-butter:  #F2DFA1;
   --tile-clay:    #E3B59A;
   --radius:       6px;
   --radius-lg:    10px;
@@ -29,12 +31,22 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 a { color: inherit; text-decoration: none; }
 a.link { border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
 a.link:hover { border-bottom-color: var(--ink); }
 img { max-width: 100%; display: block; }
 p + p { margin-top: 1em; }
+
+/* ── DISPLAY HEADLINE TRACKING ───────────────────────────────────── */
+h1, h2, h3, h4 { letter-spacing: -0.027em; }
+
+/* ── PAGE FADE-IN ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page { animation: fadeUp 0.4s ease forwards; }
 
 /* ── MONO UTILITY ────────────────────────────────────────────────── */
 .mono {
@@ -148,7 +160,7 @@ p + p { margin-top: 1em; }
 .mainnav-links a:hover { color: var(--ink); }
 .mainnav-links a.active {
   color: var(--ink);
-  border-bottom-color: var(--ink);
+  border-bottom-color: var(--rust);
 }
 .nav-cta {
   display: inline-flex;
@@ -615,3 +627,32 @@ p + p { margin-top: 1em; }
 /* ── DETAIL PAGE REMNANT CLASSES ─────────────────────────────────── */
 .hero-left { min-width: 0; }
 .process-step-content { flex: 1; min-width: 0; }
+
+/* ── CASE STUDY TILE HOVER (global) ──────────────────────────────── */
+.arch-item {
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+}
+.arch-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+/* ── FH-CARD HOVER (frameworks hub) ─────────────────────────────── */
+.fh-card {
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+}
+.fh-card:hover {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+  padding-left: 12px;
+}
+
+/* ── STAT LABELS IN SAGE ─────────────────────────────────────────── */
+.cs-stat-label, .stat-label-sage { color: var(--sage); }
+
+/* ── RUST ITALIC ACCENT (display headlines) ──────────────────────── */
+.accent-rust { color: var(--rust); font-style: italic; }

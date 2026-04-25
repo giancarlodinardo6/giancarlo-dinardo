@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frameworks — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
+<style>
+  .fh-intro { align-items: start; }
+  .fw-tile {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: block;
+  }
+</style>
 </head>
 <body>
 <div class="topbar">
@@ -36,12 +46,11 @@
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1){ link.classList.add('active'); }
   });
 })();
 </script>
+
 <div class="page">
   <div class="fh-hero">
     <h1>Frame<em>works</em></h1>
@@ -59,8 +68,26 @@
       <h2>The work</h2>
       <div class="meta">LAYERS · CREATIVE DIRECTIONS</div>
     </div>
+
+    <!-- Roofing framework -->
     <a href="roofing-lead-gen.html" class="fh-card" style="text-decoration:none;color:inherit">
-      <div class="tile tile-mint" style="width:64px;height:64px;border-radius:8px;font-size:28px">🗺</div>
+      <svg class="fw-tile" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" fill="#1A1916" rx="8"/>
+        <!-- Grid lines -->
+        <line x1="22" y1="12" x2="22" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <line x1="36" y1="12" x2="36" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <line x1="50" y1="12" x2="50" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <line x1="12" y1="22" x2="52" y2="22" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <line x1="12" y1="36" x2="52" y2="36" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <line x1="12" y1="50" x2="52" y2="50" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.5"/>
+        <!-- Filled cells at varying opacities -->
+        <rect x="22" y="22" width="14" height="14" fill="#B8E3CF" rx="1.5" opacity="0.9"/>
+        <rect x="36" y="22" width="14" height="14" fill="#B8E3CF" rx="1.5" opacity="0.45"/>
+        <rect x="22" y="36" width="14" height="14" fill="#B8E3CF" rx="1.5" opacity="0.2"/>
+        <rect x="36" y="36" width="14" height="14" fill="#B8E3CF" rx="1.5" opacity="0.65"/>
+        <!-- Origin dot -->
+        <circle cx="22" cy="22" r="2" fill="#B8E3CF"/>
+      </svg>
       <div class="body">
         <div class="kicker">CREATIVE STRATEGY MAP · HOME SERVICES · LEAD GEN</div>
         <div class="t">Before I write a single ad, I build this map</div>
@@ -71,8 +98,29 @@
         <div class="stat"><div class="n">15</div><div class="k">DIRECTIONS</div></div>
       </div>
     </a>
+
+    <!-- DTC Drone framework -->
     <a href="dtc-drone.html" class="fh-card" style="text-decoration:none;color:inherit">
-      <div class="tile tile-butter" style="width:64px;height:64px;border-radius:8px;font-size:28px">🗺</div>
+      <svg class="fw-tile" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="64" height="64" fill="#1A1916" rx="8"/>
+        <!-- Denser grid — 5 layers -->
+        <line x1="18" y1="12" x2="18" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="28" y1="12" x2="28" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="38" y1="12" x2="38" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="48" y1="12" x2="48" y2="52" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="12" y1="20" x2="52" y2="20" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="12" y1="30" x2="52" y2="30" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="12" y1="40" x2="52" y2="40" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <line x1="12" y1="50" x2="52" y2="50" stroke="#8FAF8F" stroke-width="0.75" stroke-opacity="0.4"/>
+        <!-- Diagonal fill pattern — timing layer -->
+        <rect x="18" y="20" width="10" height="10" fill="#B8E3CF" rx="1" opacity="0.85"/>
+        <rect x="28" y="30" width="10" height="10" fill="#B8E3CF" rx="1" opacity="0.65"/>
+        <rect x="38" y="40" width="10" height="10" fill="#B8E3CF" rx="1" opacity="0.45"/>
+        <rect x="18" y="30" width="10" height="10" fill="#B8E3CF" rx="1" opacity="0.2"/>
+        <rect x="28" y="20" width="10" height="10" fill="#B8E3CF" rx="1" opacity="0.3"/>
+        <!-- Timing diagonal -->
+        <line x1="20" y1="22" x2="46" y2="48" stroke="#5B9E9E" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="2 2"/>
+      </svg>
       <div class="body">
         <div class="kicker">CREATIVE STRATEGY MAP · DTC · ECOMMERCE</div>
         <div class="t">When the buyer isn't the user, everything changes</div>
@@ -83,8 +131,10 @@
         <div class="stat"><div class="n">60</div><div class="k">DIRECTIONS</div></div>
       </div>
     </a>
+
   </div>
 </div>
+
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
   <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">

@@ -6,16 +6,100 @@
 <title>Playbooks — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-  .pb-hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:28px; }
-  .pb-hub-card { background:rgba(255,255,255,0.4); border:1px solid var(--line); border-radius:var(--radius-lg); padding:18px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; min-height:190px; transition:transform 0.15s,background 0.15s,box-shadow 0.15s; }
-  .pb-hub-card:hover { background:#fff; transform:translateY(-1px); box-shadow:0 2px 14px rgba(0,0,0,0.06); }
-  .pb-tile { width:40px; height:40px; border-radius:6px; display:flex; align-items:center; justify-content:center; background:#1A1916; flex-shrink:0; }
-  .pb-hub-title { font-family:var(--serif); font-size:17px; line-height:1.3; font-weight:500; color:var(--ink); }
-  .pb-hub-intro { font-family:var(--serif); font-size:14.5px; line-height:1.5; color:var(--ink-2); flex:1; }
-  .pb-hub-meta { display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-top:auto; }
-  .pb-pill { padding:2px 8px; border:1px solid var(--line-2); border-radius:999px; background:#fff; color:var(--ink-2); }
-  .section-divider { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:40px 0 0; padding-bottom:10px; border-bottom:1px solid var(--line); display:block; }
-  @media(max-width:700px){ .pb-hub-grid{grid-template-columns:1fr 1fr} .pb-hub-title{font-size:15px} .pb-hub-intro{font-size:13px} }
+  .pb-wrap { max-width:var(--max); margin:0 auto; padding:40px 48px 80px; }
+
+  /* Section label */
+  .section-divider {
+    font-family:var(--mono); font-size:10px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted);
+    margin:48px 0 0; padding-bottom:10px;
+    border-bottom:1px solid var(--line); display:flex;
+    align-items:center; gap:12px;
+  }
+
+  /* Grid */
+  .pb-hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+
+  /* Base card */
+  .pb-hub-card {
+    background:rgba(255,255,255,0.4); border:1px solid var(--line);
+    border-radius:var(--radius-lg); padding:20px;
+    display:flex; flex-direction:column; gap:10px;
+    text-decoration:none; color:inherit; min-height:200px;
+    transition:transform 0.15s, background 0.15s, box-shadow 0.15s;
+  }
+  .pb-hub-card:hover { background:#fff; transform:translateY(-2px); box-shadow:0 4px 20px rgba(0,0,0,0.08); }
+
+  /* Tinted alternate cards */
+  .pb-hub-card.tint { background:var(--bg-2); }
+  .pb-hub-card.tint:hover { background:#fff; }
+
+  /* Featured card — dark, full-width, spans 2 cols */
+  .pb-hub-card.feat {
+    background:var(--tile-black); border-color:transparent;
+    color:#F1ECE2; grid-column:span 2; min-height:160px;
+    flex-direction:row; align-items:flex-start; gap:24px;
+    position:relative; overflow:hidden;
+  }
+  .pb-hub-card.feat::before {
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:160px; height:160px; border-radius:50%;
+    background:radial-gradient(circle, rgba(184,227,207,0.15) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .pb-hub-card.feat:hover { background:#252320; transform:translateY(-2px); box-shadow:0 4px 24px rgba(0,0,0,0.2); }
+  .pb-hub-card.feat .pb-hub-title { color:#F1ECE2; font-size:19px; flex:1; }
+  .pb-hub-card.feat .pb-hub-intro { color:rgba(241,236,226,0.55); font-size:14px; }
+  .pb-hub-card.feat .pb-hub-meta { color:rgba(241,236,226,0.35); }
+  .pb-hub-card.feat .pb-pill { background:rgba(241,236,226,0.08); border-color:rgba(241,236,226,0.15); color:rgba(241,236,226,0.5); }
+  .feat-body { display:flex; flex-direction:column; gap:10px; flex:1; }
+
+  /* Tile */
+  .pb-tile {
+    width:40px; height:40px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .pb-tile.diag  { background:#2B2925; }
+  .pb-tile.creat { background:#2D4A3E; }
+  .pb-tile.scale { background:#1E3A3A; }
+  .pb-tile.ai    { background:#1A1916; }
+
+  /* Title — italic variant for question-style titles */
+  .pb-hub-title {
+    font-family:var(--serif); font-size:16px; line-height:1.3;
+    font-weight:500; color:var(--ink);
+  }
+  .pb-hub-title.q {
+    font-family:var(--display); font-style:italic;
+    font-weight:400; font-size:17px; letter-spacing:-0.01em;
+  }
+  .pb-hub-intro {
+    font-family:var(--serif); font-size:13.5px;
+    line-height:1.55; color:var(--ink-2); flex:1;
+  }
+  .pb-hub-meta {
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:10px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); margin-top:auto;
+  }
+  .pb-pill {
+    padding:2px 8px; border:1px solid var(--line-2);
+    border-radius:999px; background:#fff; color:var(--ink-2);
+  }
+
+  @media(max-width:700px){
+    .pb-wrap { padding:24px 16px 60px; }
+    .pb-hub-grid { grid-template-columns:1fr 1fr; }
+    .pb-hub-card.feat { grid-column:span 2; flex-direction:column; gap:12px; }
+    .pb-hub-title { font-size:14px; }
+    .pb-hub-title.q { font-size:15px; }
+    .pb-hub-intro { font-size:12.5px; }
+  }
+  @media(max-width:480px){
+    .pb-hub-grid { grid-template-columns:1fr; }
+    .pb-hub-card.feat { grid-column:span 1; }
+  }
 </style>
 </head>
 <body>
@@ -53,236 +137,248 @@
 </script>
 
 <div class="page">
-  <div style="max-width:var(--max);margin:0 auto;padding:40px 48px 80px">
+<div class="pb-wrap">
 
-    <h1 style="font-family:var(--display);font-weight:400;font-size:72px;line-height:0.95;letter-spacing:-0.02em;margin:0 0 20px">Play<em style="font-style:italic;color:var(--muted)">books</em></h1>
-    <p style="font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0 0 36px">Recurring decisions in paid social that most people handle differently each time. These are the frameworks I've settled on — for diagnosis, creative testing, hooks, fatigue, and extension.</p>
+  <h1 style="font-family:var(--display);font-weight:400;font-size:72px;line-height:0.95;letter-spacing:-0.02em;margin:0 0 20px">Play<em style="font-style:italic;color:var(--muted)">books</em></h1>
+  <p style="font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0">Recurring decisions in paid social that most people handle differently each time. These are the frameworks I've settled on — for diagnosis, creative testing, hooks, fatigue, and extension.</p>
 
-    <!-- DIAGNOSIS & STRATEGY -->
-    <span class="section-divider">Diagnosis &amp; strategy</span>
-    <div class="pb-hub-grid">
+  <!-- ── DIAGNOSIS & STRATEGY ── -->
+  <span class="section-divider">Diagnosis &amp; strategy</span>
+  <div class="pb-hub-grid">
 
-      <a href="diagnosis.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="8" stroke="#8FAF8F" stroke-width="1"/>
-            <path d="M12 4 L12 12 L18 12" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
-            <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
-          </svg>
-        </div>
+    <!-- Featured -->
+    <a href="diagnosis.html" class="pb-hub-card feat">
+      <div class="pb-tile diag">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#8FAF8F" stroke-width="1"/>
+          <path d="M12 4 L12 12 L18 12" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
         <div class="pb-hub-title">The first thing I do when a Meta account stops performing</div>
-        <div class="pb-hub-intro">A first-principles diagnostic flow for separating structure problems from creative problems.</div>
+        <div class="pb-hub-intro">A first-principles diagnostic flow for separating structure problems from creative problems before changing the wrong thing.</div>
         <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
+      </div>
+    </a>
 
-      <a href="account-structure.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1"/>
-            <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1" opacity="0.4"/>
-            <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1" opacity="0.4"/>
-            <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#B8E3CF" fill-opacity="0.25" stroke="#B8E3CF" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">How campaign structure either supports or fights the creative</div>
-        <div class="pb-hub-intro">The structural decisions that determine whether creative has room to work or gets strangled before it can signal.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
+    <a href="account-structure.html" class="pb-hub-card">
+      <div class="pb-tile diag">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1"/>
+          <rect x="13" y="4" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1" opacity="0.4"/>
+          <rect x="4" y="13" width="7" height="7" rx="1.5" stroke="#8FAF8F" stroke-width="1" opacity="0.4"/>
+          <rect x="13" y="13" width="7" height="7" rx="1.5" fill="#B8E3CF" fill-opacity="0.25" stroke="#B8E3CF" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">How campaign structure either supports or fights the creative</div>
+      <div class="pb-hub-intro">The structural decisions that determine whether creative has room to work or gets strangled before it can signal.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
 
-      <a href="systematic-testing.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <line x1="12" y1="4" x2="12" y2="11" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round"/>
-            <line x1="12" y1="11" x2="7" y2="17" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="12" y1="11" x2="17" y2="17" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
-            <circle cx="12" cy="4" r="1.5" fill="#8FAF8F" opacity="0.6"/>
-            <circle cx="7" cy="19" r="1.5" fill="#B8E3CF"/>
-            <circle cx="17" cy="19" r="1.5" fill="#B8E3CF"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Stop testing to win. Start testing to learn.</div>
-        <div class="pb-hub-intro">Building a testing structure that actually produces signal instead of just producing winners.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-    </div>
-
-    <!-- CREATIVE -->
-    <span class="section-divider">Creative</span>
-    <div class="pb-hub-grid">
-
-      <a href="creative-fatigue.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <line x1="5" y1="8" x2="19" y2="8" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
-            <line x1="5" y1="12" x2="14" y2="12" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
-            <line x1="5" y1="16" x2="9" y2="16" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.25"/>
-            <circle cx="19" cy="12" r="2" fill="none" stroke="#B8E3CF" stroke-width="1"/>
-            <circle cx="19" cy="16" r="2" fill="none" stroke="#B8E3CF" stroke-width="1" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Most accounts misread their creative data. Here's how to fix that.</div>
-        <div class="pb-hub-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="creative-diversity.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="6" width="6" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.9" stroke="#B8E3CF" stroke-width="0.5"/>
-            <rect x="4" y="13" width="6" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
-            <rect x="12" y="6" width="8" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
-            <rect x="12" y="13" width="8" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.5" stroke="#B8E3CF" stroke-width="0.5"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Creative diversity isn't a best practice. It's how targeting works now.</div>
-        <div class="pb-hub-intro">Why angle breadth and variation now do the work that audience targeting used to do.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="hooks-are-targeting.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M5 19 L19 5" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" opacity="0.5"/>
-            <circle cx="7" cy="17" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1"/>
-            <circle cx="12" cy="12" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1" opacity="0.6"/>
-            <circle cx="17" cy="7" r="2.5" fill="#B8E3CF" fill-opacity="0.3" stroke="#B8E3CF" stroke-width="1"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Why the hook is the real targeting layer in a broad Meta account</div>
-        <div class="pb-hub-intro">When targeting is broad, the hook does the qualifying. How to write hooks that stop the right person.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="hook-writing.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <line x1="5" y1="12" x2="10" y2="12" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round"/>
-            <path d="M10 8 L19 12 L10 16" fill="#B8E3CF" fill-opacity="0.2" stroke="#B8E3CF" stroke-width="1" stroke-linejoin="round"/>
-            <circle cx="5" cy="12" r="1.5" fill="#8FAF8F" opacity="0.7"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">How I write hooks that stop the scroll without tricking the wrong person</div>
-        <div class="pb-hub-intro">The actual process behind hook development — from brief to variation to signal reading.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="creative-construction.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="5" y="15" width="14" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.9"/>
-            <rect x="5" y="10" width="10" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.55"/>
-            <rect x="5" y="5" width="6" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.25"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">How a strong ad is actually built, layer by layer</div>
-        <div class="pb-hub-intro">The anatomy of a paid social ad — how hook, body, and offer interact to produce or lose the sale.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="ad-psychology.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="7" stroke="#8FAF8F" stroke-width="0.75" opacity="0.35"/>
-            <circle cx="12" cy="12" r="4.5" stroke="#8FAF8F" stroke-width="0.75" opacity="0.55"/>
-            <circle cx="12" cy="12" r="2" fill="#B8E3CF" opacity="0.9"/>
-            <line x1="12" y1="5" x2="12" y2="7.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-            <line x1="19" y1="12" x2="16.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-            <line x1="12" y1="19" x2="12" y2="16.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-            <line x1="5" y1="12" x2="7.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">The psychological levers that make paid social creative work</div>
-        <div class="pb-hub-intro">Why certain creative choices move people and others don't — applied to real Meta ad decisions.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-    </div>
-
-    <!-- SCALING & OPTIMIZATION -->
-    <span class="section-divider">Scaling &amp; optimization</span>
-    <div class="pb-hub-grid">
-
-      <a href="winner-extension.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <polyline points="5,18 5,14 9,14 9,10 13,10 13,6 18,6" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
-            <polyline points="5,18 5,14 9,14 9,10 13,10 13,6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="13" cy="6" r="2" fill="#B8E3CF"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">What to do when a winning ad starts to slow down</div>
-        <div class="pb-hub-intro">How to extend a winner's life through variation before the account loses signal entirely.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="coverage-gap.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="8" stroke="#8FAF8F" stroke-width="0.75" opacity="0.4"/>
-            <path d="M12 4 A8 8 0 0 1 20 12 L12 12 Z" fill="#B8E3CF" fill-opacity="0.7"/>
-            <path d="M12 12 L20 12 A8 8 0 0 1 4.7 16.5 Z" fill="#B8E3CF" fill-opacity="0.3"/>
-            <circle cx="12" cy="12" r="1.5" fill="#F1ECE2" opacity="0.8"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Finding the audience segments the account is not reaching</div>
-        <div class="pb-hub-intro">How to identify coverage gaps before they show up as performance drops.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="natural-cac.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <line x1="5" y1="19" x2="19" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <line x1="5" y1="5" x2="5" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <path d="M5 14 Q10 14 10 10 Q10 6 14 6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round"/>
-            <line x1="14" y1="6" x2="19" y2="6" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1.5 2"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Why fighting the platform on acquisition cost is usually the wrong move</div>
-        <div class="pb-hub-intro">The natural CAC concept — and why making LTV work at the platform's price is a better strategy than pushing CPA down.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-    </div>
-
-    <!-- AI & WORKFLOWS -->
-    <span class="section-divider">AI &amp; workflows</span>
-    <div class="pb-hub-grid">
-
-      <a href="ai-workflow.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M7 12 C7 8.5 10 7 12 7 C14 7 17 8.5 17 12" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
-            <path d="M7 12 C7 15.5 10 17 12 17 C14 17 17 15.5 17 12" fill="none" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="12" y1="7" x2="14" y2="5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
-            <line x1="17" y1="12" x2="19" y2="11" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
-            <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">How I use AI to speed up research, brief writing, and creative iteration</div>
-        <div class="pb-hub-intro">The actual workflow — which steps benefit from AI, which still need judgment, and how to structure the handoff.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-      <a href="comment-response-ads.html" class="pb-hub-card">
-        <div class="pb-tile">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <rect x="4" y="5" width="16" height="11" rx="2" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.5"/>
-            <line x1="7" y1="9" x2="13" y2="9" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
-            <line x1="7" y1="12" x2="11" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
-            <path d="M10 16 L10 19 M14 16 L14 19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-            <line x1="8" y1="19" x2="16" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
-          </svg>
-        </div>
-        <div class="pb-hub-title">Turning comment sections into creative intelligence</div>
-        <div class="pb-hub-intro">How to mine comment data from organic and paid posts to find angles the brief never surfaced.</div>
-        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
-      </a>
-
-    </div>
+    <a href="systematic-testing.html" class="pb-hub-card tint">
+      <div class="pb-tile diag">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="12" y1="4" x2="12" y2="11" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round"/>
+          <line x1="12" y1="11" x2="7" y2="17" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="11" x2="17" y2="17" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="12" cy="4" r="1.5" fill="#8FAF8F" opacity="0.6"/>
+          <circle cx="7" cy="19" r="1.5" fill="#B8E3CF"/>
+          <circle cx="17" cy="19" r="1.5" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title q">Stop testing to win. Start testing to learn.</div>
+      <div class="pb-hub-intro">Building a testing structure that actually produces signal instead of just producing winners.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
 
   </div>
+
+  <!-- ── CREATIVE ── -->
+  <span class="section-divider">Creative</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="hooks-are-targeting.html" class="pb-hub-card feat">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 19 L19 5" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" opacity="0.5"/>
+          <circle cx="7" cy="17" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1"/>
+          <circle cx="12" cy="12" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1" opacity="0.6"/>
+          <circle cx="17" cy="7" r="2.5" fill="#B8E3CF" fill-opacity="0.3" stroke="#B8E3CF" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title q">Why the hook is the real targeting layer in a broad Meta account</div>
+        <div class="pb-hub-intro">When targeting is broad, the hook does the qualifying. How to write hooks that stop the right person and signal the right stage to the algorithm.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </div>
+    </a>
+
+    <a href="creative-fatigue.html" class="pb-hub-card">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="5" y1="8" x2="19" y2="8" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+          <line x1="5" y1="12" x2="14" y2="12" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+          <line x1="5" y1="16" x2="9" y2="16" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.25"/>
+          <circle cx="19" cy="12" r="2" fill="none" stroke="#B8E3CF" stroke-width="1"/>
+          <circle cx="19" cy="16" r="2" fill="none" stroke="#B8E3CF" stroke-width="1" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title q">Most accounts misread their creative data. Here's how to fix that.</div>
+      <div class="pb-hub-intro">How to spot fatigue patterns early and decide whether to refresh, replace, or restructure.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+    <a href="creative-diversity.html" class="pb-hub-card tint">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="6" width="6" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.9" stroke="#B8E3CF" stroke-width="0.5"/>
+          <rect x="4" y="13" width="6" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
+          <rect x="12" y="6" width="8" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
+          <rect x="12" y="13" width="8" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.5" stroke="#B8E3CF" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">Creative diversity isn't a best practice. It's how targeting works now.</div>
+      <div class="pb-hub-intro">Why angle breadth and variation now do the work that audience targeting used to do.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+    <a href="hook-writing.html" class="pb-hub-card">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="5" y1="12" x2="10" y2="12" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round"/>
+          <path d="M10 8 L19 12 L10 16" fill="#B8E3CF" fill-opacity="0.2" stroke="#B8E3CF" stroke-width="1" stroke-linejoin="round"/>
+          <circle cx="5" cy="12" r="1.5" fill="#8FAF8F" opacity="0.7"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">How I write hooks that stop the scroll without tricking the wrong person</div>
+      <div class="pb-hub-intro">The actual process behind hook development — from brief to variation to signal reading.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+    <a href="creative-construction.html" class="pb-hub-card tint">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="15" width="14" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.9"/>
+          <rect x="5" y="10" width="10" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.55"/>
+          <rect x="5" y="5" width="6" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.25"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">How a strong ad is actually built, layer by layer</div>
+      <div class="pb-hub-intro">The anatomy of a paid social ad — how hook, body, and offer interact to produce or lose the sale.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+    <a href="ad-psychology.html" class="pb-hub-card">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="7" stroke="#8FAF8F" stroke-width="0.75" opacity="0.35"/>
+          <circle cx="12" cy="12" r="4.5" stroke="#8FAF8F" stroke-width="0.75" opacity="0.55"/>
+          <circle cx="12" cy="12" r="2" fill="#B8E3CF" opacity="0.9"/>
+          <line x1="12" y1="5" x2="12" y2="7.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="19" y1="12" x2="16.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="12" y1="19" x2="12" y2="16.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="5" y1="12" x2="7.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">The psychological levers that make paid social creative work</div>
+      <div class="pb-hub-intro">Why certain creative choices move people and others don't — applied to real Meta ad decisions.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+  </div>
+
+  <!-- ── SCALING & OPTIMIZATION ── -->
+  <span class="section-divider">Scaling &amp; optimization</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="winner-extension.html" class="pb-hub-card feat">
+      <div class="pb-tile scale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <polyline points="5,18 5,14 9,14 9,10 13,10 13,6 18,6" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          <polyline points="5,18 5,14 9,14 9,10 13,10 13,6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="13" cy="6" r="2" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title q">What to do when a winning ad starts to slow down</div>
+        <div class="pb-hub-intro">How to extend a winner's life through variation before the account loses signal entirely. The decisions most people make too late.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </div>
+    </a>
+
+    <a href="coverage-gap.html" class="pb-hub-card">
+      <div class="pb-tile scale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#8FAF8F" stroke-width="0.75" opacity="0.4"/>
+          <path d="M12 4 A8 8 0 0 1 20 12 L12 12 Z" fill="#B8E3CF" fill-opacity="0.7"/>
+          <path d="M12 12 L20 12 A8 8 0 0 1 4.7 16.5 Z" fill="#B8E3CF" fill-opacity="0.3"/>
+          <circle cx="12" cy="12" r="1.5" fill="#F1ECE2" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">Finding the audience segments the account is not reaching</div>
+      <div class="pb-hub-intro">How to identify coverage gaps before they show up as performance drops.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+    <a href="natural-cac.html" class="pb-hub-card tint">
+      <div class="pb-tile scale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="5" y1="19" x2="19" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="5" y1="5" x2="5" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M5 14 Q10 14 10 10 Q10 6 14 6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="14" y1="6" x2="19" y2="6" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1.5 2"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title q">Why fighting the platform on acquisition cost is usually the wrong move</div>
+      <div class="pb-hub-intro">The natural CAC concept — and why making LTV work at the platform's price beats pushing CPA down.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+  </div>
+
+  <!-- ── AI & WORKFLOWS ── -->
+  <span class="section-divider">AI &amp; workflows</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="ai-workflow.html" class="pb-hub-card feat">
+      <div class="pb-tile ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M7 12 C7 8.5 10 7 12 7 C14 7 17 8.5 17 12" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <path d="M7 12 C7 15.5 10 17 12 17 C14 17 17 15.5 17 12" fill="none" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="7" x2="14" y2="5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          <line x1="17" y1="12" x2="19" y2="11" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title">How I use AI to speed up research, brief writing, and creative iteration</div>
+        <div class="pb-hub-intro">The actual workflow — which steps benefit from AI, which still need judgment, and how to structure the handoff so neither breaks the other.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+      </div>
+    </a>
+
+    <a href="comment-response-ads.html" class="pb-hub-card">
+      <div class="pb-tile ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="5" width="16" height="11" rx="2" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.5"/>
+          <line x1="7" y1="9" x2="13" y2="9" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+          <line x1="7" y1="12" x2="11" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M10 16 L10 19 M14 16 L14 19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="8" y1="19" x2="16" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">Turning comment sections into creative intelligence</div>
+      <div class="pb-hub-intro">How to mine comment data from organic and paid posts to find angles the brief never surfaced.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span><span class="pb-pill">FREE</span></div>
+    </a>
+
+  </div>
+
+</div>
 </div>
 
 <footer class="sitefoot">

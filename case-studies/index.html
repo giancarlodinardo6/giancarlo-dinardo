@@ -97,9 +97,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
-    line-height: 1;
     flex-shrink: 0;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
   .arch-item .yr {
     font-family: var(--mono);
@@ -130,8 +133,8 @@
   }
 
   /* Tile colors */
-  .at-clay  { background: rgba(255,255,255,0.7); border: 1px solid var(--line-2); }
-  .at-mint  { background: rgba(184,227,207,0.25); border: 1px solid rgba(184,227,207,0.5); }
+  .at-num   { background: var(--tile-black); color: rgba(241,236,226,0.9); }
+  .at-num-dtc { background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line-2); }
 
   @media (max-width: 700px) {
     .cs-wrap { padding: 24px 16px 60px; }
@@ -140,7 +143,7 @@
     .cs-masthead .meta { text-align: left; }
     .arch-list { grid-template-columns: 1fr; }
     .arch-item { grid-template-columns: 44px 1fr; padding: 16px 8px 16px 0; gap: 14px; }
-    .arch-item .at { width: 44px; height: 44px; font-size: 22px; }
+    .arch-item .at { width: 44px; height: 44px; font-size: 18px; }
     .arch-item .t { font-size: 15px; }
   }
   @media (max-width: 960px) and (min-width: 701px) {
@@ -196,7 +199,7 @@
     <span class="section-intro">Home services · Lead gen</span>
     <div class="arch-list">
       <a href="windows.html" class="arch-item">
-        <div class="at at-clay">🪟</div>
+        <div class="at at-num">01</div>
         <div class="body">
           <div class="yr"><span>ALENCO</span><span>·</span><span>WINDOWS & DOORS</span></div>
           <div class="t">Knowing when to stop spending is how CPL dropped 24%</div>
@@ -204,7 +207,7 @@
         </div>
       </a>
       <a href="bath.html" class="arch-item">
-        <div class="at at-clay">🚿</div>
+        <div class="at at-num">02</div>
         <div class="body">
           <div class="yr"><span>ALENCO</span><span>·</span><span>BATH REMODELING</span></div>
           <div class="t">Six states of data pointed to one clear winner</div>
@@ -212,7 +215,7 @@
         </div>
       </a>
       <a href="roofing.html" class="arch-item">
-        <div class="at at-clay">🏗️</div>
+        <div class="at at-num">03</div>
         <div class="body">
           <div class="yr"><span>LONG HOME</span><span>·</span><span>ROOFING</span></div>
           <div class="t">One winning video across 11 states is not a system.</div>
@@ -220,7 +223,7 @@
         </div>
       </a>
       <a href="basement.html" class="arch-item">
-        <div class="at at-clay">📐</div>
+        <div class="at at-num">04</div>
         <div class="body">
           <div class="yr"><span>PREMIER</span><span>·</span><span>BASEMENT RENOVATION</span></div>
           <div class="t">No historical data. Built the creative map before spending a dollar.</div>
@@ -228,7 +231,7 @@
         </div>
       </a>
       <a href="epoxy.html" class="arch-item">
-        <div class="at at-clay">🪣</div>
+        <div class="at at-num">05</div>
         <div class="body">
           <div class="yr"><span>FLOOR ARMOR</span><span>·</span><span>EPOXY FLOORING</span></div>
           <div class="t">The brief was fine. The structure was the problem.</div>
@@ -236,7 +239,7 @@
         </div>
       </a>
       <a href="kitchens.html" class="arch-item">
-        <div class="at at-clay">🍳</div>
+        <div class="at at-num">06</div>
         <div class="body">
           <div class="yr"><span>NDA</span><span>·</span><span>KITCHEN REMODELING</span></div>
           <div class="t">37% of leads were going nowhere. Here is how that gets fixed.</div>
@@ -248,7 +251,7 @@
     <span class="section-intro" style="margin-top:48px">DTC · eCommerce</span>
     <div class="arch-list">
       <a href="grooming.html" class="arch-item">
-        <div class="at at-mint">💈</div>
+        <div class="at at-num-dtc">07</div>
         <div class="body">
           <div class="yr"><span>NDA</span><span>·</span><span>DTC PERSONAL CARE</span></div>
           <div class="t">Good product. Generic ads. The creative was not earning the sale.</div>
@@ -256,7 +259,7 @@
         </div>
       </a>
       <a href="browze-dtc.html" class="arch-item">
-        <div class="at at-mint">📦</div>
+        <div class="at at-num-dtc">08</div>
         <div class="body">
           <div class="yr"><span>BROWZE</span><span>·</span><span>DTC ECOMMERCE</span></div>
           <div class="t">One winning product, one winning ad, and a frequency wall building fast.</div>
@@ -264,7 +267,7 @@
         </div>
       </a>
       <a href="apparel.html" class="arch-item">
-        <div class="at at-mint">👕</div>
+        <div class="at at-num-dtc">09</div>
         <div class="body">
           <div class="yr"><span>NDA</span><span>·</span><span>DTC APPAREL</span></div>
           <div class="t">An identity brand trying to scale with product ads.</div>

@@ -582,6 +582,34 @@
     .v3-hire .left { border-right: 0; border-bottom: 1px solid var(--line); }
     .arch-row .row-metric { display: none; }
   }
+
+.linkedin-float {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(28,28,26,0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.linkedin-float:hover {
+  transform: translateY(-2px);
+  background: #000;
+}
+
+.linkedin-float svg {
+  width: 16px;
+  height: 16px;
+}
+
 </style>
 </head>
 <body>
@@ -890,6 +918,16 @@
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
 </footer>
+
+
+<a href="https://www.linkedin.com/in/giancarlodinardo/" 
+   class="linkedin-float" 
+   target="_blank" 
+   aria-label="LinkedIn">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.2h.07c.67-1.27 2.3-2.6 4.73-2.6C22.4 7.6 24 10 24 14.2V24h-5v-8.4c0-2-.04-4.6-2.8-4.6-2.8 0-3.2 2.2-3.2 4.4V24h-5V8z"/>
+  </svg>
+</a>
 
 </body>
 </html>

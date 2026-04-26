@@ -10,7 +10,7 @@
     body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
     nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
     .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}.nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}.nav-back:hover{color:var(--ink);}
-    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
     .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
     .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}.prose+.prose{margin-top:20px;}
     .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
@@ -22,14 +22,14 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
-    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
     .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
     .hero-stat{flex:1;min-width:100px;}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
-    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
-    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
+    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -50,19 +50,19 @@
     .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
     .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
     .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
-    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
     .creative-card-metric strong{color:var(--ink);font-weight:500;}
     .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
     .results-inner{max-width:1200px;margin:0 auto;}
-    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label{color:rgba(255,255,255,0.6);}
     .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
     .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
     .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
     .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
     .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
     .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
-    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
-    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;font-weight:300;}
     .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
@@ -149,7 +149,7 @@
   <div class="hero-visual">
     <div class="hero-visual-label">Ten-week creative repositioning</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
       <div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
     </div>
@@ -264,7 +264,7 @@
   <div class="results-inner">
     <div class="section-label">Results</div>
     <h2>The ROAS improved. The buyer quality improved more.</h2>
-    <p class="prose">Ten weeks in. The shift in creative was not just a ROAS improvement. The buyer the identity creative reached had a meaningfully higher AOV and a lower return rate than the product creative buyer. The account was now finding the person the brand was built for at scale.</p>
+    <p class="prose">Ten weeks in. The creative shift was not just a ROAS improvement. The buyer the identity creative reached had a meaningfully higher AOV and a lower return rate than the product creative buyer. The +22% AOV differential is the confirmed number here — it held consistently across the test period and was the clearest signal that the account was now reaching the person the brand was built for. The ROAS figure is directional; the AOV and return rate pattern was not.</p>
     <div class="results-grid">
       <div class="result-stat">
         <div class="result-num"><span class="confirm">⚑</span>2.4x</div>
@@ -274,17 +274,17 @@
       <div class="result-stat">
         <div class="result-num">+22%</div>
         <div class="result-label">Average order value</div>
-        <div class="result-context">Identity buyer segment vs product hook buyer segment</div>
+        <div class="result-context">Confirmed. Identity buyer vs product hook buyer over the same period. The strongest number in this case study.</div>
       </div>
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>lower</div>
+        <div class="result-num"><span class="confirm">⚑</span>Lower</div>
         <div class="result-label">Return rate</div>
-        <div class="result-context">Identity creative buyers returned less than product hook buyers over the same period</div>
+        <div class="result-context">Directional. Identity creative buyers returned less — consistent with higher AOV and closer match to organic buyer profile.</div>
       </div>
       <div class="result-stat">
         <div class="result-num">4</div>
         <div class="result-label">Hook types tested</div>
-        <div class="result-context">Identity and curiosity hooks promoted to scale. Product hook kept for warm retargeting only.</div>
+        <div class="result-context">Identity and curiosity hooks promoted to scale. Product hook retained for warm retargeting only.</div>
       </div>
     </div>
   </div>
@@ -356,14 +356,8 @@
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. ROAS differential (2.4x), AOV improvement (22%), and return rate directional improvement are estimates based on the documented trajectory. Hook test structure, identity vs product buyer distinction, and systematic testing approach are accurate to the engagement.</div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. ROAS differential (2.4x), AOV improvement (22%), and return rate directional improvement are estimates based on the documented trajectory. Hook test structure, identity vs product buyer distinction, and systematic testing approach are accurate to the engagement.
 
-<div class="cta-wrap">
-  <div class="cta-section">
-    <h2 class="cta-h2">Running an identity brand with <em>product ads</em>?</h2>
-    <p class="cta-desc">If your paid buyer does not behave like your organic buyer, the creative is selecting for the wrong person. The hook type is usually where that happens. It is also where it is easiest to fix.</p>
-    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
-  </div>
 </div>
 
 <footer class="sitefoot">

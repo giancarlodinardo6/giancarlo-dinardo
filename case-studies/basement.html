@@ -13,7 +13,7 @@
     .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}
     .nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}
     .nav-back:hover{color:var(--ink);}
-    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
     .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
     .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}
     .prose+.prose{margin-top:20px;}
@@ -26,15 +26,15 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
-    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
     .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
     .hero-stat{flex:1;min-width:100px;}
     .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
-    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
-    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
+    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -55,19 +55,19 @@
     .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
     .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
     .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
-    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
     .creative-card-metric strong{color:var(--ink);font-weight:500;}
     .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
     .results-inner{max-width:1200px;margin:0 auto;}
-    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label{color:rgba(255,255,255,0.6);}
     .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
     .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
     .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
     .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
     .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
     .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
-    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
-    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;font-weight:300;}
     .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
@@ -164,7 +164,7 @@
   <div class="hero-visual">
     <div class="hero-visual-label">First ninety days</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>$187</div><div class="hero-stat-label">CPL by week eight</div></div>
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>$187</div><div class="hero-stat-label">CPL by week eight</div></div>
       <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Personas identified in pre-launch research</div></div>
       <div class="hero-stat"><div class="hero-stat-num">14</div><div class="hero-stat-label">Creative concepts launched in first 60 days</div></div>
     </div>
@@ -278,13 +278,13 @@
 <section class="results-section">
   <div class="results-inner">
     <div class="section-label">Results</div>
-    <h2>The research paid for itself in the first month.</h2>
-    <p class="prose">By the end of month two, the account had a clear creative hierarchy based on real performance data. The two-week pre-launch research phase meant the first batch of creative was built around real buyer language rather than assumptions. That showed up in how quickly the account found its footing.</p>
+    <h2>A standing start that found its footing faster than most accounts with a year of history.</h2>
+    <p class="prose">By the end of month two, the account had a clear creative hierarchy built from real performance data. Basement renovation CPL benchmarks for Meta typically run $200–$280 at account maturity, depending on market and budget level. The research phase compressed the timeline it usually takes to get there. Instead of spending the first two months figuring out who the buyer is, we started from a position of already knowing.</p>
     <div class="results-grid">
       <div class="result-stat">
         <div class="result-num"><span class="confirm">⚑</span>$187</div>
         <div class="result-label">Cost per lead</div>
-        <div class="result-context">By week eight, from a standing start with no prior data</div>
+        <div class="result-context">Week eight. Category benchmarks typically run $200–$280. Research front-loaded the learning.</div>
       </div>
       <div class="result-stat">
         <div class="result-num">14</div>
@@ -294,12 +294,12 @@
       <div class="result-stat">
         <div class="result-num"><span class="confirm">⚑</span>27%</div>
         <div class="result-label">Set rate</div>
-        <div class="result-context">On winning concepts by end of month two</div>
+        <div class="result-context">On winning concepts by month two. Moisture-urgency concepts consistently outperformed aspirational ones.</div>
       </div>
       <div class="result-stat">
-        <div class="result-num">3</div>
-        <div class="result-label">Persona types</div>
-        <div class="result-context">Identified in research, all confirmed as distinct signals in live data</div>
+        <div class="result-num">3 of 3</div>
+        <div class="result-label">Personas confirmed</div>
+        <div class="result-context">All three research hypotheses validated as distinct buyer signals in live data.</div>
       </div>
     </div>
   </div>
@@ -310,15 +310,15 @@
   <div class="learned-items">
     <div class="learned-item">
       <div class="learned-num">01</div>
-      <div class="learned-text"><strong>Research is not a delay. It is the brief.</strong> The two weeks spent before launch were not preparation for the real work. They were the real work. Every brief that came from them was built around something a real person had actually said in a review or a comment section. That specificity showed up in the set rate from week one.</div>
+      <div class="learned-text"><strong>Research is not a delay. It is the brief.</strong> The two weeks spent before launch were not preparation for the real work. They were the real work. Every brief that came from them was built around something a real person had actually said in a review or a comment section. That specificity showed up in the set rate from week one. The financing angle — the concept I was least confident about pulling early — confirmed it. Its CPL looked fine. Its set rate was the lowest in the batch. Without the research giving me a frame to read that against, I might have scaled it.</div>
     </div>
     <div class="learned-item">
       <div class="learned-num">02</div>
-      <div class="learned-text"><strong>Persona mapping determines creative priorities, not just creative variety.</strong> The three personas were not a way to make sure we covered everyone. They were a ranking. The moisture-aware homeowner was the highest-intent buyer and got the most creative attention in the first batch. That was a research conclusion, not a guess.</div>
+      <div class="learned-text"><strong>Persona mapping determines creative priorities, not just creative variety.</strong> The three personas were not a way to make sure we covered everyone. They were a ranking. The moisture-aware homeowner was the highest-intent buyer and got the most creative attention in the first batch. The space-conversion buyer was real but earlier in the funnel — good lead volume, lower set rate. Knowing that before launch meant I did not chase the volume signal when it appeared. I weighted budget toward the one that converted downstream.</div>
     </div>
     <div class="learned-item">
       <div class="learned-num">03</div>
-      <div class="learned-text"><strong>Comment section language is the fastest research shortcut in a new vertical.</strong> The objections homeowners wrote under competitor ads were more specific and more emotionally honest than anything I could have generated from a brief alone. "I have been putting this off for two years because I do not know who to trust" became the opening line of the winning creative. It was written by the audience, not by me.</div>
+      <div class="learned-text"><strong>Comment section language is the fastest research shortcut in a new vertical.</strong> The objections homeowners wrote under competitor ads were more specific and more emotionally honest than anything I could have generated from a brief alone. "I have been putting this off for two years because I do not know who to trust" became the opening line of the winning creative. It was written by the audience, not by me. The 3-requirements qualifier — the concept that filtered hardest and converted best — came from the same place. A commenter asking "does this work if my basement is older than 15 years?" told me exactly what to build.</div>
     </div>
   </div>
 </section>
@@ -371,14 +371,8 @@
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes. CPL and set rate are directional estimates consistent with the performance trajectory documented at the time. The persona research findings and creative hierarchy are accurate to the engagement.</div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes. CPL and set rate are directional estimates consistent with the performance trajectory documented at the time. The persona research findings and creative hierarchy are accurate to the engagement.
 
-<div class="cta-wrap">
-  <div class="cta-section">
-    <h2 class="cta-h2">Launching into a vertical with <em>no prior data</em>?</h2>
-    <p class="cta-desc">The research phase is where the creative strategy actually gets built. If you are starting from scratch or relaunching after a gap, the two weeks before the first campaign goes live are the most valuable two weeks of the engagement.</p>
-    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
-  </div>
 </div>
 
 <footer class="sitefoot">

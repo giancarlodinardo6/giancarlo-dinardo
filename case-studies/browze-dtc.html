@@ -11,7 +11,7 @@
     nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
     .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}
     .nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}.nav-back:hover{color:var(--ink);}
-    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-30);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
     .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
     .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}.prose+.prose{margin-top:20px;}
     .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
@@ -23,15 +23,15 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(58,125,110,0.2) 0%,transparent 70%);}
-    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:28px;position:relative;z-index:1;}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
     .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
     .hero-stat{flex:1;min-width:100px;}
     .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
-    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);line-height:1.4;}
-    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
+    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -52,19 +52,19 @@
     .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
     .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
     .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
-    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
     .creative-card-metric strong{color:var(--ink);font-weight:500;}
     .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
     .results-inner{max-width:1200px;margin:0 auto;}
-    .results-inner .section-label{color:rgba(255,255,255,0.3);}
+    .results-inner .section-label{color:rgba(255,255,255,0.6);}
     .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
     .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
     .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
     .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
     .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
     .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
-    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:8px;}
-    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;font-weight:300;}
     .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
@@ -151,7 +151,7 @@
   <div class="hero-visual">
     <div class="hero-visual-label">Six-week expansion phase</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:18px;">⚑</span>38%</div><div class="hero-stat-label">CPA improvement</div></div>
+      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>38%</div><div class="hero-stat-label">CPA improvement</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">New audience segments opened</div></div>
       <div class="hero-stat"><div class="hero-stat-num">2.1x</div><div class="hero-stat-label">Spend increase sustained without frequency spike</div></div>
     </div>
@@ -266,7 +266,7 @@
   <div class="results-inner">
     <div class="section-label">Results</div>
     <h2>Spend scaled. Frequency held. CPA came down.</h2>
-    <p class="prose">The six-week expansion phase produced results that justified the approach. More budget behind more distinct creative signals meant the algorithm had new territory to find buyers in rather than narrowing into an already-saturated audience.</p>
+    <p class="prose">The six-week expansion phase produced results that justified the approach. More budget behind more distinct creative signals meant the algorithm had new territory to find buyers in rather than narrowing into an already-saturated audience. This product was one of several I ran at Browze over a multi-year period during which the brand scaled from early-stage DTC to over $16M in annual platform revenue. The expansion playbook documented here ran across multiple products, not just this one.</p>
     <div class="results-grid">
       <div class="result-stat">
         <div class="result-num"><span class="confirm">⚑</span>38%</div>
@@ -284,9 +284,9 @@
         <div class="result-context">Home office, family space, video-resistant users, aesthetic buyers identified</div>
       </div>
       <div class="result-stat">
-        <div class="result-num">below 2.0</div>
+        <div class="result-num">&lt;2.0</div>
         <div class="result-label">Frequency per creative</div>
-        <div class="result-context">Maintained throughout the expansion phase by rotating new territory in before ceiling hit</div>
+        <div class="result-context">Ceiling held throughout. Rotated new territory in before any single creative crossed it</div>
       </div>
     </div>
   </div>
@@ -358,14 +358,8 @@
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from memory and campaign notes from the Browze period. CPA improvement and spend increase are directional estimates consistent with the trajectory documented at the time. Frequency ceiling methodology and creative expansion approach are accurate to the engagement.</div>
+<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from memory and campaign notes from the Browze period. CPA improvement and spend increase are directional estimates consistent with the trajectory documented at the time. Frequency ceiling methodology and creative expansion approach are accurate to the engagement.
 
-<div class="cta-wrap">
-  <div class="cta-section">
-    <h2 class="cta-h2">Scaling a winning product but hitting a <em>frequency wall</em>?</h2>
-    <p class="cta-desc">The answer is almost never more budget behind the same creative. At Browze we ran this playbook across multiple products. If your CPMs are rising and your winner is doing all the work, the coverage map is where to start.</p>
-    <a href="mailto:hello@example.com" class="cta-btn">Get in touch →</a>
-  </div>
 </div>
 
 <footer class="sitefoot">

@@ -643,12 +643,16 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 .fh-card {
   transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
   border-radius: 8px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 .fh-card:hover {
   background: rgba(255,255,255,0.7);
   box-shadow: 0 2px 14px rgba(0,0,0,0.06);
   transform: translateY(-1px);
-  padding-left: 12px;
+  padding-left: 28px;
 }
 
 /* ── STAT LABELS IN SAGE ─────────────────────────────────────────── */

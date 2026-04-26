@@ -17,7 +17,7 @@
     --sage-light: #E4EDE0;
     --rust: #B85C38;
     --rust-light: #F0E4DC;
-    --teal: #3A7D6E;
+    --teal: #5B9E9E;
     --teal-light: #D8EDEA;
     --amber: #B87A1A;
     --serif: 'Instrument Serif', Georgia, serif;
@@ -55,18 +55,18 @@
   /* Hero visual — brain processing order */
   .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
   .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
-  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
   .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
 
   .brain-order { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
   .bo-step { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; }
   .bo-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 12px; }
   .bo-step.relevance .bo-num { background: rgba(184,92,56,0.3); color: #E8967A; }
-  .bo-step.story .bo-num { background: rgba(58,125,110,0.3); color: #7ABFB5; }
+  .bo-step.story .bo-num { background: rgba(91,158,158,0.3); color: #7ABFB5; }
   .bo-step.solution .bo-num { background: rgba(184,122,26,0.3); color: #D4A847; }
   .bo-content { padding: 12px 14px; border-radius: 10px; }
   .bo-step.relevance .bo-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
-  .bo-step.story .bo-content { background: rgba(58,125,110,0.1); border: 1px solid rgba(58,125,110,0.15); }
+  .bo-step.story .bo-content { background: rgba(91,158,158,0.1); border: 1px solid rgba(91,158,158,0.15); }
   .bo-step.solution .bo-content { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
   .bo-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 3px; }
   .bo-step.relevance .bo-label { color: rgba(232,150,122,0.6); }
@@ -123,7 +123,7 @@
   .mc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 16px; }
   .mc-contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
   .mc-wrong { font-size: 12px; padding: 10px 12px; background: rgba(184,92,56,0.06); border: 1px solid rgba(184,92,56,0.12); border-radius: 8px; line-height: 1.5; color: var(--ink-60); }
-  .mc-right { font-size: 12px; padding: 10px 12px; background: rgba(58,125,110,0.06); border: 1px solid rgba(58,125,110,0.12); border-radius: 8px; line-height: 1.5; color: var(--ink-60); }
+  .mc-right { font-size: 12px; padding: 10px 12px; background: rgba(91,158,158,0.06); border: 1px solid rgba(91,158,158,0.12); border-radius: 8px; line-height: 1.5; color: var(--ink-60); }
   .mc-contrast-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; font-weight: 500; }
   .mc-wrong .mc-contrast-label { color: var(--rust); }
   .mc-right .mc-contrast-label { color: var(--teal); }
@@ -149,7 +149,7 @@
 
   .arch-stage.opening { background: rgba(184,92,56,0.06); border-left: 3px solid rgba(184,92,56,0.3); border-radius: 12px 12px 0 0; }
   .arch-stage.middle { background: rgba(255,255,255,0.03); border-left: 3px solid rgba(255,255,255,0.06); }
-  .arch-stage.objection { background: rgba(58,125,110,0.06); border-left: 3px solid rgba(58,125,110,0.2); }
+  .arch-stage.objection { background: rgba(91,158,158,0.06); border-left: 3px solid rgba(91,158,158,0.2); }
   .arch-stage.close { background: rgba(184,122,26,0.06); border-left: 3px solid rgba(184,122,26,0.25); border-radius: 0 0 12px 12px; }
 
   .arch-stage.opening .arch-stage-mechanism { color: rgba(232,150,122,0.5); }
@@ -172,7 +172,7 @@
   .sb-row.opening .sb-stage { color: var(--rust); }
   .sb-row.middle { background: var(--ink-06); }
   .sb-row.middle .sb-stage { color: var(--ink-60); }
-  .sb-row.objection { background: rgba(58,125,110,0.04); }
+  .sb-row.objection { background: rgba(91,158,158,0.04); }
   .sb-row.objection .sb-stage { color: var(--teal); }
   .sb-row.close { background: rgba(184,122,26,0.04); }
   .sb-row.close .sb-stage { color: var(--amber); }
@@ -196,7 +196,7 @@
   /* ── CTA ── */
   .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
   .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
-  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(58,125,110,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 65%); pointer-events: none; }
   .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
   .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
   .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
@@ -558,7 +558,7 @@
     <div style="font-size: 16px; margin-top: 2px;">→</div>
     <div>
       <div style="font-size: 13px; font-weight: 500; color: #1C1C1A; margin-bottom: 4px;">The psychology explains why each block works. The Creative Construction playbook covers how to build them.</div>
-      <div style="font-size: 13px; color: rgba(28,28,26,0.6); line-height: 1.65;">This piece covers the psychological mechanisms behind ads that scale. The Creative Construction playbook covers the structural building blocks (hook, problem, solution, benefit, proof, CTA) and how to evaluate and iterate on each one independently. The two pieces read well together: one gives you the reasoning, the other gives you the architecture. <a href="/playbooks/creative-construction" style="color: #3A7D6E; font-weight: 500; text-decoration: none;">Read it →</a></div>
+      <div style="font-size: 13px; color: rgba(28,28,26,0.6); line-height: 1.65;">This piece covers the psychological mechanisms behind ads that scale. The Creative Construction playbook covers the structural building blocks (hook, problem, solution, benefit, proof, CTA) and how to evaluate and iterate on each one independently. The two pieces read well together: one gives you the reasoning, the other gives you the architecture. <a href="/playbooks/creative-construction" style="color: #5B9E9E; font-weight: 500; text-decoration: none;">Read it →</a></div>
     </div>
   </div>
 </div>

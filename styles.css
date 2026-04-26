@@ -160,7 +160,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 .mainnav-links a:hover { color: var(--ink); }
 .mainnav-links a.active {
   color: var(--ink);
-  border-bottom-color: var(--rust);
+  border-bottom-color: var(--ink-60);
 }
 .nav-cta {
   display: inline-flex;

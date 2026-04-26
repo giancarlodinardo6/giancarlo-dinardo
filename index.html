@@ -619,9 +619,9 @@
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
     CV
   </a>
-  <a href="/cdn-cgi/l/email-protection#7f18161e111c1e0d13101b16111e0d1b1051493f18121e1613511c1012" class="email-link">
+  <a href="#" class="email-link" id="email-link-top">
     <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
-    <span class="__cf_email__" data-cfemail="feb9b7bfb0bdbfacb2b1bab7b0bfacbab1d0c8beb9b3bfb7b2d0bdb1b3">[email&#160;protected]</span>
+    <span id="email-text-top"></span>
   </a>
 </div>
 
@@ -635,10 +635,10 @@
     <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
-  <a href="/cdn-cgi/l/email-protection#610608000f0200130d0e05080f0013050e4f5721060c00080d4f020e0c" class="nav-cta">Get in touch</a>
+  <a href="#" data-email-link class="nav-cta">Get in touch</a>
 </nav>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var path = window.location.pathname;
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
@@ -677,7 +677,7 @@
         <p class="bio">I use performance data to decide what creative gets tested next, not to explain what already happened. Right now I'm building workflows that make that loop faster and more repeatable for teams that can't afford to guess.</p>
         <div class="actions">
           <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn">Download CV</a>
-          <a href="/cdn-cgi/l/email-protection#187f7179767b796a74777c7176796a7c77362e587f75797174367b7775" class="btn btn-ghost">Get in touch</a>
+          <a href="#" data-email-link class="btn btn-ghost">Get in touch</a>
         </div>
       </div>
       <div class="v4-aboutcard-right">
@@ -964,7 +964,7 @@
           <li>Testing system buildouts (4–6 wks)</li>
           <li>Embedded as fractional head of paid</li>
         </ul>
-        <a href="/cdn-cgi/l/email-protection#1b7c727a75787a6977747f72757a697f74352d5b7c767a727735787476" class="btn btn-ghost">Start a conversation</a>
+        <a href="#" data-email-link class="btn btn-ghost">Start a conversation</a>
       </div>
     </section>
 
@@ -986,5 +986,22 @@
   </svg>
 </a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+<script>
+  // Hydrate email links at runtime so static scrapers (incl. Cloudflare's
+  // email-obfuscation feature) never see the address as a literal string.
+  (function () {
+    var u = "giancarlodinardo.6";
+    var d = "gmail.com";
+    var addr = u + "@" + d;
+    var href = "mai" + "lto:" + addr;
+    document.querySelectorAll("[data-email-link]").forEach(function (a) {
+      a.setAttribute("href", href);
+    });
+    var topLink = document.getElementById("email-link-top");
+    if (topLink) topLink.setAttribute("href", href);
+    var topText = document.getElementById("email-text-top");
+    if (topText) topText.textContent = addr.toUpperCase();
+  })();
+</script>
+</body>
 </html>

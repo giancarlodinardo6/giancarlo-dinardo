@@ -7,9 +7,31 @@
 <link rel="stylesheet" href="../styles.css">
 <style>
   .fh-intro { align-items: start !important; }
-  .fw-tile { width: 64px; height: 64px; border-radius: 8px; flex-shrink: 0; display: block; }
-  .fh-card { padding: 22px 12px; margin: 0 -12px; }
-  .fh-card:hover { padding-left: 20px; }
+  .fw-tile {
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  /* Mobile — keep tile + copy from colliding */
+  @media (max-width: 700px) {
+    .fh-card {
+      grid-template-columns: 44px 1fr !important;
+      gap: 14px !important;
+      padding: 16px 0 !important;
+      align-items: start;
+    }
+    .fh-card .fw-tile,
+    .fh-card .tile {
+      width: 44px !important;
+      height: 44px !important;
+    }
+    .fh-card .stats { display: none !important; }
+    .fh-card .t { font-size: 20px; }
+    .fh-list-head { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
 </style>
 </head>
 <body>
@@ -18,9 +40,9 @@
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
     CV
   </a>
-  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+  <a href="/cdn-cgi/l/email-protection#89eee0e8e7eae8fbe5e6ede0e7e8fbede6a7bfc9eee4e8e0e5a7eae6e4" class="email-link">
     <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
-    GIANCARLODINARDO.6@GMAIL.COM
+    <span class="__cf_email__" data-cfemail="f8bfb1b9b6bbb9aab4b7bcb1b6b9aabcb7d6ceb8bfb5b9b1b4d6bbb7b5">[email&#160;protected]</span>
   </a>
 </div>
 <nav class="mainnav">
@@ -33,10 +55,10 @@
     <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
-  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <a href="/cdn-cgi/l/email-protection#6a0d030b04090b1806050e03040b180e05445c2a0d070b030644090507" class="nav-cta">Get in touch</a>
 </nav>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   var path = window.location.pathname;
   var links = document.querySelectorAll('.mainnav-links a[data-section]');

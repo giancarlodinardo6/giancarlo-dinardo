@@ -22,14 +22,14 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
     .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
     .hero-stat{flex:1;min-width:100px;}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
-    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -154,10 +154,13 @@
       <circle cx="320" cy="80" r="60" fill="none" stroke="white" stroke-width="0.5"/>
       <circle cx="320" cy="80" r="100" fill="none" stroke="white" stroke-width="0.3"/>
     </svg>
-    <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num">2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
+    <div style="position:relative;z-index:1;">
+      <div class="hero-visual-label">Ten-week creative repositioning</div>
+      <div class="hero-stat-grid">
+        <div class="hero-stat"><div class="hero-stat-num">2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
+      </div>
     </div>
     <div class="hero-visual-footer">Same clothes. Different creative premise. Different buyer.</div>
   </div>
@@ -177,6 +180,41 @@
       <p>"A brand built around identity needs creative that makes the buyer feel seen before showing them the product. Product ads find product buyers. That is not who this brand is for."</p>
       <div class="context-callout-sub">The gap between organic customer behavior and paid acquisition behavior was the diagnostic signal. The organic buyer had higher AOV and lower return rate. They found the brand through a different door. The creative's job was to open that door at scale.</div>
     </div>
+    <!-- Buyer gap visual -->
+    <div style="margin-top:24px;background:white;border-radius:14px;padding:24px 28px;border:1px solid var(--ink-10);">
+      <div style="font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-30);margin-bottom:20px;">Paid vs Organic Buyer Gap</div>
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:12px;color:var(--ink-60);">Average Order Value</span>
+            <span style="font-size:11px;color:var(--rust);font-weight:500;">−22%</span>
+          </div>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <div style="height:6px;border-radius:3px;background:var(--rust);width:62%;"></div>
+            <div style="height:6px;border-radius:3px;background:var(--teal);width:78%;"></div>
+          </div>
+          <div style="display:flex;gap:4px;margin-top:5px;">
+            <span style="font-size:10px;color:var(--ink-30);width:62%;text-align:center;">Paid buyer</span>
+            <span style="font-size:10px;color:var(--ink-30);width:78%;text-align:center;">Organic buyer</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">
+            <span style="font-size:12px;color:var(--ink-60);">Return Rate</span>
+            <span style="font-size:11px;color:var(--rust);font-weight:500;">Higher paid</span>
+          </div>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <div style="height:6px;border-radius:3px;background:var(--rust);width:55%;"></div>
+            <div style="height:6px;border-radius:3px;background:var(--teal);width:28%;"></div>
+          </div>
+          <div style="display:flex;gap:4px;margin-top:5px;">
+            <span style="font-size:10px;color:var(--ink-30);width:55%;text-align:center;">Paid buyer</span>
+            <span style="font-size:10px;color:var(--ink-30);width:28%;text-align:center;">Organic</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:11px;color:var(--ink-30);font-style:italic;line-height:1.5;">The data said the ads were finding someone. The buyer profile said it was the wrong someone.</div>
+    </div>
   </div>
 </section>
 
@@ -186,14 +224,14 @@
   <div>
     <div class="section-label">The Approach</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Find the identity buyer. Build creative for them specifically. Test until the algorithm can find more.</h2>
-    <p class="prose">The organic customer data was the brief. People who bought through the brand's organic content were describing themselves in a specific way: less clutter, more intention, done with fast fashion. The paid creative needed to open with that person's self-image, not with the hoodie's weight in grams.</p>
+    <p class="prose">Identity brands have a specific problem: the product is not the point. The person is the point. The brief was not to make the clothes look better — it was to find the creative premise that made the right buyer recognise themselves before the clothes appeared. The organic audience had already told the brand who they were. The creative's job was to speak that identity back to them at scale.</p>
   </div>
   <div class="process-steps">
     <div class="process-step">
       <div class="process-step-num">01</div>
       <div>
-        <div class="process-step-name">Read organic content comments for self-image language</div>
-        <div class="process-step-desc">The brand's organic posts had a comments section that was essentially a brief. People describing their philosophy around buying, what they had stopped doing, what the brand represented to them. That language was the hook material. Not the fabric weight. Not the number of washes it would survive.</div>
+        <div class="process-step-name">Map the self-image the brand had already earned organically</div>
+        <div class="process-step-desc">Buyers of an identity brand do not describe the product — they describe themselves. The organic comment section was full of people explaining why they had stopped buying fast fashion, what they were trying to be, and what owning less meant to them. That language was not research material. It was the brief. The paid creative needed to reflect that self-image back before showing them anything to buy.</div>
       </div>
     </div>
     <div class="process-step">
@@ -310,7 +348,7 @@
     </div>
     <div class="learned-item">
       <div class="learned-num">02</div>
-      <div class="learned-text"><strong>Organic customer behavior is the paid creative brief.</strong> The brand's organic buyers were describing themselves in a specific way in comments and reviews. That language was the hook. Not the fabric weight. Not the number of washes survived. The person the brand was built for had a self-image and the creative needed to reflect it back before showing them anything to buy.</div>
+      <div class="learned-text"><strong>Identity brands earn their positioning organically before paid ever arrives.</strong> The brand had already done the hard work — organic buyers knew exactly what they were buying into and why. Paid had not caught up. The creative was pitching the product to people who needed to be pitched the identity first. Once the ads reflected the same self-image the organic content had built, the paid buyer started behaving like the organic buyer. The algorithm was not the problem. The message was.</div>
     </div>
     <div class="learned-item">
       <div class="learned-num">03</div>

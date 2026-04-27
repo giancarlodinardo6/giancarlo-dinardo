@@ -56,7 +56,7 @@
     .hero-stat { flex: 1; min-width: 100px; }
     .hero-stat-num { font-family: var(--serif); font-size: 48px; font-style: italic; color: white; line-height: 1; margin-bottom: 6px; }
     .hero-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); line-height: 1.4; }
-    .hero-visual-footer {margin-top: auto;  font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .hero-visual-footer { margin-top: 24px; font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
 
     .context-section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .context-callout { background: var(--rust-light); border-radius: 16px; padding: 36px; border-left: 3px solid var(--rust); }
@@ -184,7 +184,7 @@
     <div class="hero-left">
       <div class="hero-label">Case Studies / Bath Remodeling</div>
       <h1>One state was carrying five. Finding it took a <em>different kind of audit.</em></h1>
-      <p class="hero-desc">A US bath remodeling company operating across seven states — Maryland, West Virginia, Virginia, Rhode Island, New Hampshire, Maine, and Florida — had acceptable aggregate metrics and a serious market-level problem. A state-by-state creative audit found the signal buried in the noise and built a repeatable framework from it.</p>
+      <p class="hero-desc">A US bath remodeling company operating across multiple states had acceptable aggregate metrics and a serious market-level problem. Missouri was silently absorbing budget and dragging account-level results. A state-by-state creative audit found the signal buried in the noise and built a repeatable framework from it.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">Vertical</div>
@@ -196,7 +196,7 @@
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Monthly Spend</div>
-          <div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$10k–$16k</div>
+          <div class="hero-meta-value">$40k → $110k (scaled during the engagement)</div>
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Role</div>
@@ -205,22 +205,22 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-visual-label">Twelve-month performance delta</div>
+      <div class="hero-visual-label">Key results from this engagement</div>
       <div class="hero-stat-grid">
         <div class="hero-stat">
-          <div class="hero-stat-num">19%</div>
-          <div class="hero-stat-label">CPL reduction<br>$165 to $134</div>
+          <div class="hero-stat-num">25%</div>
+          <div class="hero-stat-label">CPL reduction<br>$114 → $85 avg. across states</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">19%</div>
-          <div class="hero-stat-label">Cost of marketing<br>within target range</div>
+          <div class="hero-stat-num">17%</div>
+          <div class="hero-stat-label">Cost of marketing<br>down from 25%, target ~21%</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">6</div>
           <div class="hero-stat-label">States audited<br>one creative hierarchy</div>
         </div>
       </div>
-      <div class="hero-visual-footer">MD / VA / FL / NH / KS / GA and more</div>
+      <div class="hero-visual-footer">Active markets: MD · VA · FL · NH · KS · GA — some states reaching CPL below $50</div>
     </div>
   </section>
 
@@ -231,7 +231,7 @@
     <div>
       <div class="section-label">The Situation</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Good top-line numbers. A broken picture underneath.</h2>
-      <p class="prose">The account ran across a wide geographic footprint and the aggregate CPL, around $165, looked within range. The problem was that Missouri, which had a large audience size, was absorbing a disproportionate share of spend in all-zips campaigns and quietly dragging down results everywhere else.</p>
+      <p class="prose">The account ran across a wide geographic footprint and the aggregate CPL, around $114, looked within range. The problem was that Missouri, which had a large audience size, was absorbing a disproportionate share of spend in all-zips campaigns and quietly dragging down results everywhere else. Spend in Missouri was subsequently capped and redirected to stronger markets.</p>
       <p class="prose">The deeper issue was creative. Some ads were generating strong lead volume while producing near-zero sales. That pattern only becomes visible when you look at lifetime data by ad, evaluated all the way through to close rate. Looking only at CPL, those ads appeared healthy.</p>
       <p class="prose">There was also a structural retargeting problem. The campaigns ran as CBOs with two adsets sharing one budget. One adset was much larger than the other. A CBO almost always starves the smaller audience, which in this case was the hotter, closer-to-converting one.</p>
     </div>
@@ -246,7 +246,7 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Cost per lead</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">~$165</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">~$114</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Cost of marketing %</span>
@@ -268,7 +268,7 @@
   <div class="divider"></div>
 
   <section class="approach-section">
-    <div>
+    <div style="position: sticky; top: 80px; align-self: start;">
       <div class="section-label">The Approach</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Audit first. Scale second.</h2>
       <p class="prose">The account had enough historical data to answer the creative question properly before spending another dollar on the wrong things. The audit came first. Everything else followed from it.</p>
@@ -285,7 +285,7 @@
         <div class="process-step-num">02</div>
         <div class="process-step-content">
           <div class="process-step-name">Build the creative hierarchy</div>
-          <div class="process-step-desc">Candid creatives became the primary scaling vehicle. The 3-requirements video format became the secondary format for new market launches. Banner-style ads were deprioritised except in Rhode Island, where a generic banner produced a 57% close rate across four sales.</div>
+          <div class="process-step-desc">Candid creatives became the primary scaling vehicle. The 3-requirements video format became the secondary format for new market launches. Banner-style ads were deprioritized except in Rhode Island, where a generic banner produced a 57% close rate across four sales.</div>
         </div>
       </div>
       <div class="process-step">
@@ -309,7 +309,7 @@
 
   <section class="creative-section">
     <div class="section-label">Creative</div>
-    <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">What six states taught us about creative format.</h2>
+    <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">What the state-by-state audit taught us about creative format.</h2>
     <p class="prose">The audit produced a consistent finding across markets: close rate and set rate diverged sharply between creative types even when CPL was similar. Format mattered more than cost.</p>
     <div class="creative-grid">
       <div class="creative-card">
@@ -356,21 +356,21 @@
   <section class="results-section">
     <div class="results-inner">
       <div class="section-label">Results</div>
-      <h2>CPL dropped. CoM% landed in target range. The creative hierarchy became a launch template.</h2>
-      <p class="prose">The account reached 19% CoM for the trailing four-week period, within the 19-23% target range. CPL dropped from $165 to $134. Adjusted for out-of-area and duplicate leads, the effective CPL was $129. The deeper win was structural: a ranked creative framework that made new market launches faster and more predictable.</p>
+      <h2>CPL dropped. CoM% beat the target. The creative hierarchy became a launch template.</h2>
+      <p class="prose">The account brought cost of marketing down from 25% to 17%, beating the internal target of ~21%. CPL dropped from $114 to an average of $85 across states, with some markets reaching below $50. The deeper win was structural: a ranked creative framework that made new market launches faster and more predictable.</p>
       <div class="results-grid">
         <div class="result-stat">
-          <div class="result-num">$134</div>
+          <div class="result-num">$85</div>
           <div class="result-label">Cost per lead</div>
-          <div class="result-context">Down from ~$165. $129 adjusted for OOA and dupes</div>
+          <div class="result-context">Down from ~$114. Some states reaching below $50</div>
         </div>
         <div class="result-stat">
-          <div class="result-num">19%</div>
+          <div class="result-num">17%</div>
           <div class="result-label">Cost of marketing</div>
-          <div class="result-context">Within 19-23% target range</div>
+          <div class="result-context">Down from 25%, beating the ~21% target</div>
         </div>
         <div class="result-stat">
-          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>26%</div>
+          <div class="result-num">26%</div>
           <div class="result-label">Set rate</div>
           <div class="result-context">Up from ~20% at baseline</div>
         </div>
@@ -389,7 +389,7 @@
     <div class="learned-items">
       <div class="learned-item">
         <div class="learned-num">1.</div>
-        <div class="learned-text"><strong>Close rate and set rate are more predictive of creative value than CPL alone.</strong> Several ads in this account had strong CPLs and were producing leads that never converted. Reorienting the optimisation logic around the full funnel, not just the cost of the lead, changed which ads deserved budget.</div>
+        <div class="learned-text"><strong>Close rate and set rate are more predictive of creative value than CPL alone.</strong> Several ads in this account had strong CPLs and were producing leads that never converted. Reorienting the optimization logic around the full funnel, not just the cost of the lead, changed which ads deserved budget.</div>
       </div>
       <div class="learned-item">
         <div class="learned-num">2.</div>
@@ -397,7 +397,7 @@
       </div>
       <div class="learned-item">
         <div class="learned-num">3.</div>
-        <div class="learned-text"><strong>Geographic budget concentration compounds.</strong> Every dollar redirected from Missouri into Kansas and Atlanta generated more signal on those markets faster, which enabled sharper optimisation decisions, which improved performance further. The feedback loop accelerates when you stop spreading thin.</div>
+        <div class="learned-text"><strong>Geographic budget concentration compounds.</strong> Every dollar redirected from Missouri into Kansas and Atlanta generated more signal on those markets faster, which enabled sharper optimization decisions, which improved performance further. The feedback loop accelerates when you stop spreading thin.</div>
       </div>
     </div>
   </section>
@@ -408,7 +408,7 @@
     <div class="ba-card before">
       <div class="ba-label">Before the work</div>
       <div class="ba-items">
-        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $165 with no creative hierarchy to guide what to scale</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $114 with no creative hierarchy to guide what to scale</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Missouri absorbing disproportionate spend and dragging account-level results</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Retargeting CBO starving the hottest audiences of budget</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Some top-CPL ads generating zero sales, invisible without sale-level analysis</div></div>
@@ -418,8 +418,8 @@
     <div class="ba-card after">
       <div class="ba-label">After the work</div>
       <div class="ba-items">
-        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $134 ($129 adjusted) with a ranked creative hierarchy across six states</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>Missouri budget capped. Kansas and Atlanta receiving concentrated, geo-specific spend</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $85 avg. across states, with some markets reaching below $50</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>Missouri spend capped. Kansas and Atlanta receiving concentrated, geo-specific budget</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Retargeting rebuilt as ABO with mid-funnel and bottom-funnel on separate budgets</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Creative decisions tied to close rate and set rate, not just CPL</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>New markets launched with candid-first, 3-req video second as the proven starting template</div></div>
@@ -429,30 +429,27 @@
 
   <div style="max-width:1200px; margin:0 auto; padding:0 48px 48px; display:flex; flex-direction:column; gap:12px;">
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">Why the same CPL can hide completely different business outcomes</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Diagnosis playbook covers how to read creative performance at the sale level rather than the lead level, and how to separate which problems belong to the creative from which belong to the account structure. The audit logic in this case study starts from that framework. <a href="/playbooks/diagnosis" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why the same CPL can hide completely different business outcomes</div>
+        <div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Diagnosis playbook covers how to read creative performance at the sale level rather than the lead level, and how to separate which problems belong to the creative from which belong to the account structure. The audit logic in this case study starts from that framework. <a href="../playbooks/diagnosis.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">Why running more of the same creative format doesn't expand reach</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Diversity playbook covers how Meta groups similar creative at the auction level and why genuine format diversity, not just volume, determines how much of the available audience the account can actually reach. <a href="/playbooks/creative-diversity" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why running more of the same creative format doesn't expand reach</div>
+        <div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Diversity playbook covers how Meta groups similar creative at the auction level and why genuine format diversity, not just volume, determines how much of the available audience the account can actually reach. <a href="../playbooks/creative-diversity.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">How the ABO retargeting rebuild works structurally</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers why a CBO with audiences of different temperatures almost always starves the hotter one, and how moving to ABO gives each audience its own budget and predictable delivery. <a href="/playbooks/account-structure" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">How the ABO retargeting rebuild works structurally</div>
+        <div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers why a CBO with audiences of different temperatures almost always starves the hotter one, and how moving to ABO gives each audience its own budget and predictable delivery. <a href="../playbooks/account-structure.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
   </div>
-
-  <div class="divider"></div>
-  <div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes and memory. They are directional estimates consistent with industry benchmarks for this vertical. All confirmed figures are presented without a flag. CPL figures of $134 and $129 (OOA/dupe-adjusted) are confirmed from notes.</div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

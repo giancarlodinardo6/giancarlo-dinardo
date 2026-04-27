@@ -130,12 +130,8 @@
       .hero-label::before{display:none;}
       .hero h1{text-align:center;}
       .hero-desc{text-align:center;margin-left:auto;margin-right:auto;}
-      .hero-meta{justify-content:center;text-align:center;gap:0;display:grid;grid-template-columns:1fr 1fr;border-top:none;padding-top:0;}
-      .hero-meta-item{padding:16px 12px;border:1px solid var(--ink-10);margin:-1px 0 0 -1px;}
-      .hero-meta-item:first-child{border-radius:12px 0 0 0;}
-      .hero-meta-item:nth-child(2){border-radius:0 12px 0 0;}
-      .hero-meta-item:nth-child(3){border-radius:0 0 0 12px;}
-      .hero-meta-item:last-child{border-radius:0 0 12px 0;}
+      .hero-meta{justify-content:center;flex-wrap:wrap;gap:24px;}
+      .hero-meta-item{text-align:center;}
       .hero-visual{padding:28px 20px;}
       .hero-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
       .hero-stat{min-width:unset;border:none;padding:20px 16px;border-bottom:1px solid rgba(255,255,255,0.08);}
@@ -146,7 +142,6 @@
       .hero-stat-num{font-size:40px;}
       .hero-visual-footer{margin-top:8px;}
       .learned-section > div[style]{grid-template-columns:1fr !important;}
-      .learned-section > div[style] > div:last-child{display:none;}
     }
   </style>
 <link rel="stylesheet" href="../styles.css">

@@ -44,11 +44,12 @@
     .hero h1 { font-family: var(--serif); font-size: clamp(38px,4.8vw,58px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
     .hero h1 em { font-style: italic; color: #5B9E9E; }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
-    .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; }
+    .hero-meta { display: flex; gap: 24px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; align-items: flex-start; }
     .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
     .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+    .hero-meta-item { flex-shrink: 0; }
 
-    .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-start; }
+    .hero-visual { background: var(--ink); border-radius: 20px; padding: 32px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start; }
     .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%); }
     .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
     .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 28px; position: relative; z-index: 1; }
@@ -138,6 +139,8 @@
       nav, .context-section, .approach-section, .creative-section, .before-after, .learned-section, .disclosure { padding-left: 24px; padding-right: 24px; }
       .results-section { padding-left: 24px; padding-right: 24px; }
       .cta-section { margin: 40px 24px; padding: 60px 32px; }
+      .hero-meta-item { flex: 0 0 calc(50% - 12px); }
+      .approach-sticky { position: static !important; }
     }
   </style>
 <link rel="stylesheet" href="../styles.css">
@@ -250,11 +253,11 @@
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Cost of marketing %</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);"><span class="confirm">⚑ Confirm</span>~25%</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">~25%</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Set rate</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);"><span class="confirm">⚑ Confirm</span>~20%</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">~20%</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:14px; color:var(--ink-60);">Retargeting structure</span>
@@ -268,7 +271,7 @@
   <div class="divider"></div>
 
   <section class="approach-section">
-    <div style="position: sticky; top: 80px; align-self: start;">
+    <div class="approach-sticky" style="position: sticky; top: 80px; align-self: start;">
       <div class="section-label">The Approach</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Audit first. Scale second.</h2>
       <p class="prose">The account had enough historical data to answer the creative question properly before spending another dollar on the wrong things. The audit came first. Everything else followed from it.</p>

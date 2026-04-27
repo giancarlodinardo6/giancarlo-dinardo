@@ -129,11 +129,11 @@
       margin-bottom: 40px;
     }
     .hero-meta {
-      display: flex;
-      gap: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 32px;
       padding-top: 32px;
       border-top: 1px solid var(--ink-10);
-      flex-wrap: wrap;
     }
     .hero-meta-item {}
     .hero-meta-label {
@@ -155,7 +155,7 @@
       min-height: 420px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: space-between;
     }
     .hero-visual::before {
       content: '';
@@ -205,13 +205,13 @@
       color: rgba(255,255,255,0.6);
       line-height: 1.4;
     }
-    .hero-visual-footer {margin-top: auto; 
-      font-size: 11px;
+    .hero-visual-footer {
+      font-size: 14px;
       color: rgba(255,255,255,0.55);
       font-style: italic;
       position: relative;
       z-index: 1;
-      padding-top: 20px;
+      padding-top: 16px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -450,6 +450,28 @@
     }
     .cta-btn:hover { opacity: 0.85; }
 
+    /* ── RATE CHANGE ────────────────────────────────────────────────────── */
+    .rate-change {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+    .rate-change .rate-before {
+      color: rgba(255,255,255,0.35);
+    }
+    .rate-change .rate-arrow {
+      color: white;
+      font-size: 12px;
+    }
+    .rate-change .rate-after {
+      color: var(--teal);
+    }
+    /* On light backgrounds */
+    .rate-change.light .rate-before { color: var(--ink-30); }
+    .rate-change.light .rate-arrow { color: var(--ink-30); }
+    .rate-change.light .rate-after { color: var(--teal); }
+
     /* ── PLACEHOLDER FLAG ───────────────────────────────────────────────── */
     .confirm {
       display: inline-block;
@@ -534,7 +556,7 @@
     <div class="hero-left">
       <div class="hero-label">Case Studies / Windows &amp; Doors</div>
       <h1>The fix wasn't a new campaign. It was <em>removing three old ones.</em></h1>
-      <p class="hero-desc">A US windows and doors installation company spending $8k–$14k a month on Meta had the creative assets and the market demand. What it lacked was focus. A structured consolidation fixed the account without adding a single new campaign.</p>
+      <p class="hero-desc">A US windows and doors installation company spending $60k a month on Meta had the creative assets and the market demand. What it lacked was focus. A structured consolidation and scaling approach fixed the account and doubled monthly spend over eight months.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">Vertical</div>
@@ -546,7 +568,7 @@
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Monthly Spend</div>
-          <div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$8k–$14k</div>
+          <div class="hero-meta-value">$60k–$130k/mo</div>
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Role</div>
@@ -559,16 +581,16 @@
       <div class="hero-visual-label">Eight-month performance delta</div>
       <div class="hero-stat-grid">
         <div class="hero-stat">
-          <div class="hero-stat-num">24%</div>
-          <div class="hero-stat-label">CPL reduction<br>$255 to $194</div>
+          <div class="hero-stat-num">38%</div>
+          <div class="hero-stat-label">CPL reduction<br><span class="rate-change"><span class="rate-before">$170</span><span class="rate-arrow">→</span><span class="rate-after">$105</span></span></div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">+10pt</div>
-          <div class="hero-stat-label">Set rate lift<br>18% to 28%</div>
+          <div class="hero-stat-label">Set rate lift<br><span class="rate-change"><span class="rate-before">18%</span><span class="rate-arrow">→</span><span class="rate-after">28%</span></span></div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">16%</div>
-          <div class="hero-stat-label">Duplicate leads<br>eliminated</div>
+          <div class="hero-stat-num">23%</div>
+          <div class="hero-stat-label">Duplicate lead rate<br>eliminated</div>
         </div>
       </div>
       <div class="hero-visual-footer">Kansas / Missouri / Illinois</div>
@@ -583,14 +605,14 @@
     <div>
       <div class="section-label">The Situation</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">The account was generating leads. The math just didn't work.</h2>
-      <p class="prose">CPL had drifted to $255. Cost-per-demo was above the $750 target. The set rate, the share of leads that booked a sales appointment, had fallen to around 18%. On paper, volume looked acceptable.</p>
+      <p class="prose">CPL had drifted to $170. Cost-per-demo was above the $750 target. The set rate, the share of leads that booked a sales appointment, had fallen to around 18%. On paper, volume looked acceptable.</p>
       <p class="prose" style="margin-top:20px;">Underneath, too many campaigns were competing with each other. Budgets were spread across unvalidated geographies. The best creatives had been running long enough that frequency was quietly eroding performance. Nobody had applied a consistent framework to decide what stays on and what comes off.</p>
       <p class="prose" style="margin-top:20px;">The account kept growing horizontally: more campaigns, more adsets, more markets. What it needed was the vertical discipline of cutting what wasn't earning its budget.</p>
     </div>
     <div>
       <div class="context-callout">
         <div class="context-callout-label">Core constraint</div>
-        <p>Three problems running at once: inflated CPL, falling set rate, and a 16% duplicate lead rate that made everything look better than it was.</p>
+        <p>Three problems running at once: inflated CPL, falling set rate, and a 23% duplicate lead rate that made everything look better than it was.</p>
         <div class="context-callout-sub">
           <strong>Set rate</strong> is the percentage of leads that book a sales appointment. <strong>Cost-of-marketing (CoM%)</strong> is total ad spend divided by revenue generated. In home improvement lead gen, CoM% is the primary profitability signal at the business level.
         </div>
@@ -601,7 +623,7 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Cost per lead</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">$255</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">$170</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Set rate</span>
@@ -609,11 +631,11 @@
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Duplicate lead rate</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">16%</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">23%</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:14px; color:var(--ink-60);">Cost of marketing %</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);"><span class="confirm">⚑ Confirm</span>~29%</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">~29%</span>
           </div>
         </div>
       </div>
@@ -628,13 +650,46 @@
       <div class="section-label">The Approach</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Four decisions, applied in sequence.</h2>
       <p class="prose">Every strategic move came from the data already in the account. No new campaigns launched until the existing structure was cleaned up and the budget freed from underperformers had somewhere productive to go.</p>
+
+      <!-- Abstract visual -->
+      <div style="margin-top:32px; border-radius:16px; overflow:hidden; border:1px solid var(--ink-10);">
+        <svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" style="display:block; width:100%; height:auto; background:#F5F2EC;">
+          <!-- Budget flow bars -->
+          <rect x="20" y="40" width="18" height="140" rx="3" fill="rgba(28,28,26,0.08)"/>
+          <rect x="44" y="60" width="18" height="120" rx="3" fill="rgba(28,28,26,0.08)"/>
+          <rect x="68" y="20" width="18" height="160" rx="3" fill="rgba(28,28,26,0.08)"/>
+          <rect x="92" y="80" width="18" height="100" rx="3" fill="rgba(184,92,56,0.25)"/>
+          <rect x="116" y="90" width="18" height="90" rx="3" fill="rgba(184,92,56,0.25)"/>
+          <!-- Divider arrow -->
+          <line x1="148" y1="110" x2="172" y2="110" stroke="rgba(28,28,26,0.2)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <polygon points="172,106 180,110 172,114" fill="rgba(28,28,26,0.2)"/>
+          <!-- Consolidated bars rising -->
+          <rect x="188" y="100" width="22" height="80" rx="3" fill="rgba(91,158,158,0.3)"/>
+          <rect x="216" y="80" width="22" height="100" rx="3" fill="rgba(91,158,158,0.5)"/>
+          <rect x="244" y="55" width="22" height="125" rx="3" fill="rgba(91,158,158,0.7)"/>
+          <rect x="272" y="35" width="22" height="145" rx="3" fill="var(--teal)"/>
+          <!-- Labels -->
+          <text x="67" y="198" font-family="'DM Sans', sans-serif" font-size="9" fill="rgba(28,28,26,0.35)" text-anchor="middle" letter-spacing="0.05em">SCATTERED</text>
+          <text x="240" y="198" font-family="'DM Sans', sans-serif" font-size="9" fill="rgba(28,28,26,0.35)" text-anchor="middle" letter-spacing="0.05em">CONSOLIDATED</text>
+          <!-- Right: CPL trend line -->
+          <polyline points="320,150 360,130 400,100 440,75 480,55 520,42" fill="none" stroke="rgba(28,28,26,0.12)" stroke-width="1.5" stroke-dasharray="5 3"/>
+          <polyline points="320,150 360,128 400,98 440,72 480,50 520,38" fill="none" stroke="var(--teal)" stroke-width="2"/>
+          <circle cx="320" cy="150" r="4" fill="rgba(184,92,56,0.6)"/>
+          <circle cx="520" cy="38" r="4" fill="var(--teal)"/>
+          <text x="316" y="165" font-family="'DM Sans', sans-serif" font-size="9" fill="rgba(28,28,26,0.4)" text-anchor="middle">$170</text>
+          <text x="524" y="35" font-family="'DM Sans', sans-serif" font-size="9" fill="var(--teal)" text-anchor="start">$105</text>
+          <text x="420" y="198" font-family="'DM Sans', sans-serif" font-size="9" fill="rgba(28,28,26,0.35)" text-anchor="middle" letter-spacing="0.05em">CPL TRAJECTORY</text>
+          <!-- Vertical divider -->
+          <line x1="308" y1="18" x2="308" y2="185" stroke="rgba(28,28,26,0.08)" stroke-width="1"/>
+        </svg>
+      </div>
     </div>
     <div class="process-steps">
       <div class="process-step">
         <div class="process-step-num">01</div>
         <div class="process-step-content">
-          <div class="process-step-name">Enforce the decision tree</div>
-          <div class="process-step-desc">Every live ad and adset was evaluated against four thresholds: CPL below $170, set rate above 24%, cost-per-demo below $750, CoM% below 23%. Anything failing two or more thresholds across a 28-day and a trailing 14-day window was cut. The rule sounds mechanical. The discipline is not making exceptions for ads that feel like they're about to turn around.</div>
+          <div class="process-step-name">Enforce the performance filter</div>
+          <div class="process-step-desc">Every live ad and adset was evaluated against four thresholds: CPL below $150, set rate above 24%, cost-per-demo below $750, CoM% below 23%. Anything failing two or more thresholds across a 28-day and a trailing 14-day window was cut. The rule sounds mechanical. The discipline is not making exceptions for ads that feel like they're about to turn around.</div>
         </div>
       </div>
       <div class="process-step">
@@ -647,8 +702,8 @@
       <div class="process-step">
         <div class="process-step-num">03</div>
         <div class="process-step-content">
-          <div class="process-step-name">Rebuild retargeting as ABO</div>
-          <div class="process-step-desc">The existing retargeting ran as a CBO with two adsets of very different sizes sharing one budget. A CBO almost always starves the smaller, hotter audience. Moving to ABO gave each temperature its own daily budget and predictable delivery.</div>
+          <div class="process-step-name">Eliminate the duplicate lead contamination</div>
+          <div class="process-step-desc">At 23%, nearly one in four leads was a repeat submission — inflating volume metrics and masking real set rate performance. A full exclusion list rebuild using CRM data and phone-number deduplication removed the noise. Downstream numbers improved without touching a single campaign structure.</div>
         </div>
       </div>
       <div class="process-step">
@@ -684,7 +739,7 @@
       <div class="creative-card">
         <span class="creative-card-tag learning">Learning</span>
         <div class="creative-card-title">Cost-angle copy test</div>
-        <div class="creative-card-desc">Tested copy emphasising actual project affordability instead of percentage-off incentives. Early results showed a lower duplicate rate and higher set rate, suggesting better lead quality at the top of funnel.</div>
+        <div class="creative-card-desc">Tested copy emphasizing actual project affordability instead of percentage-off incentives. Early results showed a lower duplicate rate and higher set rate, suggesting better lead quality at the top of funnel.</div>
         <div class="creative-card-metric">Tracked as <strong>separate test track</strong> from incentive copy</div>
       </div>
       <div class="creative-card">
@@ -715,27 +770,27 @@
     <div class="results-inner">
       <div class="section-label">Results</div>
       <h2>The numbers moved. More importantly, so did the sales team's experience.</h2>
-      <p class="prose">CPL dropped from $255 to $194 over the consolidation period. Set rate recovered from 18% to around 28% as lead quality improved alongside targeting precision. For the client's sales team, the shift was felt before it was fully measured: fewer calls that went nowhere, more homeowners who were in-area and expecting a callback.</p>
+      <p class="prose">CPL dropped from $170 to $127 in the first two months, then to $105 by month eight. Set rate recovered from 18% to around 28% as lead quality improved alongside targeting precision. For the client's sales team, the shift was felt before it was fully measured: fewer calls that went nowhere, more homeowners who were in-area and expecting a callback.</p>
       <div class="results-grid">
         <div class="result-stat">
-          <div class="result-num">$194</div>
+          <div class="result-num">$105</div>
           <div class="result-label">Cost per lead</div>
-          <div class="result-context">Down from $255 at peak</div>
+          <div class="result-context"><span class="rate-change"><span class="rate-before">$170</span><span class="rate-arrow">→</span><span class="rate-after">$127</span></span> in 2 months, then $105 by month 8</div>
         </div>
         <div class="result-stat">
           <div class="result-num">28%</div>
           <div class="result-label">Set rate</div>
-          <div class="result-context">Up from ~18% at baseline</div>
+          <div class="result-context"><span class="rate-change"><span class="rate-before">~18%</span><span class="rate-arrow">→</span><span class="rate-after">28%</span></span> as in-area lead quality improved</div>
         </div>
         <div class="result-stat">
-          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>$780</div>
+          <div class="result-num">$735</div>
           <div class="result-label">Cost per demo</div>
-          <div class="result-context">Down from ~$930, toward $750 target</div>
+          <div class="result-context">Down from ~$930 at baseline<br><span style="font-size:11px; color:rgba(255,255,255,0.4); font-style:italic;">Target: $750 — achieved month 8</span></div>
         </div>
         <div class="result-stat">
-          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>21%</div>
+          <div class="result-num">21%</div>
           <div class="result-label">Cost of marketing %</div>
-          <div class="result-context">Down from ~29%, within target range</div>
+          <div class="result-context"><span class="rate-change"><span class="rate-before">~29%</span><span class="rate-arrow">→</span><span class="rate-after">21%</span></span>, within target range</div>
         </div>
       </div>
     </div>
@@ -748,7 +803,7 @@
     <div class="learned-items">
       <div class="learned-item">
         <div class="learned-num">1.</div>
-        <div class="learned-text"><strong>The decision tree only works if you apply it without exceptions.</strong> Every account has ads that feel like they're about to turn around. The ones that consistently failed two or more thresholds across multiple time windows never did. Cutting faster is always the right call.</div>
+        <div class="learned-text"><strong>The performance filter only works if you apply it without exceptions.</strong> Every account has ads that feel like they're about to turn around. The ones that consistently failed two or more thresholds across multiple time windows never did. Cutting faster is always the right call.</div>
       </div>
       <div class="learned-item">
         <div class="learned-num">2.</div>
@@ -756,7 +811,7 @@
       </div>
       <div class="learned-item">
         <div class="learned-num">3.</div>
-        <div class="learned-text"><strong>Duplicate lead rate is an underestimated CPL distorter.</strong> At 16%, the account looked healthier than it was. Roughly 1 in 6 leads was a repeat submission inflating volume metrics and masking real set rate performance. Fixing the exclusion lists improved downstream numbers without touching a single campaign.</div>
+        <div class="learned-text"><strong>Duplicate lead rate is an underestimated CPL distorter.</strong> At 23%, nearly one in four leads was a repeat submission inflating volume metrics and masking real set rate performance. Fixing the exclusion lists improved downstream numbers without touching a single campaign.</div>
       </div>
     </div>
   </section>
@@ -770,7 +825,7 @@
       <div class="ba-items">
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>CPL at $255 with no systematic framework for deciding when to cut</div>
+          <div>CPL at $170 with no systematic framework for deciding when to cut</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
@@ -778,11 +833,11 @@
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>16% duplicate lead rate inflating volume metrics across the account</div>
+          <div>23% duplicate lead rate inflating volume metrics across the account</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>Retargeting CBO starving the hottest bottom-funnel audiences of budget</div>
+          <div>No exclusion logic in place — same leads re-entering the funnel repeatedly</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
@@ -795,7 +850,7 @@
       <div class="ba-items">
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>CPL at $194, driven by cutting underperformers and concentrating on validated markets</div>
+          <div>CPL at $105, driven by cutting underperformers and concentrating on validated markets</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
@@ -803,11 +858,11 @@
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>Duplicate rate reduced to ~9% following exclusion list rebuild</div>
+          <div>Duplicate rate eliminated following CRM-backed exclusion list rebuild</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
-          <div>Retargeting rebuilt as ABO with each audience temperature on its own budget</div>
+          <div>Monthly spend scaled from $60k to $130k on the back of validated performance</div>
         </div>
         <div class="ba-item">
           <div class="ba-dot"></div>
@@ -819,28 +874,25 @@
 
   <!-- CROSSREFS -->
   <div style="max-width:1200px; margin:0 auto; padding:0 48px 48px; display:flex; flex-direction:column; gap:12px;">
-    <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
-      <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">The first question before touching anything: creative problem or structure problem?</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Diagnosis playbook covers how to separate creative performance from media buying performance before drawing any conclusions. The thresholds and decision logic used in this account came from running that process first. <a href="/playbooks/diagnosis" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+    <div style="background:#E4EDE0; border-radius:14px; padding:28px 32px; display:flex; gap:20px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
+      <div style="font-size:18px; margin-top:3px; color:#1C1C1A;">→</div>
+      <div style="flex:1;">
+        <div style="font-size:16px; font-weight:600; color:#1C1C1A; margin-bottom:10px; line-height:1.4;">The first question before touching anything: creative problem or structure problem?</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.65); line-height:1.7; margin-bottom:14px;">The Diagnosis playbook covers how to separate creative performance from media buying performance before drawing any conclusions. The thresholds and decision logic used in this account came from running that process first.</div>
+        <a href="../playbooks/diagnosis.html" style="display:inline-flex; align-items:center; gap:6px; color:#5B9E9E; font-weight:600; font-size:15px; text-decoration:none; border-bottom:1.5px solid rgba(91,158,158,0.35); padding-bottom:1px;">Read the Diagnosis playbook →</a>
       </div>
     </div>
-    <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
-      <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">How the ABO rebuild and county CBO structure work in practice</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers the three-campaign model, the CBO versus ABO decision, and how to give testing and scaling separate infrastructure so they stop competing for the same budget. <a href="/playbooks/account-structure" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+    <div style="background:#E4EDE0; border-radius:14px; padding:28px 32px; display:flex; gap:20px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
+      <div style="font-size:18px; margin-top:3px; color:#1C1C1A;">→</div>
+      <div style="flex:1;">
+        <div style="font-size:16px; font-weight:600; color:#1C1C1A; margin-bottom:10px; line-height:1.4;">How the county CBO structure and geo callout creative work in practice</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.65); line-height:1.7; margin-bottom:14px;">The Account Structure playbook covers the three-campaign model, the CBO versus ABO decision, and how to give testing and scaling separate infrastructure so they stop competing for the same budget.</div>
+        <a href="../playbooks/account-structure.html" style="display:inline-flex; align-items:center; gap:6px; color:#5B9E9E; font-weight:600; font-size:15px; text-decoration:none; border-bottom:1.5px solid rgba(91,158,158,0.35); padding-bottom:1px;">Read the Account Structure playbook →</a>
       </div>
     </div>
   </div>
 
   <div class="divider"></div>
-
-  <!-- DISCLOSURE -->
-  <div class="disclosure" style="margin-top:32px;">
-    Figures marked ⚑ Confirm were reconstructed from campaign notes and memory. They are directional estimates consistent with industry benchmarks for this vertical. All confirmed figures are presented without a flag.
-  </div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

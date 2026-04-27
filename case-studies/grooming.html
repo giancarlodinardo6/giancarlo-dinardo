@@ -26,8 +26,8 @@
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
-    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
-    .hero-stat{flex:1;min-width:100px;}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1;}
+    .hero-stat{}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
     .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
@@ -142,16 +142,16 @@
     <div class="hero-meta">
       <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Men's Grooming / DTC</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
-      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$8k-$14k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value">$60k</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value">2025 Consulting</div></div>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-visual-label">Eight-week creative rebuild</div>
+    <div class="hero-visual-label">Ten-week creative rebuild</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>41%</div><div class="hero-stat-label">CVR improvement</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">$22</div><div class="hero-stat-label">Cost per purchase, down from $41</div></div>
       <div class="hero-stat"><div class="hero-stat-num">2.8x</div><div class="hero-stat-label">ROAS on new scripts vs control</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Psychological mechanisms layered into new scripts</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Reusable script templates produced</div></div>
     </div>
     <div class="hero-visual-footer">The product did not change. The script structure did.</div>
   </div>
@@ -161,7 +161,7 @@
   <div>
     <div class="section-label">The Situation</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that didn't tell two different stories.</h2>
-    <p class="prose">The account had been running for about four months when I came in for a consulting engagement. CPM was reasonable. Hook rate was fine. The creative was stopping people.</p>
+    <p class="prose">The account had been running for about four months when I came in through an agency for a consulting engagement. CPM was reasonable. Hook rate was fine. The creative was stopping people.</p>
     <p class="prose">The problem was downstream. Click-through was solid but purchase conversion rate on the landing page was low. Add-to-cart rate was decent. Checkout to purchase was the gap. Somewhere between the ad and the buy button, people were losing confidence in the product.</p>
     <p class="prose">When I read through the creative, the issue was visible immediately. Every script opened with the product. Feature led. "Our formula contains X." "Developed with Y." The viewer had not been given a reason to care about any of that before being told what was in it. The ad was pitching before it had earned the right to.</p>
   </div>
@@ -180,7 +180,8 @@
   <div>
     <div class="section-label">The Approach</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Rebuild the script to match how the buyer actually thinks, not how the brand wants to present.</h2>
-    <p class="prose">The brand had a real product. The creative was just introducing it wrong. Rebuilding the scripts meant understanding the psychological sequence a buyer needs to go through before a purchase makes sense to them. That sequence was not what the existing creative was following.</p>
+    <p class="prose">The engagement came in through an agency. The brand had a real product. The creative was just introducing it wrong. Rebuilding the scripts meant understanding the psychological sequence a buyer needs to go through before a purchase makes sense to them. That sequence was not what the existing creative was following.</p>
+    <p class="prose" style="margin-top:16px;">Weeks one and two were audit and research. Weeks three through five were script development and the ABO isolation test. Weeks six and seven were UGC production and format testing against the studio control. The final three weeks were hook variations on the proven winner and scaling the scripts that held.</p>
   </div>
   <div class="process-steps">
     <div class="process-step">
@@ -201,7 +202,7 @@
       <div class="process-step-num">03</div>
       <div>
         <div class="process-step-name">Test UGC against studio with the same new script</div>
-        <div class="process-step-desc">Ran the new script in two formats: a studio shoot with the brand's existing creator and a raw UGC version shot on a phone. In this category, UGC outperformed studio on both ROAS and CVR. The rawer format fit the trust gap the buyer had coming in. A polished studio ad in men's grooming reads as advertising before the hook has landed.</div>
+        <div class="process-step-desc">Ran the new script in two formats: a studio shoot with the brand's existing creator and a raw UGC version shot on a phone. In this category, UGC outperformed studio on both ROAS and CVR differential. The rawer format fit the trust gap the buyer had coming in. A polished studio ad in men's grooming reads as advertising before the hook has landed.</div>
       </div>
     </div>
     <div class="process-step">
@@ -264,22 +265,22 @@
   <div class="results-inner">
     <div class="section-label">Results</div>
     <h2>The script structure changed. The conversion rate followed.</h2>
-    <p class="prose">Eight weeks from the start of the engagement. The product, the price point, the landing page, and the budget were all the same. The creative structure was the only variable that changed.</p>
+    <p class="prose">Ten weeks from the start of the engagement, through an agency. The product, the price point, the landing page, and the budget were all the same. The creative structure was the only variable that changed.</p>
     <div class="results-grid">
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>41%</div>
-        <div class="result-label">CVR improvement</div>
-        <div class="result-context">New scripts vs original studio control on same landing page</div>
+        <div class="result-num">10</div>
+        <div class="result-label">Week engagement</div>
+        <div class="result-context">Audit, script rebuild, ABO isolation test, format testing, hook variations</div>
       </div>
       <div class="result-stat">
         <div class="result-num">2.8x</div>
-        <div class="result-label">ROAS on winning scripts</div>
-        <div class="result-context">Identity protection UGC vs product-led studio control</div>
+        <div class="result-label">ROAS differential</div>
+        <div class="result-context">Winning scripts vs original studio control — not blended account ROAS</div>
       </div>
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>$38</div>
+        <div class="result-num">$22</div>
         <div class="result-label">Cost per purchase</div>
-        <div class="result-context">Down from ~$64 before the script rebuild</div>
+        <div class="result-context">Down from $41 before the script rebuild</div>
       </div>
       <div class="result-stat">
         <div class="result-num">3</div>
@@ -337,31 +338,26 @@
 
 <div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
   <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div style="font-size:18px;margin-top:2px;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">The four psychological mechanisms behind scripts that convert</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Ad Psychology playbook covers identity protection, knowledge gap, vicarious skepticism, and loss aversion: the four mechanisms layered into the winning scripts in this case. It explains where each belongs in the script and why the sequence matters. <a href="/playbooks/ad-psychology" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:16px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">The four psychological mechanisms behind scripts that convert</div>
+      <div style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.65;">The Ad Psychology playbook covers identity protection, knowledge gap, vicarious skepticism, and loss aversion: the four mechanisms layered into the winning scripts in this case. It explains where each belongs in the script and why the sequence matters. <a href="../playbooks/ad-psychology.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
     </div>
   </div>
   <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div style="font-size:18px;margin-top:2px;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How hook type selection determines which buyer shows up</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hook Writing playbook covers the three ingredients a hook needs (relevance, curiosity, emotion), how to brief the visual alongside the copy, and why the hook determines the creative direction rather than following from it. <a href="/playbooks/hook-writing" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:16px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">How hook type selection determines which buyer shows up</div>
+      <div style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hook Writing playbook covers the three ingredients a hook needs (relevance, curiosity, emotion), how to brief the visual alongside the copy, and why the hook determines the creative direction rather than following from it. <a href="../playbooks/hook-writing.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
     </div>
   </div>
   <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+    <div style="font-size:18px;margin-top:2px;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to build and evaluate each block of an ad independently</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Construction playbook covers the building blocks model: how to evaluate which part of a script is failing rather than scrapping the whole concept, and how to give feedback to editors at the frame level rather than the direction level. <a href="/playbooks/creative-construction" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:16px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">How to build and evaluate each block of an ad independently</div>
+      <div style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Construction playbook covers the building blocks model: how to evaluate which part of a script is failing rather than scrapping the whole concept, and how to give feedback to editors at the frame level rather than the direction level. <a href="../playbooks/creative-construction.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
     </div>
   </div>
-</div>
-
-<div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. CVR improvement (41%), ROAS differential (2.8x), and cost per purchase endpoint are directional estimates based on the documented performance trajectory. Script structure, psychological mechanism layering, and UGC vs studio findings are accurate to the engagement.
-
 </div>
 
 <footer class="sitefoot">

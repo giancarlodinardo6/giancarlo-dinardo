@@ -111,21 +111,15 @@
     .cta-btn:hover { opacity: 0.85; }
     @media (max-width: 900px) {
       .hero, .context-section, .approach-section, .before-after { grid-template-columns: 1fr; }
-      .creative-grid { grid-template-columns: 1fr; }
+      .creative-grid { grid-template-columns: 1fr !important; }
       .results-grid { grid-template-columns: 1fr 1fr; }
       .hero { padding: 60px 24px 0; min-height: auto; }
       nav, .context-section, .approach-section, .creative-section, .before-after, .learned-section, .disclosure { padding-left: 24px; padding-right: 24px; }
       .results-section { padding-left: 24px; padding-right: 24px; }
       .cta-section { margin: 40px 24px; padding: 60px 32px; }
       .hero-meta { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
-      .hero-stat-grid { grid-template-columns: 1fr 1fr 1fr; }
-      .hero-stat-after { font-size: 28px; }
-      .hero-stat-num { font-size: 32px; }
-    }
-    @media (max-width: 480px) {
-      .hero-meta { grid-template-columns: 1fr 1fr; }
-      .hero-stat-grid { grid-template-columns: 1fr; border: none; gap: 12px; }
-      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 0; }
+      .hero-stat-grid { grid-template-columns: 1fr !important; }
+      .hero-stat { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08); }
       .hero-stat:last-child { border-bottom: none; }
     }
   </style>

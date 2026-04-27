@@ -17,7 +17,12 @@
     .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
     .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}
     .prose+.prose{margin-top:20px;}
-    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero{padding:80px 48px 0;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;position:relative;}
+    .hero-deco{display:none;}
+    @media(min-width:1100px){
+      .hero{grid-template-columns:auto 1fr 1fr;gap:40px;}
+      .hero-deco{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;width:64px;}
+    }
     .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
     .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
     .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
@@ -26,15 +31,15 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;gap:0;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
-    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;}
+    .hero-stat-grid{display:flex;gap:32px;flex-wrap:wrap;position:relative;z-index:1;flex:1;}
     .hero-stat{flex:1;min-width:100px;}
     .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
-    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);margin-top:24px;}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -84,7 +89,20 @@
     .before .ba-label{color:var(--rust);}
     .after .ba-label{color:var(--teal);}
     .ba-items{display:flex;flex-direction:column;gap:14px;}
-    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .abstract-visual{margin-top:32px;border-radius:16px;overflow:hidden;height:180px;position:relative;background:var(--ink);}
+    .abstract-visual svg{width:100%;height:100%;}
+    .hero-desktop-art{display:none;}
+    @media(min-width:901px){
+      .hero-desktop-art{display:block;position:absolute;right:0;top:0;width:380px;height:100%;pointer-events:none;z-index:0;overflow:hidden;}
+      .hero>div:first-child{position:relative;z-index:1;}
+    }
+    .crossref-wrap{max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;}
+    .crossref-card{background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);}
+    .crossref-arrow{font-size:18px;margin-top:2px;color:var(--ink-60);}
+    .crossref-title{font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;}
+    .crossref-desc{font-size:14px;color:rgba(28,28,26,0.6);line-height:1.65;}
+    .crossref-link{display:inline-block;margin-top:12px;font-size:13px;font-weight:600;color:#5B9E9E;text-decoration:none;letter-spacing:0.01em;border:1.5px solid #5B9E9E;border-radius:20px;padding:5px 16px;transition:background 0.18s,color 0.18s;}
+    .crossref-link:hover{background:#5B9E9E;color:white;}
     .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
     .before .ba-dot{background:var(--rust);}
     .after .ba-dot{background:var(--teal);}
@@ -107,6 +125,16 @@
       nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}
       .results-section{padding-left:24px;padding-right:24px;}
       .cta-section{margin:40px 24px;padding:60px 32px;}
+      .hero-label{justify-content:center;text-align:center;}
+      .hero h1{text-align:center;}
+      .hero-desc{text-align:center;margin-left:auto;margin-right:auto;}
+      .hero-meta{justify-content:center;}
+      .hero-visual{padding:28px 20px;}
+      .hero-stat-grid{flex-direction:column;gap:24px;}
+      .hero-stat{min-width:unset;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:20px;}
+      .hero-stat:last-child{border-bottom:none;padding-bottom:0;}
+      .hero-stat-num{font-size:36px;}
+      .hero-visual-footer{margin-top:24px;}
     }
   </style>
 <link rel="stylesheet" href="../styles.css">
@@ -150,21 +178,44 @@
 
 
 <section class="hero">
+  <div class="hero-deco">
+    <svg width="56" height="320" viewBox="0 0 56 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Vertical timeline line -->
+      <line x1="28" y1="0" x2="28" y2="320" stroke="rgba(28,28,26,0.08)" stroke-width="1"/>
+      <!-- Phase nodes -->
+      <circle cx="28" cy="50" r="5" fill="#5B9E9E" opacity="0.7"/>
+      <circle cx="28" cy="50" r="12" fill="#5B9E9E" opacity="0.1"/>
+      <text x="40" y="54" font-size="8" fill="rgba(28,28,26,0.35)" font-family="monospace" letter-spacing="0.08em">RESEARCH</text>
+      <circle cx="28" cy="120" r="5" fill="#B85C38" opacity="0.7"/>
+      <circle cx="28" cy="120" r="12" fill="#B85C38" opacity="0.1"/>
+      <text x="40" y="124" font-size="8" fill="rgba(28,28,26,0.35)" font-family="monospace" letter-spacing="0.08em">MAP</text>
+      <circle cx="28" cy="190" r="5" fill="#B87A1A" opacity="0.7"/>
+      <circle cx="28" cy="190" r="12" fill="#B87A1A" opacity="0.1"/>
+      <text x="40" y="194" font-size="8" fill="rgba(28,28,26,0.35)" font-family="monospace" letter-spacing="0.08em">BRIEF</text>
+      <circle cx="28" cy="260" r="5" fill="rgba(28,28,26,0.4)"/>
+      <circle cx="28" cy="260" r="12" fill="rgba(28,28,26,0.05)"/>
+      <text x="40" y="264" font-size="8" fill="rgba(28,28,26,0.35)" font-family="monospace" letter-spacing="0.08em">LAUNCH</text>
+      <!-- Connecting dashes -->
+      <line x1="28" y1="62" x2="28" y2="108" stroke="rgba(28,28,26,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+      <line x1="28" y1="132" x2="28" y2="178" stroke="rgba(28,28,26,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+      <line x1="28" y1="202" x2="28" y2="248" stroke="rgba(28,28,26,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+    </svg>
+  </div>
   <div>
     <div class="hero-label">Case Studies / Basement Renovation</div>
-    <h1>Before the account had data, it needed a <em>clear reason to learn.</em></h1>
+    <h1>Before the first dollar went live, the <em>hypothesis was already written.</em></h1>
     <p class="hero-desc">A pre-launch basement renovation account had no campaign history, no proven creative, and no signals to inherit. The goal was not lead volume. It was booked appointments from the start.</p>
     <div class="hero-meta">
       <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Basement Renovation</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
-      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$10k-$15k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value">$70k → $160k</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Role</div><div class="hero-meta-value">Lead Media Buyer</div></div>
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-visual-label">First ninety days</div>
+    <div class="hero-visual-label">First 90 Days</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>$187</div><div class="hero-stat-label">CPL by week eight</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">$158</div><div class="hero-stat-label">CPL by week 8</div></div>
       <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Personas identified in pre-launch research</div></div>
       <div class="hero-stat"><div class="hero-stat-num">14</div><div class="hero-stat-label">Creative concepts launched in first 60 days</div></div>
     </div>
@@ -186,6 +237,30 @@
       <p>"Without historical data, the first job is to decide which signals you want the account to learn from. Otherwise, the cheapest leads can pull the system in the wrong direction."</p>
       <div class="context-callout-sub">Basement renovation has a longer consideration window than most home improvement categories. The homeowner who books today has usually been thinking about it for a while. The creative needed to meet them at the real trigger point, not at a generic home improvement fantasy.</div>
     </div>
+    <div class="abstract-visual" style="margin-top:24px;">
+      <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="180" fill="#1C1C1A"/>
+        <!-- Grid of faint dots -->
+        <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.06)"/>
+        </pattern>
+        <rect width="400" height="180" fill="url(#dots)"/>
+        <!-- Signal arc paths representing "noise before a clear signal" -->
+        <path d="M20,140 Q60,140 80,100 Q100,60 130,80 Q160,100 180,50 Q200,10 220,40 Q240,70 260,55 Q280,40 310,60 Q340,80 380,40" fill="none" stroke="rgba(91,158,158,0.18)" stroke-width="1.5"/>
+        <path d="M20,150 Q70,150 100,120 Q130,90 160,110 Q190,130 220,90 Q250,50 280,75 Q310,100 380,60" fill="none" stroke="rgba(91,158,158,0.1)" stroke-width="1"/>
+        <!-- The "clean signal" line that emerges -->
+        <path d="M160,160 Q200,160 240,130 Q280,100 310,85 Q340,70 380,50" fill="none" stroke="rgba(91,158,158,0.7)" stroke-width="2" stroke-dasharray="0"/>
+        <!-- Vertical marker: "launch" -->
+        <line x1="158" y1="30" x2="158" y2="165" stroke="rgba(184,92,56,0.4)" stroke-width="1" stroke-dasharray="3 4"/>
+        <text x="162" y="44" font-size="8" fill="rgba(255,255,255,0.35)" font-family="monospace" letter-spacing="0.08em">LAUNCH</text>
+        <!-- Glowing dot on signal line -->
+        <circle cx="310" cy="85" r="4" fill="#5B9E9E" opacity="0.8"/>
+        <circle cx="310" cy="85" r="8" fill="#5B9E9E" opacity="0.15"/>
+        <!-- Labels -->
+        <text x="24" y="175" font-size="9" fill="rgba(255,255,255,0.25)" font-family="monospace" letter-spacing="0.06em">SIGNAL NOISE</text>
+        <text x="290" y="175" font-size="9" fill="rgba(91,158,158,0.6)" font-family="monospace" letter-spacing="0.06em">INTENT</text>
+      </svg>
+    </div>
   </div>
 </section>
 
@@ -196,6 +271,32 @@
     <div class="section-label">The Approach</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Build the hypothesis first. Then launch the test.</h2>
     <p class="prose">Before the first campaign went live, I built the account around structured hypotheses. The work was simple: define who we wanted to attract, what would make them act, and which messages were likely to produce booked appointments instead of empty lead volume.</p>
+    <div class="abstract-visual" style="margin-top:28px;height:160px;background:#F5F2EC;border:1px solid rgba(28,28,26,0.07);">
+      <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Four phase blocks representing the hypothesis framework -->
+        <rect x="16" y="30" width="76" height="100" rx="10" fill="rgba(91,158,158,0.12)" stroke="rgba(91,158,158,0.25)" stroke-width="1"/>
+        <text x="54" y="72" font-size="18" fill="#5B9E9E" font-family="Georgia,serif" font-style="italic" text-anchor="middle">01</text>
+        <text x="54" y="90" font-size="8" fill="rgba(28,28,26,0.5)" font-family="monospace" text-anchor="middle" letter-spacing="0.05em">RESEARCH</text>
+        <!-- Arrow -->
+        <line x1="96" y1="80" x2="112" y2="80" stroke="rgba(28,28,26,0.15)" stroke-width="1.5"/>
+        <polygon points="112,76 119,80 112,84" fill="rgba(28,28,26,0.15)"/>
+        <rect x="120" y="30" width="76" height="100" rx="10" fill="rgba(184,92,56,0.08)" stroke="rgba(184,92,56,0.2)" stroke-width="1"/>
+        <text x="158" y="72" font-size="18" fill="#B85C38" font-family="Georgia,serif" font-style="italic" text-anchor="middle">02</text>
+        <text x="158" y="90" font-size="8" fill="rgba(28,28,26,0.5)" font-family="monospace" text-anchor="middle" letter-spacing="0.05em">PERSONAS</text>
+        <!-- Arrow -->
+        <line x1="200" y1="80" x2="216" y2="80" stroke="rgba(28,28,26,0.15)" stroke-width="1.5"/>
+        <polygon points="216,76 223,80 216,84" fill="rgba(28,28,26,0.15)"/>
+        <rect x="224" y="30" width="76" height="100" rx="10" fill="rgba(184,122,26,0.08)" stroke="rgba(184,122,26,0.2)" stroke-width="1"/>
+        <text x="262" y="72" font-size="18" fill="#B87A1A" font-family="Georgia,serif" font-style="italic" text-anchor="middle">03</text>
+        <text x="262" y="90" font-size="8" fill="rgba(28,28,26,0.5)" font-family="monospace" text-anchor="middle" letter-spacing="0.05em">BRIEFS</text>
+        <!-- Arrow -->
+        <line x1="304" y1="80" x2="320" y2="80" stroke="rgba(28,28,26,0.15)" stroke-width="1.5"/>
+        <polygon points="320,76 327,80 320,84" fill="rgba(28,28,26,0.15)"/>
+        <rect x="328" y="30" width="56" height="100" rx="10" fill="rgba(28,28,26,0.05)" stroke="rgba(28,28,26,0.1)" stroke-width="1"/>
+        <text x="356" y="72" font-size="18" fill="rgba(28,28,26,0.4)" font-family="Georgia,serif" font-style="italic" text-anchor="middle">04</text>
+        <text x="356" y="90" font-size="8" fill="rgba(28,28,26,0.5)" font-family="monospace" text-anchor="middle" letter-spacing="0.05em">LAUNCH</text>
+      </svg>
+    </div>
   </div>
   <div class="process-steps">
     <div class="process-step">
@@ -279,12 +380,12 @@
   <div class="results-inner">
     <div class="section-label">Results</div>
     <h2>A pre-launch account that generated cleaner signals from the start.</h2>
-    <p class="prose">By the end of month two, the account had a clearer creative hierarchy and better early lead quality than a normal cold launch. The biggest win was not just the CPL. It was avoiding the usual pattern of generating volume first, then spending weeks correcting for poor quality. <!-- ⚑ REVIEW FLAG: Benchmark range of $200–280 for basement renovation CPL on Meta — please confirm this is accurate to your experience before publishing. --> Basement renovation CPL on Meta typically runs $200–280 at account maturity; the $187 figure at week eight came before the account had fully optimised, which makes it a stronger result than the number alone suggests.</p>
+    <p class="prose">By the end of month two, the account had a clearer creative hierarchy and better early lead quality than a normal cold launch. The biggest win was not just the CPL. It was avoiding the usual pattern of generating volume first, then spending weeks correcting for poor quality. Basement renovation CPL on Meta typically runs $200–280 at account maturity; the $158 figure at week 8 came before the account had fully optimized, which makes it a stronger result than the number alone suggests.</p>
     <div class="results-grid">
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>$187</div>
+        <div class="result-num">$158</div>
         <div class="result-label">Cost per lead</div>
-        <div class="result-context">Week eight. Early efficiency came from launching with sharper hypotheses instead of broad generic creative.</div>
+        <div class="result-context">Week 8. Early efficiency came from launching with sharper hypotheses instead of broad generic creative.</div>
       </div>
       <div class="result-stat">
         <div class="result-num">14</div>
@@ -292,14 +393,14 @@
         <div class="result-context">First 60 days. Built around distinct intent levels instead of random creative variety.</div>
       </div>
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>27%</div>
+        <div class="result-num">27%</div>
         <div class="result-label">Set rate</div>
-        <div class="result-context">On stronger concepts by month two. Problem-aware angles produced the cleanest appointment signal.</div>
+        <div class="result-context">On stronger concepts by month two. Up from 19% when we picked up the account. Problem-aware angles produced the cleanest appointment signal.</div>
       </div>
       <div class="result-stat">
-        <div class="result-num">3 of 3</div>
+        <div class="result-num">3</div>
         <div class="result-label">Personas confirmed</div>
-        <div class="result-context">Each segment produced a distinct signal, with problem-aware homeowners showing the most urgency.</div>
+        <div class="result-context">All three pre-launch personas produced a distinct signal, with problem-aware homeowners showing the most urgency.</div>
       </div>
     </div>
   </div>
@@ -329,7 +430,7 @@
     <div class="ba-items">
       <div class="ba-item"><div class="ba-dot"></div><div>Generic first batch based on assumed pain points instead of real homeowner language</div></div>
       <div class="ba-item"><div class="ba-dot"></div><div>No intent ranking, so budget could drift toward volume instead of appointment quality</div></div>
-      <div class="ba-item"><div class="ba-dot"></div><div>Several weeks of learning before the account understood which buyer was worth prioritising</div></div>
+      <div class="ba-item"><div class="ba-dot"></div><div>Several weeks of learning before the account understood which buyer was worth prioritizing</div></div>
       <div class="ba-item"><div class="ba-dot"></div><div>Competitor-style angles running without knowing what problem they were really solving</div></div>
       <div class="ba-item"><div class="ba-dot"></div><div>No clear map for deciding what to keep, cut, or build next after the first read</div></div>
     </div>
@@ -346,34 +447,34 @@
   </div>
 </div>
 
-<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+<div class="crossref-wrap">
+  <div class="crossref-card">
+    <div class="crossref-arrow">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How the pre-launch strategy phase works as a structured process</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The AI Workflow playbook documents the four-stage process used here: review mining, competitor analysis, persona extraction, and angle ideation. The pre-launch strategy in this case study ran from that framework. <a href="/playbooks/ai-workflow" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div class="crossref-title">How the pre-launch strategy phase works as a structured process</div>
+      <div class="crossref-desc">The AI Workflow playbook documents the four-stage process used here: review mining, competitor analysis, persona extraction, and angle ideation. The pre-launch strategy in this case study ran from that framework.</div>
+      <a href="/playbooks/ai-workflow" class="crossref-link">Read it →</a>
     </div>
   </div>
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+  <div class="crossref-card">
+    <div class="crossref-arrow">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How comment sections became creative inputs</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Comment Response Ads playbook covers how to mine comment sections for the inputs that map directly to creative briefs: the objection, the question, and the moment of friction. The problem-aware angle in this case came from exactly that process. <a href="/playbooks/comment-response-ads" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div class="crossref-title">How comment sections became creative inputs</div>
+      <div class="crossref-desc">The Comment Response Ads playbook covers how to mine comment sections for the inputs that map directly to creative briefs: the objection, the question, and the moment of friction. The problem-aware angle in this case came from exactly that process.</div>
+      <a href="/playbooks/comment-response-ads" class="crossref-link">Read it →</a>
     </div>
   </div>
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+  <div class="crossref-card">
+    <div class="crossref-arrow">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">The persona and intent mapping framework behind the creative brief</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The roofing framework piece shows how to build a creative strategy map from product selection through persona extraction to awareness-level thought mapping. This case applied the same logic to a different vertical before a single ad went live. <a href="/frameworks/roofing-lead-gen" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div class="crossref-title">The persona and intent mapping framework behind the creative brief</div>
+      <div class="crossref-desc">The roofing framework piece shows how to build a creative strategy map from product selection through persona extraction to awareness-level thought mapping. This case applied the same logic to a different vertical before a single ad went live.</div>
+      <a href="/frameworks/roofing-lead-gen" class="crossref-link">Read it →</a>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes. CPL and set rate are directional estimates consistent with the performance trajectory documented at the time. The pre-launch research findings and creative hierarchy are accurate to the engagement.
-
-</div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

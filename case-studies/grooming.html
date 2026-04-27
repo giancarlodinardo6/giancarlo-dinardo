@@ -19,7 +19,7 @@
     .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
     .hero h1 em{font-style:italic;color: #5B9E9E;}
     .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
-    .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;padding-top:32px;border-top:1px solid var(--ink-10);}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
     .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;}
@@ -27,6 +27,7 @@
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
     .hero-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative;z-index:1;}
+    @media(max-width:600px){.hero-stat-grid{grid-template-columns:1fr;gap:20px;}.hero-stat-num{font-size:36px;}}
     .hero-stat{}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
     .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
@@ -161,9 +162,9 @@
   <div>
     <div class="section-label">The Situation</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that didn't tell two different stories.</h2>
-    <p class="prose">The account had been running for about four months when I came in through an agency. CPM was reasonable. Hook rate was fine. Click-through was solid. The creative was stopping people and they were clicking.</p>
-    <p class="prose">The breakdown was happening at checkout. Add-to-cart was decent. Checkout to purchase was the gap. That location matters, because each drop-off point in the funnel points to a different problem. High CPM is a targeting problem. Low hook rate is an attention problem. But when everything upstream is working and the breakdown happens late, at the moment of purchase, it means the ad generated interest without generating conviction. The viewer arrived ready to consider. The script had not given them enough to commit.</p>
-    <p class="prose">That diagnosis made the fix clear. The problem was not the audience, not the hook, not the landing page. It was the argument being made in the ad. Reading through the creative confirmed it: every script opened with the product. Feature-first. Ingredient callouts before the viewer had a reason to care about any of it. The ad was pitching before it had earned the right to. Change the structure of the argument and the conversion rate would follow. That was the only logical response to what the data was showing.</p>
+    <p class="prose">The account had been running for about four months when I came in through an agency. CPM was reasonable. Hook rate was fine. Click-through was solid. Add-to-cart was holding. The creative was moving people all the way to the checkout page.</p>
+    <p class="prose">The break was happening between checkout and purchase. That is the last possible moment in the funnel, and its location is significant. Each drop-off point points to a different kind of problem. If people are not clicking, the creative is not relevant or interesting enough. If they are not adding to cart, the product is not convincing them on the landing page. But when someone has clicked, landed, read enough to add to cart, and navigated to checkout, they are not indifferent. Something in the final moment is breaking their confidence.</p>
+    <p class="prose">The hypothesis was that the confidence problem started earlier than checkout. A buyer who was not fully convinced by the ad would carry that doubt through the whole funnel and have it surface at the last moment before payment. The ad had generated enough interest to get people to checkout. It had not generated enough conviction to get them over the line. That pointed to the argument in the creative, not the landing page, not the price point, not the product itself. Reading through the scripts confirmed it: every ad opened with ingredients and features before the viewer had been given a reason to care about either. The script was pitching to someone it had not yet persuaded to listen.</p>
   </div>
   <div>
     <div class="context-callout">
@@ -176,41 +177,48 @@
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">CPM</div>
-          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
-            <div style="width:88%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:90%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
           </div>
-          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+          <div style="font-size:12px;color:var(--teal);width:28px;text-align:right;">✓</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Hook rate</div>
-          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
-            <div style="width:80%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:82%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
           </div>
-          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+          <div style="font-size:12px;color:var(--teal);width:28px;text-align:right;">✓</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Click-through</div>
-          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
-            <div style="width:72%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:74%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
           </div>
-          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+          <div style="font-size:12px;color:var(--teal);width:28px;text-align:right;">✓</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
           <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Add to cart</div>
-          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
-            <div style="width:52%;height:100%;background:var(--amber);border-radius:4px;opacity:0.7;"></div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:58%;height:100%;background:var(--teal);border-radius:4px;opacity:0.5;"></div>
           </div>
-          <div style="font-size:12px;color:var(--amber);width:36px;text-align:right;">~</div>
+          <div style="font-size:12px;color:var(--ink-60);width:28px;text-align:right;">✓</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
-          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink);width:120px;flex-shrink:0;font-weight:500;">Purchase</div>
-          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
-            <div style="width:22%;height:100%;background:var(--rust);border-radius:4px;"></div>
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);width:120px;flex-shrink:0;font-weight:500;">Checkout</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:34%;height:100%;background:var(--amber);border-radius:4px;opacity:0.8;"></div>
           </div>
-          <div style="font-size:12px;color:var(--rust);width:36px;text-align:right;font-weight:500;">✗</div>
+          <div style="font-size:12px;color:var(--amber);width:28px;text-align:right;">~</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--rust);width:120px;flex-shrink:0;font-weight:500;">Purchase</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:26px;">
+            <div style="width:18%;height:100%;background:var(--rust);border-radius:4px;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--rust);width:28px;text-align:right;font-weight:500;">✗</div>
         </div>
       </div>
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);font-style:italic;">Everything upstream was working. The drop happened at the moment of purchase.</div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);font-style:italic;">Everything through add-to-cart was holding. The break happened between checkout and purchase.</div>
     </div>
   </div>
 </section>

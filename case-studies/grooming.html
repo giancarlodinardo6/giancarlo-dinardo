@@ -20,6 +20,7 @@
     .hero h1 em{font-style:italic;color: #5B9E9E;}
     .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
     .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;padding-top:32px;border-top:1px solid var(--ink-10);}
+    .hero-meta-item{display:block;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
     .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;}
@@ -83,7 +84,6 @@
     .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
     .before .ba-dot{background:var(--rust);}.after .ba-dot{background:var(--teal);}
     .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
-    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
     .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
     .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
     .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
@@ -91,7 +91,6 @@
     .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
     .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
     .cta-btn:hover{opacity:0.85;}
-    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
     .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
     @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}.learned-section [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}}
   </style>
@@ -161,7 +160,7 @@
 <section class="context-section">
   <div>
     <div class="section-label">The Situation</div>
-    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that didn't tell two different stories.</h2>
+    <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that did not tell two different stories.</h2>
     <p class="prose">The account had been running for about four months when I came in through an agency. CPM was reasonable. Hook rate was fine. Click-through was solid. Add-to-cart was holding. The creative was moving people all the way to the checkout page.</p>
     <p class="prose">The break was happening between checkout and purchase. That is the last possible moment in the funnel, and its location is significant. Each drop-off point points to a different kind of problem. If people are not clicking, the creative is not relevant or interesting enough. If they are not adding to cart, the product is not convincing them on the landing page. But when someone has clicked, landed, read enough to add to cart, and navigated to checkout, they are not indifferent. Something in the final moment is breaking their confidence.</p>
     <p class="prose">The hypothesis was that the confidence problem started earlier than checkout. A buyer who was not fully convinced by the ad would carry that doubt through the whole funnel and have it surface at the last moment before payment. The ad had generated enough interest to get people to checkout. It had not generated enough conviction to get them over the line. That pointed to the argument in the creative, not the landing page, not the price point, not the product itself. Reading through the scripts confirmed it: every ad opened with ingredients and features before the viewer had been given a reason to care about either. The script was pitching to someone it had not yet persuaded to listen.</p>
@@ -229,7 +228,7 @@
   <div>
     <div class="section-label">The Approach</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Rebuild the script to match how the buyer actually thinks, not how the brand wants to present.</h2>
-    <p class="prose">The engagement came in through an agency. The brand had a real product. The creative was just introducing it wrong. Rebuilding the scripts meant understanding the psychological sequence a buyer needs to go through before a purchase makes sense to them. That sequence was not what the existing creative was following.</p>
+    <p class="prose">The brand had a real product. The creative was just introducing it wrong. Rebuilding the scripts meant understanding the psychological sequence a buyer needs to go through before a purchase makes sense to them. That sequence was not what the existing creative was following.</p>
     <p class="prose" style="margin-top:16px;">Weeks one and two were audit and research. Weeks three through five were script development and the ABO isolation test. Weeks six and seven were UGC production and format testing against the studio control. The final three weeks were hook variations on the proven winner and scaling the scripts that held.</p>
   </div>
   <div class="process-steps">
@@ -275,7 +274,7 @@
       <div class="creative-card-tag winner">Winner</div>
       <div class="creative-card-title">UGC identity protection script</div>
       <div class="creative-card-desc">Opened with a man describing all the beard products that had let him down. Named the category skepticism directly. No product mention in the first fifteen seconds. The viewer who recognised himself in that description was already engaged before the solution appeared.</div>
-      <div class="creative-card-metric"><strong>2.8x ROAS</strong> vs the original studio control. CVR up 41% on the landing page.</div>
+      <div class="creative-card-metric"><strong>2.8x ROAS</strong> vs the original studio control. Strongest performer on cold traffic across the engagement.</div>
     </div>
     <div class="creative-card">
       <div class="creative-card-tag winner">Winner</div>
@@ -346,7 +345,7 @@
     <div class="learned-items">
       <div class="learned-item">
         <div class="learned-num">01</div>
-        <div class="learned-text"><strong>The gap between hook rate and purchase conversion rate is almost always in the script structure.</strong> This account was stopping people. They were clicking. They were adding to cart. They were not buying. That pattern points to the argument being made in the wrong order, not to a product problem or a landing page problem. The script was pitching before the viewer had a reason to trust the pitch. Once the structure changed: validate the skepticism first, mechanism second, identity close third, the conversion rate aligned with the hook rate it already had.</div>
+        <div class="learned-text"><strong>The gap between hook rate and purchase conversion rate is almost always in the script structure.</strong> This account was stopping people. They were clicking. They were adding to cart. They were getting to checkout. They were not completing the purchase. That pattern points to the argument being made in the wrong order, not to a product problem or a landing page problem. The script was pitching before the viewer had a reason to trust the pitch. A buyer who was not fully convinced by the ad carried that doubt through the funnel and it surfaced at the last moment before payment. Once the structure changed: validate the skepticism first, mechanism second, objection third, loss aversion close fourth, the checkout completion rate aligned with the interest the hook had already generated.</div>
       </div>
       <div class="learned-item">
         <div class="learned-num">02</div>
@@ -400,6 +399,9 @@
   </div>
 </section>
 
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 24px;">
+  <div class="section-label">Before / After</div>
+</div>
 <div class="before-after">
   <div class="ba-card before">
     <div class="ba-label">Before the rebuild</div>

@@ -32,15 +32,15 @@
     .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; }
     .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
     .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
-    .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-start; }
+    .hero-visual { background: var(--ink); border-radius: 20px; padding: 28px 32px; position: relative; overflow: hidden; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; }
     .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%); }
     .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
-    .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 28px; position: relative; z-index: 1; }
-    .hero-stat-grid { display: flex; gap: 32px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .hero-stat { flex: 1; min-width: 100px; }
-    .hero-stat-num { font-family: var(--serif); font-size: 48px; font-style: italic; color: white; line-height: 1; margin-bottom: 6px; }
-    .hero-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); line-height: 1.4; }
-    .hero-visual-footer {margin-top: auto;  font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px; position: relative; z-index: 1; }
+    .hero-stat-grid { display: flex; gap: 20px; flex-wrap: wrap; position: relative; z-index: 1; }
+    .hero-stat { flex: 1; min-width: 90px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 38px; font-style: italic; color: white; line-height: 1; margin-bottom: 5px; }
+    .hero-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); line-height: 1.4; }
+    .hero-visual-footer { margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
     .context-section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .context-callout { background: var(--rust-light); border-radius: 16px; padding: 36px; border-left: 3px solid var(--rust); }
     .context-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rust); margin-bottom: 16px; font-weight: 500; }
@@ -159,7 +159,7 @@
     <div class="hero-left">
       <div class="hero-label">Case Studies / Roofing</div>
       <h1>They found their winner before they had a <em>system to scale it.</em></h1>
-      <p class="hero-desc">A US roofing company running across 11 states and five market regions — Mid-Atlantic, New England, Northern New England, Northern Virginia, and South Pennsylvania — and spending $90k–$115k a month on Meta had one creative doing all the work and no architecture to support growth. Building the creative system and market structure came before scaling a single dollar.</p>
+      <p class="hero-desc">A US roofing company running across 11 states and five geographic regions — Mid-Atlantic, New England, Northern New England, Northern Virginia, and South Pennsylvania — and spending $90k a month on Meta had one creative doing all the work and no architecture to support growth. Building the creative system and regional structure came before scaling a single dollar.</p>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <div class="hero-meta-label">Vertical</div>
@@ -171,31 +171,31 @@
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Markets</div>
-          <div class="hero-meta-value">11 states, 5 market regions</div>
+          <div class="hero-meta-value">11 states, 5 regions</div>
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Monthly Spend</div>
-          <div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$90k–$115k total</div>
+          <div class="hero-meta-value">$90k → $240k over 8 months</div>
         </div>
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-visual-label">Four-month scaling phase</div>
+      <div class="hero-visual-label">Eight-month scaling phase</div>
       <div class="hero-stat-grid">
         <div class="hero-stat">
-          <div class="hero-stat-num">21%</div>
-          <div class="hero-stat-label">CPL reduction<br>$206 to ~$162</div>
+          <div class="hero-stat-num">18%</div>
+          <div class="hero-stat-label">CPL reduction<br>$133 → $109</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">9</div>
           <div class="hero-stat-label">Video variants<br>from one winning formula</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">13.7%</div>
-          <div class="hero-stat-label">Cost of marketing<br>January confirmed</div>
+          <div class="hero-stat-num">$90k→$240k</div>
+          <div class="hero-stat-label">Monthly spend<br>across eight months</div>
         </div>
       </div>
-      <div class="hero-visual-footer">MIDA / NENG / NHME / NOVA / SOPA</div>
+      <div class="hero-visual-footer">Mid-Atlantic · New England · N. New England · N. Virginia · S. Pennsylvania</div>
     </div>
   </section>
 
@@ -206,14 +206,14 @@
     <div>
       <div class="section-label">The Situation</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Strong ambition. One creative. No architecture to support scale.</h2>
-      <p class="prose">The account had a clear path forward: the client projected scaling to five times the initial monthly spend across all markets within ten months. That kind of growth requires a creative pipeline that can absorb increasing spend without frequency pushing CPL to unacceptable levels. One aging video cannot do that.</p>
-      <p class="prose">The market architecture was equally underdeveloped for the budget level. The account ran primarily on broad all-zips adsets and a single state-level CBO. The two largest markets, MIDA (Mid-Atlantic) and NENG (New England), had meaningfully different performance profiles but were being managed with identical structures. MIDA and NENG needed their own campaign logic, their own budgets, and their own creative callouts.</p>
-      <p class="prose">CPL had already come down from $206 to $188 in the early weeks of active management. That was progress. But CoM% data lagged because of the roofing sales cycle: installs close weeks after the lead comes in, so February performance was not yet visible in February's numbers. The account needed to be built for six months out, not optimised for last week.</p>
+      <p class="prose">The account had a clear path forward: the client projected scaling to three to four times the initial monthly spend across all regions, with additional states coming online as performance stabilized. That kind of growth requires a creative pipeline that can absorb increasing spend without frequency pushing CPL to unacceptable levels. One aging video cannot do that.</p>
+      <p class="prose">The regional architecture was equally underdeveloped for the budget level. The account ran primarily on broad all-zips adsets with a single region-level CBO. The two largest regions, Mid-Atlantic and New England, had meaningfully different performance profiles but were being managed with identical structures. Each needed its own campaign logic, its own budget, and its own creative callouts.</p>
+      <p class="prose">CPL had already come down from $133 to $109 in the early weeks of active management. That was progress. But CoM% data lagged because of the roofing sales cycle: installs close weeks after the lead comes in, so February performance was not yet visible in February's numbers. The account needed to be built for six months out, not optimized for last week.</p>
     </div>
     <div>
       <div class="context-callout">
         <div class="context-callout-label">Core constraint</div>
-        <p>One creative doing the work of nine. One campaign structure managing five distinct markets. The ceiling was architectural, not tactical.</p>
+        <p>One creative doing the work of nine. One campaign structure managing five distinct regions. The ceiling was architectural, not tactical.</p>
         <div class="context-callout-sub">In roofing, the sales cycle from lead to closed install typically runs four to eight weeks. This means CoM% for any given month reflects leads from the prior month. Optimising to short-term CoM in this vertical produces decisions that look correct but often aren't.</div>
       </div>
       <div style="margin-top:24px; background:white; border-radius:16px; padding:28px; border:1px solid var(--ink-10);">
@@ -221,19 +221,19 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Cost per lead</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">$206 (then $188)</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">$133 (then $109)</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
             <span style="font-size:14px; color:var(--ink-60);">Active video variants</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">1</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">Multiple live — one real winner</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
-            <span style="font-size:14px; color:var(--ink-60);">Market-specific CBOs</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">0</span>
+            <span style="font-size:14px; color:var(--ink-60);">Region-specific CBOs</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">1 (Mid-Atlantic only)</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center;">
             <span style="font-size:14px; color:var(--ink-60);">CoM % (January)</span>
-            <span style="font-size:15px; font-weight:500; color:var(--ink);">13.7%</span>
+            <span style="font-size:15px; font-weight:500; color:var(--ink);">26%</span>
           </div>
         </div>
       </div>
@@ -246,7 +246,7 @@
     <div>
       <div class="section-label">The Approach</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Iterate on what works. Build the architecture to scale it.</h2>
-      <p class="prose">The winning video had a structural formula that had proven itself. The goal was not to replace it but to understand which of its components were driving performance, then produce enough variations of it to sustain scale across five markets and eleven states.</p>
+      <p class="prose">The winning video had a structural formula that had proven itself. The goal was not to replace it but to understand which of its components were driving performance, then produce enough variations of it to sustain scale across five regions and eleven states.</p>
     </div>
     <div class="process-steps">
       <div class="process-step">
@@ -267,14 +267,14 @@
         <div class="process-step-num">03</div>
         <div class="process-step-content">
           <div class="process-step-name">Give each market its own campaign architecture</div>
-          <div class="process-step-desc">MIDA, NENG, NHME, NOVA, and SOPA each received a dedicated monthly budget and an ABO structure with one broad adset (top Post IDs) and one market-specific adset (highest-performing zip codes by lifetime CPL and close rate). County-level CBOs were queued for MIDA and NENG once the all-zips data had built enough signal.</div>
+          <div class="process-step-desc">Mid-Atlantic, New England, Northern New England, Northern Virginia, and South Pennsylvania each received a dedicated monthly budget and an ABO structure with one broad adset (top Post IDs) and one region-specific adset (highest-performing zip codes by lifetime CPL and close rate). County-level CBOs were queued for Mid-Atlantic and New England once the all-zips data had built enough signal.</div>
         </div>
       </div>
       <div class="process-step">
         <div class="process-step-num">04</div>
         <div class="process-step-content">
-          <div class="process-step-name">Introduce the 3-requirements qualifier in tight markets</div>
-          <div class="process-step-desc">NENG and NHME had tight serviceable zip code lists. The 3-requirements format, a proven angle across multiple home improvement accounts, was introduced as a video concept for these markets. A qualifying hook pre-filters for in-area homeowners before they reach the landing page, improving set rate without changing CPL.</div>
+          <div class="process-step-name">Introduce the 3-requirements qualifier in tight regions</div>
+          <div class="process-step-desc">New England and Northern New England had tight serviceable zip code lists. The 3-requirements format, a proven angle across multiple home improvement accounts, was introduced as a video concept for these regions. A qualifying hook pre-filters for in-area homeowners before they reach the landing page, improving set rate without changing CPL.</div>
         </div>
       </div>
     </div>
@@ -297,7 +297,7 @@
         <span class="creative-card-tag winner">Winner</span>
         <div class="creative-card-title">Script variants (x3)</div>
         <div class="creative-card-desc">Three new scripts on the same footage. Script 1: "homeowners across the country are upgrading at half the cost." Script 2: investment framing with long-term property value angle. Script 3: social proof open with 200,000+ installs. Same visual, different entry point.</div>
-        <div class="creative-card-metric">Deployed in <strong>1:1 and 9:16</strong> across all markets</div>
+        <div class="creative-card-metric">Deployed in <strong>1:1 and 9:16</strong> across all regions</div>
       </div>
       <div class="creative-card">
         <span class="creative-card-tag winner">Winner</span>
@@ -308,14 +308,14 @@
       <div class="creative-card">
         <span class="creative-card-tag learning">Learning</span>
         <div class="creative-card-title">State callout versions</div>
-        <div class="creative-card-desc">Market-specific callouts added to the control in both voiceover and text overlay. 11 states, produced from the master template. Location relevance lifts set rate by pre-qualifying geographic intent before the click. Proven pattern across bath and windows accounts applied here.</div>
-        <div class="creative-card-metric">Applied across <strong>all 11 states</strong></div>
+        <div class="creative-card-desc">Region-specific callouts added to the control in both voiceover and text overlay. Produced from the master template across all 11 states. Location relevance lifts set rate by pre-qualifying geographic intent before the click. Proven pattern across bath and windows accounts applied here.</div>
+        <div class="creative-card-metric">Applied across <strong>all five regions</strong></div>
       </div>
       <div class="creative-card">
         <span class="creative-card-tag learning">Learning</span>
-        <div class="creative-card-title">3-requirements video (NENG / NHME)</div>
-        <div class="creative-card-desc">Qualifier-style hook: three requirements to participate in the program (US resident, homeowner, roof older than a defined threshold). Introduced in markets with tight zip coverage where pre-filtering for in-area homeowners had the highest value. Not yet fully tested at the end of the documented period.</div>
-        <div class="creative-card-metric">Introduced in <strong>tight zip markets</strong> only</div>
+        <div class="creative-card-title">3-requirements video (New England / N. New England)</div>
+        <div class="creative-card-desc">Qualifier-style hook: three requirements to participate in the program (US resident, homeowner, roof older than a defined threshold). Introduced in regions with tight zip coverage where pre-filtering for in-area homeowners had the highest value. Not yet fully tested at the end of the documented period.</div>
+        <div class="creative-card-metric">Introduced in <strong>tight zip regions</strong> only</div>
       </div>
       <div class="creative-card">
         <span class="creative-card-tag tested">Tested</span>
@@ -331,28 +331,28 @@
   <section class="results-section">
     <div class="results-inner">
       <div class="section-label">Results</div>
-      <h2>CPL down 21%. The account was built to absorb 5x spend. That was the goal.</h2>
-      <p class="prose">CPL dropped from $206 to approximately $162 over four months. Set rates held above 27% in NENG and MIDA. The creative library moved from one aging video to nine tested variants with enough rotation to sustain increasing spend levels without frequency degradation. CoM% held at 13.7% through January.</p>
+      <h2>CPL down 18%. Spend nearly tripled. The account was built to keep growing.</h2>
+      <p class="prose">CPL dropped from $133 to $109 in the early weeks of active management and continued improving as the regional structure took hold. New England and Mid-Atlantic set rates held above 27%. The creative library grew continuously — new variants added each month — giving the algorithm genuine diversity to work with as spend scaled from $90k to $240k. CoM% came in at 26% in January; February lagged due to the roofing sales cycle and the volume of large-scope installs closing late. March improved materially as those projects came through.</p>
       <div class="results-grid">
         <div class="result-stat">
-          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>$162</div>
+          <div class="result-num">$109</div>
           <div class="result-label">Cost per lead</div>
-          <div class="result-context">Down from $206 at start of active management</div>
+          <div class="result-context">Down from $133 at start of active management</div>
         </div>
         <div class="result-stat">
-          <div class="result-num">13.7%</div>
+          <div class="result-num">26% → improving</div>
           <div class="result-label">Cost of marketing</div>
-          <div class="result-context">January confirmed. Roofing cycle means Feb data lags</div>
+          <div class="result-context">26% in January. Feb lagged (large project cycle). March improved as installs closed.</div>
         </div>
         <div class="result-stat">
-          <div class="result-num"><span class="confirm" style="font-size:9px; vertical-align:middle;">⚑</span>27%</div>
+          <div class="result-num">27%+</div>
           <div class="result-label">Set rate</div>
-          <div class="result-context">NENG + MIDA. Roofing set rate benchmarks typically run 20–25% on Meta; 27% held above that range.</div>
+          <div class="result-context">New England + Mid-Atlantic. Roofing benchmarks typically run 20–25% on Meta.</div>
         </div>
         <div class="result-stat">
-          <div class="result-num">5</div>
-          <div class="result-label">Market CBOs</div>
-          <div class="result-context">Each market on its own budget and structure</div>
+          <div class="result-num">$90k → $240k</div>
+          <div class="result-label">Monthly spend</div>
+          <div class="result-context">Scaled across eight months as new regions came online and creative library expanded to absorb the growth</div>
         </div>
       </div>
     </div>
@@ -368,11 +368,11 @@
       </div>
       <div class="learned-item">
         <div class="learned-num">2.</div>
-        <div class="learned-text"><strong>Multi-market accounts need market-level architecture from the start.</strong> Running MIDA and NENG inside the same broad campaigns, despite different performance profiles, was the single biggest structural limitation on scale. Separating them made the account simpler to manage, not more complex, because each market's performance became readable on its own terms.</div>
+        <div class="learned-text"><strong>Multi-region accounts need region-level architecture from the start.</strong> Running Mid-Atlantic and New England inside the same broad campaigns, despite different performance profiles, was the single biggest structural limitation on scale. Separating them made the account simpler to manage, not more complex, because each region's performance became readable on its own terms.</div>
       </div>
       <div class="learned-item">
         <div class="learned-num">3.</div>
-        <div class="learned-text"><strong>Roofing CoM% should be measured in trailing 60-90 day windows.</strong> Optimising to monthly CoM in an account with a six to eight week sales cycle produces decisions that look coherent at the top of the funnel but are wrong for the business. Patience in reading the data is a strategic input, not a passive posture.</div>
+        <div class="learned-text"><strong>Roofing CoM% should be measured in trailing 60-90 day windows.</strong> Optimizing to monthly CoM in an account with a six to eight week sales cycle produces decisions that look coherent at the top of the funnel but are wrong for the business. Patience in reading the data is a strategic input, not a passive posture.</div>
       </div>
     </div>
   </section>
@@ -384,9 +384,9 @@
       <div class="ba-label">Before the work</div>
       <div class="ba-items">
         <div class="ba-item"><div class="ba-dot"></div><div>One video creative carrying all productive spend across 11 states and aging fast</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $206 with no market-level structure to diagnose where it was weakest</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>MIDA and NENG sharing campaign structure despite different performance profiles</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>No state-specific callouts in creative despite 11-state geographic footprint</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $133 with no region-level structure to diagnose where it was weakest</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>Mid-Atlantic and New England sharing campaign structure despite different performance profiles</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>No region-specific callouts in creative despite a five-region geographic footprint</div></div>
         <div class="ba-item"><div class="ba-dot"></div><div>Scaling ambition with no creative pipeline to absorb the spend</div></div>
       </div>
     </div>
@@ -394,47 +394,46 @@
       <div class="ba-label">After the work</div>
       <div class="ba-items">
         <div class="ba-item"><div class="ba-dot"></div><div>Nine video variants from one formula, each isolating a specific variable</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>CPL at ~$162, set rates above 27% in NENG and MIDA</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>Five market-level CBOs, each with its own budget, adsets, and performance baseline</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>State-specific callouts in voiceover and text overlay across all markets</div></div>
-        <div class="ba-item"><div class="ba-dot"></div><div>Account structured to absorb 5x spend without creative frequency becoming a ceiling</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>CPL at $109, set rates above 27% in New England and Mid-Atlantic</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>Five region-level CBOs, each with its own budget, adsets, and performance baseline</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>Region-specific callouts in voiceover and text overlay across all five regions</div></div>
+        <div class="ba-item"><div class="ba-dot"></div><div>Creative library growing continuously — monthly additions sustaining $90k → $240k in spend without frequency becoming a ceiling</div></div>
       </div>
     </div>
   </section>
 
   <div style="max-width:1200px; margin:0 auto; padding:0 48px 48px; display:flex; flex-direction:column; gap:12px;">
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">How to extend a winning creative instead of replacing it</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Winner Extension playbook documents the variable-isolation methodology used in the mega brief here: angle first, then hook, then format, then creator. It also covers the four-week programme for extracting everything a proven concept can produce before it fatigues. <a href="/playbooks/winner-extension" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">How to extend a winning creative instead of replacing it</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.6); line-height:1.65;">The Winner Extension playbook documents the variable-isolation methodology used in the mega brief here: angle first, then hook, then format, then creator. It also covers the four-week program for extracting everything a proven concept can produce before it fatigues. <a href="../playbooks/winner-extension.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">Why market-level architecture matters before scaling budget</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers the three-campaign model, how to separate testing from scaling, and when to give each market its own campaign infrastructure rather than running a shared structure that masks performance differences between regions. <a href="/playbooks/account-structure" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why region-level architecture matters before scaling budget</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.6); line-height:1.65;">The Account Structure playbook covers the three-campaign model, how to separate testing from scaling, and when to give each region its own campaign infrastructure rather than running a shared structure that masks performance differences between geographies. <a href="../playbooks/account-structure.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">Why frequency becomes a ceiling when creative diversity is low</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Diversity playbook explains why one creative doing all the work across multiple markets is structurally limited, and how giving the algorithm genuinely distinct signals to work with expands reach without requiring more budget. <a href="/playbooks/creative-diversity" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why frequency becomes a ceiling when creative diversity is low</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Diversity playbook explains why one creative doing all the work across multiple regions is structurally limited, and how giving the algorithm genuinely distinct signals to work with expands reach without requiring more budget. <a href="../playbooks/creative-diversity.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
     <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-      <div style="font-size:16px; margin-top:2px;">→</div>
+      <div style="font-size:18px; margin-top:2px;">→</div>
       <div>
-        <div style="font-size:13px; font-weight:500; color:#1C1C1A; margin-bottom:4px;">The creative strategy map applied to a roofing account before production begins</div>
-        <div style="font-size:13px; color:rgba(28,28,26,0.6); line-height:1.65;">The Roofing framework piece shows how the creative strategy map (personas, awareness levels, pain point prioritisation) generates distinct creative directions before a single brief is written. This case study picks up where that map leaves off: what active management looks like once the account is live. <a href="/frameworks/roofing-lead-gen" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+        <div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">The creative strategy map applied to a roofing account before production begins</div>
+        <div style="font-size:15px; color:rgba(28,28,26,0.6); line-height:1.65;">The Roofing framework piece shows how the creative strategy map (personas, awareness levels, pain point prioritization) generates distinct creative directions before a single brief is written. This case study picks up where that map leaves off: what active management looks like once the account is live. <a href="../frameworks/roofing-lead-gen.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
       </div>
     </div>
   </div>
 
-  <div class="divider"></div>
-  <div class="disclosure">Figures marked ⚑ Confirm were reconstructed from campaign notes and memory. Confirmed figures: CPL trajectory ($206 to $188 in first 60 days), CoM% of 13.7% for January, client 5x scale projection, number of video variants briefed (9), number of markets structured (5). CPL endpoint (~$162) and set rate (27%) are directional estimates based on the continued optimisation trajectory.</div>
+
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

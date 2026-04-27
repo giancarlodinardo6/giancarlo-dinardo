@@ -75,14 +75,16 @@
     .result-num { font-family: var(--serif); font-size: 40px; font-style: italic; color: white; line-height: 1; margin-bottom: 8px; }
     .result-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
     .result-context { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.5; font-weight: 300; }
-    .learned-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .learned-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .learned-section-left {}
     .learned-section h2 { font-family: var(--serif); font-size: clamp(28px,3.2vw,40px); font-weight: 400; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 40px; }
     .learned-section h2 em { font-style: italic; color: var(--teal); }
-    .learned-items { display: flex; flex-direction: column; gap: 32px; max-width: 680px; }
+    .learned-items { display: flex; flex-direction: column; gap: 32px; }
     .learned-item { display: flex; gap: 24px; align-items: flex-start; }
     .learned-num { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--ink-30); min-width: 28px; padding-top: 3px; }
     .learned-text { font-size: 15px; color: var(--ink-60); line-height: 1.7; font-weight: 300; }
     .learned-text strong { color: var(--ink); font-weight: 500; }
+    .learned-visual { display: flex; align-items: center; justify-content: center; }
     .before-after { padding: 80px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .ba-card { border-radius: 20px; padding: 40px; }
     .ba-card.before { background: var(--rust-light); border: 1px solid rgba(184,92,56,0.15); }
@@ -107,13 +109,15 @@
     .cta-btn { display: inline-block; background: white; color: var(--ink); font-size: 14px; font-weight: 500; padding: 14px 32px; border-radius: 40px; text-decoration: none; transition: opacity 0.2s; }
     .cta-btn:hover { opacity: 0.85; }
     @media (max-width: 900px) {
-      .hero, .context-section, .approach-section, .before-after { grid-template-columns: 1fr; }
+      .hero, .context-section, .approach-section, .before-after, .learned-section { grid-template-columns: 1fr; }
       .creative-grid { grid-template-columns: 1fr; }
       .results-grid { grid-template-columns: 1fr 1fr; }
       .hero { padding: 60px 24px 0; min-height: auto; }
       nav, .context-section, .approach-section, .creative-section, .before-after, .learned-section, .disclosure { padding-left: 24px; padding-right: 24px; }
       .results-section { padding-left: 24px; padding-right: 24px; }
       .cta-section { margin: 40px 24px; padding: 60px 32px; }
+      .learned-visual { margin-top: 8px; }
+      .learned-visual svg { max-width: 280px; margin: 0 auto; }
     }
   </style>
 <link rel="stylesheet" href="../styles.css">
@@ -250,45 +254,35 @@
       <p class="prose">The winning video had a structural formula that had proven itself. The goal was not to replace it but to understand which of its components were driving performance, then produce enough variations of it to sustain scale across five regions and eleven states.</p>
 
       <!-- CoM% Trend Chart -->
-      <div style="margin-top:32px; background:white; border-radius:16px; padding:28px 28px 20px; border:1px solid var(--ink-10);">
+      <div style="margin-top:32px; background:white; border-radius:16px; padding:28px 28px 22px; border:1px solid var(--ink-10);">
         <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-30); margin-bottom:20px; font-weight:500;">Cost of Marketing % — Monthly Trend</div>
-        <div style="display:flex; align-items:flex-end; gap:12px; height:100px; margin-bottom:12px;">
-          <!-- Jan -->
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
-            <div style="font-size:11px; font-weight:500; color:var(--ink-60);">26%</div>
-            <div style="width:100%; background:var(--rust-light); border-radius:6px 6px 0 0; height:100%; display:flex; align-items:flex-end;">
-              <div style="width:100%; background:var(--rust); opacity:0.7; border-radius:6px 6px 0 0; height:100%;"></div>
-            </div>
-          </div>
-          <!-- Feb -->
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
-            <div style="font-size:11px; font-weight:500; color:var(--ink-60);">22%</div>
-            <div style="width:100%; background:var(--rust-light); border-radius:6px 6px 0 0; height:84.6%;">
-              <div style="width:100%; background:var(--rust); opacity:0.55; border-radius:6px 6px 0 0; height:100%;"></div>
-            </div>
-          </div>
-          <!-- Mar -->
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
-            <div style="font-size:11px; font-weight:500; color:var(--teal);">15%</div>
-            <div style="width:100%; background:var(--teal-light); border-radius:6px 6px 0 0; height:57.7%;">
-              <div style="width:100%; background:var(--teal); opacity:0.6; border-radius:6px 6px 0 0; height:100%;"></div>
-            </div>
-          </div>
-          <!-- Apr -->
-          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
-            <div style="font-size:11px; font-weight:500; color:var(--teal);">15%</div>
-            <div style="width:100%; background:var(--teal-light); border-radius:6px 6px 0 0; height:57.7%;">
-              <div style="width:100%; background:var(--teal); opacity:0.6; border-radius:6px 6px 0 0; height:100%;"></div>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex; gap:12px;">
-          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Jan</div>
-          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Feb</div>
-          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Mar</div>
-          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Apr</div>
-        </div>
-        <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--ink-10); font-size:12px; color:var(--ink-30); line-height:1.5;">Feb lag reflects large-scope installs closing late — not a drop in lead quality.</div>
+        <svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg" style="width:100%; display:block; overflow:visible;">
+          <!-- Grid lines -->
+          <line x1="0" y1="0" x2="320" y2="0" stroke="rgba(28,28,26,0.06)" stroke-width="1"/>
+          <line x1="0" y1="30" x2="320" y2="30" stroke="rgba(28,28,26,0.06)" stroke-width="1"/>
+          <line x1="0" y1="60" x2="320" y2="60" stroke="rgba(28,28,26,0.06)" stroke-width="1"/>
+          <line x1="0" y1="90" x2="320" y2="90" stroke="rgba(28,28,26,0.06)" stroke-width="1"/>
+          <!-- Jan bar — 26%, max=30% so height = (26/30)*90 = 78 -->
+          <rect x="8" y="12" width="56" height="78" rx="5" fill="#B85C38" opacity="0.75"/>
+          <text x="36" y="7" text-anchor="middle" font-size="11" font-weight="500" fill="#B85C38" font-family="'DM Sans',system-ui,sans-serif">26%</text>
+          <!-- Feb bar — 22%, height = (22/30)*90 = 66 -->
+          <rect x="88" y="24" width="56" height="66" rx="5" fill="#B85C38" opacity="0.45"/>
+          <text x="116" y="19" text-anchor="middle" font-size="11" font-weight="500" fill="rgba(28,28,26,0.5)" font-family="'DM Sans',system-ui,sans-serif">22%</text>
+          <!-- Mar bar — 15%, height = (15/30)*90 = 45 -->
+          <rect x="168" y="45" width="56" height="45" rx="5" fill="#5B9E9E" opacity="0.7"/>
+          <text x="196" y="40" text-anchor="middle" font-size="11" font-weight="500" fill="#5B9E9E" font-family="'DM Sans',system-ui,sans-serif">15%</text>
+          <!-- Apr bar — 15%, height = 45 -->
+          <rect x="248" y="45" width="56" height="45" rx="5" fill="#5B9E9E" opacity="0.7"/>
+          <text x="276" y="40" text-anchor="middle" font-size="11" font-weight="500" fill="#5B9E9E" font-family="'DM Sans',system-ui,sans-serif">15%</text>
+          <!-- Month labels -->
+          <text x="36" y="108" text-anchor="middle" font-size="10" fill="rgba(28,28,26,0.3)" letter-spacing="0.06em" font-family="'DM Sans',system-ui,sans-serif">JAN</text>
+          <text x="116" y="108" text-anchor="middle" font-size="10" fill="rgba(28,28,26,0.3)" letter-spacing="0.06em" font-family="'DM Sans',system-ui,sans-serif">FEB</text>
+          <text x="196" y="108" text-anchor="middle" font-size="10" fill="rgba(28,28,26,0.3)" letter-spacing="0.06em" font-family="'DM Sans',system-ui,sans-serif">MAR</text>
+          <text x="276" y="108" text-anchor="middle" font-size="10" fill="rgba(28,28,26,0.3)" letter-spacing="0.06em" font-family="'DM Sans',system-ui,sans-serif">APR</text>
+          <!-- Baseline -->
+          <line x1="0" y1="90" x2="320" y2="90" stroke="rgba(28,28,26,0.12)" stroke-width="1"/>
+        </svg>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--ink-10); font-size:12px; color:var(--ink-30); line-height:1.5;">Feb lag reflects large-scope installs closing late — not a drop in lead quality.</div>
       </div>
     </div>
     <div class="process-steps">
@@ -402,21 +396,84 @@
   </section>
 
   <section class="learned-section">
-    <div class="section-label">What I Took From This</div>
-    <h2>Scale reveals the gaps in your <em>creative system.</em></h2>
-    <div class="learned-items">
-      <div class="learned-item">
-        <div class="learned-num">1.</div>
-        <div class="learned-text"><strong>A single winning creative is a starting point, not a system.</strong> The goal of early account management is to understand why the winner works structurally, then build a methodology to produce more of them. Isolating individual variables across multiple video variants is slower than launching entirely new concepts. It produces more reliable winners because each iteration is grounded in what already converted.</div>
+    <div class="learned-section-left">
+      <div class="section-label">What I Took From This</div>
+      <h2>Scale reveals the gaps in your <em>creative system.</em></h2>
+      <div class="learned-items">
+        <div class="learned-item">
+          <div class="learned-num">1.</div>
+          <div class="learned-text"><strong>A single winning creative is a starting point, not a system.</strong> The goal of early account management is to understand why the winner works structurally, then build a methodology to produce more of them. Isolating individual variables across multiple video variants is slower than launching entirely new concepts. It produces more reliable winners because each iteration is grounded in what already converted.</div>
+        </div>
+        <div class="learned-item">
+          <div class="learned-num">2.</div>
+          <div class="learned-text"><strong>Multi-region accounts need region-level architecture from the start.</strong> Running Mid-Atlantic and New England inside the same broad campaigns, despite different performance profiles, was the single biggest structural limitation on scale. Separating them made the account simpler to manage, not more complex, because each region's performance became readable on its own terms.</div>
+        </div>
+        <div class="learned-item">
+          <div class="learned-num">3.</div>
+          <div class="learned-text"><strong>Roofing CoM% should be measured in trailing 60-90 day windows.</strong> Optimizing to monthly CoM in an account with a six to eight week sales cycle produces decisions that look coherent at the top of the funnel but are wrong for the business. Patience in reading the data is a strategic input, not a passive posture.</div>
+        </div>
       </div>
-      <div class="learned-item">
-        <div class="learned-num">2.</div>
-        <div class="learned-text"><strong>Multi-region accounts need region-level architecture from the start.</strong> Running Mid-Atlantic and New England inside the same broad campaigns, despite different performance profiles, was the single biggest structural limitation on scale. Separating them made the account simpler to manage, not more complex, because each region's performance became readable on its own terms.</div>
-      </div>
-      <div class="learned-item">
-        <div class="learned-num">3.</div>
-        <div class="learned-text"><strong>Roofing CoM% should be measured in trailing 60-90 day windows.</strong> Optimizing to monthly CoM in an account with a six to eight week sales cycle produces decisions that look coherent at the top of the funnel but are wrong for the business. Patience in reading the data is a strategic input, not a passive posture.</div>
-      </div>
+    </div>
+    <div class="learned-visual">
+      <svg viewBox="0 0 340 380" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:340px; display:block;">
+        <!-- Background subtle circle -->
+        <circle cx="170" cy="190" r="155" fill="rgba(28,28,26,0.03)"/>
+        <!-- Outer ring -->
+        <circle cx="170" cy="190" r="148" fill="none" stroke="rgba(28,28,26,0.07)" stroke-width="1"/>
+
+        <!-- Creative system orbit ring -->
+        <circle cx="170" cy="190" r="110" fill="none" stroke="rgba(28,28,26,0.06)" stroke-width="1" stroke-dasharray="4 6"/>
+
+        <!-- Center node — the winner -->
+        <circle cx="170" cy="190" r="38" fill="#1C1C1A"/>
+        <text x="170" y="185" text-anchor="middle" font-size="9" letter-spacing="0.1em" fill="rgba(255,255,255,0.5)" font-family="'DM Sans',system-ui,sans-serif">WINNING</text>
+        <text x="170" y="198" text-anchor="middle" font-size="9" letter-spacing="0.1em" fill="rgba(255,255,255,0.5)" font-family="'DM Sans',system-ui,sans-serif">FORMULA</text>
+
+        <!-- Orbit nodes — variants -->
+        <!-- Script variants — top -->
+        <circle cx="170" cy="80" r="22" fill="#5B9E9E" opacity="0.85"/>
+        <text x="170" y="77" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">SCRIPT</text>
+        <text x="170" y="88" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">VARIANTS</text>
+        <line x1="170" y1="102" x2="170" y2="152" stroke="rgba(91,158,158,0.3)" stroke-width="1.5"/>
+
+        <!-- Drone footage — top right -->
+        <circle cx="264" cy="127" r="22" fill="#5B9E9E" opacity="0.65"/>
+        <text x="264" y="124" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">DRONE</text>
+        <text x="264" y="135" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">FOOTAGE</text>
+        <line x1="245" y1="141" x2="207" y2="165" stroke="rgba(91,158,158,0.25)" stroke-width="1.5"/>
+
+        <!-- State callouts — right -->
+        <circle cx="285" cy="215" r="22" fill="#B85C38" opacity="0.55"/>
+        <text x="285" y="212" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">REGION</text>
+        <text x="285" y="223" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">CALLOUTS</text>
+        <line x1="263" y1="208" x2="208" y2="196" stroke="rgba(184,92,56,0.25)" stroke-width="1.5"/>
+
+        <!-- 3 requirements — bottom right -->
+        <circle cx="240" cy="290" r="22" fill="#B87A1A" opacity="0.55"/>
+        <text x="240" y="287" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">3-REQ</text>
+        <text x="240" y="298" text-anchor="middle" font-size="8" fill="white" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">FORMAT</text>
+        <line x1="222" y1="275" x2="196" y2="225" stroke="rgba(184,122,26,0.25)" stroke-width="1.5"/>
+
+        <!-- Hook swap — bottom left -->
+        <circle cx="100" cy="290" r="22" fill="rgba(28,28,26,0.2)"/>
+        <text x="100" y="287" text-anchor="middle" font-size="8" fill="rgba(28,28,26,0.6)" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">HOOK</text>
+        <text x="100" y="298" text-anchor="middle" font-size="8" fill="rgba(28,28,26,0.6)" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">SWAP</text>
+        <line x1="118" y1="275" x2="144" y2="225" stroke="rgba(28,28,26,0.1)" stroke-width="1.5"/>
+
+        <!-- Left node -->
+        <circle cx="55" cy="215" r="22" fill="rgba(28,28,26,0.12)"/>
+        <text x="55" y="212" text-anchor="middle" font-size="8" fill="rgba(28,28,26,0.5)" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">CONTROL</text>
+        <text x="55" y="223" text-anchor="middle" font-size="8" fill="rgba(28,28,26,0.5)" font-family="'DM Sans',system-ui,sans-serif" letter-spacing="0.05em">0002</text>
+        <line x1="77" y1="208" x2="132" y2="196" stroke="rgba(28,28,26,0.1)" stroke-width="1.5"/>
+
+        <!-- Legend -->
+        <circle cx="28" cy="348" r="5" fill="#5B9E9E" opacity="0.8"/>
+        <text x="38" y="352" font-size="9" fill="rgba(28,28,26,0.4)" font-family="'DM Sans',system-ui,sans-serif">Winner</text>
+        <circle cx="92" cy="348" r="5" fill="#B85C38" opacity="0.55"/>
+        <text x="102" y="352" font-size="9" fill="rgba(28,28,26,0.4)" font-family="'DM Sans',system-ui,sans-serif">Learning</text>
+        <circle cx="166" cy="348" r="5" fill="rgba(28,28,26,0.2)"/>
+        <text x="176" y="352" font-size="9" fill="rgba(28,28,26,0.4)" font-family="'DM Sans',system-ui,sans-serif">Tested</text>
+      </svg>
     </div>
   </section>
 

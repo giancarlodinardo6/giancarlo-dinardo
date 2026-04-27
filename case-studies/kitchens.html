@@ -29,18 +29,22 @@
     .hero h1 { font-family: var(--serif); font-size: clamp(38px,4.8vw,58px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
     .hero h1 em { font-style: italic; color: #5B9E9E; }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
-    .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; }
+    .hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
     .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
     .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
-    .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: flex-start; }
-    .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%); }
-    .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
-    .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 28px; position: relative; z-index: 1; }
-    .hero-stat-grid { display: flex; gap: 32px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .hero-stat { flex: 1; min-width: 100px; }
-    .hero-stat-num { font-family: var(--serif); font-size: 48px; font-style: italic; color: white; line-height: 1; margin-bottom: 6px; }
-    .hero-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); line-height: 1.4; }
-    .hero-visual-footer {margin-top: auto;  font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); }
+    .hero-visual { background: var(--ink); border-radius: 20px; padding: 36px; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+    .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%); pointer-events: none; }
+    .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); pointer-events: none; }
+    .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 32px; position: relative; z-index: 1; }
+    .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; position: relative; z-index: 1; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; }
+    .hero-stat { padding: 20px 18px; border-right: 1px solid rgba(255,255,255,0.08); }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat-before { font-family: var(--serif); font-size: 22px; font-style: italic; color: rgba(255,255,255,0.3); line-height: 1; display: flex; align-items: center; gap: 6px; }
+    .hero-stat-arrow { font-size: 14px; font-style: normal; color: rgba(255,255,255,0.25); }
+    .hero-stat-after { font-family: var(--serif); font-size: 36px; font-style: italic; color: #5ECFBF; line-height: 1; margin-top: 4px; margin-bottom: 10px; }
+    .hero-stat-num { font-family: var(--serif); font-size: 40px; font-style: italic; color: white; line-height: 1; margin-bottom: 10px; }
+    .hero-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); line-height: 1.4; }
+    .hero-visual-footer { margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4); font-style: italic; position: relative; z-index: 1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
     .context-section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .context-callout { background: var(--rust-light); border-radius: 16px; padding: 36px; border-left: 3px solid var(--rust); }
     .context-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rust); margin-bottom: 16px; font-weight: 500; }
@@ -113,6 +117,16 @@
       nav, .context-section, .approach-section, .creative-section, .before-after, .learned-section, .disclosure { padding-left: 24px; padding-right: 24px; }
       .results-section { padding-left: 24px; padding-right: 24px; }
       .cta-section { margin: 40px 24px; padding: 60px 32px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 16px 24px; }
+      .hero-stat-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .hero-stat-after { font-size: 28px; }
+      .hero-stat-num { font-size: 32px; }
+    }
+    @media (max-width: 480px) {
+      .hero-meta { grid-template-columns: 1fr 1fr; }
+      .hero-stat-grid { grid-template-columns: 1fr; border: none; gap: 12px; }
+      .hero-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 16px 0; }
+      .hero-stat:last-child { border-bottom: none; }
     }
   </style>
 <link rel="stylesheet" href="../styles.css">
@@ -175,7 +189,7 @@
         </div>
         <div class="hero-meta-item">
           <div class="hero-meta-label">Geography</div>
-          <div class="hero-meta-value">Ohio — Columbus, Cincinnati, Dayton</div>
+          <div class="hero-meta-value">Columbus · Cincinnati · Dayton, Ohio</div>
         </div>
       </div>
     </div>
@@ -183,27 +197,21 @@
       <div class="hero-visual-label">Key performance shifts</div>
       <div class="hero-stat-grid">
         <div class="hero-stat">
-          <div class="hero-stat-num" style="font-size:32px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <span style="color:rgba(255,255,255,0.38); font-size:28px;">2.74%</span>
-            <span style="color:rgba(255,255,255,0.55); font-size:20px; font-style:normal;">→</span>
-            <span style="color:#5ECFBF;">5.1%</span>
-          </div>
-          <div class="hero-stat-label">Landing page CVR</div>
+          <div class="hero-stat-before">2.74% <span class="hero-stat-arrow">→</span></div>
+          <div class="hero-stat-after">5.1%</div>
+          <div class="hero-stat-label">Landing<br>page CVR</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num" style="font-size:32px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-            <span style="color:rgba(255,255,255,0.38); font-size:28px;">37%</span>
-            <span style="color:rgba(255,255,255,0.55); font-size:20px; font-style:normal;">→</span>
-            <span style="color:#5ECFBF;">24%</span>
-          </div>
-          <div class="hero-stat-label">OOA rate</div>
+          <div class="hero-stat-before">37% <span class="hero-stat-arrow">→</span></div>
+          <div class="hero-stat-after">24%</div>
+          <div class="hero-stat-label">OOA<br>rate</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">48%</div>
-          <div class="hero-stat-label">Set rate on<br>county CBO<br>per-region targeting</div>
+          <div class="hero-stat-label">Set rate,<br>county CBO</div>
         </div>
       </div>
-      <div class="hero-visual-footer" style="margin-top:32px;">Ohio — Columbus, Cincinnati, Dayton</div>
+      <div class="hero-visual-footer">Columbus · Cincinnati · Dayton, Ohio</div>
     </div>
   </section>
 
@@ -216,7 +224,7 @@
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">The CPL problem was a symptom. Three separate constraints were causing it.</h2>
       <p class="prose">By March, 37% of leads were coming from outside the client's serviceable area. The OOA rate had grown from 31.6% in January to 33.3% in February to 37% in March. For every three leads generated, more than one was a call the sales team could not book. At higher spend levels, the account would have become unworkable.</p>
       <p class="prose">The landing page was converting at 2.74%. For a home improvement funnel targeting homeowners actively looking to renovate, that number was suppressing what the top-of-funnel creative could genuinely deliver. Something between click and form submission was adding friction.</p>
-      <p class="prose">And the account's best-performing video, the one with a 45.5% set rate and $463 cost-per-demo at its peak, was running in only one adset with no backups ready. Creative fatigue was already showing in the data.</p>
+      <p class="prose">And the account's two best-performing videos — one a transformation timelapse with a 45.5% set rate at peak, the other an authority-led story with 7 attributed sales — were both running in a single adset with no backups. Creative fatigue was already showing in the data.</p>
     </div>
     <div>
       <div class="context-callout">
@@ -301,8 +309,8 @@
       <div class="process-step">
         <div class="process-step-num">04</div>
         <div class="process-step-content">
-          <div class="process-step-name">Build creative depth behind the winning ad</div>
-          <div class="process-step-desc">The two proven videos were iterated rather than replaced. Scripts updated with new incentives, aspect ratios adjusted to 1:1 and 9:16 to cover all placements, and new footage swapped in without changing the structural elements that drove the original performance. A copy test ran four angles against the winner simultaneously.</div>
+          <div class="process-step-name">Build creative depth behind the two winning ads</div>
+          <div class="process-step-desc">Two videos were already converting — one built around the transformation, one around the company's credibility. Both were in a single adset with no backups and early fatigue signals. Rather than replacing them, each was iterated by isolating what was driving performance: new footage, updated scripts, adjusted aspect ratios for 1:1 and 9:16 placements. Four copy angles ran against both originals simultaneously. The structure that worked stayed intact. The variables around it were tested.</div>
         </div>
       </div>
     </div>
@@ -312,44 +320,64 @@
 
   <section class="creative-section">
     <div class="section-label">Creative</div>
-    <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">Iteration, not replacement.</h2>
-    <p class="prose">The winning creative had already done the hard work of proving itself. The job was to extend its runway, not retire it.</p>
-    <div class="creative-grid">
-      <div class="creative-card">
-        <span class="creative-card-tag winner">Winner</span>
+    <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">Two winners. Built out, not replaced.</h2>
+    <p class="prose" style="margin-bottom:8px;">When the account was taken over, two videos were already converting — one built around the transformation itself, one built around the company behind it. Both were running in a single adset with no backups. The first job was to understand what was driving each one before touching them.</p>
+    <p class="prose">That diagnosis shaped everything that came after. Every iteration was built by isolating a variable from one of those two originals — new footage holding the same structure, new script holding the same hook, new format holding the same offer. Nothing was replaced. Everything was extended.</p>
+
+    <div style="margin: 40px 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-30); display: flex; align-items: center; gap: 12px;">
+      <span style="display:inline-block; width:24px; height:1px; background:var(--ink-30);"></span>
+      Winner A — The Transformation Format
+    </div>
+    <div class="creative-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+      <div class="creative-card" style="border: 1.5px solid rgba(91,158,158,0.3); background: #f7fdfc;">
+        <span class="creative-card-tag winner">Original Winner A</span>
         <div class="creative-card-title">The Reveal — Timelapse Format</div>
-        <div class="creative-card-desc">Cabinet refacing timelapse with B/A sliders. Peak performance: 45.5% set rate, $463 cost-per-demo. The structural formula (timelapse open, B/A sliders, CTA with pricing hook) became the template for all iterations.</div>
-        <div class="creative-card-metric"><strong>45.5% set rate</strong>, $463 CPD at peak</div>
+        <div class="creative-card-desc">The account's top performer. A cabinet refacing timelapse with before-and-after sliders and a pricing CTA. What made it work wasn't just the transformation — it was the specificity of the visual proof combined with a concrete price anchor. Homeowners could see the result and immediately know what it would cost them. Peak performance: 45.5% set rate, $463 cost-per-demo.</div>
+        <div class="creative-card-metric"><strong>45.5% set rate</strong> · $463 CPD at peak</div>
       </div>
       <div class="creative-card">
-        <span class="creative-card-tag winner">Winner</span>
+        <span class="creative-card-tag learning">Iteration from Winner A</span>
+        <div class="creative-card-title">The Local Signal — City Callout Format</div>
+        <div class="creative-card-desc">The timelapse structure held, but with one variable changed: the primary text and headline now named the city directly — Columbus, Cincinnati, Dayton — depending on which CBO the ad ran in. The hypothesis was that the original worked partly because it felt specific. Naming the city made it more specific. The county CBO running this version launched at a 48% set rate, suggesting geo-relevance was improving lead quality before the call was even made.</div>
+        <div class="creative-card-metric"><strong>48% set rate</strong> on county CBO launch</div>
+      </div>
+    </div>
+
+    <div style="margin: 36px 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-30); display: flex; align-items: center; gap: 12px;">
+      <span style="display:inline-block; width:24px; height:1px; background:var(--ink-30);"></span>
+      Winner B — The Authority Format
+    </div>
+    <div class="creative-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
+      <div class="creative-card" style="border: 1.5px solid rgba(91,158,158,0.3); background: #f7fdfc;">
+        <span class="creative-card-tag winner">Original Winner B</span>
         <div class="creative-card-title">The Authority Play — Family-Owned Story</div>
-        <div class="creative-card-desc">Before-and-after storytelling combined with family-owned authority positioning. 7 sales, 34.5% set rate, $562 cost-per-demo. Not as efficient as New Inspo but more durable over time, appearing less affected by creative fatigue.</div>
-        <div class="creative-card-metric"><strong>7 sales</strong>, 34.5% set rate, $562 CPD</div>
+        <div class="creative-card-desc">The second proven video. Where Winner A led with the transformation, this one led with the company — family-owned, local, accountable. Before-and-after storytelling was still present, but the trust signal came first. It was less efficient than the timelapse at peak but significantly more durable: less affected by creative fatigue over time, and the source of 7 attributed sales. What it proved was that a different emotional hook — credibility rather than visual proof — could drive the same downstream action.</div>
+        <div class="creative-card-metric"><strong>7 sales</strong> · 34.5% set rate · $562 CPD</div>
       </div>
       <div class="creative-card">
-        <span class="creative-card-tag learning">Learning</span>
-        <div class="creative-card-title">The Local Signal — City Callout Copy</div>
-        <div class="creative-card-desc">Columbus, Cincinnati, and Dayton callouts in headline and primary text. The city CBO format allows the creative to speak directly to where the homeowner lives. Early results from the county CBO showed a 48% set rate, suggesting location specificity was improving lead qualification before the call.</div>
-        <div class="creative-card-metric"><strong>48% set rate</strong> on county CBO after launch</div>
-      </div>
-      <div class="creative-card">
-        <span class="creative-card-tag tested">Tested</span>
-        <div class="creative-card-title">The Discount Lever — Incentive Angle</div>
-        <div class="creative-card-desc">One of four copy angles tested against the winning video. Incentive-focused copy consistently produced higher lead volume at lower CPL but weaker downstream metrics. The pattern held here: more leads, fewer sets.</div>
-        <div class="creative-card-metric">Higher volume, <strong>lower set rate</strong> vs. other angles</div>
-      </div>
-      <div class="creative-card">
-        <span class="creative-card-tag tested">Tested</span>
+        <span class="creative-card-tag learning">Iteration from Winner B</span>
         <div class="creative-card-title">The Problem First — Friction Hook</div>
-        <div class="creative-card-desc">"Want to upgrade your kitchen without the cost of a remodel?" Opened with the friction before pivoting to the offer. One of four angles in the copy test. Showed higher set rate than the incentive angle. Results still under evaluation at the end of the documented period.</div>
+        <div class="creative-card-desc">An iteration that took Winner B's credibility foundation and changed the entry point: rather than opening with the company, it opened with the homeowner's problem. "Want to upgrade your kitchen without the cost of a full remodel?" — friction named up front, offer introduced after. New footage, same authority positioning in the body. This angle showed a higher set rate than the incentive-first version, suggesting homeowners who respond to problem-framing are further along in their decision before they even submit the form.</div>
         <div class="creative-card-metric">Higher set rate than <strong>incentive angle</strong></div>
       </div>
+    </div>
+
+    <div style="margin: 36px 0 16px; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-30); display: flex; align-items: center; gap: 12px;">
+      <span style="display:inline-block; width:24px; height:1px; background:var(--ink-30);"></span>
+      Cross-cutting layers — applied across both
+    </div>
+    <div class="creative-grid" style="margin-top:0; grid-template-columns: 1fr 1fr;">
       <div class="creative-card">
-        <span class="creative-card-tag learning">Learning</span>
+        <span class="creative-card-tag tested">Copy Test</span>
+        <div class="creative-card-title">The Discount Lever — Incentive Angle</div>
+        <div class="creative-card-desc">One of four copy angles run against both winning videos simultaneously. Led with a 40%-off offer in the primary text. Incentive-first copy produced higher lead volume at lower CPL — which looks good until you check the set rate. More leads, fewer bookings. The pattern was consistent enough to be a signal, not noise: price-led copy attracts a different kind of homeowner than transformation-led or credibility-led copy does.</div>
+        <div class="creative-card-metric">Higher volume · <strong>lower set rate</strong> vs. other angles</div>
+      </div>
+      <div class="creative-card">
+        <span class="creative-card-tag learning">Retargeting Layer</span>
         <div class="creative-card-title">The Social Carry — Post ID Retargeting</div>
-        <div class="creative-card-desc">Retargeting campaign used Post IDs from all-time best-performing ads, carrying over accumulated social proof (reactions, comments, shares) to warm audiences. The hypothesis was that social proof signals would increase trust for homeowners who had already seen the brand.</div>
-        <div class="creative-card-metric">Leverages <strong>existing social proof</strong> on warm audiences</div>
+        <div class="creative-card-desc">Both winning videos were served to warm audiences via their original Post IDs, carrying over months of accumulated social proof — reactions, comments, shares — rather than running as fresh creatives with zero engagement. The same ads that had already converted cold audiences now worked harder on people who'd already seen the brand, with visible proof that others had engaged. A compounding layer on top of what was already working.</div>
+        <div class="creative-card-metric"><strong>Social proof</strong> carried forward on warm audiences</div>
       </div>
     </div>
   </section>
@@ -359,7 +387,7 @@
   <section class="results-section">
     <div class="results-inner">
       <div class="section-label">Results</div>
-      <h2>Three structural fixes. One account that could finally scale.</h2>
+      <h2>The fixes compounded. The account scaled.</h2>
       <p class="prose">The landing page changes went live and within days CVR climbed from 2.74% to over 4%, reaching 5.1% within the month. At the account's existing traffic volume, that shift represented a significant increase in lead volume from the same budget. OOA dropped from 37% to 24% after geo restructuring. The county CBO launched with a 48% set rate on per-county region targeting, becoming the account's primary scaling vehicle as spend grew from $30k to $110k over four months.</p>
       <div class="results-grid">
         <div class="result-stat">

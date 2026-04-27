@@ -22,7 +22,7 @@
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
@@ -66,7 +66,7 @@
     .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
-    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-items{display:flex;flex-direction:column;gap:32px;}
     .learned-item{display:flex;gap:24px;align-items:flex-start;}
     .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
     .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
@@ -92,7 +92,7 @@
     .cta-btn:hover{opacity:0.85;}
     .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
     .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
-    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
+    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}.learned-section [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important;}}
   </style>
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -162,7 +162,7 @@
     <div class="section-label">The Situation</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The metrics that looked good and the ones that didn't tell two different stories.</h2>
     <p class="prose">The account had been running for about four months when I came in through an agency. CPM was reasonable. Hook rate was fine. Click-through was solid. The creative was stopping people and they were clicking.</p>
-    <p class="prose">The breakdown was happening at checkout. Add-to-cart was decent. Checkout to purchase was the gap. That location matters, because each drop-off point in the funnel points to a different problem. High CPM is a targeting problem. Low hook rate is an attention problem. But when everything upstream is working and the breakdown happens late — at the moment of purchase — it means the ad generated interest without generating conviction. The viewer arrived ready to consider. The script had not given them enough to commit.</p>
+    <p class="prose">The breakdown was happening at checkout. Add-to-cart was decent. Checkout to purchase was the gap. That location matters, because each drop-off point in the funnel points to a different problem. High CPM is a targeting problem. Low hook rate is an attention problem. But when everything upstream is working and the breakdown happens late, at the moment of purchase, it means the ad generated interest without generating conviction. The viewer arrived ready to consider. The script had not given them enough to commit.</p>
     <p class="prose">That diagnosis made the fix clear. The problem was not the audience, not the hook, not the landing page. It was the argument being made in the ad. Reading through the creative confirmed it: every script opened with the product. Feature-first. Ingredient callouts before the viewer had a reason to care about any of it. The ad was pitching before it had earned the right to. Change the structure of the argument and the conversion rate would follow. That was the only logical response to what the data was showing.</p>
   </div>
   <div>
@@ -170,6 +170,47 @@
       <div class="context-callout-label">Core constraint</div>
       <p>"The ad was getting attention and not converting it. That gap almost always lives in the script structure, not the media buying."</p>
       <div class="context-callout-sub">Men's grooming is a category with high skepticism and a lot of prior failed attempts for the buyer. Someone who has tried three beard oils that did not work is not going to be moved by ingredient claims in the first ten seconds. The script has to validate the failed attempts before the product makes sense.</div>
+    </div>
+    <div style="margin-top:20px;background:white;border-radius:16px;padding:28px 32px;border:1px solid var(--ink-10);">
+      <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-30);margin-bottom:20px;">Where the funnel was breaking</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">CPM</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
+            <div style="width:88%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Hook rate</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
+            <div style="width:80%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Click-through</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
+            <div style="width:72%;height:100%;background:var(--teal);border-radius:4px;opacity:0.7;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--ink-60);width:36px;text-align:right;">✓</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-60);width:120px;flex-shrink:0;">Add to cart</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
+            <div style="width:52%;height:100%;background:var(--amber);border-radius:4px;opacity:0.7;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--amber);width:36px;text-align:right;">~</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink);width:120px;flex-shrink:0;font-weight:500;">Purchase</div>
+          <div style="flex:1;background:var(--ink-10);border-radius:4px;height:28px;position:relative;">
+            <div style="width:22%;height:100%;background:var(--rust);border-radius:4px;"></div>
+          </div>
+          <div style="font-size:12px;color:var(--rust);width:36px;text-align:right;font-weight:500;">✗</div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--ink-10);font-size:12px;color:var(--ink-30);font-style:italic;">Everything upstream was working. The drop happened at the moment of purchase.</div>
     </div>
   </div>
 </section>
@@ -275,7 +316,7 @@
       <div class="result-stat">
         <div class="result-num">2.8x</div>
         <div class="result-label">ROAS differential</div>
-        <div class="result-context">Winning scripts vs original studio control — not blended account ROAS</div>
+        <div class="result-context">Winning scripts vs original studio control, not blended account ROAS</div>
       </div>
       <div class="result-stat">
         <div class="result-num">$22</div>
@@ -293,22 +334,60 @@
 
 <section class="learned-section">
   <h2>What I took from <em>this one</em></h2>
-  <div class="learned-items">
-    <div class="learned-item">
-      <div class="learned-num">01</div>
-      <div class="learned-text"><strong>The gap between hook rate and purchase conversion rate is almost always in the script structure.</strong> This account was stopping people. They were clicking. They were adding to cart. They were not buying. That pattern points to the argument being made in the wrong order, not to a product problem or a landing page problem. The script was pitching before the viewer had a reason to trust the pitch. Once the structure changed — validate the skepticism first, mechanism second, identity close third — the conversion rate aligned with the hook rate it already had.</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+    <div class="learned-items">
+      <div class="learned-item">
+        <div class="learned-num">01</div>
+        <div class="learned-text"><strong>The gap between hook rate and purchase conversion rate is almost always in the script structure.</strong> This account was stopping people. They were clicking. They were adding to cart. They were not buying. That pattern points to the argument being made in the wrong order, not to a product problem or a landing page problem. The script was pitching before the viewer had a reason to trust the pitch. Once the structure changed: validate the skepticism first, mechanism second, identity close third, the conversion rate aligned with the hook rate it already had.</div>
+      </div>
+      <div class="learned-item">
+        <div class="learned-num">02</div>
+        <div class="learned-text"><strong>In high-skepticism categories, the failed attempt is the brief.</strong> Men's grooming is a space where the buyer has almost certainly tried something similar and been disappointed. That experience is sitting between them and your product. The script that validates it first and then explains why this time is different converts better than the script that ignores it and leads with ingredients. The prior failure is not an obstacle. It is the opening line.</div>
+      </div>
+      <div class="learned-item">
+        <div class="learned-num">03</div>
+        <div class="learned-text"><strong>UGC beats studio in categories where trust is the bottleneck.</strong> The same script in a polished studio format and a raw phone-shot format produced meaningfully different results. The format signals something before the words land. In a category where the buyer is already skeptical, a studio ad reads as a brand trying to sell them something. A real person talking to a phone reads as someone who found something that worked.</div>
+      </div>
+      <div class="learned-item">
+        <div class="learned-num">04</div>
+        <div class="learned-text"><strong>Running creative tests and scaling in the same campaign hides what is actually working.</strong> Before the restructure, the account had new scripts entering the same campaign as the proven studio control. The algorithm was allocating budget based on early signals and the new creative never had a clean read. Separating testing into its own ABO structure with equal budgets and no algorithm interference was what made the script comparison meaningful. Without that, the identity mechanism script would have been labelled an underperformer and pulled before it found its buyer.</div>
+      </div>
     </div>
-    <div class="learned-item">
-      <div class="learned-num">02</div>
-      <div class="learned-text"><strong>In high-skepticism categories, the failed attempt is the brief.</strong> Men's grooming is a space where the buyer has almost certainly tried something similar and been disappointed. That experience is sitting between them and your product. The script that validates it first and then explains why this time is different converts better than the script that ignores it and leads with ingredients. The prior failure is not an obstacle. It is the opening line.</div>
-    </div>
-    <div class="learned-item">
-      <div class="learned-num">03</div>
-      <div class="learned-text"><strong>UGC beats studio in categories where trust is the bottleneck.</strong> The same script in a polished studio format and a raw phone-shot format produced meaningfully different results. The format signals something before the words land. In a category where the buyer is already skeptical, a studio ad reads as a brand trying to sell them something. A real person talking to a phone reads as someone who found something that worked.</div>
-    </div>
-    <div class="learned-item">
-      <div class="learned-num">04</div>
-      <div class="learned-text"><strong>Running creative tests and scaling in the same campaign hides what is actually working.</strong> Before the restructure, the account had new scripts entering the same campaign as the proven studio control. The algorithm was allocating budget based on early signals and the new creative never had a clean read. Separating testing into its own ABO structure — equal budgets, no algorithm interference — was what made the script comparison meaningful. Without that, the identity mechanism script would have been labelled an underperformer and pulled before it found its buyer.</div>
+    <div style="position:sticky;top:40px;">
+      <div style="background:var(--ink);border-radius:20px;padding:36px;">
+        <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:28px;">Winning script structure</div>
+        <div style="display:flex;flex-direction:column;">
+          <div style="display:flex;gap:20px;align-items:flex-start;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(91,158,158,0.2);border:1px solid rgba(91,158,158,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--teal);font-family:var(--serif);font-style:italic;">1</div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:white;margin-bottom:4px;">Identity validation</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">Acknowledge the buyer's prior failed attempts. Name the frustration without blame. The viewer who recognises themselves is already engaged before the product appears.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(91,158,158,0.2);border:1px solid rgba(91,158,158,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--teal);font-family:var(--serif);font-style:italic;">2</div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:white;margin-bottom:4px;">Named mechanism</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">Explain why previous products failed and why this one is different. The mechanism creates a knowledge gap the viewer needs the product to close.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(91,158,158,0.2);border:1px solid rgba(91,158,158,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--teal);font-family:var(--serif);font-style:italic;">3</div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:white;margin-bottom:4px;">Objection dialogue</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">Handle the price or commitment objection through conversation before the viewer fully forms it. Woven in, not bolted on at the end.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:20px;align-items:flex-start;padding-top:24px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(91,158,158,0.2);border:1px solid rgba(91,158,158,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;color:var(--teal);font-family:var(--serif);font-style:italic;">4</div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:white;margin-bottom:4px;">Loss aversion close</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">Close on what inaction is costing rather than what purchase gains. Make staying with the current routine concrete, not abstract.</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;">This sequence is how a good sale happens in person. The scripts were not following it.</div>
+      </div>
     </div>
   </div>
 </section>

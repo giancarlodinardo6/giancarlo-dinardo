@@ -21,8 +21,10 @@
     .hero h1 em{font-style:italic;color: #5B9E9E;}
     .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
     .hero-meta{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-item{min-width:120px;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    @media(max-width:600px){.hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 16px;}}
     .hero-visual{background:var(--ink);border-radius:20px;padding:40px 36px;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:center;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}

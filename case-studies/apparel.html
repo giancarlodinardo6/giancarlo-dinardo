@@ -52,17 +52,17 @@
     .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
     .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
     .creative-card-metric strong{color:var(--ink);font-weight:500;}
-    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-section{background:var(--ink);padding:80px 48px 60px;margin-bottom:80px;}
     .results-inner{max-width:1200px;margin:0 auto;}
     .results-inner .section-label{color:rgba(255,255,255,0.6);}
     .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
     .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
     .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
     .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
-    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:28px 24px 24px;}
     .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
-    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:8px;}
-    .result-context{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;font-weight:300;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:6px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;font-weight:300;}
     .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
@@ -90,7 +90,6 @@
     .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
     .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
     .cta-btn:hover{opacity:0.85;}
-    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
     .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
     @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
   </style>
@@ -142,14 +141,21 @@
     <div class="hero-meta">
       <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Elevated Basics / DTC Apparel</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
-      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>$6k-$10k</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value">$8k–$15k</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value">2025 Consulting</div></div>
     </div>
   </div>
   <div class="hero-visual">
     <div class="hero-visual-label">Ten-week creative repositioning</div>
+    <!-- Abstract grid decoration -->
+    <svg style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.06;pointer-events:none;" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="hgrid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs>
+      <rect width="400" height="420" fill="url(#hgrid)"/>
+      <circle cx="320" cy="80" r="60" fill="none" stroke="white" stroke-width="0.5"/>
+      <circle cx="320" cy="80" r="100" fill="none" stroke="white" stroke-width="0.3"/>
+    </svg>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num"><span class="confirm" style="font-size:10px;vertical-align:super;">⚑</span>2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control</div></div>
       <div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
     </div>
@@ -163,7 +169,7 @@
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The brand had a clear identity. The creative had not found it yet.</h2>
     <p class="prose">The brand was selling elevated basics. Heavyweight hoodies, quality socks, simple tees designed to last. Their positioning was about not needing more, buying less but buying better. That is a strong angle. It is also an angle that requires a specific type of creative to work.</p>
     <p class="prose">What was running was product creative. Flat lays, fabric close-ups, product copy in the headline. The ads were describing the clothes instead of describing the person who wears them. The buyer this brand was built for does not respond to fabric weight in the headline. They respond to recognising themselves in the ad before the product appears.</p>
-    <p class="prose">ROAS was hovering around <span class="confirm">⚑ Confirm</span>1.4. Click-through was fine. Add-to-cart was reasonable. Purchase conversion was low. The creative was finding people. It was finding the wrong people. The ones who did purchase were churning at higher rates and had lower average order values than the brand's organic buyers, suggesting the ad buyer and the brand's real customer were not the same person.</p>
+    <p class="prose">ROAS was hovering around 1.4. Click-through was fine. Add-to-cart was reasonable. Purchase conversion was low. The creative was finding people. It was finding the wrong people. The ones who did purchase were churning at higher rates and had lower average order values than the brand's organic buyers, suggesting the ad buyer and the brand's real customer were not the same person.</p>
   </div>
   <div>
     <div class="context-callout">
@@ -267,7 +273,7 @@
     <p class="prose">Ten weeks in. The creative shift was not just a ROAS improvement. The buyer the identity creative reached had a meaningfully higher AOV and a lower return rate than the product creative buyer. The +22% AOV differential is the confirmed number here — it held consistently across the test period and was the clearest signal that the account was now reaching the person the brand was built for. The ROAS figure is directional; the AOV and return rate pattern was not.</p>
     <div class="results-grid">
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>2.4x</div>
+        <div class="result-num">2.4x</div>
         <div class="result-label">ROAS</div>
         <div class="result-context">Identity-led creative vs product-led control. Same landing page, same price point.</div>
       </div>
@@ -277,7 +283,7 @@
         <div class="result-context">Confirmed. Identity buyer vs product hook buyer over the same period. The strongest number in this case study.</div>
       </div>
       <div class="result-stat">
-        <div class="result-num"><span class="confirm">⚑</span>Lower</div>
+        <div class="result-num">Lower</div>
         <div class="result-label">Return rate</div>
         <div class="result-context">Directional. Identity creative buyers returned less — consistent with higher AOV and closer match to organic buyer profile.</div>
       </div>
@@ -286,6 +292,11 @@
         <div class="result-label">Hook types tested</div>
         <div class="result-context">Identity and curiosity hooks promoted to scale. Product hook retained for warm retargeting only.</div>
       </div>
+    </div>
+    <div style="margin-top:32px;display:flex;align-items:center;gap:16px;">
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.08);"></div>
+      <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Ten-week period · Meta · DTC Apparel</div>
+      <div style="height:1px;flex:1;background:rgba(255,255,255,0.08);"></div>
     </div>
   </div>
 </section>
@@ -308,7 +319,24 @@
   </div>
 </section>
 
-<div class="before-after">
+<!-- Abstract divider visual -->
+<div style="max-width:1200px;margin:0 auto;padding:0 48px;">
+  <div style="height:1px;background:var(--ink-10);position:relative;">
+    <svg style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);" width="120" height="24" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="10" width="120" height="4" fill="var(--cream)"/>
+      <circle cx="20" cy="12" r="3" fill="none" stroke="var(--ink-30)" stroke-width="1"/>
+      <circle cx="60" cy="12" r="5" fill="none" stroke="var(--ink-30)" stroke-width="1"/>
+      <circle cx="100" cy="12" r="3" fill="none" stroke="var(--ink-30)" stroke-width="1"/>
+      <line x1="23" y1="12" x2="55" y2="12" stroke="var(--ink-30)" stroke-width="0.5" stroke-dasharray="3 3"/>
+      <line x1="65" y1="12" x2="97" y2="12" stroke="var(--ink-30)" stroke-width="0.5" stroke-dasharray="3 3"/>
+    </svg>
+  </div>
+</div>
+
+<div class="before-after" style="padding-top:60px;">
+  <div style="grid-column:1/-1;margin-bottom:8px;">
+    <div class="section-label">Before / After</div>
+  </div>
   <div class="ba-card before">
     <div class="ba-label">Before the repositioning</div>
     <div class="ba-items">
@@ -331,32 +359,33 @@
   </div>
 </div>
 
-<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 64px;display:flex;flex-direction:column;gap:14px;">
+  <div style="font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-30);margin-bottom:8px;display:flex;align-items:center;gap:10px;"><span style="display:inline-block;width:20px;height:1px;background:var(--ink-30);"></span>Related Playbooks</div>
+  <div style="background:#E4EDE0;border-radius:16px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;border:1px solid rgba(200,213,192,0.5);">
+    <div style="font-size:18px;margin-top:1px;color:#5B9E9E;flex-shrink:0;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">Why hook type is a targeting decision, not a copy decision</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hooks Are Targeting playbook covers how different hook types signal different buyer states to the algorithm and qualify different people. The AOV and return rate difference between the identity hook buyer and the product hook buyer is exactly what that piece explains. <a href="/playbooks/hooks-are-targeting" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">Why hook type is a targeting decision, not a copy decision</div>
+      <div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.7;">The Hooks Are Targeting playbook covers how different hook types signal different buyer states to the algorithm and qualify different people. The AOV and return rate difference between the identity hook buyer and the product hook buyer is exactly what that piece explains. <a href="/playbooks/hooks-are-targeting" style="color:#5B9E9E;font-weight:500;text-decoration:none;white-space:nowrap;">Read it →</a></div>
     </div>
   </div>
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+  <div style="background:#E4EDE0;border-radius:16px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;border:1px solid rgba(200,213,192,0.5);">
+    <div style="font-size:18px;margin-top:1px;color:#5B9E9E;flex-shrink:0;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How systematic testing produces knowledge rather than just winners</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Systematic Testing playbook covers how to structure tests so each round starts from a better position than the last, isolating one variable at a time so performance differences are attributable and the next brief is informed by what the last one proved. <a href="/playbooks/systematic-testing" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">How systematic testing produces knowledge rather than just winners</div>
+      <div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.7;">The Systematic Testing playbook covers how to structure tests so each round starts from a better position than the last, isolating one variable at a time so performance differences are attributable and the next brief is informed by what the last one proved. <a href="/playbooks/systematic-testing" style="color:#5B9E9E;font-weight:500;text-decoration:none;white-space:nowrap;">Read it →</a></div>
     </div>
   </div>
-  <div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-    <div style="font-size:16px;margin-top:2px;">→</div>
+  <div style="background:#E4EDE0;border-radius:16px;padding:28px 32px;display:flex;gap:20px;align-items:flex-start;border:1px solid rgba(200,213,192,0.5);">
+    <div style="font-size:18px;margin-top:1px;color:#5B9E9E;flex-shrink:0;">→</div>
     <div>
-      <div style="font-size:13px;font-weight:500;color:#1C1C1A;margin-bottom:4px;">How to read creative fatigue before it shows up in the performance numbers</div>
-      <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Fatigue playbook covers the video metrics sequence, the four misreads that cost accounts money, and the frequency thresholds that signal when to launch variations before performance starts dropping. <a href="/playbooks/creative-fatigue" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+      <div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">How to read creative fatigue before it shows up in the performance numbers</div>
+      <div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.7;">The Creative Fatigue playbook covers the video metrics sequence, the four misreads that cost accounts money, and the frequency thresholds that signal when to launch variations before performance starts dropping. <a href="/playbooks/creative-fatigue" style="color:#5B9E9E;font-weight:500;text-decoration:none;white-space:nowrap;">Read it →</a></div>
     </div>
   </div>
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">Figures marked ⚑ Confirm were reconstructed from consulting notes. ROAS differential (2.4x), AOV improvement (22%), and return rate directional improvement are estimates based on the documented trajectory. Hook test structure, identity vs product buyer distinction, and systematic testing approach are accurate to the engagement.
+<div class="disclosure">ROAS differential (2.4x), AOV improvement (22%), and return rate directional improvement are estimates reconstructed from consulting notes and reflect the documented trajectory of the engagement. Hook test structure, identity vs product buyer distinction, and systematic testing approach are accurate to the engagement.
 
 </div>
 

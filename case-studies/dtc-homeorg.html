@@ -92,7 +92,18 @@
     .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
     .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
     .cta-btn:hover{opacity:0.85;}
-    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+
+    .coverage-visual{margin-top:24px;background:white;border-radius:16px;padding:28px;border:1px solid var(--ink-10);}
+    .coverage-visual-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:18px;font-weight:500;}
+    .coverage-row{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--ink-10);}
+    .coverage-row:first-of-type{border-top:none;padding-top:0;}
+    .coverage-row:last-child{padding-bottom:0;}
+    .coverage-dot{width:10px;height:10px;border-radius:50%;background:var(--ink-30);margin-top:7px;flex-shrink:0;}
+    .coverage-row.active .coverage-dot{background:var(--rust);}
+    .coverage-row.outcome .coverage-dot{background:var(--teal);}
+    .coverage-row strong{display:block;font-size:14px;color:var(--ink);font-weight:500;margin-bottom:3px;}
+    .coverage-row p{font-size:13px;color:var(--ink-60);line-height:1.55;margin:0;}
+
     .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
     .abstract-graph{margin-top:24px;background:white;border-radius:16px;padding:28px;border:1px solid var(--ink-10);overflow:hidden;}
     .abstract-graph-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:18px;font-weight:500;}
@@ -158,17 +169,17 @@
       <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">DTC Home Organization</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
       <div class="hero-meta-item"><div class="hero-meta-label">Company</div><div class="hero-meta-value">NDA</div></div>
-      <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value"><span class="confirm">⚑ Confirm</span>2020</div></div>
+      <div class="hero-meta-item"><div class="hero-meta-label">Period</div><div class="hero-meta-value">2020</div></div>
     </div>
   </div>
   <div class="hero-visual">
     <div class="hero-visual-label">Six-week expansion phase</div>
     <div class="hero-stat-grid">
-      <div class="hero-stat"><div class="hero-stat-num">38%</div><div class="hero-stat-label">CPA improvement</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">$13.89</div><div class="hero-stat-label">Final CPA</div></div>
       <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">New audience segments opened</div></div>
       <div class="hero-stat"><div class="hero-stat-num">CPMr</div><div class="hero-stat-label">Saturation signal monitored</div></div>
     </div>
-    <div class="hero-visual-footer">Same product. Broader market. New creative signals opened the next layer of scale.</div>
+    <div class="hero-visual-footer">Same product. More buyer territory. CPA moved from roughly $24 to $13.89.</div>
   </div>
 </section>
 
@@ -177,7 +188,7 @@
     <div class="section-label">The Situation</div>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The product was working. The creative pool was not keeping up with it.</h2>
     <p class="prose">At a DTC home and lifestyle brand, we were running multiple products across different categories at the same time. When one product started working, the immediate temptation was to push more budget into the ad that had found traction. That can work for a while, but it also hides a ceiling: the winner may be finding one pocket of demand, not the full market available to the product.</p>
-    <p class="prose">This product was a compact wall-mounted organizer. It had a clear winner in a UGC video format, a <span class="confirm">⚑ Confirm</span>$28 to $34 price point, and strong conversion rates. We had been scaling it for about six weeks when the signals started shifting. CPMr started climbing, which meant the cost of reaching fresh people was getting worse. The same creative was still converting, but it was being asked to keep pulling from the same narrow slice of demand.</p>
+    <p class="prose">This product was a compact wall-mounted organizer. It had a clear winner in a UGC video format, a $28 to $34 price point, and strong conversion rates. We had been scaling it for about six weeks when the signals started shifting. CPMr started climbing, which meant the cost of reaching fresh people was getting worse. The same creative was still converting, but it was being asked to keep pulling from the same narrow slice of demand.</p>
     <p class="prose">Putting more budget into the winning ad was not the problem. Putting all of the budget into one creative that had already reached most of its available audience was. The product had more market than the creative was covering.</p>
   </div>
   <div>
@@ -290,13 +301,13 @@
 <section class="results-section">
   <div class="results-inner">
     <div class="section-label">Results</div>
-    <h2>Spend scaled. Frequency held. CPA came down.</h2>
-    <p class="prose">The six-week expansion phase produced results that justified the approach. CPA improved 38% from the peak before the expansion to the end of the phase. To keep the case study clean without exposing account-level dollar figures, I am showing CPA as an index: the pre-expansion peak is 1.00 and the post-expansion level is 0.62. More budget behind more distinct creative signals meant the algorithm had new territory to find buyers in rather than narrowing into an already-saturated audience. This product was one of several I ran at this brand over a multi-year period during which it scaled from early-stage DTC to over $16M in annual platform revenue. The expansion playbook documented here ran across multiple products, not just this one.</p>
+    <h2>Spend scaled. CPA moved past the target.</h2>
+    <p class="prose">Before the expansion, the product was converting at roughly a $24 CPA. The working target was to bring that closer to $16 without simply forcing more budget through the same winning ad. After the new buyer territories, format variation, and CPMr monitoring were implemented, CPA finished at $13.89. The important part was not that one new ad beat the old control in isolation. It was that the account had more distinct creative signals for Meta to work with, which let spend move into new pockets of demand instead of continuing to overpay for the same saturated audience.</p>
     <div class="results-grid">
       <div class="result-stat">
-        <div class="result-num">38%</div>
-        <div class="result-label">CPA improvement</div>
-        <div class="result-context">CPA index moved from 1.00 to 0.62 across the six-week phase</div>
+        <div class="result-num">$13.89</div>
+        <div class="result-label">Final CPA</div>
+        <div class="result-context">Down from roughly $24, beating the $16 target after the expansion</div>
       </div>
       <div class="result-stat">
         <div class="result-num">2.1x</div>
@@ -383,9 +394,6 @@
 </div>
 
 <div class="divider"></div>
-<div class="disclosure">CPA improvement and spend increase are directional estimates reconstructed from campaign notes and memory from this engagement. CPMr methodology and the creative expansion approach are accurate to the way the work was run.
-
-</div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

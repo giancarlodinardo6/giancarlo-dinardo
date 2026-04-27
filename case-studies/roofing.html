@@ -36,10 +36,11 @@
     .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.25) 0%, transparent 70%); }
     .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
     .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 20px; position: relative; z-index: 1; }
-    .hero-stat-grid { display: flex; gap: 20px; flex-wrap: wrap; position: relative; z-index: 1; }
-    .hero-stat { flex: 1; min-width: 90px; }
-    .hero-stat-num { font-family: var(--serif); font-size: 38px; font-style: italic; color: white; line-height: 1; margin-bottom: 5px; }
+    .hero-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; position: relative; z-index: 1; }
+    .hero-stat { }
+    .hero-stat-num { font-family: var(--serif); font-size: 34px; font-style: italic; color: white; line-height: 1; margin-bottom: 5px; }
     .hero-stat-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); line-height: 1.4; }
+    .hero-stat.full-width { grid-column: 1 / -1; }
     .hero-visual-footer { margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.55); font-style: italic; position: relative; z-index: 1; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); }
     .context-section { padding: 120px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
     .context-callout { background: var(--rust-light); border-radius: 16px; padding: 36px; border-left: 3px solid var(--rust); }
@@ -190,9 +191,9 @@
           <div class="hero-stat-num">9</div>
           <div class="hero-stat-label">Video variants<br>from one winning formula</div>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">$90k→$240k</div>
-          <div class="hero-stat-label">Monthly spend<br>across eight months</div>
+        <div class="hero-stat full-width">
+          <div class="hero-stat-num">$90k → $240k</div>
+          <div class="hero-stat-label">Monthly spend across eight months</div>
         </div>
       </div>
       <div class="hero-visual-footer">Mid-Atlantic · New England · N. New England · N. Virginia · S. Pennsylvania</div>
@@ -208,13 +209,13 @@
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Strong ambition. One creative. No architecture to support scale.</h2>
       <p class="prose">The account had a clear path forward: the client projected scaling to three to four times the initial monthly spend across all regions, with additional states coming online as performance stabilized. That kind of growth requires a creative pipeline that can absorb increasing spend without frequency pushing CPL to unacceptable levels. One aging video cannot do that.</p>
       <p class="prose">The regional architecture was equally underdeveloped for the budget level. The account ran primarily on broad all-zips adsets with a single region-level CBO. The two largest regions, Mid-Atlantic and New England, had meaningfully different performance profiles but were being managed with identical structures. Each needed its own campaign logic, its own budget, and its own creative callouts.</p>
-      <p class="prose">CPL had already come down from $133 to $109 in the early weeks of active management. That was progress. But CoM% data lagged because of the roofing sales cycle: installs close weeks after the lead comes in, so February performance was not yet visible in February's numbers. The account needed to be built for six months out, not optimized for last week.</p>
+      <p class="prose">CPL had already come down from $133 to $109 in the early weeks of active management. That was progress. But CoM% data lagged because of the roofing sales cycle: installs close weeks after the lead comes in, so January's 26% reflected a period before the structural work began. February came in at 22% — still elevated because large-scope projects from that period were slow to close. By March and April, CoM% had settled at 15% as the new regional structure, creative rotation, and qualifying creative worked through the pipeline. The account needed to be built for six months out, not optimized for last week.</p>
     </div>
     <div>
       <div class="context-callout">
         <div class="context-callout-label">Core constraint</div>
         <p>One creative doing the work of nine. One campaign structure managing five distinct regions. The ceiling was architectural, not tactical.</p>
-        <div class="context-callout-sub">In roofing, the sales cycle from lead to closed install typically runs four to eight weeks. This means CoM% for any given month reflects leads from the prior month. Optimising to short-term CoM in this vertical produces decisions that look correct but often aren't.</div>
+        <div class="context-callout-sub">In roofing, the sales cycle from lead to closed install typically runs four to eight weeks. This means CoM% for any given month reflects leads from the prior month. Optimizing to short-term CoM in this vertical produces decisions that look correct but often aren't.</div>
       </div>
       <div style="margin-top:24px; background:white; border-radius:16px; padding:28px; border:1px solid var(--ink-10);">
         <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-30); margin-bottom:16px; font-weight:500;">Starting point</div>
@@ -247,6 +248,48 @@
       <div class="section-label">The Approach</div>
       <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Iterate on what works. Build the architecture to scale it.</h2>
       <p class="prose">The winning video had a structural formula that had proven itself. The goal was not to replace it but to understand which of its components were driving performance, then produce enough variations of it to sustain scale across five regions and eleven states.</p>
+
+      <!-- CoM% Trend Chart -->
+      <div style="margin-top:32px; background:white; border-radius:16px; padding:28px 28px 20px; border:1px solid var(--ink-10);">
+        <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-30); margin-bottom:20px; font-weight:500;">Cost of Marketing % — Monthly Trend</div>
+        <div style="display:flex; align-items:flex-end; gap:12px; height:100px; margin-bottom:12px;">
+          <!-- Jan -->
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:11px; font-weight:500; color:var(--ink-60);">26%</div>
+            <div style="width:100%; background:var(--rust-light); border-radius:6px 6px 0 0; height:100%; display:flex; align-items:flex-end;">
+              <div style="width:100%; background:var(--rust); opacity:0.7; border-radius:6px 6px 0 0; height:100%;"></div>
+            </div>
+          </div>
+          <!-- Feb -->
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:11px; font-weight:500; color:var(--ink-60);">22%</div>
+            <div style="width:100%; background:var(--rust-light); border-radius:6px 6px 0 0; height:84.6%;">
+              <div style="width:100%; background:var(--rust); opacity:0.55; border-radius:6px 6px 0 0; height:100%;"></div>
+            </div>
+          </div>
+          <!-- Mar -->
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:11px; font-weight:500; color:var(--teal);">15%</div>
+            <div style="width:100%; background:var(--teal-light); border-radius:6px 6px 0 0; height:57.7%;">
+              <div style="width:100%; background:var(--teal); opacity:0.6; border-radius:6px 6px 0 0; height:100%;"></div>
+            </div>
+          </div>
+          <!-- Apr -->
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;">
+            <div style="font-size:11px; font-weight:500; color:var(--teal);">15%</div>
+            <div style="width:100%; background:var(--teal-light); border-radius:6px 6px 0 0; height:57.7%;">
+              <div style="width:100%; background:var(--teal); opacity:0.6; border-radius:6px 6px 0 0; height:100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Jan</div>
+          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Feb</div>
+          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Mar</div>
+          <div style="flex:1; text-align:center; font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-30);">Apr</div>
+        </div>
+        <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--ink-10); font-size:12px; color:var(--ink-30); line-height:1.5;">Feb lag reflects large-scope installs closing late — not a drop in lead quality.</div>
+      </div>
     </div>
     <div class="process-steps">
       <div class="process-step">
@@ -332,7 +375,7 @@
     <div class="results-inner">
       <div class="section-label">Results</div>
       <h2>CPL down 18%. Spend nearly tripled. The account was built to keep growing.</h2>
-      <p class="prose">CPL dropped from $133 to $109 in the early weeks of active management and continued improving as the regional structure took hold. New England and Mid-Atlantic set rates held above 27%. The creative library grew continuously — new variants added each month — giving the algorithm genuine diversity to work with as spend scaled from $90k to $240k. CoM% came in at 26% in January; February lagged due to the roofing sales cycle and the volume of large-scope installs closing late. March improved materially as those projects came through.</p>
+      <p class="prose">CPL dropped from $133 to $109 in the early weeks of active management and continued improving as the regional structure took hold. New England and Mid-Atlantic set rates held above 27%. The creative library grew continuously — new variants added each month — giving the algorithm genuine diversity to work with as spend scaled from $90k to $240k. CoM% opened at 26% in January, came in at 22% in February as large-scope projects from the prior period were slow to close, then settled at 15% through March and April as the pipeline normalized under the new structure.</p>
       <div class="results-grid">
         <div class="result-stat">
           <div class="result-num">$109</div>
@@ -340,9 +383,9 @@
           <div class="result-context">Down from $133 at start of active management</div>
         </div>
         <div class="result-stat">
-          <div class="result-num">26% → improving</div>
+          <div class="result-num">26% → 15%</div>
           <div class="result-label">Cost of marketing</div>
-          <div class="result-context">26% in January. Feb lagged (large project cycle). March improved as installs closed.</div>
+          <div class="result-context">Jan 26% · Feb 22% (project lag) · Mar–Apr 15% as pipeline normalized</div>
         </div>
         <div class="result-stat">
           <div class="result-num">27%+</div>

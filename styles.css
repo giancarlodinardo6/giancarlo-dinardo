@@ -295,23 +295,11 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
    ═══════════════════════════════════════════════════════════════════ */
 
 /* ── BREADCRUMB ──────────────────────────────────────────────────── */
-.fr-breadcrumb {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 20px 48px 0;
-  font-family: var(--mono);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.fr-breadcrumb a { color: var(--muted); border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 0.15s, color 0.15s; }
-.fr-breadcrumb a:hover { color: var(--ink); border-bottom-color: var(--line-2); }
-.fr-breadcrumb .sep { color: var(--line-2); }
-.fr-breadcrumb .here { color: var(--ink); }
+
+
+
+
+
 
 /* ── HERO ────────────────────────────────────────────────────────── */
 .fr-hero {
@@ -607,9 +595,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
   .logo-g, .logo-d { font-size: 22px; }
   .nav-cta { display: none; }
   .email-link { font-size: 9px; }
-  .fr-breadcrumb, .fr-hero, .fr-section-2col, .fr-personas-section,
-  .fr-math-section, .fr-cta-section, .fr-beforeafter, .fr-crossref,
-  .fr-timing-section { padding-left: 20px; padding-right: 20px; }
+  
   .fr-band, .fr-awareness-band, .fr-process-band, .fr-aov-band { padding-left: 20px; padding-right: 20px; }
   .fr-hero { padding-top: 24px; }
   .fr-hero-card { min-height: 0; padding: 28px; }

@@ -817,11 +817,12 @@
   .flow-title { font-size:15px; font-weight:600; margin-bottom:10px; }
   .flow-desc { font-size:14px; color:var(--ink-60); line-height:1.65; }
 
-  .audit-table-wrap { background:#fff; border:1px solid var(--ink-10); border-radius:18px; padding:16px; overflow-x:auto; }
-  .audit-table { width:100%; border-collapse:separate; border-spacing:6px; min-width:650px; }
-  .audit-table th { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-30); font-weight:500; padding:8px; text-align:center; }
-  .audit-table td { border-radius:8px; padding:14px 10px; font-size:13px; text-align:center; color:var(--ink-60); }
-  .audit-table td.row-label { text-align:left; font-weight:600; color:var(--ink); background:var(--ink-06); }
+  .audit-table-wrap { background:#fff; border:1px solid var(--ink-10); border-radius:18px; padding:16px; overflow:visible; width:100%; max-width:100%; }
+  .audit-table-wrap::-webkit-scrollbar { display:none; }
+  .audit-table { width:100%; max-width:100%; border-collapse:separate; border-spacing:6px; table-layout:fixed; }
+  .audit-table th { font-size:clamp(9px, .85vw, 11px); text-transform:uppercase; letter-spacing:.06em; color:var(--ink-30); font-weight:500; padding:8px 4px; text-align:center; line-height:1.25; white-space:normal; overflow-wrap:anywhere; }
+  .audit-table td { border-radius:8px; padding:12px 6px; font-size:clamp(10px, .95vw, 13px); line-height:1.3; text-align:center; color:var(--ink-60); white-space:normal; overflow-wrap:anywhere; }
+  .audit-table td.row-label { text-align:left; font-weight:600; color:var(--ink); background:var(--ink-06); width:18%; }
   .audit-table .covered { background:var(--teal-light); color:#3D7777; }
   .audit-table .partial { background:var(--amber-light); color:#8A5B13; }
   .audit-table .gap { background:var(--rust-light); color:#9B4225; }
@@ -852,6 +853,29 @@
     .coverage-map-mini { grid-template-columns:68px repeat(4,1fr); gap:4px; }
     .cm-cell, .cm-head, .cm-row { font-size:10px; min-height:34px; }
   }
+
+
+  /* SVG safety: keeps topbar/CV/email icons from rendering as giant arrows when previewed or moved. */
+  .topbar svg, .cv-btn svg, .email-link svg, .cta-btn svg { width: 14px; height: 14px; max-width: 14px; max-height: 14px; flex: 0 0 14px; display: inline-block; vertical-align: middle; }
+  .cv-btn svg { width: 12px; height: 12px; max-width: 12px; max-height: 12px; flex-basis: 12px; }
+  svg:not([width]) { max-width: 16px; max-height: 16px; }
+  /* Audit map: responsive grid replacement for the old scrollable white chart. */
+  .audit-map { background:#fff; border:1px solid var(--ink-10); border-radius:18px; padding:16px; width:100%; max-width:100%; display:grid; grid-template-columns:minmax(88px,1.2fr) repeat(4,minmax(0,1fr)); gap:6px; overflow:visible; }
+  .audit-cell { border-radius:8px; padding:12px 6px; font-size:clamp(10px, .9vw, 13px); line-height:1.25; text-align:center; color:var(--ink-60); min-width:0; overflow-wrap:anywhere; }
+  .audit-head { font-size:clamp(8px, .75vw, 10px); text-transform:uppercase; letter-spacing:.04em; color:var(--ink-30); font-weight:600; background:transparent; padding:6px 2px; }
+  .audit-row-label { text-align:left; font-weight:600; color:var(--ink); background:var(--ink-06); }
+  .audit-map .covered { background:var(--teal-light); color:#3D7777; }
+  .audit-map .partial { background:var(--amber-light); color:#8A5B13; }
+  .audit-map .gap { background:var(--rust-light); color:#9B4225; }
+  @media (max-width: 640px) {
+    .audit-map { grid-template-columns: 1.15fr repeat(4, minmax(0, .9fr)); gap:4px; padding:10px; }
+    .audit-cell { padding:8px 3px; font-size:9px; line-height:1.2; border-radius:6px; }
+    .audit-head { font-size:7px; letter-spacing:.02em; }
+  }
+
+/* ── Audit chart no-scroll safety ── */
+.audit-map, .audit-grid, .audit-matrix, .coverage-audit, .audit-chart { width:100%; max-width:100%; overflow:visible; }
+.audit-cell { min-width:0; overflow-wrap:anywhere; word-break:normal; }
 
 </style>
 
@@ -1447,7 +1471,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 @media (max-width: 700px) {
   .topbar { padding: 16px 20px; }
   .mainnav { padding: 12px 20px; gap: 0; }
-  .mainnav-links { gap: 16px; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; scrollbar-width: none; }
+  .mainnav-links { gap: 16px;  white-space: nowrap; flex-wrap: nowrap; scrollbar-width: none; }
   .mainnav-links::-webkit-scrollbar { display: none; }
   .mainnav-links a { font-size: 13px; flex-shrink: 0; }
   .logo-mark { margin-right: 20px; }
@@ -1718,48 +1742,36 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     <p class="prose">The coverage map is simple: personas on one axis, angles on the other. For each combination, mark whether you have creative that was explicitly built for that territory. Not creative that could possibly reach that person. Creative that was briefed for that person, at that angle, in that stage of decision.</p>
     <p class="prose">The goal is not to fill every cell. The goal is to see whether the account is making deliberate choices or accidentally over-serving the same pockets of the market.</p>
   </div>
-  <div class="audit-table-wrap">
-    <table class="audit-table">
-      <thead>
-        <tr>
-          <th>Persona</th>
-          <th>Emotional</th>
-          <th>Proof</th>
-          <th>Comparison</th>
-          <th>Objection</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="row-label">Anxious buyer</td>
-          <td class="covered">Covered</td>
-          <td class="partial">Partial</td>
-          <td class="gap">Gap</td>
-          <td class="gap">Gap</td>
-        </tr>
-        <tr>
-          <td class="row-label">Value planner</td>
-          <td class="gap">Gap</td>
-          <td class="covered">Covered</td>
-          <td class="partial">Partial</td>
-          <td class="gap">Gap</td>
-        </tr>
-        <tr>
-          <td class="row-label">Urgent problem-aware</td>
-          <td class="covered">Covered</td>
-          <td class="gap">Gap</td>
-          <td class="gap">Gap</td>
-          <td class="partial">Partial</td>
-        </tr>
-        <tr>
-          <td class="row-label">Premium buyer</td>
-          <td class="gap">Gap</td>
-          <td class="gap">Gap</td>
-          <td class="covered">Covered</td>
-          <td class="partial">Partial</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="audit-map" aria-label="Creative coverage audit map">
+    <div class="audit-cell audit-head">Persona</div>
+    <div class="audit-cell audit-head">Emotional</div>
+    <div class="audit-cell audit-head">Proof</div>
+    <div class="audit-cell audit-head">Comparison</div>
+    <div class="audit-cell audit-head">Objection</div>
+
+    <div class="audit-cell audit-row-label">Anxious buyer</div>
+    <div class="audit-cell covered">Covered</div>
+    <div class="audit-cell partial">Partial</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell gap">Gap</div>
+
+    <div class="audit-cell audit-row-label">Value planner</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell covered">Covered</div>
+    <div class="audit-cell partial">Partial</div>
+    <div class="audit-cell gap">Gap</div>
+
+    <div class="audit-cell audit-row-label">Urgent problem-aware</div>
+    <div class="audit-cell covered">Covered</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell partial">Partial</div>
+
+    <div class="audit-cell audit-row-label">Premium buyer</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell gap">Gap</div>
+    <div class="audit-cell covered">Covered</div>
+    <div class="audit-cell partial">Partial</div>
   </div>
 </section>
 

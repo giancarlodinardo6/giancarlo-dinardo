@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Creative Coverage Is the Only Growth Lever That Compounds, Giancarlo</title>
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #5B9E9E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── NAV ── */
+  nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--ink-60);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink) !important;
+    background: var(--ink-10);
+    padding: 8px 18px;
+    border-radius: 100px;
+    transition: background 0.15s !important;
+  }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-30);
+  }
+  .breadcrumb a {
+    color: var(--ink-30);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .breadcrumb a:hover { color: var(--ink-60); }
+  .breadcrumb-sep { color: var(--ink-30); }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: #5B9E9E;
+  }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 400;
+  }
+
+  /* Hero visual, budget concentration diagram */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%);
+  }
+  .hero-visual-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .budget-viz {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .bv-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .bv-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    min-width: 60px;
+    text-align: right;
+    letter-spacing: 0.04em;
+  }
+  .bv-bar-wrap {
+    flex: 1;
+    height: 28px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bv-bar {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .bv-bar.dominant { background: rgba(184,92,56,0.4); color: #E8967A; width: 92%; }
+  .bv-bar.starved { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.25); width: 4%; }
+  .bv-bar.diverse-a { background: rgba(91,158,158,0.35); color: #7ABFB5; width: 38%; }
+  .bv-bar.diverse-b { background: rgba(91,158,158,0.25); color: #7ABFB5; width: 28%; }
+  .bv-bar.diverse-c { background: rgba(91,158,158,0.18); color: rgba(122,191,181,0.7); width: 22%; }
+  .bv-pct {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    min-width: 34px;
+    text-align: right;
+  }
+  .bv-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 6px 0;
+  }
+  .bv-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+    margin-bottom: 4px;
+    padding-left: 72px;
+  }
+  .bv-insight {
+    padding: 12px 14px;
+    background: rgba(91,158,158,0.1);
+    border-left: 2px solid rgba(122,191,181,0.4);
+    border-radius: 0 8px 8px 0;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  .bv-insight strong { color: #7ABFB5; font-weight: 500; }
+
+  .hero-stat-row {
+    display: flex;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    z-index: 1;
+  }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-stat-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 48px;
+    height: 1px;
+    background: var(--ink-10);
+  }
+
+  /* ── SHARED SECTION ELEMENTS ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--ink-30);
+  }
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .prose {
+    font-size: 16px;
+    color: var(--ink-60);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .why-explainer {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 36px;
+  }
+  .why-explainer-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 28px;
+  }
+  .why-card {
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .why-card-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── MECHANISMS SECTION, DARK ── */
+  .mechanisms-section {
+    background: var(--ink);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .mechanisms-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .mechanisms-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .mechanisms-header .section-label { color: rgba(255,255,255,0.3); }
+  .mechanisms-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .mechanisms-header .section-h2 { color: #fff; }
+  .mechanisms-header .prose { color: rgba(255,255,255,0.5); }
+
+  .mechanisms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .mechanism-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .mc-num {
+    font-family: var(--serif);
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-style: italic;
+    margin-bottom: 14px;
+  }
+  .mc-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .mc-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .mc-accent {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── FRAMEWORK SECTION, SAGE ── */
+  .full-width-section {
+    background: var(--sage-light);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .fw-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .fw-top {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-bottom: 56px;
+    align-items: end;
+  }
+
+  /* Three-axis diversity framework */
+  .diversity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .diversity-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px 24px;
+    position: relative;
+  }
+  .dc-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    color: var(--ink-10);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .dc-axis {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .dc-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .dc-desc {
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .dc-example {
+    font-size: 12px;
+    color: var(--ink-60);
+    background: var(--ink-06);
+    border-radius: 8px;
+    padding: 10px 12px;
+    line-height: 1.5;
+  }
+  .dc-example-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .dc-accent {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .diversity-card:nth-child(1) .dc-accent { background: var(--rust); }
+  .diversity-card:nth-child(2) .dc-accent { background: var(--teal); }
+  .diversity-card:nth-child(3) .dc-accent { background: var(--amber); }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+  }
+  .worked-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 40px;
+  }
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .scenario-card {
+    border-radius: 16px;
+    padding: 32px 28px;
+  }
+  .scenario-card.consolidated {
+    background: #F7F4EE;
+    border: 1px solid var(--ink-10);
+  }
+  .scenario-card.diverse {
+    background: var(--ink);
+  }
+  .sc-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .scenario-card.consolidated .sc-label { color: var(--ink-30); }
+  .scenario-card.diverse .sc-label { color: rgba(255,255,255,0.3); }
+  .sc-ads {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .sc-ad {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+  .scenario-card.consolidated .sc-ad { background: rgba(28,28,26,0.05); }
+  .scenario-card.diverse .sc-ad { background: rgba(255,255,255,0.05); }
+  .sc-ad-name {
+    color: var(--ink-60);
+    font-size: 12px;
+  }
+  .scenario-card.diverse .sc-ad-name { color: rgba(255,255,255,0.5); }
+  .sc-ad-spend {
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    padding: 2px 8px;
+  }
+  .sc-ad-spend.dominant { background: rgba(184,92,56,0.15); color: var(--rust); }
+  .sc-ad-spend.starved { background: rgba(28,28,26,0.05); color: var(--ink-30); font-size: 11px; }
+  .sc-ad-spend.healthy { background: rgba(91,158,158,0.15); color: var(--teal); }
+  .sc-outcome {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .scenario-card.consolidated .sc-outcome {
+    background: rgba(184,92,56,0.08);
+    color: var(--rust);
+    border-left: 2px solid var(--rust);
+  }
+  .scenario-card.diverse .sc-outcome {
+    background: rgba(91,158,158,0.12);
+    color: #7ABFB5;
+    border-left: 2px solid #7ABFB5;
+  }
+
+  /* ── PROCESS SECTION ── */
+  .process-section {
+    background: var(--cream);
+    border-top: 1px solid var(--ink-10);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .process-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 56px;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: var(--ink-10);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .process-step {
+    background: var(--cream);
+    padding: 36px 32px;
+  }
+  .process-step-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink-30);
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+  .process-step-name {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .process-step-desc {
+    font-size: 14px;
+    color: var(--ink-60);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .ba-card {
+    border-radius: 16px;
+    padding: 40px 36px;
+  }
+  .ba-card.before {
+    background: #F7F4EE;
+    border: 1px solid var(--ink-10);
+  }
+  .ba-card.after {
+    background: var(--ink);
+    color: #fff;
+  }
+  .ba-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .ba-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    text-align: center;
+  }
+  .cta-inner {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner .section-label {
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-h2 em { font-style: italic; color: #5B9E9E; }
+  .cta-desc {
+    font-size: 17px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .mechanisms-header, .fw-top, .worked-header, .process-header { grid-template-columns: 1fr; }
+    .mechanisms-grid, .diversity-grid { grid-template-columns: 1fr; }
+    .scenario-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+    .before-after { grid-template-columns: 1fr; }
+    nav, .breadcrumb, .hero, .why-section, .worked-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+    .full-width-section, .mechanisms-section, .process-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+
+
+  /* ── MERGED CREATIVE COVERAGE ADDITIONS ── */
+  .coverage-map-mini { display:grid; grid-template-columns: 80px repeat(4,1fr); gap:6px; position:relative; z-index:1; }
+  .cm-cell, .cm-head, .cm-row { border-radius:8px; min-height:40px; display:flex; align-items:center; justify-content:center; font-size:11px; line-height:1.2; text-align:center; }
+  .cm-head, .cm-row { color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.04); padding:8px; }
+  .cm-covered { color:#7ABFB5; background:rgba(91,158,158,0.18); border:1px solid rgba(91,158,158,0.25); }
+  .cm-partial { color:#D4A847; background:rgba(184,122,26,0.16); border:1px solid rgba(184,122,26,0.25); }
+  .cm-gap { color:#E8967A; background:rgba(184,92,56,0.16); border:1px solid rgba(184,92,56,0.25); }
+  .map-legend { display:flex; gap:18px; margin-top:22px; position:relative; z-index:1; }
+  .map-legend-item { display:flex; align-items:center; gap:8px; font-size:11px; color:rgba(255,255,255,0.35); text-transform:uppercase; letter-spacing:.08em; }
+  .map-dot { width:9px; height:9px; border-radius:50%; }
+  .map-dot.covered { background:#7ABFB5; }
+  .map-dot.partial { background:#D4A847; }
+  .map-dot.gap { background:#E8967A; }
+
+  .coverage-principle { background: var(--ink); border-radius:20px; padding:40px; color:#fff; position:relative; overflow:hidden; }
+  .coverage-principle::before { content:''; position:absolute; top:-80px; right:-80px; width:240px; height:240px; border-radius:50%; background:radial-gradient(circle, rgba(91,158,158,.22), transparent 70%); }
+  .coverage-principle-label { font-size:11px; text-transform:uppercase; letter-spacing:.14em; color:rgba(255,255,255,.35); margin-bottom:20px; position:relative; z-index:1; }
+  .coverage-principle p { font-family:var(--serif); font-size:30px; line-height:1.25; font-weight:400; letter-spacing:-.01em; position:relative; z-index:1; }
+  .coverage-principle-sub { font-family:var(--sans)!important; font-size:14px!important; line-height:1.7!important; color:rgba(255,255,255,.48)!important; margin-top:18px; }
+
+  .coverage-flow { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .flow-card { background:#fff; border:1px solid var(--ink-10); border-radius:16px; padding:24px; }
+  .flow-num { font-family:var(--serif); font-size:36px; color:var(--teal); line-height:1; margin-bottom:14px; }
+  .flow-title { font-size:15px; font-weight:600; margin-bottom:10px; }
+  .flow-desc { font-size:14px; color:var(--ink-60); line-height:1.65; }
+
+  .audit-table-wrap { background:#fff; border:1px solid var(--ink-10); border-radius:18px; padding:16px; overflow-x:auto; }
+  .audit-table { width:100%; border-collapse:separate; border-spacing:6px; min-width:650px; }
+  .audit-table th { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-30); font-weight:500; padding:8px; text-align:center; }
+  .audit-table td { border-radius:8px; padding:14px 10px; font-size:13px; text-align:center; color:var(--ink-60); }
+  .audit-table td.row-label { text-align:left; font-weight:600; color:var(--ink); background:var(--ink-06); }
+  .audit-table .covered { background:var(--teal-light); color:#3D7777; }
+  .audit-table .partial { background:var(--amber-light); color:#8A5B13; }
+  .audit-table .gap { background:var(--rust-light); color:#9B4225; }
+
+  .testing-cycle { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:36px; }
+  .cycle-card { background:#fff; border-radius:16px; padding:28px; border:1px solid var(--ink-10); position:relative; }
+  .cycle-card::after { content:'→'; position:absolute; right:-15px; top:50%; transform:translateY(-50%); color:var(--ink-30); font-size:18px; }
+  .cycle-card:last-child::after { display:none; }
+  .cycle-label { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-30); margin-bottom:12px; }
+  .cycle-title { font-size:17px; font-weight:600; margin-bottom:10px; }
+  .cycle-desc { font-size:14px; color:var(--ink-60); line-height:1.65; }
+
+  .example-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:32px; }
+  .example-card { border-radius:18px; padding:28px; background:#fff; border:1px solid var(--ink-10); }
+  .example-card.before { background:var(--rust-light); border-color:rgba(184,92,56,.18); }
+  .example-card.after { background:var(--teal-light); border-color:rgba(91,158,158,.18); }
+  .example-label { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--ink-60); margin-bottom:18px; }
+  .example-list { display:flex; flex-direction:column; gap:12px; }
+  .example-item { display:flex; justify-content:space-between; gap:18px; font-size:13px; padding-bottom:12px; border-bottom:1px solid rgba(28,28,26,.08); }
+  .example-item:last-child { border-bottom:0; padding-bottom:0; }
+  .example-name { color:var(--ink); }
+  .example-spend { font-weight:600; white-space:nowrap; }
+  .example-outcome { margin-top:18px; font-size:14px; color:var(--ink-60); line-height:1.65; }
+
+  @media (max-width:900px){
+    .coverage-flow, .testing-cycle, .example-grid { grid-template-columns:1fr; }
+    .cycle-card::after { display:none; }
+    .coverage-map-mini { grid-template-columns:68px repeat(4,1fr); gap:4px; }
+    .cm-cell, .cm-head, .cm-row { font-size:10px; min-height:34px; }
+  }
+
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+<div class="breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb-sep">›</span>
+  <a href="../playbooks/index.html">Playbooks</a>
+  <span class="breadcrumb-sep">›</span>
+  <span>Creative Coverage</span>
+</div>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Creative Strategy</div>
+    <h1>Creative coverage is the only growth lever that <em>compounds.</em></h1>
+    <p class="hero-desc">Most accounts don't run out of winners. They run out of territory. Creative coverage is the operating system for finding that territory deliberately: distinct concepts, personas, formats, and tests that produce new information instead of more versions of the same ad.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">Lead Gen · eCommerce</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Coverage, testing, scale</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">Coverage map, what an honest audit reveals</div>
+    <div class="coverage-map-mini">
+      <div></div>
+      <div class="cm-head">Pain</div>
+      <div class="cm-head">Proof</div>
+      <div class="cm-head">Compare</div>
+      <div class="cm-head">Objection</div>
+
+      <div class="cm-row">Skeptic</div>
+      <div class="cm-cell cm-covered">Covered</div>
+      <div class="cm-cell cm-partial">Partial</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-gap">Gap</div>
+
+      <div class="cm-row">Urgent</div>
+      <div class="cm-cell cm-covered">Covered</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-partial">Partial</div>
+
+      <div class="cm-row">Planner</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-covered">Covered</div>
+      <div class="cm-cell cm-partial">Partial</div>
+      <div class="cm-cell cm-gap">Gap</div>
+
+      <div class="cm-row">Premium</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-gap">Gap</div>
+      <div class="cm-cell cm-covered">Covered</div>
+      <div class="cm-cell cm-partial">Partial</div>
+    </div>
+    <div class="map-legend">
+      <div class="map-legend-item"><span class="map-dot covered"></span>Covered</div>
+      <div class="map-legend-item"><span class="map-dot partial"></span>Partial</div>
+      <div class="map-legend-item"><span class="map-dot gap"></span>Gap</div>
+    </div>
+    <div class="hero-visual-footer">The gaps are not missing ads. They are audiences the algorithm cannot reach.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="why-section">
+  <div>
+    <div class="section-label">The argument</div>
+    <h2 class="section-h2">Most teams think they have a testing problem. They have a coverage problem.</h2>
+    <p class="prose">There is an obvious version of this problem: an account with three ads and no real testing. Everyone recognizes that. The harder version is the account with forty ads, consistent production volume, and a healthy launch cadence that still hits a ceiling.</p>
+    <p class="prose">From the outside, it looks like the account is testing. Inside the account, most of that testing is the same persona, same emotional entry point, same format, and same stage of awareness repeated with new wrappers. Volume goes up. Territory does not.</p>
+    <p class="prose">That is why volume without variation is expensive repetition. It gives Meta more ads to choose from, but not more distinct signals to learn from.</p>
+  </div>
+  <div>
+    <div class="coverage-principle">
+      <div class="coverage-principle-label">Core principle</div>
+      <p>Testing finds better versions of an idea. Coverage finds new sources of performance.</p>
+      <p class="coverage-principle-sub">The best accounts do both. They test with discipline, but they first make sure the account is covering enough creative territory for the tests to mean something.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mechanisms-section">
+  <div class="mechanisms-inner">
+    <div class="mechanisms-header">
+      <div>
+        <div class="section-label">The mechanics</div>
+        <h2 class="section-h2">What coverage changes inside the auction</h2>
+      </div>
+      <p class="prose">Creative coverage is not a prettier way to say "make more ads." It matters because Meta does not evaluate creative as isolated files. It reads similarity, allocates budget unevenly, and uses the creative itself as a targeting signal.</p>
+    </div>
+
+    <div class="mechanisms-grid">
+      <div class="mechanism-card">
+        <div class="mc-accent" style="background:rgba(184,92,56,0.2);color:#E8967A;">Auction mechanics</div>
+        <div class="mc-num">01</div>
+        <div class="mc-name">Winner-take-most allocation</div>
+        <div class="mc-desc">In a consolidated environment, Meta has no reason to give equal exposure to every idea. The ad that looks strongest early absorbs budget. Other concepts may be cut off before they have enough spend to prove themselves. That is why coverage and structure have to work together.</div>
+      </div>
+
+      <div class="mechanism-card">
+        <div class="mc-accent" style="background:rgba(91,158,158,0.2);color:#7ABFB5;">Delivery system</div>
+        <div class="mc-num">02</div>
+        <div class="mc-name">Similarity compresses reach</div>
+        <div class="mc-desc">Ads that share the same opening, creator, setting, message, or emotional register often behave like one creative territory. They share reach and fatigue together. A different headline does not escape this. A meaningfully different concept does.</div>
+      </div>
+
+      <div class="mechanism-card">
+        <div class="mc-accent" style="background:rgba(184,122,26,0.2);color:#D4A847;">Audience finding</div>
+        <div class="mc-num">03</div>
+        <div class="mc-name">Creative is the targeting signal</div>
+        <div class="mc-desc">The hook, pain point, persona, visual environment, and promise tell the algorithm which kind of person to find. Running one type of message across every ad means asking Meta to find one type of buyer, even if the account technically has dozens of ads live.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The framework</div>
+        <h2 class="section-h2">Three axes of meaningful coverage.</h2>
+      </div>
+      <p class="prose">Not all variation is meaningful. Changing the headline, swapping the color, or cutting the same video differently may improve execution, but it does not necessarily open a new audience pool. Coverage expands when the creative is different on at least one strategic axis.</p>
+    </div>
+
+    <div class="diversity-grid">
+      <div class="diversity-card">
+        <div class="dc-accent"></div>
+        <div class="dc-num">01</div>
+        <div class="dc-axis">Axis of coverage</div>
+        <div class="dc-name">Concept, the idea and emotional entry point</div>
+        <div class="dc-desc">The core premise behind the ad: what problem it names, what desire it addresses, what belief it challenges. Pain-point, social proof, transformation, comparison, and objection-handling ads can all sell the same product while reaching different people.</div>
+        <div class="dc-example">
+          <div class="dc-example-label">Meaningful variation</div>
+          Same product, three concepts: "this solves your daily frustration," "people like you already switched," and "here is why the cheap alternative fails."
+        </div>
+      </div>
+
+      <div class="diversity-card">
+        <div class="dc-accent"></div>
+        <div class="dc-num">02</div>
+        <div class="dc-axis">Axis of coverage</div>
+        <div class="dc-name">Persona, who the ad is built for</div>
+        <div class="dc-desc">A first-time buyer, a skeptical buyer, a value-conscious planner, and a premium buyer do not need the same argument. If all creative speaks to one persona, the account may look active while most of the market remains untouched.</div>
+        <div class="dc-example">
+          <div class="dc-example-label">Meaningful variation</div>
+          A call-out for urgent buyers, a proof-led ad for skeptics, and a comparison ad for buyers already weighing options.
+        </div>
+      </div>
+
+      <div class="diversity-card">
+        <div class="dc-accent"></div>
+        <div class="dc-num">03</div>
+        <div class="dc-axis">Axis of coverage</div>
+        <div class="dc-name">Format, how the idea is delivered</div>
+        <div class="dc-desc">UGC, static, founder-led, demo, carousel, and polished studio creative carry different trust signals. Format is not just production style. It changes who stops, what they believe, and how much proof they need before clicking.</div>
+        <div class="dc-example">
+          <div class="dc-example-label">Meaningful variation</div>
+          Same concept in creator-shot UGC, a clean static proof ad, and a product demo, each giving Meta a different signal to work with.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why-section">
+  <div>
+    <div class="section-label">The audit</div>
+    <h2 class="section-h2">Map the account before you brief more creative.</h2>
+    <p class="prose">The coverage map is simple: personas on one axis, angles on the other. For each combination, mark whether you have creative that was explicitly built for that territory. Not creative that could possibly reach that person. Creative that was briefed for that person, at that angle, in that stage of decision.</p>
+    <p class="prose">The goal is not to fill every cell. The goal is to see whether the account is making deliberate choices or accidentally over-serving the same pockets of the market.</p>
+  </div>
+  <div class="audit-table-wrap">
+    <table class="audit-table">
+      <thead>
+        <tr>
+          <th>Persona</th>
+          <th>Emotional</th>
+          <th>Proof</th>
+          <th>Comparison</th>
+          <th>Objection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Anxious buyer</td>
+          <td class="covered">Covered</td>
+          <td class="partial">Partial</td>
+          <td class="gap">Gap</td>
+          <td class="gap">Gap</td>
+        </tr>
+        <tr>
+          <td class="row-label">Value planner</td>
+          <td class="gap">Gap</td>
+          <td class="covered">Covered</td>
+          <td class="partial">Partial</td>
+          <td class="gap">Gap</td>
+        </tr>
+        <tr>
+          <td class="row-label">Urgent problem-aware</td>
+          <td class="covered">Covered</td>
+          <td class="gap">Gap</td>
+          <td class="gap">Gap</td>
+          <td class="partial">Partial</td>
+        </tr>
+        <tr>
+          <td class="row-label">Premium buyer</td>
+          <td class="gap">Gap</td>
+          <td class="gap">Gap</td>
+          <td class="covered">Covered</td>
+          <td class="partial">Partial</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The operating system</div>
+        <h2 class="section-h2">Coverage gives testing a job.</h2>
+      </div>
+      <p class="prose">Systematic testing matters because coverage without learning becomes chaos. But testing without coverage becomes narrow optimization: better versions of the same territory. The system works when the map decides what to build and testing decides what to learn.</p>
+    </div>
+
+    <div class="coverage-flow">
+      <div class="flow-card">
+        <div class="flow-num">01</div>
+        <div class="flow-title">Map current coverage</div>
+        <div class="flow-desc">Pull active and recent ads. Group them by concept, persona, and format. Be strict. If two ads are the same idea with different wrappers, count them as one territory.</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-num">02</div>
+        <div class="flow-title">Prioritize the right gaps</div>
+        <div class="flow-desc">Look for adjacent personas, missing angle types, and under-served awareness stages. Do not chase completeness. Choose the gaps most likely to open a valuable audience pool.</div>
+      </div>
+      <div class="flow-card">
+        <div class="flow-num">03</div>
+        <div class="flow-title">Test to learn, not just win</div>
+        <div class="flow-desc">Each test should answer a specific question. Which persona responds? Which angle qualifies better? Which format carries the idea? The output is not only a winner. It is a sharper map.</div>
+      </div>
+    </div>
+
+    <div class="testing-cycle">
+      <div class="cycle-card">
+        <div class="cycle-label">Test phase</div>
+        <div class="cycle-title">Establish the control</div>
+        <div class="cycle-desc">Start with the current best performer and deconstruct it: hook, problem, proof, offer, format, and persona. The control makes every future test readable.</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-label">Test phase</div>
+        <div class="cycle-title">Isolate one variable</div>
+        <div class="cycle-desc">Move one thing at a time. If the persona, hook, format, and proof all change together, the result may be useful, but the learning is muddy.</div>
+      </div>
+      <div class="cycle-card">
+        <div class="cycle-label">Test phase</div>
+        <div class="cycle-title">Document the territory</div>
+        <div class="cycle-desc">Every result should update the map. A failed ad can still prove that a persona, angle, or format is weak. That knowledge compounds into the next brief.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="worked-section">
+  <div class="worked-header">
+    <div>
+      <div class="section-label">Worked example</div>
+      <h2 class="section-h2">What this looks like inside an account</h2>
+    </div>
+    <p class="prose">The pattern is easiest to see when spend distribution looks healthy at the campaign level but narrow at the creative level. The account may have enough ads live, but if most of them are variations of the same concept, Meta keeps finding the same slice of the market.</p>
+  </div>
+
+  <div class="example-grid">
+    <div class="example-card before">
+      <div class="example-label">Before, volume without coverage</div>
+      <div class="example-list">
+        <div class="example-item"><span class="example-name">Ad A, product feature video</span><span class="example-spend">$3,840</span></div>
+        <div class="example-item"><span class="example-name">Ad B, same feature static</span><span class="example-spend">$80</span></div>
+        <div class="example-item"><span class="example-name">Ad C, same feature carousel</span><span class="example-spend">$80</span></div>
+      </div>
+      <div class="example-outcome">One idea absorbs almost all the spend. The other ads look like tests, but they do not give the account new territory to explore.</div>
+    </div>
+
+    <div class="example-card after">
+      <div class="example-label">After, deliberate coverage</div>
+      <div class="example-list">
+        <div class="example-item"><span class="example-name">Concept 1, pain-point UGC</span><span class="example-spend">$1,450</span></div>
+        <div class="example-item"><span class="example-name">Concept 2, proof-led static</span><span class="example-spend">$1,100</span></div>
+        <div class="example-item"><span class="example-name">Concept 3, comparison demo</span><span class="example-spend">$900</span></div>
+        <div class="example-item"><span class="example-name">Concept 4, objection handler</span><span class="example-spend">$550</span></div>
+      </div>
+      <div class="example-outcome">The account is not just spending across more ads. It is giving Meta distinct concepts, buyers, and formats to learn from.</div>
+    </div>
+  </div>
+</section>
+
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <div class="section-label">How to build it</div>
+        <h2 class="section-h2">The practical sequence</h2>
+      </div>
+      <p class="prose">This is the part that keeps the framework from becoming theory. Coverage only matters if it changes the next brief, the next test, and the way performance gets read.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <div class="process-step-name">Audit for real variation</div>
+        <div class="process-step-desc">Count distinct concepts, not ads. If everything is problem-solution with slightly different copy, you have one concept. If every ad speaks to the same buyer at the same stage, you have one persona territory.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <div class="process-step-name">Brief into the highest-value gap</div>
+        <div class="process-step-desc">Do not ask for "more creative." Ask for a specific missing territory: a comparison ad for solution-aware buyers, a proof-led static for skeptics, or a problem-first UGC concept for buyers who do not know the category yet.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <div class="process-step-name">Give new concepts fair exposure</div>
+        <div class="process-step-desc">If a new territory is buried next to a proven winner, the auction may starve it before it learns. Separate concepts structurally when needed so the test gets enough signal to be read.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <div class="process-step-name">Read performance by territory</div>
+        <div class="process-step-desc">Do not only ask which ad won. Ask which territory showed promise: persona, angle, format, awareness stage. That is the knowledge that makes the next round better.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Without coverage</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><span>More ads get launched, but most are slight variations of the same territory</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>Testing produces winners and losers, but not much transferable learning</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>The account hits frequency walls because the same buyer segment keeps carrying spend</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>New ideas get starved before the algorithm has enough signal to evaluate them</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>The next brief starts from urgency instead of accumulated intelligence</span></div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">With coverage</div>
+    <div class="ba-items">
+      <div class="ba-item"><div class="ba-dot"></div><span>Each new ad has a strategic reason to exist inside the map</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>Testing answers specific questions about personas, angles, and formats</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>Budget has more distinct audience signals to explore before fatigue sets in</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>Creative strategy becomes a compounding knowledge system, not a production treadmill</span></div>
+      <div class="ba-item"><div class="ba-dot"></div><span>Every round makes the next brief sharper, cheaper, and easier to judge</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

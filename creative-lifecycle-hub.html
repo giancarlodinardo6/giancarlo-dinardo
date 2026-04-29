@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Winning Creatives Don’t Last. They Evolve. Giancarlo</title>
+<title>Creative Lifecycle Hub. Giancarlo</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -872,12 +872,119 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     .process-step { padding: 30px 26px; }
   }
 
+
+  .lifecycle-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .lifecycle-entry-card {
+    text-decoration: none;
+    color: inherit;
+    background: rgba(255,255,255,0.58);
+    border: 1px solid rgba(28,28,26,0.10);
+    border-radius: 20px;
+    padding: 30px 28px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(28,28,26,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+
+  .lifecycle-entry-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--teal), var(--amber));
+    opacity: 0.8;
+  }
+
+  .lifecycle-entry-card:nth-child(2)::before {
+    background: linear-gradient(90deg, var(--amber), var(--rust));
+  }
+
+  .lifecycle-entry-card:nth-child(3)::before {
+    background: linear-gradient(90deg, var(--rust), var(--teal));
+  }
+
+  .lifecycle-entry-card:hover {
+    transform: translateY(-4px);
+    background: #fff;
+    box-shadow: 0 24px 64px rgba(28,28,26,0.12);
+  }
+
+  .lec-kicker {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+
+  .lec-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .lec-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-60);
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .lec-cta {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 42px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1px solid var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+  .lifecycle-entry-card:hover .lec-cta {
+    background: var(--teal);
+    border-color: var(--teal);
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 900px) {
+    .lifecycle-card-grid {
+      grid-template-columns: 1fr;
+    }
+    .lifecycle-entry-card {
+      min-height: auto;
+    }
+  }
+
 </style>
 <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 <div class="topbar">
-  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+  <a href="assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
     CV
   </a>
@@ -887,15 +994,15 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
   </a>
 </div>
 <nav class="mainnav">
-  <a href="../index.html" class="logo-mark">
+  <a href="index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
   </a>
   <div class="mainnav-links">
-    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
-    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
-    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
-    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">Creative Lifecycle</a>
-    <a href="../about/index.html" data-section="about">About Me</a>
+    <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="creative-lifecycle-hub.html" data-section="lifecycle">Creative Lifecycle</a>
+    <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
@@ -914,85 +1021,49 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 </script>
 
 
-<!-- ═══ HERO ═══ -->
+<!-- ═══ CREATIVE LIFECYCLE HUB HERO ═══ -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-label">Playbooks / Creative Lifecycle</div>
-    <h1>Winning creatives don’t last.<br>They <em>evolve</em>.</h1>
-    <p class="hero-desc">Most teams treat a winning ad like an asset to protect. It actually isn’t. A winner is a temporary signal moving through a lifecycle. If you don’t manage that lifecycle, the account becomes dependent on one ad until it burns out.</p>
+    <div class="hero-label">Creative Lifecycle Hub</div>
+    <h1>The creative system in <em>three moves</em>.</h1>
+    <p class="hero-desc">Creative coverage explains how you explore more territory. Hooks explain how each ad enters a segment. The lifecycle explains what happens to those signals over time.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
-        <div class="hero-meta-label">Channel</div>
-        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+        <div class="hero-meta-label">Use this hub for</div>
+        <div class="hero-meta-value">Navigation through the system</div>
       </div>
       <div class="hero-meta-item">
-        <div class="hero-meta-label">Applies to</div>
-        <div class="hero-meta-value">eCommerce · Lead Gen</div>
-      </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-label">Focus</div>
-        <div class="hero-meta-value">Scaling · Extension · Fatigue</div>
+        <div class="hero-meta-label">Deep dives live in</div>
+        <div class="hero-meta-value">The individual playbooks</div>
       </div>
     </div>
   </div>
 
   <div class="hero-visual">
-    <div class="hero-visual-label">The creative lifecycle</div>
+    <div class="hero-visual-label">The journey</div>
+    <div style="position:relative;z-index:1;display:grid;gap:14px;margin-top:10px;">
+      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(91,158,158,0.15);border:1px solid rgba(91,158,158,0.22);">
+        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(91,158,158,0.22);color:#7ABFB5;font-size:12px;font-weight:600;">01</div>
+        <div>
+          <div style="color:#fff;font-size:16px;font-weight:500;">Map the territory</div>
+          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Creative Coverage</div>
+        </div>
+      </div>
 
-    <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;margin-top:8px;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(91,158,158,0.22);color:#7ABFB5;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">01</div>
+      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(184,122,26,0.15);border:1px solid rgba(184,122,26,0.22);">
+        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(184,122,26,0.20);color:#E0A94E;font-size:12px;font-weight:600;">02</div>
         <div>
-          <div style="color:#fff;font-size:15px;font-weight:500;">Discovery</div>
-          <div style="color:rgba(255,255,255,0.38);font-size:12px;">New signal, early efficiency</div>
+          <div style="color:#fff;font-size:16px;font-weight:500;">Choose the entry point</div>
+          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Hooks Are Targeting</div>
         </div>
       </div>
-      <div style="height:14px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,122,26,0.20);color:#E0A94E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">02</div>
-        <div>
-          <div style="color:#fff;font-size:15px;font-weight:500;">Validation</div>
-          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Performance holds beyond a lucky pocket</div>
-        </div>
-      </div>
-      <div style="height:14px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.10);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">03</div>
-        <div>
-          <div style="color:#fff;font-size:15px;font-weight:500;">Expansion</div>
-          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Budget grows, audience broadens</div>
-        </div>
-      </div>
-      <div style="height:14px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,92,56,0.20);color:#E8967A;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">04</div>
-        <div>
-          <div style="color:#fff;font-size:15px;font-weight:500;">Saturation</div>
-          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Best responders are exhausted first</div>
-        </div>
-      </div>
-      <div style="height:14px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,92,56,0.12);color:rgba(232,150,122,0.75);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">05</div>
-        <div>
-          <div style="color:#fff;font-size:15px;font-weight:500;">Decay</div>
-          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Efficiency breaks unless the signal has been extended</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="hero-stat-row">
-      <div class="hero-stat">
-        <div class="hero-stat-num">5</div>
-        <div class="hero-stat-desc">Lifecycle stages</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">3</div>
-        <div class="hero-stat-desc">Jobs: extend, monitor, replace</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">1</div>
-        <div class="hero-stat-desc">Signal carried forward</div>
+      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(184,92,56,0.14);border:1px solid rgba(184,92,56,0.22);">
+        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(184,92,56,0.18);color:#E8967A;font-size:12px;font-weight:600;">03</div>
+        <div>
+          <div style="color:#fff;font-size:16px;font-weight:500;">Manage the signal over time</div>
+          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Creative Lifecycle</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1000,293 +1071,59 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 
 <div class="divider"></div>
 
-<!-- ═══ WHY SECTION ═══ -->
-<section class="why-section">
-  <div>
-    <div class="section-label">The reframe</div>
-    <h2 class="section-h2">Finding a winner is not the end of the creative process.</h2>
-    <p class="prose">A winning creative proves that a specific signal works: a buyer, a hook, a premise, a format, a level of trust. The mistake is treating that proof as a finished ad rather than a starting point.</p>
-    <p class="prose">When the ad starts working, most teams scale the budget and wait for fatigue to appear. That creates a dependency problem. The account is not learning from the winner. It is leaning on it.</p>
-    <p class="prose">The better move is to manage the lifecycle deliberately: extend the signal while it is strong, monitor saturation before decay becomes obvious, and build replacements before the account needs them.</p>
-  </div>
 
-  <div>
-    <div class="why-explainer">
-      <div class="why-explainer-title">The mistake most teams make</div>
-      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
-        <div class="why-card-label" style="color:#7ABFB5;">01, They scale before they extend</div>
-        <div class="why-card-desc">The first instinct is to put more spend behind the exact ad. That can work temporarily, but it concentrates the account around one asset instead of expanding the signal into more entry points.</div>
-      </div>
-      <div class="why-card" style="border-left: 2px solid #E0A94E;">
-        <div class="why-card-label" style="color:#E0A94E;">02, They notice fatigue too late</div>
-        <div class="why-card-desc">By the time performance visibly drops, the strongest responders have often already been exhausted and the algorithm is reaching into less qualified users.</div>
-      </div>
-      <div class="why-card" style="border-left: 2px solid #E8967A;">
-        <div class="why-card-label" style="color:#E8967A;">03, They restart instead of replacing</div>
-        <div class="why-card-desc">When the winner dies, the team goes back to ideation from zero. The account loses momentum because there was no overlapping pipeline ready to take over.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ LIFECYCLE STAGES ═══ -->
-<section class="full-width-section">
-  <div class="fw-inner">
-    <div class="fw-top">
-      <div>
-        <div class="section-label">The lifecycle</div>
-        <h2 class="section-h2">Every winner moves through predictable stages.</h2>
-      </div>
-      <p class="prose">Creative fatigue is not random. It is the late-stage outcome of a process that starts the moment a creative begins accumulating delivery, engagement, and spend.</p>
-    </div>
-
-    <div class="hook-types-grid">
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">01</div>
-        <div class="htc-type-label">Discovery</div>
-        <div class="htc-name">A new signal appears.</div>
-        <div class="htc-desc">The ad finds a pocket of buyers quickly. Efficiency can look strong, but at this stage you do not know yet whether the signal is durable or just early audience fit.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">02</div>
-        <div class="htc-type-label">Validation</div>
-        <div class="htc-name">The signal survives more delivery.</div>
-        <div class="htc-desc">Performance holds beyond the first small pocket. This is where the creative starts earning the right to influence budget and production decisions.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">03</div>
-        <div class="htc-type-label">Expansion</div>
-        <div class="htc-name">The account asks the creative to carry more weight.</div>
-        <div class="htc-desc">Spend increases and Meta has to find more people who behave like the original responders. This is where extension should begin, not after performance has already weakened.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">04</div>
-        <div class="htc-type-label">Saturation</div>
-        <div class="htc-name">The easiest audience has been harvested.</div>
-        <div class="htc-desc">Frequency rises, response quality weakens, and the same creative starts reaching colder or less qualified users. The ad may still spend, but the signal is getting thinner.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">05</div>
-        <div class="htc-type-label">Decay</div>
-        <div class="htc-name">Efficiency breaks.</div>
-        <div class="htc-desc">The ad did not suddenly become bad. The audience changed. The creative is now being asked to persuade people it was not originally strong enough to convert.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MECHANISM ═══ -->
 <section class="proof-section">
   <div class="proof-inner">
     <div class="proof-header">
       <div>
-        <div class="section-label">The mechanism</div>
-        <h2 class="section-h2">Performance usually drops because the audience changes.</h2>
+        <div class="section-label">The system</div>
+        <h2 class="section-h2">Three parts. One continuous flow.</h2>
       </div>
-      <p class="prose">A creative can still be the same ad, with the same hook, the same offer, and the same landing page. But as delivery expands, the people seeing it are no longer the same people who made it look like a winner in the first place.</p>
+      <p class="prose">Each step below links to a playbook. Read them in order, or jump to the part of the system that matches the problem in front of you.</p>
     </div>
 
-    <div class="proof-grid">
-      <div class="proof-card">
-        <div class="pc-step">First responders</div>
-        <div class="pc-title">The ad finds the buyers most likely to care.</div>
-        <div class="pc-desc">Early performance is often powered by the cleanest match between the creative signal and the buyer segment. Those users are usually harvested first.</div>
-      </div>
+    <div class="proof-grid lifecycle-card-grid">
+      <a href="playbooks/creative-coverage.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">01 · Coverage</div>
+        <div class="lec-title">Map what your creative is not covering.</div>
+        <div class="lec-desc">Use this when the account has “more ads” but not more meaningful market coverage. Identify missing personas, concepts, and formats before briefing the next round.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
 
-      <div class="proof-card">
-        <div class="pc-step">Broader delivery</div>
-        <div class="pc-title">Scale forces the algorithm into less perfect matches.</div>
-        <div class="pc-desc">To spend more, Meta has to expand beyond the original pocket. The creative is now doing harder work against a colder or less aligned audience.</div>
-      </div>
+      <a href="playbooks/hooks-are-targeting.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">02 · Hooks</div>
+        <div class="lec-title">Decide who each ad is for before you build it.</div>
+        <div class="lec-desc">Use this when the opening line, first frame, and buyer segment need to work together. The hook is the first targeting decision in the system.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
 
-      <div class="proof-card">
-        <div class="pc-step">Rising friction</div>
-        <div class="pc-title">The same message starts facing more resistance.</div>
-        <div class="pc-desc">Objections become more important, proof has to work harder, and the hook may no longer be enough to qualify the next layer of buyers.</div>
-      </div>
-
-      <div class="proof-card">
-        <div class="pc-step">Visible decay</div>
-        <div class="pc-title">The account calls it fatigue after the process is already underway.</div>
-        <div class="pc-desc">What looks like a sudden drop is often the visible end of a gradual audience-quality shift.</div>
-      </div>
+      <a href="playbooks/creative-lifecycle.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">03 · Lifecycle</div>
+        <div class="lec-title">Manage winners before they become dependencies.</div>
+        <div class="lec-desc">Use this when a creative starts working and the account needs extensions, saturation signals, and replacements before performance decay forces a reset.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ═══ EXTENSION AND FATIGUE ═══ -->
-<section class="full-width-section" style="background:#F0E4DC;">
-  <div class="fw-inner">
-    <div class="fw-top">
-      <div>
-        <div class="section-label">The connection</div>
-        <h2 class="section-h2">Extension and fatigue are not separate problems.</h2>
-      </div>
-      <p class="prose">Winner extension is what you do before saturation becomes expensive. Fatigue is what happens when the account depends on a signal longer than the market can support it.</p>
-    </div>
 
-    <div class="hook-types-grid">
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">01</div>
-        <div class="htc-type-label">Extension</div>
-        <div class="htc-name">Preserve the signal, not the exact ad.</div>
-        <div class="htc-desc">The job is not to duplicate the winner. The job is to keep the validated signal alive by changing the hook, creator, format, opening frame, or proof while protecting the core reason the ad worked.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">02</div>
-        <div class="htc-type-label">Monitoring</div>
-        <div class="htc-name">Watch the lifecycle before the account feels it.</div>
-        <div class="htc-desc">Rising frequency, weaker engagement, softer click quality, or conversion inconsistency are not just reporting details. They are signs that the creative is moving into a later stage.</div>
-      </div>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-num">03</div>
-        <div class="htc-type-label">Replacement</div>
-        <div class="htc-name">Have the next signal ready before the old one breaks.</div>
-        <div class="htc-desc">The strongest accounts overlap lifecycle stages. New concepts are being tested while winners scale, extensions are being built while performance holds, and replacements are ready before decay forces a reset.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ OPERATING SYSTEM ═══ -->
-<section class="process-section">
-  <div class="process-inner">
-    <div class="process-header">
-      <div>
-        <div class="section-label">The operating system</div>
-        <h2 class="section-h2">You do not react to fatigue. You plan around the lifecycle.</h2>
-      </div>
-      <p class="prose">The lifecycle is managed by creating overlap. You identify the signal when a winner appears, extend it while it is still healthy, read decay before it becomes obvious, and prepare the next signal before the account depends on one ad.</p>
-    </div>
-
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="ps-num">01</div>
-        <div class="ps-title">When a winner appears, identify the signal.</div>
-        <div class="ps-desc">Do not just label the ad a winner. Name what worked: the hook, the buyer, the objection, the format, the proof, or the emotional entry point.</div>
-      </div>
-
-      <div class="process-step">
-        <div class="ps-num">02</div>
-        <div class="ps-title">Build extensions while the ad is still healthy.</div>
-        <div class="ps-desc">Create variations that preserve the signal but open new delivery paths. New hook. New creator. New format. New proof. New first frame.</div>
-      </div>
-
-      <div class="process-step">
-        <div class="ps-num">03</div>
-        <div class="ps-title">Read decay as a lifecycle stage, not a surprise.</div>
-        <div class="ps-desc">When performance softens, ask which stage the creative is in. Is it early instability, scale pressure, saturation, or true decay?</div>
-      </div>
-
-      <div class="process-step">
-        <div class="ps-num">04</div>
-        <div class="ps-title">Replace before the account becomes dependent.</div>
-        <div class="ps-desc">A healthy creative system has overlap. Winners scale, extensions support them, and new concepts are already moving toward validation.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CROSSREFS ═══ -->
 <section class="full-width-section" style="background:#E4EDE0;">
   <div class="fw-inner">
     <div class="fw-top">
       <div>
-        <div class="section-label">How it connects</div>
-        <h2 class="section-h2">The lifecycle completes the creative system.</h2>
+        <div class="section-label">How the pieces connect</div>
+        <h2 class="section-h2">Coverage creates options. Hooks create entry. Lifecycle creates continuity.</h2>
       </div>
-      <p class="prose">Creative coverage explains how you explore more territory. Hooks explain how each ad enters a segment. The lifecycle explains what happens to those signals over time.</p>
-    </div>
-
-    <div class="hook-types-grid">
-      <a href="creative-coverage.html" class="hook-type-card" style="text-decoration:none;color:inherit;">
-        <div class="htc-accent"></div>
-        <div class="htc-type-label">Related playbook</div>
-        <div class="htc-name">Creative Coverage</div>
-        <div class="htc-desc">Coverage determines whether the account has enough ideas in motion to avoid depending on one winner.</div>
-      </a>
-
-      <a href="hooks-are-targeting.html" class="hook-type-card" style="text-decoration:none;color:inherit;">
-        <div class="htc-accent"></div>
-        <div class="htc-type-label">Related playbook</div>
-        <div class="htc-name">Hooks Are Targeting</div>
-        <div class="htc-desc">Hooks determine which buyer segment a creative reaches first, which shapes how the lifecycle begins.</div>
-      </a>
-
-      <div class="hook-type-card">
-        <div class="htc-accent"></div>
-        <div class="htc-type-label">This playbook</div>
-        <div class="htc-name">Creative Lifecycle</div>
-        <div class="htc-desc">Lifecycle thinking determines how winners scale, when they weaken, and how they should be replaced.</div>
-      </div>
+      
     </div>
   </div>
 </section>
 
-<!-- ═══ BEFORE / AFTER ═══ -->
-<section class="before-after">
-  <div class="ba-card before">
-    <div class="ba-label">Winner treated as an endpoint</div>
-    <div class="ba-items">
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Budget scales behind one ad until performance starts slipping.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Fatigue is noticed only after the account already feels the decline.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Variations are built as small edits instead of deliberate signal extensions.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>The next creative cycle starts from panic instead of accumulated learning.</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ba-card after">
-    <div class="ba-label">Winner treated as a lifecycle signal</div>
-    <div class="ba-items">
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>The signal is identified before scaling decisions are made.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Extensions are built while the original winner is still healthy.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Saturation is monitored as a predictable stage, not a surprise.</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Replacement creatives are ready before the account becomes dependent.</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
-  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+  <a href="case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
     ALL CASES
   </a>

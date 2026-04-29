@@ -633,6 +633,7 @@
     <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="frameworks/index.html" data-section="frameworks">Frameworks</a>
     <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="creative-lifecycle-hub.html" data-section="lifecycle">Creative Lifecycle</a>
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="#" data-email-link class="nav-cta">Get in touch</a>
@@ -644,7 +645,7 @@
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){ link.classList.add('active'); }
+    if(path.indexOf(section) !== -1 || (section === 'lifecycle' && path.indexOf('creative-lifecycle-hub') !== -1)){ link.classList.add('active'); }
   });
 })();
 </script>

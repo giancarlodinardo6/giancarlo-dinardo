@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Winning Creatives Don’t Last. They Evolve. Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #5B9E9E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  
+  
+  
+  
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: #5B9E9E; }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  /* Hook → audience diagram */
+  .hook-audience-viz { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .hav-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+  .hav-hook { padding: 10px 14px; border-radius: 8px; font-size: 12px; line-height: 1.4; font-style: italic; }
+  .hav-hook.emotional { background: rgba(184,92,56,0.15); border: 1px solid rgba(184,92,56,0.2); color: #E8967A; }
+  .hav-hook.curiosity { background: rgba(91,158,158,0.15); border: 1px solid rgba(91,158,158,0.2); color: #7ABFB5; }
+  .hav-hook.callout { background: rgba(184,122,26,0.15); border: 1px solid rgba(184,122,26,0.2); color: #D4A847; }
+  .hav-arrow { font-size: 14px; color: rgba(255,255,255,0.2); text-align: center; }
+  .hav-audience { padding: 10px 14px; border-radius: 8px; font-size: 11px; line-height: 1.4; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── HOOK TAXONOMY — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .hook-types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hook-type-card { background: #fff; border-radius: 12px; padding: 28px 24px; position: relative; }
+  .htc-accent { position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; border-radius: 50%; }
+  .hook-type-card:nth-child(1) .htc-accent { background: var(--rust); }
+  .hook-type-card:nth-child(2) .htc-accent { background: var(--teal); }
+  .hook-type-card:nth-child(3) .htc-accent { background: var(--amber); }
+  .hook-type-card:nth-child(4) .htc-accent { background: #7B6FCC; }
+  .hook-type-card:nth-child(5) .htc-accent { background: var(--ink-30); }
+  .htc-num { font-family: var(--serif); font-size: 48px; color: var(--ink-10); line-height: 1; margin-bottom: 6px; font-style: italic; }
+  .htc-type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+  .htc-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .htc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 14px; }
+  .htc-audience { font-size: 11px; padding: 8px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+  .htc-audience-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 3px; font-weight: 500; }
+  .htc-example { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--ink-60); margin-top: 10px; padding: 10px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+
+  /* ── PROOF FIRST — DARK SECTION ── */
+  .proof-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .proof-inner { max-width: 1200px; margin: 0 auto; }
+  .proof-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .proof-header .section-label { color: rgba(255,255,255,0.3); }
+  .proof-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .proof-header .section-h2 { color: #fff; }
+  .proof-header .prose { color: rgba(255,255,255,0.5); }
+
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .proof-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px 24px; }
+  .pc-step { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 12px; font-weight: 500; }
+  .pc-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+  .pc-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+  .pc-example { margin-top: 14px; padding: 10px 14px; background: rgba(255,255,255,0.04); border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-style: italic; }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+
+  .hook-comparison { display: flex; flex-direction: column; gap: 20px; }
+  .hc-product-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 20px; padding: 10px 16px; background: var(--ink-06); border-radius: 8px; display: inline-block; font-weight: 500; }
+  .hc-row { display: grid; grid-template-columns: 140px 1fr 1fr; gap: 16px; align-items: start; }
+  .hc-type-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-30); font-weight: 500; padding-top: 14px; }
+  .hc-hook { padding: 14px 16px; border-radius: 10px; font-family: var(--serif); font-size: 14px; font-style: italic; line-height: 1.5; }
+  .hc-hook.broad { background: var(--rust-light); color: var(--ink); border-left: 3px solid var(--rust); }
+  .hc-hook.specific { background: var(--teal-light); color: var(--ink); border-left: 3px solid var(--teal); }
+  .hc-outcome { padding: 14px 16px; border-radius: 10px; font-size: 13px; line-height: 1.6; }
+  .hc-outcome.broad { background: rgba(184,92,56,0.06); border: 1px solid rgba(184,92,56,0.12); color: var(--ink-60); }
+  .hc-outcome.specific { background: rgba(91,158,158,0.06); border: 1px solid rgba(91,158,158,0.12); color: var(--ink-60); }
+  .hc-outcome-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .hc-outcome.broad .hc-outcome-label { color: var(--rust); }
+  .hc-outcome.specific .hc-outcome-label { color: var(--teal); }
+  .hc-col-header { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); font-weight: 500; margin-bottom: 8px; }
+
+  /* ── PROCESS SECTION ── */
+  .process-section { background: var(--cream); border-top: 1px solid var(--ink-10); padding: 80px 48px; margin-bottom: 80px; }
+  .process-inner { max-width: 1200px; margin: 0 auto; }
+  .process-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+  .process-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--ink-10); border-radius: 16px; overflow: hidden; }
+  .process-step { background: var(--cream); padding: 36px 32px; }
+  .process-step-num { font-family: var(--serif); font-size: 13px; color: var(--ink-30); font-style: italic; margin-bottom: 12px; }
+  .process-step-name { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .process-step-desc { font-size: 14px; color: var(--ink-60); font-weight: 300; line-height: 1.7; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #5B9E9E; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .proof-header, .fw-top, .worked-header, .process-header { grid-template-columns: 1fr; }
+    .hook-types-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .hc-row { grid-template-columns: 1fr; }
+    .hc-type-label { padding-top: 0; }
+    .process-steps, .before-after { grid-template-columns: 1fr; }
+    nav, 
+    .full-width-section, .proof-section, .process-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+
+
+/* ── Embedded site header/navigation safety styles ── */
+/* ═══════════════════════════════════════════════════════════════════
+   GIANCARLO DI NARDO — PORTFOLIO
+   Design system from Claude Design session
+   ═══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
+
+:root {
+  --bg:           #F1ECE2;
+  --bg-2:         #EAE4D6;
+  --ink:          #181715;
+  --ink-2:        #2B2925;
+  --muted:        #6B655A;
+  --line:         #D9D2C2;
+  --line-2:       #C4BCA8;
+  --chip:         #FFFFFF;
+  --rust:         #B85C38;
+  --sage:         #8FAF8F;
+  --teal:         #5B9E9E;
+  --tile-black:   #1A1916;
+  --tile-pink:    #F2BFC4;
+  --tile-lav:     #C6BCEE;
+  --tile-mint:    #5B9E9E;
+  --tile-clay:    #E3B59A;
+  --radius:       6px;
+  --radius-lg:    10px;
+  --serif:        'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --display:      'Instrument Serif', 'Newsreader', Georgia, serif;
+  --mono:         'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --max:          1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: inherit; text-decoration: none; }
+a.link { border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
+a.link:hover { border-bottom-color: var(--ink); }
+img { max-width: 100%; display: block; }
+p + p { margin-top: 1em; }
+
+/* ── DISPLAY HEADLINE TRACKING ───────────────────────────────────── */
+h1, h2, h3, h4 { letter-spacing: -0.027em; }
+
+/* ── PAGE FADE-IN ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page { animation: fadeUp 0.4s ease forwards; }
+
+/* ── MONO UTILITY ────────────────────────────────────────────────── */
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.mono-ink { color: var(--ink-2); }
+
+/* ── TOP BAR ─────────────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px;
+  gap: 24px;
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.4);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cv-btn:hover { background: rgba(255,255,255,0.8); }
+.cv-btn svg { width: 11px; height: 11px; }
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.email-link svg { width: 12px; height: 12px; opacity: 0.7; }
+
+/* ── MAIN NAV ────────────────────────────────────────────────────── */
+.mainnav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 14px 48px;
+  border-top: 1px dashed var(--line-2);
+  border-bottom: 1px dashed var(--line-2);
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  margin-right: 36px;
+  flex-shrink: 0;
+}
+.logo-g {
+  font-family: var(--display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.logo-div {
+  width: 1px;
+  height: 22px;
+  background: var(--line-2);
+  margin: 0 7px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.logo-d {
+  font-family: var(--display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  opacity: 0.35;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.mainnav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+}
+.mainnav-links a {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.mainnav-links a:hover { color: var(--ink); }
+.mainnav-links a.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink-60);
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--ink);
+  color: var(--bg) !important;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.nav-cta:hover { opacity: 0.82; }
+
+/* ── HAIRLINE ─────────────────────────────────────────────────────── */
+.hair { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* ── PAGE CONTAINER ──────────────────────────────────────────────── */
+.page { max-width: var(--max); margin: 0 auto; padding: 0 0 80px; }
+
+/* ── TILES ───────────────────────────────────────────────────────── */
+.tile { width: 56px; height: 56px; border-radius: var(--radius); display: grid; place-items: center; flex-shrink: 0; overflow: hidden; }
+.tile-sm { width: 44px; height: 44px; border-radius: 5px; }
+.tile-lg { width: 80px; height: 80px; border-radius: 8px; }
+.tile-black  { background: var(--tile-black);  color: #F1ECE2; }
+.tile-pink   { background: var(--tile-pink);   color: var(--ink); }
+.tile-lav    { background: var(--tile-lav);    color: var(--ink); }
+.tile-mint   { background: #5B9E9E;   color: var(--ink); }
+.tile-butter { background: var(--tile-butter); color: var(--ink); }
+.tile-clay   { background: var(--tile-clay);   color: var(--ink); }
+.tile .ast { font-family: var(--display); font-size: 30px; line-height: 1; }
+.tile-sm .ast { font-size: 24px; }
+.tile-lg .ast { font-size: 44px; }
+
+/* ── CHIPS ───────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: var(--chip);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.chip:hover { background: var(--bg-2); }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #3BB273; display: inline-block; box-shadow: 0 0 0 3px rgba(59,178,115,0.18); }
+
+/* ── WORK LIST ───────────────────────────────────────────────────── */
+.worklist { display: flex; flex-direction: column; }
+.work-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.work-item:hover { background: rgba(255,255,255,0.3); }
+.work-item + .work-item { border-top: 1px solid var(--line); }
+.work-item .copy { flex: 1; min-width: 0; }
+.work-item .title { font-family: var(--serif); font-size: 15px; line-height: 1.35; font-weight: 500; color: var(--ink); margin: 2px 0 6px; }
+.work-item .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+
+/* ── TYPE UTILITIES ──────────────────────────────────────────────── */
+.h-display { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); }
+.h-display em { font-style: italic; }
+.h-section { font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; }
+.lead { font-family: var(--serif); font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.section-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+.sitefoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px 36px;
+  border-top: 1px dashed var(--line-2);
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── AVATAR ──────────────────────────────────────────────────────── */
+.avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: saturate(0.95); }
+.avatar-lg { width: 72px; height: 72px; }
+.avatar-xl { width: 120px; height: 120px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FRAMEWORK / CASE STUDY / PLAYBOOK DETAIL PAGES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── BREADCRUMB ──────────────────────────────────────────────────── */
+
+
+
+
+
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+.fr-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px 48px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  min-height: 60vh;
+}
+.fr-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fr-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--line-2); }
+.fr-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.fr-hero h1 em { font-style: italic; color: var(--ink-2); }
+.fr-hero-desc { font-family: var(--serif); font-size: 17px; color: var(--ink-2); line-height: 1.6; max-width: 520px; margin: 0 0 36px; }
+.fr-hero-meta { display: flex; gap: 32px; padding-top: 28px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.fr-meta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.fr-meta-value { font-family: var(--serif); font-size: 14px; color: var(--ink-2); }
+
+/* ── DARK HERO CARD ──────────────────────────────────────────────── */
+.fr-hero-card {
+  background: var(--tile-black);
+  color: #F1ECE2;
+  border-radius: 14px;
+  padding: 36px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.fr-hero-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(242,191,196,0.22) 0%, transparent 70%); }
+.fr-hero-card::after  { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.18) 0%, transparent 70%); }
+.fr-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(241,236,226,0.4); margin-bottom: 24px; }
+
+/* ── LAYER BARS (framework hero) ────────────────────────────────── */
+.fr-layers { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.fr-layer { display: flex; align-items: center; gap: 14px; }
+.fr-layer-num { font-family: var(--display); font-size: 12px; color: rgba(241,236,226,0.3); min-width: 18px; font-style: italic; }
+.fr-layer-bar {
+  height: 38px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+.fr-layer-bar.l1 { background: rgba(91,158,158,0.12); color: #5B9E9E;   border: 1px solid rgba(91,158,158,0.2); }
+.fr-layer-bar.l2 { background: rgba(242,191,196,0.12); color: #F2BFC4;            border: 1px solid rgba(242,191,196,0.2); }
+.fr-layer-bar.l3 { background: rgba(198,188,238,0.12); color: #C6BCEE;            border: 1px solid rgba(198,188,238,0.2); }
+.fr-layer-bar.l4 { background: rgba(241,236,226,0.06); color: rgba(241,236,226,0.5); border: 1px solid rgba(241,236,226,0.1); }
+.fr-layer-bar.l5 { background: rgba(242,223,161,0.15); color: var(--tile-butter); border: 1px solid rgba(242,223,161,0.25); }
+
+/* ── HERO STAT ROWS (acts / stats in card) ──────────────────────── */
+.fr-card-stats { display: flex; gap: 28px; padding-top: 24px; border-top: 1px solid rgba(241,236,226,0.1); position: relative; z-index: 1; }
+.fr-card-stat-num { font-family: var(--display); font-style: italic; font-size: 36px; color: #fff; line-height: 1; margin-bottom: 4px; }
+.fr-card-stat-desc { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: rgba(241,236,226,0.4); text-transform: uppercase; }
+
+/* Acts (playbook hero card) */
+.fr-acts { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.fr-act { padding: 14px 16px; background: rgba(241,236,226,0.04); border-radius: 9px; border: 1px solid rgba(241,236,226,0.08); }
+.fr-act-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.3); margin-bottom: 6px; }
+.fr-act-title { font-family: var(--serif); font-size: 14px; font-weight: 500; color: #F1ECE2; margin-bottom: 4px; }
+.fr-act-subtitle { font-family: var(--serif); font-size: 13px; color: rgba(241,236,226,0.52); line-height: 1.5; }
+
+/* ── DIVIDER ─────────────────────────────────────────────────────── */
+.fr-divider { max-width: var(--max); margin: 72px auto; padding: 0 48px; height: 1px; background: var(--line); }
+
+/* ── SECTION LABELS / HEADS ──────────────────────────────────────── */
+.fr-section-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.fr-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.fr-h2 { font-family: var(--display); font-size: clamp(30px, 3.5vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 22px; color: var(--ink); }
+.fr-h2 em { font-style: italic; color: var(--muted); }
+.fr-prose { font-family: var(--serif); font-size: 16.5px; color: var(--ink-2); line-height: 1.7; }
+.fr-prose + .fr-prose { margin-top: 14px; }
+
+/* ── 2-COL SECTIONS ──────────────────────────────────────────────── */
+.fr-section-2col { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.fr-dark-card { background: var(--tile-black); color: #F1ECE2; border-radius: 14px; padding: 32px; }
+.fr-dark-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(241,236,226,0.35); margin-bottom: 22px; }
+.fr-reason { padding: 14px 16px; background: rgba(241,236,226,0.04); border-radius: 9px; margin-bottom: 10px; border-left: 2px solid rgba(241,236,226,0.2); }
+.fr-reason:last-child { margin-bottom: 0; }
+.fr-reason.mint   { border-left-color: #5B9E9E; }
+.fr-reason.pink   { border-left-color: #F2BFC4; }
+.fr-reason.lav    { border-left-color: #C6BCEE; }
+.fr-reason.butter { border-left-color: var(--tile-butter); }
+.fr-reason-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; color: rgba(241,236,226,0.9); }
+.fr-reason.mint   .fr-reason-label { color: #5B9E9E; }
+.fr-reason.pink   .fr-reason-label { color: #F2BFC4; }
+.fr-reason.lav    .fr-reason-label { color: #C6BCEE; }
+.fr-reason.butter .fr-reason-label { color: var(--tile-butter); }
+.fr-reason-desc { font-family: var(--serif); font-size: 13.5px; color: rgba(241,236,226,0.6); line-height: 1.6; }
+
+/* ── BAND SECTIONS ───────────────────────────────────────────────── */
+.fr-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-band-inner { max-width: var(--max); margin: 0 auto; }
+.fr-band-top { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+
+/* ── LAYER GRID (framework body) ─────────────────────────────────── */
+.fr-layer-grid { display: grid; gap: 14px; }
+.fr-layer-grid.c4 { grid-template-columns: repeat(4, 1fr); }
+.fr-layer-grid.c5 { grid-template-columns: repeat(5, 1fr); }
+.fr-layer-mini { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; padding: 22px 18px; position: relative; }
+.fr-layer-mini .num { font-family: var(--display); font-style: italic; font-size: 44px; color: var(--line-2); line-height: 1; margin-bottom: 6px; }
+.fr-layer-mini .name { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.fr-layer-mini .values { display: flex; flex-direction: column; gap: 6px; }
+.fr-layer-mini .val { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.4; padding: 6px 10px; background: rgba(255,255,255,0.5); border-radius: 6px; }
+
+/* ── PERSONAS ────────────────────────────────────────────────────── */
+.fr-personas-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; }
+.fr-personas-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-personas-grid { display: grid; gap: 16px; }
+.fr-personas-grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.fr-personas-grid.c4 { grid-template-columns: repeat(4, 1fr); }
+.fr-persona-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.fr-persona-icon { padding: 20px 22px 0; font-size: 22px; }
+.fr-persona-name { padding: 10px 22px 14px; font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--line); }
+.fr-persona-field { padding: 12px 22px; border-bottom: 1px solid var(--line); }
+.fr-persona-field:last-child { border-bottom: none; }
+.fr-persona-field-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.fr-persona-field-text { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+
+/* ── AWARENESS TABLE ─────────────────────────────────────────────── */
+.fr-awareness-band { background: var(--tile-black); padding: 72px 48px; margin-bottom: 72px; }
+.fr-awareness-inner { max-width: var(--max); margin: 0 auto; }
+.fr-awareness-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-awareness-header .fr-h2 { color: #F1ECE2; }
+.fr-awareness-header .fr-section-label { color: rgba(241,236,226,0.4); }
+.fr-awareness-header .fr-section-label::before { background: rgba(241,236,226,0.2); }
+.fr-awareness-header .fr-prose { color: rgba(241,236,226,0.6); }
+.fr-awareness-table { width: 100%; border-collapse: collapse; }
+.fr-awareness-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.35); padding: 0 18px 14px; text-align: left; border-bottom: 1px solid rgba(241,236,226,0.1); }
+.fr-awareness-table td { font-family: var(--serif); font-size: 14px; padding: 14px 18px; border-bottom: 1px solid rgba(241,236,226,0.06); color: rgba(241,236,226,0.72); vertical-align: top; line-height: 1.55; }
+.fr-awareness-table .level-cell { font-family: var(--mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(241,236,226,0.3); }
+.fr-awareness-table .cell-thought { font-style: italic; color: rgba(241,236,226,0.44); }
+
+/* ── MATH ────────────────────────────────────────────────────────── */
+.fr-math-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+.fr-math-display { text-align: center; }
+.fr-math-num { font-family: var(--display); font-style: italic; font-size: 80px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.fr-math-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+.fr-math-eq { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 24px; }
+.fr-math-pill { padding: 8px 14px; background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--serif); font-size: 14px; color: var(--ink-2); }
+.fr-math-op { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+
+/* ── PROCESS ─────────────────────────────────────────────────────── */
+.fr-process-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-process-inner { max-width: var(--max); margin: 0 auto; }
+.fr-process-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+.fr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.fr-step { padding: 24px 20px; background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; }
+.fr-step-num { font-family: var(--display); font-style: italic; font-size: 36px; color: var(--line-2); line-height: 1; margin-bottom: 12px; }
+.fr-step-title { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.fr-step-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+
+/* ── BEFORE / AFTER ──────────────────────────────────────────────── */
+.fr-beforeafter { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.fr-ba-card { border-radius: 12px; padding: 32px; }
+.fr-ba-before { background: rgba(242,191,196,0.25); border: 1px solid rgba(242,191,196,0.4); }
+.fr-ba-after  { background: rgba(91,158,158,0.25); border: 1px solid rgba(91,158,158,0.4); }
+.fr-ba-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+.fr-ba-before .fr-ba-label { color: #b06060; }
+.fr-ba-after  .fr-ba-label { color: #3a7a5a; }
+.fr-ba-items { display: flex; flex-direction: column; gap: 10px; }
+.fr-ba-item { display: flex; gap: 10px; align-items: flex-start; font-family: var(--serif); font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.fr-ba-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
+.fr-ba-before .fr-ba-dot { background: #b06060; }
+.fr-ba-after  .fr-ba-dot { background: #3a7a5a; }
+
+/* ── CROSSREF ────────────────────────────────────────────────────── */
+.fr-crossref { max-width: var(--max); margin: 0 auto; padding: 0 48px 48px; display: flex; flex-direction: column; gap: 12px; }
+.fr-crossref-item { display: flex; gap: 16px; padding: 20px 24px; background: rgba(91,158,158,0.18); border-radius: 10px; border: 1px solid rgba(91,158,158,0.35); }
+.fr-crossref-arrow { color: #3a7a5a; font-size: 14px; padding-top: 2px; flex-shrink: 0; }
+.fr-crossref-title { font-family: var(--serif); font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.fr-crossref-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.fr-crossref-desc a { color: #3a7a5a; font-weight: 500; border-bottom: 1px solid rgba(58,122,90,0.3); padding-bottom: 1px; }
+
+/* ── DISCLOSURE ──────────────────────────────────────────────────── */
+.fr-disclosure { max-width: var(--max); margin: 0 auto; padding: 0 48px 48px; font-family: var(--serif); font-size: 13.5px; color: var(--muted); font-style: italic; line-height: 1.65; border-top: 1px solid var(--line); padding-top: 24px; }
+
+/* ── CTA ─────────────────────────────────────────────────────────── */
+.fr-cta-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 80px; text-align: center; }
+.fr-cta-inner { background: var(--tile-black); color: #F1ECE2; border-radius: 18px; padding: 64px 40px; position: relative; overflow: hidden; }
+.fr-cta-inner::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.14) 0%, transparent 65%); pointer-events: none; }
+.fr-cta-inner .fr-section-label { color: rgba(241,236,226,0.35); justify-content: center; margin-bottom: 20px; }
+.fr-cta-inner .fr-section-label::before { background: rgba(241,236,226,0.2); }
+.fr-cta-h2 { font-family: var(--display); font-size: clamp(34px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 18px; position: relative; }
+.fr-cta-h2 em { font-style: italic; color: #5B9E9E; }
+.fr-cta-desc { font-family: var(--serif); font-size: 16.5px; color: rgba(241,236,226,0.55); margin: 0 0 36px; position: relative; }
+.fr-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 999px; transition: transform 0.15s, box-shadow 0.15s; font-weight: 500; }
+.fr-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+
+/* ── TIMING ──────────────────────────────────────────────────────── */
+.fr-timing-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; }
+.fr-timing-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fr-timing-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.fr-timing-card-top { padding: 22px 22px 18px; border-bottom: 1px solid var(--line); }
+.fr-timing-season { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.fr-timing-name { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+.fr-timing-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+.fr-timing-insight { padding: 16px 22px; background: var(--bg-2); border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); font-style: italic; line-height: 1.5; }
+.fr-timing-insight-num { font-family: var(--display); font-style: italic; font-size: 72px; color: var(--line-2); line-height: 1; }
+
+/* ── AOV CARDS ───────────────────────────────────────────────────── */
+.fr-aov-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-aov-inner { max-width: var(--max); margin: 0 auto; }
+.fr-aov-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-aov-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fr-aov-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; }
+.fr-aov-num { font-family: var(--display); font-style: italic; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.fr-aov-name { font-family: var(--serif); font-size: 15.5px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.fr-aov-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.65; margin-bottom: 14px; }
+.fr-aov-example { padding: 11px 14px; background: #5B9E9E; border-radius: 8px; font-family: var(--display); font-style: italic; font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+/* ── FRAMEWORKS HUB ──────────────────────────────────────────────── */
+.fh-hero { max-width: var(--max); margin: 0 auto; padding: 36px 48px 24px; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 32px; }
+.fh-hero h1 { font-family: var(--display); font-weight: 400; font-size: 82px; line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
+.fh-hero h1 em { font-style: italic; color: var(--muted); }
+.fh-hero .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.fh-intro { max-width: var(--max); margin: 0 auto; padding: 24px 48px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid var(--line); }
+.fh-intro p { font-family: var(--serif); font-size: 16.5px; line-height: 1.65; color: var(--ink-2); }
+.fh-intro p + p { margin-top: 12px; }
+.fh-list-wrap { max-width: var(--max); margin: 0 auto; padding: 40px 48px 0; }
+.fh-list-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; gap: 24px; }
+.fh-list-head h2 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 44px; letter-spacing: -0.015em; margin: 0; line-height: 1.05; }
+.fh-list-head .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.fh-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 22px; align-items: center; padding: 22px 0; border-top: 1px solid var(--line); cursor: pointer; transition: padding 0.15s; }
+.fh-card:last-child { border-bottom: 1px solid var(--line); }
+.fh-card:hover { padding-left: 8px; }
+.fh-card .tile { width: 64px; height: 64px; border-radius: 8px; }
+.fh-card .tile .ast { font-size: 34px; }
+.fh-card .body { min-width: 0; }
+.fh-card .kicker { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+.fh-card .t { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.1; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 4px; }
+.fh-card .sub { font-family: var(--serif); font-size: 14.5px; color: var(--ink-2); line-height: 1.5; max-width: 640px; }
+.fh-card .stats { display: flex; gap: 18px; flex-shrink: 0; }
+.fh-card .stat { text-align: right; }
+.fh-card .stat .n { font-family: var(--display); font-style: italic; font-size: 32px; line-height: 1; color: var(--ink); }
+.fh-card .stat .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .fr-hero, .fr-section-2col, .fr-math-section, .fr-personas-header,
+  .fr-band-top, .fr-awareness-header, .fr-process-header,
+  .fr-timing-header, .fr-aov-header { grid-template-columns: 1fr; gap: 32px; }
+  .fr-layer-grid.c4 { grid-template-columns: repeat(2,1fr); }
+  .fr-layer-grid.c5 { grid-template-columns: repeat(3,1fr); }
+  .fr-personas-grid.c3, .fr-personas-grid.c4 { grid-template-columns: 1fr; }
+  .fr-timing-grid, .fr-aov-grid, .fr-beforeafter, .fr-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .topbar { padding: 16px 20px; }
+  .mainnav { padding: 12px 20px; gap: 0; }
+  .mainnav-links { gap: 16px; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; scrollbar-width: none; }
+  .mainnav-links::-webkit-scrollbar { display: none; }
+  .mainnav-links a { font-size: 13px; flex-shrink: 0; }
+  .logo-mark { margin-right: 20px; }
+  .logo-g, .logo-d { font-size: 22px; }
+  .nav-cta { display: none; }
+  .email-link { font-size: 9px; }
+  
+  .fr-band, .fr-awareness-band, .fr-process-band, .fr-aov-band { padding-left: 20px; padding-right: 20px; }
+  .fr-hero { padding-top: 24px; }
+  .fr-hero-card { min-height: 0; padding: 28px; }
+  .fr-hero h1 { font-size: 36px; }
+  .fr-h2 { font-size: 28px; }
+  .fh-hero { grid-template-columns: 1fr; gap: 16px; padding: 24px 20px; }
+  .fh-hero h1 { font-size: 42px; }
+  .fh-intro { grid-template-columns: 1fr; padding: 24px 20px 0; }
+  .fh-list-wrap { padding: 32px 20px 0; }
+  .fh-card { grid-template-columns: 48px 1fr; gap: 14px; }
+  .fh-card .stats { display: none; }
+  .fh-card .t { font-size: 20px; }
+}
+
+/* ── DETAIL PAGE REMNANT CLASSES ─────────────────────────────────── */
+.hero-left { min-width: 0; }
+.process-step-content { flex: 1; min-width: 0; }
+
+/* ── CASE STUDY TILE HOVER (global) ──────────────────────────────── */
+.arch-item {
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+}
+.arch-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+/* ── FH-CARD HOVER (frameworks hub) ─────────────────────────────── */
+.fh-card {
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.fh-card:hover {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+  padding-left: 28px;
+}
+
+/* ── STAT LABELS IN SAGE ─────────────────────────────────────────── */
+.cs-stat-label, .stat-label-sage { color: #5B9E9E; }
+
+/* ── RUST ITALIC ACCENT (display headlines) ──────────────────────── */
+.accent-rust { color: var(--rust); font-style: italic; }
+
+
+/* ── SVG safety: prevents unstyled icons from rendering as giant arrows when previewed standalone ── */
+.topbar svg, .mainnav svg, .cv-btn svg, .email-link svg { width: 12px; height: 12px; display: inline-block; flex: 0 0 auto; }
+
+</style>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Playbooks / Creative Lifecycle</div>
+    <h1>Winning creatives don’t last.<br>They <em>evolve</em>.</h1>
+    <p class="hero-desc">Most teams treat a winning ad like an asset to protect. It is not. A winner is a temporary signal moving through a lifecycle. If you do not manage that lifecycle, the account becomes dependent on one ad until it burns out.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">eCommerce · Lead Gen</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Scaling · Extension · Fatigue</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-visual-label">The creative lifecycle</div>
+
+    <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;margin-top:18px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(91,158,158,0.22);color:#7ABFB5;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">01</div>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:500;">Discovery</div>
+          <div style="color:rgba(255,255,255,0.38);font-size:12px;">New signal, early efficiency</div>
+        </div>
+      </div>
+      <div style="height:18px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,122,26,0.20);color:#E0A94E;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">02</div>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:500;">Validation</div>
+          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Performance holds beyond a lucky pocket</div>
+        </div>
+      </div>
+      <div style="height:18px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.10);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">03</div>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:500;">Expansion</div>
+          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Budget grows, audience broadens</div>
+        </div>
+      </div>
+      <div style="height:18px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,92,56,0.20);color:#E8967A;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">04</div>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:500;">Saturation</div>
+          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Best responders are exhausted first</div>
+        </div>
+      </div>
+      <div style="height:18px;border-left:1px solid rgba(255,255,255,0.12);margin-left:17px;"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(184,92,56,0.12);color:rgba(232,150,122,0.75);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">05</div>
+        <div>
+          <div style="color:#fff;font-size:15px;font-weight:500;">Decay</div>
+          <div style="color:rgba(255,255,255,0.38);font-size:12px;">Efficiency breaks unless the signal has been extended</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">5</div>
+        <div class="hero-stat-desc">Lifecycle stages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-desc">Jobs: extend, monitor, replace</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">0</div>
+        <div class="hero-stat-desc">Dependence on one ad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══ WHY SECTION ═══ -->
+<section class="why-section">
+  <div>
+    <div class="section-label">The reframe</div>
+    <h2 class="section-h2">Finding a winner is not the end of the creative process.</h2>
+    <p class="prose">A winning creative proves that a specific signal works: a buyer, a hook, a premise, a format, a level of trust. The mistake is treating that proof as a finished ad rather than a starting point.</p>
+    <p class="prose">When the ad starts working, most teams scale the budget and wait for fatigue to appear. That creates a dependency problem. The account is not learning from the winner. It is leaning on it.</p>
+    <p class="prose">The better move is to manage the lifecycle deliberately: extend the signal while it is strong, monitor saturation before decay becomes obvious, and build replacements before the account needs them.</p>
+  </div>
+
+  <div>
+    <div class="why-explainer">
+      <div class="why-explainer-title">The mistake most teams make</div>
+      <div class="why-card" style="border-left: 2px solid #7ABFB5;">
+        <div class="why-card-label" style="color:#7ABFB5;">01, They scale before they extend</div>
+        <div class="why-card-desc">The first instinct is to put more spend behind the exact ad. That can work temporarily, but it concentrates the account around one asset instead of expanding the signal into more entry points.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #E0A94E;">
+        <div class="why-card-label" style="color:#E0A94E;">02, They notice fatigue too late</div>
+        <div class="why-card-desc">By the time performance visibly drops, the strongest responders have often already been exhausted and the algorithm is reaching into less qualified users.</div>
+      </div>
+      <div class="why-card" style="border-left: 2px solid #E8967A;">
+        <div class="why-card-label" style="color:#E8967A;">03, They restart instead of replacing</div>
+        <div class="why-card-desc">When the winner dies, the team goes back to ideation from zero. The account loses momentum because there was no overlapping pipeline ready to take over.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LIFECYCLE STAGES ═══ -->
+<section class="full-width-section">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The lifecycle</div>
+        <h2 class="section-h2">Every winner moves through predictable stages.</h2>
+      </div>
+      <p class="prose">Creative fatigue is not random. It is the late-stage outcome of a process that starts the moment a creative begins accumulating delivery, engagement, and spend.</p>
+    </div>
+
+    <div class="hook-types-grid">
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">01</div>
+        <div class="htc-type-label">Discovery</div>
+        <div class="htc-name">A new signal appears.</div>
+        <div class="htc-desc">The ad finds a pocket of buyers quickly. Efficiency can look strong, but at this stage you do not know yet whether the signal is durable or just early audience fit.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">02</div>
+        <div class="htc-type-label">Validation</div>
+        <div class="htc-name">The signal survives more delivery.</div>
+        <div class="htc-desc">Performance holds beyond the first small pocket. This is where the creative starts earning the right to influence budget and production decisions.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">03</div>
+        <div class="htc-type-label">Expansion</div>
+        <div class="htc-name">The account asks the creative to carry more weight.</div>
+        <div class="htc-desc">Spend increases and Meta has to find more people who behave like the original responders. This is where extension should begin, not after performance has already weakened.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">04</div>
+        <div class="htc-type-label">Saturation</div>
+        <div class="htc-name">The easiest audience has been harvested.</div>
+        <div class="htc-desc">Frequency rises, response quality weakens, and the same creative starts reaching colder or less qualified users. The ad may still spend, but the signal is getting thinner.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">05</div>
+        <div class="htc-type-label">Decay</div>
+        <div class="htc-name">Efficiency breaks.</div>
+        <div class="htc-desc">The ad did not suddenly become bad. The audience changed. The creative is now being asked to persuade people it was not originally strong enough to convert.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MECHANISM ═══ -->
+<section class="proof-section">
+  <div class="proof-inner">
+    <div class="proof-header">
+      <div>
+        <div class="section-label">The mechanism</div>
+        <h2 class="section-h2">Performance usually drops because the audience changes.</h2>
+      </div>
+      <p class="prose">A creative can still be the same ad, with the same hook, the same offer, and the same landing page. But as delivery expands, the people seeing it are no longer the same people who made it look like a winner in the first place.</p>
+    </div>
+
+    <div class="proof-grid">
+      <div class="proof-card">
+        <div class="pc-step">First responders</div>
+        <div class="pc-title">The ad finds the buyers most likely to care.</div>
+        <div class="pc-desc">Early performance is often powered by the cleanest match between the creative signal and the buyer segment. Those users are usually harvested first.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Broader delivery</div>
+        <div class="pc-title">Scale forces the algorithm into less perfect matches.</div>
+        <div class="pc-desc">To spend more, Meta has to expand beyond the original pocket. The creative is now doing harder work against a colder or less aligned audience.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Rising friction</div>
+        <div class="pc-title">The same message starts facing more resistance.</div>
+        <div class="pc-desc">Objections become more important, proof has to work harder, and the hook may no longer be enough to qualify the next layer of buyers.</div>
+      </div>
+
+      <div class="proof-card">
+        <div class="pc-step">Visible decay</div>
+        <div class="pc-title">The account calls it fatigue after the process is already underway.</div>
+        <div class="pc-desc">What looks like a sudden drop is often the visible end of a gradual audience-quality shift.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXTENSION AND FATIGUE ═══ -->
+<section class="full-width-section" style="background:#F0E4DC;">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">The connection</div>
+        <h2 class="section-h2">Extension and fatigue are not separate problems.</h2>
+      </div>
+      <p class="prose">Winner extension is what you do before saturation becomes expensive. Fatigue is what happens when the account depends on a signal longer than the market can support it.</p>
+    </div>
+
+    <div class="hook-types-grid">
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">01</div>
+        <div class="htc-type-label">Extension</div>
+        <div class="htc-name">Preserve the signal, not the exact ad.</div>
+        <div class="htc-desc">The job is not to duplicate the winner. The job is to keep the validated signal alive by changing the hook, creator, format, opening frame, or proof while protecting the core reason the ad worked.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">02</div>
+        <div class="htc-type-label">Monitoring</div>
+        <div class="htc-name">Watch the lifecycle before the account feels it.</div>
+        <div class="htc-desc">Rising frequency, weaker engagement, softer click quality, or conversion inconsistency are not just reporting details. They are signs that the creative is moving into a later stage.</div>
+      </div>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-num">03</div>
+        <div class="htc-type-label">Replacement</div>
+        <div class="htc-name">Have the next signal ready before the old one breaks.</div>
+        <div class="htc-desc">The strongest accounts overlap lifecycle stages. New concepts are being tested while winners scale, extensions are being built while performance holds, and replacements are ready before decay forces a reset.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OPERATING SYSTEM ═══ -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <div>
+        <div class="section-label">The operating system</div>
+        <h2 class="section-h2">You do not react to fatigue. You plan around the lifecycle.</h2>
+      </div>
+      <p class="prose">This is where the merge matters. Winner extension and creative lifecycle are not two separate playbooks. They are two views of the same operating system: one proactive, one diagnostic.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="ps-num">01</div>
+        <div class="ps-title">When a winner appears, identify the signal.</div>
+        <div class="ps-desc">Do not just label the ad a winner. Name what worked: the hook, the buyer, the objection, the format, the proof, or the emotional entry point.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">02</div>
+        <div class="ps-title">Build extensions while the ad is still healthy.</div>
+        <div class="ps-desc">Create variations that preserve the signal but open new delivery paths. New hook. New creator. New format. New proof. New first frame.</div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Read decay as a lifecycle stage, not a surprise.</div>
+        <div class="ps-desc">When performance softens, ask which stage the creative is in. Is it early instability, scale pressure, saturation, or true decay?</div>
+      </div>
+
+      <div class="process-step">
+        <div class="ps-num">04</div>
+        <div class="ps-title">Replace before the account becomes dependent.</div>
+        <div class="ps-desc">A healthy creative system has overlap. Winners scale, extensions support them, and new concepts are already moving toward validation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CROSSREFS ═══ -->
+<section class="full-width-section" style="background:#E4EDE0;">
+  <div class="fw-inner">
+    <div class="fw-top">
+      <div>
+        <div class="section-label">How it connects</div>
+        <h2 class="section-h2">The lifecycle completes the creative system.</h2>
+      </div>
+      <p class="prose">Creative coverage explains how you explore more territory. Hooks explain how each ad enters a segment. The lifecycle explains what happens to those signals over time.</p>
+    </div>
+
+    <div class="hook-types-grid">
+      <a href="creative-coverage.html" class="hook-type-card" style="text-decoration:none;color:inherit;">
+        <div class="htc-accent"></div>
+        <div class="htc-type-label">Related playbook</div>
+        <div class="htc-name">Creative Coverage</div>
+        <div class="htc-desc">Coverage determines whether the account has enough ideas in motion to avoid depending on one winner.</div>
+      </a>
+
+      <a href="hooks-are-targeting.html" class="hook-type-card" style="text-decoration:none;color:inherit;">
+        <div class="htc-accent"></div>
+        <div class="htc-type-label">Related playbook</div>
+        <div class="htc-name">Hooks Are Targeting</div>
+        <div class="htc-desc">Hooks determine which buyer segment a creative reaches first, which shapes how the lifecycle begins.</div>
+      </a>
+
+      <div class="hook-type-card">
+        <div class="htc-accent"></div>
+        <div class="htc-type-label">This playbook</div>
+        <div class="htc-name">Creative Lifecycle</div>
+        <div class="htc-desc">Lifecycle thinking determines how winners scale, when they weaken, and how they should be replaced.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+<section class="before-after">
+  <div class="ba-card before">
+    <div class="ba-label">Winner treated as an endpoint</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Budget scales behind one ad until performance starts slipping.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Fatigue is noticed only after the account already feels the decline.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Variations are built as small edits instead of deliberate signal extensions.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>The next creative cycle starts from panic instead of accumulated learning.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ba-card after">
+    <div class="ba-label">Winner treated as a lifecycle signal</div>
+    <div class="ba-items">
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>The signal is identified before scaling decisions are made.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Extensions are built while the original winner is still healthy.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Saturation is monitored as a predictable stage, not a surprise.</span>
+      </div>
+      <div class="ba-item">
+        <div class="ba-dot"></div>
+        <span>Replacement creatives are ready before the account becomes dependent.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">Final thought</div>
+    <h2 class="section-h2">The goal is not to find one winner.</h2>
+    <p class="prose">The goal is to run a system where winners emerge, scale, evolve, and get replaced before they stop working.</p>
+  </div>
+</section>
+
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

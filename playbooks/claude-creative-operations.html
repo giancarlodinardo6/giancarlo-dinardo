@@ -140,12 +140,15 @@
   .pe-content { padding: 20px 22px; border-radius: 10px; }
   .pe-content.ai-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
   .pe-content.human-content { background: rgba(91,158,158,0.1); border: 1px solid rgba(91,158,158,0.15); }
+  .pe-content.both-content { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
   .pe-content-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 500; }
   .pe-content.ai-content .pe-content-label { color: rgba(232,150,122,0.5); }
   .pe-content.human-content .pe-content-label { color: rgba(122,191,181,0.5); }
+  .pe-content.both-content .pe-content-label { color: rgba(212,168,71,0.55); }
   .pe-content-text { font-size: 13px; line-height: 1.7; }
   .pe-content.ai-content .pe-content-text { color: rgba(232,150,122,0.8); }
   .pe-content.human-content .pe-content-text { color: rgba(122,191,181,0.8); }
+  .pe-content.both-content .pe-content-text { color: rgba(212,168,71,0.82); }
 
   /* ── WHAT AI CANNOT DO ── */
   .limits-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
@@ -183,6 +186,22 @@
   .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
   .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+
+  /* ── FOOTER OVERRIDE ── */
+  .sitefoot {
+    background: var(--ink) !important;
+    color: #F5F2EC !important;
+    border-top: 1px solid rgba(245,242,236,0.12) !important;
+  }
+  .sitefoot a,
+  .sitefoot span {
+    color: #F5F2EC !important;
+  }
+  .sitefoot svg {
+    color: #F5F2EC !important;
+    stroke: currentColor;
+  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -454,7 +473,7 @@
         </div>
         <div class="pe-content both-content">
           <div class="pe-content-label">What gets built</div>
-          <div class="pe-content-text">Persona, awareness level, core problem, buying belief, objection, proof requirement, hook territories, and format options. This becomes a brief input, not finished creative.</div>
+          <div class="pe-content-text">Persona, awareness level, core problem, buying belief, objection, proof requirement, hook territories, and format options. This becomes a brief input, not finished creative. Claude helps organize the shape; the strategist decides whether the angle is actually worth producing.</div>
         </div>
       </div>
 

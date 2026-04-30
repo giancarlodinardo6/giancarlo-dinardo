@@ -1089,6 +1089,182 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     }
   }
 
+
+  .journey-visual-title {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .journey-visual-kicker {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.34);
+    margin-bottom: 8px;
+  }
+
+  .journey-visual-heading {
+    font-family: var(--serif);
+    font-size: clamp(26px, 2.8vw, 36px);
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  .journey-card-stack {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .journey-entry {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 15px;
+    align-items: start;
+    padding: 18px 19px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .journey-entry::after {
+    content: "Read →";
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0);
+    transform: translateX(-6px);
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+
+  .journey-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+  }
+
+  .journey-entry:hover::after {
+    color: rgba(255,255,255,0.54);
+    transform: translateX(0);
+  }
+
+  .journey-entry.coverage {
+    background: rgba(91,158,158,0.15);
+    border: 1px solid rgba(91,158,158,0.25);
+  }
+
+  .journey-entry.coverage:hover {
+    background: rgba(91,158,158,0.22);
+    border-color: rgba(91,158,158,0.46);
+  }
+
+  .journey-entry.hooks {
+    background: rgba(184,122,26,0.15);
+    border: 1px solid rgba(184,122,26,0.25);
+  }
+
+  .journey-entry.hooks:hover {
+    background: rgba(184,122,26,0.22);
+    border-color: rgba(184,122,26,0.46);
+  }
+
+  .journey-entry.lifecycle {
+    background: rgba(184,92,56,0.14);
+    border: 1px solid rgba(184,92,56,0.25);
+  }
+
+  .journey-entry.lifecycle:hover {
+    background: rgba(184,92,56,0.21);
+    border-color: rgba(184,92,56,0.44);
+  }
+
+  .journey-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .coverage .journey-num {
+    background: rgba(91,158,158,0.24);
+    color: #7ABFB5;
+  }
+
+  .hooks .journey-num {
+    background: rgba(184,122,26,0.22);
+    color: #E0A94E;
+  }
+
+  .lifecycle .journey-num {
+    background: rgba(184,92,56,0.20);
+    color: #E8967A;
+  }
+
+  .journey-card-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    padding-right: 56px;
+  }
+
+  .journey-card-subtitle {
+    color: rgba(255,255,255,0.46);
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .journey-card-desc {
+    color: rgba(255,255,255,0.52);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 10px;
+    max-width: 330px;
+  }
+
+  @media (max-width: 600px) {
+    .journey-visual-title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .journey-entry {
+      grid-template-columns: 38px 1fr;
+      padding: 17px 16px;
+    }
+
+    .journey-entry::after {
+      display: none;
+    }
+
+    .journey-num {
+      width: 38px;
+      height: 38px;
+    }
+
+    .journey-card-title {
+      padding-right: 0;
+    }
+  }
+
 </style>
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -1111,7 +1287,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="frameworks/index.html" data-section="frameworks">Frameworks</a>
     <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
-    <a href="creative-lifecycle-hub.html" data-section="lifecycle">Creative Lifecycle</a>
+    <a href="creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
@@ -1136,7 +1312,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
   <div class="hero-left">
     <div class="hero-label">Creative Lifecycle Hub</div>
     <h1>The creative system in <em>three moves</em>.</h1>
-    <p class="hero-desc">Creative coverage explains how you explore more territory. Hooks explain how each ad enters a segment. The lifecycle explains what happens to those signals over time.</p>
+    <p class="hero-desc">This is the map for how creative actually works inside a paid social account: first you expand the territory you are covering, then you choose the buyer each ad is meant to pull in, and then you manage what happens when those signals start to scale, saturate, and eventually need to be replaced.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <div class="hero-meta-label">Use this hub for</div>
@@ -1150,31 +1326,38 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
   </div>
 
   <div class="hero-visual">
-    <div class="hero-visual-label">The journey</div>
-    <div style="position:relative;z-index:1;display:grid;gap:14px;margin-top:10px;">
-      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(91,158,158,0.15);border:1px solid rgba(91,158,158,0.22);">
-        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(91,158,158,0.22);color:#7ABFB5;font-size:12px;font-weight:600;">01</div>
-        <div>
-          <div style="color:#fff;font-size:16px;font-weight:500;">Map the territory</div>
-          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Creative Coverage</div>
-        </div>
-      </div>
+    <div class="journey-visual-title">
+      <div class="journey-visual-kicker">The journey</div>
+      <div class="journey-visual-heading">From territory to signal to scale.</div>
+    </div>
 
-      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(184,122,26,0.15);border:1px solid rgba(184,122,26,0.22);">
-        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(184,122,26,0.20);color:#E0A94E;font-size:12px;font-weight:600;">02</div>
+    <div class="journey-card-stack">
+      <a href="playbooks/creative-coverage.html" class="journey-entry coverage">
+        <div class="journey-num">01</div>
         <div>
-          <div style="color:#fff;font-size:16px;font-weight:500;">Choose the entry point</div>
-          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Hooks Are Targeting</div>
+          <div class="journey-card-title">Map the territory</div>
+          <div class="journey-card-subtitle">Creative Coverage</div>
+          <div class="journey-card-desc">See what your ads are not covering across concepts, personas, and formats before adding more creative volume.</div>
         </div>
-      </div>
+      </a>
 
-      <div style="display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:rgba(184,92,56,0.14);border:1px solid rgba(184,92,56,0.22);">
-        <div style="width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(184,92,56,0.18);color:#E8967A;font-size:12px;font-weight:600;">03</div>
+      <a href="playbooks/hooks-are-targeting.html" class="journey-entry hooks">
+        <div class="journey-num">02</div>
         <div>
-          <div style="color:#fff;font-size:16px;font-weight:500;">Manage the signal over time</div>
-          <div style="color:rgba(255,255,255,.42);font-size:13px;margin-top:4px;">Creative Lifecycle</div>
+          <div class="journey-card-title">Choose the entry point</div>
+          <div class="journey-card-subtitle">Hooks Are Targeting</div>
+          <div class="journey-card-desc">Decide which buyer each ad should call in, and align the hook, first frame, and message around that person.</div>
         </div>
-      </div>
+      </a>
+
+      <a href="playbooks/creative-lifecycle.html" class="journey-entry lifecycle">
+        <div class="journey-num">03</div>
+        <div>
+          <div class="journey-card-title">Manage the signal over time</div>
+          <div class="journey-card-subtitle">Creative Lifecycle</div>
+          <div class="journey-card-desc">Extend winners, read saturation, and prepare replacements before performance decay forces a reset.</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>

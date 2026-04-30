@@ -24,6 +24,25 @@
   .exp-co { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
   @media(max-width:900px){ .about-grid{grid-template-columns:1fr;gap:36px} .about-aside{position:static} }
   @media(max-width:700px){ .about-grid{padding:28px 20px 60px} }
+
+  .value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0 22px; }
+  .value-card { background:rgba(255,255,255,0.5); border:1px solid var(--line); border-radius:12px; padding:18px; }
+  .value-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .value-t { font-family:var(--serif); font-size:15px; line-height:1.3; color:var(--ink); margin-bottom:6px; font-weight:500; }
+  .value-d { font-family:var(--serif); font-size:13.5px; line-height:1.55; color:var(--ink-2); margin:0; }
+  .about-link-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0 24px; }
+  .about-link-card { text-decoration:none; color:inherit; background:rgba(255,255,255,0.5); border:1px solid var(--line); border-radius:12px; padding:18px; display:flex; flex-direction:column; min-height:150px; transition:background .15s, transform .15s; }
+  .about-link-card:hover { background:#fff; transform:translateY(-2px); }
+  .alc-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .alc-t { font-family:var(--serif); font-size:15px; line-height:1.3; color:var(--ink); margin-bottom:8px; font-weight:500; }
+  .alc-d { font-family:var(--serif); font-size:13.5px; line-height:1.5; color:var(--ink-2); flex:1; }
+  .alc-cta { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#5B9E9E; margin-top:14px; }
+  .aside-note { margin-top:14px; background:rgba(255,255,255,0.45); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .aside-note-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .aside-note-p { font-family:var(--serif); font-size:13.5px; line-height:1.5; color:var(--ink-2); margin:0; }
+  .exp-note { font-family:var(--serif); font-size:13px; color:var(--ink-2); line-height:1.45; margin-top:4px; }
+  @media(max-width:900px){ .value-grid,.about-link-grid{grid-template-columns:1fr} }
+
 </style>
 </head>
 <body>
@@ -45,7 +64,7 @@
     <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
     <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
-    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">Creative Lifecycle</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
@@ -66,29 +85,72 @@
 
 <div class="about-grid">
 
+
   <div class="about-body">
     <span class="body-label">Background</span>
-    <p class="body-p">I come from paid social, but the work has always sat between performance and creative. I spend most of my time using performance data to guide what creative gets tested next and how it evolves over time.</p>
-    <p class="body-p">I've worked both in-house and at agencies, across eCommerce and lead generation, with full ownership over performance. Nine years running Meta campaigns, Facebook and Instagram, managing seven figures in ad spend and working closely across research, creative direction, and execution.</p>
-    <p class="body-p">More recently, I've been formalizing this way of working into AI-powered systems that help speed up research, testing, and creative production, while keeping decisions grounded in experience.</p>
+    <p class="body-p">I’m a senior paid social strategist with 9+ years focused on Meta advertising across lead generation and eCommerce. My work has always lived between performance and creative: reading account behavior, finding the actual constraint, and turning that into better tests, briefs, and decisions.</p>
+    <p class="body-p">I’ve worked both in-house and at agencies, with ownership over performance across Facebook and Instagram campaigns. The throughline has been learning how creative, campaign structure, offer, and audience signals interact once real spend is involved.</p>
+    <p class="body-p">This site is my digital home for that thinking. The case studies show how I approached real account problems. The playbooks and systems show how I turn recurring decisions into frameworks that can be reused.</p>
+
+    <span class="body-label">How I create value</span>
+    <div class="value-grid">
+      <div class="value-card">
+        <div class="value-k">01</div>
+        <div class="value-t">Diagnose before changing.</div>
+        <p class="value-d">I look for the real constraint before touching budget, structure, or creative direction.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-k">02</div>
+        <div class="value-t">Turn data into creative direction.</div>
+        <p class="value-d">I use performance patterns to decide what message, hook, format, or buyer segment to test next.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-k">03</div>
+        <div class="value-t">Build systems, not isolated wins.</div>
+        <p class="value-d">A winner matters, but the bigger leverage is knowing how to extend it, replace it, and learn from it.</p>
+      </div>
+    </div>
+
+    <span class="body-label">What to read first</span>
+    <p class="body-p">If you’re trying to understand how I think beyond campaign management, these are the best entry points.</p>
+    <div class="about-link-grid">
+      <a href="../creative-lifecycle-hub.html" class="about-link-card">
+        <div class="alc-k">System</div>
+        <div class="alc-t">The Creative System</div>
+        <div class="alc-d">How coverage, hooks, and lifecycle connect inside a paid social account.</div>
+        <div class="alc-cta">Start here </div>
+      </a>
+      <a href="../case-studies/index.html" class="about-link-card">
+        <div class="alc-k">Proof</div>
+        <div class="alc-t">Case Studies</div>
+        <div class="alc-d">Real account situations showing diagnosis, testing logic, and performance tradeoffs.</div>
+        <div class="alc-cta">View cases </div>
+      </a>
+      <a href="../playbooks/hooks-are-targeting.html" class="about-link-card">
+        <div class="alc-k">Point of view</div>
+        <div class="alc-t">Hooks Are Targeting</div>
+        <div class="alc-d">A concise example of how I connect creative decisions with audience selection.</div>
+        <div class="alc-cta">Read playbook </div>
+      </a>
+    </div>
 
     <span class="body-label">What I actually do</span>
-    <p class="body-p">Most of my work is diagnosing why an account is underperforming and building the structure to fix it. That usually means looking at creative testing logic, campaign architecture, and message-market fit before touching any budget.</p>
-    <p class="body-p">The case studies on this site document that process across nine real accounts. The playbooks and frameworks are how I've systematized the recurring decisions so they don't have to be rebuilt from scratch each time.</p>
+    <p class="body-p">Most of my work is diagnosing why an account is underperforming and building the structure to fix it. That usually means looking at creative testing logic, campaign architecture, message-market fit, and lifecycle stage before assuming the answer is more spend or more ads.</p>
+    <p class="body-p">I’m especially interested in the creative side of performance: how hooks select buyers, how coverage expands the market, and how winning ads evolve over time instead of becoming one-off dependencies.</p>
 
     <span class="body-label">Experience</span>
     <div>
       <div class="exp-item">
         <div class="exp-year">2023–2025</div>
-        <div><div class="exp-role">Senior Performance Marketing Specialist</div><div class="exp-co">Clever Digital Marketing</div></div>
+        <div><div class="exp-role">Senior Performance Marketing Specialist</div><div class="exp-co">Clever Digital Marketing</div><div class="exp-note">Lead gen and eCommerce accounts across strategy, optimization, creative testing, and performance analysis.</div></div>
       </div>
       <div class="exp-item">
         <div class="exp-year">2021–2023</div>
-        <div><div class="exp-role">Senior Media Buyer</div><div class="exp-co">Lavin Media</div></div>
+        <div><div class="exp-role">Senior Media Buyer</div><div class="exp-co">Lavin Media</div><div class="exp-note">Meta campaign ownership across multiple accounts, with emphasis on testing logic and account performance.</div></div>
       </div>
       <div class="exp-item">
         <div class="exp-year">2019–2021</div>
-        <div><div class="exp-role">Paid Social Strategist</div><div class="exp-co">Browze (In-house)</div></div>
+        <div><div class="exp-role">Paid Social Strategist</div><div class="exp-co">Browze (In-house)</div><div class="exp-note">In-house DTC experience connecting creative iteration, spend efficiency, and product-level learning.</div></div>
       </div>
       <div class="exp-item">
         <div class="exp-year">2017–2019</div>
@@ -110,8 +172,8 @@
     <img src="../assets/profile.jpg" alt="Giancarlo Di Nardo" class="aside-photo">
     <div class="aside-card">
       <div class="aside-row">
-        <span class="aside-k">Based</span>
-        <span class="aside-v">Toronto, Buenos Aires</span>
+        <span class="aside-k">Role</span>
+        <span class="aside-v">Senior Paid Social Strategist</span>
       </div>
       <div class="aside-row">
         <span class="aside-k">Experience</span>
@@ -126,15 +188,24 @@
         <span class="aside-v">Lead gen · DTC</span>
       </div>
       <div class="aside-row">
-        <span class="aside-k">Peak spend</span>
-        <span class="aside-v">$400k / mo</span>
+        <span class="aside-k">Strength</span>
+        <span class="aside-v">Creative + performance</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Based</span>
+        <span class="aside-v">Toronto · Buenos Aires</span>
       </div>
       <div class="aside-row">
         <span class="aside-k">Status</span>
         <span class="aside-v"><span class="status-dot" style="margin-right:6px"></span>Open to roles</span>
       </div>
     </div>
+    <div class="aside-note">
+      <div class="aside-note-k">Working style</div>
+      <p class="aside-note-p">I like turning messy account behavior into a clear diagnosis, then building a practical system the team can actually use.</p>
+    </div>
   </aside>
+
 
 </div>
 

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Your Creative System Isn’t Learning — Giancarlo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #5B9E9E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  
+  
+  
+  
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: #5B9E9E; }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual — workflow pipeline */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  .pipeline { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .pipeline-stage { display: flex; align-items: center; gap: 12px; }
+  .ps-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .ps-icon.ai { background: rgba(184,92,56,0.2); }
+  .ps-icon.human { background: rgba(91,158,158,0.2); }
+  .ps-icon.both { background: rgba(184,122,26,0.2); }
+  .ps-content { flex: 1; padding: 10px 14px; border-radius: 8px; }
+  .ps-content.ai { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
+  .ps-content.human { background: rgba(91,158,158,0.1); border: 1px solid rgba(91,158,158,0.15); }
+  .ps-content.both { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
+  .ps-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 2px; }
+  .ps-content.ai .ps-label { color: rgba(232,150,122,0.6); }
+  .ps-content.human .ps-label { color: rgba(122,191,181,0.6); }
+  .ps-content.both .ps-label { color: rgba(212,168,71,0.6); }
+  .ps-name { font-size: 12px; line-height: 1.4; }
+  .ps-content.ai .ps-name { color: rgba(232,150,122,0.8); }
+  .ps-content.human .ps-name { color: rgba(122,191,181,0.8); }
+  .ps-content.both .ps-name { color: rgba(212,168,71,0.8); }
+  .pipeline-arrow { width: 32px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.15); margin-left: 0; }
+
+  .hero-stat-row { display: flex; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── WORKFLOW STAGES — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .stages-list { display: flex; flex-direction: column; gap: 16px; }
+  .stage-card { background: #fff; border-radius: 12px; padding: 28px 28px; display: grid; grid-template-columns: 48px 1fr 1fr; gap: 24px; align-items: start; }
+  .stage-num { font-family: var(--serif); font-size: 36px; color: var(--ink-10); line-height: 1; font-style: italic; }
+  .stage-ai { }
+  .stage-ai-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--rust); margin-bottom: 6px; font-weight: 500; }
+  .stage-ai-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .stage-ai-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; }
+  .stage-human { }
+  .stage-human-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 6px; font-weight: 500; }
+  .stage-human-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .stage-human-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; }
+
+  /* ── WORKED EXAMPLE — DARK ── */
+  .worked-section-dark { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .worked-inner { max-width: 1200px; margin: 0 auto; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .worked-header .section-label { color: rgba(255,255,255,0.3); }
+  .worked-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .worked-header .section-h2 { color: #fff; }
+  .worked-header .prose { color: rgba(255,255,255,0.5); }
+
+  .prompt-example { display: flex; flex-direction: column; gap: 20px; }
+  .pe-stage { display: grid; grid-template-columns: 160px 1fr; gap: 24px; align-items: start; }
+  .pe-stage-label { padding-top: 16px; }
+  .pe-stage-name { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); font-weight: 500; margin-bottom: 4px; }
+  .pe-stage-role { font-size: 12px; }
+  .pe-stage-role.ai-role { color: rgba(232,150,122,0.6); }
+  .pe-stage-role.human-role { color: rgba(122,191,181,0.6); }
+  .pe-content { padding: 20px 22px; border-radius: 10px; }
+  .pe-content.ai-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
+  .pe-content.human-content { background: rgba(91,158,158,0.1); border: 1px solid rgba(91,158,158,0.15); }
+  .pe-content-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 500; }
+  .pe-content.ai-content .pe-content-label { color: rgba(232,150,122,0.5); }
+  .pe-content.human-content .pe-content-label { color: rgba(122,191,181,0.5); }
+  .pe-content-text { font-size: 13px; line-height: 1.7; }
+  .pe-content.ai-content .pe-content-text { color: rgba(232,150,122,0.8); }
+  .pe-content.human-content .pe-content-text { color: rgba(122,191,181,0.8); }
+
+  /* ── WHAT AI CANNOT DO ── */
+  .limits-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .limits-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+  .limits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .limit-card { border-radius: 12px; padding: 28px 24px; background: var(--ink-06); border: 1px solid var(--ink-10); }
+  .lc-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 10px; font-weight: 500; }
+  .lc-title { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 10px; line-height: 1.3; }
+  .lc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.7; font-weight: 300; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #5B9E9E; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .worked-header, .fw-top, .limits-header { grid-template-columns: 1fr; }
+    .stage-card { grid-template-columns: 1fr; }
+    .limits-grid, .before-after { grid-template-columns: 1fr; }
+    .pe-stage { grid-template-columns: 1fr; }
+    nav, 
+    .full-width-section, .worked-section-dark { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+</style>
+<link href="../styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="topbar">
+<a class="cv-btn" href="../assets/giancarlo-cv.pdf">
+<svg fill="none" stroke="currentColor" stroke-width="1.2" viewbox="0 0 12 12"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"></path></svg>
+    CV
+  </a>
+<a class="email-link" href="mailto:giancarlodinardo.6@gmail.com">
+<svg fill="none" stroke="currentColor" stroke-width="1.2" viewbox="0 0 14 14"><rect height="8" rx="1" width="11" x="1.5" y="3"></rect><path d="M2 4l5 4 5-4"></path></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+<a class="logo-mark" href="../index.html">
+<span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+</a>
+<div class="mainnav-links">
+<a data-section="case-studies" href="../case-studies/index.html">Case Studies</a>
+<a data-section="frameworks" href="../frameworks/index.html">Frameworks</a>
+<a data-section="playbooks" href="../playbooks/index.html">Playbooks</a>
+<a data-section="lifecycle" href="../creative-lifecycle-hub.html">The Creative System</a>
+<a data-section="about" href="../about/index.html">About Me</a>
+</div>
+<a class="nav-cta" href="mailto:giancarlodinardo.6@gmail.com">Get in touch</a>
+</nav>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+<!-- ═══ NAV ═══ -->
+<!-- ═══ BREADCRUMB ═══ -->
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+<div class="hero-left">
+<div class="hero-label">Playbooks / Creative System</div>
+<h1>Your creative system isn’t learning.<br/><em>That’s why it feels like work.</em></h1>
+<p class="hero-desc">Most teams do not have an idea shortage. They have a memory problem. Every launch produces information, but very little of it makes the next brief sharper.</p>
+<div class="hero-meta">
+<div class="hero-meta-item">
+<div class="hero-meta-label">Channel</div>
+<div class="hero-meta-value">Meta (Facebook &amp; Instagram)</div>
+</div>
+<div class="hero-meta-item">
+<div class="hero-meta-label">Focus</div>
+<div class="hero-meta-value">Creative system · AI-assisted workflow</div>
+</div>
+<div class="hero-meta-item">
+<div class="hero-meta-label">Role</div>
+<div class="hero-meta-value">Research · Angle development · Lifecycle read</div>
+</div>
+</div>
+</div>
+<div class="hero-visual"><div class="hero-visual-label">A creative system that keeps its memory</div><div class="pipeline"><div class="pipeline-stage"><div class="ps-icon ai">📥</div><div class="ps-content ai"><div class="ps-label">Raw signal</div><div class="ps-name">Customer language, objections, comments, reviews</div></div></div><div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div><div class="pipeline-stage"><div class="ps-icon ai">🧭</div><div class="ps-content ai"><div class="ps-label">Angle map</div><div class="ps-name">Personas, beliefs, triggers, awareness levels</div></div></div><div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div><div class="pipeline-stage"><div class="ps-icon both">🎬</div><div class="ps-content both"><div class="ps-label">Execution</div><div class="ps-name">Hooks, formats, scripts, production briefs</div></div></div><div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div><div class="pipeline-stage"><div class="ps-icon both">📊</div><div class="ps-content both"><div class="ps-label">Performance read</div><div class="ps-name">Spend, CPA, CTR, CVR read by angle</div></div></div><div style="padding-left:44px;font-size:11px;color:rgba(255,255,255,0.15);margin:-4px 0;">↓</div><div class="pipeline-stage"><div class="ps-icon human">♻️</div><div class="ps-content human"><div class="ps-label">Next cycle</div><div class="ps-name">Extensions, variants, new coverage decisions</div></div></div></div></div>
+</section>
+<div class="divider"></div>
+<!-- ═══ WHY SECTION ═══ -->
+
+<!-- ═══ WORKFLOW STAGES — SAGE ═══ -->
+
+<!-- ═══ WORKED EXAMPLE — DARK ═══ -->
+
+<!-- ═══ WHAT AI CANNOT DO ═══ -->
+
+<!-- ═══ BEFORE / AFTER ═══ -->
+
+<!-- ═══ CTA ═══ -->
+<footer class="sitefoot">
+<span>© GIANCARLO DI NARDO</span>
+<a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.2" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="6"></circle><path d="M5 7h4M7 5l2 2-2 2"></path></svg>
+    ALL CASES
+  </a>
+</footer>
+<section class="why-section">
+<div>
+<div class="section-label">The framing</div>
+<h2 class="section-h2">The problem is not that teams run out of ideas. It is that the system forgets what it already learned.</h2>
+<p class="prose">Most creative processes look busier than they actually are. New ads go live, performance gets reviewed, a few winners get called out, and then the next batch starts almost from zero.</p>
+<p class="prose" style="margin-top:16px">That rhythm creates the feeling of progress. But if the next round of creative is not sharper because of the last one, the system is not learning. It is just producing.</p>
+<p class="prose" style="margin-top:16px">This is where AI can be useful, but not in the way most people use it. The useful part is not asking it to write five ads. The useful part is using it to hold the messy inputs together long enough to see patterns: customer language, recurring objections, moments of relief, fatigue signals, angle movement.</p>
+<p class="prose" style="margin-top:16px">The strategist still makes the call. The difference is that the call is made from a better organized view of the market, not from a blank page and a deadline.</p>
+</div>
+<div>
+<div class="why-explainer">
+<div class="why-explainer-title">What changes when the system starts learning</div>
+<div class="why-card" style="border-left: 2px solid #E8967A;">
+<div class="why-card-label" style="color:#E8967A;">Before — creative as output</div>
+<div class="why-card-desc">Each round is judged mostly by surface performance. Winners are copied loosely. Losers disappear. The account slowly fills with conclusions nobody wrote down.</div>
+</div>
+<div class="why-card" style="border-left: 2px solid #7ABFB5;">
+<div class="why-card-label" style="color:#7ABFB5;">After — creative as memory</div>
+<div class="why-card-desc">Every launch adds something to the map: which segment responded, which trigger mattered, which format carried the idea, and what should be extended next.</div>
+</div>
+<div class="why-card" style="border-left: 2px solid #D4A847;">
+<div class="why-card-label" style="color:#D4A847;">The actual advantage</div>
+<div class="why-card-desc">You do not need more random creative volume. You need a tighter loop between customer signal, angle selection, execution, and performance read.</div>
+</div>
+</div>
+</div>
+</section>
+<section class="full-width-section">
+<div class="fw-inner">
+<div class="fw-top">
+<div>
+<div class="section-label">The loop</div>
+<h2 class="section-h2">Five parts. One system that gets sharper.</h2>
+</div>
+<p class="prose">The mistake is treating these as separate tasks. Research sits in one place. Briefs sit somewhere else. Performance lives in Ads Manager. Customer language is scattered across reviews and surveys. The value comes from connecting them into one loop.</p>
+</div>
+<div class="stages-list">
+<div class="stage-card"><div class="stage-num">01</div><div class="stage-ai"><div class="stage-ai-label">Input layer</div><div class="stage-ai-name">Raw customer signal</div><div class="stage-ai-desc">Reviews, comments, surveys, sales call notes, Reddit threads. Not polished insights. The exact language people use when they are frustrated, skeptical, relieved, or trying to justify the purchase.</div></div><div class="stage-human"><div class="stage-human-label">Strategist decision</div><div class="stage-human-name">Separate noise from signal</div><div class="stage-human-desc">Not every repeated phrase matters. The work is deciding which patterns represent a meaningful buyer state and which ones are just loud edge cases.</div></div></div>
+<div class="stage-card"><div class="stage-num">02</div><div class="stage-ai"><div class="stage-ai-label">Map layer</div><div class="stage-ai-name">Personas, problems, beliefs</div><div class="stage-ai-desc">Customer language gets organized by who is speaking, what they are trying to solve, what they believe, and what they need to hear before they move.</div></div><div class="stage-human"><div class="stage-human-label">Strategist decision</div><div class="stage-human-name">Turn inputs into angles</div><div class="stage-human-desc">An angle is not a topic. It is a specific way into a buyer's current belief system. That part still requires taste and category judgment.</div></div></div>
+<div class="stage-card"><div class="stage-num">03</div><div class="stage-ai"><div class="stage-ai-label">Execution layer</div><div class="stage-ai-name">Structured creative variants</div><div class="stage-ai-desc">Hooks, formats, scripts, static concepts, and creator briefs are built from the same angle instead of from disconnected ideas.</div></div><div class="stage-human"><div class="stage-human-label">Strategist decision</div><div class="stage-human-name">Protect the idea in production</div><div class="stage-human-desc">Most angles weaken during execution. The job is keeping the trigger intact while the ad becomes something native enough to survive the feed.</div></div></div>
+<div class="stage-card"><div class="stage-num">04</div><div class="stage-ai"><div class="stage-ai-label">Performance layer</div><div class="stage-ai-name">Read by angle, not just by ad</div><div class="stage-ai-desc">Performance is tagged back to persona, hook, format, and trigger. The goal is to know what the account learned, not just which asset won.</div></div><div class="stage-human"><div class="stage-human-label">Strategist decision</div><div class="stage-human-name">Know what to extend</div><div class="stage-human-desc">A winning ad is less important than the reason it won. Once that is clear, the next move becomes expansion, not reinvention.</div></div></div>
+<div class="stage-card"><div class="stage-num">05</div><div class="stage-ai"><div class="stage-ai-label">Memory layer</div><div class="stage-ai-name">Feed performance back into the next brief</div><div class="stage-ai-desc">New creative starts from what the account already proved: which triggers held, which segments fatigued, which formats carried the message, and where the next variation should come from.</div></div><div class="stage-human"><div class="stage-human-label">Strategist decision</div><div class="stage-human-name">Decide when to go deeper or move on</div><div class="stage-human-desc">The system can surface the pattern. It cannot decide whether the account needs more depth in one territory or new coverage elsewhere.</div></div></div>
+</div>
+</div>
+</section>
+<section class="worked-section-dark">
+<div class="worked-inner">
+<div class="worked-header">
+<div><div class="section-label">Worked model</div><h2 class="section-h2">What this looks like inside a real creative cycle</h2></div>
+<p class="prose">This is not meant as a fake case study. It is the operating pattern I would expect to see in a mature account: the account learns something, that learning is preserved, and the next brief starts from a stronger place.</p>
+</div>
+<div class="prompt-example">
+<div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Cycle 01</div><div class="pe-stage-role ai-role">Customer signal</div></div><div class="pe-content ai-content"><div class="pe-content-label">What shows up</div><div class="pe-content-text">Reviews and comments keep pointing to the same emotional state: people are not just looking for the product benefit. They are tired of feeling stupid for having tried several solutions that did not work.</div></div></div>
+<div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Angle map</div><div class="pe-stage-role ai-role">Structured interpretation</div></div><div class="pe-content ai-content"><div class="pe-content-label">What gets built</div><div class="pe-content-text">The angle becomes less about the product feature and more about the buyer's last-attempt mindset. The hook is written to qualify the skeptical buyer, not the broad problem-aware audience.</div></div></div>
+<div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Launch read</div><div class="pe-stage-role human-role">Strategic diagnosis</div></div><div class="pe-content human-content"><div class="pe-content-label">What the account teaches</div><div class="pe-content-text">The broad problem hook gets cheaper clicks but weaker conversion. The skeptical-buyer hook gets fewer clicks but better post-click intent. That changes the next brief. The lesson is not “use this hook again.” The lesson is “this segment needs proof before promise.”</div></div></div>
+<div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Next cycle</div><div class="pe-stage-role human-role">Lifecycle extension</div></div><div class="pe-content human-content"><div class="pe-content-label">What happens next</div><div class="pe-content-text">Instead of moving to a new angle, the team builds three variations around proof: objection-led UGC, comparison static, and a founder-style explanation. Same trigger, different entry points.</div></div></div>
+</div>
+</div>
+</section>
+<section class="limits-section">
+<div class="limits-header">
+<div><div class="section-label">The discipline</div><h2 class="section-h2">What has to be true for the system to work</h2></div>
+<p class="prose">A learning system sounds clean when written down. In practice, it breaks in very normal places. These are the parts that need discipline, otherwise the workflow turns back into random production with better tools.</p>
+</div>
+<div class="limits-grid">
+<div class="limit-card"><div class="lc-label">Requirement 01</div><div class="lc-title">Inputs need to stay raw</div><div class="lc-desc">If everything gets summarized too early, the emotional texture disappears. The useful material is often in the awkward phrasing, the repeated complaint, or the specific way someone describes relief.</div></div>
+<div class="limit-card"><div class="lc-label">Requirement 02</div><div class="lc-title">Angles need names</div><div class="lc-desc">If the team cannot name the angle, they cannot track it. If they cannot track it, they cannot know whether they are extending performance or just producing more ads.</div></div>
+<div class="limit-card"><div class="lc-label">Requirement 03</div><div class="lc-title">Performance needs context</div><div class="lc-desc">A drop in CTR, CPA, or ROAS does not mean much on its own. It has to be read against the angle, the stage of lifecycle, the spend level, and the account's normal volatility.</div></div>
+<div class="limit-card"><div class="lc-label">Requirement 04</div><div class="lc-title">AI cannot become the strategist</div><div class="lc-desc">The tool can organize the evidence. It can suggest variations. It can speed up the read. But deciding what matters, what to cut, and what to push further is still the work.</div></div>
+</div>
+</section>
+<section class="before-after">
+<div class="ba-card before"><div class="ba-label">Creative process that resets</div><div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><span>New concepts start from what the team feels like trying this week</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Winners are discussed, but the reason they won is not captured</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Fatigue leads to replacement instead of structured extension</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>AI is used mostly to generate more copy and more ideas</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Every cycle feels busy, but the account does not get easier to read</span></div>
+</div></div>
+<div class="ba-card after"><div class="ba-label">Creative system that learns</div><div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><span>New briefs start from raw customer signal and prior account learning</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Every winner is tied back to a persona, hook, format, and trigger</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Fatigue is treated as a lifecycle signal, not just an asset problem</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>AI supports research, organization, and variation without replacing judgment</span></div>
+<div class="ba-item"><div class="ba-dot"></div><span>Each cycle leaves the next one with a clearer map</span></div>
+</div></div>
+</section>
+</body>
+</html>

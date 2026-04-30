@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Claude Is Useful When You Stop Asking It for Ideas — Giancarlo</title>
+<title>AI Belongs in the Messy Middle — Giancarlo</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -140,15 +140,12 @@
   .pe-content { padding: 20px 22px; border-radius: 10px; }
   .pe-content.ai-content { background: rgba(184,92,56,0.1); border: 1px solid rgba(184,92,56,0.15); }
   .pe-content.human-content { background: rgba(91,158,158,0.1); border: 1px solid rgba(91,158,158,0.15); }
-  .pe-content.both-content { background: rgba(184,122,26,0.1); border: 1px solid rgba(184,122,26,0.15); }
   .pe-content-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; font-weight: 500; }
   .pe-content.ai-content .pe-content-label { color: rgba(232,150,122,0.5); }
   .pe-content.human-content .pe-content-label { color: rgba(122,191,181,0.5); }
-  .pe-content.both-content .pe-content-label { color: rgba(212,168,71,0.55); }
   .pe-content-text { font-size: 13px; line-height: 1.7; }
   .pe-content.ai-content .pe-content-text { color: rgba(232,150,122,0.8); }
   .pe-content.human-content .pe-content-text { color: rgba(122,191,181,0.8); }
-  .pe-content.both-content .pe-content-text { color: rgba(212,168,71,0.82); }
 
   /* ── WHAT AI CANNOT DO ── */
   .limits-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
@@ -186,22 +183,6 @@
   .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
   .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
   .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-
-
-  /* ── FOOTER OVERRIDE ── */
-  .sitefoot {
-    background: var(--ink) !important;
-    color: #F5F2EC !important;
-    border-top: 1px solid rgba(245,242,236,0.12) !important;
-  }
-  .sitefoot a,
-  .sitefoot span {
-    color: #F5F2EC !important;
-  }
-  .sitefoot svg {
-    color: #F5F2EC !important;
-    stroke: currentColor;
-  }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
@@ -260,340 +241,99 @@
 <section class="hero">
   <div>
     <div class="hero-label">Playbook</div>
-    <h1>Claude Is Useful When You Stop Asking It for <em>Ideas.</em></h1>
-    <p class="hero-desc">AI becomes useful in creative strategy when it stops pretending to be the strategist. The leverage is not asking it to invent ads. It is using it to process messy inputs, structure the thinking, and make the next round of creative less random.</p>
+    <h1>AI Belongs in the <em>Messy Middle.</em></h1>
+    <p class="hero-desc">Most teams try to use AI at the cleanest part of the process: writing ideas, hooks, and scripts. That is usually the weakest use case. The better use is messier: sorting customer language, finding repeated patterns, and helping the strategist decide what is worth turning into creative.</p>
     <div class="hero-meta">
-      <div>
-        <div class="hero-meta-label">Focus</div>
-        <div class="hero-meta-value">AI Creative Operations</div>
-      </div>
-      <div>
-        <div class="hero-meta-label">Use when</div>
-        <div class="hero-meta-value">The team has data but no clear angle system</div>
-      </div>
+      <div><div class="hero-meta-label">Focus</div><div class="hero-meta-value">AI as creative operations layer</div></div>
+      <div><div class="hero-meta-label">Use when</div><div class="hero-meta-value">Inputs exist, but the next creative decision is unclear</div></div>
     </div>
   </div>
 
   <div class="hero-visual">
     <div>
-      <div class="hero-visual-label">AI inside the creative system</div>
+      <div class="hero-visual-label">Where AI should sit</div>
       <div class="pipeline">
-        <div class="pipeline-stage">
-          <div class="ps-icon ai">01</div>
-          <div class="ps-content ai">
-            <div class="ps-label">Claude / AI</div>
-            <div class="ps-name">Process raw reviews, comments, surveys, and competitor language</div>
-          </div>
-        </div>
+        <div class="pipeline-stage"><div class="ps-icon ai">01</div><div class="ps-content ai"><div class="ps-label">Messy inputs</div><div class="ps-name">Reviews, comments, surveys, support notes, competitor complaints</div></div></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-stage">
-          <div class="ps-icon human">02</div>
-          <div class="ps-content human">
-            <div class="ps-label">Strategist</div>
-            <div class="ps-name">Choose the real angles, reject shallow patterns, define the test</div>
-          </div>
-        </div>
+        <div class="pipeline-stage"><div class="ps-icon both">02</div><div class="ps-content both"><div class="ps-label">Sorting pass</div><div class="ps-name">Repeated phrases, objections, frustrations, failed solutions</div></div></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-stage">
-          <div class="ps-icon both">03</div>
-          <div class="ps-content both">
-            <div class="ps-label">AI + human</div>
-            <div class="ps-name">Turn selected angles into hooks, briefs, variants, and format options</div>
-          </div>
-        </div>
+        <div class="pipeline-stage"><div class="ps-icon human">03</div><div class="ps-content human"><div class="ps-label">Strategist judgment</div><div class="ps-name">Choose what is actually useful, believable, and worth testing</div></div></div>
         <div class="pipeline-arrow">↓</div>
-        <div class="pipeline-stage">
-          <div class="ps-icon human">04</div>
-          <div class="ps-content human">
-            <div class="ps-label">Performance loop</div>
-            <div class="ps-name">Feed back what actually spent, converted, fatigued, or created signal</div>
-          </div>
-        </div>
+        <div class="pipeline-stage"><div class="ps-icon both">04</div><div class="ps-content both"><div class="ps-label">Controlled expansion</div><div class="ps-name">Hooks, briefs, variants, and formats built from selected angles</div></div></div>
       </div>
     </div>
     <div class="hero-stat-row">
-      <div>
-        <div class="hero-stat-num">01</div>
-        <div class="hero-stat-desc">Input layer</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">03</div>
-        <div class="hero-stat-desc">AI jobs</div>
-      </div>
-      <div>
-        <div class="hero-stat-num">0</div>
-        <div class="hero-stat-desc">Blind ideas</div>
-      </div>
+      <div><div class="hero-stat-num">01</div><div class="hero-stat-desc">AI layer</div></div>
+      <div><div class="hero-stat-num">03</div><div class="hero-stat-desc">Useful jobs</div></div>
+      <div><div class="hero-stat-num">0</div><div class="hero-stat-desc">Blind ideas</div></div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ═══ WHY THIS MATTERS ═══ -->
 <section class="why-section">
   <div>
     <div class="section-label">The mistake</div>
-    <h2 class="section-h2">Most teams use AI at the weakest point in the workflow.</h2>
-    <p class="prose">They open Claude, ChatGPT, or another model and ask for ad ideas. The prompt is usually too thin: a product, a benefit, maybe a target audience. The output comes back quickly, but it carries the same problem the prompt had. It is plausible, but not grounded.</p>
-    <p class="prose">That is why a lot of AI creative work feels productive without making the account smarter. It gives you more options, but the options are still built on assumptions. Faster production does not matter much if the thinking underneath it is still vague.</p>
-    <p class="prose">The better use case is earlier and less glamorous: give AI the messy inputs a strategist would normally have to dig through manually, then use it to organize what the market is already saying.</p>
+    <h2 class="section-h2">AI gets weak when you ask it to replace the part that still needs judgment.</h2>
+    <p class="prose">The default AI workflow is too clean. A product goes in. A prompt asks for ideas. A neat list comes back. Some of it sounds usable, but most of it has the same problem: it was created before the market was really understood.</p>
+    <p class="prose">That is why AI-generated creative often feels productive in the doc and ordinary in the account. It gives you more things to look at, but it does not necessarily make the next decision sharper.</p>
+    <p class="prose">The better use case is less glamorous. Give it the material nobody wants to sort through manually, then use it to make the mess easier to see. Not cleaner than reality. Just easier to work with.</p>
   </div>
-
   <div class="why-explainer">
-    <div class="why-explainer-title">Where Claude actually helps</div>
-    <div class="why-card" style="border-left: 2px solid #E8967A;">
-      <div class="why-card-label" style="color:#E8967A;">Customer language mining</div>
-      <div class="why-card-desc">Reviews, Reddit threads, post-purchase surveys, ad comments, support tickets, and competitor reviews. Claude is useful when the material is messy enough that a human would miss patterns or avoid the work entirely.</div>
-    </div>
-    <div class="why-card" style="border-left: 2px solid #7ABFB5;">
-      <div class="why-card-label" style="color:#7ABFB5;">Angle structuring</div>
-      <div class="why-card-desc">Taking repeated phrases, objections, motivations, and failed-solution language and turning them into persona clusters, awareness levels, hook territories, and creative brief inputs.</div>
-    </div>
-    <div class="why-card" style="border-left: 2px solid #D4A847;">
-      <div class="why-card-label" style="color:#D4A847;">Iteration after signal</div>
-      <div class="why-card-desc">Once an angle has proof, AI can help create adjacent hooks, formats, and scripts that stay close to the same trigger instead of sending the team back into random ideation.</div>
-    </div>
-    <div class="why-card" style="border-left: 2px solid rgba(255,255,255,0.15);">
-      <div class="why-card-label" style="color:rgba(255,255,255,0.45);">What it should not own</div>
-      <div class="why-card-desc">Final judgment, taste, brand fit, deciding what matters, or reading performance in full context. Those are still human decisions. AI can make those decisions look cleaner than they really are.</div>
-    </div>
+    <div class="why-explainer-title">Where it actually helps</div>
+    <div class="why-card" style="border-left: 2px solid #E8967A;"><div class="why-card-label" style="color:#E8967A;">Language mining</div><div class="why-card-desc">Pulling repeated phrases, strange wording, objections, failed-solution language, and emotional texture from messy sources.</div></div>
+    <div class="why-card" style="border-left: 2px solid #7ABFB5;"><div class="why-card-label" style="color:#7ABFB5;">Pattern sorting</div><div class="why-card-desc">Helping separate a real recurring pattern from something that just sounds interesting because it was well written.</div></div>
+    <div class="why-card" style="border-left: 2px solid #D4A847;"><div class="why-card-label" style="color:#D4A847;">Angle expansion</div><div class="why-card-desc">Once something has signal, helping create adjacent hooks and formats without drifting away from the thing that worked.</div></div>
+    <div class="why-card" style="border-left: 2px solid rgba(255,255,255,0.15);"><div class="why-card-label" style="color:rgba(255,255,255,0.45);">Where it should not lead</div><div class="why-card-desc">Taste, final selection, brand fit, and deciding what the account actually needs next. Those calls still need a human operator.</div></div>
   </div>
 </section>
 
-<!-- ═══ CORE IDEA ═══ -->
 <section class="full-width-section">
   <div class="fw-inner">
     <div class="fw-top">
-      <div>
-        <div class="section-label">Core idea</div>
-        <h2 class="section-h2">AI is not a replacement for creative strategy. It is an operating layer around it.</h2>
-      </div>
-      <p class="prose">The job is not to make the model sound creative. The job is to give the strategist a cleaner view of the market, a faster way to structure inputs, and a more disciplined way to expand what already has signal.</p>
+      <div><div class="section-label">Core idea</div><h2 class="section-h2">The middle of the workflow is where AI earns its place.</h2></div>
+      <p class="prose">The useful version of AI does not start with “write me ads.” It starts with, “help me understand what is already here.” From there, the strategist still decides what matters.</p>
     </div>
-
     <div class="stages-list">
-      <div class="stage-card">
-        <div class="stage-num">01</div>
-        <div>
-          <div class="stage-ai-label">Bad use</div>
-          <div class="stage-ai-name">Ask for ideas from a thin prompt</div>
-          <div class="stage-ai-desc">“Give me 10 Meta ad ideas for a sleep supplement.” This produces generic angles because there is no market texture in the prompt.</div>
-        </div>
-        <div>
-          <div class="stage-human-label">Better use</div>
-          <div class="stage-human-name">Feed it the market first</div>
-          <div class="stage-human-desc">Give it reviews, objections, survey answers, call notes, comments, and competitor complaints. Then ask it what patterns repeat and how people describe the problem.</div>
-        </div>
-      </div>
-
-      <div class="stage-card">
-        <div class="stage-num">02</div>
-        <div>
-          <div class="stage-ai-label">Bad use</div>
-          <div class="stage-ai-name">Treat the first output as the brief</div>
-          <div class="stage-ai-desc">The model gives you neat categories, but neat does not always mean true. It often averages the market instead of finding the useful edges.</div>
-        </div>
-        <div>
-          <div class="stage-human-label">Better use</div>
-          <div class="stage-human-name">Use AI output as a sorting pass</div>
-          <div class="stage-human-desc">Let Claude cluster the material, then have a strategist decide which clusters are meaningful, which are too obvious, and which might actually change creative direction.</div>
-        </div>
-      </div>
-
-      <div class="stage-card">
-        <div class="stage-num">03</div>
-        <div>
-          <div class="stage-ai-label">Bad use</div>
-          <div class="stage-ai-name">Generate more hooks randomly</div>
-          <div class="stage-ai-desc">More hook options are not helpful if they are not tied to a specific persona, problem frame, objection, or buying belief.</div>
-        </div>
-        <div>
-          <div class="stage-human-label">Better use</div>
-          <div class="stage-human-name">Generate hooks from mapped angles</div>
-          <div class="stage-human-desc">Once an angle is defined, AI can help create variations by hook type, awareness level, format, and specificity without changing the underlying strategic bet.</div>
-        </div>
-      </div>
-
-      <div class="stage-card">
-        <div class="stage-num">04</div>
-        <div>
-          <div class="stage-ai-label">Bad use</div>
-          <div class="stage-ai-name">Start over after fatigue</div>
-          <div class="stage-ai-desc">The team sees performance decline and goes back to ideation, treating fatigue like a signal to abandon the territory.</div>
-        </div>
-        <div>
-          <div class="stage-human-label">Better use</div>
-          <div class="stage-human-name">Iterate inside what worked</div>
-          <div class="stage-human-desc">Feed Claude the winning hook, the angle, comments, spend pattern, and performance notes. Ask for adjacent variants that preserve the same psychological trigger.</div>
-        </div>
-      </div>
+      <div class="stage-card"><div class="stage-num">01</div><div><div class="stage-ai-label">Weak use</div><div class="stage-ai-name">Ask for ideas from a thin prompt</div><div class="stage-ai-desc">The output sounds organized, but it is usually built from category clichés and surface-level benefits.</div></div><div><div class="stage-human-label">Better use</div><div class="stage-human-name">Feed it the market first</div><div class="stage-human-desc">Reviews, comments, survey answers, call notes, competitor complaints. Then ask what repeats, what feels specific, and what different buyers say differently.</div></div></div>
+      <div class="stage-card"><div class="stage-num">02</div><div><div class="stage-ai-label">Weak use</div><div class="stage-ai-name">Treat the first output as the strategy</div><div class="stage-ai-desc">Models are good at making things look tidy. Tidy is not the same as true, useful, or worth testing.</div></div><div><div class="stage-human-label">Better use</div><div class="stage-human-name">Use it as a sorting pass</div><div class="stage-human-desc">Let it cluster the material, then have the strategist reject the obvious, keep the specific, and decide which patterns deserve creative coverage.</div></div></div>
+      <div class="stage-card"><div class="stage-num">03</div><div><div class="stage-ai-label">Weak use</div><div class="stage-ai-name">Generate more hooks randomly</div><div class="stage-ai-desc">More options are not helpful if they are not tied to a buyer state, objection, trigger, or belief.</div></div><div><div class="stage-human-label">Better use</div><div class="stage-human-name">Expand selected angles</div><div class="stage-human-desc">Once an angle has direction or performance signal, use AI to create controlled variations: new hooks, new formats, and sharper specificity without changing the core idea.</div></div></div>
+      <div class="stage-card"><div class="stage-num">04</div><div><div class="stage-ai-label">Weak use</div><div class="stage-ai-name">Let it flatten the voice</div><div class="stage-ai-desc">AI often writes in a balanced, polished, explanatory rhythm. That is usually not how strong Meta creative feels.</div></div><div><div class="stage-human-label">Better use</div><div class="stage-human-name">Edit back into real speech</div><div class="stage-human-desc">The final pass should restore friction, specificity, and the slightly uneven feel of a real person saying something they actually believe.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ HOW IT WORKS ═══ -->
 <section class="worked-section-dark">
   <div class="worked-inner">
     <div class="worked-header">
-      <div>
-        <div class="section-label">The workflow</div>
-        <h2 class="section-h2">The strongest AI workflow is not linear. It loops.</h2>
-      </div>
-      <p class="prose">A useful Claude workflow has three jobs: process the raw material, structure it into creative territory, and help expand what performance has already validated. If it only does the middle part, it becomes another idea machine.</p>
+      <div><div class="section-label">The workflow</div><h2 class="section-h2">A useful AI workflow is not linear. It loops.</h2></div>
+      <p class="prose">The point is not to automate creative strategy. The point is to reduce the drag around it: process raw material faster, structure the useful parts, and make it easier to extend what the account already proved.</p>
     </div>
-
     <div class="prompt-example">
-      <div class="pe-stage">
-        <div class="pe-stage-label">
-          <div class="pe-stage-name">Step 01</div>
-          <div class="pe-stage-role ai-role">Raw input processing</div>
-        </div>
-        <div class="pe-content ai-content">
-          <div class="pe-content-label">What Claude receives</div>
-          <div class="pe-content-text">A messy dump of 200 reviews, 40 post-purchase survey answers, 30 ad comments, and 10 competitor complaints. The prompt asks it to identify repeated frustrations, failed solutions, desired outcomes, exact phrases, objections, and any language that feels emotionally specific.</div>
-        </div>
-      </div>
-
-      <div class="pe-stage">
-        <div class="pe-stage-label">
-          <div class="pe-stage-name">Step 02</div>
-          <div class="pe-stage-role human-role">Strategic filtering</div>
-        </div>
-        <div class="pe-content human-content">
-          <div class="pe-content-label">What the strategist decides</div>
-          <div class="pe-content-text">Which patterns are actually useful. Some clusters will be obvious. Some will be too small. Some will be interesting but not believable for the brand. The strategist chooses which signals deserve to become creative territory.</div>
-        </div>
-      </div>
-
-      <div class="pe-stage">
-        <div class="pe-stage-label">
-          <div class="pe-stage-name">Step 03</div>
-          <div class="pe-stage-role both-role">Angle construction</div>
-        </div>
-        <div class="pe-content both-content">
-          <div class="pe-content-label">What gets built</div>
-          <div class="pe-content-text">Persona, awareness level, core problem, buying belief, objection, proof requirement, hook territories, and format options. This becomes a brief input, not finished creative. Claude helps organize the shape; the strategist decides whether the angle is actually worth producing.</div>
-        </div>
-      </div>
-
-      <div class="pe-stage">
-        <div class="pe-stage-label">
-          <div class="pe-stage-name">Step 04</div>
-          <div class="pe-stage-role ai-role">Variant generation</div>
-        </div>
-        <div class="pe-content ai-content">
-          <div class="pe-content-label">What Claude can produce</div>
-          <div class="pe-content-text">Hook variations, opening lines, UGC script structures, static concept options, comment-response ad prompts, and alternative formats that stay inside the same angle. The goal is not volume by itself. The goal is controlled variation.</div>
-        </div>
-      </div>
-
-      <div class="pe-stage">
-        <div class="pe-stage-label">
-          <div class="pe-stage-name">Step 05</div>
-          <div class="pe-stage-role human-role">Performance feedback</div>
-        </div>
-        <div class="pe-content human-content">
-          <div class="pe-content-label">What closes the loop</div>
-          <div class="pe-content-text">Spend, CPA, ROAS, CTR, hold rate, comments, creator notes, and what the team believes happened. The next Claude pass should not ask “what should we test?” It should ask “what does this result tell us about the angle, and how should we extend or retire it?”</div>
-        </div>
-      </div>
+      <div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Step 01</div><div class="pe-stage-role ai-role">Raw input processing</div></div><div class="pe-content ai-content"><div class="pe-content-label">What goes in</div><div class="pe-content-text">A messy dump of reviews, comments, survey answers, support notes, and competitor complaints. The ask is not “write ads.” The ask is “show me the repeated frustrations, objections, phrases, and desired outcomes.”</div></div></div>
+      <div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Step 02</div><div class="pe-stage-role human-role">Strategic filtering</div></div><div class="pe-content human-content"><div class="pe-content-label">What the strategist decides</div><div class="pe-content-text">Which patterns are obvious, which are too small, which are not believable for the brand, and which could actually change the creative direction.</div></div></div>
+      <div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Step 03</div><div class="pe-stage-role both-role">Angle construction</div></div><div class="pe-content both-content"><div class="pe-content-label">What gets built</div><div class="pe-content-text">Persona, awareness level, problem frame, buying belief, objection, proof requirement, hook territory, and format options. This becomes a brief input, not finished creative.</div></div></div>
+      <div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Step 04</div><div class="pe-stage-role ai-role">Controlled variation</div></div><div class="pe-content ai-content"><div class="pe-content-label">What AI can help produce</div><div class="pe-content-text">Adjacent hooks, opening lines, UGC structures, static concepts, comment-response prompts, and alternate formats that stay inside the same angle instead of drifting into random ideation.</div></div></div>
+      <div class="pe-stage"><div class="pe-stage-label"><div class="pe-stage-name">Step 05</div><div class="pe-stage-role human-role">Performance feedback</div></div><div class="pe-content human-content"><div class="pe-content-label">What closes the loop</div><div class="pe-content-text">Spend, CPA, ROAS, CTR, hold rate, comments, and what the team thinks happened. The next pass asks: what did this result teach us about the angle, and should we extend, narrow, or retire it?</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ LIMITS ═══ -->
 <section class="limits-section">
-  <div class="limits-header">
-    <div>
-      <div class="section-label">The judgment layer</div>
-      <h2 class="section-h2">AI can organize the work. It cannot decide what is true.</h2>
-    </div>
-    <p class="prose">This is the line that matters. Claude can make weak thinking look organized, which is dangerous. The strategist still has to decide what is worth trusting, what is worth testing, and what should never leave the doc.</p>
-  </div>
-
+  <div class="limits-header"><div><div class="section-label">The judgment layer</div><h2 class="section-h2">AI can organize the work. It cannot decide what is true.</h2></div><p class="prose">This is the line that matters. AI can make weak thinking look organized. The strategist still has to decide what is worth trusting, what is worth testing, and what should never leave the doc.</p></div>
   <div class="limits-grid">
-    <div class="limit-card">
-      <div class="lc-label">Limit 01</div>
-      <div class="lc-title">It does not know what the account needs right now</div>
-      <div class="lc-desc">AI can propose a full spread of angles. It cannot know whether the account needs new coverage, deeper iteration on a working angle, lower-funnel proof, or a reset in the offer narrative. That call depends on performance context.</div>
-    </div>
-
-    <div class="limit-card">
-      <div class="lc-label">Limit 02</div>
-      <div class="lc-title">It over-organizes messy reality</div>
-      <div class="lc-desc">Models like clean categories. Markets are not always clean. A repeated phrase can be meaningful, or it can be a dead end. The human job is to keep the system from mistaking tidy summaries for useful signal.</div>
-    </div>
-
-    <div class="limit-card">
-      <div class="lc-label">Limit 03</div>
-      <div class="lc-title">It tends to flatten voice</div>
-      <div class="lc-desc">AI copy often has the same shape: balanced, explanatory, slightly polished. On Meta, that can be a problem. The final edit needs to restore friction, specificity, and the slightly uneven feel of real speech.</div>
-    </div>
-
-    <div class="limit-card">
-      <div class="lc-label">Limit 04</div>
-      <div class="lc-title">It cannot replace taste</div>
-      <div class="lc-desc">Knowing whether a hook feels too manipulative, too broad, too clever, too polished, or too far from the buyer requires taste. AI can give options. It cannot reliably choose the one that should represent the brand in-market.</div>
-    </div>
+    <div class="limit-card"><div class="lc-label">Limit 01</div><div class="lc-title">It does not know what the account needs right now</div><div class="lc-desc">The account might need new coverage, deeper iteration, lower-funnel proof, or a reset in the offer narrative. That depends on performance context.</div></div>
+    <div class="limit-card"><div class="lc-label">Limit 02</div><div class="lc-title">It over-organizes messy reality</div><div class="lc-desc">Models like clean categories. Markets are not always clean. A repeated phrase can be signal, or it can be a dead end.</div></div>
+    <div class="limit-card"><div class="lc-label">Limit 03</div><div class="lc-title">It tends to flatten voice</div><div class="lc-desc">AI copy often has the same shape: balanced, explanatory, slightly polished. The final edit needs to bring back friction and specificity.</div></div>
+    <div class="limit-card"><div class="lc-label">Limit 04</div><div class="lc-title">It cannot replace taste</div><div class="lc-desc">Knowing whether a hook feels too manipulative, too broad, too clever, or too far from the buyer still requires taste.</div></div>
   </div>
 </section>
 
-<!-- ═══ BEFORE / AFTER ═══ -->
 <section class="before-after">
-  <div class="ba-card before">
-    <div class="ba-label">AI as idea generator</div>
-    <div class="ba-items">
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Starts with a thin prompt and produces plausible-sounding creative guesses</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Creates more hooks without clarifying what audience, belief, or objection they are entering</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Turns AI output into scripts too quickly, before the strategic direction is actually selected</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Makes production faster while keeping the same level of uncertainty underneath</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Feels impressive in the doc, but does not make the next creative cycle smarter</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="ba-card after">
-    <div class="ba-label">AI as creative operations layer</div>
-    <div class="ba-items">
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Starts with raw customer language and uses AI to surface repeated patterns</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Turns messy inputs into personas, angles, hooks, objections, and proof requirements</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Uses Claude to expand proven angles into controlled variations after performance shows up</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Keeps the strategist in charge of taste, selection, brand fit, and final judgment</span>
-      </div>
-      <div class="ba-item">
-        <div class="ba-dot"></div>
-        <span>Makes the system easier to operate without pretending the system can run itself</span>
-      </div>
-    </div>
-  </div>
+  <div class="ba-card before"><div class="ba-label">AI as idea generator</div><div class="ba-items"><div class="ba-item"><div class="ba-dot"></div><span>Starts from a thin prompt and produces plausible creative guesses</span></div><div class="ba-item"><div class="ba-dot"></div><span>Creates more hooks without clarifying the audience, belief, or objection</span></div><div class="ba-item"><div class="ba-dot"></div><span>Makes production faster while the thinking underneath stays vague</span></div><div class="ba-item"><div class="ba-dot"></div><span>Feels impressive in the doc, but does not make the next cycle smarter</span></div></div></div>
+  <div class="ba-card after"><div class="ba-label">AI in the messy middle</div><div class="ba-items"><div class="ba-item"><div class="ba-dot"></div><span>Starts with raw customer language and surfaces repeated patterns</span></div><div class="ba-item"><div class="ba-dot"></div><span>Turns messy inputs into usable angle territory</span></div><div class="ba-item"><div class="ba-dot"></div><span>Expands proven ideas into controlled variations after signal appears</span></div><div class="ba-item"><div class="ba-dot"></div><span>Keeps the strategist in charge of taste, selection, and final judgment</span></div></div></div>
 </section>
-
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>

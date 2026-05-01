@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Artifacts — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
+<style>
+
+.hub-wrap { max-width: var(--max); margin: 0 auto; padding: 0 48px 80px; }
+
+/* ── HERO ───────────────────────────────────────────────────────── */
+.hub-hero { padding: 48px 0 40px; border-bottom: 1px solid var(--line); margin-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end; }
+.hub-hero-left {}
+.hub-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.hub-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.hub-title { font-family: var(--display); font-size: clamp(40px, 5vw, 64px); font-weight: 400; line-height: 1.02; letter-spacing: -0.018em; color: var(--ink); margin: 0 0 20px; }
+.hub-title em { font-style: italic; color: var(--muted); }
+.hub-desc { font-family: var(--serif); font-size: 16.5px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.hub-hero-right { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.hub-count { font-family: var(--display); font-style: italic; font-size: 64px; line-height: 1; color: var(--line-2); }
+.hub-count-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; }
+
+/* ── SECTION LABEL ──────────────────────────────────────────────── */
+.hub-section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.hub-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+
+/* ── ARTIFACT CARDS ─────────────────────────────────────────────── */
+.artifact-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 56px; }
+.artifact-card {
+  display: grid; grid-template-columns: 64px 1fr auto;
+  gap: 0; border-top: 1px solid var(--line);
+  text-decoration: none; color: inherit;
+  transition: background 0.15s, padding 0.15s;
+  padding: 20px 0; border-radius: 6px;
+}
+.artifact-card:last-child { border-bottom: 1px solid var(--line); }
+.artifact-card:hover { background: rgba(255,255,255,0.6); padding-left: 12px; }
+.artifact-card-tile { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 8px; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+.tile-lav-soft { background: rgba(198,188,238,0.2); color: #5a4a8a; border: 1px solid rgba(198,188,238,0.35); }
+.tile-teal-soft { background: rgba(91,158,158,0.15); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.3); }
+.tile-rust-soft { background: rgba(184,92,56,0.1); color: #8a3a1a; border: 1px solid rgba(184,92,56,0.25); }
+.tile-sage-soft { background: rgba(143,175,143,0.15); color: #2a5a2a; border: 1px solid rgba(143,175,143,0.3); }
+.artifact-card-tile svg { width: 20px; height: 20px; }
+.artifact-card-body { padding: 0 24px; }
+.artifact-card-kicker { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; display: flex; gap: 10px; flex-wrap: wrap; }
+.artifact-card-title { font-family: var(--display); font-size: 24px; font-weight: 400; line-height: 1.1; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 5px; }
+.artifact-card-desc { font-family: var(--serif); font-size: 14.5px; color: var(--ink-2); line-height: 1.55; max-width: 540px; }
+.artifact-card-meta { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; justify-content: center; min-width: 130px; }
+.artifact-card-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.tag-brief { background: rgba(184,92,56,0.08); color: #8a3a1a; border: 1px solid rgba(184,92,56,0.2); }
+.tag-framework { background: rgba(198,188,238,0.12); color: #5a4a8a; border: 1px solid rgba(198,188,238,0.3); }
+.tag-scorecard { background: rgba(91,158,158,0.1); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.25); }
+.tag-breakdown { background: rgba(143,175,143,0.12); color: #2a5a2a; border: 1px solid rgba(143,175,143,0.28); }
+.artifact-arrow { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+
+/* ── CONNECTED CONTENT ──────────────────────────────────────────── */
+.connected-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 56px; }
+.connected-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; text-decoration: none; color: inherit; transition: background 0.15s, transform 0.15s; display: flex; flex-direction: column; }
+.connected-card:hover { background: #fff; transform: translateY(-2px); }
+.connected-card-k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.connected-card-t { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.connected-card-d { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.55; flex: 1; }
+.connected-card-cta { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-top: 14px; }
+
+/* ── HOW TO READ ────────────────────────────────────────────────── */
+.how-to-read { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 32px 36px; margin-bottom: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+.htr-item {}
+.htr-num { font-family: var(--display); font-style: italic; font-size: 36px; color: var(--line-2); line-height: 1; margin-bottom: 8px; }
+.htr-title { font-family: var(--serif); font-size: 14.5px; font-weight: 500; color: var(--ink); margin-bottom: 5px; }
+.htr-desc { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .hub-hero { grid-template-columns: 1fr; gap: 20px; }
+  .hub-hero-right { align-items: flex-start; flex-direction: row; align-items: center; gap: 12px; }
+  .artifact-card { grid-template-columns: 48px 1fr; }
+  .artifact-card-meta { display: none; }
+  .connected-grid { grid-template-columns: 1fr 1fr; }
+  .how-to-read { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 700px) {
+  .hub-wrap { padding: 0 20px 60px; }
+  .connected-grid { grid-template-columns: 1fr; }
+  .artifact-card-title { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="hub-wrap page">
+
+  <!-- HERO -->
+  <div class="hub-hero">
+    <div class="hub-hero-left">
+      <div class="hub-eyebrow">Creative Artifacts</div>
+      <h1 class="hub-title">The work that happens <em>before the ad</em></h1>
+      <p class="hub-desc">Case studies show the results. Playbooks explain the thinking. These are the artifacts that sit between the two — the briefs, scorecards, diagnostic frameworks, and annotated breakdowns that make the work repeatable. Everything here connects directly to a case study or playbook where the reasoning behind it is explained in full.</p>
+    </div>
+    <div class="hub-hero-right">
+      <div class="hub-count">6</div>
+      <div class="hub-count-label">Artifacts<br>across 3 types</div>
+    </div>
+  </div>
+
+  <!-- HOW TO READ -->
+  <div class="how-to-read">
+    <div class="htr-item">
+      <div class="htr-num">01</div>
+      <div class="htr-title">These are real work artifacts</div>
+      <div class="htr-desc">Every document here was built from an actual account situation — the roofing brief produced real variants, the scorecard enforced real cut decisions, the grooming script brief ran in a live ABO test. Nothing was fabricated for the portfolio.</div>
+    </div>
+    <div class="htr-item">
+      <div class="htr-num">02</div>
+      <div class="htr-title">Each artifact links to its context</div>
+      <div class="htr-desc">The brief connects to the case study. The scorecard connects to the diagnosis playbook. The annotated breakdown connects to the hooks playbook. You can read the artifact alone or follow the links into the full reasoning behind it.</div>
+    </div>
+    <div class="htr-item">
+      <div class="htr-num">03</div>
+      <div class="htr-title">NDAs limit what can be shown</div>
+      <div class="htr-desc">Client ads and account names are protected where required. These artifacts show the creative infrastructure — the briefs, decision frameworks, and strategic breakdowns — rather than the final ads. That's where the replicable thinking lives anyway.</div>
+    </div>
+  </div>
+
+  <!-- CREATIVE BRIEFS -->
+  <div class="hub-section-label">Creative Briefs</div>
+  <div class="artifact-list" style="margin-bottom:48px;">
+
+    <a href="../case-studies/roofing-brief.html" class="artifact-card">
+      <div class="artifact-card-tile tile-rust-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Creative Brief</span><span>Roofing · Lead Gen</span><span>9 Variants</span></div>
+        <div class="artifact-card-title">Roofing Creative Brief</div>
+        <div class="artifact-card-desc">The mega brief structure that produced 9 video variants from one proven formula — hook lines, regional callout specifications for 11 states, isolation logic, and production instructions. Built from the roofing case study.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-brief">Creative Brief</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+    <a href="dtc-script-brief.html" class="artifact-card">
+      <div class="artifact-card-tile tile-rust-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Script Brief</span><span>DTC · Men's Grooming</span><span>2.8× ROAS</span></div>
+        <div class="artifact-card-title">DTC Script Brief</div>
+        <div class="artifact-card-desc">The brief that rebuilt the grooming account's script structure around the buyer's psychological sequence — identity validation, named mechanism, objection dialogue, loss aversion close. The script structure was the only variable that changed.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-brief">Script Brief</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- HOOK MATRIX -->
+  <div class="hub-section-label">Hook Matrix</div>
+  <div class="artifact-list" style="margin-bottom:48px;">
+
+    <a href="../playbooks/hook-matrix.html" class="artifact-card">
+      <div class="artifact-card-tile tile-teal-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Hook Matrix</span><span>Flooring + Roofing</span><span>5 Hook Types</span></div>
+        <div class="artifact-card-title">Hook Matrix</div>
+        <div class="artifact-card-desc">The five hook types mapped against real ads from a flooring and roofing account — including the performance comparison that proved hook type changes audience, not just creative style. Each hook mapped to type, hypothesis, deployment logic, and outcome.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-framework">Matrix</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- DIAGNOSTIC FRAMEWORKS -->
+  <div class="hub-section-label">Diagnostic Frameworks</div>
+  <div class="artifact-list" style="margin-bottom:48px;">
+
+    <a href="creative-scorecard.html" class="artifact-card">
+      <div class="artifact-card-tile tile-teal-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Scorecard</span><span>Lead Gen + DTC</span><span>7 Metrics</span></div>
+        <div class="artifact-card-title">Creative Scorecard</div>
+        <div class="artifact-card-desc">The framework for deciding when to cut, scale, hold, or brief replacements — with specific thresholds, time windows, and the decision sequence that prevents fixing the wrong layer. Includes built-in exceptions for new accounts, long sales cycles, and duplicate lead contamination.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-scorecard">Scorecard</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+    <a href="new-account-diagnostic.html" class="artifact-card">
+      <div class="artifact-card-tile tile-teal-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Audit Framework</span><span>New Account · Takeover</span><span>5 Layers</span></div>
+        <div class="artifact-card-title">New Account Diagnostic</div>
+        <div class="artifact-card-desc">What to look at, in what order, before the first dollar moves — five audit layers from structure to buyer research, the six questions to answer before opening Ads Manager, and a findings template that becomes the first 90-day plan.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-scorecard">Diagnostic</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- AD BREAKDOWNS -->
+  <div class="hub-section-label">Ad Breakdowns</div>
+  <div class="artifact-list" style="margin-bottom:56px;">
+
+    <a href="annotated-ad-breakdown.html" class="artifact-card">
+      <div class="artifact-card-tile tile-sage-soft">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+      </div>
+      <div class="artifact-card-body">
+        <div class="artifact-card-kicker"><span>Annotated Breakdown</span><span>DTC · UGC · 9:16</span><span>2.8× ROAS</span></div>
+        <div class="artifact-card-title">Annotated Ad Breakdown</div>
+        <div class="artifact-card-desc">The UGC identity script from the grooming account rebuild — 38 seconds annotated second-by-second. Hook type rationale, psychological sequence logic, format decision, objection placement, close mechanism, and a full decision log of every deliberate choice and what was rejected.</div>
+      </div>
+      <div class="artifact-card-meta">
+        <span class="artifact-card-tag tag-breakdown">Breakdown</span>
+        <span class="artifact-arrow">View →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CONNECTED CONTENT -->
+  <div class="hub-section-label">These artifacts connect to</div>
+  <div class="connected-grid">
+    <a href="../case-studies/index.html" class="connected-card">
+      <div class="connected-card-k">Proof</div>
+      <div class="connected-card-t">Case Studies</div>
+      <div class="connected-card-d">The accounts these artifacts were built from — roofing, grooming, windows, bath, basement. Each case study links back to the relevant artifact.</div>
+      <div class="connected-card-cta">View all cases →</div>
+    </a>
+    <a href="../playbooks/index.html" class="connected-card">
+      <div class="connected-card-k">Thinking</div>
+      <div class="connected-card-t">Playbooks</div>
+      <div class="connected-card-d">The reasoning behind the artifacts — hooks, diagnosis, coverage, lifecycle. Each artifact links to the playbook that explains the framework it came from.</div>
+      <div class="connected-card-cta">View playbooks →</div>
+    </a>
+    <a href="../creative-lifecycle-hub.html" class="connected-card">
+      <div class="connected-card-k">System</div>
+      <div class="connected-card-t">The Creative System</div>
+      <div class="connected-card-d">How coverage, hooks, and lifecycle connect — the three-part system that these artifacts feed into and support.</div>
+      <div class="connected-card-cta">View the system →</div>
+    </a>
+  </div>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

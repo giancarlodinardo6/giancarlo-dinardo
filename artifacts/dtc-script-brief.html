@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTC Script Brief — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
+<style>
+
+.artifact-wrap { max-width: var(--max); margin: 0 auto; padding: 48px 48px 80px; }
+
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 48px; }
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb-sep { opacity: 0.4; }
+
+.artifact-header { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 40px; border-bottom: 1px solid var(--line); margin-bottom: 56px; }
+.artifact-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.artifact-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.artifact-title { font-family: var(--display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 16px; }
+.artifact-title em { font-style: italic; color: var(--muted); }
+.artifact-desc { font-family: var(--serif); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.artifact-meta-card { background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; min-width: 210px; }
+.artifact-meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 18px; border-bottom: 1px solid var(--line); }
+.artifact-meta-row:last-child { border-bottom: none; }
+.artifact-meta-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.artifact-meta-v { font-family: var(--serif); font-size: 13px; color: var(--ink); text-align: right; }
+
+.a-section { margin-bottom: 56px; }
+.a-section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.a-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.a-section-title { font-family: var(--display); font-size: clamp(24px, 3vw, 36px); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px; }
+.a-section-title em { font-style: italic; color: var(--muted); }
+.a-prose { font-family: var(--serif); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
+
+/* ── CONTROL CARD ───────────────────────────────────────────────── */
+.control-card { background: var(--tile-black); color: #F1ECE2; border-radius: 14px; padding: 32px 36px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.control-card::before { content: ''; position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.15) 0%, transparent 65%); pointer-events: none; }
+.control-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(241,236,226,0.08); border: 1px solid rgba(241,236,226,0.14); border-radius: 999px; padding: 4px 12px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.5); margin-bottom: 22px; }
+.control-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rust); }
+.control-hook { font-family: var(--display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 400; line-height: 1.2; color: rgba(241,236,226,0.5); font-style: italic; margin-bottom: 12px; text-decoration: line-through; }
+.control-problem { font-family: var(--serif); font-size: 15px; color: rgba(241,236,226,0.72); line-height: 1.65; max-width: 580px; }
+
+/* ── SEQUENCE BLOCKS ────────────────────────────────────────────── */
+.sequence-wrap { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 24px; }
+.sequence-block { display: grid; grid-template-columns: 72px 1fr 220px; gap: 0; border-bottom: 1px solid var(--line); transition: background 0.15s; }
+.sequence-block:last-child { border-bottom: none; }
+.sequence-block:hover { background: rgba(255,255,255,0.4); }
+.sequence-num { background: var(--bg-2); border-right: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-style: italic; font-size: 32px; color: var(--line-2); }
+.sequence-body { padding: 20px 24px; }
+.sequence-phase { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.sequence-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.sequence-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.sequence-note { padding: 20px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+.sequence-note-k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.sequence-note-v { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.5; font-style: italic; }
+
+/* ── BRIEF DOCUMENT ─────────────────────────────────────────────── */
+.brief-doc { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 48px; }
+.brief-doc-header { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; }
+.brief-doc-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.brief-doc-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rust); background: rgba(184,92,56,0.08); border: 1px solid rgba(184,92,56,0.2); padding: 3px 10px; border-radius: 999px; }
+.brief-doc-body { padding: 28px; }
+.brief-field-group { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px dashed var(--line); }
+.brief-field-group:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.brief-field-group-title { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.brief-fields { display: grid; gap: 12px; }
+.brief-fields.c2 { grid-template-columns: 1fr 1fr; }
+.brief-fields.c3 { grid-template-columns: 1fr 1fr 1fr; }
+.brief-field { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+.brief-field-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.brief-field-content { font-family: var(--serif); font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+.brief-field-content.highlight { color: var(--ink); font-weight: 500; }
+
+/* Script block options */
+.script-block-options { display: flex; flex-direction: column; gap: 10px; }
+.script-block { display: grid; grid-template-columns: 80px 1fr; gap: 0; background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.script-block-num { background: var(--bg-2); border-right: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); writing-mode: vertical-rl; padding: 12px 8px; }
+.script-block-content { padding: 12px 16px; }
+.script-block-phase { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.script-block-text { font-family: var(--display); font-size: 14px; font-style: italic; color: var(--ink); line-height: 1.4; margin-bottom: 4px; }
+.script-block-note { font-family: var(--serif); font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+
+/* ── VARIANT SUMMARY ─────────────────────────────────────────────── */
+.variant-row-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 48px; }
+.vrow { display: grid; grid-template-columns: 160px 1fr 140px 140px; gap: 0; background: rgba(255,255,255,0.55); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; transition: background 0.15s; }
+.vrow:hover { background: #fff; }
+.vrow-cell { padding: 14px 18px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
+.vrow-cell:last-child { border-right: none; }
+.vrow-k { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.vrow-v { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.vrow-v.hook { font-family: var(--display); font-style: italic; font-size: 14px; color: var(--ink); }
+.vstatus { display: inline-block; padding: 3px 9px; border-radius: 999px; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; text-transform: uppercase; }
+.vstatus.winner { background: rgba(91,158,158,0.12); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.3); }
+.vstatus.learning { background: rgba(198,188,238,0.12); color: #4a3a7a; border: 1px solid rgba(198,188,238,0.3); }
+.vstatus.testing { background: rgba(184,92,56,0.08); color: #8a3a1a; border: 1px solid rgba(184,92,56,0.2); }
+
+.artifact-footer-nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid var(--line); margin-top: 56px; }
+
+@media (max-width: 900px) {
+  .artifact-header { grid-template-columns: 1fr; }
+  .sequence-block { grid-template-columns: 56px 1fr; }
+  .sequence-note { display: none; }
+  .brief-fields.c2, .brief-fields.c3 { grid-template-columns: 1fr; }
+  .vrow { grid-template-columns: 1fr 1fr; }
+  .vrow-cell:nth-child(1) { grid-column: span 2; }
+}
+@media (max-width: 700px) { .artifact-wrap { padding: 28px 20px 60px; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="artifact-wrap page">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Creative Artifacts</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>DTC Script Brief</span>
+  </nav>
+
+  <div class="artifact-header">
+    <div>
+      <div class="artifact-eyebrow">Creative Brief · DTC · Men's Grooming</div>
+      <h1 class="artifact-title">The brief that rebuilt the script <em>from the buyer's sequence</em></h1>
+      <p class="artifact-desc">The grooming account was getting attention and not converting it. Hook rate was fine, add-to-cart was holding, and the break was happening at checkout. The diagnosis was script structure: every ad was leading with ingredients and features before the viewer had been given a reason to care about either. This is the brief that changed that.</p>
+    </div>
+    <div class="artifact-meta-card">
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Vertical</span>
+        <span class="artifact-meta-v">Men's Grooming · DTC</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Platform</span>
+        <span class="artifact-meta-v">Meta (FB + IG)</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Formats</span>
+        <span class="artifact-meta-v">UGC · Studio · Static</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Scripts produced</span>
+        <span class="artifact-meta-v">3 reusable templates</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Result</span>
+        <span class="artifact-meta-v">2.8× ROAS vs control</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WAS WRONG -->
+  <div class="a-section">
+    <div class="a-section-label">The problem</div>
+    <h2 class="a-section-title">The original script was pitching <em>before the viewer was listening</em></h2>
+
+    <div class="control-card">
+      <div class="control-badge"><span class="control-badge-dot"></span> Original creative — before the rebuild</div>
+      <div class="control-hook">"[Product name] beard oil. Made with argan oil, jojoba, and vitamin E for a softer, fuller beard."</div>
+      <div class="control-problem">The script opened with the product's ingredients and format before the viewer had been given any reason to care about either. In a high-skepticism category — men's grooming — the buyer has almost certainly tried similar products and been disappointed. A script that opens with ingredient claims is asking for trust it hasn't earned. The viewer who has been let down by three beard oils already is not waiting to hear about molecular absorption rates. He's waiting for someone to acknowledge that he's been let down before.</div>
+    </div>
+
+    <p class="a-prose">The funnel data confirmed the diagnosis: CPM was fine, hook rate was fine, click-through was solid, add-to-cart was holding. The break was happening between checkout and purchase. That location matters. A drop-off at click means the creative wasn't relevant. A drop-off at add-to-cart means the landing page failed to convince. But a drop-off at checkout means the buyer was interested enough to go through the entire purchase journey and then hesitated at the last moment — which almost always means they weren't fully convinced by the ad and carried that doubt through the funnel until it became visible.</p>
+  </div>
+
+  <!-- PSYCHOLOGICAL SEQUENCE -->
+  <div class="a-section">
+    <div class="a-section-label">The reframe</div>
+    <h2 class="a-section-title">Four phases. <em>Built from how the buyer actually thinks.</em></h2>
+    <p class="a-prose" style="margin-bottom:24px;">The new script structure was not built from the brand's preferred presentation order. It was built from the sequence a skeptical buyer actually needs to move through before they purchase. Reordering the same information around this sequence was the only structural change that mattered.</p>
+
+    <div class="sequence-wrap">
+      <div class="sequence-block">
+        <div class="sequence-num">1</div>
+        <div class="sequence-body">
+          <div class="sequence-phase">Phase 01 — 0 to 8 seconds</div>
+          <div class="sequence-title">Identity validation — acknowledge the failed attempts</div>
+          <div class="sequence-desc">Open by naming the experience of having tried things that didn't work. Not blaming the buyer. Not mentioning the product. Just making the viewer feel recognised before anything is sold to them. The buyer who has been let down by beard products before will stop when he hears himself described. He is engaged before the hook has finished landing.</div>
+        </div>
+        <div class="sequence-note">
+          <div class="sequence-note-k">What this does</div>
+          <div class="sequence-note-v">Earns attention from the skeptical buyer by demonstrating you understand his situation before you try to sell him anything.</div>
+        </div>
+      </div>
+      <div class="sequence-block">
+        <div class="sequence-num">2</div>
+        <div class="sequence-body">
+          <div class="sequence-phase">Phase 02 — 8 to 20 seconds</div>
+          <div class="sequence-title">Named mechanism — why the previous products failed</div>
+          <div class="sequence-desc">Explain the specific reason most beard oils don't work — in this case, molecular weight and carrier oil absorption. The named mechanism does two things: it explains the prior failure in a way that's not the buyer's fault, and it creates a knowledge gap. The viewer now needs to know what's different about this product. By the time the product appears, it is the answer to a question the viewer is already asking.</div>
+        </div>
+        <div class="sequence-note">
+          <div class="sequence-note-k">What this does</div>
+          <div class="sequence-note-v">Converts skepticism into curiosity. The viewer who stays through the mechanism is already sold on the category logic before the product is named.</div>
+        </div>
+      </div>
+      <div class="sequence-block">
+        <div class="sequence-num">3</div>
+        <div class="sequence-body">
+          <div class="sequence-phase">Phase 03 — 20 to 32 seconds</div>
+          <div class="sequence-title">Objection dialogue — handle price before the viewer forms it</div>
+          <div class="sequence-desc">Surface the price or commitment objection through conversation before the viewer has fully formed it themselves. In the UGC format, this was a two-person exchange — one person raising the objection, the other resolving it casually. The objection voiced on screen defuses it in the viewer's head. When it's handled in the ad itself, it doesn't have to be handled at checkout. This is the step that most directly addressed the checkout drop-off.</div>
+        </div>
+        <div class="sequence-note">
+          <div class="sequence-note-k">What this does</div>
+          <div class="sequence-note-v">Removes the hesitation that was surfacing at checkout by resolving it inside the ad before it forms.</div>
+        </div>
+      </div>
+      <div class="sequence-block">
+        <div class="sequence-num">4</div>
+        <div class="sequence-body">
+          <div class="sequence-phase">Phase 04 — 32 to 45 seconds</div>
+          <div class="sequence-title">Loss aversion close — what inaction is costing</div>
+          <div class="sequence-desc">Close on what continuing with the current routine is costing rather than what purchase gains. Make the cost of inaction specific and concrete: beard health degrading over time, the discomfort that's been tolerable for two years continuing for two more. The loss frame outperformed the gain frame on the same script body in testing. The viewer who has been living with the problem is more motivated by not continuing to live with it than by an imagined better outcome.</div>
+        </div>
+        <div class="sequence-note">
+          <div class="sequence-note-k">What this does</div>
+          <div class="sequence-note-v">Converts residual hesitation into urgency by making the cost of not acting concrete, not abstract.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE BRIEF -->
+  <div class="a-section">
+    <div class="a-section-label">The brief</div>
+    <h2 class="a-section-title">Script brief — <em>identity mechanism format</em></h2>
+
+    <div class="brief-doc">
+      <div class="brief-doc-header">
+        <div class="brief-doc-title">Script Brief · Men's Grooming · DTC · Identity + Mechanism Format</div>
+        <div class="brief-doc-badge">Template — reusable across range</div>
+      </div>
+      <div class="brief-doc-body">
+
+        <div class="brief-field-group">
+          <div class="brief-field-group-title">Campaign context</div>
+          <div class="brief-fields c3">
+            <div class="brief-field">
+              <div class="brief-field-label">Objective</div>
+              <div class="brief-field-content highlight">Purchase conversion — cold traffic</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Format</div>
+              <div class="brief-field-content">UGC primary. Studio version as secondary for warm retargeting.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Target CPA</div>
+              <div class="brief-field-content">≤ $25 (from $41 baseline)</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Test structure</div>
+              <div class="brief-field-content">ABO adset — equal budgets per script. No algorithm preference applied during testing window.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Duration</div>
+              <div class="brief-field-content">30–45 seconds. Do not compress below 30s — the psychological sequence needs time to complete. Do not extend beyond 45s.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Formats</div>
+              <div class="brief-field-content">9:16 primary (Reels/Stories). 1:1 secondary (Feed). Same script, reframed for aspect ratio.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="brief-field-group">
+          <div class="brief-field-group-title">Target buyer</div>
+          <div class="brief-fields c2">
+            <div class="brief-field">
+              <div class="brief-field-label">Who this ad is for</div>
+              <div class="brief-field-content">Male, 25–45. Has a beard or is actively growing one. Has tried at least one beard product before — oil, balm, or serum — and was disappointed by the result. Has not given up on finding something that works but is skeptical of product claims. This is the buyer the hook must identify and self-select.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Psychological state</div>
+              <div class="brief-field-content">Skeptical but open. Has prior negative experience with the category. Will not be convinced by ingredient claims in the first 10 seconds — needs to be recognised as someone who has tried things before. The script earns trust by acknowledging failure first, not by leading with product claims.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Awareness level</div>
+              <div class="brief-field-content">Solution-aware. Knows products like this exist. Has already tried the category. The hook does not need to introduce the problem — it needs to acknowledge that the category has been tried and failed before.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">The prior failed attempt is the brief</div>
+              <div class="brief-field-content highlight">The buyer's experience of trying something similar and being disappointed is sitting between him and this product. The script that validates it first and then explains why this time is different converts better than the script that ignores it.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="brief-field-group">
+          <div class="brief-field-group-title">Script structure — four phases</div>
+          <div class="brief-fields">
+            <div class="brief-field">
+              <div class="brief-field-label">Script sequence in order</div>
+              <div class="brief-field-content" style="margin-bottom:14px;">These four phases are the brief. The script writer fills in the specific language for each phase. The order does not change. The temptation will be to lead with the product — resist it.</div>
+              <div class="script-block-options">
+                <div class="script-block">
+                  <div class="script-block-num">Phase 01</div>
+                  <div class="script-block-content">
+                    <div class="script-block-phase">0–8 seconds · Identity validation</div>
+                    <div class="script-block-text">"If you've tried every beard oil on the market and nothing actually absorbs — you're not alone and it's not your beard."</div>
+                    <div class="script-block-note">Open with recognition. Name the experience without blame. The viewer who has been let down before stops here. No product mention.</div>
+                  </div>
+                </div>
+                <div class="script-block">
+                  <div class="script-block-num">Phase 02</div>
+                  <div class="script-block-content">
+                    <div class="script-block-phase">8–20 seconds · Named mechanism</div>
+                    <div class="script-block-text">"Most beard oils use carrier oils with a molecular weight that's too high to absorb — they just sit on the surface. [Product] uses [specific oil] which absorbs at the follicle level."</div>
+                    <div class="script-block-note">Name the specific reason prior products failed. Create a knowledge gap. By the time the product appears, it is the answer.</div>
+                  </div>
+                </div>
+                <div class="script-block">
+                  <div class="script-block-num">Phase 03</div>
+                  <div class="script-block-content">
+                    <div class="script-block-phase">20–32 seconds · Objection dialogue</div>
+                    <div class="script-block-text">"[Person B]: But isn't it expensive? [Person A]: I thought the same. A bottle lasts 90 days — it's less than a coffee a week."</div>
+                    <div class="script-block-note">Surface the price objection through conversation before the viewer forms it. Handle it inside the ad so it doesn't surface at checkout.</div>
+                  </div>
+                </div>
+                <div class="script-block">
+                  <div class="script-block-num">Phase 04</div>
+                  <div class="script-block-content">
+                    <div class="script-block-phase">32–45 seconds · Loss aversion close</div>
+                    <div class="script-block-text">"Two years from now your beard is either going to be what it could be, or you're still dealing with the same dryness you have right now. Link in bio."</div>
+                    <div class="script-block-note">Close on inaction cost, not purchase benefit. Make the cost of staying where they are concrete. One CTA only.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="brief-field-group">
+          <div class="brief-field-group-title">Format direction</div>
+          <div class="brief-fields c2">
+            <div class="brief-field">
+              <div class="brief-field-label">UGC format (primary — cold traffic)</div>
+              <div class="brief-field-content">Shot on phone. Handheld or slightly unstable frame is fine. The rawer the format, the more trust it signals in this category. Polished studio reads as advertising before the hook lands. Creator should look and speak like the buyer — not like a brand ambassador. Real bathroom or everyday setting. No product hero shots in the cold traffic version.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Studio format (secondary — warm retargeting)</div>
+              <div class="brief-field-content">Same script structure. Professional framing and lighting acceptable because the warm audience already has brand trust. Product can appear earlier in the studio version. Skip the identity validation phase and move directly to mechanism — the warm audience already knows they have the problem.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">What not to do</div>
+              <div class="brief-field-content">Do not open with product shots or ingredient callouts. Do not use aspirational lifestyle footage on cold traffic — it reads as generic and the skeptical buyer disengages. Do not shorten the sequence below 30 seconds — the psychological movement needs time. Do not add a second CTA at the end.</div>
+            </div>
+            <div class="brief-field">
+              <div class="brief-field-label">Hook rate vs CVR note</div>
+              <div class="brief-field-content">The identity hook will produce a lower hook rate than a curiosity-led open. That is correct — the people who stop are the right buyers. Evaluate this creative on CVR and cost-per-purchase, not hook rate. A lower hook rate from the right audience outperforms a higher hook rate from a mixed one.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- VARIANT SUMMARY -->
+  <div class="a-section">
+    <div class="a-section-label">What was tested</div>
+    <h2 class="a-section-title">Five variants. <em>One structural change.</em></h2>
+
+    <div class="variant-row-grid">
+      <div class="vrow">
+        <div class="vrow-cell"><div class="vrow-k">Variant</div><div class="vrow-v">UGC Identity Script</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Hook</div><div class="vrow-v hook">"If you've tried every beard oil and nothing absorbs — it's not your beard."</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Format</div><div class="vrow-v">UGC · 9:16 + 1:1</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Outcome</div><div class="vrow-v"><span class="vstatus winner">Winner — 2.8× ROAS</span></div></div>
+      </div>
+      <div class="vrow">
+        <div class="vrow-cell"><div class="vrow-k">Variant</div><div class="vrow-v">Knowledge Gap Mechanism</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Hook</div><div class="vrow-v hook">"Why do most beard oils sit on top of your hair instead of absorbing?"</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Format</div><div class="vrow-v">UGC · 9:16</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Outcome</div><div class="vrow-v"><span class="vstatus winner">Winner — high retention</span></div></div>
+      </div>
+      <div class="vrow">
+        <div class="vrow-cell"><div class="vrow-k">Variant</div><div class="vrow-v">Objection Dialogue UGC</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Hook</div><div class="vrow-v hook">Two-person format — opens on price objection voiced and resolved.</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Format</div><div class="vrow-v">UGC · Retargeting only</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Outcome</div><div class="vrow-v"><span class="vstatus learning">Strong warm · Weak cold</span></div></div>
+      </div>
+      <div class="vrow">
+        <div class="vrow-cell"><div class="vrow-k">Variant</div><div class="vrow-v">Original studio control</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Hook</div><div class="vrow-v hook">Product + ingredient callout in first 10 seconds.</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Format</div><div class="vrow-v">Studio · 1:1</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Outcome</div><div class="vrow-v"><span class="vstatus testing">Kept warm only</span></div></div>
+      </div>
+      <div class="vrow">
+        <div class="vrow-cell"><div class="vrow-k">Variant</div><div class="vrow-v">Loss aversion close test</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Hook</div><div class="vrow-v hook">Same as identity script — different close only.</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Format</div><div class="vrow-v">UGC · 9:16</div></div>
+        <div class="vrow-cell"><div class="vrow-k">Outcome</div><div class="vrow-v"><span class="vstatus winner">+CVR vs gain close</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="artifact-footer-nav">
+    <a href="index.html" class="btn btn-ghost">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 2L4 6l4 4"/></svg>
+      All artifacts
+    </a>
+    <a href="../case-studies/grooming.html" class="btn btn-ghost">Grooming case study →</a>
+    <a href="../playbooks/ad-psychology.html" class="btn btn-ghost">Ad psychology playbook →</a>
+    <a href="annotated-ad-breakdown.html" class="btn btn-ghost">Annotated breakdown →</a>
+  </div>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Account Diagnostic — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
+<style>
+
+.artifact-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px 48px 80px;
+}
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 48px;
+}
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb-sep { opacity: 0.4; }
+.artifact-header {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 40px; align-items: start;
+  padding-bottom: 40px; border-bottom: 1px solid var(--line); margin-bottom: 56px;
+}
+.artifact-eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+}
+.artifact-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.artifact-title {
+  font-family: var(--display); font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 16px;
+}
+.artifact-title em { font-style: italic; color: var(--muted); }
+.artifact-desc { font-family: var(--serif); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.artifact-meta-card {
+  background: rgba(255,255,255,0.6); border: 1px solid var(--line);
+  border-radius: 12px; overflow: hidden; min-width: 200px;
+}
+.artifact-meta-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; padding: 11px 18px; border-bottom: 1px solid var(--line);
+}
+.artifact-meta-row:last-child { border-bottom: none; }
+.artifact-meta-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.artifact-meta-v { font-family: var(--serif); font-size: 13px; color: var(--ink); text-align: right; }
+
+.a-section { margin-bottom: 56px; }
+.a-section-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.a-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.a-section-title {
+  font-family: var(--display); font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px;
+}
+.a-section-title em { font-style: italic; color: var(--muted); }
+.a-prose { font-family: var(--serif); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
+
+/* ── AUDIT LAYERS ───────────────────────────────────────────────── */
+.audit-layers { display: flex; flex-direction: column; gap: 0; margin-bottom: 48px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.audit-layer {
+  display: grid; grid-template-columns: 64px 1fr 280px;
+  gap: 0; border-bottom: 1px solid var(--line); transition: background 0.15s;
+}
+.audit-layer:last-child { border-bottom: none; }
+.audit-layer:hover { background: rgba(255,255,255,0.5); }
+.audit-layer-num {
+  background: var(--bg-2); border-right: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-style: italic; font-size: 28px; color: var(--line-2);
+}
+.audit-layer-body { padding: 22px 24px; }
+.audit-layer-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.audit-layer-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.audit-layer-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.audit-layer-checks { padding: 22px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.audit-check { display: flex; gap: 10px; align-items: flex-start; }
+.audit-check-box {
+  width: 16px; height: 16px; border: 1.5px solid var(--line-2); border-radius: 3px;
+  flex-shrink: 0; margin-top: 1px; background: rgba(255,255,255,0.5);
+}
+.audit-check-text { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+
+/* ── FINDINGS TABLE ─────────────────────────────────────────────── */
+.findings-wrap { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 48px; }
+.findings-header { background: var(--bg-2); border-bottom: 1px solid var(--line); padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; }
+.findings-header-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.findings-table { width: 100%; border-collapse: collapse; }
+.findings-table th {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted); padding: 12px 20px; text-align: left; border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+.findings-table td {
+  font-family: var(--serif); font-size: 13.5px; color: var(--ink-2);
+  padding: 14px 20px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.55;
+}
+.findings-table tr:last-child td { border-bottom: none; }
+.finding-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); font-weight: 500; margin-bottom: 3px; }
+.priority-high { color: #8a3a1a; font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+.priority-med { color: #4a3a7a; font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+.priority-low { color: #2a6a6a; font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* ── 90 DAY PLAN ─────────────────────────────────────────────────── */
+.plan-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 48px; }
+.plan-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.plan-card-top { padding: 18px 20px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
+.plan-card-phase { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.plan-card-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); }
+.plan-card-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+.plan-item { display: flex; gap: 10px; align-items: flex-start; }
+.plan-item-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); margin-top: 8px; flex-shrink: 0; }
+.plan-item-text { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+
+/* ── OPENING QUESTIONS ──────────────────────────────────────────── */
+.questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 48px; }
+.question-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.question-num { font-family: var(--display); font-style: italic; font-size: 32px; color: var(--line-2); line-height: 1; margin-bottom: 8px; }
+.question-text { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+.question-why { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+
+.artifact-footer-nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid var(--line); margin-top: 56px; }
+
+@media (max-width: 900px) {
+  .artifact-header { grid-template-columns: 1fr; }
+  .audit-layer { grid-template-columns: 48px 1fr; }
+  .audit-layer-checks { display: none; }
+  .plan-grid, .questions-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) { .artifact-wrap { padding: 28px 20px 60px; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="artifact-wrap page">
+
+  <nav class="breadcrumb">
+    <a href="index.html">Creative Artifacts</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>New Account Diagnostic</span>
+  </nav>
+
+  <div class="artifact-header">
+    <div>
+      <div class="artifact-eyebrow">Diagnostic · New Account Audit</div>
+      <h1 class="artifact-title">What I look at, <em>in what order</em>, before the first dollar moves</h1>
+      <p class="artifact-desc">Taking over a Meta account — whether it's a rebuild or a cold start — requires a specific sequence of questions answered before any brief is written or any campaign is touched. The sequence matters because the findings at each layer change what you do at the next one. This is the audit document.</p>
+    </div>
+    <div class="artifact-meta-card">
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">When to use</span>
+        <span class="artifact-meta-v">Account takeover or launch</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Time required</span>
+        <span class="artifact-meta-v">3–5 days pre-launch</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Applies to</span>
+        <span class="artifact-meta-v">Lead Gen · DTC</span>
+      </div>
+      <div class="artifact-meta-row">
+        <span class="artifact-meta-k">Output</span>
+        <span class="artifact-meta-v">Layer findings + 90-day plan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY THE SEQUENCE MATTERS -->
+  <div class="a-section">
+    <div class="a-section-label">Why the sequence matters</div>
+    <h2 class="a-section-title">Most accounts don't have a creative problem. <em>They have a diagnostic problem.</em></h2>
+    <p class="a-prose">The temptation when taking over a struggling account is to brief new creative immediately. The data looks bad, the client wants movement, and production feels like progress. The problem is that new creative launched into a broken structure learns from the wrong signals. The creative improves. The account doesn't. Then the explanation is that "the creative didn't work" when the real problem was never diagnosed.</p>
+    <p class="a-prose">This audit runs in five layers. Each layer's findings directly inform the next. Skipping to layer three without completing layers one and two produces a plan built on assumptions that may be wrong. The Premier Basements case shows what pre-launch research prevented: a financing-angle concept with a competitive CPL had the lowest set rate in the batch. Without the audit framework, it would have been the first concept scaled.</p>
+  </div>
+
+  <!-- OPENING QUESTIONS -->
+  <div class="a-section">
+    <div class="a-section-label">Before the audit starts</div>
+    <h2 class="a-section-title">Six questions <em>before opening Ads Manager</em></h2>
+    <div class="questions-grid">
+      <div class="question-card">
+        <div class="question-num">01</div>
+        <div class="question-text">What does success look like — and at what level of the funnel?</div>
+        <div class="question-why">CPL is not the business metric. For lead gen the business metric is cost-per-closed-job or CoM%. For DTC it's ROAS or LTV:CAC. If the client defines success as CPL, the first conversation is reframing that before any campaign is evaluated.</div>
+      </div>
+      <div class="question-card">
+        <div class="question-num">02</div>
+        <div class="question-text">What has been tried before and what was the conclusion drawn?</div>
+        <div class="question-why">Prior creative decisions tell you what the account thinks it knows. The conclusions drawn from past tests are often the most valuable data — not because they're right, but because understanding the prior logic tells you what assumptions are baked into the current structure.</div>
+      </div>
+      <div class="question-card">
+        <div class="question-num">03</div>
+        <div class="question-text">Is there CRM data available — and does it connect to ad performance?</div>
+        <div class="question-why">Without CRM linkage, every creative decision is being made on the cost of the lead, not the value of it. Before the first brief, confirm whether CRM data exists and whether it's matchable to ad-level performance. This determines whether set rate and close rate are observable metrics.</div>
+      </div>
+      <div class="question-card">
+        <div class="question-num">04</div>
+        <div class="question-text">What is the sales team's actual experience of the leads coming in?</div>
+        <div class="question-why">The sales team sees quality before the data does. In the bath remodeling and windows cases, the set rate data confirmed what the sales team already knew: some markets were producing leads that never answered the phone. Talk to the team before reading the account.</div>
+      </div>
+      <div class="question-card">
+        <div class="question-num">05</div>
+        <div class="question-text">What is the serviceable geography and what are the hard constraints?</div>
+        <div class="question-why">In home services, every out-of-area lead is a real cost to the sales team with zero revenue potential. The geographic parameters need to be defined before any campaign is evaluated — not after. This determines which campaigns have a structural flaw built in from the start.</div>
+      </div>
+      <div class="question-card">
+        <div class="question-num">06</div>
+        <div class="question-text">What content assets exist — and who produced them?</div>
+        <div class="question-why">The answer to this question determines the creative brief strategy. An account with a rich content library (UGC, video, photography) can brief variants immediately. An account with only stock assets needs a production plan before it needs a media plan. Creative coverage cannot be built without knowing what raw material exists.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIVE AUDIT LAYERS -->
+  <div class="a-section">
+    <div class="a-section-label">The audit</div>
+    <h2 class="a-section-title">Five layers. <em>In this order.</em></h2>
+
+    <div class="audit-layers">
+
+      <div class="audit-layer">
+        <div class="audit-layer-num">1</div>
+        <div class="audit-layer-body">
+          <div class="audit-layer-k">Layer 01 — Structure</div>
+          <div class="audit-layer-title">Is the account architecture producing clean signal?</div>
+          <div class="audit-layer-desc">Count active campaigns, adsets, and ads. Flag any campaign where testing and scaling share the same budget. Identify audience overlap across adsets — competing campaigns targeting the same people split signal and inflate CPL without anyone noticing. Check whether retargeting has its own budget or is competing inside a CBO with cold audiences. A CBO almost always starves the hotter audience.</div>
+        </div>
+        <div class="audit-layer-checks">
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Testing and scaling separated</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">No audience overlap across adsets</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Retargeting on dedicated budget</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Inactive campaigns fully paused</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Geographic exclusions set</div></div>
+        </div>
+      </div>
+
+      <div class="audit-layer">
+        <div class="audit-layer-num">2</div>
+        <div class="audit-layer-body">
+          <div class="audit-layer-k">Layer 02 — Data quality</div>
+          <div class="audit-layer-title">Can the numbers in the account be trusted?</div>
+          <div class="audit-layer-desc">Check the duplicate lead rate using CRM data and phone-number deduplication. In the windows case, 23% of leads were duplicates — every CPL and set rate metric was wrong. Check that the pixel is firing correctly on all conversion events. Confirm the attribution window matches the actual decision timeline for this vertical. A 1-day click window on a product with a 6-week sales cycle produces data that's technically accurate and practically useless.</div>
+        </div>
+        <div class="audit-layer-checks">
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Duplicate lead rate checked</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Pixel firing on all events</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Attribution window appropriate</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">CRM linkage confirmed</div></div>
+        </div>
+      </div>
+
+      <div class="audit-layer">
+        <div class="audit-layer-num">3</div>
+        <div class="audit-layer-body">
+          <div class="audit-layer-k">Layer 03 — Creative performance</div>
+          <div class="audit-layer-title">Which ads are earning their budget — at what level of the funnel?</div>
+          <div class="audit-layer-desc">Pull lifetime data for every active ad. Evaluate against CPL, set rate, cost-per-demo, and close rate where available. Flag ads with strong CPL but weak close rate — these are the most dangerous because they look like winners at the top of the funnel and destroy the business at the bottom. In the bath remodeling case, several top-CPL ads were generating near-zero sales. They would have been scaled without sale-level analysis.</div>
+        </div>
+        <div class="audit-layer-checks">
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Lifetime data pulled per ad</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Set rate and close rate mapped</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Creative hierarchy ranked</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Format types categorised</div></div>
+        </div>
+      </div>
+
+      <div class="audit-layer">
+        <div class="audit-layer-num">4</div>
+        <div class="audit-layer-body">
+          <div class="audit-layer-k">Layer 04 — Coverage</div>
+          <div class="audit-layer-title">How much creative territory is the account actually covering?</div>
+          <div class="audit-layer-desc">Map every active ad against concept type, persona, awareness level, and hook format. Most accounts with 30+ ads are covering two or three buyer segments with slight variations. Identify the gaps — which personas have no creative, which awareness levels have no entry point, which hook formats have never been tested. These gaps are not missing ads. They are market segments the algorithm cannot reach regardless of how much budget is running.</div>
+        </div>
+        <div class="audit-layer-checks">
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Concept map built</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Persona coverage identified</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Awareness level gaps noted</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Hook format variety assessed</div></div>
+        </div>
+      </div>
+
+      <div class="audit-layer">
+        <div class="audit-layer-num">5</div>
+        <div class="audit-layer-body">
+          <div class="audit-layer-k">Layer 05 — Buyer research</div>
+          <div class="audit-layer-title">Who is actually buying — and why are they buying now?</div>
+          <div class="audit-layer-desc">For new accounts with no performance history, this layer replaces layer three. Pull category research: Reddit threads, review sites, sales call recordings if available, any CRM notes on why leads converted. The goal is to identify the specific trigger that moves someone from aware-of-the-problem to ready-to-act. In basement renovation, it was moisture urgency — not financing, not space. The financing angle had a competitive CPL and the worst set rate in the batch.</div>
+        </div>
+        <div class="audit-layer-checks">
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Trigger moments identified</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Objections documented</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Language audit (reviews, forums)</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Personas confirmed or built</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FINDINGS TABLE -->
+  <div class="a-section">
+    <div class="a-section-label">Findings format</div>
+    <h2 class="a-section-title">How findings become <em>a prioritised action list</em></h2>
+    <p class="a-prose" style="margin-bottom:24px;">Each audit layer produces findings. Findings are assigned a priority and an action. Nothing is addressed simultaneously — the sequence is: fix structure, verify data, then evaluate creative. Only once layers 1 and 2 are clean do creative decisions become trustworthy.</p>
+
+    <div class="findings-wrap">
+      <div class="findings-header">
+        <div class="findings-header-title">Audit Findings Template — New Account</div>
+      </div>
+      <table class="findings-table">
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Finding</th>
+            <th>Priority</th>
+            <th>Action</th>
+            <th>Blocks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="finding-label">Structure</div></td>
+            <td>Testing and scaling sharing one CBO. Algorithm has already chosen winners — new creative gets no fair evaluation.</td>
+            <td><span class="priority-high">Fix first</span></td>
+            <td>Separate testing into ABO. Scaling stays in CBO with Post IDs only.</td>
+            <td>All creative decisions</td>
+          </tr>
+          <tr>
+            <td><div class="finding-label">Structure</div></td>
+            <td>Retargeting competing inside cold traffic CBO. Warm audience being starved — budget going to cold.</td>
+            <td><span class="priority-high">Fix first</span></td>
+            <td>Move retargeting to dedicated ABO. Mid-funnel and bottom-funnel on separate daily budgets.</td>
+            <td>Lead quality metrics</td>
+          </tr>
+          <tr>
+            <td><div class="finding-label">Data quality</div></td>
+            <td>Duplicate lead rate: estimate from CRM spot-check. Set rate reading is unreliable until fixed.</td>
+            <td><span class="priority-high">Fix before reading metrics</span></td>
+            <td>Rebuild exclusion lists using CRM export + phone number deduplication.</td>
+            <td>Set rate, CPL reads</td>
+          </tr>
+          <tr>
+            <td><div class="finding-label">Creative</div></td>
+            <td>Three ads accounting for 80%+ of spend. No creative rotation plan — frequency ceiling imminent.</td>
+            <td><span class="priority-med">Brief within 2 weeks</span></td>
+            <td>Deconstruct top performer. Brief 3 script variants isolating one variable each.</td>
+            <td>Scale ceiling</td>
+          </tr>
+          <tr>
+            <td><div class="finding-label">Coverage</div></td>
+            <td>All active creative speaks to solution-aware buyer. No problem-aware or unaware entry points.</td>
+            <td><span class="priority-med">Brief in month 2</span></td>
+            <td>Build problem-aware concepts for each confirmed persona. Test as static before video.</td>
+            <td>New audience reach</td>
+          </tr>
+          <tr>
+            <td><div class="finding-label">Buyer research</div></td>
+            <td>No confirmed trigger moment for the category. Creative is describing the product, not the situation that creates urgency.</td>
+            <td><span class="priority-med">Research before briefing</span></td>
+            <td>Pull review data and category forums. Identify the 2–3 specific situations that make someone act. Build hooks from those situations.</td>
+            <td>Hook strategy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 90 DAY PLAN -->
+  <div class="a-section">
+    <div class="a-section-label">Output</div>
+    <h2 class="a-section-title">The first 90 days, <em>built from the audit</em></h2>
+    <div class="plan-grid">
+      <div class="plan-card">
+        <div class="plan-card-top">
+          <div class="plan-card-phase">Days 1–30</div>
+          <div class="plan-card-title">Fix and baseline</div>
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Restructure campaigns based on layer 1 findings</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Rebuild exclusion lists and verify pixel</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Apply creative scorecard to all live ads — cut what fails</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Launch testing adset with 3 concept types from buyer research</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Establish baseline CPL, set rate, and cost-per-demo from clean data</div></div>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-card-top">
+          <div class="plan-card-phase">Days 31–60</div>
+          <div class="plan-card-title">Validate and expand</div>
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Read testing adset results — identify winning concept types</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Brief script and footage variants from winning formula</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Begin geographic concentration if multi-market account</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Build creative hierarchy from confirmed winners</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Confirm CRM linkage — begin evaluating creative by close rate</div></div>
+        </div>
+      </div>
+      <div class="plan-card">
+        <div class="plan-card-top">
+          <div class="plan-card-phase">Days 61–90</div>
+          <div class="plan-card-title">Scale and systematise</div>
+        </div>
+        <div class="plan-card-body">
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Scale budget into validated performers — geography by geography</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Monitor frequency — brief replacements before 4.0 threshold</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Expand creative coverage into uncovered personas</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Set recurring scorecard review cadence (14-day + 28-day)</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Document creative hierarchy as ongoing brief template</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="artifact-footer-nav">
+    <a href="index.html" class="btn btn-ghost">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 2L4 6l4 4"/></svg>
+      All artifacts
+    </a>
+    <a href="../case-studies/basement.html" class="btn btn-ghost">Premier Basements case →</a>
+    <a href="../playbooks/diagnosis.html" class="btn btn-ghost">Diagnosis playbook →</a>
+    <a href="creative-scorecard.html" class="btn btn-ghost">Creative scorecard →</a>
+  </div>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

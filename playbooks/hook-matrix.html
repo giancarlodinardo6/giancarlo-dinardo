@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hook Matrix — Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
+<style>
+
+/* ── PAGE LAYOUT ─────────────────────────────────────────────────── */
+.matrix-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px 48px 80px;
+}
+
+/* ── BREADCRUMB ─────────────────────────────────────────────────── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 48px;
+}
+.breadcrumb a { color: var(--muted); transition: color 0.15s; }
+.breadcrumb a:hover { color: var(--ink); }
+.breadcrumb-sep { opacity: 0.4; }
+
+/* ── HEADER ─────────────────────────────────────────────────────── */
+.matrix-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: start;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 64px;
+}
+.matrix-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.matrix-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--line-2);
+}
+.matrix-title {
+  font-family: var(--display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 16px;
+}
+.matrix-title em { font-style: italic; color: var(--muted); }
+.matrix-desc {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  max-width: 560px;
+}
+.matrix-meta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.meta-pill {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 18px;
+  min-width: 180px;
+}
+.meta-pill-k {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.meta-pill-v {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* ── SECTION LABEL ──────────────────────────────────────────────── */
+.mx-section-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.mx-section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--line-2);
+}
+.mx-section-title {
+  font-family: var(--display);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.mx-section-title em { font-style: italic; color: var(--muted); }
+.mx-prose {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+/* ── COMPARISON BLOCK (flooring account) ────────────────────────── */
+.comparison-wrap {
+  margin-bottom: 64px;
+}
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.comparison-card {
+  border-radius: 14px;
+  overflow: hidden;
+}
+.comparison-card-top {
+  padding: 24px 26px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.comparison-card-body {
+  padding: 20px 26px 24px;
+}
+.comparison-card.broad {
+  background: rgba(198,188,238,0.12);
+  border: 1px solid rgba(198,188,238,0.3);
+}
+.comparison-card.callout {
+  background: rgba(91,158,158,0.12);
+  border: 1px solid rgba(91,158,158,0.3);
+}
+.comp-type-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.comparison-card.broad .comp-type-label { color: #5a4a8a; }
+.comparison-card.callout .comp-type-label { color: var(--teal); }
+.comp-hook-text {
+  font-family: var(--display);
+  font-size: clamp(15px, 2vw, 20px);
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+.comp-type-tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-bottom: 4px;
+}
+.comparison-card.broad .comp-type-tag {
+  background: rgba(198,188,238,0.2);
+  color: #5a4a8a;
+  border: 1px solid rgba(198,188,238,0.4);
+}
+.comparison-card.callout .comp-type-tag {
+  background: rgba(91,158,158,0.15);
+  color: var(--teal);
+  border: 1px solid rgba(91,158,158,0.3);
+}
+.comp-metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comp-metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+}
+.comparison-card.broad .comp-metric { background: rgba(198,188,238,0.1); }
+.comparison-card.callout .comp-metric { background: rgba(91,158,158,0.1); }
+.comp-metric-k {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.comp-metric-v {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--ink);
+}
+.comp-metric-note {
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--ink-2);
+  font-style: italic;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* What changed callout */
+.delta-callout {
+  background: var(--tile-black);
+  color: #F1ECE2;
+  border-radius: 12px;
+  padding: 26px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.delta-callout::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(91,158,158,0.15) 0%, transparent 65%);
+}
+.delta-item {}
+.delta-k {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(241,236,226,0.35);
+  margin-bottom: 6px;
+}
+.delta-v {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: rgba(241,236,226,0.8);
+  line-height: 1.55;
+}
+.delta-v strong {
+  color: #5B9E9E;
+  font-weight: 500;
+}
+
+/* ── FIVE HOOK TYPES MATRIX ─────────────────────────────────────── */
+.hook-type-table-wrap {
+  margin-bottom: 64px;
+}
+.hook-type-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.hook-type-table thead {
+  background: var(--tile-black);
+}
+.hook-type-table th {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(241,236,226,0.4);
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(241,236,226,0.08);
+}
+.hook-type-table th:first-child {
+  color: rgba(241,236,226,0.6);
+  min-width: 140px;
+}
+.hook-type-table td {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink-2);
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.hook-type-table tr:last-child td { border-bottom: none; }
+.hook-type-table tr:nth-child(even) td { background: rgba(255,255,255,0.25); }
+.hook-type-cell-name {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.hook-type-01 .hook-type-cell-name { color: #5a4a8a; }
+.hook-type-02 .hook-type-cell-name { color: #3a7a5a; }
+.hook-type-03 .hook-type-cell-name { color: #8a4a4a; }
+.hook-type-04 .hook-type-cell-name { color: var(--teal); }
+.hook-type-05 .hook-type-cell-name { color: #8a6a3a; }
+.hook-type-sub {
+  font-family: var(--serif);
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.hook-example-text {
+  font-family: var(--display);
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.hook-audience-chip {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.hook-signal-text {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+
+/* ── ROOFING HOOK BREAKDOWN ─────────────────────────────────────── */
+.account-hooks-section {
+  margin-bottom: 64px;
+}
+.account-hooks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.account-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+.hook-row-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.hook-row {
+  display: grid;
+  grid-template-columns: 180px 1fr 160px 160px;
+  gap: 0;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+.hook-row:hover { background: #fff; }
+.hook-row-cell {
+  padding: 16px 20px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hook-row-cell:last-child { border-right: none; }
+.hook-row-cell-k {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.hook-row-cell-v {
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.hook-row-cell-v.hook-line {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.hook-row-outcome {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.outcome-winner {
+  background: rgba(91,158,158,0.12);
+  color: #3a7a7a;
+  border: 1px solid rgba(91,158,158,0.3);
+}
+.outcome-learning {
+  background: rgba(242,191,196,0.15);
+  color: #8a4a4a;
+  border: 1px solid rgba(242,191,196,0.35);
+}
+.outcome-testing {
+  background: rgba(198,188,238,0.15);
+  color: #5a4a8a;
+  border: 1px solid rgba(198,188,238,0.35);
+}
+
+/* ── WHAT THIS TEACHES ──────────────────────────────────────────── */
+.takeaways-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 64px;
+}
+.takeaway-card {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px 22px;
+}
+.takeaway-num {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 40px;
+  color: var(--line-2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.takeaway-title {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.takeaway-desc {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+/* ── FOOTER NAV ─────────────────────────────────────────────────── */
+.matrix-footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .matrix-header { grid-template-columns: 1fr; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .delta-callout { grid-template-columns: 1fr; gap: 16px; }
+  .hook-row { grid-template-columns: 1fr 1fr; }
+  .hook-row-cell:nth-child(2) { grid-column: span 2; }
+  .takeaways-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .matrix-wrap { padding: 28px 20px 60px; }
+  .hook-row { grid-template-columns: 1fr; }
+  .hook-row-cell { border-right: none; border-bottom: 1px solid var(--line); }
+  .hook-row-cell:last-child { border-bottom: none; }
+  .takeaways-grid { grid-template-columns: 1fr; }
+  .hook-type-table { display: block; overflow-x: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Frameworks</a>
+    <a href="../playbooks/index.html" data-section="playbooks" class="active">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="matrix-wrap page">
+
+  <!-- BREADCRUMB -->
+  <nav class="breadcrumb">
+    <a href="index.html">Playbooks</a>
+    <span class="breadcrumb-sep">/</span>
+    <a href="hooks-are-targeting.html">Hooks Are Targeting</a>
+    <span class="breadcrumb-sep">/</span>
+    <span>Hook Matrix</span>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="matrix-header">
+    <div>
+      <div class="matrix-eyebrow">Hook Matrix · Worked Examples</div>
+      <h1 class="matrix-title">The hooks from <em>real accounts</em></h1>
+      <p class="matrix-desc">The Hooks Are Targeting playbook describes the framework. This is what that framework looks like when it's applied to live accounts — the actual hook lines, the types they belong to, what audience they were pointing at, and what the performance delta looked like when two hook types ran against the same offer.</p>
+    </div>
+    <div class="matrix-meta-stack">
+      <div class="meta-pill">
+        <div class="meta-pill-k">From</div>
+        <div class="meta-pill-v">Hooks Are Targeting</div>
+      </div>
+      <div class="meta-pill">
+        <div class="meta-pill-k">Accounts</div>
+        <div class="meta-pill-v">Flooring · Roofing</div>
+      </div>
+      <div class="meta-pill">
+        <div class="meta-pill-k">Platforms</div>
+        <div class="meta-pill-v">Meta (FB + IG)</div>
+      </div>
+      <div class="meta-pill">
+        <div class="meta-pill-k">Verticals</div>
+        <div class="meta-pill-v">Home Services · Lead Gen</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOORING COMPARISON -->
+  <div class="comparison-wrap">
+    <div class="mx-section-label">Worked example — flooring account</div>
+    <h2 class="mx-section-title">Same offer. Same budget. <em>Different buyers.</em></h2>
+    <p class="mx-prose">This is the hook comparison run on an epoxy garage flooring lead gen account. Mid-market homeowner audience. The same landing page, the same offer, the same spend split — with one variable changed: hook type. The performance difference was not marginal. The audiences the two hooks found were different people at different stages of the buying process.</p>
+
+    <div class="comparison-grid">
+      <div class="comparison-card broad">
+        <div class="comparison-card-top">
+          <div class="comp-type-label">Curiosity-led hook</div>
+          <div class="comp-hook-text">"Most homeowners don't know you can transform a garage floor in one weekend."</div>
+          <span class="comp-type-tag">Hook type 02 — Curiosity</span>
+        </div>
+        <div class="comparison-card-body">
+          <div class="comp-metric-row">
+            <div class="comp-metric">
+              <span class="comp-metric-k">Hook rate</span>
+              <span class="comp-metric-v">High</span>
+              <span class="comp-metric-note">Broad appeal, wider stops</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Lead volume</span>
+              <span class="comp-metric-v">High</span>
+              <span class="comp-metric-note">More top-of-funnel entries</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Cost / qualified appt.</span>
+              <span class="comp-metric-v">Elevated</span>
+              <span class="comp-metric-note">Higher sales effort to filter</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Audience found</span>
+              <span class="comp-metric-v">Mixed</span>
+              <span class="comp-metric-note">Serious buyers + the curious</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="comparison-card callout">
+        <div class="comparison-card-top">
+          <div class="comp-type-label">Direct call-out hook</div>
+          <div class="comp-hook-text">"If your garage floor is cracked, stained, or you're embarrassed to open the door — this is for you."</div>
+          <span class="comp-type-tag">Hook type 04 — Direct call-out</span>
+        </div>
+        <div class="comparison-card-body">
+          <div class="comp-metric-row">
+            <div class="comp-metric">
+              <span class="comp-metric-k">Hook rate</span>
+              <span class="comp-metric-v">Lower</span>
+              <span class="comp-metric-note">Fewer stops overall</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Lead volume</span>
+              <span class="comp-metric-v">Lower</span>
+              <span class="comp-metric-note">Qualified before the click</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Cost / qualified appt.</span>
+              <span class="comp-metric-v">Dropped significantly</span>
+              <span class="comp-metric-note">Shorter path from ad to call</span>
+            </div>
+            <div class="comp-metric">
+              <span class="comp-metric-k">Audience found</span>
+              <span class="comp-metric-v">Frustrated buyer</span>
+              <span class="comp-metric-note">Already at decision point</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delta-callout">
+      <div class="delta-item">
+        <div class="delta-k">What changed</div>
+        <div class="delta-v">One line. The body copy was nearly identical. The offer was the same. The budget split was the same. <strong>The hook changed who stopped.</strong></div>
+      </div>
+      <div class="delta-item">
+        <div class="delta-k">Why it happened</div>
+        <div class="delta-v">The call-out hook named a specific situation — cracked floor, embarrassment, frustration. Meta read that signal and found people who recognised themselves in it. <strong>The qualification happened before the click.</strong></div>
+      </div>
+      <div class="delta-item">
+        <div class="delta-k">The rule it demonstrates</div>
+        <div class="delta-v">Lower hook rate from a specific hook can outperform higher hook rate from a broad one. <strong>You are optimising for the right person, not the most people.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIVE HOOK TYPES TABLE -->
+  <div class="hook-type-table-wrap">
+    <div class="mx-section-label">Reference — five hook types</div>
+    <h2 class="mx-section-title">Five types. <em>Five different audiences.</em></h2>
+    <p class="mx-prose">Each hook type signals a different emotional state to Meta's algorithm and attracts a different kind of buyer. The right choice depends on where the buyer is in the decision process — not on what sounds best to write. These are brief inputs, not copywriting formulas.</p>
+
+    <table class="hook-type-table">
+      <thead>
+        <tr>
+          <th>Hook type</th>
+          <th>Opens with</th>
+          <th>Home services example</th>
+          <th>Audience it finds</th>
+          <th>Meta signal sent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hook-type-01">
+          <td>
+            <div class="hook-type-cell-name">01 — Emotional driver</div>
+            <div class="hook-type-sub">Identity, feeling, or personal state</div>
+          </td>
+          <td>A feeling or identity the viewer already holds. Product is secondary to who they are or want to be.</td>
+          <td><span class="hook-example-text">"I stopped dreading the kitchen renovation conversation. Here's how we got it done for half what we quoted."</span></td>
+          <td><span class="hook-audience-chip">Identity-motivated</span><br><br><span class="hook-signal-text">Emotionally engaged, longer consideration cycle, brand loyalty on conversion</span></td>
+          <td><span class="hook-signal-text">Emotional resonance pattern. Finds people algorithmically similar to prior high-engagement viewers.</span></td>
+        </tr>
+        <tr class="hook-type-02">
+          <td>
+            <div class="hook-type-cell-name">02 — Curiosity-led</div>
+            <div class="hook-type-sub">Information gap, something they should know</div>
+          </td>
+          <td>An information gap attached to a real decision. The viewer suspects they're missing something relevant.</td>
+          <td><span class="hook-example-text">"The reason roofing quotes come back $4,000 apart — and what to ask before you sign anything."</span></td>
+          <td><span class="hook-audience-chip">Analytical buyer</span><br><br><span class="hook-signal-text">Problem-aware, solution-uncertain. Needs education before they act.</span></td>
+          <td><span class="hook-signal-text">High dwell time signal. Finds audiences who stop and read — wider reach but mixed intent.</span></td>
+        </tr>
+        <tr class="hook-type-03">
+          <td>
+            <div class="hook-type-cell-name">03 — Myth-busting</div>
+            <div class="hook-type-sub">Challenges a belief the viewer holds</div>
+          </td>
+          <td>A moment of friction. The viewer has to stop because they might be wrong about something they thought they knew.</td>
+          <td><span class="hook-example-text">"Epoxy flooring isn't actually low-maintenance. Here's what most installers don't mention on the estimate."</span></td>
+          <td><span class="hook-audience-chip">Skeptical buyer</span><br><br><span class="hook-signal-text">Done some research, has opinions, needs to be challenged before they'll engage</span></td>
+          <td><span class="hook-signal-text">Engagement and comment signal. Finds mid-funnel browsers who've been actively researching.</span></td>
+        </tr>
+        <tr class="hook-type-04">
+          <td>
+            <div class="hook-type-cell-name">04 — Direct call-out</div>
+            <div class="hook-type-sub">Names a specific person, situation, or condition</div>
+          </td>
+          <td>A precise situation. Fewer people stop — but the people who do are almost all the right ones.</td>
+          <td><span class="hook-example-text">"If your bathroom remodel quote came back over $20,000 — read this before you sign."</span></td>
+          <td><span class="hook-audience-chip">High-intent buyer</span><br><br><span class="hook-signal-text">Situationally aware, already in the decision window. Lower volume, higher conversion.</span></td>
+          <td><span class="hook-signal-text">High CTR relative to reach. Tight signal — Meta finds people who match the named situation closely.</span></td>
+        </tr>
+        <tr class="hook-type-05">
+          <td>
+            <div class="hook-type-cell-name">05 — Problem stack</div>
+            <div class="hook-type-sub">Rapid list of symptoms, no solution yet</div>
+          </td>
+          <td>Recognition before solution. The viewer feels seen before they know what's being sold.</td>
+          <td><span class="hook-example-text">"Quotes that don't show up. Contractors who ghost. Jobs that take twice as long as the estimate."</span></td>
+          <td><span class="hook-audience-chip">Frustrated buyer</span><br><br><span class="hook-signal-text">High emotional urgency. Has been living with the problem. Responds to recognition, not features.</span></td>
+          <td><span class="hook-signal-text">Save and share signal. Finds audiences who've had bad prior experiences — high conversion on retargeting.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ROOFING HOOK BREAKDOWN -->
+  <div class="account-hooks-section">
+    <div class="mx-section-label">Account breakdown — roofing lead gen</div>
+    <div class="account-hooks-header">
+      <h2 class="mx-section-title" style="margin:0">Every hook tested. <em>What each was testing for.</em></h2>
+      <span class="account-label">11 states · 5 regions · $90k–$240k/mo</span>
+    </div>
+    <p class="mx-prose">These are the hook decisions from the roofing account rebuild — each mapped to its type, its hypothesis, and its deployment logic. The point of the matrix format is that every hook decision is explicit and traceable, not a production guess.</p>
+
+    <div class="hook-row-grid">
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">Control (0002)</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">[Spokesperson throws shingle] — Get 50% off your roof replacement this season.</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Direct call-out + offer<br><span class="hook-audience-chip">Type 04</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Control — baseline</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Formula all variants built from</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">Script Var. 01</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">"Homeowners across the country are upgrading at half the cost."</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Social proof open<br><span class="hook-audience-chip">Type 02 hybrid</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Winner</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Normalises decision via national volume</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">Script Var. 02</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">"The last roof you'll need to think about for the next 30 years."</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Investment frame<br><span class="hook-audience-chip">Type 01 hybrid</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Winner</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Shifts buyer from cost-avoidance to asset thinking</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">Script Var. 03</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">"Over 200,000 roofs installed. Here's why homeowners keep calling back."</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Authority-first<br><span class="hook-audience-chip">Type 03 hybrid</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Winner</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Tests credibility number as entry point</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">3-Req. Format</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">"3 things you need to qualify for 50% off your roof — check all three."</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Qualifier call-out<br><span class="hook-audience-chip">Type 04 — tight zip</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Winner</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">NE + C. Penn. only — set rate improvement</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">State callout (all regions)</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">"If you're a homeowner in [State], you may qualify for 50% off your roof replacement."</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Geographic call-out<br><span class="hook-audience-chip">Type 04 — geo</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-winner">Applied all regions</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Pre-qualifies geographic intent before click</small></div>
+        </div>
+      </div>
+
+      <div class="hook-row">
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook ID</div>
+          <div class="hook-row-cell-v">Hook swap</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Hook line</div>
+          <div class="hook-row-cell-v hook-line">[Different spokesperson open — same formula from Part 02 onward]</div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Type</div>
+          <div class="hook-row-cell-v">Presenter variation<br><span class="hook-audience-chip">Type 04 variant</span></div>
+        </div>
+        <div class="hook-row-cell">
+          <div class="hook-row-cell-k">Outcome</div>
+          <div class="hook-row-cell-v"><span class="hook-row-outcome outcome-testing">Testing</span><br><small style="font-family:var(--mono);font-size:8.5px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);">Hook vs. formula — is the presenter the driver?</small></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div>
+    <div class="mx-section-label">What this demonstrates</div>
+    <h2 class="mx-section-title" style="margin-bottom:28px">Three things a hook matrix <em>makes explicit</em></h2>
+    <div class="takeaways-grid">
+      <div class="takeaway-card">
+        <div class="takeaway-num">01</div>
+        <div class="takeaway-title">Hook type is the audience decision — not a copy decision</div>
+        <div class="takeaway-desc">Choosing between curiosity-led and direct call-out is choosing which buyer segment to reach, not which line sounds better. The flooring comparison shows that same offer, same budget — different hook type — found different people. That's a targeting decision made in the brief, not in production.</div>
+      </div>
+      <div class="takeaway-card">
+        <div class="takeaway-num">02</div>
+        <div class="takeaway-title">Lower hook rate is not always the wrong answer</div>
+        <div class="takeaway-desc">The direct call-out in the flooring account had a lower hook rate and lower raw lead volume. It produced a significantly lower cost-per-qualified-appointment. Optimising for hook rate in isolation finds more people — not necessarily the right ones. Set rate and cost-per-qualified-outcome tell the fuller story.</div>
+      </div>
+      <div class="takeaway-card">
+        <div class="takeaway-num">03</div>
+        <div class="takeaway-title">The matrix format makes each decision traceable</div>
+        <div class="takeaway-desc">When every hook is mapped to its type, hypothesis, deployment logic, and outcome — the account builds institutional knowledge across rounds. The next brief is informed by what the previous one learned. Without the matrix, you're relaunching from intuition each time.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER NAV -->
+  <div class="matrix-footer-nav">
+    <a href="hooks-are-targeting.html" class="btn btn-ghost">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 2L4 6l4 4"/></svg>
+      Back to playbook
+    </a>
+    <a href="../case-studies/roofing-brief.html" class="btn btn-ghost">Roofing creative brief →</a>
+    <a href="creative-coverage.html" class="btn btn-ghost">Creative coverage →</a>
+  </div>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
+</footer>
+
+</body>
+</html>

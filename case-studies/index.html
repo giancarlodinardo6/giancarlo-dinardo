@@ -3,152 +3,115 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Studies, Giancarlo Di Nardo</title>
+<title>Playbooks — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-  /* ── HUB LAYOUT ── */
-  .cs-wrap { max-width: var(--max); margin: 0 auto; padding: 40px 48px 80px; }
+  .pb-wrap { max-width:var(--max); margin:0 auto; padding:40px 48px 80px; }
 
-  .cs-masthead {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: end;
-    gap: 32px;
-    margin-bottom: 36px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--line);
-  }
-  .cs-masthead h1 {
-    font-family: var(--display);
-    font-weight: 400;
-    font-size: 72px;
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin: 0 0 16px;
-  }
-  .cs-masthead h1 em { font-style: italic; color: var(--muted); }
-  .cs-masthead .desc {
-    font-family: var(--serif);
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-2);
-    max-width: 560px;
-    margin: 0;
-  }
-  .cs-masthead .meta {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: right;
-    white-space: nowrap;
-    padding-bottom: 4px;
+  /* Section label */
+  .section-divider {
+    font-family:var(--mono); font-size:13px; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--muted);
+    margin:48px 0 0; padding-bottom:10px;
+    border-bottom:1px solid var(--line); display:flex;
+    align-items:center; gap:12px;
   }
 
-  /* ── SECTION LABEL ── */
-  .section-intro {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 36px 0 0;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  /* Grid */
+  .pb-hub-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+
+  /* Base card */
+  .pb-hub-card {
+    background:rgba(255,255,255,0.4); border:1px solid var(--line);
+    border-radius:var(--radius-lg); padding:20px;
+    display:flex; flex-direction:column; gap:10px;
+    text-decoration:none; color:inherit; min-height:200px;
+    transition:transform 0.15s, background 0.15s, box-shadow 0.15s;
   }
-  .section-intro::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--line);
+  .pb-hub-card:hover { background:#fff; transform:translateY(-2px); box-shadow:0 4px 20px rgba(0,0,0,0.08); }
+
+  /* Tinted alternate cards */
+  .pb-hub-card.tint { background:var(--bg-2); }
+  .pb-hub-card.tint:hover { background:#fff; }
+
+  /* Featured card — dark, full-width, spans 2 cols */
+  .pb-hub-card.feat {
+    background:var(--tile-black); border-color:transparent;
+    color:#F1ECE2; grid-column:span 2; min-height:160px;
+    flex-direction:row; align-items:flex-start; gap:24px;
+    position:relative; overflow:hidden;
+  }
+  .pb-hub-card.feat::before {
+    content:''; position:absolute; top:-40px; right:-40px;
+    width:160px; height:160px; border-radius:50%;
+    background:radial-gradient(circle, rgba(91,158,158,0.15) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .pb-hub-card.feat:hover { background:#252320; transform:translateY(-2px); box-shadow:0 4px 24px rgba(0,0,0,0.2); }
+  .pb-hub-card.feat .pb-hub-title { color:#F1ECE2; font-size:19px; flex:1; }
+  .pb-hub-card.feat .pb-hub-intro { color:rgba(241,236,226,0.55); font-size:14px; }
+  .pb-hub-card.feat .pb-hub-meta { color:rgba(241,236,226,0.35); }
+  .pb-hub-card.feat .pb-pill { background:rgba(241,236,226,0.08); border-color:rgba(241,236,226,0.15); color:rgba(241,236,226,0.5); }
+  .feat-body { display:flex; flex-direction:column; gap:10px; flex:1; }
+
+  /* Tile */
+  .pb-tile {
+    width:40px; height:40px; border-radius:6px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .pb-tile.diag  { background:#2B2925; }
+  .pb-tile.creat { background:#2D4A3E; }
+  .pb-tile.scale { background:#1E3A3A; }
+  .pb-tile.ai    { background:#1A1916; }
+
+  /* Title — italic variant for question-style titles */
+  .pb-hub-title {
+    font-family:var(--serif); font-size:16px; line-height:1.3;
+    font-weight:500; color:var(--ink);
+  }
+  .pb-hub-title.q {
+    font-family:var(--display); font-style:italic;
+    font-weight:400; font-size:17px; letter-spacing:-0.01em;
+  }
+  .pb-hub-intro {
+    font-family:var(--serif); font-size:13.5px;
+    line-height:1.55; color:var(--ink-2); flex:1;
+  }
+  .pb-hub-meta {
+    display:flex; justify-content:space-between; align-items:center;
+    font-family:var(--mono); font-size:10px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--muted); margin-top:auto;
+  }
+  .pb-pill {
+    padding:2px 8px; border:1px solid var(--line-2);
+    border-radius:999px; background:#fff; color:var(--ink-2);
   }
 
-  /* ── GRID ── */
-  .arch-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 40px;
+  @media(max-width:700px){
+    .pb-wrap { padding:24px 16px 60px; }
+    .pb-hub-grid { grid-template-columns:1fr 1fr; }
+    .pb-hub-card.feat { grid-column:span 2; flex-direction:column; gap:12px; }
+    .pb-hub-title { font-size:14px; }
+    .pb-hub-title.q { font-size:15px; }
+    .pb-hub-intro { font-size:12.5px; }
   }
-  .arch-item {
-    display: grid;
-    grid-template-columns: 56px 1fr;
-    gap: 18px;
-    padding: 20px 8px 20px 0;
-    border-top: 1px solid var(--line);
-    text-decoration: none;
-    color: inherit;
-    border-radius: 8px;
-    margin: 0 -8px 0 -8px;
-    transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
-    align-items: start;
-  }
-  .arch-item:hover {
-    background: #fff;
-    box-shadow: 0 2px 14px rgba(0,0,0,0.06);
-    transform: translateY(-1px);
-    padding-left: 10px;
-  }
-  .arch-item .at {
-    width: 52px;
-    height: 52px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 22px;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .arch-item .yr {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 8px;
-    row-gap: 3px;
-  }
-  .arch-item .t {
-    font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.3;
-    font-weight: 500;
-    color: var(--ink);
-    margin: 0 0 6px;
-  }
-  .arch-item .metric {
-    font-family: var(--mono);
-    font-size: 9.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #5B9E9E;
+  @media(max-width:480px){
+    .pb-hub-grid { grid-template-columns:1fr; }
+    .pb-hub-card.feat { grid-column:span 1; }
   }
 
-  /* Tile colors */
-  .at-num   { background: var(--tile-black); color: rgba(241,236,226,0.9); }
-  .at-num-dtc { background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line-2); }
+.pb-title {
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 500;
+}
 
-  @media (max-width: 700px) {
-    .cs-wrap { padding: 24px 16px 60px; }
-    .cs-masthead { grid-template-columns: 1fr; gap: 16px; }
-    .cs-masthead h1 { font-size: 42px; }
-    .cs-masthead .meta { text-align: left; }
-    .arch-list { grid-template-columns: 1fr; }
-    .arch-item { grid-template-columns: 44px 1fr; padding: 16px 8px 16px 0; gap: 14px; }
-    .arch-item .at { width: 44px; height: 44px; font-size: 18px; }
-    .arch-item .t { font-size: 15px; }
-  }
-  @media (max-width: 960px) and (min-width: 701px) {
-    .cs-masthead h1 { font-size: 52px; }
-  }
+.pb-card.small .pb-title,
+.pb-card.compact .pb-title {
+  font-size: 17px;
+}
+
 </style>
 </head>
 <body>
@@ -187,93 +150,214 @@
 </script>
 
 <div class="page">
-  <div class="cs-wrap">
+<div class="pb-wrap">
 
-    <div class="cs-masthead">
-      <div>
-        <h1>Case studies, <em>selected.</em></h1>
-        <p class="desc">Real account situations across home services lead gen and DTC eCommerce. Each case focuses on the constraint, the decision, and what changed.</p>
+  <h1 style="font-family:var(--display);font-weight:400;font-size:72px;line-height:0.95;letter-spacing:-0.02em;margin:0 0 20px">Play<em style="font-style:italic;color:var(--muted)">books</em></h1>
+  <p style="font-family:var(--serif);font-size:17px;line-height:1.55;color:var(--ink-2);max-width:600px;margin:0">Recurring decisions behind the work: diagnosis, structure, creative coverage, hooks, lifecycle, and scaling. These are the systems behind the case studies.</p>
+  <p style="font-family:var(--mono);font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 0">The kind of frameworks that usually stay inside agency walls.</p>
+
+  <!-- ── DIAGNOSIS & STRATEGY ── -->
+  <span class="section-divider">Diagnosis &amp; strategy</span>
+  <div class="pb-hub-grid">
+
+    <a href="account-consolidation.html" class="pb-hub-card">
+      <div class="pb-tile diag">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="4" width="7" height="5" rx="1" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.5"/>
+          <rect x="13" y="4" width="7" height="5" rx="1" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.5"/>
+          <rect x="4" y="11" width="7" height="5" rx="1" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.3"/>
+          <rect x="13" y="11" width="7" height="5" rx="1" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.3"/>
+          <rect x="7" y="17" width="10" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.9"/>
+        </svg>
       </div>
-      <div class="meta">8 ENTRIES<br>LEAD GEN + DTC</div>
-    </div>
+      <div class="pb-hub-title">Your account structure is part of your creative strategy</div>
+      <div class="pb-hub-intro">How fragmented campaigns distort creative reads — and how to consolidate without losing the differences that matter.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
 
-    <span class="section-intro">Home services · Lead gen</span>
-    <div class="arch-list">
-      <a href="epoxy.html" class="arch-item">
-        <div class="at at-num">01</div>
-        <div class="body">
-          <div class="yr"><span>MIDWEST INSTALLER</span><span>·</span><span>EPOXY FLOORING</span></div>
-          <div class="t">It wasn't a creative problem. It just looked like one.</div>
-          <div class="metric">44% CPL reduction</div>
-        </div>
-      </a>
-      <a href="bath.html" class="arch-item">
-        <div class="at at-num">02</div>
-        <div class="body">
-          <div class="yr"><span>US BATH CO</span><span>·</span><span>MULTI-STATE</span></div>
-          <div class="t">One state was carrying five. Finding it took a different kind of audit.</div>
-          <div class="metric">17% cost of marketing</div>
-        </div>
-      </a>
-      <a href="windows.html" class="arch-item">
-        <div class="at at-num">03</div>
-        <div class="body">
-          <div class="yr"><span>NDA</span><span>·</span><span>WINDOWS & DOORS</span></div>
-          <div class="t">The fix wasn't a new campaign. It was removing three old ones.</div>
-          <div class="metric">28% set rate</div>
-        </div>
-      </a>
-      <a href="roofing.html" class="arch-item">
-        <div class="at at-num">04</div>
-        <div class="body">
-          <div class="yr"><span>US ROOFING CO</span><span>·</span><span>MULTI-STATE</span></div>
-          <div class="t">One creative doing all the work. No system to replace it.</div>
-          <div class="metric">$90k to $240k spend scaled</div>
-        </div>
-      </a>
-      <a href="basement.html" class="arch-item">
-        <div class="at at-num">05</div>
-        <div class="body">
-          <div class="yr"><span>PREMIER BASEMENTS</span><span>·</span><span>BASEMENT RENOVATION</span></div>
-          <div class="t">How I brief a new account before the first dollar moves.</div>
-          <div class="metric">27% set rate on problem-aware concepts</div>
-        </div>
-      </a>
-    </div>
+    <!-- Featured -->
+    <a href="diagnosis.html" class="pb-hub-card feat">
+      <div class="pb-tile diag">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="#8FAF8F" stroke-width="1"/>
+          <path d="M12 4 L12 12 L18 12" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title">The first thing I do when a Meta account stops performing</div>
+        <div class="pb-hub-intro">A first-principles diagnostic flow for separating structure problems from creative problems before changing the wrong thing.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+      </div>
+    </a>
+</div>
 
-    <span class="section-intro" style="margin-top:48px">DTC · eCommerce</span>
-    <div class="arch-list">
-      <a href="dtc-homeorg.html" class="arch-item">
-        <div class="at at-num-dtc">06</div>
-        <div class="body">
-          <div class="yr"><span>US LIFESTYLE BRAND</span><span>·</span><span>DTC</span></div>
-          <div class="t">Scaling one ad harder is not a growth strategy.</div>
-          <div class="metric">$13.89 final CPA</div>
-        </div>
-      </a>
-      <a href="grooming.html" class="arch-item">
-        <div class="at at-num-dtc">07</div>
-        <div class="body">
-          <div class="yr"><span>NDA</span><span>·</span><span>MEN'S GROOMING</span></div>
-          <div class="t">The hook was working. The script wasn't.</div>
-          <div class="metric">2.8x ROAS on new scripts</div>
-        </div>
-      </a>
-      <a href="apparel.html" class="arch-item">
-        <div class="at at-num-dtc">08</div>
-        <div class="body">
-          <div class="yr"><span>US APPAREL BRAND</span><span>·</span><span>DTC</span></div>
-          <div class="t">You can't build a lifestyle brand with a product catalogue.</div>
-          <div class="metric">+22% avg order value</div>
-        </div>
-      </a>
-    </div>
+  <!-- ── CREATIVE ── -->
+  <span class="section-divider">Creative</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="hooks-are-targeting.html" class="pb-hub-card feat">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 19 L19 5" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2" opacity="0.5"/>
+          <circle cx="7" cy="17" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1"/>
+          <circle cx="12" cy="12" r="2.5" fill="none" stroke="#B8E3CF" stroke-width="1" opacity="0.6"/>
+          <circle cx="17" cy="7" r="2.5" fill="#B8E3CF" fill-opacity="0.3" stroke="#B8E3CF" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title q">The Hook Is Your Targeting System</div>
+        <div class="pb-hub-intro">How to choose the hook type, write the opening line, and read whether it is qualifying the right buyer or just stopping more people.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+      </div>
+    </a>
+    <a href="creative-coverage.html" class="pb-hub-card tint">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="6" width="6" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.9" stroke="#B8E3CF" stroke-width="0.5"/>
+          <rect x="4" y="13" width="6" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
+          <rect x="12" y="6" width="8" height="5" rx="1" fill="#8FAF8F" fill-opacity="0.4" stroke="#8FAF8F" stroke-width="0.5"/>
+          <rect x="12" y="13" width="8" height="5" rx="1" fill="#B8E3CF" fill-opacity="0.5" stroke="#B8E3CF" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">Creative Coverage Is the Only Growth Lever That Compounds</div>
+      <div class="pb-hub-intro">How to map concept, persona, and format coverage so testing expands territory instead of repeating the same signal.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
+<a href="creative-construction.html" class="pb-hub-card tint">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="5" y="15" width="14" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.9"/>
+          <rect x="5" y="10" width="10" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.55"/>
+          <rect x="5" y="5" width="6" height="4" rx="1" fill="#B8E3CF" fill-opacity="0.25"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">How a strong ad is actually built, layer by layer</div>
+      <div class="pb-hub-intro">The anatomy of a paid social ad — how hook, body, and offer interact to produce or lose the sale.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
+
+    <a href="ad-psychology.html" class="pb-hub-card">
+      <div class="pb-tile creat">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="7" stroke="#8FAF8F" stroke-width="0.75" opacity="0.35"/>
+          <circle cx="12" cy="12" r="4.5" stroke="#8FAF8F" stroke-width="0.75" opacity="0.55"/>
+          <circle cx="12" cy="12" r="2" fill="#B8E3CF" opacity="0.9"/>
+          <line x1="12" y1="5" x2="12" y2="7.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="19" y1="12" x2="16.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="12" y1="19" x2="12" y2="16.5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+          <line x1="5" y1="12" x2="7.5" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">The psychological levers that make paid social creative work</div>
+      <div class="pb-hub-intro">Why certain creative choices move people and others don't — applied to real Meta ad decisions.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
 
   </div>
+
+  <!-- ── SCALING & OPTIMIZATION ── -->
+  <span class="section-divider">Scaling &amp; optimization</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="creative-lifecycle.html" class="pb-hub-card feat">
+      <div class="pb-tile scale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <polyline points="5,18 5,14 9,14 9,10 13,10 13,6 18,6" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          <polyline points="5,18 5,14 9,14 9,10 13,10 13,6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="13" cy="6" r="2" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title q">Winning creatives don’t last. They evolve.</div>
+        <div class="pb-hub-intro">How to extend winners, read saturation, and replace creative before performance decay forces a reset.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+      </div>
+    </a>
+
+    
+
+    <a href="natural-cac.html" class="pb-hub-card tint">
+      <div class="pb-tile scale">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <line x1="5" y1="19" x2="19" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="5" y1="5" x2="5" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <path d="M5 14 Q10 14 10 10 Q10 6 14 6" fill="none" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="14" y1="6" x2="19" y2="6" stroke="#B8E3CF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1.5 2"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title q">Why fighting the platform on acquisition cost is usually the wrong move</div>
+      <div class="pb-hub-intro">The natural CAC concept — and why making LTV work at the platform's price beats pushing CPA down.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
+
+  </div>
+
+  <!-- ── AI & WORKFLOWS ── -->
+  <span class="section-divider">AI &amp; workflows</span>
+  <div class="pb-hub-grid">
+
+    <!-- Featured -->
+    <a href="ai-workflow.html" class="pb-hub-card feat">
+      <div class="pb-tile ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M7 12 C7 8.5 10 7 12 7 C14 7 17 8.5 17 12" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+          <path d="M7 12 C7 15.5 10 17 12 17 C14 17 17 15.5 17 12" fill="none" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="7" x2="14" y2="5" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          <line x1="17" y1="12" x2="19" y2="11" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="12" cy="12" r="1.5" fill="#B8E3CF"/>
+        </svg>
+      </div>
+      <div class="feat-body">
+        <div class="pb-hub-title">How I use AI to speed up research, brief writing, and creative iteration</div>
+        <div class="pb-hub-intro">The actual workflow — which steps benefit from AI, which still need judgment, and how to structure the handoff so neither breaks the other.</div>
+        <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+      </div>
+    </a>
+
+    <a href="comment-response-ads.html" class="pb-hub-card">
+      <div class="pb-tile ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="4" y="5" width="16" height="11" rx="2" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.5"/>
+          <line x1="7" y1="9" x2="13" y2="9" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.9"/>
+          <line x1="7" y1="12" x2="11" y2="12" stroke="#B8E3CF" stroke-width="1" stroke-linecap="round" opacity="0.55"/>
+          <path d="M10 16 L10 19 M14 16 L14 19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+          <line x1="8" y1="19" x2="16" y2="19" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">Turning comment sections into creative intelligence</div>
+      <div class="pb-hub-intro">How to mine comment data from organic and paid posts to find angles the brief never surfaced.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
+
+    <a href="claude-creative-operations.html" class="pb-hub-card">
+      <div class="pb-tile ai">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="7" stroke="#8FAF8F" stroke-width="1" fill="none" opacity="0.4"/>
+          <path d="M9 10 Q9 8 12 8 Q15 8 15 10 Q15 12 12 12" fill="none" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="12" y1="12" x2="12" y2="15" stroke="#B8E3CF" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="12" cy="16.5" r="0.8" fill="#B8E3CF"/>
+          <path d="M7 19 Q12 22 17 19" fill="none" stroke="#8FAF8F" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+        </svg>
+      </div>
+      <div class="pb-hub-title">AI belongs in the messy middle</div>
+      <div class="pb-hub-intro">Where AI earns its place in creative operations — sorting raw inputs, surfacing patterns, and expanding proven angles without replacing judgment.</div>
+      <div class="pb-hub-meta"><span>PLAYBOOK</span></div>
+    </a>
+
+  </div>
+
+</div>
 </div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
 </footer>
 </body>
 </html>

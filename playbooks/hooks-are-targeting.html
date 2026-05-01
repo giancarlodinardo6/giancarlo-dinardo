@@ -856,6 +856,42 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 /* ── SVG safety: prevents unstyled icons from rendering as giant arrows when previewed standalone ── */
 .topbar svg, .mainnav svg, .cv-btn svg, .email-link svg { width: 12px; height: 12px; display: inline-block; flex: 0 0 auto; }
 
+
+/* ── Mobile nav overflow fix: prevents Safari from zooming the page out ── */
+@media (max-width: 700px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .mainnav {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .mainnav-links {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mainnav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mainnav-links a {
+    flex: 0 0 auto;
+  }
+
+  .logo-mark {
+    flex: 0 0 auto;
+  }
+}
+
 </style>
 <link rel="stylesheet" href="../styles.css">
 </head>

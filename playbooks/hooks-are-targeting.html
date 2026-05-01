@@ -894,6 +894,145 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 
 </style>
 <link rel="stylesheet" href="../styles.css">
+
+<style>
+/* ── Hooks Are Targeting mobile hero-card fix ── */
+@media (max-width: 700px) {
+  .hero-visual {
+    overflow: hidden !important;
+    min-height: 0 !important;
+    padding: 28px 18px !important;
+  }
+
+  .hook-audience-viz {
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .hav-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .hav-hook,
+  .hav-audience {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+  }
+
+  .hav-hook {
+    font-size: 13px !important;
+  }
+
+  .hav-audience {
+    font-size: 12px !important;
+    color: rgba(255,255,255,0.58) !important;
+  }
+
+  .hav-arrow {
+    display: none !important;
+  }
+
+  .hero-stat-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding-top: 22px !important;
+  }
+
+  .hero-stat {
+    min-height: auto !important;
+    padding: 12px 14px !important;
+  }
+
+  .hero-stat-num {
+    font-size: 26px !important;
+  }
+
+  .hero-stat-desc {
+    font-size: 10px !important;
+  }
+}
+</style>
+
+
+<style>
+/* ── Hooks worked example mobile fix ── */
+@media (max-width: 700px) {
+  .worked-section {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  .hook-comparison {
+    gap: 22px !important;
+  }
+
+  .hc-product-label {
+    display: block !important;
+    width: 100% !important;
+    padding: 14px 16px !important;
+    font-size: 10px !important;
+    line-height: 1.55 !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hook-comparison > div[style*="grid-template-columns"] {
+    display: none !important;
+  }
+
+  .hc-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-bottom: 28px !important;
+  }
+
+  .hc-type-label {
+    padding-top: 0 !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.11em !important;
+    margin-bottom: 0 !important;
+  }
+
+  .hc-hook,
+  .hc-outcome {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 20px 22px !important;
+    border-radius: 14px !important;
+  }
+
+  .hc-hook {
+    font-size: 21px !important;
+    line-height: 1.35 !important;
+  }
+
+  .hc-outcome {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+  }
+
+  .hc-outcome-label {
+    font-size: 11px !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 10px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="topbar">

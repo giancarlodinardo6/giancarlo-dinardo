@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Giancarlo Di Nardo · Paid Social & Creative</title>
+<title>Giancarlo Di Nardo · Paid Social × Creative</title>
 <link rel="stylesheet" href="styles.css">
 <style>
   .v4-wrap { padding: 0 32px; max-width: 1320px; margin: 0 auto; }
@@ -38,6 +38,67 @@
     color: var(--ink);
   }
   .v2-masthead h1 em { font-style: italic; color: var(--muted); }
+  .role-x {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    width: 0.92em;
+    height: 0.92em;
+    margin: 0 0.17em;
+    vertical-align: -0.02em;
+    color: var(--ink);
+  }
+  .role-x::before,
+  .role-x::after {
+    content: '';
+    position: absolute;
+    width: 82%;
+    height: 1.5px;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.55;
+    transform-origin: center;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .role-x::before { transform: rotate(42deg); }
+  .role-x::after { transform: rotate(-42deg); }
+  .role-x .role-x-orbit {
+    position: absolute;
+    inset: 0.13em;
+    border: 1px solid rgba(91,158,158,0.46);
+    border-radius: 999px;
+    opacity: 0.42;
+    transform: rotate(-18deg) scaleX(0.74);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .role-x .role-x-dot {
+    position: absolute;
+    width: 0.13em;
+    height: 0.13em;
+    border-radius: 999px;
+    background: #5B9E9E;
+    top: 0.05em;
+    right: 0.08em;
+    opacity: 0.85;
+    box-shadow: 0 0 14px rgba(91,158,158,0.35);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .v2-masthead h1:hover .role-x::before { transform: rotate(48deg) scaleX(1.08); opacity: 0.78; }
+  .v2-masthead h1:hover .role-x::after { transform: rotate(-48deg) scaleX(1.08); opacity: 0.78; }
+  .v2-masthead h1:hover .role-x .role-x-orbit { opacity: 0.68; transform: rotate(16deg) scaleX(0.9); }
+  .v2-masthead h1:hover .role-x .role-x-dot { opacity: 1; transform: translate(-0.1em, 0.08em); }
+  @media (prefers-reduced-motion: no-preference) {
+    .role-x .role-x-orbit { animation: roleXDrift 9s ease-in-out infinite; }
+    .role-x .role-x-dot { animation: roleXPulse 4.8s ease-in-out infinite; }
+    @keyframes roleXDrift {
+      0%, 100% { transform: rotate(-18deg) scaleX(0.74); opacity: 0.38; }
+      50% { transform: rotate(12deg) scaleX(0.88); opacity: 0.58; }
+    }
+    @keyframes roleXPulse {
+      0%, 100% { opacity: 0.55; transform: translate(0,0); }
+      50% { opacity: 1; transform: translate(-0.08em, 0.06em); }
+    }
+  }
   .v2-masthead .roleline {
     font-family: var(--mono);
     font-size: 11px;
@@ -763,7 +824,7 @@
 <div class="v4-wrap">
 
   <section class="v2-masthead">
-    <h1>Giancarlo Di Nardo,<br><em>Paid Social & Creative.</em></h1>
+    <h1>Giancarlo Di Nardo,<br><em>Paid Social <span class="role-x" aria-label="and"><span class="role-x-orbit"></span><span class="role-x-dot"></span></span> Creative.</em></h1>
     <div class="roleline">
       <span class="status"><span class="status-dot"></span>AVAILABLE, FULL-TIME REMOTE</span>
       <span>TORONTO, BUENOS AIRES</span>

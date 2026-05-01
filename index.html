@@ -41,10 +41,10 @@
   .role-x {
     position: relative;
     display: inline-block;
-    width: 0.52em;
-    height: 0.52em;
-    margin: 0 0.045em;
-    vertical-align: 0.01em;
+    width: 0.58em;
+    height: 0.58em;
+    margin: 0 0.035em;
+    vertical-align: 0.005em;
     color: var(--ink);
   }
   .role-x::before,
@@ -53,37 +53,47 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 0.62em;
-    height: 1.35px;
+    width: 0.7em;
+    height: 2.15px;
     border-radius: 999px;
     background: currentColor;
-    opacity: 0.58;
+    opacity: 0.72;
     transform-origin: center;
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    transition: opacity 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
   }
   .role-x::before { transform: translate(-50%, -50%) rotate(41deg); }
   .role-x::after { transform: translate(-50%, -50%) rotate(-41deg); }
   .role-x .role-x-dot {
     position: absolute;
-    width: 0.09em;
-    height: 0.09em;
+    width: 0.115em;
+    height: 0.115em;
     border-radius: 999px;
     background: #5B9E9E;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0.75;
-    box-shadow: 0 0 10px rgba(91,158,158,0.28);
-    transition: opacity 0.22s ease, transform 0.22s ease;
+    opacity: 0.92;
+    box-shadow: 0 0 12px rgba(91,158,158,0.42);
+    transition: opacity 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
   }
-  .v2-masthead h1:hover .role-x::before { transform: translate(-50%, -50%) rotate(47deg) scaleX(1.06); opacity: 0.78; }
-  .v2-masthead h1:hover .role-x::after { transform: translate(-50%, -50%) rotate(-47deg) scaleX(1.06); opacity: 0.78; }
-  .v2-masthead h1:hover .role-x .role-x-dot { opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+  .v2-masthead h1:hover .role-x::before { transform: translate(-50%, -50%) rotate(48deg) scaleX(1.1); opacity: 0.95; box-shadow: 0 0 10px rgba(24,23,21,0.12); }
+  .v2-masthead h1:hover .role-x::after { transform: translate(-50%, -50%) rotate(-48deg) scaleX(1.1); opacity: 0.95; box-shadow: 0 0 10px rgba(24,23,21,0.12); }
+  .v2-masthead h1:hover .role-x .role-x-dot { opacity: 1; transform: translate(-50%, -50%) scale(1.55); box-shadow: 0 0 18px rgba(91,158,158,0.62); }
   @media (prefers-reduced-motion: no-preference) {
-    .role-x .role-x-dot { animation: roleXPulse 5.4s ease-in-out infinite; }
+    .role-x::before { animation: roleXStrokeA 6.4s ease-in-out infinite; }
+    .role-x::after { animation: roleXStrokeB 6.4s ease-in-out infinite; }
+    .role-x .role-x-dot { animation: roleXPulse 4.8s ease-in-out infinite; }
+    @keyframes roleXStrokeA {
+      0%, 100% { opacity: 0.62; transform: translate(-50%, -50%) rotate(41deg) scaleX(0.96); }
+      50% { opacity: 0.86; transform: translate(-50%, -50%) rotate(45deg) scaleX(1.08); }
+    }
+    @keyframes roleXStrokeB {
+      0%, 100% { opacity: 0.62; transform: translate(-50%, -50%) rotate(-41deg) scaleX(0.96); }
+      50% { opacity: 0.86; transform: translate(-50%, -50%) rotate(-45deg) scaleX(1.08); }
+    }
     @keyframes roleXPulse {
-      0%, 100% { opacity: 0.38; transform: translate(-50%, -50%) scale(0.82); }
-      50% { opacity: 0.95; transform: translate(-50%, -50%) scale(1.18); }
+      0%, 100% { opacity: 0.58; transform: translate(-50%, -50%) scale(0.9); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.22); }
     }
   }
   .v2-masthead .roleline {

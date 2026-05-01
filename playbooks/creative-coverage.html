@@ -1566,6 +1566,81 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 /* ── RUST ITALIC ACCENT (display headlines) ──────────────────────── */
 .accent-rust { color: var(--rust); font-style: italic; }
 </style>
+
+<style>
+/* ── Creative Coverage mobile hero-card fix ── */
+@media (max-width: 700px) {
+  .hero-visual {
+    overflow: hidden !important;
+    padding: 28px 18px !important;
+  }
+
+  .coverage-map-mini {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    display: grid !important;
+    grid-template-columns: 46px repeat(4, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    overflow: hidden !important;
+  }
+
+  .cm-cell,
+  .cm-head,
+  .cm-row {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    min-height: 31px !important;
+    padding: 5px 2px !important;
+    border-radius: 7px !important;
+    font-size: 7.5px !important;
+    line-height: 1.1 !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  .cm-head {
+    font-size: 6.8px !important;
+    letter-spacing: 0.01em !important;
+  }
+
+  .cm-row {
+    font-size: 7.2px !important;
+  }
+
+  .map-legend {
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    gap: 10px 14px !important;
+    margin-top: 18px !important;
+  }
+
+  .map-legend-item {
+    font-size: 9px !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .coverage-map-mini {
+    grid-template-columns: 42px repeat(4, minmax(0, 1fr)) !important;
+    gap: 3px !important;
+  }
+
+  .cm-cell,
+  .cm-head,
+  .cm-row {
+    font-size: 6.8px !important;
+    min-height: 29px !important;
+    padding: 4px 1px !important;
+  }
+
+  .cm-head {
+    font-size: 6.2px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="topbar">

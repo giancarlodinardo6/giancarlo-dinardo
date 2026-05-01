@@ -887,11 +887,50 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 <script>
 (function(){
   var path = window.location.pathname;
+  var file = path.split('/').pop() || '';
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
+
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
+    link.classList.remove('active');
+
+    if (section === 'lifecycle') {
+      if (
+        file === 'creative-coverage.html' ||
+        file === 'hooks-are-targeting.html' ||
+        file === 'creative-lifecycle.html' ||
+        file === 'creative-lifecycle-hub.html'
+      ) {
+        link.classList.add('active');
+      }
+      return;
+    }
+
+    if (section === 'playbooks') {
+      if (
+        path.indexOf('/playbooks/') !== -1 &&
+        file !== 'creative-coverage.html' &&
+        file !== 'hooks-are-targeting.html' &&
+        file !== 'creative-lifecycle.html'
+      ) {
+        link.classList.add('active');
+      }
+      return;
+    }
+
+    if (section === 'case-studies' && path.indexOf('/case-studies/') !== -1) {
       link.classList.add('active');
+      return;
+    }
+
+    if (section === 'frameworks' && path.indexOf('/frameworks/') !== -1) {
+      link.classList.add('active');
+      return;
+    }
+
+    if (section === 'about' && path.indexOf('/about/') !== -1) {
+      link.classList.add('active');
+      return;
     }
   });
 })();

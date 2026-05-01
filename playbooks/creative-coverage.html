@@ -877,6 +877,157 @@
 .audit-map, .audit-grid, .audit-matrix, .coverage-audit, .audit-chart { width:100%; max-width:100%; overflow:visible; }
 .audit-cell { min-width:0; overflow-wrap:anywhere; word-break:normal; }
 
+
+/* ── Creative Coverage mobile layout fix ── */
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    display: block;
+    grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    padding: 28px 24px 0;
+  }
+
+  .hero-left {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 13vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+    margin-bottom: 28px;
+  }
+
+  .hero-desc {
+    max-width: none;
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .hero-desc[style] {
+    margin-top: 0 !important;
+    font-size: 14px !important;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 28px;
+    margin-bottom: 44px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    padding: 28px 18px;
+    border-radius: 18px;
+    margin-top: 0;
+  }
+
+  .hero-visual-label {
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+
+  .coverage-map-mini {
+    grid-template-columns: 58px repeat(4, minmax(0, 1fr));
+    gap: 5px;
+    width: 100%;
+  }
+
+  .cm-cell,
+  .cm-head,
+  .cm-row {
+    min-height: 34px;
+    padding: 6px 3px;
+    font-size: 8.5px;
+    line-height: 1.15;
+    border-radius: 7px;
+    overflow-wrap: anywhere;
+  }
+
+  .cm-head {
+    font-size: 7.5px;
+    letter-spacing: 0.02em;
+  }
+
+  .map-legend {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin-top: 18px;
+  }
+
+  .map-legend-item {
+    font-size: 9px;
+  }
+
+  .hero-stat-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-top: 22px;
+  }
+
+  .hero-stat {
+    min-height: auto;
+    padding: 14px;
+  }
+
+  .why-section,
+  .mechanisms-header,
+  .fw-top,
+  .worked-header,
+  .process-header {
+    grid-template-columns: 1fr !important;
+    gap: 28px;
+  }
+
+  .why-section,
+  .worked-section,
+  .before-after,
+  .cta-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .full-width-section,
+  .mechanisms-section,
+  .process-section {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .mechanisms-grid,
+  .diversity-grid,
+  .scenario-grid,
+  .process-steps,
+  .before-after,
+  .coverage-flow,
+  .testing-cycle,
+  .example-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cta-inner {
+    padding: 48px 24px;
+  }
+
+  .cta-h2 {
+    font-size: clamp(32px, 10vw, 44px);
+  }
+}
+
 </style>
 
 <style>
@@ -1559,50 +1710,11 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
 <script>
 (function(){
   var path = window.location.pathname;
-  var file = path.split('/').pop() || '';
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
-
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    link.classList.remove('active');
-
-    if (section === 'lifecycle') {
-      if (
-        file === 'creative-coverage.html' ||
-        file === 'hooks-are-targeting.html' ||
-        file === 'creative-lifecycle.html' ||
-        file === 'creative-lifecycle-hub.html'
-      ) {
-        link.classList.add('active');
-      }
-      return;
-    }
-
-    if (section === 'playbooks') {
-      if (
-        path.indexOf('/playbooks/') !== -1 &&
-        file !== 'creative-coverage.html' &&
-        file !== 'hooks-are-targeting.html' &&
-        file !== 'creative-lifecycle.html'
-      ) {
-        link.classList.add('active');
-      }
-      return;
-    }
-
-    if (section === 'case-studies' && path.indexOf('/case-studies/') !== -1) {
+    if(path.indexOf(section) !== -1){
       link.classList.add('active');
-      return;
-    }
-
-    if (section === 'frameworks' && path.indexOf('/frameworks/') !== -1) {
-      link.classList.add('active');
-      return;
-    }
-
-    if (section === 'about' && path.indexOf('/about/') !== -1) {
-      link.classList.add('active');
-      return;
     }
   });
 })();

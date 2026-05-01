@@ -114,17 +114,59 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .role-x .role-x-dot {
-      animation: roleXPulse 5.8s ease-in-out infinite;
+    .role-x::before {
+      animation: roleXStrokeA 6.4s ease-in-out infinite;
     }
 
+    .role-x::after {
+      animation: roleXStrokeB 6.4s ease-in-out infinite;
+    }
+
+    .role-x .role-x-dot {
+      animation: roleXPulse 5.4s ease-in-out infinite;
+    }
+
+    .v2-masthead h1:hover .role-x::before,
+    .v2-masthead h1:hover .role-x::after,
     .v2-masthead h1:hover .role-x .role-x-dot {
       animation-play-state: paused;
     }
 
+    @keyframes roleXStrokeA {
+      0%, 100% {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) rotate(41deg) scaleX(0.96);
+      }
+      50% {
+        opacity: 0.94;
+        transform: translate(-50%, -50%) rotate(45deg) scaleX(1.08);
+      }
+    }
+
+    @keyframes roleXStrokeB {
+      0%, 100% {
+        opacity: 0.78;
+        transform: translate(-50%, -50%) rotate(-41deg) scaleX(0.96);
+      }
+      50% {
+        opacity: 0.94;
+        transform: translate(-50%, -50%) rotate(-45deg) scaleX(1.08);
+      }
+    }
+
     @keyframes roleXPulse {
-      0%, 100% { opacity: 0.58; transform: translate(-50%, -50%) scale(0.92); }
-      50% { opacity: 0.84; transform: translate(-50%, -50%) scale(1.08); }
+      0%, 100% {
+        opacity: 0.58;
+        transform: translate(-50%, -50%) scale(0.92);
+        background: #5B9E9E;
+        box-shadow: 0 0 8px rgba(91,158,158,0.22);
+      }
+      50% {
+        opacity: 0.94;
+        transform: translate(-50%, -50%) scale(1.18);
+        background: #8FAF8F;
+        box-shadow: 0 0 15px rgba(91,158,158,0.42);
+      }
     }
   }
 

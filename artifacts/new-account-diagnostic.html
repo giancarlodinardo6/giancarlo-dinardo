@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Account Diagnostic — Giancarlo Di Nardo</title>
+<title>New Account Diagnostic / Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
 <style>
@@ -134,6 +134,18 @@
   .audit-layer { grid-template-columns: 48px 1fr; }
   .audit-layer-checks { display: none; }
   .plan-grid, .questions-grid { grid-template-columns: 1fr; }
+  .findings-table thead { display: none; }
+  .findings-table tr { display: block; border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .findings-table tr:last-child { border-bottom: none; }
+  .findings-table td { display: block; padding: 4px 20px; border-bottom: none; }
+  .findings-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 3px;
+  }
+  .findings-table td:first-child { padding-top: 0; }
+  .findings-table td:last-child { padding-bottom: 0; }
 }
 @media (max-width: 700px) { .artifact-wrap { padding: 28px 20px 60px; } }
 </style>
@@ -177,7 +189,7 @@
     <div>
       <div class="artifact-eyebrow">Diagnostic · New Account Audit</div>
       <h1 class="artifact-title">What I look at, <em>in what order</em>, before the first dollar moves</h1>
-      <p class="artifact-desc">Taking over a Meta account — whether it's a rebuild or a cold start — requires a specific sequence of questions answered before any brief is written or any campaign is touched. The sequence matters because the findings at each layer change what you do at the next one. This is the audit document.</p>
+      <p class="artifact-desc">Taking over a Meta account, whether it's a rebuild or a cold start, requires a specific sequence of questions answered before any brief is written or any campaign is touched. The sequence matters because the findings at each layer change what you do at the next one. This is the audit document.</p>
     </div>
     <div class="artifact-meta-card">
       <div class="artifact-meta-row">
@@ -202,9 +214,9 @@
   <!-- WHY THE SEQUENCE MATTERS -->
   <div class="a-section">
     <div class="a-section-label">Why the sequence matters</div>
-    <h2 class="a-section-title">Most accounts don't have a creative problem. <em>They have a diagnostic problem.</em></h2>
-    <p class="a-prose">The temptation when taking over a struggling account is to brief new creative immediately. The data looks bad, the client wants movement, and production feels like progress. The problem is that new creative launched into a broken structure learns from the wrong signals. The creative improves. The account doesn't. Then the explanation is that "the creative didn't work" when the real problem was never diagnosed.</p>
-    <p class="a-prose">This audit runs in five layers. Each layer's findings directly inform the next. Skipping to layer three without completing layers one and two produces a plan built on assumptions that may be wrong. The Premier Basements case shows what pre-launch research prevented: a financing-angle concept with a competitive CPL had the lowest set rate in the batch. Without the audit framework, it would have been the first concept scaled.</p>
+    <h2 class="a-section-title">Under Andromeda, creative is the targeting. <em>The audit determines what to brief.</em></h2>
+    <p class="a-prose">Since Meta's Andromeda rollout completed in late 2025, creative is no longer the last step in account setup. It's the primary signal the algorithm uses to decide who sees your ads. Audience settings are increasingly just suggestions. The creative itself does the matching. Which means a new account takeover isn't just a structure problem or a data problem. Getting to the right creative brief, fast, is the actual goal.</p>
+    <p class="a-prose">That said, new creative launched into a broken structure learns from the wrong signals. A CBO where testing and scaling share budget will starve new concepts before they gather enough data to be judged fairly. Duplicate leads corrupt the metrics used to call winners. The audit doesn't deprioritise creative. It clears the conditions that make creative performance readable. The Premier Basements case shows why this matters: a financing-angle concept had a competitive CPL but the worst set rate in the batch. Without the audit layer, that concept would have been the first one scaled.</p>
   </div>
 
   <!-- OPENING QUESTIONS -->
@@ -214,17 +226,17 @@
     <div class="questions-grid">
       <div class="question-card">
         <div class="question-num">01</div>
-        <div class="question-text">What does success look like — and at what level of the funnel?</div>
+        <div class="question-text">What does success look like, and at what level of the funnel?</div>
         <div class="question-why">CPL is not the business metric. For lead gen the business metric is cost-per-closed-job or CoM%. For DTC it's ROAS or LTV:CAC. If the client defines success as CPL, the first conversation is reframing that before any campaign is evaluated.</div>
       </div>
       <div class="question-card">
         <div class="question-num">02</div>
         <div class="question-text">What has been tried before and what was the conclusion drawn?</div>
-        <div class="question-why">Prior creative decisions tell you what the account thinks it knows. The conclusions drawn from past tests are often the most valuable data — not because they're right, but because understanding the prior logic tells you what assumptions are baked into the current structure.</div>
+        <div class="question-why">Prior creative decisions tell you what the account thinks it knows. The conclusions drawn from past tests are often the most valuable data. Not because they're right, but because understanding the prior logic tells you what assumptions are baked into the current structure.</div>
       </div>
       <div class="question-card">
         <div class="question-num">03</div>
-        <div class="question-text">Is there CRM data available — and does it connect to ad performance?</div>
+        <div class="question-text">Is there CRM data available, and does it connect to ad performance?</div>
         <div class="question-why">Without CRM linkage, every creative decision is being made on the cost of the lead, not the value of it. Before the first brief, confirm whether CRM data exists and whether it's matchable to ad-level performance. This determines whether set rate and close rate are observable metrics.</div>
       </div>
       <div class="question-card">
@@ -235,11 +247,11 @@
       <div class="question-card">
         <div class="question-num">05</div>
         <div class="question-text">What is the serviceable geography and what are the hard constraints?</div>
-        <div class="question-why">In home services, every out-of-area lead is a real cost to the sales team with zero revenue potential. The geographic parameters need to be defined before any campaign is evaluated — not after. This determines which campaigns have a structural flaw built in from the start.</div>
+        <div class="question-why">In home services, every out-of-area lead is a real cost to the sales team with zero revenue potential. The geographic parameters need to be defined before any campaign is evaluated, not after. This determines which campaigns have a structural flaw built in from the start.</div>
       </div>
       <div class="question-card">
         <div class="question-num">06</div>
-        <div class="question-text">What content assets exist — and who produced them?</div>
+        <div class="question-text">What content assets exist, and who produced them?</div>
         <div class="question-why">The answer to this question determines the creative brief strategy. An account with a rich content library (UGC, video, photography) can brief variants immediately. An account with only stock assets needs a production plan before it needs a media plan. Creative coverage cannot be built without knowing what raw material exists.</div>
       </div>
     </div>
@@ -255,9 +267,9 @@
       <div class="audit-layer">
         <div class="audit-layer-num">1</div>
         <div class="audit-layer-body">
-          <div class="audit-layer-k">Layer 01 — Structure</div>
+          <div class="audit-layer-k">Layer 01: Structure</div>
           <div class="audit-layer-title">Is the account architecture producing clean signal?</div>
-          <div class="audit-layer-desc">Count active campaigns, adsets, and ads. Flag any campaign where testing and scaling share the same budget. Identify audience overlap across adsets — competing campaigns targeting the same people split signal and inflate CPL without anyone noticing. Check whether retargeting has its own budget or is competing inside a CBO with cold audiences. A CBO almost always starves the hotter audience.</div>
+          <div class="audit-layer-desc">Count active campaigns, adsets, and ads. Flag any campaign where testing and scaling share the same budget. Identify audience overlap across adsets. Competing campaigns targeting the same people split signal and inflate CPL without anyone noticing. Check whether retargeting has its own budget or is competing inside a CBO with cold audiences. A CBO almost always starves the hotter audience.</div>
         </div>
         <div class="audit-layer-checks">
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Testing and scaling separated</div></div>
@@ -271,9 +283,9 @@
       <div class="audit-layer">
         <div class="audit-layer-num">2</div>
         <div class="audit-layer-body">
-          <div class="audit-layer-k">Layer 02 — Data quality</div>
+          <div class="audit-layer-k">Layer 02: Data quality</div>
           <div class="audit-layer-title">Can the numbers in the account be trusted?</div>
-          <div class="audit-layer-desc">Check the duplicate lead rate using CRM data and phone-number deduplication. In the windows case, 23% of leads were duplicates — every CPL and set rate metric was wrong. Check that the pixel is firing correctly on all conversion events. Confirm the attribution window matches the actual decision timeline for this vertical. A 1-day click window on a product with a 6-week sales cycle produces data that's technically accurate and practically useless.</div>
+          <div class="audit-layer-desc">Check the duplicate lead rate using CRM data and phone-number deduplication. In the windows case, 23% of leads were duplicates, so every CPL and set rate metric was wrong. Check that the pixel is firing correctly on all conversion events. Confirm the attribution window matches the actual decision timeline for this vertical. A 1-day click window on a product with a 6-week sales cycle produces data that's technically accurate and practically useless.</div>
         </div>
         <div class="audit-layer-checks">
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Duplicate lead rate checked</div></div>
@@ -286,24 +298,24 @@
       <div class="audit-layer">
         <div class="audit-layer-num">3</div>
         <div class="audit-layer-body">
-          <div class="audit-layer-k">Layer 03 — Creative performance</div>
-          <div class="audit-layer-title">Which ads are earning their budget — at what level of the funnel?</div>
-          <div class="audit-layer-desc">Pull lifetime data for every active ad. Evaluate against CPL, set rate, cost-per-demo, and close rate where available. Flag ads with strong CPL but weak close rate — these are the most dangerous because they look like winners at the top of the funnel and destroy the business at the bottom. In the bath remodeling case, several top-CPL ads were generating near-zero sales. They would have been scaled without sale-level analysis.</div>
+          <div class="audit-layer-k">Layer 03: Creative performance</div>
+          <div class="audit-layer-title">Which ads are earning their budget, and at what level of the funnel?</div>
+          <div class="audit-layer-desc">Pull lifetime data for every active ad. Evaluate against CPL, set rate, cost-per-demo, and close rate where available. Flag ads with strong CPL but weak close rate. These are the most dangerous because they look like winners at the top of the funnel and destroy the business at the bottom. In the bath remodeling case, several top-CPL ads were generating near-zero sales. They would have been scaled without sale-level analysis.</div>
         </div>
         <div class="audit-layer-checks">
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Lifetime data pulled per ad</div></div>
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Set rate and close rate mapped</div></div>
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Creative hierarchy ranked</div></div>
-          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Format types categorised</div></div>
+          <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Format types categorized</div></div>
         </div>
       </div>
 
       <div class="audit-layer">
         <div class="audit-layer-num">4</div>
         <div class="audit-layer-body">
-          <div class="audit-layer-k">Layer 04 — Coverage</div>
+          <div class="audit-layer-k">Layer 04: Coverage</div>
           <div class="audit-layer-title">How much creative territory is the account actually covering?</div>
-          <div class="audit-layer-desc">Map every active ad against concept type, persona, awareness level, and hook format. Most accounts with 30+ ads are covering two or three buyer segments with slight variations. Identify the gaps — which personas have no creative, which awareness levels have no entry point, which hook formats have never been tested. These gaps are not missing ads. They are market segments the algorithm cannot reach regardless of how much budget is running.</div>
+          <div class="audit-layer-desc">Map every active ad against concept type, persona, awareness level, and hook format. Most accounts with 30+ ads are covering two or three buyer segments with slight variations. Identify the gaps: which personas have no creative, which awareness levels have no entry point, which hook formats have never been tested. These gaps are not missing ads. They are market segments the algorithm cannot reach regardless of how much budget is running.</div>
         </div>
         <div class="audit-layer-checks">
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Concept map built</div></div>
@@ -316,9 +328,9 @@
       <div class="audit-layer">
         <div class="audit-layer-num">5</div>
         <div class="audit-layer-body">
-          <div class="audit-layer-k">Layer 05 — Buyer research</div>
-          <div class="audit-layer-title">Who is actually buying — and why are they buying now?</div>
-          <div class="audit-layer-desc">For new accounts with no performance history, this layer replaces layer three. Pull category research: Reddit threads, review sites, sales call recordings if available, any CRM notes on why leads converted. The goal is to identify the specific trigger that moves someone from aware-of-the-problem to ready-to-act. In basement renovation, it was moisture urgency — not financing, not space. The financing angle had a competitive CPL and the worst set rate in the batch.</div>
+          <div class="audit-layer-k">Layer 05: Buyer research</div>
+          <div class="audit-layer-title">Who is actually buying, and why are they buying now?</div>
+          <div class="audit-layer-desc">For new accounts with no performance history, this layer replaces layer three. Pull category research: Reddit threads, review sites, sales call recordings if available, any CRM notes on why leads converted. The goal is to identify the specific trigger that moves someone from aware-of-the-problem to ready-to-act. In basement renovation, it was moisture urgency, not financing, not space. The financing angle had a competitive CPL and the worst set rate in the batch.</div>
         </div>
         <div class="audit-layer-checks">
           <div class="audit-check"><div class="audit-check-box"></div><div class="audit-check-text">Trigger moments identified</div></div>
@@ -334,12 +346,12 @@
   <!-- FINDINGS TABLE -->
   <div class="a-section">
     <div class="a-section-label">Findings format</div>
-    <h2 class="a-section-title">How findings become <em>a prioritised action list</em></h2>
-    <p class="a-prose" style="margin-bottom:24px;">Each audit layer produces findings. Findings are assigned a priority and an action. Nothing is addressed simultaneously — the sequence is: fix structure, verify data, then evaluate creative. Only once layers 1 and 2 are clean do creative decisions become trustworthy.</p>
+    <h2 class="a-section-title">How findings become <em>a prioritized action list</em></h2>
+    <p class="a-prose" style="margin-bottom:24px;">Each audit layer produces findings. Findings are assigned a priority and an action. Nothing is addressed simultaneously. The sequence is: fix structure, verify data, then evaluate creative. Only once layers 1 and 2 are clean do creative decisions become trustworthy.</p>
 
     <div class="findings-wrap">
       <div class="findings-header">
-        <div class="findings-header-title">Audit Findings Template — New Account</div>
+        <div class="findings-header-title">Audit Findings Template: New Account</div>
       </div>
       <table class="findings-table">
         <thead>
@@ -353,46 +365,46 @@
         </thead>
         <tbody>
           <tr>
-            <td><div class="finding-label">Structure</div></td>
-            <td>Testing and scaling sharing one CBO. Algorithm has already chosen winners — new creative gets no fair evaluation.</td>
-            <td><span class="priority-high">Fix first</span></td>
-            <td>Separate testing into ABO. Scaling stays in CBO with Post IDs only.</td>
-            <td>All creative decisions</td>
+            <td data-label="Layer"><div class="finding-label">Structure</div></td>
+            <td data-label="Finding">Testing and scaling sharing one CBO. Algorithm has already chosen winners, so new creative gets no fair evaluation.</td>
+            <td data-label="Priority"><span class="priority-high">Fix first</span></td>
+            <td data-label="Action">Separate testing into ABO. Scaling stays in CBO with Post IDs only.</td>
+            <td data-label="Blocks">All creative decisions</td>
           </tr>
           <tr>
-            <td><div class="finding-label">Structure</div></td>
-            <td>Retargeting competing inside cold traffic CBO. Warm audience being starved — budget going to cold.</td>
-            <td><span class="priority-high">Fix first</span></td>
-            <td>Move retargeting to dedicated ABO. Mid-funnel and bottom-funnel on separate daily budgets.</td>
-            <td>Lead quality metrics</td>
+            <td data-label="Layer"><div class="finding-label">Structure</div></td>
+            <td data-label="Finding">Retargeting competing inside cold traffic CBO. Warm audience being starved, budget going to cold.</td>
+            <td data-label="Priority"><span class="priority-high">Fix first</span></td>
+            <td data-label="Action">Move retargeting to dedicated ABO. Mid-funnel and bottom-funnel on separate daily budgets.</td>
+            <td data-label="Blocks">Lead quality metrics</td>
           </tr>
           <tr>
-            <td><div class="finding-label">Data quality</div></td>
-            <td>Duplicate lead rate: estimate from CRM spot-check. Set rate reading is unreliable until fixed.</td>
-            <td><span class="priority-high">Fix before reading metrics</span></td>
-            <td>Rebuild exclusion lists using CRM export + phone number deduplication.</td>
-            <td>Set rate, CPL reads</td>
+            <td data-label="Layer"><div class="finding-label">Data quality</div></td>
+            <td data-label="Finding">Duplicate lead rate: estimate from CRM spot-check. Set rate reading is unreliable until fixed.</td>
+            <td data-label="Priority"><span class="priority-high">Fix before reading metrics</span></td>
+            <td data-label="Action">Rebuild exclusion lists using CRM export + phone number deduplication.</td>
+            <td data-label="Blocks">Set rate, CPL reads</td>
           </tr>
           <tr>
-            <td><div class="finding-label">Creative</div></td>
-            <td>Three ads accounting for 80%+ of spend. No creative rotation plan — frequency ceiling imminent.</td>
-            <td><span class="priority-med">Brief within 2 weeks</span></td>
-            <td>Deconstruct top performer. Brief 3 script variants isolating one variable each.</td>
-            <td>Scale ceiling</td>
+            <td data-label="Layer"><div class="finding-label">Creative</div></td>
+            <td data-label="Finding">Three ads accounting for 80%+ of spend. No creative rotation plan. Frequency ceiling imminent.</td>
+            <td data-label="Priority"><span class="priority-med">Brief within 2 weeks</span></td>
+            <td data-label="Action">Deconstruct top performer. Brief 3 script variants isolating one variable each.</td>
+            <td data-label="Blocks">Scale ceiling</td>
           </tr>
           <tr>
-            <td><div class="finding-label">Coverage</div></td>
-            <td>All active creative speaks to solution-aware buyer. No problem-aware or unaware entry points.</td>
-            <td><span class="priority-med">Brief in month 2</span></td>
-            <td>Build problem-aware concepts for each confirmed persona. Test as static before video.</td>
-            <td>New audience reach</td>
+            <td data-label="Layer"><div class="finding-label">Coverage</div></td>
+            <td data-label="Finding">All active creative speaks to solution-aware buyer. No problem-aware or unaware entry points.</td>
+            <td data-label="Priority"><span class="priority-med">Brief in month 2</span></td>
+            <td data-label="Action">Build problem-aware concepts for each confirmed persona. Test as static before video.</td>
+            <td data-label="Blocks">New audience reach</td>
           </tr>
           <tr>
-            <td><div class="finding-label">Buyer research</div></td>
-            <td>No confirmed trigger moment for the category. Creative is describing the product, not the situation that creates urgency.</td>
-            <td><span class="priority-med">Research before briefing</span></td>
-            <td>Pull review data and category forums. Identify the 2–3 specific situations that make someone act. Build hooks from those situations.</td>
-            <td>Hook strategy</td>
+            <td data-label="Layer"><div class="finding-label">Buyer research</div></td>
+            <td data-label="Finding">No confirmed trigger moment for the category. Creative is describing the product, not the situation that creates urgency.</td>
+            <td data-label="Priority"><span class="priority-med">Research before briefing</span></td>
+            <td data-label="Action">Pull review data and category forums. Identify the 2–3 specific situations that make someone act. Build hooks from those situations.</td>
+            <td data-label="Blocks">Hook strategy</td>
           </tr>
         </tbody>
       </table>
@@ -412,7 +424,7 @@
         <div class="plan-card-body">
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Restructure campaigns based on layer 1 findings</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Rebuild exclusion lists and verify pixel</div></div>
-          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Apply creative scorecard to all live ads — cut what fails</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Apply creative scorecard to all live ads, cut what fails</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Launch testing adset with 3 concept types from buyer research</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Establish baseline CPL, set rate, and cost-per-demo from clean data</div></div>
         </div>
@@ -423,21 +435,21 @@
           <div class="plan-card-title">Validate and expand</div>
         </div>
         <div class="plan-card-body">
-          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Read testing adset results — identify winning concept types</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Read testing adset results, identify winning concept types</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Brief script and footage variants from winning formula</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Begin geographic concentration if multi-market account</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Build creative hierarchy from confirmed winners</div></div>
-          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Confirm CRM linkage — begin evaluating creative by close rate</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Confirm CRM linkage, begin evaluating creative by close rate</div></div>
         </div>
       </div>
       <div class="plan-card">
         <div class="plan-card-top">
           <div class="plan-card-phase">Days 61–90</div>
-          <div class="plan-card-title">Scale and systematise</div>
+          <div class="plan-card-title">Scale and systematize</div>
         </div>
         <div class="plan-card-body">
-          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Scale budget into validated performers — geography by geography</div></div>
-          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Monitor frequency — brief replacements before 4.0 threshold</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Scale budget into validated performers, geography by geography</div></div>
+          <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Monitor frequency, brief replacements before 4.0 threshold</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Expand creative coverage into uncovered personas</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Set recurring scorecard review cadence (14-day + 28-day)</div></div>
           <div class="plan-item"><div class="plan-item-dot"></div><div class="plan-item-text">Document creative hierarchy as ongoing brief template</div></div>

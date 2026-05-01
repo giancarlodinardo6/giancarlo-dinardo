@@ -294,60 +294,40 @@
     border: 1px solid var(--line-2);
     border-radius: 10px;
     background:
-      linear-gradient(90deg, rgba(24,23,21,0.055) 1px, transparent 1px) 0 0 / 42px 100%,
-      rgba(241,236,226,0.62);
+      radial-gradient(circle at 50% 50%, rgba(255,255,255,0.42), transparent 58%),
+      linear-gradient(135deg, rgba(24,23,21,0.035), transparent 42%),
+      rgba(241,236,226,0.68);
     position: relative;
     overflow: hidden;
   }
-  .editorial-visual-card::before {
-    content: '';
-    position: absolute;
-    left: 18px;
-    top: 22px;
-    width: 78%;
-    height: 1px;
-    background: var(--ink);
-    opacity: 0.32;
-    box-shadow:
-      0 17px 0 rgba(24,23,21,0.18),
-      0 34px 0 rgba(24,23,21,0.14),
-      0 51px 0 rgba(24,23,21,0.1);
-  }
+  .editorial-visual-card::before,
   .editorial-visual-card::after {
     content: '';
     position: absolute;
-    right: 20px;
-    bottom: 18px;
-    width: 58px;
-    height: 58px;
+    top: 23px;
+    width: 74px;
+    height: 74px;
     border-radius: 50%;
-    border: 1px solid rgba(91,158,158,0.42);
-    background: radial-gradient(circle at center, rgba(91,158,158,0.18) 0 3px, transparent 4px);
+    border: 1.15px solid rgba(24,23,21,0.34);
+    background: transparent;
+  }
+  .editorial-visual-card::before {
+    left: calc(50% - 80px);
+  }
+  .editorial-visual-card::after {
+    left: calc(50% - 15px);
   }
   .editorial-node {
     position: absolute;
-    left: 26px;
-    bottom: 22px;
-    width: 74px;
-    height: 28px;
-    border: 1px solid rgba(184,92,56,0.34);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.38);
+    left: calc(50% - 15px);
+    top: 23px;
+    width: 31px;
+    height: 74px;
+    background: rgba(255,255,255,0.46);
+    border-left: 1px solid rgba(24,23,21,0.06);
+    border-right: 1px solid rgba(24,23,21,0.06);
+    clip-path: ellipse(50% 50% at 50% 50%);
   }
-  .editorial-node::before,
-  .editorial-node::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 5px;
-    height: 5px;
-    margin-top: -2.5px;
-    border-radius: 50%;
-    background: var(--rust);
-    opacity: 0.55;
-  }
-  .editorial-node::before { left: 18px; }
-  .editorial-node::after { right: 18px; }
 
   /* Section head shared */
   .section-head {

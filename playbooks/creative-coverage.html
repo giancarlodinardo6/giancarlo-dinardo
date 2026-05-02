@@ -1639,6 +1639,149 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     font-size: 6.2px !important;
   }
 }
+
+/* ── ARTIFACT CALLOUT COMPONENT ─────────────────────────────────── */
+.artifact-callout-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 48px 32px;
+}
+.artifact-callout-block {
+  background: #1A1916;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  margin-bottom: 10px;
+  position: relative;
+}
+.artifact-callout-content {
+  padding: 28px 32px;
+  position: relative;
+  z-index: 1;
+}
+.artifact-callout-eyebrow {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(91,158,158,0.8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.artifact-callout-eyebrow::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: rgba(91,158,158,0.5);
+}
+.artifact-callout-title {
+  font-family: var(--display);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  color: #F1ECE2;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.artifact-callout-desc {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  color: rgba(241,236,226,0.55);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+.artifact-callout-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(91,158,158,0.15);
+  border: 1px solid rgba(91,158,158,0.4);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5B9E9E;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.artifact-callout-cta:hover {
+  background: rgba(91,158,158,0.25);
+  border-color: rgba(91,158,158,0.65);
+}
+.artifact-callout-cta svg { transition: transform 0.15s; }
+.artifact-callout-cta:hover svg { transform: translateX(3px); }
+.artifact-callout-visual {
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  padding: 24px 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.artifact-hub-block {
+  background: rgba(91,158,158,0.08);
+  border: 1px solid rgba(91,158,158,0.22);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.artifact-hub-block:hover {
+  background: rgba(91,158,158,0.14);
+  border-color: rgba(91,158,158,0.35);
+}
+.artifact-hub-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 3px;
+}
+.artifact-hub-text {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  color: rgba(28,25,22,0.65);
+  line-height: 1.4;
+}
+.artifact-hub-arrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+@media (max-width: 900px) {
+  .artifact-callout-wrap { padding: 0 24px 28px; }
+  .artifact-callout-block { grid-template-columns: 1fr; }
+  .artifact-callout-visual { display: none; }
+  .artifact-callout-content { padding: 24px 24px 22px; }
+}
+@media (max-width: 700px) {
+  .artifact-callout-wrap { padding: 0 20px 24px; }
+  .artifact-callout-desc { font-size: 13px; }
+}
+
 </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">

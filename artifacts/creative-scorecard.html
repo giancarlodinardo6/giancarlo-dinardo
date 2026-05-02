@@ -294,7 +294,37 @@
   }
 
   /* Action chip */
-  .sc-cell:nth-child(5) { padding: 0; }
+  .sc-cell:nth-child(5) {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sc-cell:nth-child(5)::before {
+    content: 'Action';
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--muted);
+    flex-shrink: 0;
+  }
+  .sc-action-text {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 9px;
+    letter-spacing: 0.07em;
+  }
+  .sc-action-cut {
+    background: rgba(184,92,56,0.08);
+    border: 1px solid rgba(184,92,56,0.25);
+  }
+  .sc-action-scale {
+    background: rgba(91,158,158,0.1);
+    border: 1px solid rgba(91,158,158,0.25);
+  }
+  .sc-action-hold {
+    background: rgba(198,188,238,0.12);
+    border: 1px solid rgba(198,188,238,0.3);
+  }
 }
 
 @media (max-width: 700px) {

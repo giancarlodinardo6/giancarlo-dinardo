@@ -26,15 +26,6 @@
       --serif: 'Instrument Serif', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
-
-    nav { max-width: 1200px; margin: 0 auto; padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
-    .nav-back { font-size: 13px; color: var(--ink-60); text-decoration: none; }
-    .nav-back:hover { color: var(--ink); }
-
     .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
     .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
 
@@ -45,7 +36,7 @@
     .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
     .hero h1 { font-family: var(--serif); font-size: clamp(38px,4.8vw,58px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
-    .hero h1 em { font-style: italic; color: var(--teal); }
+    .hero h1 em { font-style: italic; color: #5B9E9E !important; }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
     .hero-meta { display: flex; gap: 24px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; align-items: flex-start; }
     .hero-meta-item { flex: 0 0 calc(50% - 16px); min-width: 0; }
@@ -79,7 +70,7 @@
     .creative-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
     .creative-card { background: white; border-radius: 14px; padding: 28px; border: 1px solid var(--ink-10); }
     .creative-card-tag { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 14px; }
-    .creative-card-tag.winner { background: var(--teal-light); color: var(--teal); }
+    .creative-card-tag.winner { background: #D8EDEA !important; color: #5B9E9E !important; }
     .creative-card-tag.tested { background: var(--ink-10); color: var(--ink-30); }
     .creative-card-tag.learning { background: var(--amber-light); color: var(--amber); }
     .creative-card-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
@@ -101,7 +92,7 @@
 
     .learned-section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
     .learned-section h2 { font-family: var(--serif); font-size: clamp(28px,3.2vw,40px); font-weight: 400; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 40px; }
-    .learned-section h2 em { font-style: italic; color: var(--teal); }
+    .learned-section h2 em { font-style: italic; color: #5B9E9E !important; }
     .learned-items { display: flex; flex-direction: column; gap: 32px; max-width: 680px; }
     .learned-item { display: flex; gap: 24px; align-items: flex-start; }
     .learned-num { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--ink-30); min-width: 28px; padding-top: 3px; }
@@ -111,15 +102,15 @@
     .before-after { padding: 80px 48px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .ba-card { border-radius: 20px; padding: 40px; }
     .ba-card.before { background: var(--rust-light); border: 1px solid rgba(184,92,56,0.15); }
-    .ba-card.after { background: var(--teal-light); border: 1px solid rgba(91,158,158,0.15); }
+    .ba-card.after { background: #D8EDEA !important; border: 1px solid rgba(91,158,158,0.15); }
     .ba-label { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 28px; }
     .before .ba-label { color: var(--rust); }
-    .after .ba-label { color: var(--teal); }
+    .after .ba-label { color: #5B9E9E !important; }
     .ba-items { display: flex; flex-direction: column; gap: 14px; }
     .ba-item { display: flex; gap: 12px; align-items: flex-start; }
     .ba-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
     .before .ba-dot { background: var(--rust); }
-    .after .ba-dot { background: var(--teal); }
+    .after .ba-dot { background: #5B9E9E !important; }
     .ba-item div:last-child { font-size: 14px; line-height: 1.65; color: var(--ink); }
 
     .confirm { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 7px; border-radius: 20px; background: #F5ECD8; color: #B87A1A; letter-spacing: 0.06em; text-transform: uppercase; margin-right: 6px; vertical-align: middle; }
@@ -129,7 +120,7 @@
     .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
     .cta-section { background: var(--ink); margin: 0 auto 80px; border-radius: 24px; padding: 80px 48px; text-align: center; max-width: 1104px; }
     .cta-h2 { font-family: var(--serif); font-size: clamp(32px,4vw,48px); font-weight: 400; color: white; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 20px; }
-    .cta-h2 em { font-style: italic; color: var(--teal); opacity: 0.9; }
+    .cta-h2 em { font-style: italic; color: #5B9E9E !important; opacity: 0.9; }
     .cta-desc { font-size: 16px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
     .cta-btn { display: inline-block; background: white; color: var(--ink); font-size: 14px; font-weight: 500; padding: 14px 32px; border-radius: 40px; text-decoration: none; transition: opacity 0.2s; }
     .cta-btn:hover { opacity: 0.85; }
@@ -257,7 +248,7 @@
   font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: #5B9E9E !important;
   margin-bottom: 3px;
 }
 .artifact-hub-text {
@@ -271,7 +262,7 @@
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: #5B9E9E !important;
   white-space: nowrap;
   flex-shrink: 0;
   display: flex;
@@ -413,15 +404,15 @@
 <div class="hero-visual-label">Key results from this engagement</div>
 <div class="hero-stat-grid">
 <div class="hero-stat">
-<div class="hero-stat-num">25%</div>
+<div class="hero-stat-num" style="color: #5B9E9E !important;">25%</div>
 <div class="hero-stat-label">CPL reduction<br/>$114 → $85 avg. across states</div>
 </div>
 <div class="hero-stat">
-<div class="hero-stat-num">17%</div>
+<div class="hero-stat-num" style="color: #5B9E9E !important;">17%</div>
 <div class="hero-stat-label">Cost of marketing<br/>down from 25%, target ~21%</div>
 </div>
 <div class="hero-stat">
-<div class="hero-stat-num">6</div>
+<div class="hero-stat-num" style="color: #5B9E9E !important;">6</div>
 <div class="hero-stat-label">States audited<br/>one creative hierarchy</div>
 </div>
 </div>
@@ -562,19 +553,29 @@
     <div class="creative-card-metric">11.8% CoM on <strong>interest stack</strong> — better than its broad adset performance</div>
   </div>
 
-  <!-- Card 5: Banner Rhode Island — text only -->
+  <!-- Card 5: Banner Rhode Island — insight block -->
   <div class="creative-card">
+    <div style="margin-bottom:14px; border-radius:10px; overflow:hidden; background: #D8EDEA; border-left: 3px solid #5B9E9E; padding: 24px 20px; display:flex; flex-direction:column; gap:12px;">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#5B9E9E;">Key insight</div>
+      <p style="font-family: var(--serif); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Don't drop a format entirely before checking if a single market is propping up the average.</p>
+      <div style="font-size:12px; color:var(--ink-60); line-height:1.6; margin-top:4px;">The Rhode Island banner had a 57% close rate across four sales — an outlier that would have been lost if the format was cut based on aggregate performance.</div>
+    </div>
     <span class="creative-card-tag learning">Learning</span>
     <div class="creative-card-title">Banner — Rhode Island exception</div>
-    <div class="creative-card-desc">Generic banner format underperformed candids in every other state. Rhode Island was the outlier: 57% close rate across four sales. Kept active for RI only. The lesson was not to drop a format entirely before checking if a single market was propping it up.</div>
+    <div class="creative-card-desc">Generic banner format underperformed candids in every other state. Rhode Island was the outlier: 57% close rate across four sales. Kept active for RI only.</div>
     <div class="creative-card-metric">57% close rate in <strong>Rhode Island only</strong></div>
   </div>
 
-  <!-- Card 6: Urgency copy — text only -->
+  <!-- Card 6: Urgency copy — insight block -->
   <div class="creative-card">
+    <div style="margin-bottom:14px; border-radius:10px; overflow:hidden; background: #D8EDEA; border-left: 3px solid #5B9E9E; padding: 24px 20px; display:flex; flex-direction:column; gap:12px;">
+      <div style="font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#5B9E9E;">Key insight</div>
+      <p style="font-family: var(--serif); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Copy written for cold audiences kills warm audience conversions — even when the creative itself is strong.</p>
+      <div style="font-size:12px; color:var(--ink-60); line-height:1.6; margin-top:4px;">Location callout copy that works in prospecting signals the wrong intent in retargeting. The same image with urgency and scarcity copy is a different ad for a different job.</div>
+    </div>
     <span class="creative-card-tag tested">Tested</span>
     <div class="creative-card-title">Urgency copy on retargeting candids</div>
-    <div class="creative-card-desc">Retargeting candids had generated solid lead volume in prior campaigns but closed zero sales. The hypothesis was that location callout copy, designed for cold audiences, was wrong for warm ones. Relaunched with urgency and scarcity copy instead.</div>
+    <div class="creative-card-desc">Retargeting candids had generated solid lead volume but closed zero sales. The hypothesis: location callout copy, built for cold audiences, was wrong for warm ones. Relaunched with urgency and scarcity copy instead.</div>
     <div class="creative-card-metric">Prior version: <strong>6 demos, 0 sales</strong> with location copy</div>
   </div>
 

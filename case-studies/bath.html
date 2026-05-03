@@ -46,7 +46,7 @@
     .hero h1 em { font-style: italic; color: var(--ink); }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
     .hero-meta { display: flex; gap: 24px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; align-items: flex-start; }
-    .hero-meta-item { flex-shrink: 0; }
+    .hero-meta-item { flex: 0 0 calc(50% - 16px); min-width: 0; }
     .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
     .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
 
@@ -450,12 +450,7 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 
-<style>
-a[href*="creative-library"]:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
-}
-</style>
+
 
 
 <style>
@@ -524,7 +519,7 @@ a[href*="creative-library"]:hover {
 <div class="mainnav-links">
 <a data-section="case-studies" href="../case-studies/index.html">Case Studies</a>
 <a data-section="frameworks" href="../frameworks/index.html">Strategy Maps</a>
-<a data-section="creative-library" href="../creative-library/index.html" style="background: var(--ink); color: #ffffff; border:1px solid var(--ink); padding:12px 18px; border-radius:8px; text-decoration:none; display:inline-block;">Creative Library</a style="background: var(--ink); color: #ffffff; border:1px solid var(--ink); padding:12px 18px; border-radius:8px; text-decoration:none; display:inline-block;">
+<a data-section="creative-library" href="../creative-library/index.html">Creative Library</a>
 <a data-section="playbooks" href="../playbooks/index.html">Playbooks</a>
 <a data-section="lifecycle" href="../creative-lifecycle-hub.html">The Creative System</a>
 <a data-section="about" href="../about/index.html">About Me</a>
@@ -620,7 +615,11 @@ a[href*="creative-library"]:hover {
 <div style="display:flex; justify-content:space-between; align-items:center;">
 <span style="font-size:14px; color: var(--ink);">Retargeting structure</span>
 <span style="font-size:15px; font-weight:500; color: var(--ink);">CBO (2 adsets)</span>
-<div class="cip-desc" style="margin-top:6px;"><span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Filter logic</span><br><span style="color:rgba(255,255,255,0.75);">Location · Homeownership · Project type</span></div></div></div></div></div></section>
+</div>
+</div>
+</div>
+</div>
+</section>
 <div class="divider"></div>
 <section class="approach-section">
 <div class="approach-sticky" style="position: sticky; top: 80px; align-self: start;">
@@ -654,105 +653,107 @@ a[href*="creative-library"]:hover {
 <div class="process-step-num">04</div>
 <div class="process-step-content">
 <div class="process-step-name">Rebuild retargeting as ABO</div>
-<div class="process-step-desc">Mid-funnel audiences (FB engagers, 3s and 10s video viewers, 180-day window) got their own budget. Bottom-funnel (website visitors last 30 days) got its own budget. Each temperature of audience received individual daily spend rather than competing inside a shared CBO.<div class="cip-desc" style="margin-top:6px;"><span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Filter logic</span><br><span style="color:rgba(255,255,255,0.75);">Location · Homeownership · Project type</span></div></div></div></div></div></section>
+<div class="process-step-desc">Mid-funnel audiences (FB engagers, 3s and 10s video viewers, 180-day window) got their own budget. Bottom-funnel (website visitors last 30 days) got its own budget. Each temperature of audience received individual daily spend rather than competing inside a shared CBO.</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 <div class="divider"></div>
-<section class="creative-section">
+<section class="creative-section" style="padding-bottom:48px;">
 <div class="section-label">Creative</div>
 <h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color: var(--ink); margin-bottom:12px;">What the state-by-state audit taught us about creative format.</h2>
 <p class="prose">The audit produced a consistent finding across markets: close rate and set rate diverged sharply between creative types even when CPL was similar. Format mattered more than cost.</p>
 <div class="creative-grid">
-<div class="creative-card">
-<span class="creative-card-tag winner">Winner</span>
-<div class="creative-card-title">Candid — Atlanta market</div>
-<div class="creative-card-desc"><strong>Role:</strong> Primary conversion driver.<br/>These images reduce perceived risk by showing real, lived-in results instead of polished marketing. This consistently produced stronger close rates, even when CPL was similar to more structured ads. Produced 2x the close rate of the account average and a below-average CPL. Promoted to primary scaling creative and cross-deployed into the Kansas CBO.</div>
-<div class="creative-card-metric"><strong>6 sales</strong>, double average close rate, below-avg CPL</div>
-</div>
-<div class="creative-card">
-<span class="creative-card-tag winner">Winner</span>
-<div class="creative-card-title">Candid — Maryland</div>
-<div class="creative-card-desc">Consistent top performer in the state audit. 12 sales, 47.7% set rate, 30% close rate. Became the template for what a strong candid format looks like in this vertical.</div>
-<div class="creative-card-metric"><strong>12 sales</strong>, 47.7% set rate, 30% close rate</div>
-</div>
-<div class="creative-card">
-<span class="creative-card-tag winner">Winner</span>
-<div class="creative-card-title">3-requirements video — Florida</div>
-<div class="creative-card-desc"><strong>Role:</strong> Qualification at scale.<br/>This format filters for location and project fit upfront, reducing unqualified demos. It did not outperform candid creatives on close rate, but improved overall efficiency by controlling lead quality at the top of funnel. 24 sales at 38.7% close rate. Became the standard format for new market launches where the candid library was not yet built out.</div>
-<div class="creative-card-metric"><strong>24 sales</strong>, 38.7% close rate in Florida</div>
-</div>
-<div class="creative-card">
-<span class="creative-card-tag learning">Learning</span>
-<div class="creative-card-title">New Inspo 2 video</div>
-<div class="creative-card-desc">Strong CoM% when paired with interest-based audiences in Kansas and Atlanta. Weak CoM% in broad adsets. Held back from broad scaling but retained for interest-stack testing where audience composition improved results materially.</div>
-<div class="creative-card-metric">11.8% CoM on <strong>interest stack</strong> — better than its broad adset performance</div>
-</div>
-<div class="creative-card">
-<span class="creative-card-tag learning">Learning</span>
-<div class="creative-card-title">Banner — Rhode Island exception</div>
-<div class="creative-card-desc">Generic banner format underperformed candids in every other state. Rhode Island was the outlier: 57% close rate across four sales. Kept active for RI only. The lesson was not to drop a format entirely before checking if a single market was propping it up.</div>
-<div class="creative-card-metric">57% close rate in <strong>Rhode Island only</strong></div>
-</div>
-<div class="creative-card">
-<span class="creative-card-tag tested">Tested</span>
-<div class="creative-card-title">Urgency copy on retargeting candids</div>
-<div class="creative-card-desc">Retargeting candids had generated solid lead volume in prior campaigns but closed zero sales. The hypothesis was that location callout copy, designed for cold audiences, was wrong for warm ones. Relaunched with urgency and scarcity copy instead.</div>
-<div class="creative-card-metric">Prior version: <strong>6 demos, 0 sales</strong> with location copy</div>
-</div>
-</div>
-</section>
 
-
-<section class="creative-section">
-  <div class="section-label">Creative in Practice</div>
-  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color: var(--ink);margin-bottom:12px;">The ads that ran in this account.</h2>
-  <p class="prose">The candid statics were the primary conversion driver. The videos supported scale by filtering for location and project fit. The point was not to make every ad look the same — it was to give each format a clear job.</p>
-
-  <div class="creative-grid">
-
-    <div class="creative-card">
-      <span class="creative-card-tag winner">Candid</span>
-      <div style="margin-bottom:12px;">
-        <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-      </div>
-      <div class="creative-card-title">Atlanta market candid</div>
-      <div class="creative-card-desc">Customer photographed in the finished space. This was the kind of simple, real-feeling asset that helped reduce perceived risk and drove stronger close rates than more polished-looking ads.</div>
-      <div class="creative-card-metric"><strong>Role:</strong> Primary conversion driver</div>
+  <!-- Card 1: Atlanta candid — has asset -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#f0ede7; border-radius:10px; overflow:hidden;">
+      <img src="/assets/images/bath-candid-1.png" alt="Atlanta market candid" style="width:100%;height:100%;display:block;object-fit:cover;">
     </div>
-
-    <div class="creative-card">
-      <span class="creative-card-tag winner">Candid</span>
-      <div style="margin-bottom:12px;">
-        <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-      </div>
-      <div class="creative-card-title">Maryland candid</div>
-      <div class="creative-card-desc">Finished-space creative without heavy production. It became a reference point for what a strong candid could look like in the state audit.</div>
-      <div class="creative-card-metric"><strong>Role:</strong> Proof-led static format</div>
-    </div>
-
-    <div class="creative-card">
-      <span class="creative-card-tag learning">Video</span>
-      <div style="margin-bottom:12px;">
-        <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad5-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="creative-card-title">State-specific video</div>
-      <div class="creative-card-desc">A structured geo-specific video. The role was qualification at scale: make the market and project fit obvious before the click.</div>
-      <div class="creative-card-metric"><span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Filter logic</span><br><span style="color:rgba(255,255,255,0.75);">Location · Homeownership · Project type</span></div>
-    </div>
-
-    <div class="creative-card">
-      <span class="creative-card-tag learning">Video</span>
-      <div style="margin-bottom:12px;">
-        <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad6-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="creative-card-title">County-level video</div>
-      <div class="creative-card-desc">A more localized execution with job-site footage. It supports the same idea as the broader geo video, but with tighter market specificity.</div>
-      <div class="creative-card-metric"><strong>Role:</strong> Localized qualification layer</div>
-    </div>
-
+    <span class="creative-card-tag winner">Winner</span>
+    <div class="creative-card-title">Candid — Atlanta market</div>
+    <div class="creative-card-desc"><strong>Role:</strong> Primary conversion driver. These images reduce perceived risk by showing real, lived-in results instead of polished marketing. Produced 2x the close rate of the account average and a below-average CPL. Cross-deployed into the Kansas CBO.</div>
+    <div class="creative-card-metric"><strong>6 sales</strong>, double average close rate, below-avg CPL</div>
   </div>
+
+  <!-- Card 2: Maryland candid — has asset -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#f0ede7; border-radius:10px; overflow:hidden;">
+      <img src="/assets/images/bath-candid-2.png" alt="Maryland candid" style="width:100%;height:100%;display:block;object-fit:cover;">
+    </div>
+    <span class="creative-card-tag winner">Winner</span>
+    <div class="creative-card-title">Candid — Maryland</div>
+    <div class="creative-card-desc">Consistent top performer in the state audit. 12 sales, 47.7% set rate, 30% close rate. Became the template for what a strong candid format looks like in this vertical.</div>
+    <div class="creative-card-metric"><strong>12 sales</strong>, 47.7% set rate, 30% close rate</div>
+  </div>
+
+  <!-- Card 3: 3-req video Florida — has asset -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#111; border-radius:10px; overflow:hidden;">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad5-poster.jpg" style="width:100%;height:100%;display:block;object-fit:cover;">
+        <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
+      </video>
+    </div>
+    <span class="creative-card-tag winner">Winner</span>
+    <div class="creative-card-title">3-requirements video — Florida</div>
+    <div class="creative-card-desc"><strong>Role:</strong> Qualification at scale. This format filters for location and project fit upfront, reducing unqualified demos. 24 sales at 38.7% close rate. Became the standard format for new market launches where the candid library was not yet built out.</div>
+    <div class="creative-card-metric"><strong>24 sales</strong>, 38.7% close rate in Florida</div>
+  </div>
+
+  <!-- Card 4: New Inspo 2 video — has asset -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#111; border-radius:10px; overflow:hidden;">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad6-poster.jpg" style="width:100%;height:100%;display:block;object-fit:cover;">
+        <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
+      </video>
+    </div>
+    <span class="creative-card-tag learning">Learning</span>
+    <div class="creative-card-title">New Inspo 2 video</div>
+    <div class="creative-card-desc">Strong CoM% when paired with interest-based audiences in Kansas and Atlanta. Weak CoM% in broad adsets. Held back from broad scaling but retained for interest-stack testing where audience composition improved results materially.</div>
+    <div class="creative-card-metric">11.8% CoM on <strong>interest stack</strong> — better than its broad adset performance</div>
+  </div>
+
+  <!-- Card 5: Banner Rhode Island — placeholder -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background: var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:1px dashed rgba(91,158,158,0.3);">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="8" width="24" height="16" rx="2" stroke="rgba(91,158,158,0.5)" stroke-width="1.5"/>
+        <rect x="8" y="12" width="16" height="3" rx="1" fill="rgba(91,158,158,0.3)"/>
+        <rect x="8" y="18" width="10" height="2" rx="1" fill="rgba(91,158,158,0.2)"/>
+      </svg>
+      <div style="text-align:center;">
+        <div style="font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px;">Static Image</div>
+        <div style="font-size:11px; color:var(--ink-30); font-style:italic;">Visual not available</div>
+      </div>
+    </div>
+    <span class="creative-card-tag learning">Learning</span>
+    <div class="creative-card-title">Banner — Rhode Island exception</div>
+    <div class="creative-card-desc">Generic banner format underperformed candids in every other state. Rhode Island was the outlier: 57% close rate across four sales. Kept active for RI only. The lesson was not to drop a format entirely before checking if a single market was propping it up.</div>
+    <div class="creative-card-metric">57% close rate in <strong>Rhode Island only</strong></div>
+  </div>
+
+  <!-- Card 6: Urgency copy — placeholder -->
+  <div class="creative-card">
+    <div style="margin-bottom:14px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background: var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:1px dashed rgba(91,158,158,0.3);">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="8" width="24" height="16" rx="2" stroke="rgba(91,158,158,0.5)" stroke-width="1.5"/>
+        <rect x="8" y="12" width="16" height="3" rx="1" fill="rgba(91,158,158,0.3)"/>
+        <rect x="8" y="18" width="10" height="2" rx="1" fill="rgba(91,158,158,0.2)"/>
+      </svg>
+      <div style="text-align:center;">
+        <div style="font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px;">Static Image</div>
+        <div style="font-size:11px; color:var(--ink-30); font-style:italic;">Visual not available</div>
+      </div>
+    </div>
+    <span class="creative-card-tag tested">Tested</span>
+    <div class="creative-card-title">Urgency copy on retargeting candids</div>
+    <div class="creative-card-desc">Retargeting candids had generated solid lead volume in prior campaigns but closed zero sales. The hypothesis was that location callout copy, designed for cold audiences, was wrong for warm ones. Relaunched with urgency and scarcity copy instead.</div>
+    <div class="creative-card-metric">Prior version: <strong>6 demos, 0 sales</strong> with location copy</div>
+  </div>
+
+</div>
 </section>
 
 
@@ -783,7 +784,11 @@ a[href*="creative-library"]:hover {
 <div class="result-stat">
 <div class="result-num">6</div>
 <div class="result-label">States ranked</div>
-<div class="result-context">One consistent creative hierarchy across all of them<div class="cip-desc" style="margin-top:6px;"><span style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);">Filter logic</span><br><span style="color:rgba(255,255,255,0.75);">Location · Homeownership · Project type</span></div></div></div></div></div></section>
+<div class="result-context">One consistent creative hierarchy across all of them</div>
+</div>
+</div>
+</div>
+</section>
 <section class="learned-section">
 <div class="section-label">What I Took From This</div>
 <h2>This changed how I approach <em>account audits.</em></h2>
@@ -904,14 +909,6 @@ a[href*="creative-library"]:hover {
 <div style="font-size:14px; color: var(--ink); line-height:1.65;">The Creative Coverage playbook explains why distinct concepts, personas, and formats expand reachable demand, while more versions of the same signal just buy repetition. <a href="../playbooks/creative-coverage.html" style="color: var(--ink); font-weight:500; text-decoration:none;">Read it →</a></div>
 </div>
 </div>
-<div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
-<div style="font-size:18px; margin-top:2px;">→</div>
-<div>
-<div style="font-size:15px; font-weight:500; color: var(--ink); margin-bottom:6px;">How the ABO retargeting rebuild works structurally</div>
-<div style="font-size:14px; color: var(--ink); line-height:1.65;">The Creative Coverage playbook covers why a CBO with audiences of different temperatures almost always starves the hotter one, and how moving to ABO gives each audience its own budget and predictable delivery. <a href="../playbooks/creative-coverage.html" style="color: var(--ink); font-weight:500; text-decoration:none;">Read it →</a>
-</div>
-</div>
-</div>
 </div>
 
 
@@ -952,16 +949,6 @@ a[href*="creative-library"]:hover {
   <circle cx="84" cy="18" r="6" fill="none" stroke="rgba(91,158,158,0.2)" stroke-width="0.8"/>
 </svg></div>
     </div>
-    <a href="../creative-library/index.html" class="artifact-hub-block">
-      <div>
-        <div class="artifact-hub-label">Creative Library</div>
-        <div class="artifact-hub-text">Briefs, scorecards, and working documents from real accounts.</div>
-      </div>
-      <div class="artifact-hub-arrow">
-        View all
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-      </div>
-    </a>
   </div>
 <footer class="sitefoot">
 <span>© GIANCARLO DI NARDO</span>

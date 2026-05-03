@@ -43,7 +43,7 @@
     .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
     .hero h1 { font-family: var(--serif); font-size: clamp(38px,4.8vw,58px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
-    .hero h1 em { font-style: italic; color: #5B9E9E; }
+    .hero h1 em { font-style: italic; color: var(--ink); }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
     .hero-meta { display: flex; gap: 24px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; align-items: flex-start; }
     .hero-meta-item { flex-shrink: 0; }
@@ -213,7 +213,7 @@
   font-size: 9.5px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #5B9E9E;
+  color: var(--ink);
   text-decoration: none;
   transition: background 0.15s, border-color 0.15s;
 }
@@ -535,7 +535,7 @@
 <section class="context-section">
 <div>
 <div class="section-label">The Situation</div>
-<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Good top-line numbers. A broken picture underneath.</h2>
+<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color: var(--ink); margin-bottom:24px;">Good top-line numbers. A broken picture underneath.</h2>
 <p class="prose">The account ran across a wide geographic footprint and the aggregate CPL, around $114, looked within range. The problem was that Virginia, which had a large audience size, was absorbing a disproportionate share of spend in all-zips campaigns and quietly dragging down results everywhere else. Spend in Virginia was subsequently capped and redirected to stronger markets.</p>
 <p class="prose">The deeper issue was creative. Some ads were generating strong lead volume while producing near-zero sales. That pattern only becomes visible when you look at lifetime data by ad, evaluated all the way through to close rate. Looking only at CPL, those ads appeared healthy.</p>
 <p class="prose">There was also a structural retargeting problem. The campaigns ran as CBOs with two adsets sharing one budget. One adset was much larger than the other. A CBO almost always starves the smaller audience, which in this case was the hotter, closer-to-converting one.</p>
@@ -547,29 +547,29 @@
 <div class="context-callout-sub">Criteria used for the audit: 5 or more sales, set rate above 30%, close rate above 30%. Ads falling short of these but with strong CoM% or CPL were flagged separately for further testing rather than discarded.</div>
 </div>
 <div style="margin-top:24px; background:white; border-radius:16px; padding:28px; border:1px solid var(--ink-10);">
-<div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-30); margin-bottom:16px; font-weight:500;">Baseline metrics</div>
+<div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color: var(--ink); margin-bottom:16px; font-weight:500;">Baseline metrics</div>
 <div style="display:flex; flex-direction:column; gap:12px;">
 <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
-<span style="font-size:14px; color:var(--ink-60);">Cost per lead</span>
-<span style="font-size:15px; font-weight:500; color:var(--ink);">~$114</span>
+<span style="font-size:14px; color: var(--ink);">Cost per lead</span>
+<span style="font-size:15px; font-weight:500; color: var(--ink);">~$114</span>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
-<span style="font-size:14px; color:var(--ink-60);">Cost of marketing %</span>
-<span style="font-size:15px; font-weight:500; color:var(--ink);">~25%</span>
+<span style="font-size:14px; color: var(--ink);">Cost of marketing %</span>
+<span style="font-size:15px; font-weight:500; color: var(--ink);">~25%</span>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:12px; border-bottom:1px solid var(--ink-10);">
-<span style="font-size:14px; color:var(--ink-60);">Set rate</span>
-<span style="font-size:15px; font-weight:500; color:var(--ink);">~20%</span>
+<span style="font-size:14px; color: var(--ink);">Set rate</span>
+<span style="font-size:15px; font-weight:500; color: var(--ink);">~20%</span>
 </div>
 <div style="display:flex; justify-content:space-between; align-items:center;">
-<span style="font-size:14px; color:var(--ink-60);">Retargeting structure</span>
-<span style="font-size:15px; font-weight:500; color:var(--ink);">CBO (2 adsets)</span>
+<span style="font-size:14px; color: var(--ink);">Retargeting structure</span>
+<span style="font-size:15px; font-weight:500; color: var(--ink);">CBO (2 adsets)</span>
 <div class="cip-desc"><strong>Filter logic:</strong> Location · Homeownership · Project type</div></div></div></div></div></section>
 <div class="divider"></div>
 <section class="approach-section">
 <div class="approach-sticky" style="position: sticky; top: 80px; align-self: start;">
 <div class="section-label">The Approach</div>
-<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:24px;">Audit first. Scale second.</h2>
+<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color: var(--ink); margin-bottom:24px;">Audit first. Scale second.</h2>
 <p class="prose">The same CPL was producing very different outcomes across segments. The problem was not volume. It was how performance was being interpreted.</p>
 </div>
 <div class="process-steps">
@@ -602,7 +602,7 @@
 <div class="divider"></div>
 <section class="creative-section">
 <div class="section-label">Creative</div>
-<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color:var(--ink); margin-bottom:12px;">What the state-by-state audit taught us about creative format.</h2>
+<h2 style="font-family:var(--serif); font-size:clamp(28px,3.2vw,40px); font-weight:400; letter-spacing:-0.01em; color: var(--ink); margin-bottom:12px;">What the state-by-state audit taught us about creative format.</h2>
 <p class="prose">The audit produced a consistent finding across markets: close rate and set rate diverged sharply between creative types even when CPL was similar. Format mattered more than cost.</p>
 <div class="creative-grid">
 <div class="creative-card">
@@ -647,7 +647,7 @@
 
 <section class="creative-section">
   <div class="section-label">Creative in Practice</div>
-  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:12px;">The ads that ran in this account.</h2>
+  <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color: var(--ink);margin-bottom:12px;">The ads that ran in this account.</h2>
   <p class="prose">The candid statics were the primary conversion driver. The videos supported scale by filtering for location and project fit. The point was not to make every ad look the same — it was to give each format a clear job.</p>
 
   <div class="creative-grid">
@@ -773,22 +773,22 @@
 <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
 <div style="font-size:18px; margin-top:2px;">→</div>
 <div>
-<div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why the same CPL can hide completely different business outcomes</div>
-<div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Diagnosis playbook covers how to read creative performance at the sale level rather than the lead level, and how to separate which problems belong to the creative from which belong to the creative coverage. The audit logic in this case study starts from that framework. <a href="../playbooks/diagnosis.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+<div style="font-size:15px; font-weight:500; color: var(--ink); margin-bottom:6px;">Why the same CPL can hide completely different business outcomes</div>
+<div style="font-size:14px; color: var(--ink); line-height:1.65;">The Diagnosis playbook covers how to read creative performance at the sale level rather than the lead level, and how to separate which problems belong to the creative from which belong to the creative coverage. The audit logic in this case study starts from that framework. <a href="../playbooks/diagnosis.html" style="color: var(--ink); font-weight:500; text-decoration:none;">Read it →</a></div>
 </div>
 </div>
 <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
 <div style="font-size:18px; margin-top:2px;">→</div>
 <div>
-<div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">Why more creative volume does not fix a coverage problem</div>
-<div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Coverage playbook explains why distinct concepts, personas, and formats expand reachable demand, while more versions of the same signal just buy repetition. <a href="../playbooks/creative-coverage.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a></div>
+<div style="font-size:15px; font-weight:500; color: var(--ink); margin-bottom:6px;">Why more creative volume does not fix a coverage problem</div>
+<div style="font-size:14px; color: var(--ink); line-height:1.65;">The Creative Coverage playbook explains why distinct concepts, personas, and formats expand reachable demand, while more versions of the same signal just buy repetition. <a href="../playbooks/creative-coverage.html" style="color: var(--ink); font-weight:500; text-decoration:none;">Read it →</a></div>
 </div>
 </div>
 <div style="background:#E4EDE0; border-radius:14px; padding:24px 28px; display:flex; gap:16px; align-items:flex-start; border:1px solid rgba(200,213,192,0.4);">
 <div style="font-size:18px; margin-top:2px;">→</div>
 <div>
-<div style="font-size:15px; font-weight:500; color:#1C1C1A; margin-bottom:6px;">How the ABO retargeting rebuild works structurally</div>
-<div style="font-size:14px; color:rgba(28,28,26,0.6); line-height:1.65;">The Creative Coverage playbook covers why a CBO with audiences of different temperatures almost always starves the hotter one, and how moving to ABO gives each audience its own budget and predictable delivery. <a href="../playbooks/creative-coverage.html" style="color:#5B9E9E; font-weight:500; text-decoration:none;">Read it →</a>
+<div style="font-size:15px; font-weight:500; color: var(--ink); margin-bottom:6px;">How the ABO retargeting rebuild works structurally</div>
+<div style="font-size:14px; color: var(--ink); line-height:1.65;">The Creative Coverage playbook covers why a CBO with audiences of different temperatures almost always starves the hotter one, and how moving to ABO gives each audience its own budget and predictable delivery. <a href="../playbooks/creative-coverage.html" style="color: var(--ink); font-weight:500; text-decoration:none;">Read it →</a>
 </div>
 </div>
 </div>

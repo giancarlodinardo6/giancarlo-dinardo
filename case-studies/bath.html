@@ -472,96 +472,41 @@ a[href*="creative-library"]:hover {
 
 
 <style>
+.signal-field {
+  position: relative;
+  height: 380px;
+}
+
+.signal-field span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(28,28,26,0.12);
+}
+
+.signal-field span:nth-child(2n) { background: rgba(91,158,158,0.22); }
+.signal-field span:nth-child(3n) { background: rgba(184,92,56,0.18); }
+
+.signal-field span:nth-child(1){ top:20px; left:40px; }
+.signal-field span:nth-child(2){ top:120px; left:90px; }
+.signal-field span:nth-child(3){ top:60px; left:200px; }
+.signal-field span:nth-child(4){ top:180px; left:50px; }
+.signal-field span:nth-child(5){ top:220px; left:180px; }
+.signal-field span:nth-child(6){ top:300px; left:100px; }
+
 .learned-section-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 680px) 340px;
-  gap: 72px;
-  align-items: start;
+  display:grid;
+  grid-template-columns:minmax(0,680px) 1fr;
+  gap:60px;
 }
 
-.audit-abstract {
-  position: sticky;
-  top: 90px;
-  height: 420px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.55);
-  border: 1px solid var(--ink-10);
-  overflow: hidden;
-}
-
-/* Abstract shapes */
-.audit-abstract::before {
-  content: "";
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  top: -60px;
-  right: -60px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(91,158,158,0.25) 0%, transparent 70%);
-}
-
-.audit-abstract::after {
-  content: "";
-  position: absolute;
-  width: 200px;
-  height: 200px;
-  bottom: -50px;
-  left: -50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(184,92,56,0.18) 0%, transparent 70%);
-}
-
-.audit-grid {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  display: grid;
-  grid-template-columns: repeat(4, 12px);
-  gap: 12px;
-}
-
-.audit-grid span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(28,28,26,0.15);
-}
-
-.audit-grid span:nth-child(2n) {
-  background: rgba(91,158,158,0.35);
-}
-
-.audit-grid span:nth-child(3n) {
-  background: rgba(184,92,56,0.25);
-}
-
-.audit-lines {
-  position: absolute;
-  width: 180px;
-  height: 1px;
-  background: rgba(28,28,26,0.2);
-  top: 140px;
-  right: 30px;
-  transform: rotate(-18deg);
-}
-
-.audit-lines-2 {
-  position: absolute;
-  width: 140px;
-  height: 1px;
-  background: rgba(28,28,26,0.15);
-  bottom: 80px;
-  right: 80px;
-  transform: rotate(12deg);
-}
-
-@media (max-width: 900px) {
-  .learned-section-inner {
-    grid-template-columns: 1fr;
+@media (max-width:900px){
+  .learned-section-inner{
+    grid-template-columns:1fr;
   }
-  .audit-abstract {
-    display: none;
+  .signal-field{
+    display:none;
   }
 }
 </style>
@@ -863,14 +808,9 @@ a[href*="creative-library"]:hover {
 </div>
 </div>
 </div>
-<div class="audit-abstract">
-  <div class="audit-grid">
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span>
-  </div>
-  <div class="audit-lines"></div>
-  <div class="audit-lines-2"></div>
+<div class="signal-field">
+  <span></span><span></span><span></span>
+  <span></span><span></span><span></span>
 </div>
 </div></section>
 <div class="divider"></div>

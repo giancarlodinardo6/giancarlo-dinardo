@@ -472,108 +472,96 @@ a[href*="creative-library"]:hover {
 
 
 <style>
-/* Visual balance for the learnings section */
 .learned-section-inner {
   display: grid;
-  grid-template-columns: minmax(0, 680px) 360px;
-  gap: 80px;
+  grid-template-columns: minmax(0, 680px) 340px;
+  gap: 72px;
   align-items: start;
 }
+
 .audit-abstract {
   position: sticky;
   top: 90px;
-  min-height: 420px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.58);
+  height: 420px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.55);
   border: 1px solid var(--ink-10);
   overflow: hidden;
-  padding: 28px;
 }
+
+/* Abstract shapes */
 .audit-abstract::before {
   content: "";
   position: absolute;
-  inset: -80px -70px auto auto;
-  width: 220px;
-  height: 220px;
+  width: 240px;
+  height: 240px;
+  top: -60px;
+  right: -60px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(91,158,158,0.22) 0%, rgba(91,158,158,0) 68%);
+  background: radial-gradient(circle, rgba(91,158,158,0.25) 0%, transparent 70%);
 }
+
 .audit-abstract::after {
   content: "";
   position: absolute;
-  left: -60px;
-  bottom: -70px;
-  width: 210px;
-  height: 210px;
+  width: 200px;
+  height: 200px;
+  bottom: -50px;
+  left: -50px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(184,92,56,0.16) 0%, rgba(184,92,56,0) 70%);
+  background: radial-gradient(circle, rgba(184,92,56,0.18) 0%, transparent 70%);
 }
-.audit-abstract-label {
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-30);
-  margin-bottom: 22px;
-  position: relative;
-  z-index: 1;
-}
-.audit-node {
-  position: relative;
-  z-index: 1;
-  background: rgba(245,242,236,0.72);
-  border: 1px solid var(--ink-10);
-  border-radius: 14px;
-  padding: 16px 18px;
-  margin-bottom: 14px;
-}
-.audit-node-k {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-style: italic;
-  color: var(--teal);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.audit-node-t {
-  font-size: 12px;
-  line-height: 1.45;
-  color: var(--ink-60);
-}
-.audit-line {
-  position: relative;
-  z-index: 1;
-  width: 1px;
-  height: 24px;
-  background: var(--ink-10);
-  margin: -4px 0 10px 28px;
-}
-.audit-mini-grid {
+
+.audit-grid {
   position: absolute;
-  right: 26px;
-  bottom: 24px;
+  top: 40px;
+  left: 40px;
   display: grid;
-  grid-template-columns: repeat(4, 8px);
-  gap: 8px;
-  opacity: 0.45;
+  grid-template-columns: repeat(4, 12px);
+  gap: 12px;
 }
-.audit-mini-grid span {
-  width: 8px;
-  height: 8px;
+
+.audit-grid span {
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: var(--teal);
+  background: rgba(28,28,26,0.15);
 }
-.audit-mini-grid span:nth-child(3n) { background: var(--rust); }
-.audit-mini-grid span:nth-child(2n) { opacity: 0.45; }
+
+.audit-grid span:nth-child(2n) {
+  background: rgba(91,158,158,0.35);
+}
+
+.audit-grid span:nth-child(3n) {
+  background: rgba(184,92,56,0.25);
+}
+
+.audit-lines {
+  position: absolute;
+  width: 180px;
+  height: 1px;
+  background: rgba(28,28,26,0.2);
+  top: 140px;
+  right: 30px;
+  transform: rotate(-18deg);
+}
+
+.audit-lines-2 {
+  position: absolute;
+  width: 140px;
+  height: 1px;
+  background: rgba(28,28,26,0.15);
+  bottom: 80px;
+  right: 80px;
+  transform: rotate(12deg);
+}
 
 @media (max-width: 900px) {
   .learned-section-inner {
     grid-template-columns: 1fr;
-    gap: 36px;
   }
   .audit-abstract {
-    position: relative;
-    top: auto;
-    min-height: auto;
+    display: none;
   }
 }
 </style>
@@ -860,9 +848,7 @@ a[href*="creative-library"]:hover {
 <section class="learned-section">
 <div class="section-label">What I Took From This</div>
 <h2>This changed how I approach <em>account audits.</em></h2>
-<div class="learned-section-inner">
-  <div>
-<div class="learned-items">
+<div class="learned-section-inner"><div><div class="learned-items">
 <div class="learned-item">
 <div class="learned-num">1.</div>
 <div class="learned-text"><strong>Close rate and set rate are more predictive of creative value than CPL alone.</strong> Several ads in this account had strong CPLs and were producing leads that never converted. Reorienting the optimization logic around the full funnel, not just the cost of the lead, changed which ads deserved budget.</div>
@@ -876,37 +862,17 @@ a[href*="creative-library"]:hover {
 <div class="learned-text"><strong>Geographic budget concentration compounds.</strong> Every dollar redirected from Virginia into Kansas and Atlanta generated more signal on those markets faster, which enabled sharper optimization decisions, which improved performance further. The feedback loop accelerates when you stop spreading thin.</div>
 </div>
 </div>
-  </div>
-
-  <div class="audit-abstract" aria-hidden="true">
-    <div class="audit-abstract-label">Audit lens</div>
-
-    <div class="audit-node">
-      <div class="audit-node-k">01</div>
-      <div class="audit-node-t">Read creative value through close rate and set rate, not CPL alone.</div>
-    </div>
-    <div class="audit-line"></div>
-
-    <div class="audit-node">
-      <div class="audit-node-k">02</div>
-      <div class="audit-node-t">Separate audience temperature when CBO hides what is actually converting.</div>
-    </div>
-    <div class="audit-line"></div>
-
-    <div class="audit-node">
-      <div class="audit-node-k">03</div>
-      <div class="audit-node-t">Find geographic concentration before increasing spend.</div>
-    </div>
-
-    <div class="audit-mini-grid">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-    </div>
-  </div>
-
 </div>
-</section>
+<div class="audit-abstract">
+  <div class="audit-grid">
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="audit-lines"></div>
+  <div class="audit-lines-2"></div>
+</div>
+</div></section>
 <div class="divider"></div>
 <section class="before-after">
 <div class="ba-card before">

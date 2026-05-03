@@ -297,18 +297,6 @@
   .artifact-callout-desc { font-size: 13px; }
 }
 
-</style>
-  <link rel="stylesheet" href="../styles.css">
-<style>
-/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
-body {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  background: #F5F2EC !important;
-  color: #1C1C1A !important;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
 
     /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
     .cc-media-wrap {
@@ -326,7 +314,19 @@ body {
       object-fit: cover;
       display: block;
     }
-    </style>
+  </style>
+  <link rel="stylesheet" href="../styles.css">
+<style>
+/* Override: match case study design system */
+body {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  background: #F5F2EC !important;
+  color: #1C1C1A !important;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
@@ -567,11 +567,11 @@ body {
     </svg>
   </div>
 
-  <p class="prose" style="margin-top:20px;">Each card below represents one variable tested. Cards showing an ad are ones where the asset is available — you can see the actual creative that ran. Cards without a visual cover concepts where the footage isn't available to share here, but the strategic logic and outcome still stand.</p>
+  <p class="prose" style="margin-top:24px;">Each card below represents one variant tested. Cards showing an ad are ones where the asset is available to share. Cards without a visual cover concepts where the footage isn't available here, but the strategic logic and result still stand.</p>
 
-  <div class="creative-grid" style="margin-top:24px;">
+  <div class="creative-grid" style="margin-top:20px;">
 
-    <!-- Card 1: Control — has real video asset -->
+    <!-- Card 1: Control — real video -->
     <div class="creative-card">
       <div class="cc-media-wrap cc-media-dark">
         <video autoplay muted loop playsinline preload="metadata">
@@ -584,12 +584,12 @@ body {
       <div class="creative-card-metric">Baseline for all <strong>nine variants</strong></div>
     </div>
 
-    <!-- Card 2: Script variants — no single video asset, insight block -->
+    <!-- Card 2: Script variants — insight block, no single video -->
     <div class="creative-card">
-      <div style="margin-bottom:14px; border-radius:10px; overflow:hidden; background: var(--teal-light); border-left: 3px solid #5B9E9E; padding: 24px 20px; display:flex; flex-direction:column; gap:12px;">
+      <div style="margin-bottom:14px; border-radius:10px; background:#D8EDEA; border-left:3px solid #5B9E9E; padding:22px 18px; display:flex; flex-direction:column; gap:10px;">
         <div style="font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#5B9E9E;">Key insight</div>
-        <p style="font-family: var(--serif); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">The message changed the entry point. The formula held.</p>
-        <div style="font-size:12px; color:var(--ink-60); line-height:1.6; margin-top:4px;">Three new scripts ran on identical footage. Each opened differently — social proof, urgency, ease of installation. The visual never changed. What changed was who leaned in first.</div>
+        <p style="font-family:var(--serif); font-size:15px; font-style:italic; color:var(--ink); line-height:1.5; margin:0;">The message changed the entry point. The formula held.</p>
+        <div style="font-size:12px; color:var(--ink-60); line-height:1.6;">Three scripts ran on identical footage — social proof, urgency, ease of installation. The visual never changed. What changed was who leaned in first.</div>
       </div>
       <span class="creative-card-tag winner">Winner</span>
       <div class="creative-card-title">Script variants (x3)</div>
@@ -612,7 +612,7 @@ body {
       <div class="creative-card-metric"><strong>Sped up x2-x3</strong> to maintain frame-to-frame engagement</div>
     </div>
 
-    <!-- Card 4: State callouts — has real video (massachusetts) -->
+    <!-- Card 4: State callouts — real video (massachusetts) -->
     <div class="creative-card">
       <div class="cc-media-wrap cc-media-dark">
         <video autoplay muted loop playsinline preload="metadata">
@@ -636,7 +636,7 @@ body {
       -->
       <span class="creative-card-tag learning">Learning</span>
       <div class="creative-card-title">3-requirements video (NE and C. Pennsylvania)</div>
-      <div class="creative-card-desc">Three requirements to qualify: US resident, homeowner, roof older than a defined threshold. Introduced specifically in tight-zip regions where out-of-area leads were costing the sales team real time with no revenue potential. Qualifier format pre-filters before the click.</div>
+      <div class="creative-card-desc">Three requirements to qualify: US resident, homeowner, roof older than a defined threshold. Introduced in tight-zip regions where out-of-area leads were costing the sales team real time with no revenue potential. Qualifier format pre-filters before the click.</div>
       <div class="creative-card-metric">Tight zip regions only. <strong>Set rate improvement</strong> was the target.</div>
     </div>
 
@@ -657,8 +657,6 @@ body {
 
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- ═══ RESULTS ════════════════════════════════════════════════════ -->
 <section class="results-section">
@@ -688,10 +686,14 @@ body {
         <div class="result-context">From one proven formula, each isolating a specific variable. The isolation confirmed which element was driving performance — that knowledge is what briefs new, conceptually distinct creative rather than more variants of the same concept.</div>
       </div>
     </div>
+
+    <!-- CoM% timeline in results -->
     <div class="com-chart-wrap">
       <div class="com-chart-label">Reading CoM% correctly in a long-cycle vertical</div>
       <svg viewBox="0 0 560 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <!-- Timeline line -->
         <line x1="20" y1="40" x2="540" y2="40" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+        <!-- Months -->
         <circle cx="80" cy="40" r="22" fill="rgba(184,92,56,0.25)" stroke="rgba(184,92,56,0.4)" stroke-width="1"/>
         <text x="80" y="36" text-anchor="middle" font-size="11" fill="white" font-family="'DM Sans',system-ui,sans-serif" font-weight="500">26%</text>
         <text x="80" y="48" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.35)" font-family="monospace">JAN</text>
@@ -708,6 +710,7 @@ body {
         <text x="500" y="36" text-anchor="middle" font-size="11" fill="#5B9E9E" font-family="'DM Sans',system-ui,sans-serif" font-weight="600">15%</text>
         <text x="500" y="48" text-anchor="middle" font-size="9" fill="rgba(91,158,158,0.6)" font-family="monospace">APR</text>
         <text x="500" y="70" text-anchor="middle" font-size="9" fill="rgba(91,158,158,0.5)" font-family="'DM Sans',system-ui,sans-serif">confirmed</text>
+        <!-- Connecting lines -->
         <line x1="102" y1="40" x2="202" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 4"/>
         <line x1="238" y1="40" x2="358" y2="40" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="3 4"/>
         <line x1="402" y1="40" x2="478" y2="40" stroke="rgba(91,158,158,0.2)" stroke-width="1"/>
@@ -725,7 +728,7 @@ body {
     <div class="learned-items">
       <div class="learned-item">
         <div class="learned-num">01</div>
-        <div class="learned-text"><strong>A winning creative is a starting point, not a system.</strong> The goal of early account management is to understand why the winner works structurally, then build a methodology that produces more of them. Isolating individual variables across multiple variants is a diagnostic tool, not a production model. It answers a specific question: which element was doing the work? Once you have that answer, the next brief shouldn't produce more iterations of the same concept — it should use that confirmed insight to brief something conceptually distinct that opens new audience territory.</div>
+        <div class="learned-text"><strong>A winning creative is a starting point, not a system.</strong> The goal of early account management is to understand why the winner works structurally, then build a methodology that produces more of them. Isolating individual variables across multiple variants is a diagnostic tool, not a production model. It answers a specific question: which element was doing the work? Once you have that answer, the next brief shouldn't produce more iterations of the same concept — it should use that confirmed insight to brief something conceptually distinct that opens new audience territory. The isolation produces the knowledge. Coverage is what you do with it.</div>
       </div>
       <div class="learned-item">
         <div class="learned-num">02</div>
@@ -737,6 +740,7 @@ body {
       </div>
     </div>
   </div>
+  <!-- VISUAL: variable isolation chain -->
   <div style="position:sticky;top:80px;">
     <div style="background:#1C1C1A;border-radius:20px;padding:32px;">
       <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.3);margin-bottom:24px;font-weight:500;">Variable isolation: how each variant was built</div>
@@ -745,28 +749,44 @@ body {
           <circle cx="6" cy="6" r="0.6" fill="rgba(255,255,255,0.04)"/>
         </pattern>
         <rect width="280" height="380" fill="url(#rfdots)"/>
+
+        <!-- Row 1: Control -->
         <rect x="0" y="0" width="280" height="64" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
         <text x="16" y="22" font-size="9" fill="rgba(255,255,255,0.3)" font-family="monospace" letter-spacing="0.1em">CONTROL</text>
         <text x="16" y="40" font-size="12" fill="white" font-family="Georgia,serif" font-style="italic">Hook + Script + Footage + CTA</text>
         <text x="16" y="55" font-size="9" fill="rgba(255,255,255,0.25)" font-family="'DM Sans',system-ui,sans-serif">All four elements from original 0002</text>
+
+        <!-- Arrow -->
         <line x1="140" y1="68" x2="140" y2="84" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
         <polygon points="136,82 140,88 144,82" fill="rgba(255,255,255,0.1)"/>
+
+        <!-- Row 2: Change script -->
         <rect x="0" y="92" width="280" height="64" rx="10" fill="rgba(91,158,158,0.07)" stroke="rgba(91,158,158,0.2)" stroke-width="1"/>
         <text x="16" y="114" font-size="9" fill="rgba(91,158,158,0.6)" font-family="monospace" letter-spacing="0.1em">VARIANT 01-03: CHANGE SCRIPT</text>
         <text x="16" y="132" font-size="12" fill="white" font-family="Georgia,serif" font-style="italic">New Script + Same Footage + Same CTA</text>
         <text x="16" y="147" font-size="9" fill="rgba(255,255,255,0.25)" font-family="'DM Sans',system-ui,sans-serif">Script is the variable. Everything else is held.</text>
+
+        <!-- Arrow -->
         <line x1="140" y1="160" x2="140" y2="176" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
         <polygon points="136,174 140,180 144,174" fill="rgba(255,255,255,0.1)"/>
+
+        <!-- Row 3: Change footage -->
         <rect x="0" y="184" width="280" height="64" rx="10" fill="rgba(91,158,158,0.07)" stroke="rgba(91,158,158,0.2)" stroke-width="1"/>
         <text x="16" y="206" font-size="9" fill="rgba(91,158,158,0.6)" font-family="monospace" letter-spacing="0.1em">VARIANT 04-05: CHANGE FOOTAGE</text>
         <text x="16" y="224" font-size="12" fill="white" font-family="Georgia,serif" font-style="italic">Drone Footage + Same Script + Same CTA</text>
         <text x="16" y="239" font-size="9" fill="rgba(255,255,255,0.25)" font-family="'DM Sans',system-ui,sans-serif">Footage is the variable. Script is held from control.</text>
+
+        <!-- Arrow -->
         <line x1="140" y1="252" x2="140" y2="268" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
         <polygon points="136,266 140,272 144,266" fill="rgba(255,255,255,0.1)"/>
+
+        <!-- Row 4: State callouts -->
         <rect x="0" y="276" width="280" height="64" rx="10" fill="rgba(184,122,26,0.07)" stroke="rgba(184,122,26,0.2)" stroke-width="1"/>
         <text x="16" y="298" font-size="9" fill="rgba(184,122,26,0.6)" font-family="monospace" letter-spacing="0.1em">VARIANT 06-09: CHANGE CONTEXT</text>
         <text x="16" y="316" font-size="12" fill="white" font-family="Georgia,serif" font-style="italic">State Callouts + Qualifier Hook</text>
         <text x="16" y="331" font-size="9" fill="rgba(255,255,255,0.25)" font-family="'DM Sans',system-ui,sans-serif">Geographic context and pre-filter as variables.</text>
+
+        <!-- Result bar -->
         <rect x="0" y="354" width="280" height="22" rx="6" fill="rgba(91,158,158,0.12)"/>
         <text x="140" y="369" text-anchor="middle" font-size="9" fill="rgba(91,158,158,0.7)" font-family="monospace" letter-spacing="0.08em">9 VARIANTS / EACH ATTRIBUTION-CLEAN</text>
       </svg>
@@ -818,7 +838,15 @@ body {
     <div class="crossref-arrow">→</div>
     <div>
       <div class="crossref-title">Why region-level architecture matters before scaling spend</div>
-      <div class="crossref-desc">The Creative Coverage playbook covers the three-campaign model, how to separate testing from scaling, and when to give each region its own campaign infrastructure rather than running a shared structure that masks performance differences between geographies. <a href="../playbooks/creative-coverage.html" class="crossref-link">Read it →</a></div>
+      <div class="crossref-desc">The Creative Coverage playbook covers the three-campaign model, how to separate testing from scaling, and when to give each region its own campaign infrastructure rather than running a shared structure that masks performance differences between geographies. <a href="../playbooks/creative-coverage.html" class="crossref-link">Read it →</a>
+</div>
+    </div>
+  </div>
+  <div class="crossref-card">
+    <div class="crossref-arrow">→</div>
+    <div>
+      <div class="crossref-title">Why frequency becomes a ceiling when creative coverage is low</div>
+      <div class="crossref-desc">The Creative Coverage playbook explains why one creative doing all the work across multiple regions creates a reach ceiling, and how distinct concepts, personas, and formats help new budget find new demand. <a href="../playbooks/creative-coverage.html" class="crossref-link">Read it →</a></div>
     </div>
   </div>
   <div class="crossref-card">
@@ -832,19 +860,20 @@ body {
 
 <div class="divider"></div>
 
-<div class="artifact-callout-wrap">
-  <a href="../creative-library/index.html" class="artifact-hub-block">
-    <div>
-      <div class="artifact-hub-label">Creative Library</div>
-      <div class="artifact-hub-text">Briefs, scorecards, and working documents from real accounts.</div>
-    </div>
-    <div class="artifact-hub-arrow">
-      View all
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-    </div>
-  </a>
-</div>
 
+
+<div class="artifact-callout-wrap">
+    <a href="../creative-library/index.html" class="artifact-hub-block">
+      <div>
+        <div class="artifact-hub-label">Creative Library</div>
+        <div class="artifact-hub-text">Briefs, scorecards, and working documents from real accounts.</div>
+      </div>
+      <div class="artifact-hub-arrow">
+        View all
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </div>
+    </a>
+  </div>
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
   <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">

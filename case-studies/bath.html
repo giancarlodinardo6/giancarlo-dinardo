@@ -5,6 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Bath Remodeling — Case Study | Giancarlo</title>
+
+<link href="../styles.css" rel="stylesheet"/>
 <style>
     :root {
       --cream: #F5F2EC;
@@ -43,7 +45,7 @@
     .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
     .hero h1 { font-family: var(--serif); font-size: clamp(38px,4.8vw,58px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
-    .hero h1 em { font-style: italic; color: var(--ink); }
+    .hero h1 em { font-style: italic; color: var(--teal); }
     .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
     .hero-meta { display: flex; gap: 24px 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); flex-wrap: wrap; align-items: flex-start; }
     .hero-meta-item { flex: 0 0 calc(50% - 16px); min-width: 0; }
@@ -291,162 +293,7 @@
 
 
 
-/* ── CREATIVE IN PRACTICE ──────────────────────────────────────── */
-.cip-section {
-  padding: 80px 48px 72px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.cip-intro {
-  max-width: 640px;
-  margin-bottom: 48px;
-}
-.cip-intro h2 {
-  font-family: var(--serif);
-  font-size: clamp(26px, 3vw, 38px);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-.cip-intro .prose { margin-bottom: 0; }
-.cip-divider-label {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-30);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 40px 0 20px;
-}
-.cip-divider-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--ink-10);
-}
-.cip-primary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.cip-secondary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.cip-card {
-  background: white;
-  border-radius: 14px;
-  border: 1px solid rgba(28,28,26,0.07);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 1px 3px rgba(28,28,26,0.04);
-}
-.cip-video-wrap {
-  position: relative;
-  background: #111;
-  overflow: hidden;
-  flex-shrink: 0;
-  aspect-ratio: 4/5;
-}
-.cip-video-wrap video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.cip-img-wrap {
-  position: relative;
-  background: #111;
-  overflow: hidden;
-  flex-shrink: 0;
-  aspect-ratio: 4/5;
-}
-.cip-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.cip-body {
-  padding: 20px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 1;
-}
-.cip-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-.cip-tag {
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-.cip-tag.evidence {
-  background: var(--teal-light);
-  color: var(--teal);
-  border: 1px solid rgba(91,158,158,0.25);
-}
-.cip-tag.tested {
-  background: rgba(28,28,26,0.05);
-  color: rgba(28,28,26,0.45);
-  border: 1px solid rgba(28,28,26,0.1);
-}
-.cip-tag.fmt {
-  background: rgba(28,28,26,0.04);
-  color: rgba(28,28,26,0.38);
-  border: 1px solid rgba(28,28,26,0.08);
-}
-.cip-hook {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-style: italic;
-  color: var(--ink);
-  line-height: 1.45;
-  padding: 10px 14px;
-  background: rgba(28,28,26,0.03);
-  border-left: 2px solid var(--teal);
-  border-radius: 0 5px 5px 0;
-}
-.cip-desc {
-  font-size: 12.5px;
-  color: var(--ink-60);
-  line-height: 1.65;
-}
-.cip-desc strong { color: var(--ink); font-weight: 500; }
-.cip-market {
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-30);
-  padding-top: 8px;
-  border-top: 1px solid var(--ink-10);
-}
-@media (max-width: 900px) {
-  .cip-section { padding: 60px 24px; }
-  .cip-primary, .cip-secondary { grid-template-columns: 1fr; }
-}
-@media (max-width: 700px) {
-  .cip-section { padding: 48px 20px; }
-  .cip-hook { font-size: 13px; }
-  .cip-desc { font-size: 12px; }
-}
-
 </style>
-<link href="../styles.css" rel="stylesheet"/>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 
@@ -715,38 +562,16 @@
     <div class="creative-card-metric">11.8% CoM on <strong>interest stack</strong> — better than its broad adset performance</div>
   </div>
 
-  <!-- Card 5: Banner Rhode Island — placeholder -->
+  <!-- Card 5: Banner Rhode Island — text only -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background: var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:1px dashed rgba(91,158,158,0.3);">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="8" width="24" height="16" rx="2" stroke="rgba(91,158,158,0.5)" stroke-width="1.5"/>
-        <rect x="8" y="12" width="16" height="3" rx="1" fill="rgba(91,158,158,0.3)"/>
-        <rect x="8" y="18" width="10" height="2" rx="1" fill="rgba(91,158,158,0.2)"/>
-      </svg>
-      <div style="text-align:center;">
-        <div style="font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px;">Static Image</div>
-        <div style="font-size:11px; color:var(--ink-30); font-style:italic;">Visual not available</div>
-      </div>
-    </div>
     <span class="creative-card-tag learning">Learning</span>
     <div class="creative-card-title">Banner — Rhode Island exception</div>
     <div class="creative-card-desc">Generic banner format underperformed candids in every other state. Rhode Island was the outlier: 57% close rate across four sales. Kept active for RI only. The lesson was not to drop a format entirely before checking if a single market was propping it up.</div>
     <div class="creative-card-metric">57% close rate in <strong>Rhode Island only</strong></div>
   </div>
 
-  <!-- Card 6: Urgency copy — placeholder -->
+  <!-- Card 6: Urgency copy — text only -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; border-radius:10px; overflow:hidden; background: var(--sage-light); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:1px dashed rgba(91,158,158,0.3);">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="8" width="24" height="16" rx="2" stroke="rgba(91,158,158,0.5)" stroke-width="1.5"/>
-        <rect x="8" y="12" width="16" height="3" rx="1" fill="rgba(91,158,158,0.3)"/>
-        <rect x="8" y="18" width="10" height="2" rx="1" fill="rgba(91,158,158,0.2)"/>
-      </svg>
-      <div style="text-align:center;">
-        <div style="font-size:10px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--teal); margin-bottom:4px;">Static Image</div>
-        <div style="font-size:11px; color:var(--ink-30); font-style:italic;">Visual not available</div>
-      </div>
-    </div>
     <span class="creative-card-tag tested">Tested</span>
     <div class="creative-card-title">Urgency copy on retargeting candids</div>
     <div class="creative-card-desc">Retargeting candids had generated solid lead volume in prior campaigns but closed zero sales. The hypothesis was that location callout copy, designed for cold audiences, was wrong for warm ones. Relaunched with urgency and scarcity copy instead.</div>

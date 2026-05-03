@@ -96,6 +96,22 @@
 @media(max-width:560px){ .ads-grid, .ads-grid.two { grid-template-columns: 1fr; } }
 
 </style>
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  div[style*="grid-template-columns:repeat(3"],
+  div[style*="grid-template-columns:repeat(4"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -140,83 +156,90 @@
     </div>
 
 
-
-
   <!-- ADS LIBRARY -->
-  <div class="ads-library-section">
+  <div style="margin:64px 0 56px;">
     <div class="hub-section-label">Creative Library / Ads</div>
-    <div class="ads-library-intro">
-      <h2 class="ads-library-title">Ads shown in the case studies.</h2>
-      <p class="ads-library-desc">A visual shelf for the ads used inside the case studies. The case studies explain the strategy. This hub keeps the creative examples together so they are easier to scan.</p>
+
+    <div style="max-width:640px;margin-bottom:32px;">
+      <h2 style="font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin:0 0 10px;">
+        Ads shown in the case studies.
+      </h2>
+      <p style="font-family:var(--serif);font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:640px;">
+        A visual shelf for the ads used inside the case studies. The case studies explain the strategy. This hub keeps the creative examples together so they are easier to scan.
+      </p>
     </div>
 
-    <div class="ads-case-block">
-      <h3 class="ads-case-title">Roofing</h3>
-      <div class="ads-grid">
-        <div class="ads-card">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/0002-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/0002.mp4" type="video/mp4">
-        </video>
-          <span class="ads-tag">Control</span>
-          <div class="ads-card-title">Original winner (0002)</div>
-          <div class="ads-card-desc">The baseline roofing structure: strong open, install visuals, authority, and direct CTA.</div>
+    <div style="margin-top:36px;">
+      <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Roofing</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+            <source src="/assets/videos/0002.mp4" type="video/mp4">
+          </video>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Control</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Original winner (0002)</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">The baseline roofing structure: strong open, install visuals, authority, and direct CTA.</div>
         </div>
-        <div class="ads-card">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/massachusetts-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/massachusetts.mp4" type="video/mp4">
-        </video>
-          <span class="ads-tag">Execution</span>
-          <div class="ads-card-title">State-level execution</div>
-          <div class="ads-card-desc">The same core formula adapted for a state-specific market callout.</div>
+
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+            <source src="/assets/videos/massachusetts.mp4" type="video/mp4">
+          </video>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Execution</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">State-level execution</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">The same core formula adapted for a state-specific market callout.</div>
         </div>
-        <div class="ads-card">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/jefferson-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/jefferson.mp4" type="video/mp4">
-        </video>
-          <span class="ads-tag">Execution</span>
-          <div class="ads-card-title">County-level execution</div>
-          <div class="ads-card-desc">A more granular geo execution built from the same underlying roofing structure.</div>
+
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+            <source src="/assets/videos/jefferson.mp4" type="video/mp4">
+          </video>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Execution</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">County-level execution</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A more granular geo execution built from the same underlying roofing structure.</div>
         </div>
       </div>
     </div>
 
-    <div class="ads-case-block">
-      <h3 class="ads-case-title">Bath Remodeling</h3>
-      <div class="ads-grid">
-        <div class="ads-card">
-          <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <span class="ads-tag">Candid</span>
-          <div class="ads-card-title">Atlanta market candid</div>
-          <div class="ads-card-desc">Real finished-space visual used as a primary conversion driver.</div>
+    <div style="margin-top:48px;">
+      <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Bath Remodeling</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Candid</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Atlanta market candid</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">Real finished-space visual used as a primary conversion driver.</div>
         </div>
-        <div class="ads-card">
-          <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <span class="ads-tag">Candid</span>
-          <div class="ads-card-title">Maryland candid</div>
-          <div class="ads-card-desc">A simple proof-led static that became a reference point in the state audit.</div>
+
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Candid</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Maryland candid</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A simple proof-led static that became a reference point in the state audit.</div>
         </div>
-        <div class="ads-card">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad5-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
-        </video>
-          <span class="ads-tag">Video</span>
-          <div class="ads-card-title">State-specific video</div>
-          <div class="ads-card-desc">Geo-specific bath creative used to support launch and market-level scaling.</div>
+
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+            <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
+          </video>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Video</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">State-specific video</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">Geo-specific bath creative used to support launch and market-level scaling.</div>
         </div>
-        <div class="ads-card">
-          <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad6-poster.jpg" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;">
-          <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
-        </video>
-          <span class="ads-tag">Video</span>
-          <div class="ads-card-title">County-level video</div>
-          <div class="ads-card-desc">A more localized execution that connects the offer to a tighter geography.</div>
+
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+            <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
+          </video>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Video</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">County-level video</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A more localized execution that connects the offer to a tighter geography.</div>
         </div>
       </div>
     </div>
   </div>
-
-
-
 
   </div>
 
@@ -307,6 +330,7 @@
     </a>
 
   </div>
+
   <!-- CONNECTED CONTENT -->
   <div class="hub-section-label">This library connects to</div>
   <div class="connected-grid">

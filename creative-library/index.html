@@ -112,7 +112,7 @@
 
 <style>
 /* Final Creative Library layout fixes */
-.hub-hero { grid-template-columns: 1fr !important; max-width: 760px; }
+
 .hub-hero-right { display: none !important; }
 .hub-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto !important; }
 @media (max-width: 900px) {
@@ -123,6 +123,138 @@
 @media (max-width: 560px) {
   div[style*="min-height:700px"] {
     min-height: auto !important;
+  }
+}
+</style>
+
+
+<style>
+/* Final Creative Library visual + proportion fixes */
+.hub-hero {
+  grid-template-columns: minmax(0, 1fr) 360px !important;
+  align-items: end !important;
+  gap: 56px !important;
+  max-width: none !important;
+}
+.hub-hero-right { display: none !important; }
+.hub-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto !important; }
+
+.hub-abstract {
+  position: relative;
+  width: 340px;
+  height: 220px;
+  justify-self: end;
+  align-self: end;
+}
+.abstract-card {
+  position: absolute;
+  width: 178px;
+  height: 118px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.64);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 44px rgba(28,28,26,0.06);
+}
+.abstract-card-a {
+  right: 26px;
+  top: 42px;
+  padding: 20px;
+  transform: rotate(-4deg);
+}
+.abstract-card-a span {
+  display: block;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(28,28,26,0.12);
+  margin-bottom: 12px;
+}
+.abstract-card-a span:nth-child(1) { width: 74%; background: rgba(91,158,158,0.26); }
+.abstract-card-a span:nth-child(2) { width: 52%; }
+.abstract-card-a span:nth-child(3) { width: 86%; background: rgba(184,92,56,0.16); }
+
+.abstract-orbit {
+  position: absolute;
+  width: 210px;
+  height: 132px;
+  right: 66px;
+  top: 34px;
+  border: 1px solid rgba(28,28,26,0.11);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+.abstract-dot {
+  position: absolute;
+  border-radius: 999px;
+}
+.abstract-dot-a {
+  width: 46px;
+  height: 46px;
+  right: 12px;
+  top: 8px;
+  background: rgba(91,158,158,0.22);
+}
+.abstract-dot-b {
+  width: 24px;
+  height: 24px;
+  right: 254px;
+  top: 132px;
+  background: rgba(184,92,56,0.2);
+}
+.abstract-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(28,28,26,0.14);
+  transform-origin: left center;
+}
+.abstract-line-a {
+  width: 96px;
+  right: 198px;
+  top: 86px;
+  transform: rotate(-12deg);
+}
+.abstract-line-b {
+  width: 124px;
+  right: 44px;
+  top: 182px;
+  transform: rotate(8deg);
+}
+
+/* Slightly smaller ad cards while preserving full copy */
+div[style*="min-height:700px"] {
+  min-height: 620px !important;
+  padding: 20px !important;
+}
+div[style*="aspect-ratio:4/5"] {
+  aspect-ratio: 1 / 1 !important;
+}
+div[style*="font-size:13.5px"] {
+  font-size: 13px !important;
+}
+div[style*="font-size:12.5px"] {
+  font-size: 12.25px !important;
+}
+div[style*="font-size:18px"] {
+  font-size: 17px !important;
+}
+
+@media (max-width: 900px) {
+  .hub-hero {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .hub-abstract { display: none !important; }
+  div[style*="grid-template-columns:repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  div[style*="min-height:700px"],
+  div[style*="min-height:620px"] {
+    min-height: auto !important;
+  }
+  div[style*="aspect-ratio:4/5"],
+  div[style*="aspect-ratio: 1 / 1"] {
+    aspect-ratio: 4 / 5 !important;
   }
 }
 </style>
@@ -164,6 +296,19 @@
       <div class="hub-eyebrow">Creative Library</div>
       <h1 class="hub-title">Creative systems, docs, and ads.</h1>
       <p class="hub-desc">A central place for the strategic docs, creative briefs, scorecards, and real ads that came out of actual paid social accounts. Case studies show the results. This hub shows the working pieces behind them.</p>
+    </div>
+
+    <div class="hub-abstract" aria-hidden="true">
+      <div class="abstract-card abstract-card-a">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="abstract-orbit"></div>
+      <div class="abstract-dot abstract-dot-a"></div>
+      <div class="abstract-dot abstract-dot-b"></div>
+      <div class="abstract-line abstract-line-a"></div>
+      <div class="abstract-line abstract-line-b"></div>
     </div>
   </div>
 

@@ -112,6 +112,19 @@
 }
 </style>
 
+
+<style>
+@media (max-width: 900px) {
+  div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -156,16 +169,17 @@
     </div>
 
 
+
   <!-- ADS LIBRARY -->
-  <div style="margin:64px 0 56px;">
+  <div style="margin:64px 0 64px;">
     <div class="hub-section-label">Creative Library / Ads</div>
 
-    <div style="max-width:640px;margin-bottom:32px;">
+    <div style="max-width:680px;margin-bottom:36px;">
       <h2 style="font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin:0 0 10px;">
         Ads shown in the case studies.
       </h2>
-      <p style="font-family:var(--serif);font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:640px;">
-        A visual shelf for the ads used inside the case studies. The case studies explain the strategy. This hub keeps the creative examples together so they are easier to scan.
+      <p style="font-family:var(--serif);font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:680px;">
+        A visual shelf for the ads used inside the case studies. Each card explains the role of the ad, what the viewer sees, and the copy or script logic behind it.
       </p>
     </div>
 
@@ -173,77 +187,116 @@
       <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Roofing</h3>
 
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
             <source src="/assets/videos/0002.mp4" type="video/mp4">
           </video>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Control</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Original winner (0002)</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">The baseline roofing structure: strong open, install visuals, authority, and direct CTA.</div>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Control</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Original winner (0002)</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            The baseline ad the system was built around. It uses fast roof-install visuals, a direct offer, and authority proof to make the transformation feel simple and credible.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / script logic</span>
+            “Get 50% OFF installation costs” + “Free, no obligation estimate” + “50-year warranty.” The ad leads with a clear homeowner offer, then backs it with trust and urgency.
+          </div>
         </div>
 
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
             <source src="/assets/videos/massachusetts.mp4" type="video/mp4">
           </video>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Execution</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">State-level execution</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">The same core formula adapted for a state-specific market callout.</div>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Execution</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">State-level execution</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            A localized version of the roofing formula. The viewer immediately sees “Massachusetts,” which makes the offer feel market-specific instead of generic.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / script logic</span>
+            “We’re looking for 150 homeowners in Massachusetts…” The copy combines local relevance, limited availability, 50% off installation, a free estimate, and warranty reassurance.
+          </div>
         </div>
 
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
             <source src="/assets/videos/jefferson.mp4" type="video/mp4">
           </video>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Execution</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">County-level execution</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A more granular geo execution built from the same underlying roofing structure.</div>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Execution</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">County-level execution</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            The same core offer pushed into a tighter geography. The footage and pace are different, but the job is the same: make the viewer feel this is for their area.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / script logic</span>
+            “We’re looking for 150 homeowners in Jefferson County…” This version narrows the market even further, pairing county specificity with the same discount, estimate, and warranty stack.
+          </div>
         </div>
       </div>
     </div>
 
-    <div style="margin-top:48px;">
+    <div style="margin-top:52px;">
       <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Bath Remodeling</h3>
 
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;">
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Candid</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Atlanta market candid</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">Real finished-space visual used as a primary conversion driver.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Candid</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Atlanta market candid</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            A real finished-space visual instead of a polished banner. This kind of asset works because it feels closer to proof than advertising.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / angle logic</span>
+            The strategy is trust first: show a believable finished result, keep the presentation simple, and let the viewer picture the same upgrade in their own bathroom.
+          </div>
         </div>
 
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Candid</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">Maryland candid</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A simple proof-led static that became a reference point in the state audit.</div>
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Candid</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Maryland candid</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            Another proof-led static from the state audit. It is not trying to over-design the offer; it is trying to make the remodel feel tangible and low-risk.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / angle logic</span>
+            The ad’s role is to support conversion quality. It uses the finished bathroom as the credibility device rather than relying on heavy graphics or generic savings language.
+          </div>
         </div>
 
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
             <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
           </video>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Video</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">State-specific video</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">Geo-specific bath creative used to support launch and market-level scaling.</div>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Video</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">State-specific video</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            A structured geo-specific video built to filter the viewer early. The location callout makes it clear who the offer is for before the click.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / script logic</span>
+            “If you live in [state]…” + project criteria + offer framing. The script works as a qualifier: location, homeowner fit, and remodel intent all appear upfront.
+          </div>
         </div>
 
-        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;">
+        <div style="background:white;border-radius:14px;padding:24px;border:1px solid var(--line);display:flex;flex-direction:column;min-height:690px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:cover;margin-bottom:14px;flex-shrink:0;">
             <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
           </video>
-          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);">Video</span>
-          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1.15;">County-level video</div>
-          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;">A more localized execution that connects the offer to a tighter geography.</div>
+          <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px;display:inline-block;margin-bottom:10px;background:rgba(91,158,158,0.14);color:#2a6a6a;border:1px solid rgba(91,158,158,0.25);width:max-content;">Video</span>
+          <div style="font-family:var(--display);font-size:18px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">County-level video</div>
+          <div style="font-family:var(--serif);font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
+            A tighter local execution using job-site footage and a county-level callout. It supports the same qualification idea, but with more specific geography.
+          </div>
+          <div style="margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:12.5px;color:var(--ink-2);line-height:1.55;">
+            <span style="font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy / script logic</span>
+            “DeKalb County homeowners…” style framing. The ad pairs local specificity with urgency and savings, making the offer feel more immediate and less generic.
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  </div>
-
-  <!-- CREATIVE BRIEFS -->
   <div class="hub-section-label">Creative Briefs</div>
   <div class="artifact-list" style="margin-bottom:48px;">
 

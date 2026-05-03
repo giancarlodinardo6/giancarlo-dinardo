@@ -239,6 +239,27 @@
 
 </style>
 <link href="../styles.css" rel="stylesheet"/>
+<style>
+/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
+body { font-family: 'DM Sans', system-ui, sans-serif !important; }
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img,
+    .cc-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
@@ -411,36 +432,72 @@
 <p class="prose">The creative that was running before the rebuild was technically fine. Good production, clear product shots, reasonable copy. The problem was structural. Rebuilding around the buyer's psychological sequence rather than the brand's preferred presentation order was the only change that mattered.</p>
 <div class="creative-grid">
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
 <div class="creative-card-tag winner">Winner</div>
 <div class="creative-card-title">UGC identity protection script</div>
 <div class="creative-card-desc">Opened with a man describing all the beard products that had let him down. Named the category skepticism directly. No product mention in the first fifteen seconds. The viewer who recognized himself in that description was already engaged before the solution appeared.</div>
 <div class="creative-card-metric"><strong>2.8x ROAS</strong> vs the original studio control. Strongest performer on cold traffic across the engagement.</div>
 </div>
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when video is ready
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="/assets/videos/FILENAME.mp4" type="video/mp4">
+        </video>
+      </div>
+      -->
 <div class="creative-card-tag winner">Winner</div>
 <div class="creative-card-title">Knowledge gap mechanism video</div>
 <div class="creative-card-desc">Opened with a question about why most beard oils sit on top of the hair instead of absorbing. Named the mechanism (molecular weight of the carrier oil) before naming the product. The named mechanism created a loop the viewer needed to close. By the time the product appeared it was the answer to something they already wanted to understand.</div>
 <div class="creative-card-metric"><strong>Strong hook retention.</strong> High average play time. Viewer who stayed through the mechanism converted at a meaningfully higher rate.</div>
 </div>
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
 <div class="creative-card-tag learning">Learning</div>
 <div class="creative-card-title">Objection dialog UGC</div>
 <div class="creative-card-desc">Two-person format with one person raising the price objection and the other resolving it conversationally. The objection was voiced before the viewer had fully formed it themselves. Strong in retargeting where the product was already known. Weaker on cold traffic where the brand needed to earn trust before the price conversation made sense.</div>
 <div class="creative-card-metric"><strong>Strong in retargeting.</strong> Cold traffic needed the identity and mechanism steps first.</div>
 </div>
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when video is ready
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="/assets/videos/FILENAME.mp4" type="video/mp4">
+        </video>
+      </div>
+      -->
 <div class="creative-card-tag tested">Tested (original control)</div>
 <div class="creative-card-title">Studio product-led feature video</div>
 <div class="creative-card-desc">The original creative. Professional lighting, clear product demonstration, ingredient callouts in the first ten seconds. Fine production quality. Led with what the brand wanted to say rather than what the buyer needed to hear first. Remained in the account as a product education asset for warm audiences.</div>
 <div class="creative-card-metric"><strong>Outperformed by new scripts</strong> on cold traffic. Kept for warm audiences who already understood the product.</div>
 </div>
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
 <div class="creative-card-tag learning">Learning</div>
 <div class="creative-card-title">Loss aversion close test</div>
 <div class="creative-card-desc">Variation on the winning script where the close focused on what continuing to use the wrong products was costing in terms of beard health degradation over time rather than what purchase would gain. Performed marginally better than the gain-framed close on the same script. Worth applying as the default close structure going forward.</div>
 <div class="creative-card-metric"><strong>Marginally better CVR</strong> than gain-framed close on the same script body.</div>
 </div>
 <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when video is ready
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="/assets/videos/FILENAME.mp4" type="video/mp4">
+        </video>
+      </div>
+      -->
 <div class="creative-card-tag tested">Tested</div>
 <div class="creative-card-title">Lifestyle aesthetic static</div>
 <div class="creative-card-desc">Product in a styled bathroom setting, no copy besides the tagline, clean visual. Tested as a brand awareness format rather than a conversion asset. Click-through was low. Men's grooming purchases on Meta are driven by the argument in the video, not by seeing a well-lit product. Excluded from the direct response mix.</div>

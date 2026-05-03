@@ -336,7 +336,24 @@
     display: none;
   }
 }
-</style>
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img,
+    .cc-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    </style>
 
 </head>
 <body>
@@ -507,8 +524,8 @@
 
   <!-- Card 1: Atlanta candid — has asset -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#f0ede7; border-radius:10px; overflow:hidden;">
-      <img src="/assets/images/bath-candid-1.png" alt="Atlanta market candid" style="width:100%;height:100%;display:block;object-fit:cover;">
+    <div class="cc-media-wrap">
+      <img src="/assets/images/bath-candid-1.png" alt="Atlanta market candid" >
     </div>
     <span class="creative-card-tag winner">Winner</span>
     <div class="creative-card-title">Candid — Atlanta market</div>
@@ -518,8 +535,8 @@
 
   <!-- Card 2: Maryland candid — has asset -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#f0ede7; border-radius:10px; overflow:hidden;">
-      <img src="/assets/images/bath-candid-2.png" alt="Maryland candid" style="width:100%;height:100%;display:block;object-fit:cover;">
+    <div class="cc-media-wrap">
+      <img src="/assets/images/bath-candid-2.png" alt="Maryland candid" >
     </div>
     <span class="creative-card-tag winner">Winner</span>
     <div class="creative-card-title">Candid — Maryland</div>
@@ -529,8 +546,8 @@
 
   <!-- Card 3: 3-req video Florida — has asset -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#111; border-radius:10px; overflow:hidden;">
-      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad5-poster.jpg" style="width:100%;height:100%;display:block;object-fit:cover;">
+    <div class="cc-media-wrap cc-media-dark">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad5-poster.jpg" >
         <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
       </video>
     </div>
@@ -542,8 +559,8 @@
 
   <!-- Card 4: New Inspo 2 video — has asset -->
   <div class="creative-card">
-    <div style="margin-bottom:14px; aspect-ratio:4/5; background:#111; border-radius:10px; overflow:hidden;">
-      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad6-poster.jpg" style="width:100%;height:100%;display:block;object-fit:cover;">
+    <div class="cc-media-wrap cc-media-dark">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/videos/alenco-bath-ad6-poster.jpg" >
         <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
       </video>
     </div>

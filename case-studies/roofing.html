@@ -299,6 +299,27 @@
 
 </style>
   <link rel="stylesheet" href="../styles.css">
+<style>
+/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
+body { font-family: 'DM Sans', system-ui, sans-serif !important; }
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img,
+    .cc-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
@@ -623,8 +644,8 @@
     <div class="creative-card">
       <span class="creative-card-tag winner">Control</span>
 
-      <div style="margin-bottom:12px;">
-        <video autoplay muted loop playsinline style="width:100%;border-radius:10px;">
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline >
           <source src="/assets/videos/0002.mp4" type="video/mp4">
         </video>
       </div>
@@ -659,8 +680,8 @@
     <div class="creative-card">
       <span class="creative-card-tag winner">Execution</span>
 
-      <div style="margin-bottom:12px;">
-        <video autoplay muted loop playsinline style="width:100%;border-radius:10px;">
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline >
           <source src="/assets/videos/massachusetts.mp4" type="video/mp4">
         </video>
       </div>
@@ -677,8 +698,8 @@
     <div class="creative-card">
       <span class="creative-card-tag winner">Execution</span>
 
-      <div style="margin-bottom:12px;">
-        <video autoplay muted loop playsinline style="width:100%;border-radius:10px;">
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline >
           <source src="/assets/videos/jefferson.mp4" type="video/mp4">
         </video>
       </div>

@@ -654,6 +654,27 @@
 
 </style>
 <link rel="stylesheet" href="../styles.css">
+<style>
+/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
+body { font-family: 'DM Sans', system-ui, sans-serif !important; }
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img,
+    .cc-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
@@ -872,36 +893,68 @@
     <p class="prose">The data had already identified what worked. The strategy was to stop running underperforming ads alongside the winners and use the freed budget to run a structured copy test on top of them.</p>
     <div class="creative-grid">
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
         <span class="creative-card-tag winner">Winner</span>
         <div class="creative-card-title">Candid static — Brown Door</div>
         <div class="creative-card-desc">Homeowner photographed in front of their home. Authentic, unposed, property-focused. Outperformed studio and graphic formats consistently across Kansas and Missouri markets.</div>
         <div class="creative-card-metric">Best performance in <strong>Kansas broad 35+</strong> adset</div>
       </div>
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
         <span class="creative-card-tag winner">Winner</span>
         <div class="creative-card-title">New Candid 2</div>
         <div class="creative-card-desc">Second candid variant proving itself across both Kansas and Missouri in broad adsets. Sufficient volume to trust the pattern across multiple markets before scaling.</div>
         <div class="creative-card-metric">Strong across <strong>Kansas + Missouri broad</strong></div>
       </div>
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
         <span class="creative-card-tag learning">Learning</span>
         <div class="creative-card-title">Cost-angle copy test</div>
         <div class="creative-card-desc">Tested copy emphasizing actual project affordability instead of percentage-off incentives. Early results showed a lower duplicate rate and higher set rate, suggesting better lead quality at the top of funnel.</div>
         <div class="creative-card-metric">Tracked as <strong>separate test track</strong> from incentive copy</div>
       </div>
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
         <span class="creative-card-tag tested">Tested</span>
         <div class="creative-card-title">Heavy incentive copy</div>
         <div class="creative-card-desc">50%-off hook both in headline and primary text. Generated volume but set rate suffered. When the ad's entire value proposition is the discount, the leads who respond are there for the discount, not the product.</div>
         <div class="creative-card-metric">Set rate <strong>below 12%</strong> on this variant</div>
       </div>
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when video is ready
+      <div class="cc-media-wrap cc-media-dark">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="/assets/videos/FILENAME.mp4" type="video/mp4">
+        </video>
+      </div>
+      -->
         <span class="creative-card-tag winner">Winner</span>
         <div class="creative-card-title">3-requirements timelapse video</div>
         <div class="creative-card-desc">State-specific hook qualifying leads by location and window age. Proven format across multiple accounts in the vertical. Used as primary creative in the state CBO rebuild alongside the candid door variant.</div>
         <div class="creative-card-metric">Deployed in <strong>State CBO</strong> in 1:1 and 9:16</div>
       </div>
       <div class="creative-card">
+      <!-- AD ASSET: uncomment and set src when image is ready
+      <div class="cc-media-wrap">
+        <img src="/assets/images/FILENAME.jpg" alt="" loading="lazy">
+      </div>
+      -->
         <span class="creative-card-tag tested">Tested</span>
         <div class="creative-card-title">Group staff collage</div>
         <div class="creative-card-desc">Team photography in collage format. Tested in Kansas-specific adset. Showed early promise in the 560k–650k audience bracket at 35+. Held for further evaluation before scaling.</div>

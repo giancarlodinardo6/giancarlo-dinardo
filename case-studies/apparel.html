@@ -92,7 +92,7 @@
     .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
     .cta-btn:hover{opacity:0.85;}
     .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
-    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}}
+    @media(max-width:900px){.hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}.creative-grid{grid-template-columns:1fr;}.results-grid{grid-template-columns:1fr 1fr;}.hero{padding:60px 24px 0;min-height:auto;}nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}.results-section{padding-left:24px;padding-right:24px;}.cta-section{margin:40px 24px;padding:60px 32px;}.learned-section > div[style]{grid-template-columns:1fr !important;}.learned-section > div[style] > div:last-child{display:none;}}
   
 /* ── ARTIFACT CALLOUT COMPONENT ─────────────────────────────────── */
 .artifact-callout-wrap {
@@ -310,7 +310,7 @@ body {
 <div>
 <div class="hero-label">Case Studies / DTC Apparel</div>
 <h1>You can't build a lifestyle brand with a <em>product catalog.</em></h1>
-<p class="hero-desc">A lifestyle basics brand was running creative that showed the clothes and described the fabric. The product was the brand. The creative treated it like a commodity. Shifting from product ads to identity ads changed what the data looked like.</p>
+<p class="hero-desc">When a lifestyle basics brand positions itself around buying less but buying better, the creative has to do more than show the clothes. It has to find the buyer who already believes that. What was running treated the product as the message. What the brand needed was creative that made the right person recognize themselves before the product appeared.</p>
 <div class="hero-meta">
 <div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Elevated Basics / DTC Apparel</div></div>
 <div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
@@ -319,7 +319,6 @@ body {
 </div>
 </div>
 <div class="hero-visual">
-<div class="hero-visual-label">Ten-week creative repositioning</div>
 <!-- Abstract grid decoration -->
 <svg preserveaspectratio="xMidYMid slice" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.06;pointer-events:none;" viewbox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
 <defs><pattern height="40" id="hgrid" patternunits="userSpaceOnUse" width="40"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"></path></pattern></defs>
@@ -330,9 +329,9 @@ body {
 <div style="position:relative;z-index:1;">
 <div class="hero-visual-label">Ten-week creative repositioning</div>
 <div class="hero-stat-grid">
-<div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value on identity buyer segment</div></div>
-<div class="hero-stat"><div class="hero-stat-num">2.4x</div><div class="hero-stat-label">ROAS on identity-led creative vs product-led control (directional)</div></div>
-<div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to find the identity buyer</div></div>
+<div class="hero-stat"><div class="hero-stat-num">+22%</div><div class="hero-stat-label">Average order value — identity buyer vs product-hook buyer</div></div>
+<div class="hero-stat"><div class="hero-stat-num">2.4x</div><div class="hero-stat-label">ROAS on identity creative vs original control (directional)</div></div>
+<div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Hook types tested to isolate the identity buyer</div></div>
 </div>
 </div>
 <div class="hero-visual-footer">Same clothes. Different creative premise. Different buyer.</div>
@@ -344,7 +343,7 @@ body {
 <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The brand had a clear identity. The creative had not found it yet.</h2>
 <p class="prose">The brand was selling elevated basics. Heavyweight hoodies, quality socks, simple tees designed to last. Their positioning was about not needing more, buying less but buying better. That is a strong angle. It is also an angle that requires a specific type of creative to work.</p>
 <p class="prose">What was running was product creative. Flat lays, fabric close-ups, product copy in the headline. The ads were describing the clothes instead of describing the person who wears them. The buyer this brand was built for does not respond to fabric weight in the headline. They respond to recognizing themselves in the ad before the product appears.</p>
-<p class="prose">ROAS was hovering around 1.4. Click-through was fine. Add-to-cart was reasonable. Purchase conversion was low. The creative was finding people. It was finding the wrong people. The ones who did purchase were churning at higher rates and had lower average order values than the brand's organic buyers, suggesting the ad buyer and the brand's real customer were not the same person.</p>
+<p class="prose">The performance numbers were not obviously broken, which made the problem harder to see. Click-through was there. Add-to-cart was there. But purchase conversion underperformed against what the funnel suggested it should be, and the buyers who did convert did not behave like the brand's organic customers. They had lower average order values and returned at higher rates. The gap between paid and organic buyer behavior was the real diagnostic signal — it told you the ads were finding a different kind of person than the brand had already proven it could keep.</p>
 </div>
 <div>
 <div class="context-callout">
@@ -391,10 +390,56 @@ body {
 </section>
 <div class="divider"></div>
 <section class="approach-section">
+<div style="display:flex;flex-direction:column;gap:40px;">
 <div>
 <div class="section-label">The Approach</div>
 <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Find the identity buyer. Build creative for them specifically. Test until the algorithm can find more.</h2>
 <p class="prose">The account was generating volume, but the quality of that volume was inconsistent. The problem was not creative output. It was who the ads were actually attracting.</p>
+</div>
+<!-- Abstract illustration: buyer signal vs noise -->
+<svg viewbox="0 0 380 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:380px;opacity:0.85;">
+  <defs>
+    <linearGradient id="tealFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B9E9E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5B9E9E" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Grid lines -->
+  <line x1="40" y1="200" x2="360" y2="200" stroke="#1C1C1A" stroke-opacity="0.1" stroke-width="1"/>
+  <line x1="40" y1="160" x2="360" y2="160" stroke="#1C1C1A" stroke-opacity="0.06" stroke-width="0.5"/>
+  <line x1="40" y1="120" x2="360" y2="120" stroke="#1C1C1A" stroke-opacity="0.06" stroke-width="0.5"/>
+  <line x1="40" y1="80" x2="360" y2="80" stroke="#1C1C1A" stroke-opacity="0.06" stroke-width="0.5"/>
+  <!-- Product hook line — flat, drifting -->
+  <polyline points="40,170 90,175 140,168 190,178 240,172 290,176 340,170" fill="none" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="5 3" stroke-opacity="0.5"/>
+  <!-- Identity hook line — climbing -->
+  <polyline points="40,175 90,160 140,138 190,115 240,95 290,78 340,60" fill="none" stroke="#5B9E9E" stroke-width="2"/>
+  <!-- Area fill under identity line -->
+  <polygon points="40,175 90,160 140,138 190,115 240,95 290,78 340,60 340,200 40,200" fill="url(#tealFade)"/>
+  <!-- Scatter dots: identity buyer signals -->
+  <circle cx="110" cy="148" r="3" fill="#5B9E9E" fill-opacity="0.7"/>
+  <circle cx="175" cy="120" r="3.5" fill="#5B9E9E" fill-opacity="0.8"/>
+  <circle cx="240" cy="90" r="3" fill="#5B9E9E" fill-opacity="0.7"/>
+  <circle cx="305" cy="70" r="4" fill="#5B9E9E"/>
+  <!-- Scatter dots: product hook buyer signals -->
+  <circle cx="100" cy="182" r="2.5" fill="#B85C38" fill-opacity="0.45"/>
+  <circle cx="165" cy="178" r="2" fill="#B85C38" fill-opacity="0.45"/>
+  <circle cx="230" cy="185" r="2.5" fill="#B85C38" fill-opacity="0.45"/>
+  <circle cx="300" cy="179" r="2" fill="#B85C38" fill-opacity="0.45"/>
+  <!-- Week markers -->
+  <line x1="40" y1="198" x2="40" y2="204" stroke="#1C1C1A" stroke-opacity="0.2" stroke-width="1"/>
+  <line x1="140" y1="198" x2="140" y2="204" stroke="#1C1C1A" stroke-opacity="0.2" stroke-width="1"/>
+  <line x1="240" y1="198" x2="240" y2="204" stroke="#1C1C1A" stroke-opacity="0.2" stroke-width="1"/>
+  <line x1="340" y1="198" x2="340" y2="204" stroke="#1C1C1A" stroke-opacity="0.2" stroke-width="1"/>
+  <text x="40" y="218" font-family="DM Sans,system-ui,sans-serif" font-size="9" fill="#1C1C1A" fill-opacity="0.3" text-anchor="middle">Wk 1</text>
+  <text x="140" y="218" font-family="DM Sans,system-ui,sans-serif" font-size="9" fill="#1C1C1A" fill-opacity="0.3" text-anchor="middle">Wk 3</text>
+  <text x="240" y="218" font-family="DM Sans,system-ui,sans-serif" font-size="9" fill="#1C1C1A" fill-opacity="0.3" text-anchor="middle">Wk 6</text>
+  <text x="340" y="218" font-family="DM Sans,system-ui,sans-serif" font-size="9" fill="#1C1C1A" fill-opacity="0.3" text-anchor="middle">Wk 10</text>
+  <!-- Legend -->
+  <line x1="40" y1="238" x2="60" y2="238" stroke="#5B9E9E" stroke-width="2"/>
+  <text x="65" y="242" font-family="DM Sans,system-ui,sans-serif" font-size="9.5" fill="#1C1C1A" fill-opacity="0.5">Identity buyer quality</text>
+  <line x1="190" y1="238" x2="210" y2="238" stroke="#B85C38" stroke-width="1.5" stroke-dasharray="4 3" stroke-opacity="0.6"/>
+  <text x="215" y="242" font-family="DM Sans,system-ui,sans-serif" font-size="9.5" fill="#1C1C1A" fill-opacity="0.5">Product hook baseline</text>
+</svg>
 </div>
 <div class="process-steps">
 <div class="process-step">
@@ -539,6 +584,7 @@ body {
 </section>
 <section class="learned-section">
 <h2>What I took from <em>this one</em></h2>
+<div style="display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;">
 <div class="learned-items">
 <div class="learned-item">
 <div class="learned-num">01</div>
@@ -551,6 +597,47 @@ body {
 <div class="learned-item">
 <div class="learned-num">03</div>
 <div class="learned-text"><strong>Testing one variable at a time produces knowledge, not just winners.</strong> The systematic approach meant that by week six I knew exactly which element of the identity hook was doing the work — the call-out in the first line, not the visual context. That is a different outcome than finding a winner. It is finding the principle behind the winner. And that principle is what drives the next brief toward something conceptually distinct: a new persona, a new awareness stage, a different emotional entry point. Iteration without that understanding produces more versions of the same concept. Iteration with it produces genuinely new territory.</div>
+</div>
+</div>
+<!-- Abstract illustration: mirror / identity concept -->
+<div style="position:sticky;top:40px;">
+<svg viewbox="0 0 300 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.82;">
+  <defs>
+    <linearGradient id="mirrorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5B9E9E" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#5B9E9E" stop-opacity="0.02"/>
+    </linearGradient>
+    <linearGradient id="rustGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#B85C38" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#B85C38" stop-opacity="0.01"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer frame: the ad -->
+  <rect x="60" y="30" width="180" height="220" rx="12" fill="none" stroke="#1C1C1A" stroke-opacity="0.12" stroke-width="1.5"/>
+  <!-- Dashed inner: the message -->
+  <rect x="76" y="46" width="148" height="188" rx="8" fill="url(#mirrorGrad)" stroke="#5B9E9E" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Silhouette: person in the ad -->
+  <ellipse cx="150" cy="105" rx="18" ry="18" fill="#5B9E9E" fill-opacity="0.2" stroke="#5B9E9E" stroke-opacity="0.4" stroke-width="1"/>
+  <path d="M120,170 Q150,140 180,170" fill="none" stroke="#5B9E9E" stroke-opacity="0.4" stroke-width="1.5"/>
+  <rect x="108" y="170" width="84" height="48" rx="6" fill="#5B9E9E" fill-opacity="0.08" stroke="#5B9E9E" stroke-opacity="0.2" stroke-width="1"/>
+  <!-- Hook label -->
+  <text x="150" y="234" font-family="DM Sans,system-ui,sans-serif" font-size="8" fill="#5B9E9E" fill-opacity="0.65" text-anchor="middle" letter-spacing="0.1em" text-transform="uppercase">IDENTITY HOOK</text>
+  <!-- Arrow: recognition -->
+  <line x1="150" y1="258" x2="150" y2="278" stroke="#1C1C1A" stroke-opacity="0.15" stroke-width="1" stroke-dasharray="3 3"/>
+  <polygon points="144,275 150,285 156,275" fill="#1C1C1A" fill-opacity="0.15"/>
+  <!-- Viewer: the right buyer recognizing themselves -->
+  <ellipse cx="150" cy="308" rx="20" ry="20" fill="none" stroke="#1C1C1A" stroke-opacity="0.18" stroke-width="1.5"/>
+  <ellipse cx="150" cy="308" rx="10" ry="10" fill="#1C1C1A" fill-opacity="0.06"/>
+  <!-- Side annotations -->
+  <line x1="50" y1="105" x2="60" y2="105" stroke="#1C1C1A" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="46" y="109" font-family="DM Sans,system-ui,sans-serif" font-size="8" fill="#1C1C1A" fill-opacity="0.3" text-anchor="end">the ad</text>
+  <line x1="250" y1="308" x2="240" y2="308" stroke="#1C1C1A" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="254" y="312" font-family="DM Sans,system-ui,sans-serif" font-size="8" fill="#1C1C1A" fill-opacity="0.3">the buyer</text>
+  <!-- Rejected path: wrong buyer drifts off -->
+  <path d="M150,260 Q200,268 230,255" fill="none" stroke="#B85C38" stroke-opacity="0.25" stroke-width="1" stroke-dasharray="3 4"/>
+  <circle cx="232" cy="254" r="3" fill="#B85C38" fill-opacity="0.2"/>
+  <text x="235" y="258" font-family="DM Sans,system-ui,sans-serif" font-size="8" fill="#B85C38" fill-opacity="0.4">wrong buyer</text>
+</svg>
 </div>
 </div>
 </section>

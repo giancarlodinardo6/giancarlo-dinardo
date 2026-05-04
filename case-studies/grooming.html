@@ -24,7 +24,7 @@
     .hero-meta-item{display:block;}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:32px;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:28px;position:relative;z-index:1;}
@@ -32,7 +32,7 @@
     @media(max-width:600px){.hero-stat-grid{grid-template-columns:1fr;gap:20px;}.hero-stat-num{font-size:36px;}}
     .hero-stat{}.hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.4;}
-    .hero-visual-footer{margin-top:auto;font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-visual-footer{font-size:11px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -320,7 +320,7 @@ body {
 </div>
 </div>
 <div class="hero-visual">
-<div class="hero-visual-label">Ten-week creative rebuild</div>
+<div class="hero-visual-label">Six-week creative rebuild</div>
 <div class="hero-stat-grid">
 <div class="hero-stat"><div class="hero-stat-num">$22</div><div class="hero-stat-label">Cost per purchase, down from $41</div></div>
 <div class="hero-stat"><div class="hero-stat-num">2.8x</div><div class="hero-stat-label">ROAS on new scripts vs control</div></div>
@@ -399,7 +399,7 @@ body {
 <div class="section-label">The Approach</div>
 <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Rebuild the script to match how the buyer actually thinks, not how the brand wants to present.</h2>
 <p class="prose">The scripts were getting attention, but not converting consistently. The issue was not reach. It was how the message was structured.</p>
-<p class="prose" style="margin-top:16px;">Weeks one and two were audit and research. Weeks three through five were script development and the ABO isolation test. Weeks six and seven were UGC production and format testing against the studio control. The final three weeks were hook variations on the proven winner and scaling the scripts that held.</p>
+<p class="prose" style="margin-top:16px;">Weeks one and two were audit and research. Weeks three and four were script development and the ABO isolation test. Weeks five and six were UGC production, format testing against the studio control, and hook variations on the proven winner.</p>
 </div>
 <div class="process-steps">
 <div class="process-step">
@@ -516,10 +516,10 @@ body {
 <div class="results-inner">
 <div class="section-label">Results</div>
 <h2>The script structure changed. The conversion rate followed.</h2>
-<p class="prose">Ten weeks from the start of the engagement, through an agency. The product, the price point, the landing page, and the budget were all the same. The creative structure was the only variable that changed.</p>
+<p class="prose">Six weeks from the start of the engagement, through an agency. The product, the price point, the landing page, and the budget were all the same. The creative structure was the only variable that changed.</p>
 <div class="results-grid">
 <div class="result-stat">
-<div class="result-num">10</div>
+<div class="result-num">6</div>
 <div class="result-label">Week engagement</div>
 <div class="result-context">Audit, script rebuild, ABO isolation test, format testing, hook variations</div>
 </div>
@@ -617,11 +617,11 @@ body {
 <div class="ba-card after">
 <div class="ba-label">After the rebuild</div>
 <div class="ba-items">
-<div class="ba-item"><div class="ba-dot"></div><div>Scripts opening with identity validation, acknowledging the buyer's prior failed attempts before introducing the product</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Scripts opening with identity validation, acknowledging the buyer's prior failed attempts before introducing the product<br><span style="color:var(--teal);font-size:12px;font-weight:500;">Checkout completion rate aligned with the interest the hook had already generated.</span></div></div>
 <div class="ba-item"><div class="ba-dot"></div><div>Named mechanism introduced in the middle, creating a knowledge gap the viewer needed the product to close</div></div>
-<div class="ba-item"><div class="ba-dot"></div><div>UGC format running alongside studio, with UGC carrying cold traffic and studio kept for warm retargeting</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>UGC format running alongside studio, with UGC carrying cold traffic and studio kept for warm retargeting<br><span style="color:var(--teal);font-size:12px;font-weight:500;">UGC outperformed studio on both ROAS and CVR on cold audiences.</span></div></div>
 <div class="ba-item"><div class="ba-dot"></div><div>Objection dialog woven into the script through conversation rather than addressed as a rebuttal block at the end</div></div>
-<div class="ba-item"><div class="ba-dot"></div><div>Loss aversion close making inaction concrete rather than asking the viewer to imagine a better outcome</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Loss aversion close making inaction concrete rather than asking the viewer to imagine a better outcome<br><span style="color:var(--teal);font-size:12px;font-weight:500;">Cost per purchase moved from $41 to $22. ROAS on new scripts reached 2.8x vs the original control.</span></div></div>
 </div>
 </div>
 </div>
@@ -640,13 +640,6 @@ body {
 <div style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hooks Are Targeting playbook covers how to choose the hook type, write the opening line, and read whether it is qualifying the right buyer or simply stopping more people. <a href="../playbooks/hooks-are-targeting.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
 </div>
 </div>
-<div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
-<div style="font-size:18px;margin-top:2px;">→</div>
-<div>
-<div style="font-size:16px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">How to build and evaluate each block of an ad independently</div>
-<div style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.65;">The Creative Construction playbook covers the building blocks model: how to evaluate which part of a script is failing rather than scrapping the whole concept, and how to give feedback to editors at the frame level rather than the direction level. <a href="../playbooks/creative-construction.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
-</div>
-</div>
 </div>
 
 
@@ -655,7 +648,7 @@ body {
       <div class="artifact-callout-content">
         <div class="artifact-callout-eyebrow">Creative Artifact</div>
         <div class="artifact-callout-title">DTC Script Brief</div>
-        <p class="artifact-callout-desc">The script brief that rebuilt the grooming account — the four-phase psychological sequence, format direction, and variant summary from the 10-week rebuild.</p>
+        <p class="artifact-callout-desc">The script brief that rebuilt the grooming account — the four-phase psychological sequence, format direction, and variant summary from the six-week rebuild.</p>
         <a href="../creative-library/dtc-script-brief.html" class="artifact-callout-cta">
           View artifact
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
@@ -689,17 +682,6 @@ body {
   <circle cx="84" cy="18" r="6" fill="none" stroke="rgba(91,158,158,0.2)" stroke-width="0.8"/>
 </svg></div>
     </div>
-    <a href="../creative-library/index.html" class="artifact-hub-block">
-      <div>
-        <div class="artifact-hub-label">Creative Library</div>
-        <div class="artifact-hub-text">Briefs, scorecards, and working documents from real accounts.</div>
-      </div>
-      <div class="artifact-hub-arrow">
-        View all
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
-      </div>
-    </a>
-  </div>
 <footer class="sitefoot">
 <span>© GIANCARLO DI NARDO</span>
 <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">

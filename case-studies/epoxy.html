@@ -27,15 +27,17 @@
     .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;padding-top:32px;border-top:1px solid var(--ink-10);}
     .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
     .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
-    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;min-height:420px;display:flex;flex-direction:column;justify-content:flex-start;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;gap:32px;}
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:36px;position:relative;z-index:1;}
-    .hero-stat-grid{display:flex;flex-direction:column;gap:36px;position:relative;z-index:1;width:100%;}
-    .hero-stat{flex:none;width:100%;}
+    .hero-stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;position:relative;z-index:1;width:100%;flex:1;}
+    .hero-stat{padding:0 24px 0 0;border-right:1px solid rgba(255,255,255,0.08);}
+    .hero-stat:last-child{padding-right:0;border-right:none;padding-left:24px;}
+    .hero-stat:not(:first-child):not(:last-child){padding:0 24px;}
     .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
     .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.5;}
-    .hero-visual-footer{margin-top:40px;font-size:14px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+    .hero-visual-footer{font-size:14px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
     .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
@@ -75,8 +77,6 @@
     .learned-body{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;}
     .learned-items{display:flex;flex-direction:column;gap:32px;}
     .learned-art{position:relative;height:420px;}
-    .creative-card.card-wide{grid-column:span 2;}
-    .creative-card.card-wide .cc-media-wrap img{max-height:320px;object-fit:contain;width:100%;}
     .cc-media-wrap.cc-portrait{aspect-ratio:9/16;overflow:hidden;}
     .cc-media-wrap.cc-portrait video{width:100%;height:100%;object-fit:cover;display:block;}
     @media(max-width:900px){.learned-body{grid-template-columns:1fr;}.learned-art{display:none;}}
@@ -206,41 +206,10 @@ body {
 </div>
 <div class="hero-visual">
 <div class="hero-visual-label">Five-month performance delta from engagement start</div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1;align-items:center;position:relative;z-index:1;">
 <div class="hero-stat-grid">
 <div class="hero-stat"><div class="hero-stat-num">44%</div><div class="hero-stat-label">CPL reduction</div></div>
 <div class="hero-stat"><div class="hero-stat-num" style="font-size:clamp(28px,3.2vw,38px);"><span style="color:rgba(255,255,255,0.3);">22%</span> → <span style="color:#5B9E9E;">37%</span></div><div class="hero-stat-label">Set rate improvement within 5 months</div></div>
 <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Hook types tested to isolate winner</div></div>
-</div>
-<div style="display:flex;align-items:center;justify-content:center;height:100%;opacity:0.6;">
-<svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" width="180" height="260">
-  <defs>
-    <radialGradient id="hg1" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#5B9E9E" stop-opacity="0.25"/>
-      <stop offset="100%" stop-color="#5B9E9E" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="hg2" cx="50%" cy="70%" r="50%">
-      <stop offset="0%" stop-color="#B85C38" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#B85C38" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="200" height="280" fill="url(#hg1)"/>
-  <rect width="200" height="280" fill="url(#hg2)"/>
-  <path d="M 20 240 C 60 180 100 220 140 160 S 180 80 200 40" fill="none" stroke="#5B9E9E" stroke-width="1" stroke-opacity="0.3"/>
-  <path d="M 10 260 C 55 195 100 235 145 175 S 185 90 200 55" fill="none" stroke="#5B9E9E" stroke-width="0.5" stroke-opacity="0.15"/>
-  <path d="M 200 260 C 155 210 120 240 80 190 S 40 120 0 100" fill="none" stroke="#B85C38" stroke-width="0.8" stroke-opacity="0.2"/>
-  <circle cx="60" cy="80" r="2" fill="#5B9E9E" fill-opacity="0.5"/>
-  <circle cx="130" cy="50" r="1.5" fill="#5B9E9E" fill-opacity="0.4"/>
-  <circle cx="170" cy="130" r="2.5" fill="#5B9E9E" fill-opacity="0.3"/>
-  <circle cx="50" cy="200" r="1.8" fill="#B85C38" fill-opacity="0.35"/>
-  <circle cx="150" cy="210" r="2" fill="#B85C38" fill-opacity="0.25"/>
-  <circle cx="100" cy="140" r="80" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <circle cx="100" cy="140" r="55" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-  <rect x="85" y="125" width="30" height="30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.8" transform="rotate(20 100 140)"/>
-  <line x1="20" y1="140" x2="80" y2="140" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
-  <line x1="120" y1="140" x2="180" y2="140" stroke="rgba(255,255,255,0.06)" stroke-width="0.6"/>
-</svg>
-</div>
 </div>
 <div class="hero-visual-footer">Structure separated first. Creative iteration followed.</div>
 </div>
@@ -348,7 +317,7 @@ body {
 <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">Six angles. Two clear winners. One pattern that held across every format tested.</h2>
 <p class="prose">The creative test ran inside the ABO testing campaign with equal daily budget per ad set and the same landing page across all concepts. What came back was not just a performance ranking. It was a map of which angle found which buyer — and how far along the decision that buyer actually was when the algorithm reached them.</p>
 <div class="creative-grid">
-<div class="creative-card card-wide">
+<div class="creative-card">
 <div class="cc-media-wrap">
   <img src="/assets/images/epoxy-ad1.jpg" alt="Before and after garage floor transformation" loading="lazy">
 </div>

@@ -228,9 +228,7 @@ div[style*="min-height:700px"] {
   min-height: 620px !important;
   padding: 20px !important;
 }
-div[style*="aspect-ratio:4/5"] {
-  aspect-ratio:3/4;
-}
+
 div[style*="font-size:13.5px"] {
   font-size: 13px !important;
 }
@@ -256,10 +254,7 @@ div[style*="font-size:18px"] {
   div[style*="min-height:620px"] {
     min-height: auto !important;
   }
-  div[style*="aspect-ratio:4/5"],
-  div[style*="aspect-ratio:4/5"] {
-    aspect-ratio: 3 / 4 !important;
-  }
+
 }
 </style>
 
@@ -383,7 +378,7 @@ div[style*="grid-template-columns:repeat(2"] img {
 
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;">
         <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;aspect-ratio:4/5;object-fit:contain;margin-bottom:12px;">
+          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;">
             <source src="/assets/videos/0002.mp4" type="video/mp4">
           </video>
           <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Original winner (0002)</div>

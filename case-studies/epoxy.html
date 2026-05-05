@@ -75,6 +75,9 @@
     .learned-body{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;}
     .learned-items{display:flex;flex-direction:column;gap:32px;}
     .learned-art{position:relative;height:420px;}
+    .creative-card.card-wide{grid-column:1/-1;}
+    .cc-media-wrap.cc-portrait{aspect-ratio:9/16;overflow:hidden;}
+    .cc-media-wrap.cc-portrait video{width:100%;height:100%;object-fit:cover;display:block;}
     @media(max-width:900px){.learned-body{grid-template-columns:1fr;}.learned-art{display:none;}}
     .learned-item{display:flex;gap:24px;align-items:flex-start;}
     .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
@@ -313,7 +316,7 @@ body {
 <h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">Six angles. Two clear winners. One pattern that held across every format tested.</h2>
 <p class="prose">The creative test ran inside the ABO testing campaign with equal daily budget per ad set and the same landing page across all concepts. What came back was not just a performance ranking. It was a map of which angle found which buyer — and how far along the decision that buyer actually was when the algorithm reached them.</p>
 <div class="creative-grid">
-<div class="creative-card">
+<div class="creative-card card-wide">
 <div class="cc-media-wrap">
   <img src="/assets/images/epoxy-ad1.jpg" alt="Before and after garage floor transformation" loading="lazy">
 </div>
@@ -323,7 +326,7 @@ body {
 <div class="creative-card-metric"><strong>Highest set rate</strong> of all formats tested. Promoted to the CBO scaling campaign once it had enough history behind it.</div>
 </div>
 <div class="creative-card">
-<div class="cc-media-wrap cc-media-dark">
+<div class="cc-media-wrap cc-media-dark cc-portrait">
   <video autoplay muted loop playsinline preload="metadata">
     <source src="/assets/videos/epoxy-ad3.mp4" type="video/mp4">
   </video>

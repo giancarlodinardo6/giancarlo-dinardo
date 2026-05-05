@@ -31,11 +31,10 @@
     .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
     .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
     .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:36px;position:relative;z-index:1;}
-    .hero-stat-grid{display:flex;flex-direction:column;gap:36px;position:relative;z-index:1;}
-    .hero-stat{flex:none;}
+    .hero-stat-grid{display:flex;flex-direction:column;gap:36px;position:relative;z-index:1;width:100%;}
+    .hero-stat{flex:none;width:100%;}
     .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
-    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.5;max-width:220px;}
-    .hero-stat-grid{max-width:340px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.5;}
     .hero-visual-footer{margin-top:40px;font-size:14px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
     .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
     .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
@@ -73,7 +72,10 @@
     .learned-section{padding:48px 48px 48px;max-width:1200px;margin:0 auto;}
     .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
     .learned-section h2 em{font-style:italic;color:var(--teal);}
-    .learned-items{display:flex;flex-direction:column;gap:32px;max-width:680px;}
+    .learned-body{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;}
+    .learned-items{display:flex;flex-direction:column;gap:32px;}
+    .learned-art{position:relative;height:420px;}
+    @media(max-width:900px){.learned-body{grid-template-columns:1fr;}.learned-art{display:none;}}
     .learned-item{display:flex;gap:24px;align-items:flex-start;}
     .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
     .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
@@ -125,19 +127,25 @@ body {
 
     /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
     .cc-media-wrap {
-      aspect-ratio: 4/5;
       border-radius: 10px;
       overflow: hidden;
       margin-bottom: 14px;
       background: #f0ede7;
+      width: 100%;
     }
     .cc-media-wrap.cc-media-dark { background: #111; }
-    .cc-media-wrap img,
+    .cc-media-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
     .cc-media-wrap video {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
+      max-height: 340px;
+      object-fit: contain;
     }
     </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
@@ -398,6 +406,7 @@ body {
 </section>
 <section class="learned-section">
 <h2>What I took from <em>this one</em></h2>
+<div class="learned-body">
 <div class="learned-items">
 <div class="learned-item">
 <div class="learned-num">01</div>
@@ -410,6 +419,63 @@ body {
 <div class="learned-item">
 <div class="learned-num">03</div>
 <div class="learned-text"><strong>Geographic concentration beats geographic ambition at moderate spend levels.</strong> Running three states at $85k a month sounds like scale, but split three ways each market was getting roughly $28k. That is not enough to build meaningful signal across a spread that wide when the geos have different competitive dynamics. The more useful move was stepping back and reassessing with the client: which geos actually aligned with their growth priorities, and which ones were just generating noise? Concentrating spend in the two markets where installs were closing — with location callouts reinforcing geographic relevance in the creative — improved both CPL and lead quality without changing the total budget. The third state did not get abandoned. It got treated differently at a lower spend level until it could justify more.</div>
+</div>
+</div>
+<div class="learned-art">
+<svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <radialGradient id="lg1" cx="30%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#5B9E9E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5B9E9E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg2" cx="75%" cy="70%" r="55%">
+      <stop offset="0%" stop-color="#B85C38" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#B85C38" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg3" cx="60%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#B87A1A" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#B87A1A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+  </defs>
+  <!-- Background washes -->
+  <rect width="380" height="420" fill="url(#lg1)"/>
+  <rect width="380" height="420" fill="url(#lg2)"/>
+  <rect width="380" height="420" fill="url(#lg3)"/>
+  <!-- Flowing path lines — teal -->
+  <path d="M 20 340 C 80 280 140 320 200 260 S 300 160 360 120" fill="none" stroke="#5B9E9E" stroke-width="1.2" stroke-opacity="0.35" filter="url(#blur1)"/>
+  <path d="M 10 360 C 90 300 160 340 220 270 S 310 150 370 100" fill="none" stroke="#5B9E9E" stroke-width="0.7" stroke-opacity="0.2"/>
+  <path d="M 30 380 C 100 310 180 355 240 285 S 330 180 375 140" fill="none" stroke="#5B9E9E" stroke-width="0.5" stroke-opacity="0.15"/>
+  <!-- Flowing path lines — rust -->
+  <path d="M 380 380 C 300 320 240 360 170 300 S 80 200 20 170" fill="none" stroke="#B85C38" stroke-width="1.0" stroke-opacity="0.25" filter="url(#blur1)"/>
+  <path d="M 380 400 C 310 335 245 375 175 315 S 75 215 10 190" fill="none" stroke="#B85C38" stroke-width="0.6" stroke-opacity="0.15"/>
+  <!-- Diagonal accent lines — amber -->
+  <line x1="60" y1="0" x2="380" y2="300" stroke="#B87A1A" stroke-width="0.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="60" x2="340" y2="420" stroke="#B87A1A" stroke-width="0.4" stroke-opacity="0.08"/>
+  <!-- Scattered dots — teal -->
+  <circle cx="68" cy="110" r="2.5" fill="#5B9E9E" fill-opacity="0.4"/>
+  <circle cx="140" cy="72" r="1.8" fill="#5B9E9E" fill-opacity="0.3"/>
+  <circle cx="220" cy="140" r="3" fill="#5B9E9E" fill-opacity="0.25"/>
+  <circle cx="295" cy="88" r="1.5" fill="#5B9E9E" fill-opacity="0.35"/>
+  <circle cx="340" cy="200" r="2" fill="#5B9E9E" fill-opacity="0.2"/>
+  <!-- Scattered dots — rust -->
+  <circle cx="80" cy="290" r="2" fill="#B85C38" fill-opacity="0.3"/>
+  <circle cx="160" cy="340" r="3" fill="#B85C38" fill-opacity="0.2"/>
+  <circle cx="250" cy="310" r="1.8" fill="#B85C38" fill-opacity="0.25"/>
+  <circle cx="330" cy="370" r="2.5" fill="#B85C38" fill-opacity="0.2"/>
+  <!-- Small geometric markers — ink -->
+  <rect x="108" y="188" width="5" height="5" fill="none" stroke="#1C1C1A" stroke-width="0.8" stroke-opacity="0.15" transform="rotate(20 110 190)"/>
+  <rect x="258" y="238" width="5" height="5" fill="none" stroke="#1C1C1A" stroke-width="0.8" stroke-opacity="0.12" transform="rotate(45 260 240)"/>
+  <rect x="178" y="308" width="4" height="4" fill="none" stroke="#1C1C1A" stroke-width="0.7" stroke-opacity="0.10" transform="rotate(15 180 310)"/>
+  <!-- Horizontal rule accents -->
+  <line x1="40" y1="210" x2="120" y2="210" stroke="#1C1C1A" stroke-width="0.5" stroke-opacity="0.08"/>
+  <line x1="240" y1="170" x2="360" y2="170" stroke="#1C1C1A" stroke-width="0.5" stroke-opacity="0.06"/>
+  <!-- Large ghost circle — teal -->
+  <circle cx="190" cy="200" r="150" fill="none" stroke="#5B9E9E" stroke-width="0.8" stroke-opacity="0.08"/>
+  <circle cx="190" cy="200" r="110" fill="none" stroke="#5B9E9E" stroke-width="0.5" stroke-opacity="0.06"/>
+</svg>
 </div>
 </div>
 </section>

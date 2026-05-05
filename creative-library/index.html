@@ -314,6 +314,18 @@ div[style*="grid-template-columns:repeat(2"] img {
   height: auto !important;
   object-fit: cover !important;
 }
+
+/* Flooring contractor 3-col grid: collapse on mobile */
+@media (max-width: 700px) {
+  div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 900px) and (min-width: 701px) {
+  div[style*="grid-template-columns:repeat(3"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
 </style>
 </head>
 <body>

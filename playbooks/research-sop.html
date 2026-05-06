@@ -7,17 +7,25 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
+  <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
+  <style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --cream: #F5F2EC;
+    --bg: #F1ECE2;
+    --bg-2: #EAE4D6;
     --ink: #1C1C1A;
+    --ink-2: #2B2925;
     --ink-60: rgba(28,28,26,0.6);
     --ink-30: rgba(28,28,26,0.3);
     --ink-10: rgba(28,28,26,0.08);
     --ink-06: rgba(28,28,26,0.05);
+    --muted: #6B655A;
+    --line: #D9D2C2;
+    --line-2: #C4BCA8;
     --sage: #C8D5C0;
     --sage-light: #E4EDE0;
     --rust: #B85C38;
@@ -27,7 +35,9 @@
     --amber: #B87A1A;
     --amber-light: #F5E9D4;
     --serif: 'Instrument Serif', Georgia, serif;
+    --display: 'Instrument Serif', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
   }
 
   html { scroll-behavior: smooth; }
@@ -45,62 +55,124 @@
   /* ── TOPBAR ── */
   .topbar {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    padding: 12px 48px;
-    border-bottom: 1px solid var(--ink-10);
+    align-items: center;
+    padding: 22px 48px;
+    gap: 24px;
+  }
+  .cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px 7px 12px;
+    border: 1px solid var(--line-2);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.4);
+    font-family: var(--mono);
     font-size: 11px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--ink-2);
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
   }
-  .topbar a { color: var(--ink-60); text-decoration: none; display: flex; align-items: center; gap: 7px; transition: color 0.15s; }
-  .topbar a:hover { color: var(--ink); }
-  .topbar svg { width: 12px; height: 12px; flex-shrink: 0; }
+  .cv-btn:hover { background: rgba(255,255,255,0.8); }
+  .cv-btn svg { width: 11px; height: 11px; }
+  .email-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .email-link svg { width: 12px; height: 12px; opacity: 0.7; }
 
   /* ── NAV ── */
   .mainnav {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 32px 48px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 0;
+    padding: 14px 48px;
+    border-top: 1px dashed var(--line-2);
+    border-bottom: 1px dashed var(--line-2);
   }
   .logo-mark {
-    display: flex; align-items: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
     text-decoration: none;
-    font-family: var(--serif);
-    font-size: 18px;
-    color: var(--ink);
-    letter-spacing: -0.01em;
+    margin-right: 36px;
+    flex-shrink: 0;
   }
-  .logo-g { font-style: italic; }
-  .logo-div { width: 1px; height: 14px; background: var(--ink-30); margin: 0 6px; }
+  .logo-g {
+    font-family: var(--display);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .logo-div {
+    width: 1px;
+    height: 22px;
+    background: var(--line-2);
+    margin: 0 7px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .logo-d {
+    font-family: var(--display);
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    opacity: 0.35;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
   .mainnav-links {
     display: flex;
     align-items: center;
-    gap: 36px;
+    gap: 28px;
+    flex: 1;
   }
   .mainnav-links a {
-    font-size: 14px;
-    color: var(--ink-60);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .mainnav-links a:hover,
-  .mainnav-links a.active { color: var(--ink); }
-  .mainnav-links a.active { font-weight: 500; }
-  .nav-cta {
-    font-size: 13px;
+    font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    font-size: 15px;
+    color: var(--muted);
     font-weight: 500;
-    color: var(--ink) !important;
-    background: var(--ink-10);
-    padding: 8px 18px;
-    border-radius: 100px;
     text-decoration: none;
-    transition: background 0.15s;
+    padding-bottom: 2px;
+    border-bottom: 1.5px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
   }
-  .nav-cta:hover { background: var(--ink-30) !important; }
+  .mainnav-links a:hover { color: var(--ink); }
+  .mainnav-links a.active {
+    color: var(--ink);
+    border-bottom-color: var(--ink-60);
+  }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: var(--ink);
+    color: var(--bg) !important;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover { opacity: 0.82; }
 
   /* ── HERO ── */
   .hero {
@@ -400,22 +472,22 @@
   .stack-header .section-label { color: rgba(255,255,255,0.3); }
   .stack-header .section-label::before { background: rgba(255,255,255,0.2); }
   .stack-header .section-h2 { color: #fff; }
-  .stack-header .prose { color: rgba(255,255,255,0.5); }
+  .stack-header .prose { color: rgba(255,255,255,0.72); }
 
-  .stack-grid { display: flex; flex-direction: column; gap: 3px; }
+  .stack-grid { display: flex; flex-direction: column; gap: 8px; }
 
   .stack-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
     border-radius: 12px;
-    padding: 28px 32px;
+    padding: 32px 32px;
     display: grid;
     grid-template-columns: 40px 1fr 1fr 1fr;
     gap: 28px;
     align-items: start;
     transition: background 0.15s;
   }
-  .stack-card:hover { background: rgba(255,255,255,0.06); }
+  .stack-card:hover { background: rgba(255,255,255,0.13); }
 
   .stack-table-header {
     display: grid;
@@ -427,7 +499,7 @@
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.42);
     font-weight: 500;
   }
 
@@ -435,7 +507,7 @@
     font-family: var(--serif);
     font-size: 28px;
     font-style: italic;
-    color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.22);
     line-height: 1;
     padding-top: 6px;
   }
@@ -449,36 +521,61 @@
     text-transform: uppercase;
     margin-bottom: 10px;
   }
+
+  /* Column tint zones — applied to the two right columns in each card */
+  .sc-col {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 16px 14px;
+    border-left: 2px solid rgba(255,255,255,0.08);
+  }
+  .sc-col.produces {
+    border-left-color: rgba(91,158,158,0.3);
+    background: rgba(91,158,158,0.05);
+  }
   .tag-teal  { background: rgba(91,158,158,0.2);  color: #7ABFB5; }
   .tag-amber { background: rgba(184,122,26,0.2);  color: #D4A847; }
   .tag-rust  { background: rgba(184,92,56,0.2);   color: #E8967A; }
   .tag-muted { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
 
   .sc-source {
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 500;
     color: #fff;
-    margin-bottom: 8px;
-    line-height: 1.3;
+    margin-bottom: 10px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
   }
   .sc-desc {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-    line-height: 1.65;
+    font-size: 14px;
+    color: rgba(255,255,255,0.78);
+    line-height: 1.75;
     font-weight: 300;
   }
   .sc-col-label {
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.22);
-    margin-bottom: 7px;
-    font-weight: 500;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+    margin-top: 2px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sc-col-label::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
+    flex-shrink: 0;
   }
   .sc-col-text {
     font-size: 13px;
-    color: rgba(255,255,255,0.48);
-    line-height: 1.65;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
     font-weight: 300;
   }
 
@@ -823,12 +920,66 @@
     <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
     <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
-    <a href="../playbooks/index.html" data-section="playbooks" class="active">Playbooks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
     <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
+
+<script>
+(function(){
+  var path = window.location.pathname;
+  var file = path.split('/').pop() || '';
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    link.classList.remove('active');
+
+    if (section === 'lifecycle') {
+      if (
+        file === 'creative-coverage.html' ||
+        file === 'hooks-are-targeting.html' ||
+        file === 'creative-lifecycle.html' ||
+        file === 'research-sop.html' ||
+        file === 'creative-lifecycle-hub.html'
+      ) {
+        link.classList.add('active');
+      }
+      return;
+    }
+
+    if (section === 'playbooks') {
+      if (
+        path.indexOf('/playbooks/') !== -1 &&
+        file !== 'creative-coverage.html' &&
+        file !== 'hooks-are-targeting.html' &&
+        file !== 'creative-lifecycle.html' &&
+        file !== 'research-sop.html'
+      ) {
+        link.classList.add('active');
+      }
+      return;
+    }
+
+    if (section === 'case-studies' && path.indexOf('/case-studies/') !== -1) {
+      link.classList.add('active');
+      return;
+    }
+
+    if (section === 'frameworks' && path.indexOf('/frameworks/') !== -1) {
+      link.classList.add('active');
+      return;
+    }
+
+    if (section === 'about' && path.indexOf('/about/') !== -1) {
+      link.classList.add('active');
+      return;
+    }
+  });
+})();
+</script>
 
 <!-- HERO -->
 <section class="hero">
@@ -933,11 +1084,11 @@
           <div class="sc-source">Reputation audit</div>
           <div class="sc-desc">Google the brand name, the category, and the main problem the product solves. Read the first two pages of results as a skeptical buyer doing pre-purchase research. Check BBB, Trustpilot, Reddit threads, and any review aggregators in the category. Note every friction point, every trust signal, every question the results don't answer.</div>
         </div>
-        <div>
+        <div class="sc-col">
           <div class="sc-col-label">What to extract</div>
           <div class="sc-col-text">What objections exist before the buyer reaches your brand. What third-party narratives dominate the category. Whether the category itself has a credibility problem that predates your client. In home services, this step often reveals that the buyer's first search surfaces contractor horror stories. If the ad doesn't acknowledge that skepticism, it is competing on the wrong level entirely.</div>
         </div>
-        <div>
+        <div class="sc-col produces">
           <div class="sc-col-label">What it produces</div>
           <div class="sc-col-text">An awareness level assessment. What does this buyer already believe, and what are they afraid of, before they see the ad? This determines where the hook needs to enter the conversation. Not at the product, but at the buyer's existing mental state.</div>
         </div>
@@ -955,11 +1106,11 @@
             How to mine ad comments specifically → Comment Mining playbook
           </a>
         </div>
-        <div>
+        <div class="sc-col">
           <div class="sc-col-label">What to extract</div>
           <div class="sc-col-text">The specific phrases customers use to describe their problem before finding a solution. "My garage floor looked like a gas station" is a hook. "Suboptimal flooring aesthetics" is not. The rougher and more specific the language, the closer it is to what a real buyer will recognize as their own thought.</div>
         </div>
-        <div>
+        <div class="sc-col produces">
           <div class="sc-col-label">What it produces</div>
           <div class="sc-col-text">A raw language bank. 20 to 40 angle candidates in the customer's own words. For processing volume at speed, AI earns its place here: it can cluster hundreds of reviews by pain point, trigger, and transformation language in minutes. The judgment about which phrases are worth pursuing stays yours.</div>
           <a href="ai-workflow.html" class="sc-context-link teal">
@@ -977,11 +1128,11 @@
           <div class="sc-source">Persona mapping</div>
           <div class="sc-desc">Build two distinct sets of personas. First: who the account appears to be targeting based on live creative and demographic data. Second: who is actually buying based on reviews, post-purchase surveys, and sales call notes. These are frequently different people. The gap between them is usually the single largest untapped creative opportunity in the account.</div>
         </div>
-        <div>
+        <div class="sc-col">
           <div class="sc-col-label">What to extract</div>
           <div class="sc-col-text">Life stage, decision context, and the specific trigger that moves each persona from consideration to action. A 54-year-old homeowner replacing windows after a storm is not the same buyer as a 38-year-old doing a planned renovation. The same ad will not work for both. Most accounts run one ad for both and wonder why CPL looks inconsistent.</div>
         </div>
-        <div>
+        <div class="sc-col produces">
           <div class="sc-col-label">What it produces</div>
           <div class="sc-col-text">A ranked buyer map: which persona represents the highest-value opportunity, which one is currently under-served by creative, and which angles are missing for each. In a new account with no prior data, this map becomes the creative launch sequence. It determines which persona gets brief priority before a dollar moves.</div>
         </div>
@@ -995,11 +1146,11 @@
           <div class="sc-source">Past performance data</div>
           <div class="sc-desc">Pull account data across three windows: last 30 days, last 6 months, all-time. Rank by spend for each window. For the top 3 and bottom 3 in each window, name the underlying angle. Not the hook line, not the format. The claim or belief the ad builds. Then look for proven angles that only ran once and were never iterated on. Those are the most underexploited resource in most accounts.</div>
         </div>
-        <div>
+        <div class="sc-col">
           <div class="sc-col-label">What to extract</div>
           <div class="sc-col-text">Which angles have confirmed signal that hasn't been fully exploited. Whether performance clusters around a persona or awareness level the account is over-indexing on, or quietly abandoned. Whether what looks like a creative problem is actually a structural one: testing and scaling sharing the same campaign, starving new concepts of spend before they can show anything.</div>
         </div>
-        <div>
+        <div class="sc-col produces">
           <div class="sc-col-label">What it produces</div>
           <div class="sc-col-text">The account's own angle leaderboard. First-party signal no competitor has access to. This step also functions as a structural diagnostic. Read the data here before briefing anything new. A brief written without this step may produce creative that duplicates an angle that already failed, or that tests something the account already knows works but never scaled.</div>
         </div>
@@ -1013,11 +1164,11 @@
           <div class="sc-source">Competitor audit</div>
           <div class="sc-desc">Open Meta Ads Library. Filter for competitors running 90-plus days. Those are their confirmed winners. Note the lead angle, hook type, and format for each. Then write down what they are not saying. The gap between what every ad in the category says and what buyers actually feel is where differentiation lives. Run this step last: doing it first installs a copy-by-default instinct that overrides your own data.</div>
         </div>
-        <div>
+        <div class="sc-col">
           <div class="sc-col-label">What to extract</div>
           <div class="sc-col-text">Category-wide patterns: what angle every competitor leads with (usually price or speed), what the creative format default is, and whether anyone is speaking to the skeptical or solution-aware buyer. Look for the angle the whole category avoids. That avoidance usually comes down to the brand having to acknowledge something uncomfortable about the category or the buyer's experience. That is exactly why it tends to be the most effective opening.</div>
         </div>
-        <div>
+        <div class="sc-col produces">
           <div class="sc-col-label">What it produces</div>
           <div class="sc-col-text">A differentiation brief. By this stage you already have validated angles from your own data and customer language. Competitors are a gap-check, not an idea source. The question is not what they are doing. It is what they are not doing, and whether your own data points to a buyer sitting in that space.</div>
         </div>
@@ -1081,7 +1232,7 @@
     </div>
 
     <!-- Context link: basement case study — the process in full -->
-    <a href="../case-studies/basement.html" class="context-link sage" style="max-width: 640px; margin-top: 32px;">
+    <a href="../case-studies/basement.html" class="context-link sage" style="margin-top: 32px; width: 100%;">
       <div class="cl-icon">📋</div>
       <div class="cl-body">
         <div class="cl-kicker">Case Study · Basement Renovation</div>

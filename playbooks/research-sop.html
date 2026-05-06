@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Research Stack — Giancarlo Di Nardo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #5B9E9E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --amber-light: #F5E9D4;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 48px;
+    border-bottom: 1px solid var(--ink-10);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .topbar a { color: var(--ink-60); text-decoration: none; display: flex; align-items: center; gap: 7px; transition: color 0.15s; }
+  .topbar a:hover { color: var(--ink); }
+  .topbar svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  /* ── NAV ── */
+  .mainnav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-mark {
+    display: flex; align-items: center;
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .logo-g { font-style: italic; }
+  .logo-div { width: 1px; height: 14px; background: var(--ink-30); margin: 0 6px; }
+  .mainnav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .mainnav-links a {
+    font-size: 14px;
+    color: var(--ink-60);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .mainnav-links a:hover,
+  .mainnav-links a.active { color: var(--ink); }
+  .mainnav-links a.active { font-weight: 500; }
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink) !important;
+    background: var(--ink-10);
+    padding: 8px 18px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    min-height: 70vh;
+  }
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--ink-30);
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--ink-60);
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink-10);
+  }
+  .hero-meta-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-30);
+    margin-bottom: 4px;
+  }
+  .hero-meta-value {
+    font-size: 14px;
+    color: var(--ink-60);
+  }
+
+  /* ── HERO VISUAL ── */
+  .hero-visual {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,158,158,0.22) 0%, transparent 70%);
+  }
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,92,56,0.15) 0%, transparent 70%);
+  }
+  .hv-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 24px;
+    position: relative; z-index: 1;
+  }
+  .stack-vis {
+    position: relative; z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .sv-row {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .sv-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    text-align: right;
+  }
+  .sv-bar {
+    padding: 9px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  .sv-bar.s1 { background: rgba(91,158,158,0.28); color: #7ABFB5; }
+  .sv-bar.s2 { background: rgba(91,158,158,0.20); color: #7ABFB5; }
+  .sv-bar.s3 { background: rgba(184,122,26,0.25); color: #D4A847; }
+  .sv-bar.s4 { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.5); }
+  .sv-bar.s5 { background: rgba(184,92,56,0.25); color: #E8967A; }
+  .sv-output {
+    font-size: 10px;
+    color: rgba(255,255,255,0.22);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  .hv-rule {
+    padding: 12px 14px;
+    background: rgba(91,158,158,0.1);
+    border-left: 2px solid rgba(122,191,181,0.35);
+    border-radius: 0 8px 8px 0;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    position: relative; z-index: 1;
+  }
+  .hv-rule strong { color: #7ABFB5; font-weight: 500; }
+  .hv-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    position: relative; z-index: 1;
+    margin-top: 20px;
+  }
+  .hv-stat-num {
+    font-family: var(--serif);
+    font-size: 26px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hv-stat-desc {
+    font-size: 10px;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── SHARED ── */
+  .divider {
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 48px;
+    height: 1px;
+    background: var(--ink-10);
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 1px;
+    background: var(--ink-30);
+  }
+  .section-h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+  .prose {
+    font-size: 16px;
+    color: var(--ink-60);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── CONTEXT LINK BOX ── */
+  /* Used wherever content from another page is referenced instead of restated */
+  .context-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 22px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    margin-top: 24px;
+  }
+  .context-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+  }
+  .context-link.teal {
+    background: var(--teal-light);
+    border: 1px solid rgba(91,158,158,0.2);
+  }
+  .context-link.amber {
+    background: var(--amber-light);
+    border: 1px solid rgba(184,122,26,0.18);
+  }
+  .context-link.sage {
+    background: var(--sage-light);
+    border: 1px solid rgba(200,213,192,0.4);
+  }
+  .cl-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .context-link.teal .cl-icon { background: rgba(91,158,158,0.18); }
+  .context-link.amber .cl-icon { background: rgba(184,122,26,0.15); }
+  .context-link.sage .cl-icon { background: rgba(200,213,192,0.3); }
+  .cl-body { flex: 1; }
+  .cl-kicker {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .context-link.teal .cl-kicker { color: var(--teal); }
+  .context-link.amber .cl-kicker { color: var(--amber); }
+  .context-link.sage .cl-kicker { color: #5A7A54; }
+  .cl-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .cl-desc {
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+  .cl-arrow {
+    flex-shrink: 0;
+    align-self: center;
+    color: var(--ink-30);
+  }
+
+  /* ── DARK STACK SECTION ── */
+  .stack-section {
+    background: var(--ink);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .stack-inner { max-width: 1200px; margin: 0 auto; }
+  .stack-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .stack-header .section-label { color: rgba(255,255,255,0.3); }
+  .stack-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .stack-header .section-h2 { color: #fff; }
+  .stack-header .prose { color: rgba(255,255,255,0.5); }
+
+  .stack-grid { display: flex; flex-direction: column; gap: 3px; }
+
+  .stack-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 1fr;
+    gap: 28px;
+    align-items: start;
+    transition: background 0.15s;
+  }
+  .stack-card:hover { background: rgba(255,255,255,0.06); }
+
+  .stack-table-header {
+    display: grid;
+    grid-template-columns: 40px 1fr 1fr 1fr;
+    gap: 28px;
+    padding: 0 32px 14px;
+  }
+  .sth-cell {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.2);
+    font-weight: 500;
+  }
+
+  .sc-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-style: italic;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+    padding-top: 6px;
+  }
+  .sc-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .tag-teal  { background: rgba(91,158,158,0.2);  color: #7ABFB5; }
+  .tag-amber { background: rgba(184,122,26,0.2);  color: #D4A847; }
+  .tag-rust  { background: rgba(184,92,56,0.2);   color: #E8967A; }
+  .tag-muted { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
+
+  .sc-source {
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .sc-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .sc-col-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.22);
+    margin-bottom: 7px;
+    font-weight: 500;
+  }
+  .sc-col-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.48);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* In-stack context link — dark variant */
+  .sc-context-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 12px;
+    transition: opacity 0.15s;
+    width: fit-content;
+  }
+  .sc-context-link:hover { opacity: 0.8; }
+  .sc-context-link.teal { background: rgba(91,158,158,0.15); color: #7ABFB5; border: 1px solid rgba(91,158,158,0.2); }
+  .sc-context-link.amber { background: rgba(184,122,26,0.15); color: #D4A847; border: 1px solid rgba(184,122,26,0.2); }
+  .sc-context-link svg { flex-shrink: 0; }
+
+  /* ── VERTICALS SECTION ── */
+  .verticals-section {
+    background: var(--sage-light);
+    padding: 80px 48px;
+    margin-bottom: 80px;
+  }
+  .verticals-inner { max-width: 1200px; margin: 0 auto; }
+  .vert-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .vert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .vert-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    border: 1px solid rgba(28,28,26,0.07);
+  }
+  .vc-kicker {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-30);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .vc-title {
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--ink);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+  .vc-rows { display: flex; flex-direction: column; gap: 10px; }
+  .vc-row {
+    padding: 12px 14px;
+    background: var(--ink-06);
+    border-radius: 8px;
+  }
+  .vc-row-source {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .vc-row-note {
+    font-size: 12px;
+    color: var(--ink-60);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  /* ── WEEKLY RHYTHM ── */
+  .rhythm-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+  }
+  .rhythm-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .rhythm-days {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .day-card { border-radius: 14px; overflow: hidden; }
+  .day-header {
+    padding: 12px 16px 9px;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .day-card.mon .day-header { background: var(--teal-light);  color: var(--teal); }
+  .day-card.tue .day-header { background: var(--rust-light);  color: var(--rust); }
+  .day-card.wed .day-header { background: var(--amber-light); color: var(--amber); }
+  .day-card.thu .day-header { background: var(--sage-light);  color: #5A7A54; }
+  .day-card.fri .day-header { background: var(--ink-10);      color: var(--ink-60); }
+  .day-body {
+    background: #fff;
+    border: 1px solid var(--ink-10);
+    border-top: none;
+    border-radius: 0 0 14px 14px;
+    padding: 16px;
+    font-size: 13px;
+    color: var(--ink-60);
+    line-height: 1.6;
+    font-weight: 300;
+    min-height: 130px;
+  }
+
+  /* ── BRIEF GATE ── */
+  .gate-section {
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+  }
+  .gate-inner {
+    background: var(--ink);
+    border-radius: 20px;
+    padding: 56px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+  }
+  .gate-inner::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,158,158,0.15), transparent 65%);
+  }
+  .gate-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+  .gate-h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px, 3vw, 36px);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    position: relative; z-index: 1;
+    margin-bottom: 14px;
+  }
+  .gate-h2 em { font-style: italic; color: #7ABFB5; }
+  .gate-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.7;
+    font-weight: 300;
+    position: relative; z-index: 1;
+  }
+  .gate-lists { position: relative; z-index: 1; }
+  .gate-group-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.25);
+    margin-bottom: 10px;
+    margin-top: 22px;
+  }
+  .gate-group-label:first-child { margin-top: 0; }
+  .gate-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .gate-check:last-child { border-bottom: none; }
+  .gate-icon {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+  }
+  .gate-check.go   .gate-icon { background: rgba(91,158,158,0.3);  color: #7ABFB5; }
+  .gate-check.stop .gate-icon { background: rgba(184,92,56,0.3);   color: #E8967A; }
+
+  /* ── CTA ── */
+  .cta-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px 100px;
+    text-align: center;
+  }
+  .cta-inner {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 72px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-inner::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,158,158,0.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-inner .section-label {
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+  }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4vw, 48px);
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-h2 em { font-style: italic; color: #5B9E9E; }
+  .cta-desc {
+    font-size: 16px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 16px 32px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── FOOTER ── */
+  .sitefoot {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--ink-10);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+  }
+  .sitefoot a { color: var(--ink-30); text-decoration: none; transition: color 0.15s; display: flex; align-items: center; gap: 8px; }
+  .sitefoot a:hover { color: var(--ink); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .stack-header, .vert-header, .rhythm-header { grid-template-columns: 1fr; }
+    .hero { min-height: auto; padding-top: 48px; }
+    .vert-grid { grid-template-columns: 1fr; }
+    .rhythm-days { grid-template-columns: 1fr 1fr; }
+    .gate-inner { grid-template-columns: 1fr; }
+    .stack-card { grid-template-columns: 1fr; gap: 14px; }
+    .sc-num { display: none; }
+    .stack-table-header { display: none; }
+    .stack-section, .verticals-section { padding-left: 24px; padding-right: 24px; }
+    .rhythm-section, .gate-section, .cta-section { padding-left: 24px; padding-right: 24px; }
+  }
+  @media (max-width: 700px) {
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .topbar { padding: 10px 20px; }
+    .mainnav { padding: 20px; }
+    .mainnav-links { overflow-x: auto; gap: 20px; }
+    .mainnav-links a { flex: 0 0 auto; font-size: 13px; }
+    .hero { padding: 24px 20px 40px; gap: 32px; }
+    .divider { margin: 40px auto; padding: 0 20px; }
+    .rhythm-days { grid-template-columns: 1fr; }
+    .gate-inner { padding: 36px 28px; }
+  }
+  .topbar svg, .cv-btn svg, .email-link svg { width: 12px; height: 12px; max-width: 12px; max-height: 12px; flex-shrink: 0; }
+  svg:not([width]):not([height]):not([viewBox]) { max-width: 16px; max-height: 16px; }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+    <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+    <a href="../playbooks/index.html" data-section="playbooks" class="active">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-label">Playbooks / Creative Intelligence</div>
+    <h1>Five sources. One <em>sequence.</em></h1>
+    <p class="hero-desc">Creative coverage maps the territory an account needs to exist. This process determines what fills it: the angles, personas, and hook language that go into every brief before production starts. Run in order, on a weekly cadence, from external signal rather than internal opinion.</p>
+    <p style="font-size:13px;color:var(--ink-60);font-weight:300;margin-bottom:28px;line-height:1.6;">Part of <a href="../creative-lifecycle-hub.html" style="color:var(--teal);text-decoration:none;font-weight:500;">The Creative System</a> — Layer 00, the input layer. This is where angles, personas, and hook language come from before a brief is written. It feeds into <a href="creative-coverage.html" style="color:var(--teal);text-decoration:none;font-weight:500;">Coverage</a>, which maps how that material gets distributed. Three supporting playbooks go deeper on specific sources within this process: <a href="comment-response-ads.html" style="color:var(--teal);text-decoration:none;font-weight:500;">Comment Mining</a>, <a href="ai-workflow.html" style="color:var(--teal);text-decoration:none;font-weight:500;">AI Workflow</a>, and <a href="claude-creative-operations.html" style="color:var(--teal);text-decoration:none;font-weight:500;">Claude in Creative Ops</a>.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="hero-meta-label">Channel</div>
+        <div class="hero-meta-value">Meta (Facebook & Instagram)</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Applies to</div>
+        <div class="hero-meta-value">Lead Gen · eCommerce</div>
+      </div>
+      <div>
+        <div class="hero-meta-label">Focus</div>
+        <div class="hero-meta-value">Pre-brief research · Signal sourcing</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-label">Research stack — source → output</div>
+    <div class="stack-vis">
+      <div class="sv-row">
+        <span class="sv-num">1</span>
+        <div class="sv-bar s1">Reputation audit</div>
+        <span class="sv-output">Awareness layer</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-num">2</span>
+        <div class="sv-bar s2">Review mining</div>
+        <span class="sv-output">Hook language</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-num">3</span>
+        <div class="sv-bar s3">Persona mapping</div>
+        <span class="sv-output">Buyer priority</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-num">4</span>
+        <div class="sv-bar s4">Past performance</div>
+        <span class="sv-output">Angle leaderboard</span>
+      </div>
+      <div class="sv-row">
+        <span class="sv-num">5</span>
+        <div class="sv-bar s5">Competitor audit</div>
+        <span class="sv-output">Gap map</span>
+      </div>
+    </div>
+    <div class="hv-rule">
+      <strong>The rule:</strong> If you cannot point to where an angle came from — a review, a comment, a performance data point — it is still a guess.
+    </div>
+    <div class="hv-stats">
+      <div>
+        <div class="hv-stat-num">5</div>
+        <div class="hv-stat-desc">Signal sources</div>
+      </div>
+      <div>
+        <div class="hv-stat-num">1×</div>
+        <div class="hv-stat-desc">Weekly cadence</div>
+      </div>
+      <div>
+        <div class="hv-stat-num">0</div>
+        <div class="hv-stat-desc">Brainstormed angles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STACK SECTION -->
+<section class="stack-section">
+  <div class="stack-inner">
+    <div class="stack-header">
+      <div>
+        <div class="section-label">The stack</div>
+        <h2 class="section-h2">The order matters as much as the sources.</h2>
+      </div>
+      <div>
+        <p class="prose">Running these five sources in isolation produces five disconnected lists. Running them in sequence produces a brief with a clear point of view. Each source builds on the one before it. By the time you reach competitors, you have enough of your own signal that you're checking for gaps, not looking for ideas. That distinction changes what you come away with.</p>
+      </div>
+    </div>
+
+    <div class="stack-table-header">
+      <div class="sth-cell"></div>
+      <div class="sth-cell">Source + how to run it</div>
+      <div class="sth-cell">What to extract</div>
+      <div class="sth-cell">What it produces</div>
+    </div>
+
+    <div class="stack-grid">
+
+      <!-- 01 Reputation audit -->
+      <div class="stack-card">
+        <div class="sc-num">01</div>
+        <div>
+          <div class="sc-tag tag-teal">First</div>
+          <div class="sc-source">Reputation audit</div>
+          <div class="sc-desc">Google the brand name, the category, and the main problem the product solves. Read the first two pages of results as a skeptical buyer doing pre-purchase research. Check BBB, Trustpilot, Reddit threads, and any review aggregators in the category. Note every friction point, every trust signal, every question the results don't answer.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What to extract</div>
+          <div class="sc-col-text">What objections exist before the buyer reaches your brand. What third-party narratives dominate the category. Whether the category itself has a credibility problem that predates your client. In home services, this step often reveals that the buyer's first search surfaces contractor horror stories. If the ad doesn't acknowledge that skepticism, it is competing on the wrong level entirely.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What it produces</div>
+          <div class="sc-col-text">An awareness level assessment. What does this buyer already believe, and what are they afraid of, before they see the ad? This determines where the hook needs to enter the conversation. Not at the product, but at the buyer's existing mental state.</div>
+        </div>
+      </div>
+
+      <!-- 02 Review mining -->
+      <div class="stack-card">
+        <div class="sc-num">02</div>
+        <div>
+          <div class="sc-tag tag-teal">Second</div>
+          <div class="sc-source">Review mining</div>
+          <div class="sc-desc">Export reviews from Google, Yelp, Amazon, app stores, and post-purchase surveys. The goal is verbatim customer language, not sentiment summaries. Look for the moment-of-decision language: what finally made them act. Look for failed-solution language: what they tried before this. Flag anything with unusual emotional specificity. That is the raw material for hooks.</div>
+          <a href="comment-response-ads.html" class="sc-context-link teal">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+            How to mine ad comments specifically → Comment Mining playbook
+          </a>
+        </div>
+        <div>
+          <div class="sc-col-label">What to extract</div>
+          <div class="sc-col-text">The specific phrases customers use to describe their problem before finding a solution. "My garage floor looked like a gas station" is a hook. "Suboptimal flooring aesthetics" is not. The rougher and more specific the language, the closer it is to what a real buyer will recognize as their own thought.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What it produces</div>
+          <div class="sc-col-text">A raw language bank. 20 to 40 angle candidates in the customer's own words. For processing volume at speed, AI earns its place here: it can cluster hundreds of reviews by pain point, trigger, and transformation language in minutes. The judgment about which phrases are worth pursuing stays yours.</div>
+          <a href="ai-workflow.html" class="sc-context-link teal">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+            How AI fits into this step → AI Workflow playbook
+          </a>
+        </div>
+      </div>
+
+      <!-- 03 Persona mapping -->
+      <div class="stack-card">
+        <div class="sc-num">03</div>
+        <div>
+          <div class="sc-tag tag-amber">Third</div>
+          <div class="sc-source">Persona mapping</div>
+          <div class="sc-desc">Build two distinct sets of personas. First: who the account appears to be targeting based on live creative and demographic data. Second: who is actually buying based on reviews, post-purchase surveys, and sales call notes. These are frequently different people. The gap between them is usually the single largest untapped creative opportunity in the account.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What to extract</div>
+          <div class="sc-col-text">Life stage, decision context, and the specific trigger that moves each persona from consideration to action. A 54-year-old homeowner replacing windows after a storm is not the same buyer as a 38-year-old doing a planned renovation. The same ad will not work for both. Most accounts run one ad for both and wonder why CPL looks inconsistent.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What it produces</div>
+          <div class="sc-col-text">A ranked buyer map: which persona represents the highest-value opportunity, which one is currently under-served by creative, and which angles are missing for each. In a new account with no prior data, this map becomes the creative launch sequence. It determines which persona gets brief priority before a dollar moves.</div>
+        </div>
+      </div>
+
+      <!-- 04 Past performance -->
+      <div class="stack-card">
+        <div class="sc-num">04</div>
+        <div>
+          <div class="sc-tag tag-muted">Fourth</div>
+          <div class="sc-source">Past performance data</div>
+          <div class="sc-desc">Pull account data across three windows: last 30 days, last 6 months, all-time. Rank by spend for each window. For the top 3 and bottom 3 in each window, name the underlying angle. Not the hook line, not the format. The claim or belief the ad builds. Then look for proven angles that only ran once and were never iterated on. Those are the most underexploited resource in most accounts.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What to extract</div>
+          <div class="sc-col-text">Which angles have confirmed signal that hasn't been fully exploited. Whether performance clusters around a persona or awareness level the account is over-indexing on, or quietly abandoned. Whether what looks like a creative problem is actually a structural one: testing and scaling sharing the same campaign, starving new concepts of spend before they can show anything.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What it produces</div>
+          <div class="sc-col-text">The account's own angle leaderboard. First-party signal no competitor has access to. This step also functions as a structural diagnostic. Read the data here before briefing anything new. A brief written without this step may produce creative that duplicates an angle that already failed, or that tests something the account already knows works but never scaled.</div>
+        </div>
+      </div>
+
+      <!-- 05 Competitor audit -->
+      <div class="stack-card">
+        <div class="sc-num">05</div>
+        <div>
+          <div class="sc-tag tag-rust">Last</div>
+          <div class="sc-source">Competitor audit</div>
+          <div class="sc-desc">Open Meta Ads Library. Filter for competitors running 90-plus days. Those are their confirmed winners. Note the lead angle, hook type, and format for each. Then write down what they are not saying. The gap between what every ad in the category says and what buyers actually feel is where differentiation lives. Run this step last: doing it first installs a copy-by-default instinct that overrides your own data.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What to extract</div>
+          <div class="sc-col-text">Category-wide patterns: what angle every competitor leads with (usually price or speed), what the creative format default is, and whether anyone is speaking to the skeptical or solution-aware buyer. Look for the angle the whole category avoids. That avoidance usually comes down to the brand having to acknowledge something uncomfortable about the category or the buyer's experience. That is exactly why it tends to be the most effective opening.</div>
+        </div>
+        <div>
+          <div class="sc-col-label">What it produces</div>
+          <div class="sc-col-text">A differentiation brief. By this stage you already have validated angles from your own data and customer language. Competitors are a gap-check, not an idea source. The question is not what they are doing. It is what they are not doing, and whether your own data points to a buyer sitting in that space.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERTICALS SECTION -->
+<section class="verticals-section">
+  <div class="verticals-inner">
+    <div class="vert-header">
+      <div>
+        <div class="section-label">By vertical</div>
+        <h2 class="section-h2">Same sources. Different extraction priority.</h2>
+      </div>
+      <div>
+        <p class="prose">The five sources don't change across verticals. What changes is where the highest-signal material lives, how long the buyer consideration cycle runs, and which source to weight most heavily when building the first brief. A $30 DTC product and a $15,000 bath remodel have very different research landscapes. The sequence is the same. The emphasis is not.</p>
+      </div>
+    </div>
+
+    <div class="vert-grid">
+      <div class="vert-card">
+        <div class="vc-kicker">Home Services · Lead Gen</div>
+        <div class="vc-title">High-ticket, long consideration, category skepticism</div>
+        <div class="vc-rows">
+          <div class="vc-row">
+            <div class="vc-row-source">Lead with the reputation audit</div>
+            <div class="vc-row-note">In roofing, windows, and bath remodeling, the category has an entrenched contractor-trust problem. Google results surface complaint forums and horror stories before the brand appears. If the ad doesn't acknowledge this context, it's competing on the wrong level. The reputation audit determines the awareness layer the hook needs to enter through.</div>
+          </div>
+          <div class="vc-row">
+            <div class="vc-row-source">Mine for triggering events, not features</div>
+            <div class="vc-row-note">In home services, the buyer has usually been sitting on the idea for months. What finally makes them call is a specific event: a storm, a structural crack, a family circumstance. The hook that names that trigger outperforms the hook that describes the product every time.</div>
+          </div>
+          <div class="vc-row">
+            <div class="vc-row-source">Read performance through to close rate</div>
+            <div class="vc-row-note">CPL is the most misleading metric in lead gen. An angle producing cheap leads that don't set appointments is invisible in CPL data. Audit past performance all the way through the sales funnel, set rate and close rate, before briefing anything new. An angle with a high set rate and a higher CPL is almost always the better brief.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vc-kicker">DTC eCommerce</div>
+        <div class="vc-title">Short cycle, high volume, faster signal decay</div>
+        <div class="vc-rows">
+          <div class="vc-row">
+            <div class="vc-row-source">Lead with review mining</div>
+            <div class="vc-row-note">Higher review volume, faster to process. Post-purchase survey language is the richest source. It captures the exact moment a buyer decided to commit, not their satisfaction six months later. Mine for purchase trigger language specifically: what made them add to cart on that day, at that moment, after potentially seeing the product before.</div>
+          </div>
+          <div class="vc-row">
+            <div class="vc-row-source">Add social comment scanning</div>
+            <div class="vc-row-note">Viral posts in the category reveal real-time format signals. When a hook style is being widely distributed by the algorithm, that is a brief direction. Not a cue to copy the content, but a signal about what opening frame the platform is currently rewarding.</div>
+          </div>
+          <div class="vc-row">
+            <div class="vc-row-source">Run performance audits more frequently</div>
+            <div class="vc-row-note">At meaningful DTC spend levels, winning angles decay faster and the gap between what was working last quarter and what is working now is larger. The weekly rhythm below is not optional at this scale. New angles need to be entering the test queue before performance drops, not after.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Context link: basement case study — the process in full -->
+    <a href="../case-studies/basement.html" class="context-link sage" style="max-width: 640px; margin-top: 32px;">
+      <div class="cl-icon">📋</div>
+      <div class="cl-body">
+        <div class="cl-kicker">Case Study · Basement Renovation</div>
+        <div class="cl-title">This process run end-to-end before a dollar moved</div>
+        <div class="cl-desc">The basement renovation account had no prior data, no pixel history, no creative to inherit. The pre-launch research phase produced a ranked buyer map, four hook types briefed against specific buying situations, and a 27% set rate by month two.</div>
+      </div>
+      <div class="cl-arrow">
+        <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- WEEKLY RHYTHM -->
+<section class="rhythm-section">
+  <div class="rhythm-header">
+    <div>
+      <div class="section-label">Operating cadence</div>
+      <h2 class="section-h2">Research is a weekly habit, not a launch task.</h2>
+    </div>
+    <div>
+      <p class="prose">The accounts that keep finding new creative territory don't run deeper research at launch. They run lighter, more consistent research every week. The signal stays current because someone is checking it. Angles don't emerge from quarterly planning sessions. They come from the person who read Tuesday's comment section and noticed something that rewrote Friday's brief.</p>
+    </div>
+  </div>
+
+  <div class="rhythm-days">
+    <div class="day-card mon">
+      <div class="day-header">Monday</div>
+      <div class="day-body">Review last 7 days of account data. Update the angle leaderboard. Note what is gaining spend, what has stalled, what was cut. Brief the next batch from signal, not from memory or last week's meeting notes.</div>
+    </div>
+    <div class="day-card tue">
+      <div class="day-header">Tuesday</div>
+      <div class="day-body">20 minutes in comment sections: the ad account's own comments, plus comments on 3 to 5 viral posts in the category on Instagram and TikTok this week. Log any new objection language, questions, or emotional triggers appearing for the first time.</div>
+    </div>
+    <div class="day-card wed">
+      <div class="day-header">Wednesday</div>
+      <div class="day-body">Pull new customer reviews or post-purchase responses from the last 30 days. Add standout language to the angle bank. Flag anything that contradicts what current creative is saying. That contradiction is usually a brief.</div>
+    </div>
+    <div class="day-card thu">
+      <div class="day-header">Thursday</div>
+      <div class="day-body">Check competitor ad libraries. Note any new ads gaining spend that weren't running last week. Look for angles entering the category, not formats to copy. Identify what they're still not saying. That gap remains yours to take.</div>
+    </div>
+    <div class="day-card fri">
+      <div class="day-header">Friday</div>
+      <div class="day-body">Finalize briefs for the following week. Every brief must cite its source: the review phrase, the comment, the data point. If the angle cannot be sourced, it does not ship as a brief. This is the quality gate.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRIEF GATE -->
+<section class="gate-section">
+  <div class="gate-inner">
+    <div>
+      <div class="gate-label">The brief standard</div>
+      <h2 class="gate-h2">If you can't point to <em>where it came from,</em> it isn't research.</h2>
+      <p class="gate-sub">The brief is the quality gate for the entire process. Every angle should trace back to a specific source. That traceability is not process overhead. It is what separates a brief that produces a winning creative from one that produces a plausible-sounding guess. Brainstormed angles can look identical to sourced ones in a document. The difference shows up in hook rate within the first five days of testing.</p>
+    </div>
+    <div class="gate-lists">
+      <div class="gate-group-label">Brief is ready when:</div>
+      <div class="gate-check go">
+        <div class="gate-icon">✓</div>
+        The angle traces to a specific source: a review phrase, a comment, or a data point
+      </div>
+      <div class="gate-check go">
+        <div class="gate-icon">✓</div>
+        The persona is named with a decision context, not just a demographic
+      </div>
+      <div class="gate-check go">
+        <div class="gate-icon">✓</div>
+        The awareness level is stated — where in their journey does this buyer sit?
+      </div>
+      <div class="gate-check go">
+        <div class="gate-icon">✓</div>
+        The hook opens at the buyer's situation, not the brand's product
+      </div>
+      <div class="gate-group-label">Brief is not ready when:</div>
+      <div class="gate-check stop">
+        <div class="gate-icon">✕</div>
+        The angle came from a team brainstorm with no external source
+      </div>
+      <div class="gate-check stop">
+        <div class="gate-icon">✕</div>
+        The persona is a demographic ("women 35–54") without a decision context
+      </div>
+      <div class="gate-check stop">
+        <div class="gate-icon">✕</div>
+        The hook describes what the product does rather than what the buyer feels
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-label">Next in the system</div>
+    <h2 class="cta-h2">Research fills the territory. <em>Coverage</em> maps it.</h2>
+    <p class="cta-desc">Once the angles, personas, and hook language exist, creative coverage determines how they get distributed across the account, and how to audit what is missing before briefing anything new.</p>
+    <a href="creative-coverage.html" class="cta-btn">
+      Creative Coverage Playbook
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../playbooks/index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL PLAYBOOKS
+  </a>
+</footer>
+
+</body>
+</html>

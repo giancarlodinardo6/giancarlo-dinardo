@@ -212,7 +212,7 @@
    Design system from Claude Design session
    ═══════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
 
 :root {
   --bg:           #F1ECE2;
@@ -1162,14 +1162,69 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     transform: translateX(0);
   }
 
-  .journey-entry.coverage {
-    background: rgba(91,158,158,0.15);
+  .journey-entry.research {
+    background: rgba(200,213,192,0.18);
+    border: 1px solid rgba(200,213,192,0.35);
+    position: relative;
+    padding-top: 38px;
+  }
+  .journey-entry.research::before {
+    content: "INPUT LAYER";
+    position: absolute;
+    top: 12px;
+    left: 19px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(200,213,192,0.9);
+    background: rgba(28,28,26,0.55);
+    border: 1px solid rgba(200,213,192,0.3);
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+  .journey-entry.research:hover {
+    background: rgba(200,213,192,0.28);
+    border-color: rgba(200,213,192,0.55);
+  }
+  .research .journey-num {
+    background: rgba(200,213,192,0.22);
+    color: #A8C8A0;
+  }
+
+  /* Input layer card in dark section — distinct from the loop cards */
+  .lifecycle-entry-card.input-layer {
+    background: rgba(200,213,192,0.10);
+    border: 1px solid rgba(200,213,192,0.2);
+    position: relative;
+  }
+  .lifecycle-entry-card.input-layer::before {
+    background: linear-gradient(90deg, #8FAF8F, #5B9E9E);
+  }
+
+  .lifecycle-entry-card.input-layer .lec-kicker { color: #A8C8A0; }
+  .lifecycle-entry-card.input-layer .lec-title { color: rgba(255,255,255,0.88); }
+  .lifecycle-entry-card.input-layer .lec-desc { color: rgba(255,255,255,0.48); }
+  .lifecycle-entry-card.input-layer .lec-cta {
+    background: rgba(200,213,192,0.18);
+    border-color: rgba(200,213,192,0.3);
+    color: #A8C8A0;
+  }
+  .lifecycle-entry-card.input-layer:hover .lec-cta {
+    background: #8FAF8F;
+    border-color: #8FAF8F;
+    color: var(--ink);
+  }
     border: 1px solid rgba(91,158,158,0.25);
   }
 
+  .journey-entry.coverage {
+    background: rgba(91,158,158,0.38);
+    border: 1px solid rgba(91,158,158,0.55);
+  }
   .journey-entry.coverage:hover {
-    background: rgba(91,158,158,0.22);
-    border-color: rgba(91,158,158,0.46);
+    background: rgba(91,158,158,0.50);
+    border-color: rgba(91,158,158,0.72);
   }
 
   .journey-entry.hooks {
@@ -1328,13 +1383,20 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
 <section class="hero">
   <div class="hero-left">
     <div class="hero-label">Creative Lifecycle Hub</div>
-    <h1>The creative system in <em>three moves</em>.</h1>
-    <p class="hero-desc">Coverage comes first because without it, hook strategy is guesswork. You can write a precise, well-targeted hook for a persona the account has never built creative for — and the algorithm has nothing to learn from. Coverage is what decides how many distinct buyer signals the account is generating at any given time. Hooks then determine which buyers each signal calls in. If coverage is narrow, every hook variation is fishing in the same water regardless of how well it is written.</p>
-    <p class="hero-desc" style="margin-top:14px;">Lifecycle is what keeps the first two from resetting every few months. A well-covered account with strong hooks will eventually build winners — and most accounts treat those winners as finished assets to protect rather than signals to extend. That is when the dependency forms. Managing the lifecycle means the signal from a winner keeps working after the original ad has run its course, because the extensions were built before they were needed.</p>
+    <h1>The creative system in <em>four parts</em>.</h1>
+    <p class="hero-desc">Four layers. Each one solves a different problem. None of them do what the others do.</p>
+    <p class="hero-desc" style="margin-top:12px;"><strong style="color:var(--ink);font-weight:500;">Research</strong> reads the market before anything gets briefed. Reviews, competitor gaps, past performance, customer language. All of it processed into angles and personas with a traceable source. The raw material.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Coverage</strong> takes that material and audits how it sits across the account. What personas are missing creative. Which angles have been over-tested. What the account is telling Meta versus what it should be.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Hooks</strong> decide how each individual ad enters its territory. The hook type is an audience selection decision, not a creative one. Different hook types reach different buyer segments at different stages of awareness.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Lifecycle</strong> manages what happens to a signal once it starts working. Discovery, validation, expansion, saturation, decay. The goal is to extend the signal before decay forces the account into emergency creative mode.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">
         <div class="hero-meta-label">Use this hub for</div>
         <div class="hero-meta-value">Navigation through the system</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Input layer</div>
+        <div class="hero-meta-value">Research stack → feeds coverage</div>
       </div>
       <div class="hero-meta-item">
         <div class="hero-meta-label">Deep dives live in</div>
@@ -1350,12 +1412,21 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
     </div>
 
     <div class="journey-card-stack">
-      <a href="playbooks/creative-coverage.html" class="journey-entry coverage">
+      <a href="playbooks/research-sop.html" class="journey-entry research">
+        <div class="journey-num">00</div>
+        <div>
+          <div class="journey-card-title">Find the angles</div>
+          <div class="journey-card-subtitle">Research Stack · Input layer</div>
+          <div class="journey-card-desc">Reads reviews, past performance data, and competitor gaps to surface angles and personas before a brief gets written. What to say and who to say it to. Coverage decides where it goes.</div>
+        </div>
+      </a>
+
+      <a href="playbooks/creative-coverage.html" class="journey-entry coverage" style="background:rgba(91,158,158,0.38);border:1px solid rgba(91,158,158,0.55);">
         <div class="journey-num">01</div>
         <div>
           <div class="journey-card-title">Map the territory</div>
-          <div class="journey-card-subtitle">Creative Coverage</div>
-          <div class="journey-card-desc">See what your ads are not covering across concepts, personas, and formats before adding more creative volume.</div>
+          <div class="journey-card-subtitle">Creative Coverage · The loop begins</div>
+          <div class="journey-card-desc">Takes what research produced and audits the account against it. Which personas have no creative. Which angles are being over-served. What territory the account is missing before the next brief cycle starts.</div>
         </div>
       </a>
 
@@ -1364,7 +1435,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
         <div>
           <div class="journey-card-title">Choose the entry point</div>
           <div class="journey-card-subtitle">Hooks Are Targeting</div>
-          <div class="journey-card-desc">Decide which buyer each ad should call in, and align the hook, first frame, and message around that person.</div>
+          <div class="journey-card-desc">Once coverage identifies the territory, hooks decides how to enter it. Five hook types, each pulling a different buyer segment. Not a copy decision. An audience decision made before production starts.</div>
         </div>
       </a>
 
@@ -1372,8 +1443,8 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
         <div class="journey-num">03</div>
         <div>
           <div class="journey-card-title">Manage the signal over time</div>
-          <div class="journey-card-subtitle">Creative Lifecycle</div>
-          <div class="journey-card-desc">Extend winners, read saturation, and prepare replacements before performance decay forces a reset.</div>
+          <div class="journey-card-subtitle">Creative Lifecycle · Loops back</div>
+          <div class="journey-card-desc">Tracks a winning ad through its predictable stages and manages extension before the account becomes dependent on one creative. When the cycle closes, the results go back into coverage and the loop starts again.</div>
         </div>
       </a>
     </div>
@@ -1388,36 +1459,79 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
     <div class="proof-header">
       <div>
         <div class="section-label">The system</div>
-        <h2 class="section-h2">Three parts. One continuous flow.</h2>
+        <h2 class="section-h2">Four parts. One continuous flow.</h2>
       </div>
-      <p class="prose">Each step below links to a playbook. Read them in order, or jump to the part of the system that matches the problem in front of you.</p>
+      <p class="prose">The research stack feeds the loop. Coverage, hooks, and lifecycle run continuously from there. Read them in order, or jump to the part of the system that matches the problem in front of you.</p>
     </div>
 
-    <div class="proof-grid lifecycle-card-grid">
+    <div class="proof-grid lifecycle-card-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <a href="playbooks/research-sop.html" class="lifecycle-entry-card input-layer">
+        <div class="lec-kicker">00 · Research · Input layer</div>
+        <div class="lec-title">Where angles come from.</div>
+        <div class="lec-desc">Reads the market before a brief gets written. Five sources, run in order: reputation audit, review mining, persona mapping, past performance, competitor gaps. Each one produces a specific output. What to brief and who to brief it for. Coverage handles the rest.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
+
       <a href="playbooks/creative-coverage.html" class="lifecycle-entry-card">
-        <div class="lec-kicker">01 · Coverage</div>
-        <div class="lec-title">Map what your creative is not covering.</div>
-        <div class="lec-desc">Use this when the account has “more ads” but not more meaningful market coverage. Identify missing personas, concepts, and formats before briefing the next round.</div>
+        <div class="lec-kicker">01 · Coverage · The loop begins</div>
+        <div class="lec-title">How the angles get distributed.</div>
+        <div class="lec-desc">Takes what research produced and audits how it is allocated across the account. By persona. By concept. By format. Identifies what the account is missing before anything new gets briefed. Hook strategy and performance management sit in the next two layers.</div>
         <div class="lec-cta">Read Playbook →</div>
       </a>
 
       <a href="playbooks/hooks-are-targeting.html" class="lifecycle-entry-card">
         <div class="lec-kicker">02 · Hooks</div>
-        <div class="lec-title">Decide who each ad is for before you build it.</div>
-        <div class="lec-desc">Use this when the opening line, first frame, and buyer segment need to work together. The hook is the first targeting decision in the system.</div>
+        <div class="lec-title">How each ad enters its territory.</div>
+        <div class="lec-desc">Coverage identified a gap. Hooks decides how to enter it. Five hook types, each reaching a different buyer segment. The signal sent to Meta changes, not just the wording. What happens once the ad wins is lifecycle's job.</div>
         <div class="lec-cta">Read Playbook →</div>
       </a>
 
       <a href="playbooks/creative-lifecycle.html" class="lifecycle-entry-card">
-        <div class="lec-kicker">03 · Lifecycle</div>
-        <div class="lec-title">Manage winners before they become dependencies.</div>
-        <div class="lec-desc">Use this when a creative starts working and the account needs extensions, saturation signals, and replacements before performance decay forces a reset.</div>
+        <div class="lec-kicker">03 · Lifecycle · Loops back</div>
+        <div class="lec-title">What happens to a signal over time.</div>
+        <div class="lec-desc">Once the ad wins, lifecycle takes over. Tracks five stages: discovery, validation, expansion, saturation, decay. The job is to extend the signal and build replacements before the account becomes dependent on one ad. When the cycle ends, results go back into the next round of coverage.</div>
         <div class="lec-cta">Read Playbook →</div>
       </a>
     </div>
   </div>
 </section>
 
+<!-- Supporting resources for Layer 00 -->
+<section style="max-width:1200px;margin:0 auto;padding:48px 48px 0;">
+  <div style="border-top:1px solid rgba(28,28,26,0.08);padding-top:40px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(28,28,26,0.3);">Supporting Layer 00 · Research</div>
+      <div style="flex:1;height:1px;background:rgba(28,28,26,0.08);"></div>
+    </div>
+    <p style="font-size:14px;color:rgba(28,28,26,0.6);font-weight:300;line-height:1.7;max-width:640px;margin-bottom:28px;">Three playbooks that go deeper on specific parts of the research process. Not part of the main loop. Deep dives on individual sources within Layer 00.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+
+      <a href="playbooks/comment-response-ads.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research source · Comments</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Mining Ad Comments for Briefs</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">How to read objections, questions, and controversy in comment sections as a brief input — one source from the research stack, covered in full.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/ai-workflow.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research tool · AI</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Where AI Fits in the Workflow</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">How AI accelerates research inputs — review clustering, pattern sorting, language extraction — without replacing the judgment about what matters.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/claude-creative-operations.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research tool · AI operations</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Claude in Creative Operations</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">AI in the messy middle of creative work — language mining, angle expansion, pattern recognition. Makes research faster without making it different.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:48px auto 0;padding:0 48px;height:1px;background:rgba(28,28,26,0.08);"></div>
 
 
 <section class="full-width-section" style="background:#E4EDE0;">
@@ -1425,7 +1539,11 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
     <div class="connect-system-block">
       <div>
         <div class="section-label">How the pieces connect</div>
-        <h2 class="section-h2">Coverage creates options.<br>Hooks create entry.<br>Lifecycle creates continuity.</h2>
+        <h2 class="section-h2">One question per layer.<br>No layer repeats another.</h2>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:20px;"><strong style="color:#1C1C1A;font-weight:500;">Research</strong> reads the market and surfaces the angles, personas, and hook language that go into the brief. It is the only layer that works from external signal rather than account data.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Coverage</strong> takes that material and maps it across the account. Which personas have creative. Which angles are over-served. What needs to exist before the next round gets briefed. Coverage works from the inside out.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Hooks</strong> decide how each ad opens the territory coverage identified. The hook type is an audience selection decision. Change the hook type and you change which buyer stops scrolling, regardless of what the rest of the ad says.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Lifecycle</strong> manages a winning ad through its predictable stages. The goal is extension before decay, not reaction after it. When the cycle closes, its data feeds back into research and coverage, and the process starts again.</p>
       </div>
 
       <div class="signal-field-visual" aria-hidden="true">
@@ -1453,15 +1571,13 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
         <span class="signal-node faint" style="left:80%;top:70%;"></span>
 
         <div class="signal-caption">
+          <span>Research</span>
           <span>Coverage</span>
           <span>Hooks</span>
           <span>Lifecycle</span>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
     </div>
   </div>
 </section>

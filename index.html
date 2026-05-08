@@ -37,13 +37,81 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 48px;
+  padding: 0 48px;
+  height: 54px;
   border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
   background: rgba(241,236,226,0.92);
   backdrop-filter: blur(8px);
   z-index: 100;
+}
+/* NAV hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 999px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 54px;
+  left: 0; right: 0;
+  background: rgba(241,236,226,0.98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 99;
+  padding: 20px 20px 28px;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  display: block;
+  transition: color 0.15s;
+}
+.mobile-menu a:last-of-type { border-bottom: none; }
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--ink); }
+.mobile-menu .mob-cta {
+  margin-top: 20px;
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border: 1px solid rgba(26,25,22,0.35);
+  padding: 10px 16px;
+  border-radius: 2px;
+  text-align: center;
+  text-decoration: none;
 }
 .logo-mark {
   display: inline-flex;
@@ -119,8 +187,11 @@ body {
   margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-wrap: nowrap;
 }
+.masthead-tag-sep { opacity: 0.4; }
+.masthead-tag-location { white-space: nowrap; }
 .avail-dot {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--teal);
@@ -339,6 +410,25 @@ body {
   color: var(--ink);
   text-align: right;
   transition: color 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.cs-row-stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1;
+}
+.cs-row-stat-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-style: normal;
+  display: none;
 }
 
 /* PLAYBOOK LIST ROWS */
@@ -704,10 +794,16 @@ footer span {
 /* ─── MOBILE RESPONSIVE ─── */
 @media (max-width: 768px) {
 
-  /* Nav */
-  .nav { padding: 0 20px; height: 52px; }
+  /* Nav — show hamburger, hide links and desktop CTA */
+  .nav { padding: 0 20px; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* Status tag — wrap between availability and location, not mid-text */
+  .masthead-tag { flex-wrap: wrap; gap: 4px 6px; font-size: 9px; }
+  .masthead-tag-sep { display: none; }
+  .masthead-tag-location { white-space: nowrap; }
 
   /* Wrap */
   .wrap { padding: 0; }
@@ -715,38 +811,37 @@ footer span {
   /* Masthead */
   .masthead {
     grid-template-columns: 1fr;
-    padding: 40px 20px 36px;
-    gap: 36px;
+    padding: 32px 20px 28px;
+    gap: 28px;
   }
   .masthead h1 { font-size: 52px; }
-  .masthead-right { border-top: 1px solid var(--line); padding-top: 28px; }
+  .masthead-right { border-top: 1px solid var(--line); padding-top: 24px; }
   .masthead-meta { flex-direction: row; flex-wrap: wrap; gap: 0; }
-  .meta-block {
-    flex: 1 1 45%;
-    padding-top: 14px;
-    padding-bottom: 14px;
-    border-top: 1px solid var(--line);
-    border-bottom: none;
-  }
+  .meta-block { flex: 1 1 45%; padding-top: 14px; padding-bottom: 14px; }
   .meta-value strong { font-size: 26px; }
   .masthead-actions { flex-wrap: wrap; }
 
   /* Editorial intro */
   .ed-intro {
     grid-template-columns: 1fr;
-    padding: 36px 20px;
-    gap: 24px;
+    padding: 32px 20px;
+    gap: 20px;
   }
   .ed-label { padding-top: 0; }
-  .ed-venn { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 24px; }
-  .ed-venn-frame { height: 96px; }
+  .ed-venn { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 20px; }
+  .ed-venn-frame { height: 90px; }
 
-  /* Section headers */
-  .section-header { padding: 28px 20px 20px; }
-  .section-header h2 { font-size: 32px; }
+  /* Section headers — prevent title and view-all from squashing together */
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 28px 20px 20px;
+  }
+  .section-header h2 { font-size: 28px; line-height: 1.05; }
 
   /* Case studies section */
-  .cs-section { padding: 0 20px 40px; }
+  .cs-section { padding: 0 20px 36px; }
   .cs-featured { grid-template-columns: 1fr; }
   .cs-feat:first-child {
     padding-right: 0;
@@ -755,13 +850,16 @@ footer span {
     padding-bottom: 28px;
   }
   .cs-feat:last-child { padding-left: 0; padding-top: 28px; }
-  .cs-row { grid-template-columns: 32px 1fr 48px; }
+
+  /* Case study rows — show metric label below the number */
+  .cs-row { grid-template-columns: 28px 1fr auto; gap: 12px; }
   .cs-row-cat { display: none; }
+  .cs-row-stat-label { display: block; }
   .cs-row::after { inset: 0 -20px; }
   .cs-row::before { left: -20px; }
 
   /* Frameworks */
-  .fw-section { padding: 0 20px 40px; }
+  .fw-section { padding: 0 20px 36px; }
   .fw-grid { grid-template-columns: 1fr; }
   .fw-card { padding: 24px 0; }
   .fw-card:nth-child(even) { padding-left: 0; border-left: none; }
@@ -769,22 +867,15 @@ footer span {
   .fw-card:last-child { border-bottom: none; }
 
   /* Playbooks */
-  .pb-section { padding: 0 20px 40px; }
+  .pb-section { padding: 0 20px 36px; }
   .pb-item { grid-template-columns: 1fr 20px; gap: 12px; }
   .pb-item-meta { display: none; }
   .pb-item::after { inset: 0 -20px; }
   .pb-item::before { left: -20px; }
 
   /* Hire */
-  .hire-section {
-    grid-template-columns: 1fr;
-    padding: 36px 20px;
-    gap: 36px;
-  }
-  .hire-block:first-child {
-    padding-bottom: 36px;
-    border-bottom: 1px solid var(--line);
-  }
+  .hire-section { grid-template-columns: 1fr; padding: 32px 20px; gap: 32px; }
+  .hire-block:first-child { padding-bottom: 32px; border-bottom: 1px solid var(--line); }
 
   /* Footer */
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
@@ -825,14 +916,30 @@ footer span {
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="case-studies/index.html">Case Studies</a>
+  <a href="frameworks/index.html">Strategy Maps</a>
+  <a href="creative-library/index.html">Creative Library</a>
+  <a href="playbooks/index.html">Playbooks</a>
+  <a href="creative-lifecycle-hub.html">The Creative System</a>
+  <a href="about/index.html">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
 
 <!-- MASTHEAD -->
 <section class="masthead">
   <div class="masthead-left">
     <div class="masthead-tag">
       <span class="avail-dot"></span>
-      Available, full-time remote &nbsp;·&nbsp; Based in Toronto & Buenos Aires
+      <span>Available, full-time remote</span>
+      <span class="masthead-tag-sep">·</span>
+      <span class="masthead-tag-location">Based in Toronto &amp; Buenos Aires</span>
     </div>
     <h1>Giancarlo<br>Di Nardo,<br><em>Paid Social <span class="role-x" aria-label="and"><span class="role-x-dot"></span></span> Creative.</em></h1>
     <p class="masthead-bio">10+ years running Meta accounts across lead gen and eCommerce. Most of that time spent on one question: why some accounts compound, and others plateau no matter how much creative they produce.</p>
@@ -921,19 +1028,19 @@ footer span {
       <div class="cs-row-n">3</div>
       <div class="cs-row-title">The hook was working. The script wasn't.</div>
       <div class="cs-row-cat">Men's Grooming · DTC</div>
-      <div class="cs-row-stat">2.8×</div>
+      <div class="cs-row-stat"><span class="cs-row-stat-num">2.8×</span><span class="cs-row-stat-label">ROAS lift</span></div>
     </a>
     <a href="case-studies/basement.html" class="cs-row">
       <div class="cs-row-n">4</div>
       <div class="cs-row-title">How a pre-launch research phase replaced the first month of expensive learning.</div>
       <div class="cs-row-cat">Basement Renovation · Lead Gen</div>
-      <div class="cs-row-stat">27%</div>
+      <div class="cs-row-stat"><span class="cs-row-stat-num">27%</span><span class="cs-row-stat-label">CPL drop</span></div>
     </a>
     <a href="case-studies/apparel.html" class="cs-row">
       <div class="cs-row-n">5</div>
       <div class="cs-row-title">You can't build a lifestyle brand with a product catalog.</div>
       <div class="cs-row-cat">US Apparel · DTC</div>
-      <div class="cs-row-stat">+22%</div>
+      <div class="cs-row-stat"><span class="cs-row-stat-num">+22%</span><span class="cs-row-stat-label">CVR lift</span></div>
     </a>
   </div>
 </section>
@@ -1035,6 +1142,23 @@ footer span {
       link.classList.add('active');
     }
   });
+
+  // Hamburger toggle
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    // Close on link click
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
 })();
 </script>
 </body>

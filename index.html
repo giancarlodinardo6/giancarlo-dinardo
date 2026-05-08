@@ -231,6 +231,18 @@ body {
   text-decoration: none;
   border-bottom: 1px solid rgba(91,158,158,0.3);
 }
+.ed-cta {
+  display: inline-block;
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91,158,158,0.3);
+  padding-bottom: 1px;
+}
 .ed-venn {
   border-left: 1px solid var(--line);
   padding-left: 40px;
@@ -256,10 +268,142 @@ body {
 }
 .editorial-venn { width: 88%; height: 100%; display: block; }
 
-/* CASE STUDIES — list-based */
-.cs-section {
-  padding: 0 48px 56px;
+/* CASE STUDY LIST ROWS */
+.cs-list { margin-top: 0; }
+.cs-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 130px 56px;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.cs-row::after {
+  content: '';
+  position: absolute;
+  inset: 0 -48px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  z-index: 0;
+}
+.cs-row > * { position: relative; z-index: 1; }
+.cs-row:hover::after { opacity: 1; }
+.cs-row::before {
+  content: '';
+  position: absolute;
+  left: -48px; top: 14px; bottom: 14px;
+  width: 2px;
+  background: var(--teal);
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 2;
+}
+.cs-row:hover::before { opacity: 1; }
+.cs-row:hover .cs-row-title { color: var(--ink); }
+.cs-row:hover .cs-row-stat { color: var(--teal); }
+.cs-row-n {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: rgba(26,25,22,0.18);
+  text-align: right;
+}
+.cs-row-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--ink-2);
+  transition: color 0.15s;
+}
+.cs-row-cat {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: right;
+}
+.cs-row-stat {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  text-align: right;
+  transition: color 0.18s;
+}
+
+/* PLAYBOOK LIST ROWS */
+.pb-list { margin-top: 0; }
+.pb-item {
+  display: grid;
+  grid-template-columns: 150px 1fr 20px;
+  gap: 24px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.pb-item::after {
+  content: '';
+  position: absolute;
+  inset: 0 -48px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+  opacity: 0;
+  transition: opacity 0.18s;
+  pointer-events: none;
+  z-index: 0;
+}
+.pb-item > * { position: relative; z-index: 1; }
+.pb-item:hover::after { opacity: 1; }
+.pb-item::before {
+  content: '';
+  position: absolute;
+  left: -48px; top: 14px; bottom: 14px;
+  width: 2px;
+  background: var(--teal);
+  border-radius: 999px;
+  opacity: 0;
+  transition: opacity 0.18s;
+  z-index: 2;
+}
+.pb-item:last-child { border-bottom: none; }
+.pb-item:hover::before { opacity: 1; }
+.pb-item:hover .pb-item-title { color: var(--ink); }
+.pb-item:hover .pb-item-arrow { color: var(--teal); }
+.pb-item-meta {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pb-item-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--ink-2);
+  transition: color 0.15s;
+}
+.pb-item-arrow {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: rgba(26,25,22,0.2);
+  text-align: right;
+  transition: color 0.18s;
 }
 .section-header {
   display: flex;
@@ -287,7 +431,11 @@ body {
 }
 .section-header .view-all:hover { color: var(--ink); }
 
-/* Featured pair */
+/* CASE STUDIES SECTION */
+.cs-section {
+  padding: 0 48px 56px;
+  border-bottom: 1px solid var(--line);
+}
 .cs-featured {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -346,49 +494,6 @@ body {
   color: rgba(91,158,158,0.6);
 }
 
-/* List rows */
-.cs-list {}
-.cs-row {
-  display: grid;
-  grid-template-columns: 36px 1fr 100px 80px;
-  gap: 24px;
-  align-items: center;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-  transition: background 0.15s;
-}
-.cs-row:hover .cs-row-title { color: var(--teal); }
-.cs-row-n {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 22px;
-  color: rgba(26,25,22,0.2);
-  text-align: right;
-}
-.cs-row-title {
-  font-family: var(--serif);
-  font-size: 16.5px;
-  line-height: 1.3;
-  transition: color 0.15s;
-}
-.cs-row-cat {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: right;
-}
-.cs-row-stat {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 20px;
-  color: var(--teal);
-  text-align: right;
-}
-
 /* FRAMEWORKS — 2-col text-led */
 .fw-section {
   padding: 0 48px 56px;
@@ -430,43 +535,6 @@ body {
   font-size: 13.5px;
   color: var(--muted);
   line-height: 1.55;
-}
-
-/* PLAYBOOKS — dense numbered list */
-.pb-section {
-  padding: 0 48px 56px;
-  border-bottom: 1px solid var(--line);
-}
-.pb-list {}
-.pb-item {
-  display: grid;
-  grid-template-columns: 180px 1fr auto;
-  gap: 24px;
-  align-items: baseline;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-}
-.pb-item:last-child { border-bottom: none; }
-.pb-item:hover .pb-item-title { color: var(--teal); }
-.pb-item-meta {
-  font-family: var(--mono);
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.pb-item-title {
-  font-family: var(--serif);
-  font-size: 17px;
-  line-height: 1.3;
-  transition: color 0.15s;
-}
-.pb-item-arrow {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
 }
 
 /* HIRE */
@@ -632,6 +700,113 @@ footer span {
 .editorial-venn .painted-overlap-soft { fill: rgba(184,122,26,0.18); }
 .editorial-venn .painted-overlap-core { fill: rgba(184,122,26,0.28); }
 .editorial-venn .painted-overlap-warm { fill: rgba(202,164,118,0.28); }
+
+/* ─── MOBILE RESPONSIVE ─── */
+@media (max-width: 768px) {
+
+  /* Nav */
+  .nav { padding: 0 20px; height: 52px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+
+  /* Wrap */
+  .wrap { padding: 0; }
+
+  /* Masthead */
+  .masthead {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 36px;
+    gap: 36px;
+  }
+  .masthead h1 { font-size: 52px; }
+  .masthead-right { border-top: 1px solid var(--line); padding-top: 28px; }
+  .masthead-meta { flex-direction: row; flex-wrap: wrap; gap: 0; }
+  .meta-block {
+    flex: 1 1 45%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: none;
+  }
+  .meta-value strong { font-size: 26px; }
+  .masthead-actions { flex-wrap: wrap; }
+
+  /* Editorial intro */
+  .ed-intro {
+    grid-template-columns: 1fr;
+    padding: 36px 20px;
+    gap: 24px;
+  }
+  .ed-label { padding-top: 0; }
+  .ed-venn { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 24px; }
+  .ed-venn-frame { height: 96px; }
+
+  /* Section headers */
+  .section-header { padding: 28px 20px 20px; }
+  .section-header h2 { font-size: 32px; }
+
+  /* Case studies section */
+  .cs-section { padding: 0 20px 40px; }
+  .cs-featured { grid-template-columns: 1fr; }
+  .cs-feat:first-child {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 28px;
+  }
+  .cs-feat:last-child { padding-left: 0; padding-top: 28px; }
+  .cs-row { grid-template-columns: 32px 1fr 48px; }
+  .cs-row-cat { display: none; }
+  .cs-row::after { inset: 0 -20px; }
+  .cs-row::before { left: -20px; }
+
+  /* Frameworks */
+  .fw-section { padding: 0 20px 40px; }
+  .fw-grid { grid-template-columns: 1fr; }
+  .fw-card { padding: 24px 0; }
+  .fw-card:nth-child(even) { padding-left: 0; border-left: none; }
+  .fw-card:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .fw-card:last-child { border-bottom: none; }
+
+  /* Playbooks */
+  .pb-section { padding: 0 20px 40px; }
+  .pb-item { grid-template-columns: 1fr 20px; gap: 12px; }
+  .pb-item-meta { display: none; }
+  .pb-item::after { inset: 0 -20px; }
+  .pb-item::before { left: -20px; }
+
+  /* Hire */
+  .hire-section {
+    grid-template-columns: 1fr;
+    padding: 36px 20px;
+    gap: 36px;
+  }
+  .hire-block:first-child {
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Footer */
+  footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .wrap { padding: 0; }
+  .nav { padding: 0 32px; }
+  .nav-links { gap: 18px; }
+  .masthead { padding: 56px 32px 48px; gap: 40px; }
+  .masthead h1 { font-size: 64px; }
+  .masthead-right { min-width: 260px; }
+  .ed-intro { padding: 48px 32px; grid-template-columns: 140px 1fr 200px; gap: 32px; }
+  .cs-section, .fw-section, .pb-section { padding-left: 32px; padding-right: 32px; }
+  .section-header { padding-left: 0; padding-right: 0; }
+  .cs-row::after { inset: 0 -32px; }
+  .cs-row::before { left: -32px; }
+  .pb-item::after { inset: 0 -32px; }
+  .pb-item::before { left: -32px; }
+  .hire-section { padding: 48px 32px; gap: 40px; }
+  footer { padding: 24px 32px; }
+}
 </style>
 </head>
 <body>
@@ -649,7 +824,7 @@ footer span {
     <a href="creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
-  <a href="#" data-email-link class="nav-cta">Get in touch</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
 
 <!-- MASTHEAD -->
@@ -662,8 +837,8 @@ footer span {
     <h1>Giancarlo<br>Di Nardo,<br><em>Paid Social <span class="role-x" aria-label="and"><span class="role-x-dot"></span></span> Creative.</em></h1>
     <p class="masthead-bio">10+ years running Meta accounts across lead gen and eCommerce. Most of that time spent on one question: why some accounts compound, and others plateau no matter how much creative they produce.</p>
     <div class="masthead-actions">
-      <a href="#" class="btn btn-ink">Download CV</a>
-      <a href="#" class="btn btn-ghost">Get in touch</a>
+      <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn btn-ink">Download CV</a>
+      <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Get in touch</a>
     </div>
   </div>
   <div class="masthead-right">
@@ -693,7 +868,8 @@ footer span {
   <div class="ed-label">How to read the work</div>
   <div class="ed-text">
     <p>This is not a traditional portfolio. It's a record of how the work actually gets figured out — creative decisions, testing systems, the constraints that shaped them, and the patterns that kept showing up.</p>
-    <p>Most of it reads like a breakdown: what the account looked like, what the problem was, what changed, and why it worked. The frameworks and playbooks are the systems underneath the case studies. <a href="creative-library/index.html">Start with the Creative Library →</a></p>
+    <p>Most of it reads like a breakdown: what the account looked like, what the problem was, what changed, and why it worked. The frameworks and playbooks are the systems underneath the case studies — and The Creative System is the place to start if you want to understand how they fit together.</p>
+    <a href="creative-lifecycle-hub.html" class="ed-cta">Start with The Creative System →</a>
   </div>
   <div class="ed-venn" aria-hidden="true">
     <div class="ed-venn-frame">
@@ -716,48 +892,48 @@ footer span {
 <section class="cs-section">
   <div class="section-header">
     <h2>Proof from real accounts, <em>selected.</em></h2>
-    <a href="#" class="view-all">View all →</a>
+    <a href="case-studies/index.html" class="view-all">View all →</a>
   </div>
 
   <div class="cs-featured">
-    <a href="#" class="cs-feat">
+    <a href="case-studies/roofing.html" class="cs-feat">
       <div class="cs-cat">Roofing · Home Services · Lead Gen</div>
       <div class="cs-title">One creative doing all the work. No system to replace it.</div>
       <div class="cs-desc">How a single winning ad became a ceiling instead of a floor, and what rebuilding the account around a testing system changed.</div>
       <div class="cs-metric">
-        <div class="cs-num">62%</div>
-        <div class="cs-num-label">CPL reduction</div>
+        <div class="cs-num">$240k</div>
+        <div class="cs-num-label">Peak monthly spend</div>
       </div>
     </a>
-    <a href="#" class="cs-feat">
-      <div class="cs-cat">Epoxy Flooring · Lead Gen</div>
-      <div class="cs-title">Scaling spend without scaling chaos.</div>
+    <a href="case-studies/dtc-homeorg.html" class="cs-feat">
+      <div class="cs-cat">DTC Home & Lifestyle · Ecommerce</div>
+      <div class="cs-title">Scaling one ad harder is not a growth strategy.</div>
       <div class="cs-desc">Budget went up. CPL didn't. This is what a structured creative rotation actually looks like when you're managing a six-figure monthly spend.</div>
       <div class="cs-metric">
-        <div class="cs-num">$180k</div>
-        <div class="cs-num-label">Monthly peak spend</div>
+        <div class="cs-num">$13.89</div>
+        <div class="cs-num-label">Final CPA achieved</div>
       </div>
     </a>
   </div>
 
   <div class="cs-list">
-    <a href="#" class="cs-row">
+    <a href="case-studies/grooming.html" class="cs-row">
       <div class="cs-row-n">3</div>
-      <div class="cs-row-title">When the audience knows you're advertising to them, the creative has to work harder.</div>
-      <div class="cs-row-cat">Bath Remodel</div>
-      <div class="cs-row-stat">3.8×</div>
+      <div class="cs-row-title">The hook was working. The script wasn't.</div>
+      <div class="cs-row-cat">Men's Grooming · DTC</div>
+      <div class="cs-row-stat">2.8×</div>
     </a>
-    <a href="#" class="cs-row">
+    <a href="case-studies/basement.html" class="cs-row">
       <div class="cs-row-n">4</div>
-      <div class="cs-row-title">HVAC in summer is easy. Selling in February is the real test.</div>
-      <div class="cs-row-cat">HVAC · Lead Gen</div>
-      <div class="cs-row-stat">44%</div>
+      <div class="cs-row-title">How a pre-launch research phase replaced the first month of expensive learning.</div>
+      <div class="cs-row-cat">Basement Renovation · Lead Gen</div>
+      <div class="cs-row-stat">27%</div>
     </a>
-    <a href="#" class="cs-row">
+    <a href="case-studies/apparel.html" class="cs-row">
       <div class="cs-row-n">5</div>
-      <div class="cs-row-title">DTC health brands live or die by the hook. Here's what the data said.</div>
-      <div class="cs-row-cat">Health · eCommerce</div>
-      <div class="cs-row-stat">2.1×</div>
+      <div class="cs-row-title">You can't build a lifestyle brand with a product catalog.</div>
+      <div class="cs-row-cat">US Apparel · DTC</div>
+      <div class="cs-row-stat">+22%</div>
     </a>
   </div>
 </section>
@@ -766,15 +942,15 @@ footer span {
 <section class="fw-section">
   <div class="section-header">
     <h2>Strategy maps for creative decisions.</h2>
-    <a href="#" class="view-all">View all →</a>
+    <a href="frameworks/index.html" class="view-all">View all →</a>
   </div>
   <div class="fw-grid">
-    <a href="#" class="fw-card">
+    <a href="frameworks/roofing-lead-gen.html" class="fw-card">
       <div class="fw-tag">Framework · Roofing</div>
       <div class="fw-title">Before I write a single ad, I build this map.</div>
       <div class="fw-desc">Four layers, three personas, fifteen creative directions. The structure that makes testing systematic instead of random.</div>
     </a>
-    <a href="#" class="fw-card">
+    <a href="frameworks/dtc-drone.html" class="fw-card">
       <div class="fw-tag">Framework · DTC</div>
       <div class="fw-title">When the buyer isn't the user, everything changes.</div>
       <div class="fw-desc">The same map extended with a timing layer. Five layers, four personas, sixty creative directions for a DTC brand.</div>
@@ -786,30 +962,30 @@ footer span {
 <section class="pb-section">
   <div class="section-header">
     <h2>Playbooks behind the system.</h2>
-    <a href="#" class="view-all">View all →</a>
+    <a href="playbooks/index.html" class="view-all">View all →</a>
   </div>
   <div class="pb-list">
-    <a href="#" class="pb-item">
+    <a href="creative-lifecycle-hub.html" class="pb-item">
       <div class="pb-item-meta">System · Overview</div>
       <div class="pb-item-title">Start with The Creative System</div>
       <div class="pb-item-arrow">→</div>
     </a>
-    <a href="#" class="pb-item">
+    <a href="playbooks/creative-coverage.html" class="pb-item">
       <div class="pb-item-meta">Playbook · Coverage</div>
       <div class="pb-item-title">Creative coverage is the only growth lever that compounds</div>
       <div class="pb-item-arrow">→</div>
     </a>
-    <a href="#" class="pb-item">
+    <a href="playbooks/creative-lifecycle.html" class="pb-item">
       <div class="pb-item-meta">Playbook · Lifecycle</div>
       <div class="pb-item-title">Winning creatives don't last. They evolve.</div>
       <div class="pb-item-arrow">→</div>
     </a>
-    <a href="#" class="pb-item">
+    <a href="playbooks/hooks-are-targeting.html" class="pb-item">
       <div class="pb-item-meta">Playbook · Hooks</div>
-      <div class="pb-item-title">The hook is your targeting system</div>
+      <div class="pb-item-title">The Hook Is Your Targeting System</div>
       <div class="pb-item-arrow">→</div>
     </a>
-    <a href="#" class="pb-item">
+    <a href="playbooks/hook-matrix.html" class="pb-item">
       <div class="pb-item-meta">Playbook · Testing</div>
       <div class="pb-item-title">Systematic testing means knowing what question you're answering</div>
       <div class="pb-item-arrow">→</div>
@@ -828,7 +1004,7 @@ footer span {
       <li>Creative strategy and testing systems</li>
       <li>Team-of-one, or leading 2–4 specialists</li>
     </ul>
-    <a href="#" class="btn btn-ink">Download CV / Resume</a>
+    <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn btn-ink">Download CV / Resume</a>
   </div>
   <div class="hire-block">
     <div class="hire-kicker">For teams</div>
@@ -839,7 +1015,7 @@ footer span {
       <li>Testing system buildouts (4–6 wks)</li>
       <li>Embedded as fractional head of paid</li>
     </ul>
-    <a href="#" class="btn btn-ghost">Start a conversation</a>
+    <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Start a conversation</a>
   </div>
 </section>
 
@@ -859,10 +1035,6 @@ footer span {
       link.classList.add('active');
     }
   });
-  var u = "giancarlodinardo.6";
-  var d = "gmail.com";
-  var href = "mai" + "lto:" + u + "@" + d;
-  document.querySelectorAll("[data-email-link]").forEach(function(a){ a.setAttribute("href", href); });
 })();
 </script>
 </body>

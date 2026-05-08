@@ -76,13 +76,15 @@ body {
   position: fixed;
   top: 54px;
   left: 0; right: 0;
+  bottom: 0;
   background: rgba(241,236,226,0.98);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
   z-index: 99;
-  padding: 20px 20px 28px;
+  padding: 20px 20px 40px;
   flex-direction: column;
   gap: 0;
+  overflow-y: auto;
 }
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
@@ -207,6 +209,7 @@ body {
   margin-bottom: 32px;
 }
 .masthead h1 em { font-style: italic; color: var(--muted); }
+.mob-br { display: none; }
 .masthead-bio {
   font-family: var(--serif);
   font-size: 18px;
@@ -815,6 +818,7 @@ footer span {
     gap: 28px;
   }
   .masthead h1 { font-size: 52px; }
+  .mob-br { display: block; }
   .masthead-right { border-top: 1px solid var(--line); padding-top: 24px; }
   .masthead-meta { flex-direction: row; flex-wrap: wrap; gap: 0; }
   .meta-block { flex: 1 1 45%; padding-top: 14px; padding-bottom: 14px; }
@@ -941,7 +945,7 @@ footer span {
       <span class="masthead-tag-sep">·</span>
       <span class="masthead-tag-location">Based in Toronto &amp; Buenos Aires</span>
     </div>
-    <h1>Giancarlo<br>Di Nardo,<br><em>Paid Social <span class="role-x" aria-label="and"><span class="role-x-dot"></span></span> Creative.</em></h1>
+    <h1>Giancarlo<br>Di Nardo,<br><em>Paid Social<br class="mob-br"> <span class="role-x" aria-label="and"><span class="role-x-dot"></span></span> Creative.</em></h1>
     <p class="masthead-bio">10+ years running Meta accounts across lead gen and eCommerce. Most of that time spent on one question: why some accounts compound, and others plateau no matter how much creative they produce.</p>
     <div class="masthead-actions">
       <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn btn-ink">Download CV</a>

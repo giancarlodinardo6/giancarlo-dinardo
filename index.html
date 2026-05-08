@@ -199,7 +199,7 @@ body {
   background: var(--teal);
   display: inline-block;
 }
-.masthead-left { position: relative; }
+
 .masthead h1 {
   font-family: var(--serif);
   font-weight: 400;
@@ -208,7 +208,7 @@ body {
   letter-spacing: -0.025em;
   color: var(--ink);
   margin-bottom: 32px;
-  padding-right: 90px;
+
 }
 .masthead h1 em { font-style: italic; color: var(--muted); }
 .mob-br { display: none; }
@@ -702,26 +702,6 @@ footer span {
   color: var(--muted);
 }
 
-/* ─── NOTETAKING SKETCH ─── */
-.sketch-wrap {
-  position: absolute;
-  right: -8px;
-  top: 52px;
-  width: 72px;
-  height: 260px;
-  pointer-events: none;
-}
-.sketch-svg { width: 72px; height: 260px; overflow: visible; }
-.stroke-ink  { fill:none; stroke:var(--ink);  stroke-linecap:round; stroke-linejoin:round; opacity:0.65; }
-.stroke-teal { fill:none; stroke:var(--teal); stroke-linecap:round; stroke-linejoin:round; }
-.stroke-rust { fill:none; stroke:var(--rust); stroke-linecap:round; stroke-linejoin:round; opacity:0.65; }
-.fill-teal-light { fill:rgba(91,158,158,0.1); stroke:none; opacity:0; }
-.fill-rust-light { fill:rgba(184,92,56,0.08); stroke:none; opacity:0; }
-.sketch-text      { font-family:var(--mono); font-size:7px; letter-spacing:0.06em; text-transform:uppercase; fill:var(--ink);  opacity:0; }
-.sketch-text-teal { font-family:var(--mono); font-size:7px; letter-spacing:0.06em; text-transform:uppercase; fill:var(--teal); opacity:0; }
-@keyframes draw         { to { stroke-dashoffset: 0; } }
-@keyframes skAppear     { from { opacity:0; } to { opacity:1; } }
-@keyframes skFaint      { from { opacity:0; } to { opacity:0.35; } }
 .role-x {
   position: relative;
   display: inline-block;
@@ -840,7 +820,7 @@ footer span {
   }
   .masthead h1 { font-size: 52px; padding-right: 0; }
   .mob-br { display: block; }
-  .sketch-wrap { display: none; }
+
   .masthead-right { border-top: 1px solid var(--line); padding-top: 24px; }
   .masthead-meta { flex-direction: row; flex-wrap: wrap; gap: 0; }
   .meta-block { flex: 1 1 45%; padding-top: 14px; padding-bottom: 14px; }
@@ -968,66 +948,6 @@ footer span {
       <span class="masthead-tag-location">Based in Toronto &amp; Buenos Aires</span>
     </div>
     <h1>Giancarlo<br>Di Nardo,<br><em>Paid Social<br class="mob-br"> <span class="role-x" aria-label="and"><span class="role-x-dot"></span></span> Creative.</em></h1>
-
-    <!-- NOTETAKING SKETCH -->
-    <div class="sketch-wrap">
-      <svg class="sketch-svg" viewBox="0 0 72 260" preserveAspectRatio="xMidYMid meet" id="sketch">
-        <!-- ① ACCOUNT box -->
-        <path class="stroke-ink" stroke-width="0.6" d="M2 8 L46 8 L46 22 L2 22 Z" stroke-dasharray="96" stroke-dashoffset="96" style="opacity:0; animation: draw 0.5s cubic-bezier(0.4,0,0.2,1) 0.2s forwards, skAppear 0.1s ease 0.2s forwards;"/>
-        <text class="sketch-text" x="24" y="18" text-anchor="middle" style="opacity:0; animation: skAppear 0.25s ease 0.75s forwards;">ACCOUNT</text>
-
-        <!-- ② Arrow down + GAP annotation -->
-        <path class="stroke-ink" stroke-width="0.8" d="M24 22 L24 40" stroke-dasharray="20" stroke-dashoffset="20" style="opacity:0; animation: draw 0.2s ease 1.05s forwards, skAppear 0.1s ease 1.05s forwards;"/>
-        <path class="stroke-ink" stroke-width="0.8" d="M19 36 L24 42 L29 36" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.15s ease 1.25s forwards, skAppear 0.1s ease 1.25s forwards;"/>
-        <path class="stroke-rust" stroke-width="0.8" d="M24 31 L38 31" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.2s ease 1.38s forwards, skAppear 0.1s ease 1.38s forwards;"/>
-        <text class="sketch-text" x="40" y="34" text-anchor="start" style="fill:var(--rust); opacity:0; animation: skAppear 0.25s ease 1.55s forwards;">GAP</text>
-
-        <!-- ③ BRIEF box -->
-        <rect class="fill-teal-light" x="2" y="42" width="36" height="18" rx="2" style="opacity:0; animation: skAppear 0.1s ease 1.7s forwards;"/>
-        <path class="stroke-teal" stroke-width="0.6" d="M2 44 Q2 42 4 42 L36 42 Q38 42 38 44 L38 58 Q38 60 36 60 L4 60 Q2 60 2 58 Z" stroke-dasharray="92" stroke-dashoffset="92" style="opacity:0; animation: draw 0.45s ease 1.75s forwards, skAppear 0.1s ease 1.75s forwards;"/>
-        <text class="sketch-text-teal" x="20" y="54" text-anchor="middle" style="opacity:0; animation: skAppear 0.25s ease 2.25s forwards;">BRIEF</text>
-
-        <!-- ④ Arrow down: BRIEF → CREATIVE -->
-        <path class="stroke-ink" stroke-width="0.8" d="M20 60 L20 78" stroke-dasharray="20" stroke-dashoffset="20" style="opacity:0; animation: draw 0.2s ease 2.55s forwards, skAppear 0.1s ease 2.55s forwards;"/>
-        <path class="stroke-ink" stroke-width="0.8" d="M15 74 L20 80 L25 74" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.15s ease 2.75s forwards, skAppear 0.1s ease 2.75s forwards;"/>
-
-        <!-- ⑤ CREATIVE box -->
-        <path class="stroke-ink" stroke-width="0.8" d="M2 80 L44 80 L44 96 L2 96 Z" stroke-dasharray="108" stroke-dashoffset="108" style="opacity:0; animation: draw 0.4s ease 2.9s forwards, skAppear 0.1s ease 2.9s forwards;"/>
-        <text class="sketch-text" x="23" y="91" text-anchor="middle" style="opacity:0; animation: skAppear 0.25s ease 3.35s forwards;">CREATIVE</text>
-
-        <!-- ⑥ Arrow down: CREATIVE → HOOK -->
-        <path class="stroke-ink" stroke-width="0.8" d="M20 96 L20 114" stroke-dasharray="20" stroke-dashoffset="20" style="opacity:0; animation: draw 0.2s ease 3.65s forwards, skAppear 0.1s ease 3.65s forwards;"/>
-        <path class="stroke-ink" stroke-width="0.8" d="M15 110 L20 116 L25 110" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.15s ease 3.85s forwards, skAppear 0.1s ease 3.85s forwards;"/>
-
-        <!-- ⑦ HOOK box — rust, underlined -->
-        <rect class="fill-rust-light" x="2" y="116" width="36" height="18" rx="2" style="opacity:0; animation: skAppear 0.1s ease 4.0s forwards;"/>
-        <path class="stroke-rust" stroke-width="0.6" d="M2 118 Q2 116 4 116 L36 116 Q38 116 38 118 L38 132 Q38 134 36 134 L4 134 Q2 134 2 132 Z" stroke-dasharray="92" stroke-dashoffset="92" style="opacity:0; animation: draw 0.45s ease 4.05s forwards, skAppear 0.1s ease 4.05s forwards;"/>
-        <text class="sketch-text" x="20" y="128" text-anchor="middle" style="fill:var(--rust); opacity:0; animation: skAppear 0.25s ease 4.55s forwards;">HOOK</text>
-        <path class="stroke-rust" stroke-width="0.8" d="M4 137 Q10 140 16 137 Q22 134 28 137 Q34 140 38 137" stroke-dasharray="40" stroke-dashoffset="40" style="opacity:0; animation: draw 0.35s ease 4.75s forwards, skAppear 0.1s ease 4.75s forwards;"/>
-
-        <!-- ⑧ Arrow down: HOOK → TEST -->
-        <path class="stroke-ink" stroke-width="0.8" d="M20 140 L20 158" stroke-dasharray="20" stroke-dashoffset="20" style="opacity:0; animation: draw 0.2s ease 5.15s forwards, skAppear 0.1s ease 5.15s forwards;"/>
-        <path class="stroke-ink" stroke-width="0.8" d="M15 154 L20 160 L25 154" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.15s ease 5.35s forwards, skAppear 0.1s ease 5.35s forwards;"/>
-
-        <!-- ⑨ TEST box + checkmark -->
-        <path class="stroke-ink" stroke-width="0.6" d="M2 160 L38 160 L38 176 L2 176 Z" stroke-dasharray="92" stroke-dashoffset="92" style="opacity:0; animation: draw 0.45s ease 5.5s forwards, skAppear 0.1s ease 5.5s forwards;"/>
-        <text class="sketch-text" x="20" y="171" text-anchor="middle" style="opacity:0; animation: skAppear 0.25s ease 6.0s forwards;">TEST</text>
-        <path class="stroke-ink" stroke-width="0.7" d="M38 168 L50 168" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.18s ease 6.2s forwards, skAppear 0.1s ease 6.2s forwards;"/>
-        <path class="stroke-teal" stroke-width="0.7" d="M50 162 L56 170 L68 154" stroke-dasharray="28" stroke-dashoffset="28" style="opacity:0; animation: draw 0.3s ease 6.38s forwards, skAppear 0.1s ease 6.38s forwards;"/>
-
-        <!-- ⑩ Dotted line: TEST → WINNER -->
-        <path class="stroke-ink" stroke-width="0.6" stroke-dasharray="3 4" d="M20 176 L20 194" style="opacity:0; animation: skFaint 0.3s ease 6.7s forwards;"/>
-
-        <!-- ⑪ WINNER circle -->
-        <path class="stroke-teal" stroke-width="0.6" d="M20 198 C10 192, 2 198, 4 208 C6 218, 14 222, 24 219 C34 216, 40 206, 36 198 C32 192, 22 194, 20 198Z" stroke-dasharray="110" stroke-dashoffset="110" style="opacity:0; animation: draw 0.65s cubic-bezier(0.4,0,0.2,1) 6.95s forwards, skAppear 0.1s ease 6.95s forwards;"/>
-        <text class="sketch-text-teal" x="20" y="209" text-anchor="middle" style="font-size:6.5px; opacity:0; animation: skAppear 0.25s ease 7.65s forwards;">WINNER</text>
-
-        <!-- ⑫ Arrow up + ×2 -->
-        <path class="stroke-rust" stroke-width="0.8" d="M48 218 L48 200" stroke-dasharray="20" stroke-dashoffset="20" style="opacity:0; animation: draw 0.25s ease 7.9s forwards, skAppear 0.1s ease 7.9s forwards;"/>
-        <path class="stroke-rust" stroke-width="0.8" d="M43 206 L48 198 L53 206" stroke-dasharray="14" stroke-dashoffset="14" style="opacity:0; animation: draw 0.18s ease 8.15s forwards, skAppear 0.1s ease 8.15s forwards;"/>
-        <text class="sketch-text" x="56" y="214" text-anchor="start" style="fill:var(--rust); font-size:8px; opacity:0; animation: skAppear 0.25s ease 8.33s forwards;">×2</text>
-      </svg>
-    </div>
     <p class="masthead-bio">10+ years running Meta accounts across lead gen and eCommerce. Most of that time spent on one question: why some accounts compound, and others plateau no matter how much creative they produce.</p>
     <div class="masthead-actions">
       <a href="assets/giancarlo-cv.pdf" download="Giancarlo_Di_Nardo_CV.pdf" class="btn btn-ink">Download CV</a>

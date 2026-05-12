@@ -23,6 +23,11 @@
     --amber: #B87A1A;
     --serif: 'Instrument Serif', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --muted: #6B655A;
+    --line: #D9D2C2;
+    --line-2: #C4BCA8;
+    --ink-2: #2B2925;
   }
 
   html { scroll-behavior: smooth; }
@@ -1542,43 +1547,286 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
 
-      <!-- Insight output format -->
+      <!-- INSIGHT GATE -->
       <div style="background:#1C1C1A;border-radius:16px;padding:36px 40px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(184,122,26,0.18) 0%,transparent 70%);pointer-events:none;"></div>
-        <div style="position:absolute;bottom:-40px;left:40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.12) 0%,transparent 70%);pointer-events:none;"></div>
         <div style="position:relative;z-index:1;">
-          <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.28);margin-bottom:14px;">The insight output format</div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(18px,2vw,22px);font-weight:400;color:#fff;line-height:1.25;margin-bottom:12px;">Research ends with a named insight, not a topic.</div>
-          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;margin-bottom:20px;">Five sources produce raw material. The insight is what that material becomes before it enters a brief — one sentence, traceable to a source, that a real buyer would recognise as their own thought.</p>
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(212,168,71,0.7);margin-bottom:12px;font-weight:500;">Insight shape</div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(13px,1.3vw,15px);line-height:1.85;color:rgba(255,255,255,0.85);">
-            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">Specific persona</span>
-            <span style="color:rgba(255,255,255,0.5);font-style:italic;"> silently </span>
-            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">normalised behaviour</span>
-            <span style="color:rgba(255,255,255,0.5);font-style:italic;"> because they've reframed </span>
-            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">real problem</span>
-            <span style="color:rgba(255,255,255,0.5);font-style:italic;"> as </span>
-            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">acceptable excuse</span><span style="color:rgba(255,255,255,0.5);font-style:italic;">. The decline stays invisible until </span>
-            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">downstream consequence</span><span style="color:rgba(255,255,255,0.5);font-style:italic;">, and even then they don't connect the dots.</span>
+
+          <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.28);margin-bottom:14px;">The insight gate</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(18px,2vw,22px);font-weight:400;color:#fff;line-height:1.25;margin-bottom:8px;">Four questions. All four must clear.</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.65;font-weight:300;margin-bottom:24px;">If any answer is no, what you have is an observation. Go back to the language bank.</p>
+
+          <!-- Four questions -->
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
+
+            <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">01</div>
+              <div>
+                <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name a person in a specific situation?</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">Not a demographic. A moment — the circumstance that makes this true for them right now.</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">02</div>
+              <div>
+                <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name what they tell themselves to avoid acting?</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">The rationalization — not the objection they'd say out loud, but the internal story that makes delay feel reasonable.</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">03</div>
+              <div>
+                <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name the belief that makes inaction feel rational?</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">The frame underneath the rationalization. What they'd have to stop believing for the ad to land.</div>
+              </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">04</div>
+              <div>
+                <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name a consequence they're not connecting to the cause?</div>
+                <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">Something already happening because of the stuck belief — that they haven't traced back to the real problem.</div>
+              </div>
+            </div>
+
           </div>
-          <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
-            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
-              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Source test</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Can you name the exact review phrase or data point this came from?</div>
-            </div>
-            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
-              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Recognition test</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Would a real buyer nod or wince? Polite agreement is not recognition.</div>
-            </div>
-            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
-              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Awareness test</div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Where in the journey is this buyer when the insight is true for them?</div>
-            </div>
-          </div>
+
+          <!-- Accordion examples -->
+          <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;">
+            <div style="font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.22);margin-bottom:12px;">Five worked examples — raw material to insight</div>
+
+            <style>
+              .ig-accordion { display:flex; flex-direction:column; gap:6px; }
+              .ig-item { border:1px solid rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; }
+              .ig-trigger {
+                width:100%; background:rgba(255,255,255,0.04); border:none; cursor:pointer;
+                padding:14px 16px; display:grid; grid-template-columns:1fr auto;
+                gap:12px; align-items:center; text-align:left;
+                transition:background 0.15s;
+              }
+              .ig-trigger:hover { background:rgba(255,255,255,0.07); }
+              .ig-trigger[aria-expanded="true"] { background:rgba(255,255,255,0.07); border-bottom:1px solid rgba(255,255,255,0.07); }
+              .ig-trigger-left { display:flex; align-items:center; gap:12px; }
+              .ig-tag {
+                font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:500;
+                text-transform:uppercase; letter-spacing:0.1em;
+                padding:3px 8px; border-radius:999px; white-space:nowrap; flex-shrink:0;
+              }
+              .ig-tag-leadgen { background:rgba(91,158,158,0.15); color:#7ABFB5; border:1px solid rgba(91,158,158,0.2); }
+              .ig-tag-dtc { background:rgba(184,122,26,0.15); color:#D4A847; border:1px solid rgba(184,122,26,0.2); }
+              .ig-title { font-size:13px; font-weight:500; color:#fff; }
+              .ig-chevron {
+                width:18px; height:18px; flex-shrink:0;
+                border:1px solid rgba(255,255,255,0.15); border-radius:50%;
+                display:flex; align-items:center; justify-content:center;
+                transition:transform 0.25s, border-color 0.15s;
+              }
+              .ig-trigger[aria-expanded="true"] .ig-chevron { transform:rotate(180deg); border-color:rgba(255,255,255,0.3); }
+              .ig-chevron svg { width:8px; height:8px; stroke:#fff; opacity:0.5; }
+              .ig-body { display:none; padding:16px 16px 18px; }
+              .ig-body.open { display:block; }
+              .ig-raw {
+                font-size:12px; color:rgba(255,255,255,0.65); font-weight:300; line-height:1.7;
+                font-style:italic; padding:10px 12px;
+                background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+                border-radius:7px; margin-bottom:14px;
+              }
+              .ig-raw-label { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.45); display:block; margin-bottom:6px; }
+              .ig-insight {
+                font-size:13px; color:rgba(255,255,255,0.92); font-weight:300; line-height:1.75;
+                padding:12px 14px;
+                background:rgba(91,158,158,0.12); border:1px solid rgba(91,158,158,0.3);
+                border-radius:7px; margin-bottom:14px;
+              }
+              .ig-insight-label { font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:#7ABFB5; display:block; margin-bottom:6px; }
+              .ig-gates { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+              .ig-gate {
+                padding:8px 10px; border-radius:6px;
+                background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+              }
+              .ig-gate-q { font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+              .ig-gate-a { font-size:11px; color:rgba(255,255,255,0.8); line-height:1.5; font-weight:300; }
+              .ig-driver {
+                margin-top:10px; padding:8px 12px; border-radius:6px;
+                background:rgba(184,92,56,0.12); border:1px solid rgba(184,92,56,0.25);
+                font-size:11px; color:rgba(232,150,122,0.95); line-height:1.5; font-weight:300;
+              }
+              .ig-driver strong { color:#F0A882; font-weight:500; }
+              @media(max-width:600px){
+                .ig-gates { grid-template-columns:1fr; }
+                .ig-trigger { grid-template-columns:1fr auto; }
+              }
+            </style>
+
+            <div class="ig-accordion">
+
+              <!-- 01 Roofing -->
+              <div class="ig-item">
+                <button class="ig-trigger" aria-expanded="false" onclick="igToggle(this)">
+                  <div class="ig-trigger-left">
+                    <span class="ig-tag ig-tag-leadgen">Lead Gen · Roofing</span>
+                    <span class="ig-title">Avoidance through miscategorization</span>
+                  </div>
+                  <div class="ig-chevron"><svg viewBox="0 0 8 8" fill="none" stroke-width="1.5"><path d="M1 3l3 3 3-3"/></svg></div>
+                </button>
+                <div class="ig-body">
+                  <div class="ig-raw">
+                    <span class="ig-raw-label">Raw material</span>
+                    "It's not leaking yet." / "I'll deal with it after the holidays." / "I got a quote two years ago and it was way more than I expected." / "I keep meaning to call someone."
+                  </div>
+                  <div class="ig-insight">
+                    <span class="ig-insight-label">Shaped insight</span>
+                    A homeowner who can see visible shingle deterioration tells himself the roof "still has a few years left" — not because he believes it, but because a contractor quote feels like the start of an expense he can't control. So the problem stays dormant until the first interior water stain. Even then, he calls for a patch.
+                  </div>
+                  <div class="ig-gates">
+                    <div class="ig-gate"><div class="ig-gate-q">01 · Person + situation</div><div class="ig-gate-a">Homeowner with visible deterioration — the moment he notices but files it away</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">02 · Rationalization</div><div class="ig-gate-a">"Still has a few years left" — delay reframed as responsible judgement</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">03 · Stuck belief</div><div class="ig-gate-a">A quote = committing to an expense he can't control</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">04 · Unconnected consequence</div><div class="ig-gate-a">He calls for a patch when water appears — spending more eventually while believing he was being careful</div></div>
+                  </div>
+                  <div class="ig-driver"><strong>Psychological mechanism:</strong> Loss aversion applied to the process itself, not the product. The threat isn't the roof — it's the loss of financial control the quote represents.</div>
+                </div>
+              </div>
+
+              <!-- 02 Bath -->
+              <div class="ig-item">
+                <button class="ig-trigger" aria-expanded="false" onclick="igToggle(this)">
+                  <div class="ig-trigger-left">
+                    <span class="ig-tag ig-tag-leadgen">Lead Gen · Bath Remodel</span>
+                    <span class="ig-title">Learned helplessness from prior friction</span>
+                  </div>
+                  <div class="ig-chevron"><svg viewBox="0 0 8 8" fill="none" stroke-width="1.5"><path d="M1 3l3 3 3-3"/></svg></div>
+                </button>
+                <div class="ig-body">
+                  <div class="ig-raw">
+                    <span class="ig-raw-label">Raw material</span>
+                    "I use the guest bathroom when I can." / "I've been meaning to redo it for five years." / "I don't want strangers in my house for weeks." / "Every contractor I've called never follows up."
+                  </div>
+                  <div class="ig-insight">
+                    <span class="ig-insight-label">Shaped insight</span>
+                    A homeowner who has mentally accepted her bathroom is outdated stops short of booking a consultation — not because she can't afford it, but because every past attempt to hire a contractor ended in silence. She's reframed the project as "not worth the hassle of being ignored again." Her bathroom stays untouched, and the fixture she hates most becomes the thing she just stops seeing.
+                  </div>
+                  <div class="ig-gates">
+                    <div class="ig-gate"><div class="ig-gate-q">01 · Person + situation</div><div class="ig-gate-a">Homeowner who's been through the quoting process before — and got nowhere</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">02 · Rationalization</div><div class="ig-gate-a">"Not worth the hassle" — inaction framed as self-protection, not avoidance</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">03 · Stuck belief</div><div class="ig-gate-a">The process itself is broken — the product isn't the problem, the category is</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">04 · Unconnected consequence</div><div class="ig-gate-a">Adaptive blindness — she stops seeing the problem. Five years become ten without active decision.</div></div>
+                  </div>
+                  <div class="ig-driver"><strong>Psychological mechanism:</strong> Learned helplessness. Past failure conditions the response to future opportunity. The hook can't sell the product — it has to first rehabilitate the category.</div>
+                </div>
+              </div>
+
+              <!-- 03 Grooming -->
+              <div class="ig-item">
+                <button class="ig-trigger" aria-expanded="false" onclick="igToggle(this)">
+                  <div class="ig-trigger-left">
+                    <span class="ig-tag ig-tag-dtc">DTC · Men's Grooming</span>
+                    <span class="ig-title">Identity threat masking as indifference</span>
+                  </div>
+                  <div class="ig-chevron"><svg viewBox="0 0 8 8" fill="none" stroke-width="1.5"><path d="M1 3l3 3 3-3"/></svg></div>
+                </button>
+                <div class="ig-body">
+                  <div class="ig-raw">
+                    <span class="ig-raw-label">Raw material</span>
+                    "I just use whatever's in the shower." / "I tried a few things but nothing stuck." / "My wife buys stuff for me sometimes." / "I don't really have a routine."
+                  </div>
+                  <div class="ig-insight">
+                    <span class="ig-insight-label">Shaped insight</span>
+                    A man in his mid-30s who is quietly aware that how he looks affects how he's perceived at work uses "I'm not really a grooming person" as his cover story — because building a routine feels like admitting he's been letting himself go. He buys nothing deliberately. His wife occasionally buys something for him, which he uses until it runs out, then reverts.
+                  </div>
+                  <div class="ig-gates">
+                    <div class="ig-gate"><div class="ig-gate-q">01 · Person + situation</div><div class="ig-gate-a">Mid-30s professional — aware of appearance stakes, not acting on them</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">02 · Rationalization</div><div class="ig-gate-a">"I'm not a grooming person" — indifference performed as identity</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">03 · Stuck belief</div><div class="ig-gate-a">Starting a routine = admitting prior neglect, which threatens his self-image</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">04 · Unconnected consequence</div><div class="ig-gate-a">Passive consumption — someone else makes every purchase decision, nothing compounds, no loyalty forms</div></div>
+                  </div>
+                  <div class="ig-driver"><strong>Psychological mechanism:</strong> Identity protection. The barrier isn't price or awareness — it's that purchase implies acknowledgement of a gap he hasn't admitted. The hook has to give him a story that doesn't require confession.</div>
+                </div>
+              </div>
+
+              <!-- 04 Epoxy -->
+              <div class="ig-item">
+                <button class="ig-trigger" aria-expanded="false" onclick="igToggle(this)">
+                  <div class="ig-trigger-left">
+                    <span class="ig-tag ig-tag-leadgen">Lead Gen · Epoxy Flooring</span>
+                    <span class="ig-title">Wrong mental category blocks action</span>
+                  </div>
+                  <div class="ig-chevron"><svg viewBox="0 0 8 8" fill="none" stroke-width="1.5"><path d="M1 3l3 3 3-3"/></svg></div>
+                </button>
+                <div class="ig-body">
+                  <div class="ig-raw">
+                    <span class="ig-raw-label">Raw material</span>
+                    "My garage floor looks like a gas station." / "I always just park the car and close the door." / "I didn't think it was something you could actually fix without tearing everything up." / "I thought it was too expensive."
+                  </div>
+                  <div class="ig-insight">
+                    <span class="ig-insight-label">Shaped insight</span>
+                    A homeowner with a cracked, oil-stained garage floor has stopped seeing it — not because it doesn't bother him, but because he filed it under "structural" in his mind, placing it in the same mental category as foundation work. Expensive. Disruptive. Not something you just call someone about. So he closes the door. The one space he could actually own stays the one he avoids.
+                  </div>
+                  <div class="ig-gates">
+                    <div class="ig-gate"><div class="ig-gate-q">01 · Person + situation</div><div class="ig-gate-a">Homeowner who's noticed the floor, disliked it, and adapted to avoid it</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">02 · Rationalization</div><div class="ig-gate-a">"Too expensive / too disruptive" — closes the door, problem filed as permanent</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">03 · Stuck belief</div><div class="ig-gate-a">Garage floor = structural = same category as foundation repair. Out of reach by definition.</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">04 · Unconnected consequence</div><div class="ig-gate-a">The space goes unused or underused. A fixable problem becomes a permanent limitation because of a categorization error.</div></div>
+                  </div>
+                  <div class="ig-driver"><strong>Psychological mechanism:</strong> Miscategorization. The product is easy and affordable — the buyer just has it in the wrong mental folder. The hook's only job is to move it.</div>
+                </div>
+              </div>
+
+              <!-- 05 Supplements -->
+              <div class="ig-item">
+                <button class="ig-trigger" aria-expanded="false" onclick="igToggle(this)">
+                  <div class="ig-trigger-left">
+                    <span class="ig-tag ig-tag-dtc">DTC · Health &amp; Wellness</span>
+                    <span class="ig-title">Relief eliminates its own urgency</span>
+                  </div>
+                  <div class="ig-chevron"><svg viewBox="0 0 8 8" fill="none" stroke-width="1.5"><path d="M1 3l3 3 3-3"/></svg></div>
+                </button>
+                <div class="ig-body">
+                  <div class="ig-raw">
+                    <span class="ig-raw-label">Raw material</span>
+                    "I've tried so many things." / "I don't know if it actually does anything or if I'm just feeling better." / "I stopped taking it when I ran out and meant to reorder." / "I forget to take it most days."
+                  </div>
+                  <div class="ig-insight">
+                    <span class="ig-insight-label">Shaped insight</span>
+                    A buyer who genuinely felt better on a supplement stops reordering after the first bottle runs out — not because it didn't work, but because feeling better removed the urgency that made her buy it in the first place. She tells herself she'll reorder "when she needs it again." She never does. The improvement quietly reverses, and she attributes that to something else.
+                  </div>
+                  <div class="ig-gates">
+                    <div class="ig-gate"><div class="ig-gate-q">01 · Person + situation</div><div class="ig-gate-a">First-time buyer at the end of her first bottle — genuinely improved, not yet churned</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">02 · Rationalization</div><div class="ig-gate-a">"I'll reorder when I need it again" — responsible framing for what is passive inaction</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">03 · Stuck belief</div><div class="ig-gate-a">Feeling good = problem solved = product no longer needed. The relief deletes the memory of the problem.</div></div>
+                    <div class="ig-gate"><div class="ig-gate-q">04 · Unconnected consequence</div><div class="ig-gate-a">Churn that looks like disengagement — she declines slowly, attributes it to other causes, never reconnects the dots back to stopping</div></div>
+                  </div>
+                  <div class="ig-driver"><strong>Psychological mechanism:</strong> Success-induced amnesia. The product works so well it eliminates the felt need that drove purchase. Retention creative has to make the before-state vivid again before it fades completely.</div>
+                </div>
+              </div>
+
+            </div><!-- end accordion -->
+          </div><!-- end examples -->
+
         </div>
       </div>
 
-      <!-- Production cadence -->
+      <script>
+        function igToggle(btn) {
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          // Close all
+          document.querySelectorAll('.ig-trigger').forEach(function(b){
+            b.setAttribute('aria-expanded', 'false');
+            var body = b.nextElementSibling;
+            if(body) body.classList.remove('open');
+          });
+          // Open clicked if it was closed
+          if(!expanded){
+            btn.setAttribute('aria-expanded', 'true');
+            var body = btn.nextElementSibling;
+            if(body) body.classList.add('open');
+          }
+        }
+      </script>
+
+      <!-- PRODUCTION CADENCE -->
       <div style="background:rgba(255,255,255,0.55);border:1px solid rgba(28,28,26,0.1);border-radius:16px;padding:36px 40px;">
         <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(28,28,26,0.3);margin-bottom:14px;">The production cadence</div>
         <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
@@ -1628,7 +1876,6 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
     </div>
   </div>
 </section>
-
 <div style="max-width:1200px;margin:48px auto 0;padding:0 48px;height:1px;background:rgba(28,28,26,0.08);"></div>
 
 

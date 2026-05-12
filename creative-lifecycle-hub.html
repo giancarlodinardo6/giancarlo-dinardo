@@ -1,337 +1,1347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Library / Giancarlo Di Nardo</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Creative Lifecycle Hub — Giancarlo Di Nardo</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F2EC;
+    --ink: #1C1C1A;
+    --ink-60: rgba(28,28,26,0.6);
+    --ink-30: rgba(28,28,26,0.3);
+    --ink-10: rgba(28,28,26,0.08);
+    --ink-06: rgba(28,28,26,0.05);
+    --sage: #C8D5C0;
+    --sage-light: #E4EDE0;
+    --rust: #B85C38;
+    --rust-light: #F0E4DC;
+    --teal: #5B9E9E;
+    --teal-light: #D8EDEA;
+    --amber: #B87A1A;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+  /* ── NAV ── */
+  nav { max-width: 1200px; margin: 0 auto; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--ink-60); text-decoration: none; transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-links a.active { font-weight: 500; }
+  .nav-cta { font-size: 13px; font-weight: 500; color: var(--ink) !important; background: var(--ink-10); padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--ink-30) !important; }
+
+  /* ── BREADCRUMB ── */
+  
+  
+  
+  
+
+  /* ── HERO ── */
+  .hero { max-width: 1200px; margin: 0 auto; padding: 0 48px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; min-height: 70vh; }
+  .hero-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-60); margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+  .hero-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--ink-30); }
+  .hero h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 60px); line-height: 1.1; font-weight: 400; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: #5B9E9E; }
+  .hero-desc { font-size: 17px; color: var(--ink-60); line-height: 1.7; font-weight: 300; max-width: 480px; margin-bottom: 40px; }
+  .hero-meta { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--ink-10); }
+  .hero-meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 4px; }
+  .hero-meta-value { font-size: 14px; color: var(--ink-60); font-weight: 400; }
+
+  /* Hero visual */
+  .hero-visual { background: var(--ink); border-radius: 20px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+  .hero-visual::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(184,92,56,0.2) 0%, transparent 70%); }
+  .hero-visual::after { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 70%); }
+  .hero-visual-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 28px; position: relative; z-index: 1; }
+
+  /* Hook → audience diagram */
+  .hook-audience-viz { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+  .hav-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; }
+  .hav-hook { padding: 10px 14px; border-radius: 8px; font-size: 12px; line-height: 1.4; font-style: italic; }
+  .hav-hook.emotional { background: rgba(184,92,56,0.15); border: 1px solid rgba(184,92,56,0.2); color: #E8967A; }
+  .hav-hook.curiosity { background: rgba(91,158,158,0.15); border: 1px solid rgba(91,158,158,0.2); color: #7ABFB5; }
+  .hav-hook.callout { background: rgba(184,122,26,0.15); border: 1px solid rgba(184,122,26,0.2); color: #D4A847; }
+  .hav-arrow { font-size: 14px; color: rgba(255,255,255,0.2); text-align: center; }
+  .hav-audience { padding: 10px 14px; border-radius: 8px; font-size: 11px; line-height: 1.4; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); }
+
+  .hero-stat-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 1; } .hero-stat { min-height: 86px; padding: 14px 12px; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: rgba(255,255,255,0.04); display:flex; flex-direction:column; justify-content:center; }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; color: #fff; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-desc { font-size: 11px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DIVIDER ── */
+  .divider { max-width: 1200px; margin: 80px auto; padding: 0 48px; height: 1px; background: var(--ink-10); }
+
+  /* ── SHARED ── */
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-30); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--ink-30); }
+  .section-h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 24px; }
+  .prose { font-size: 16px; color: var(--ink-60); line-height: 1.8; font-weight: 300; }
+  .prose + .prose { margin-top: 16px; }
+
+  /* ── WHY SECTION ── */
+  .why-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .why-explainer { background: var(--ink); border-radius: 16px; padding: 36px; }
+  .why-explainer-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.3); margin-bottom: 28px; }
+  .why-card { padding: 14px 16px; background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 10px; }
+  .why-card:last-child { margin-bottom: 0; }
+  .why-card-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .why-card-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── HOOK TAXONOMY — SAGE ── */
+  .full-width-section { background: var(--sage-light); padding: 80px 48px; margin-bottom: 80px; }
+  .fw-inner { max-width: 1200px; margin: 0 auto; }
+  .fw-top { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; margin-bottom: 56px; align-items: end; }
+
+  .hook-types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .hook-type-card { background: #fff; border-radius: 12px; padding: 28px 24px; position: relative; }
+  .htc-accent { position: absolute; top: 20px; right: 20px; width: 8px; height: 8px; border-radius: 50%; }
+  .hook-type-card:nth-child(1) .htc-accent { background: var(--rust); }
+  .hook-type-card:nth-child(2) .htc-accent { background: var(--teal); }
+  .hook-type-card:nth-child(3) .htc-accent { background: var(--amber); }
+  .hook-type-card:nth-child(4) .htc-accent { background: #7B6FCC; }
+  .hook-type-card:nth-child(5) .htc-accent { background: var(--ink-30); }
+  .htc-num { font-family: var(--serif); font-size: 48px; color: var(--ink-10); line-height: 1; margin-bottom: 6px; font-style: italic; }
+  .htc-type-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 4px; font-weight: 500; }
+  .htc-name { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .htc-desc { font-size: 13px; color: var(--ink-60); line-height: 1.6; font-weight: 300; margin-bottom: 14px; }
+  .htc-audience { font-size: 11px; padding: 8px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+  .htc-audience-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); margin-bottom: 3px; font-weight: 500; }
+  .htc-example { font-family: var(--serif); font-size: 13px; font-style: italic; color: var(--ink-60); margin-top: 10px; padding: 10px 12px; background: var(--ink-06); border-radius: 6px; line-height: 1.5; }
+
+  /* ── PROOF FIRST — DARK SECTION ── */
+  .proof-section { background: var(--ink); padding: 80px 48px; margin-bottom: 80px; }
+  .proof-inner { max-width: 1200px; margin: 0 auto; }
+  .proof-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 48px; }
+  .proof-header .section-label { color: rgba(255,255,255,0.3); }
+  .proof-header .section-label::before { background: rgba(255,255,255,0.2); }
+  .proof-header .section-h2 { color: #fff; }
+  .proof-header .prose { color: rgba(255,255,255,0.5); }
+
+  .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .proof-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 28px 24px; }
+  .pc-step { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.25); margin-bottom: 12px; font-weight: 500; }
+  .pc-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 10px; line-height: 1.3; }
+  .pc-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+  .pc-example { margin-top: 14px; padding: 10px 14px; background: rgba(255,255,255,0.04); border-radius: 8px; font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.5; font-style: italic; }
+
+  /* ── WORKED EXAMPLE ── */
+  .worked-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; }
+  .worked-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 40px; }
+
+  .hook-comparison { display: flex; flex-direction: column; gap: 20px; }
+  .hc-product-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-30); margin-bottom: 20px; padding: 10px 16px; background: var(--ink-06); border-radius: 8px; display: inline-block; font-weight: 500; }
+  .hc-row { display: grid; grid-template-columns: 140px 1fr 1fr; gap: 16px; align-items: start; }
+  .hc-type-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-30); font-weight: 500; padding-top: 14px; }
+  .hc-hook { padding: 14px 16px; border-radius: 10px; font-family: var(--serif); font-size: 14px; font-style: italic; line-height: 1.5; }
+  .hc-hook.broad { background: var(--rust-light); color: var(--ink); border-left: 3px solid var(--rust); }
+  .hc-hook.specific { background: var(--teal-light); color: var(--ink); border-left: 3px solid var(--teal); }
+  .hc-outcome { padding: 14px 16px; border-radius: 10px; font-size: 13px; line-height: 1.6; }
+  .hc-outcome.broad { background: rgba(184,92,56,0.06); border: 1px solid rgba(184,92,56,0.12); color: var(--ink-60); }
+  .hc-outcome.specific { background: rgba(91,158,158,0.06); border: 1px solid rgba(91,158,158,0.12); color: var(--ink-60); }
+  .hc-outcome-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; font-weight: 500; }
+  .hc-outcome.broad .hc-outcome-label { color: var(--rust); }
+  .hc-outcome.specific .hc-outcome-label { color: var(--teal); }
+  .hc-col-header { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-30); font-weight: 500; margin-bottom: 8px; }
+
+  /* ── PROCESS SECTION ── */
+  .process-section { background: var(--cream); border-top: 1px solid var(--ink-10); padding: 80px 48px; margin-bottom: 80px; }
+  .process-inner { max-width: 1200px; margin: 0 auto; }
+  .process-header { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+  .process-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; background: transparent; border-radius: 16px; overflow: visible; }
+  .process-step { background: rgba(255,255,255,0.56); padding: 36px 32px; border: 1px solid rgba(28,28,26,0.10); border-radius: 18px; box-shadow: 0 18px 44px rgba(28,28,26,0.06); position: relative; overflow: hidden; }
+  .process-step::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--teal), var(--amber)); opacity: 0.72; }
+  .process-step:nth-child(2)::before { background: linear-gradient(90deg, var(--amber), var(--rust)); }
+  .process-step:nth-child(3)::before { background: linear-gradient(90deg, var(--rust), var(--teal)); }
+  .process-step:nth-child(4)::before { background: linear-gradient(90deg, var(--ink), var(--teal)); }
+  .process-step-num { font-family: var(--serif); font-size: 13px; color: var(--ink-30); font-style: italic; margin-bottom: 12px; }
+  .process-step-name { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+  .process-step-desc { font-size: 14px; color: var(--ink-60); font-weight: 300; line-height: 1.7; }
+
+  /* ── BEFORE / AFTER ── */
+  .before-after { max-width: 1200px; margin: 0 auto 80px; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ba-card { border-radius: 16px; padding: 40px 36px; }
+  .ba-card.before { background: #F7F4EE; border: 1px solid var(--ink-10); }
+  .ba-card.after { background: var(--ink); color: #fff; }
+  .ba-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 20px; }
+  .ba-card.before .ba-label { color: var(--ink-30); }
+  .ba-card.after .ba-label { color: rgba(255,255,255,0.3); }
+  .ba-items { display: flex; flex-direction: column; gap: 14px; }
+  .ba-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.6; }
+  .ba-card.before .ba-item { color: var(--ink-60); }
+  .ba-card.after .ba-item { color: rgba(255,255,255,0.65); }
+  .ba-dot { width: 6px; height: 6px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .ba-card.before .ba-dot { background: var(--ink-30); }
+  .ba-card.after .ba-dot { background: var(--teal); }
+
+  /* ── CTA ── */
+  .cta-section { max-width: 1200px; margin: 0 auto; padding: 0 48px 100px; text-align: center; }
+  .cta-inner { background: var(--ink); border-radius: 24px; padding: 72px 48px; position: relative; overflow: hidden; }
+  .cta-inner::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.2) 0%, transparent 65%); pointer-events: none; }
+  .cta-inner .section-label { justify-content: center; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
+  .cta-inner .section-label::before { background: rgba(255,255,255,0.2); }
+  .cta-h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 20px; position: relative; }
+  .cta-h2 em { font-style: italic; color: #5B9E9E; }
+  .cta-desc { font-size: 17px; color: rgba(255,255,255,0.45); font-weight: 300; margin-bottom: 40px; position: relative; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 16px 32px; border-radius: 100px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero, .why-section, .proof-header, .fw-top, .worked-header, .process-header { grid-template-columns: 1fr; }
+    .hook-types-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .hc-row { grid-template-columns: 1fr; }
+    .hc-type-label { padding-top: 0; }
+    .process-steps, .before-after { grid-template-columns: 1fr; }
+    nav, 
+    .full-width-section, .proof-section, .process-section { padding-left: 24px; padding-right: 24px; }
+    .before-after { padding: 0 24px; }
+  }
+
+
+/* ── Embedded site header/navigation safety styles ── */
+/* ═══════════════════════════════════════════════════════════════════
+   GIANCARLO DI NARDO — PORTFOLIO
+   Design system from Claude Design session
+   ═══════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg:           #F1ECE2;
+  --bg-2:         #EAE4D6;
+  --ink:          #181715;
+  --ink-2:        #2B2925;
+  --muted:        #6B655A;
+  --line:         #D9D2C2;
+  --line-2:       #C4BCA8;
+  --chip:         #FFFFFF;
+  --rust:         #B85C38;
+  --sage:         #8FAF8F;
+  --teal:         #5B9E9E;
+  --tile-black:   #1A1916;
+  --tile-pink:    #F2BFC4;
+  --tile-lav:     #C6BCEE;
+  --tile-mint:    #5B9E9E;
+  --tile-clay:    #E3B59A;
+  --radius:       6px;
+  --radius-lg:    10px;
+  --serif:        'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --display:      'Instrument Serif', 'Newsreader', Georgia, serif;
+  --mono:         'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --max:          1180px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+a { color: inherit; text-decoration: none; }
+a.link { border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
+a.link:hover { border-bottom-color: var(--ink); }
+img { max-width: 100%; display: block; }
+p + p { margin-top: 1em; }
+
+/* ── DISPLAY HEADLINE TRACKING ───────────────────────────────────── */
+h1, h2, h3, h4 { letter-spacing: -0.027em; }
+
+/* ── PAGE FADE-IN ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page { animation: fadeUp 0.4s ease forwards; }
+
+/* ── MONO UTILITY ────────────────────────────────────────────────── */
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+}
+.mono-ink { color: var(--ink-2); }
+
+/* ── TOP BAR ─────────────────────────────────────────────────────── */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px;
+  gap: 24px;
+}
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.4);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.cv-btn:hover { background: rgba(255,255,255,0.8); }
+.cv-btn svg { width: 11px; height: 11px; }
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.email-link svg { width: 12px; height: 12px; opacity: 0.7; }
+
+/* ── MAIN NAV ────────────────────────────────────────────────────── */
+.mainnav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 14px 48px;
+  border-top: 1px dashed var(--line-2);
+  border-bottom: 1px dashed var(--line-2);
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  margin-right: 36px;
+  flex-shrink: 0;
+}
+.logo-g {
+  font-family: var(--display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.logo-div {
+  width: 1px;
+  height: 22px;
+  background: var(--line-2);
+  margin: 0 7px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.logo-d {
+  font-family: var(--display);
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  opacity: 0.35;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.mainnav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+}
+.mainnav-links a {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 500;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.mainnav-links a:hover { color: var(--ink); }
+.mainnav-links a.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink-60);
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  background: var(--ink);
+  color: var(--bg) !important;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+.nav-cta:hover { opacity: 0.82; }
+
+/* ── HAIRLINE ─────────────────────────────────────────────────────── */
+.hair { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* ── PAGE CONTAINER ──────────────────────────────────────────────── */
+.page { max-width: var(--max); margin: 0 auto; padding: 0 0 80px; }
+
+/* ── TILES ───────────────────────────────────────────────────────── */
+.tile { width: 56px; height: 56px; border-radius: var(--radius); display: grid; place-items: center; flex-shrink: 0; overflow: hidden; }
+.tile-sm { width: 44px; height: 44px; border-radius: 5px; }
+.tile-lg { width: 80px; height: 80px; border-radius: 8px; }
+.tile-black  { background: var(--tile-black);  color: #F1ECE2; }
+.tile-pink   { background: var(--tile-pink);   color: var(--ink); }
+.tile-lav    { background: var(--tile-lav);    color: var(--ink); }
+.tile-mint   { background: #5B9E9E;   color: var(--ink); }
+.tile-butter { background: var(--tile-butter); color: var(--ink); }
+.tile-clay   { background: var(--tile-clay);   color: var(--ink); }
+.tile .ast { font-family: var(--display); font-size: 30px; line-height: 1; }
+.tile-sm .ast { font-size: 24px; }
+.tile-lg .ast { font-size: 44px; }
+
+/* ── CHIPS ───────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: var(--chip);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.chip:hover { background: var(--bg-2); }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: #3BB273; display: inline-block; box-shadow: 0 0 0 3px rgba(59,178,115,0.18); }
+
+/* ── WORK LIST ───────────────────────────────────────────────────── */
+.worklist { display: flex; flex-direction: column; }
+.work-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.work-item:hover { background: rgba(255,255,255,0.3); }
+.work-item + .work-item { border-top: 1px solid var(--line); }
+.work-item .copy { flex: 1; min-width: 0; }
+.work-item .title { font-family: var(--serif); font-size: 15px; line-height: 1.35; font-weight: 500; color: var(--ink); margin: 2px 0 6px; }
+.work-item .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; }
+
+/* ── TYPE UTILITIES ──────────────────────────────────────────────── */
+.h-display { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); }
+.h-display em { font-style: italic; }
+.h-section { font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1.2; letter-spacing: -0.005em; }
+.lead { font-family: var(--serif); font-size: 17px; line-height: 1.55; color: var(--ink-2); }
+.section-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: block;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+
+/* ── FOOTER ──────────────────────────────────────────────────────── */
+.sitefoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 48px 36px;
+  border-top: 1px dashed var(--line-2);
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── AVATAR ──────────────────────────────────────────────────────── */
+.avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; filter: saturate(0.95); }
+.avatar-lg { width: 72px; height: 72px; }
+.avatar-xl { width: 120px; height: 120px; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   FRAMEWORK / CASE STUDY / PLAYBOOK DETAIL PAGES
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── BREADCRUMB ──────────────────────────────────────────────────── */
+
+
+
+
+
+
+/* ── HERO ────────────────────────────────────────────────────────── */
+.fr-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 48px 48px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  min-height: 60vh;
+}
+.fr-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fr-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--line-2); }
+.fr-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+.fr-hero h1 em { font-style: italic; color: var(--ink-2); }
+.fr-hero-desc { font-family: var(--serif); font-size: 17px; color: var(--ink-2); line-height: 1.6; max-width: 520px; margin: 0 0 36px; }
+.fr-hero-meta { display: flex; gap: 32px; padding-top: 28px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.fr-meta-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.fr-meta-value { font-family: var(--serif); font-size: 14px; color: var(--ink-2); }
+
+/* ── DARK HERO CARD ──────────────────────────────────────────────── */
+.fr-hero-card {
+  background: var(--tile-black);
+  color: #F1ECE2;
+  border-radius: 14px;
+  padding: 36px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.fr-hero-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle, rgba(242,191,196,0.22) 0%, transparent 70%); }
+.fr-hero-card::after  { content: ''; position: absolute; bottom: -40px; left: 40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.18) 0%, transparent 70%); }
+.fr-card-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(241,236,226,0.4); margin-bottom: 24px; }
+
+/* ── LAYER BARS (framework hero) ────────────────────────────────── */
+.fr-layers { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.fr-layer { display: flex; align-items: center; gap: 14px; }
+.fr-layer-num { font-family: var(--display); font-size: 12px; color: rgba(241,236,226,0.3); min-width: 18px; font-style: italic; }
+.fr-layer-bar {
+  height: 38px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+.fr-layer-bar.l1 { background: rgba(91,158,158,0.12); color: #5B9E9E;   border: 1px solid rgba(91,158,158,0.2); }
+.fr-layer-bar.l2 { background: rgba(242,191,196,0.12); color: #F2BFC4;            border: 1px solid rgba(242,191,196,0.2); }
+.fr-layer-bar.l3 { background: rgba(198,188,238,0.12); color: #C6BCEE;            border: 1px solid rgba(198,188,238,0.2); }
+.fr-layer-bar.l4 { background: rgba(241,236,226,0.06); color: rgba(241,236,226,0.5); border: 1px solid rgba(241,236,226,0.1); }
+.fr-layer-bar.l5 { background: rgba(242,223,161,0.15); color: var(--tile-butter); border: 1px solid rgba(242,223,161,0.25); }
+
+/* ── HERO STAT ROWS (acts / stats in card) ──────────────────────── */
+.fr-card-stats { display: flex; gap: 28px; padding-top: 24px; border-top: 1px solid rgba(241,236,226,0.1); position: relative; z-index: 1; }
+.fr-card-stat-num { font-family: var(--display); font-style: italic; font-size: 36px; color: #fff; line-height: 1; margin-bottom: 4px; }
+.fr-card-stat-desc { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: rgba(241,236,226,0.4); text-transform: uppercase; }
+
+/* Acts (playbook hero card) */
+.fr-acts { display: flex; flex-direction: column; gap: 10px; position: relative; z-index: 1; }
+.fr-act { padding: 14px 16px; background: rgba(241,236,226,0.04); border-radius: 9px; border: 1px solid rgba(241,236,226,0.08); }
+.fr-act-num { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.3); margin-bottom: 6px; }
+.fr-act-title { font-family: var(--serif); font-size: 14px; font-weight: 500; color: #F1ECE2; margin-bottom: 4px; }
+.fr-act-subtitle { font-family: var(--serif); font-size: 13px; color: rgba(241,236,226,0.52); line-height: 1.5; }
+
+/* ── DIVIDER ─────────────────────────────────────────────────────── */
+.fr-divider { max-width: var(--max); margin: 72px auto; padding: 0 48px; height: 1px; background: var(--line); }
+
+/* ── SECTION LABELS / HEADS ──────────────────────────────────────── */
+.fr-section-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.fr-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
+.fr-h2 { font-family: var(--display); font-size: clamp(30px, 3.5vw, 44px); font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 22px; color: var(--ink); }
+.fr-h2 em { font-style: italic; color: var(--muted); }
+.fr-prose { font-family: var(--serif); font-size: 16.5px; color: var(--ink-2); line-height: 1.7; }
+.fr-prose + .fr-prose { margin-top: 14px; }
+
+/* ── 2-COL SECTIONS ──────────────────────────────────────────────── */
+.fr-section-2col { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.fr-dark-card { background: var(--tile-black); color: #F1ECE2; border-radius: 14px; padding: 32px; }
+.fr-dark-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(241,236,226,0.35); margin-bottom: 22px; }
+.fr-reason { padding: 14px 16px; background: rgba(241,236,226,0.04); border-radius: 9px; margin-bottom: 10px; border-left: 2px solid rgba(241,236,226,0.2); }
+.fr-reason:last-child { margin-bottom: 0; }
+.fr-reason.mint   { border-left-color: #5B9E9E; }
+.fr-reason.pink   { border-left-color: #F2BFC4; }
+.fr-reason.lav    { border-left-color: #C6BCEE; }
+.fr-reason.butter { border-left-color: var(--tile-butter); }
+.fr-reason-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; margin-bottom: 6px; color: rgba(241,236,226,0.9); }
+.fr-reason.mint   .fr-reason-label { color: #5B9E9E; }
+.fr-reason.pink   .fr-reason-label { color: #F2BFC4; }
+.fr-reason.lav    .fr-reason-label { color: #C6BCEE; }
+.fr-reason.butter .fr-reason-label { color: var(--tile-butter); }
+.fr-reason-desc { font-family: var(--serif); font-size: 13.5px; color: rgba(241,236,226,0.6); line-height: 1.6; }
+
+/* ── BAND SECTIONS ───────────────────────────────────────────────── */
+.fr-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-band-inner { max-width: var(--max); margin: 0 auto; }
+.fr-band-top { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+
+/* ── LAYER GRID (framework body) ─────────────────────────────────── */
+.fr-layer-grid { display: grid; gap: 14px; }
+.fr-layer-grid.c4 { grid-template-columns: repeat(4, 1fr); }
+.fr-layer-grid.c5 { grid-template-columns: repeat(5, 1fr); }
+.fr-layer-mini { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; padding: 22px 18px; position: relative; }
+.fr-layer-mini .num { font-family: var(--display); font-style: italic; font-size: 44px; color: var(--line-2); line-height: 1; margin-bottom: 6px; }
+.fr-layer-mini .name { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.fr-layer-mini .values { display: flex; flex-direction: column; gap: 6px; }
+.fr-layer-mini .val { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.4; padding: 6px 10px; background: rgba(255,255,255,0.5); border-radius: 6px; }
+
+/* ── PERSONAS ────────────────────────────────────────────────────── */
+.fr-personas-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; }
+.fr-personas-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-personas-grid { display: grid; gap: 16px; }
+.fr-personas-grid.c3 { grid-template-columns: repeat(3, 1fr); }
+.fr-personas-grid.c4 { grid-template-columns: repeat(4, 1fr); }
+.fr-persona-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.fr-persona-icon { padding: 20px 22px 0; font-size: 22px; }
+.fr-persona-name { padding: 10px 22px 14px; font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); border-bottom: 1px solid var(--line); }
+.fr-persona-field { padding: 12px 22px; border-bottom: 1px solid var(--line); }
+.fr-persona-field:last-child { border-bottom: none; }
+.fr-persona-field-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.fr-persona-field-text { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+
+/* ── AWARENESS TABLE ─────────────────────────────────────────────── */
+.fr-awareness-band { background: var(--tile-black); padding: 72px 48px; margin-bottom: 72px; }
+.fr-awareness-inner { max-width: var(--max); margin: 0 auto; }
+.fr-awareness-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-awareness-header .fr-h2 { color: #F1ECE2; }
+.fr-awareness-header .fr-section-label { color: rgba(241,236,226,0.4); }
+.fr-awareness-header .fr-section-label::before { background: rgba(241,236,226,0.2); }
+.fr-awareness-header .fr-prose { color: rgba(241,236,226,0.6); }
+.fr-awareness-table { width: 100%; border-collapse: collapse; }
+.fr-awareness-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.35); padding: 0 18px 14px; text-align: left; border-bottom: 1px solid rgba(241,236,226,0.1); }
+.fr-awareness-table td { font-family: var(--serif); font-size: 14px; padding: 14px 18px; border-bottom: 1px solid rgba(241,236,226,0.06); color: rgba(241,236,226,0.72); vertical-align: top; line-height: 1.55; }
+.fr-awareness-table .level-cell { font-family: var(--mono); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(241,236,226,0.3); }
+.fr-awareness-table .cell-thought { font-style: italic; color: rgba(241,236,226,0.44); }
+
+/* ── MATH ────────────────────────────────────────────────────────── */
+.fr-math-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: start; }
+.fr-math-display { text-align: center; }
+.fr-math-num { font-family: var(--display); font-style: italic; font-size: 80px; line-height: 1; color: var(--ink); letter-spacing: -0.02em; }
+.fr-math-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+.fr-math-eq { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 24px; }
+.fr-math-pill { padding: 8px 14px; background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--serif); font-size: 14px; color: var(--ink-2); }
+.fr-math-op { font-family: var(--mono); font-size: 14px; color: var(--muted); }
+
+/* ── PROCESS ─────────────────────────────────────────────────────── */
+.fr-process-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-process-inner { max-width: var(--max); margin: 0 auto; }
+.fr-process-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 48px; align-items: end; }
+.fr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.fr-step { padding: 24px 20px; background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; }
+.fr-step-num { font-family: var(--display); font-style: italic; font-size: 36px; color: var(--line-2); line-height: 1; margin-bottom: 12px; }
+.fr-step-title { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.fr-step-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+
+/* ── BEFORE / AFTER ──────────────────────────────────────────────── */
+.fr-beforeafter { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.fr-ba-card { border-radius: 12px; padding: 32px; }
+.fr-ba-before { background: rgba(242,191,196,0.25); border: 1px solid rgba(242,191,196,0.4); }
+.fr-ba-after  { background: rgba(91,158,158,0.25); border: 1px solid rgba(91,158,158,0.4); }
+.fr-ba-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+.fr-ba-before .fr-ba-label { color: #b06060; }
+.fr-ba-after  .fr-ba-label { color: #3a7a5a; }
+.fr-ba-items { display: flex; flex-direction: column; gap: 10px; }
+.fr-ba-item { display: flex; gap: 10px; align-items: flex-start; font-family: var(--serif); font-size: 14px; color: var(--ink-2); line-height: 1.55; }
+.fr-ba-dot { width: 4px; height: 4px; border-radius: 50%; margin-top: 9px; flex-shrink: 0; }
+.fr-ba-before .fr-ba-dot { background: #b06060; }
+.fr-ba-after  .fr-ba-dot { background: #3a7a5a; }
+
+/* ── CROSSREF ────────────────────────────────────────────────────── */
+.fr-crossref { max-width: var(--max); margin: 0 auto; padding: 0 48px 48px; display: flex; flex-direction: column; gap: 12px; }
+.fr-crossref-item { display: flex; gap: 16px; padding: 20px 24px; background: rgba(91,158,158,0.18); border-radius: 10px; border: 1px solid rgba(91,158,158,0.35); }
+.fr-crossref-arrow { color: #3a7a5a; font-size: 14px; padding-top: 2px; flex-shrink: 0; }
+.fr-crossref-title { font-family: var(--serif); font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+.fr-crossref-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.fr-crossref-desc a { color: #3a7a5a; font-weight: 500; border-bottom: 1px solid rgba(58,122,90,0.3); padding-bottom: 1px; }
+
+/* ── DISCLOSURE ──────────────────────────────────────────────────── */
+.fr-disclosure { max-width: var(--max); margin: 0 auto; padding: 0 48px 48px; font-family: var(--serif); font-size: 13.5px; color: var(--muted); font-style: italic; line-height: 1.65; border-top: 1px solid var(--line); padding-top: 24px; }
+
+/* ── CTA ─────────────────────────────────────────────────────────── */
+.fr-cta-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 80px; text-align: center; }
+.fr-cta-inner { background: var(--tile-black); color: #F1ECE2; border-radius: 18px; padding: 64px 40px; position: relative; overflow: hidden; }
+.fr-cta-inner::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(91,158,158,0.14) 0%, transparent 65%); pointer-events: none; }
+.fr-cta-inner .fr-section-label { color: rgba(241,236,226,0.35); justify-content: center; margin-bottom: 20px; }
+.fr-cta-inner .fr-section-label::before { background: rgba(241,236,226,0.2); }
+.fr-cta-h2 { font-family: var(--display); font-size: clamp(34px, 4vw, 52px); color: #fff; font-weight: 400; line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 18px; position: relative; }
+.fr-cta-h2 em { font-style: italic; color: #5B9E9E; }
+.fr-cta-desc { font-family: var(--serif); font-size: 16.5px; color: rgba(241,236,226,0.55); margin: 0 0 36px; position: relative; }
+.fr-cta-btn { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ink); font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 28px; border-radius: 999px; transition: transform 0.15s, box-shadow 0.15s; font-weight: 500; }
+.fr-cta-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
+
+/* ── TIMING ──────────────────────────────────────────────────────── */
+.fr-timing-section { max-width: var(--max); margin: 0 auto; padding: 0 48px 72px; }
+.fr-timing-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fr-timing-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.fr-timing-card-top { padding: 22px 22px 18px; border-bottom: 1px solid var(--line); }
+.fr-timing-season { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.fr-timing-name { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+.fr-timing-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+.fr-timing-insight { padding: 16px 22px; background: var(--bg-2); border-bottom: 1px solid var(--line); font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); font-style: italic; line-height: 1.5; }
+.fr-timing-insight-num { font-family: var(--display); font-style: italic; font-size: 72px; color: var(--line-2); line-height: 1; }
+
+/* ── AOV CARDS ───────────────────────────────────────────────────── */
+.fr-aov-band { background: var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 72px 48px; margin-bottom: 72px; }
+.fr-aov-inner { max-width: var(--max); margin: 0 auto; }
+.fr-aov-header { display: grid; grid-template-columns: 1fr 2fr; gap: 56px; margin-bottom: 40px; align-items: end; }
+.fr-aov-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.fr-aov-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; }
+.fr-aov-num { font-family: var(--display); font-style: italic; font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.fr-aov-name { font-family: var(--serif); font-size: 15.5px; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+.fr-aov-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.65; margin-bottom: 14px; }
+.fr-aov-example { padding: 11px 14px; background: #5B9E9E; border-radius: 8px; font-family: var(--display); font-style: italic; font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+/* ── FRAMEWORKS HUB ──────────────────────────────────────────────── */
+.fh-hero { max-width: var(--max); margin: 0 auto; padding: 36px 48px 24px; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 32px; }
+.fh-hero h1 { font-family: var(--display); font-weight: 400; font-size: 82px; line-height: 0.95; letter-spacing: -0.02em; margin: 0; color: var(--ink); }
+.fh-hero h1 em { font-style: italic; color: var(--muted); }
+.fh-hero .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.fh-intro { max-width: var(--max); margin: 0 auto; padding: 24px 48px 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; border-top: 1px solid var(--line); }
+.fh-intro p { font-family: var(--serif); font-size: 16.5px; line-height: 1.65; color: var(--ink-2); }
+.fh-intro p + p { margin-top: 12px; }
+.fh-list-wrap { max-width: var(--max); margin: 0 auto; padding: 40px 48px 0; }
+.fh-list-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 22px; gap: 24px; }
+.fh-list-head h2 { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 44px; letter-spacing: -0.015em; margin: 0; line-height: 1.05; }
+.fh-list-head .meta { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.fh-card { display: grid; grid-template-columns: 72px 1fr auto; gap: 22px; align-items: center; padding: 22px 0; border-top: 1px solid var(--line); cursor: pointer; transition: padding 0.15s; }
+.fh-card:last-child { border-bottom: 1px solid var(--line); }
+.fh-card:hover { padding-left: 8px; }
+.fh-card .tile { width: 64px; height: 64px; border-radius: 8px; }
+.fh-card .tile .ast { font-size: 34px; }
+.fh-card .body { min-width: 0; }
+.fh-card .kicker { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+.fh-card .t { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.1; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 4px; }
+.fh-card .sub { font-family: var(--serif); font-size: 14.5px; color: var(--ink-2); line-height: 1.5; max-width: 640px; }
+.fh-card .stats { display: flex; gap: 18px; flex-shrink: 0; }
+.fh-card .stat { text-align: right; }
+.fh-card .stat .n { font-family: var(--display); font-style: italic; font-size: 32px; line-height: 1; color: var(--ink); }
+.fh-card .stat .k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .fr-hero, .fr-section-2col, .fr-math-section, .fr-personas-header,
+  .fr-band-top, .fr-awareness-header, .fr-process-header,
+  .fr-timing-header, .fr-aov-header { grid-template-columns: 1fr; gap: 32px; }
+  .fr-layer-grid.c4 { grid-template-columns: repeat(2,1fr); }
+  .fr-layer-grid.c5 { grid-template-columns: repeat(3,1fr); }
+  .fr-personas-grid.c3, .fr-personas-grid.c4 { grid-template-columns: 1fr; }
+  .fr-timing-grid, .fr-aov-grid, .fr-beforeafter, .fr-steps { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .topbar { padding: 16px 20px; }
+  .mainnav { padding: 12px 20px; gap: 0; }
+  .mainnav-links { gap: 16px; overflow-x: auto; white-space: nowrap; flex-wrap: nowrap; scrollbar-width: none; }
+  .mainnav-links::-webkit-scrollbar { display: none; }
+  .mainnav-links a { font-size: 13px; flex-shrink: 0; }
+  .logo-mark { margin-right: 20px; }
+  .logo-g, .logo-d { font-size: 22px; }
+  .nav-cta { display: none; }
+  .email-link { font-size: 9px; }
+  
+  .fr-band, .fr-awareness-band, .fr-process-band, .fr-aov-band { padding-left: 20px; padding-right: 20px; }
+  .fr-hero { padding-top: 24px; }
+  .fr-hero-card { min-height: 0; padding: 28px; }
+  .fr-hero h1 { font-size: 36px; }
+  .fr-h2 { font-size: 28px; }
+  .fh-hero { grid-template-columns: 1fr; gap: 16px; padding: 24px 20px; }
+  .fh-hero h1 { font-size: 42px; }
+  .fh-intro { grid-template-columns: 1fr; padding: 24px 20px 0; }
+  .fh-list-wrap { padding: 32px 20px 0; }
+  .fh-card { grid-template-columns: 48px 1fr; gap: 14px; }
+  .fh-card .stats { display: none; }
+  .fh-card .t { font-size: 20px; }
+}
+
+/* ── DETAIL PAGE REMNANT CLASSES ─────────────────────────────────── */
+.hero-left { min-width: 0; }
+.process-step-content { flex: 1; min-width: 0; }
+
+/* ── CASE STUDY TILE HOVER (global) ──────────────────────────────── */
+.arch-item {
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+}
+.arch-item:hover {
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+}
+
+/* ── FH-CARD HOVER (frameworks hub) ─────────────────────────────── */
+.fh-card {
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s, padding 0.18s;
+  border-radius: 8px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.fh-card:hover {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+  transform: translateY(-1px);
+  padding-left: 28px;
+}
+
+/* ── STAT LABELS IN SAGE ─────────────────────────────────────────── */
+.cs-stat-label, .stat-label-sage { color: #5B9E9E; }
+
+/* ── RUST ITALIC ACCENT (display headlines) ──────────────────────── */
+.accent-rust { color: var(--rust); font-style: italic; }
+
+
+/* ── SVG safety: prevents unstyled icons from rendering as giant arrows when previewed standalone ── */
+.topbar svg, .mainnav svg, .cv-btn svg, .email-link svg { width: 12px; height: 12px; display: inline-block; flex: 0 0 auto; }
+
+
+  @media (max-width: 600px) {
+    .hero { padding-top: 28px; gap: 36px; }
+    .hero-label { margin-top: 18px; margin-bottom: 18px; }
+    .hero-visual { padding: 28px 22px; min-height: auto; }
+    .hero-stat-row { grid-template-columns: 1fr; gap: 10px; padding-top: 24px; }
+    .hero-stat { min-height: auto; padding: 14px 16px; flex-direction: row; align-items: center; justify-content: space-between; gap: 14px; }
+    .hero-stat-num { margin-bottom: 0; font-size: 26px; }
+    .hero-stat-desc { text-align: right; max-width: 170px; }
+    .process-step { padding: 30px 26px; }
+  }
+
+
+  .lifecycle-card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .lifecycle-entry-card {
+    text-decoration: none;
+    color: inherit;
+    background: rgba(255,255,255,0.58);
+    border: 1px solid rgba(28,28,26,0.10);
+    border-radius: 20px;
+    padding: 30px 28px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 18px 48px rgba(28,28,26,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+
+  .lifecycle-entry-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--teal), var(--amber));
+    opacity: 0.8;
+  }
+
+  .lifecycle-entry-card:nth-child(2)::before {
+    background: linear-gradient(90deg, var(--amber), var(--rust));
+  }
+
+  .lifecycle-entry-card:nth-child(3)::before {
+    background: linear-gradient(90deg, var(--rust), var(--teal));
+  }
+
+  .lifecycle-entry-card:hover {
+    transform: translateY(-4px);
+    background: #fff;
+    box-shadow: 0 24px 64px rgba(28,28,26,0.12);
+  }
+
+  .lec-kicker {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-30);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+
+  .lec-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+
+  .lec-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-60);
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .lec-cta {
+    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 42px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1px solid var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+
+  .lifecycle-entry-card:hover .lec-cta {
+    background: var(--teal);
+    border-color: var(--teal);
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 900px) {
+    .lifecycle-card-grid {
+      grid-template-columns: 1fr;
+    }
+    .lifecycle-entry-card {
+      min-height: auto;
+    }
+  }
+
+
+  .connect-system-block {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .signal-field-visual {
+    min-height: 360px;
+    border-radius: 28px;
+    border: 1px solid rgba(28,28,26,0.08);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(91,158,158,0.16), transparent 34%),
+      radial-gradient(circle at 80% 70%, rgba(184,122,26,0.12), transparent 38%),
+      rgba(245,242,236,0.42);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 28px 70px rgba(28,28,26,0.06);
+  }
+
+  .signal-field-visual::before {
+    content: "";
+    position: absolute;
+    inset: 34px;
+    border-radius: 22px;
+    border: 1px solid rgba(28,28,26,0.06);
+  }
+
+  .signal-field-visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(28,28,26,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(28,28,26,0.035) 1px, transparent 1px);
+    background-size: 38px 38px;
+    opacity: 0.55;
+  }
+
+  .signal-node {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: var(--ink);
+    opacity: 0.32;
+    z-index: 2;
+  }
+
+  .signal-node.primary {
+    width: 13px;
+    height: 13px;
+    background: var(--teal);
+    opacity: 0.9;
+    box-shadow: 0 0 0 10px rgba(91,158,158,0.08);
+  }
+
+  .signal-node.warm {
+    background: var(--amber);
+    opacity: 0.72;
+  }
+
+  .signal-node.faint {
+    opacity: 0.13;
+  }
+
+  .signal-line {
+    position: absolute;
+    height: 1px;
+    background: rgba(28,28,26,0.12);
+    transform-origin: left center;
+    z-index: 1;
+  }
+
+  .signal-line.teal {
+    background: rgba(91,158,158,0.28);
+  }
+
+  .signal-line.warm {
+    background: rgba(184,122,26,0.22);
+  }
+
+  .signal-caption {
+    position: absolute;
+    left: 34px;
+    right: 34px;
+    bottom: 30px;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: var(--mono, 'JetBrains Mono', monospace);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(28,28,26,0.36);
+  }
+
+  @media (max-width: 900px) {
+    .connect-system-block {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+
+    .signal-field-visual {
+      min-height: 280px;
+    }
+  }
+
+
+  .journey-visual-title {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .journey-visual-kicker {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.34);
+    margin-bottom: 8px;
+  }
+
+  .journey-visual-heading {
+    font-family: var(--serif);
+    font-size: clamp(26px, 2.8vw, 36px);
+    line-height: 1.05;
+    color: #fff;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  .journey-card-stack {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .journey-entry {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 15px;
+    align-items: start;
+    padding: 18px 19px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .journey-entry::after {
+    content: "Read →";
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0);
+    transform: translateX(-6px);
+    transition: color 0.18s ease, transform 0.18s ease;
+  }
+
+  .journey-entry:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+  }
+
+  .journey-entry:hover::after {
+    color: rgba(255,255,255,0.54);
+    transform: translateX(0);
+  }
+
+  .journey-entry.research {
+    background: rgba(200,213,192,0.18);
+    border: 1px solid rgba(200,213,192,0.35);
+    position: relative;
+    padding-top: 38px;
+  }
+  .journey-entry.research::before {
+    content: "INPUT LAYER";
+    position: absolute;
+    top: 12px;
+    left: 19px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(200,213,192,0.9);
+    background: rgba(28,28,26,0.55);
+    border: 1px solid rgba(200,213,192,0.3);
+    padding: 2px 10px;
+    border-radius: 4px;
+  }
+  .journey-entry.research:hover {
+    background: rgba(200,213,192,0.28);
+    border-color: rgba(200,213,192,0.55);
+  }
+  .research .journey-num {
+    background: rgba(200,213,192,0.22);
+    color: #A8C8A0;
+  }
+
+  /* Input layer card in dark section — distinct from the loop cards */
+  .lifecycle-entry-card.input-layer {
+    background: rgba(200,213,192,0.10);
+    border: 1px solid rgba(200,213,192,0.2);
+    position: relative;
+  }
+  .lifecycle-entry-card.input-layer::before {
+    background: linear-gradient(90deg, #8FAF8F, #5B9E9E);
+  }
+
+  .lifecycle-entry-card.input-layer .lec-kicker { color: #A8C8A0; }
+  .lifecycle-entry-card.input-layer .lec-title { color: rgba(255,255,255,0.88); }
+  .lifecycle-entry-card.input-layer .lec-desc { color: rgba(255,255,255,0.48); }
+  .lifecycle-entry-card.input-layer .lec-cta {
+    background: rgba(200,213,192,0.18);
+    border-color: rgba(200,213,192,0.3);
+    color: #A8C8A0;
+  }
+  .lifecycle-entry-card.input-layer:hover .lec-cta {
+    background: #8FAF8F;
+    border-color: #8FAF8F;
+    color: var(--ink);
+  }
+    border: 1px solid rgba(91,158,158,0.25);
+  }
+
+  .journey-entry.coverage {
+    background: rgba(91,158,158,0.38);
+    border: 1px solid rgba(91,158,158,0.55);
+  }
+  .journey-entry.coverage:hover {
+    background: rgba(91,158,158,0.50);
+    border-color: rgba(91,158,158,0.72);
+  }
+
+  .journey-entry.hooks {
+    background: rgba(184,122,26,0.15);
+    border: 1px solid rgba(184,122,26,0.25);
+  }
+
+  .journey-entry.hooks:hover {
+    background: rgba(184,122,26,0.22);
+    border-color: rgba(184,122,26,0.46);
+  }
+
+  .journey-entry.lifecycle {
+    background: rgba(184,92,56,0.14);
+    border: 1px solid rgba(184,92,56,0.25);
+  }
+
+  .journey-entry.lifecycle:hover {
+    background: rgba(184,92,56,0.21);
+    border-color: rgba(184,92,56,0.44);
+  }
+
+  .journey-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .coverage .journey-num {
+    background: rgba(91,158,158,0.24);
+    color: #7ABFB5;
+  }
+
+  .hooks .journey-num {
+    background: rgba(184,122,26,0.22);
+    color: #E0A94E;
+  }
+
+  .lifecycle .journey-num {
+    background: rgba(184,92,56,0.20);
+    color: #E8967A;
+  }
+
+  .journey-card-title {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+    padding-right: 56px;
+  }
+
+  .journey-card-subtitle {
+    color: rgba(255,255,255,0.46);
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .journey-card-desc {
+    color: rgba(255,255,255,0.52);
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 10px;
+    max-width: 330px;
+  }
+
+  @media (max-width: 600px) {
+    .journey-visual-title {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+
+    .journey-entry {
+      grid-template-columns: 38px 1fr;
+      padding: 17px 16px;
+    }
+
+    .journey-entry::after {
+      display: none;
+    }
+
+    .journey-num {
+      width: 38px;
+      height: 38px;
+    }
+
+    .journey-card-title {
+      padding-right: 0;
+    }
+  }
+
+
+  @media (min-width: 901px) {
+    .hero {
+      padding-top: 52px !important;
+    }
+  }
+
+</style>
 <link rel="stylesheet" href="../styles.css">
 <style>
 /* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
 body { font-family: 'DM Sans', system-ui, sans-serif !important; }
 </style>
-<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
-<style>
-
-.hub-wrap { max-width: var(--max); margin: 0 auto; padding: 0 48px 80px; }
-
-/* ── HERO ───────────────────────────────────────────────────────── */
-.hub-hero { padding: 48px 0 40px; border-bottom: 1px solid var(--line); margin-bottom: 56px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: end; }
-.hub-hero-left {}
-.hub-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-.hub-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
-.hub-title { font-family: var(--display); font-size: clamp(40px, 5vw, 64px); font-weight: 400; line-height: 1.02; letter-spacing: -0.018em; color: var(--ink); margin: 0 0 20px; }
-.hub-title em { font-style: italic; color: var(--muted); }
-.hub-desc { font-family: var(--serif); font-size: 16.5px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
-.hub-hero-right { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-.hub-count { font-family: var(--display); font-style: italic; font-size: 64px; line-height: 1; color: var(--line-2); }
-.hub-count-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: right; }
-
-/* ── SECTION LABEL ──────────────────────────────────────────────── */
-.hub-section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-.hub-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
-
-/* ── ARTIFACT CARDS ─────────────────────────────────────────────── */
-.artifact-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 56px; }
-.artifact-card {
-  display: grid; grid-template-columns: 64px 1fr auto;
-  gap: 0; border-top: 1px solid var(--line);
-  text-decoration: none; color: inherit;
-  transition: background 0.15s, padding 0.15s;
-  padding: 20px 16px; margin: 0 -16px; border-radius: 8px;
-  position: relative;
-}
-.artifact-card:last-child { border-bottom: 1px solid var(--line); }
-.artifact-card:hover { background: rgba(255,255,255,0.7); }
-.artifact-card-tile { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 8px; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
-.tile-lav-soft { background: rgba(198,188,238,0.2); color: #5a4a8a; border: 1px solid rgba(198,188,238,0.35); }
-.tile-teal-soft { background: rgba(91,158,158,0.15); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.3); }
-.tile-rust-soft { background: rgba(184,92,56,0.1); color: #8a3a1a; border: 1px solid rgba(184,92,56,0.25); }
-.tile-sage-soft { background: rgba(143,175,143,0.15); color: #2a5a2a; border: 1px solid rgba(143,175,143,0.3); }
-.artifact-card-tile svg { width: 20px; height: 20px; }
-.artifact-card-body { padding: 0 24px; }
-.artifact-card-title { font-family: var(--display); font-size: 24px; font-weight: 400; line-height: 1.1; letter-spacing: -0.005em; color: var(--ink); margin: 0 0 5px; }
-.artifact-card-desc { font-family: var(--serif); font-size: 14.5px; color: var(--ink-2); line-height: 1.55; max-width: 540px; }
-.artifact-card-meta { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; justify-content: center; min-width: 130px; }
-.artifact-card-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
-.tag-brief { background: rgba(184,92,56,0.08); color: #8a3a1a; border: 1px solid rgba(184,92,56,0.2); }
-.tag-framework { background: rgba(198,188,238,0.12); color: #5a4a8a; border: 1px solid rgba(198,188,238,0.3); }
-.tag-scorecard { background: rgba(91,158,158,0.1); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.25); }
-.tag-breakdown { background: rgba(143,175,143,0.12); color: #2a5a2a; border: 1px solid rgba(143,175,143,0.28); }
-.artifact-arrow { font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-
-/* ── CONNECTED CONTENT ──────────────────────────────────────────── */
-.connected-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 56px; }
-.connected-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; text-decoration: none; color: inherit; transition: background 0.15s, transform 0.15s; display: flex; flex-direction: column; }
-.connected-card:hover { background: #fff; transform: translateY(-2px); }
-.connected-card-k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-.connected-card-t { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
-.connected-card-d { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.55; flex: 1; }
-.connected-card-cta { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-top: 14px; }
-
-
-@media (max-width: 900px) {
-  .hub-hero { grid-template-columns: 1fr; gap: 20px; }
-  .hub-hero-right { align-items: flex-start; flex-direction: row; align-items: center; gap: 12px; }
-  .artifact-card { grid-template-columns: 48px 1fr; }
-  .artifact-card-meta { display: none; }
-  .connected-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 700px) {
-  .hub-wrap { padding: 0 20px 60px; }
-  .connected-grid { grid-template-columns: 1fr; }
-  .artifact-card-title { font-size: 18px; }
-}
-
-/* ── ADS LIBRARY ───────────────────────────────────────────────── */
-.ads-library-section { margin: 64px 0 56px; }
-.ads-library-intro { max-width: 640px; margin-bottom: 30px; }
-.ads-library-title { font-family: var(--display); font-size: clamp(28px,3vw,40px); font-weight: 400; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 10px; }
-.ads-library-desc { font-family: var(--serif); font-size: 15.5px; color: var(--ink-2); line-height: 1.65; max-width: 640px; }
-.ads-case-block { margin-top: 38px; }
-.ads-case-title { font-family: var(--display); font-size: 26px; font-weight: 400; color: var(--ink); margin: 0 0 16px; letter-spacing: -0.005em; }
-.ads-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
-.ads-grid.two { grid-template-columns: repeat(2,1fr); max-width: 780px; }
-.ads-card { background: white; border-radius: 14px; padding: 24px; border: 1px solid var(--line); }
-.ads-card video, .ads-card img { width: 100%; border-radius: 10px; display: block; margin-bottom: 12px; background: #111; aspect-ratio: 4/5; object-fit: cover; }
-.ads-tag { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; display: inline-block; margin-bottom: 10px; background: rgba(91,158,158,0.14); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.25); }
-.ads-card-title { font-family: var(--display); font-size: 18px; font-weight: 400; color: var(--ink); margin: 0 0 6px; line-height: 1.15; }
-.ads-card-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
-@media(max-width:900px){ .ads-grid, .ads-grid.two { grid-template-columns: 1fr 1fr; max-width:none; } }
-@media(max-width:560px){ .ads-grid, .ads-grid.two { grid-template-columns: 1fr; } }
-
-</style>
-
-<style>
-@media (max-width: 900px) {
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 560px) {
-  div[style*="min-height:700px"] {
-    min-height: auto !important;
-  }
-}
-</style>
-
-<style>
-/* Final Creative Library layout fixes */
-
-.hub-hero-right { display: none !important; }
-.hub-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto !important; }
-@media (max-width: 900px) {
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 560px) {
-  div[style*="min-height:700px"] {
-    min-height: auto !important;
-  }
-}
-</style>
-
-
-<style>
-/* Final Creative Library visual + proportion fixes */
-.hub-hero {
-  grid-template-columns: minmax(0, 1fr) 360px !important;
-  align-items: end !important;
-  gap: 56px !important;
-  max-width: none !important;
-}
-.hub-hero-right { display: none !important; }
-.hub-desc { text-align: left !important; margin-left: 0 !important; margin-right: auto !important; }
-
-.hub-abstract {
-  position: relative;
-  width: 340px;
-  height: 220px;
-  justify-self: end;
-  align-self: end;
-}
-.abstract-card {
-  position: absolute;
-  width: 178px;
-  height: 118px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.64);
-  border: 1px solid var(--line);
-  box-shadow: 0 18px 44px rgba(28,28,26,0.06);
-}
-.abstract-card-a {
-  right: 26px;
-  top: 42px;
-  padding: 20px;
-  transform: rotate(-4deg);
-}
-.abstract-card-a span {
-  display: block;
-  height: 8px;
-  border-radius: 999px;
-  background: rgba(28,28,26,0.12);
-  margin-bottom: 12px;
-}
-.abstract-card-a span:nth-child(1) { width: 74%; background: rgba(91,158,158,0.26); }
-.abstract-card-a span:nth-child(2) { width: 52%; }
-.abstract-card-a span:nth-child(3) { width: 86%; background: rgba(184,92,56,0.16); }
-
-.abstract-orbit {
-  position: absolute;
-  width: 210px;
-  height: 132px;
-  right: 66px;
-  top: 34px;
-  border: 1px solid rgba(28,28,26,0.11);
-  border-radius: 50%;
-  transform: rotate(-18deg);
-}
-.abstract-dot {
-  position: absolute;
-  border-radius: 999px;
-}
-.abstract-dot-a {
-  width: 46px;
-  height: 46px;
-  right: 12px;
-  top: 8px;
-  background: rgba(91,158,158,0.22);
-}
-.abstract-dot-b {
-  width: 24px;
-  height: 24px;
-  right: 254px;
-  top: 132px;
-  background: rgba(184,92,56,0.2);
-}
-.abstract-line {
-  position: absolute;
-  height: 1px;
-  background: rgba(28,28,26,0.14);
-  transform-origin: left center;
-}
-.abstract-line-a {
-  width: 96px;
-  right: 198px;
-  top: 86px;
-  transform: rotate(-12deg);
-}
-.abstract-line-b {
-  width: 124px;
-  right: 44px;
-  top: 182px;
-  transform: rotate(8deg);
-}
-
-/* Slightly smaller ad cards while preserving full copy */
-div[style*="min-height:700px"] {
-  min-height: 620px !important;
-  padding: 20px !important;
-}
-
-div[style*="font-size:13.5px"] {
-  font-size: 13px !important;
-}
-div[style*="font-size:12.5px"] {
-  font-size: 12.25px !important;
-}
-div[style*="font-size:18px"] {
-  font-size: 17px !important;
-}
-
-@media (max-width: 900px) {
-  .hub-hero {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  .hub-abstract { display: none !important; }
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 560px) {
-  div[style*="min-height:700px"],
-  div[style*="min-height:620px"] {
-    min-height: auto !important;
-  }
-
-}
-</style>
-
-
-<style>
-/* Proportional ad card sizing: matches case-study card scale */
-div[style*="grid-template-columns:repeat(2"] {
-  align-items: stretch;
-}
-div[style*="grid-template-columns:repeat(2"] > div {
-  height: auto !important;
-}
-div[style*="grid-template-columns:repeat(2"] video,
-div[style*="grid-template-columns:repeat(2"] img {
-  width: 100% !important;
-  max-height: none !important;
-  aspect-ratio: 3 / 4 !important;
-  object-fit: cover !important;
-}
-
-@media (max-width: 1000px) {
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-@media (max-width: 640px) {
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-</style>
-
-
-<style>
-/* Final ad card proportions */
-div[style*="grid-template-columns:repeat(2"] {
-  align-items: start !important;
-}
-div[style*="grid-template-columns:repeat(2"] video,
-div[style*="grid-template-columns:repeat(2"] img {
-  aspect-ratio: 3 / 4 !important;
-  object-fit: cover !important;
-  width: 100% !important;
-  max-height: none !important;
-}
-@media (max-width: 760px) {
-  div[style*="grid-template-columns:repeat(2"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-</style>
-
-<style>
-/* First roofing ad: native 1:1 square video — correct aspect ratio, no subtitle crop */
-#roofing-ad-0002 {
-  aspect-ratio: 1 / 1 !important;
-  height: auto !important;
-  object-fit: cover !important;
-}
-
-/* Flooring contractor 3-col grid: collapse on mobile */
-@media (max-width: 700px) {
-  div[style*="grid-template-columns:repeat(3"] {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 900px) and (min-width: 701px) {
-  div[style*="grid-template-columns:repeat(3"] {
-    grid-template-columns: 1fr 1fr !important;
-  }
-}
-</style>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
+  <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
 <body>
-
 <div class="topbar">
-  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+  <a href="assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
     CV
   </a>
@@ -340,488 +1350,342 @@ div[style*="grid-template-columns:repeat(2"] img {
     GIANCARLODINARDO.6@GMAIL.COM
   </a>
 </div>
-
 <nav class="mainnav">
-  <a href="../index.html" class="logo-mark">
+  <a href="index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
   </a>
   <div class="mainnav-links">
-    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
-    <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
-    <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
-    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
-    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
-    <a href="../about/index.html" data-section="about">About Me</a>
+    <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+    <a href="creative-library/index.html" data-section="creative-library">Creative Library</a>
+    <a href="playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
 
-<div class="hub-wrap page">
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
 
-  <!-- HERO -->
-  <div class="hub-hero">
-    <div class="hub-hero-left">
-      <div class="hub-eyebrow">Creative Library</div>
-      <h1 class="hub-title">Creative systems, docs, and ads.</h1>
-      <p class="hub-desc">A central place for the strategic docs, creative briefs, scorecards, and real ads that came out of actual paid social accounts. Case studies show the results. This hub shows the working pieces behind them.</p>
-    </div>
 
-    <div class="hub-abstract" aria-hidden="true">
-      <div class="abstract-card abstract-card-a">
-        <span></span>
-        <span></span>
-        <span></span>
+<!-- ═══ CREATIVE LIFECYCLE HUB HERO ═══ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Creative Lifecycle Hub</div>
+    <h1>The creative system in <em>four parts</em>.</h1>
+    <p class="hero-desc">Four layers. Each one solves a different problem. None of them do what the others do.</p>
+    <p class="hero-desc" style="margin-top:12px;"><strong style="color:var(--ink);font-weight:500;">Research</strong> reads the market before anything gets briefed. Reviews, competitor gaps, past performance, customer language. All of it processed into angles and personas with a traceable source. The raw material.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Coverage</strong> takes that material and audits how it sits across the account. What personas are missing creative. Which angles have been over-tested. What the account is telling Meta versus what it should be.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Hooks</strong> decide how each individual ad enters its territory. The hook type is an audience selection decision, not a creative one. Different hook types reach different buyer segments at different stages of awareness.</p>
+    <p class="hero-desc" style="margin-top:10px;"><strong style="color:var(--ink);font-weight:500;">Lifecycle</strong> manages what happens to a signal once it starts working. Discovery, validation, expansion, saturation, decay. The goal is to extend the signal before decay forces the account into emergency creative mode.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Use this hub for</div>
+        <div class="hero-meta-value">Navigation through the system</div>
       </div>
-      <div class="abstract-orbit"></div>
-      <div class="abstract-dot abstract-dot-a"></div>
-      <div class="abstract-dot abstract-dot-b"></div>
-      <div class="abstract-line abstract-line-a"></div>
-      <div class="abstract-line abstract-line-b"></div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Input layer</div>
+        <div class="hero-meta-value">Research stack → feeds coverage</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Deep dives live in</div>
+        <div class="hero-meta-value">The individual playbooks</div>
+      </div>
     </div>
   </div>
 
-  <!-- ADS LIBRARY -->
-  <div style="margin:64px 0 64px;">
-    <div class="hub-section-label">Creative Library / Ads</div>
-
-    <div style="max-width:680px;margin-bottom:36px;">
-      <h2 style="font-family:var(--display);font-size:clamp(28px,3vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin:0 0 10px;">
-        Ads shown in the case studies.
-      </h2>
-      <p style="font-family:var(--serif);font-size:15.5px;color:var(--ink-2);line-height:1.65;max-width:680px;">
-        A visual shelf for the ads used inside the case studies. Each card explains the role of the ad, what the viewer sees, and the copy or script logic behind it.
-      </p>
+  <div class="hero-visual">
+    <div class="journey-visual-title">
+      <div class="journey-visual-kicker">The journey</div>
+      <div class="journey-visual-heading">From territory to signal to scale.</div>
     </div>
 
-    <div style="margin-top:36px;">
-      <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Roofing</h3>
-
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;">
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video id="roofing-ad-0002" autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;">
-            <source src="/assets/videos/0002.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Original winner (0002)</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            The baseline ad the system was built around. It uses fast roof-install visuals, a direct offer, and authority proof to make the transformation feel simple and credible.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script logic</span>
-            The ad leads with a clear homeowner offer, then backs it with trust and urgency.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “We’re looking for 150 homeowners for a Roof Transformation.”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> “Get 50% OFF Roof Installations!”
-          </div>
+    <div class="journey-card-stack">
+      <a href="playbooks/research-sop.html" class="journey-entry research">
+        <div class="journey-num">00</div>
+        <div>
+          <div class="journey-card-title">Find the angles</div>
+          <div class="journey-card-subtitle">Research Stack · Input layer</div>
+          <div class="journey-card-desc">Reads reviews, past performance data, and competitor gaps to surface angles and personas before a brief gets written. What to say and who to say it to. Coverage decides where it goes.</div>
         </div>
+      </a>
 
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/massachusetts.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">State-level execution</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            A localized version of the roofing formula. The viewer immediately sees “Massachusetts,” which makes the offer feel market-specific instead of generic.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script logic</span>
-            The script combines local relevance, limited availability, 50% off installation, a free estimate, and warranty reassurance.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “We’re looking for 150 homeowners in Massachusetts for a Roof Transformation.”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> “Massachusetts: Get 50% OFF Roof Installations!”
-          </div>
+      <a href="playbooks/creative-coverage.html" class="journey-entry coverage" style="background:rgba(91,158,158,0.38);border:1px solid rgba(91,158,158,0.55);">
+        <div class="journey-num">01</div>
+        <div>
+          <div class="journey-card-title">Map the territory</div>
+          <div class="journey-card-subtitle">Creative Coverage · The loop begins</div>
+          <div class="journey-card-desc">Takes what research produced and audits the account against it. Which personas have no creative. Which angles are being over-served. What territory the account is missing before the next brief cycle starts.</div>
         </div>
+      </a>
 
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/jefferson.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">County-level execution</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            The same core offer pushed into a tighter geography. The footage and pace are different, but the job is the same: make the viewer feel this is for their area.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script logic</span>
-            This version narrows the market even further, pairing county specificity with the same discount, estimate, and warranty stack.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “We’re looking for 150 homeowners in Jefferson County for a Roof Transformation.”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> “Jefferson County: Get 50% OFF Roof Installations!”
-          </div>
+      <a href="playbooks/hooks-are-targeting.html" class="journey-entry hooks">
+        <div class="journey-num">02</div>
+        <div>
+          <div class="journey-card-title">Choose the entry point</div>
+          <div class="journey-card-subtitle">Hooks Are Targeting</div>
+          <div class="journey-card-desc">Once coverage identifies the territory, hooks decides how to enter it. Five hook types, each pulling a different buyer segment. Not a copy decision. An audience decision made before production starts.</div>
         </div>
-      </div>
+      </a>
+
+      <a href="playbooks/creative-lifecycle.html" class="journey-entry lifecycle">
+        <div class="journey-num">03</div>
+        <div>
+          <div class="journey-card-title">Manage the signal over time</div>
+          <div class="journey-card-subtitle">Creative Lifecycle · Loops back</div>
+          <div class="journey-card-desc">Tracks a winning ad through its predictable stages and manages extension before the account becomes dependent on one creative. When the cycle closes, the results go back into coverage and the loop starts again.</div>
+        </div>
+      </a>
     </div>
-
-    <div style="margin-top:52px;">
-      <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Bath Remodeling</h3>
-
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;">
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <img src="/assets/images/bath-candid-1.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Atlanta market candid</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            A real finished-space visual instead of a polished banner. This kind of asset works because it feels closer to proof than advertising.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script / copy logic</span>
-            The strategy is trust first: show a believable finished result, keep the presentation simple, and let the viewer picture the same upgrade in their own bathroom.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “Tiled and 1-piece showers are a thing of the past…”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> Finished shower transformation / offer-led CTA.
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <img src="/assets/images/bath-candid-2.png" alt="" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Maryland candid</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Another proof-led static from the state audit. It is not trying to over-design the offer; it is trying to make the remodel feel tangible and low-risk.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script / copy logic</span>
-            The ad’s role is to support conversion quality. It uses the finished bathroom as the credibility device rather than relying on heavy graphics or generic savings language.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “Here’s what a walk-in shower should cost.”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> Walk-in shower cost / estimate framing.
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/alenco-bath-ad5.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">State-specific video</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            A structured geo-specific video built to filter the viewer early. The location callout makes it clear who the offer is for before the click.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script logic</span>
-            The script works as a qualifier: location, homeowner fit, and remodel intent all appear upfront.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “If you live in [State]…”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> State-specific bath remodel savings / consultation CTA.
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/alenco-bath-ad6.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">County-level video</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            A tighter local execution using job-site footage and a county-level callout. It supports the same qualification idea, but with more specific geography.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Script logic</span>
-            The ad pairs local specificity with urgency and savings, making the offer feel more immediate and less generic.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook copy:</strong> “DeKalb County Homeowners — Save THOUSANDS…”<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> County-level bath remodel savings / local offer CTA.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:52px;">
-      <h3 style="font-family:var(--display);font-size:26px;font-weight:400;color:var(--ink);margin:0 0 16px;letter-spacing:-0.005em;">Flooring Contractor</h3>
-
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start;">
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <img src="/assets/images/epoxy-ad1.jpg" alt="Before and after garage floor transformation" style="width:100%;border-radius:10px;display:block;height:auto;margin-bottom:12px;flex-shrink:0;">
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Before/after static</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Side-by-side transformation with a geo-qualified problem hook. The visual does the qualifying work — viewers who recognize the floor are already close to the decision.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Problem-aware hook + social proof body. Local reviews handle trust, the visual handles qualification.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook:</strong> "Dallas Residents sick and tired of your old concrete floors?"<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> "1-2 Day Installs — Get Free Quote Today!"
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;height:auto;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/epoxy-ad3.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Process video</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Installation walkthrough with no hook line — drops straight into the pour, the flake broadcast, the finished floor. Process transparency handles the trust work.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Action hook — no opening line, just the crew working. The key objection (time) answered mid-video.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Mid-video text:</strong> "1-Day Installation"<br>
-            <strong style="color:var(--ink);font-weight:500;">End frame:</strong> "Free Quote"
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;height:auto;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/epoxy-ad2.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Benefit-led video</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Seasonal urgency hook into a structured benefit sequence — speed, durability, warranty. Strong CTR but found a mid-funnel buyer, not yet ready to book.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Benefit checklist + product differentiation (positioned against epoxy). Warranty closes the argument.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook:</strong> "This is the perfect time for brand new concrete coating!"<br>
-            <strong style="color:var(--ink);font-weight:500;">Headline:</strong> "LAST CHANCE: 30% OFF Concrete Coating!"
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <video autoplay muted loop playsinline preload="metadata" style="width:100%;border-radius:10px;display:block;height:auto;background:#111;height:auto;margin-bottom:12px;flex-shrink:0;">
-            <source src="/assets/videos/epoxy-ad5.mp4" type="video/mp4">
-          </video>
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Visual transformation video</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Aesthetic-first, no problem framing. Camera drifts across finished driveways and walkways. Generated engagement but found the earliest buyer stage of all formats tested.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Visual hook, sparse text, soft sell. No urgency or objection handling — relies entirely on aspirational appeal.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Mid-video text:</strong> "Concrete Coating"<br>
-            <strong style="color:var(--ink);font-weight:500;">Approach:</strong> Aesthetic-led, no direct CTA overlay
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <img src="/assets/images/epoxy-ad6.jpg" alt="Premium metallic epoxy flooring portfolio" style="width:100%;border-radius:10px;display:block;height:auto;margin-bottom:12px;flex-shrink:0;">
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Portfolio showcase</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Four-panel grid of premium metallic finishes across different spaces. Geo-qualified copy, luxury positioning. Strong on range — found a browsing buyer, not a problem-aware one.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Geo hook + aspirational product positioning. Color variety implied across the four panels.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Primary hook:</strong> "Hey Oklahoma! Are you tired of your boring concrete floors?"<br>
-            <strong style="color:var(--ink);font-weight:500;">Angle:</strong> Metallic epoxy as luxury upgrade
-          </div>
-        </div>
-
-        <div style="background:white;border-radius:14px;padding:22px;border:1px solid var(--line);display:flex;flex-direction:column;">
-          <img src="/assets/images/epoxy-ad4.jpg" alt="Finished chip flooring garage with color selector" style="width:100%;border-radius:10px;display:block;height:auto;margin-bottom:12px;flex-shrink:0;">
-          <div style="font-family:var(--display);font-size:20px;font-weight:400;color:var(--ink);margin:0 0 8px;line-height:1.15;">Product showcase static</div>
-          <div style="font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.55;margin-bottom:12px;">
-            Clean finished garage with a color chip selector strip. No problem framing, straight to the aspirational result. Useful for retargeting, not cold traffic qualification.
-          </div>
-          <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-family:var(--serif);font-size:14px;color:var(--ink-2);line-height:1.55;">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px;">Copy logic</span>
-            Pure product showcase — finished floor + color variety. No hook, no urgency, no objection handling.<br><br>
-            <strong style="color:var(--ink);font-weight:500;">Visual:</strong> Aspirational finished garage + Domino color chip highlighted<br>
-            <strong style="color:var(--ink);font-weight:500;">Angle:</strong> Product quality + finish variety
-          </div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <!-- SYSTEM OVERVIEW: INSIGHT FORMAT + CADENCE -->
-  <div style="margin:64px 0;">
-    <div class="hub-section-label">How the system produces creative</div>
+<div class="divider"></div>
 
-    <!-- Insight Output Format -->
-    <div style="background:var(--ink);border-radius:20px;padding:40px 44px;margin-bottom:16px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(184,122,26,0.16) 0%,transparent 70%);pointer-events:none;"></div>
-      <div style="position:absolute;bottom:-40px;left:40px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.12) 0%,transparent 70%);pointer-events:none;"></div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;position:relative;z-index:1;">
-        <div>
-          <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.28);margin-bottom:16px;">The insight output format</div>
-          <div style="font-family:var(--display);font-size:clamp(22px,2.5vw,30px);font-weight:400;color:#fff;line-height:1.2;letter-spacing:-0.015em;margin-bottom:16px;">Research ends with a named insight, not a topic.</div>
-          <p style="font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;">Five sources in sequence produce raw material. The insight is what that material becomes before it enters a brief — one sentence, traceable to a specific source, that a real buyer would recognize as their own internal monologue.</p>
-        </div>
-        <div>
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(212,168,71,0.6);margin-bottom:14px;font-weight:500;">Insight shape</div>
-          <div style="font-family:var(--display);font-size:clamp(14px,1.4vw,16px);line-height:1.75;color:rgba(255,255,255,0.86);">
-            <span style="color:rgba(255,255,255,0.22);">[</span><span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">Specific persona</span><span style="color:rgba(255,255,255,0.22);">]</span>
+<section class="proof-section">
+  <div class="proof-inner">
+    <div class="proof-header">
+      <div>
+        <div class="section-label">The system</div>
+        <h2 class="section-h2">Four parts. One continuous flow.</h2>
+      </div>
+      <p class="prose">The research stack feeds the loop. Coverage, hooks, and lifecycle run continuously from there. Read them in order, or jump to the part of the system that matches the problem in front of you.</p>
+    </div>
+
+    <div class="proof-grid lifecycle-card-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <a href="playbooks/research-sop.html" class="lifecycle-entry-card input-layer">
+        <div class="lec-kicker">00 · Research · Input layer</div>
+        <div class="lec-title">Where angles come from.</div>
+        <div class="lec-desc">Reads the market before a brief gets written. Five sources, run in order: reputation audit, review mining, persona mapping, past performance, competitor gaps. Each one produces a specific output. What to brief and who to brief it for. Coverage handles the rest.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/creative-coverage.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">01 · Coverage · The loop begins</div>
+        <div class="lec-title">How the angles get distributed.</div>
+        <div class="lec-desc">Takes what research produced and audits how it is allocated across the account. By persona. By concept. By format. Identifies what the account is missing before anything new gets briefed. Hook strategy and performance management sit in the next two layers.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/hooks-are-targeting.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">02 · Hooks</div>
+        <div class="lec-title">How each ad enters its territory.</div>
+        <div class="lec-desc">Coverage identified a gap. Hooks decides how to enter it. Five hook types, each reaching a different buyer segment. The signal sent to Meta changes, not just the wording. What happens once the ad wins is lifecycle's job.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/creative-lifecycle.html" class="lifecycle-entry-card">
+        <div class="lec-kicker">03 · Lifecycle · Loops back</div>
+        <div class="lec-title">What happens to a signal over time.</div>
+        <div class="lec-desc">Once the ad wins, lifecycle takes over. Tracks five stages: discovery, validation, expansion, saturation, decay. The job is to extend the signal and build replacements before the account becomes dependent on one ad. When the cycle ends, results go back into the next round of coverage.</div>
+        <div class="lec-cta">Read Playbook →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Supporting resources for Layer 00 -->
+<section style="max-width:1200px;margin:0 auto;padding:48px 48px 0;">
+  <div style="border-top:1px solid rgba(28,28,26,0.08);padding-top:40px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(28,28,26,0.3);">Supporting Layer 00 · Research</div>
+      <div style="flex:1;height:1px;background:rgba(28,28,26,0.08);"></div>
+    </div>
+    <p style="font-size:14px;color:rgba(28,28,26,0.6);font-weight:300;line-height:1.7;max-width:640px;margin-bottom:28px;">Three playbooks that go deeper on specific parts of the research process. Not part of the main loop. Deep dives on individual sources within Layer 00.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;">
+
+      <a href="playbooks/comment-response-ads.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research source · Comments</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Mining Ad Comments for Briefs</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">How to read objections, questions, and controversy in comment sections as a brief input — one source from the research stack, covered in full.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/ai-workflow.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research tool · AI</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Where AI Fits in the Workflow</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">How AI accelerates research inputs — review clustering, pattern sorting, language extraction — without replacing the judgment about what matters.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+      <a href="playbooks/claude-creative-operations.html" style="text-decoration:none;display:flex;flex-direction:column;gap:6px;padding:22px 20px;background:rgba(200,213,192,0.15);border:1px solid rgba(200,213,192,0.3);border-radius:12px;transition:background 0.15s;" onmouseover="this.style.background='rgba(200,213,192,0.28)'" onmouseout="this.style.background='rgba(200,213,192,0.15)'" >
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Research tool · AI operations</div>
+        <div style="font-size:14px;font-weight:500;color:#1C1C1A;line-height:1.35;">Claude in Creative Operations</div>
+        <div style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;flex:1;">AI in the messy middle of creative work — language mining, angle expansion, pattern recognition. Makes research faster without making it different.</div>
+        <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.08em;color:#5A7A54;margin-top:8px;">Read Playbook →</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- HOW THE SYSTEM PRODUCES CREATIVE -->
+<section style="max-width:1200px;margin:0 auto;padding:48px 48px 0;">
+  <div style="border-top:1px solid rgba(28,28,26,0.08);padding-top:40px;">
+    <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(28,28,26,0.3);">How the system produces creative</div>
+      <div style="flex:1;height:1px;background:rgba(28,28,26,0.08);"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+
+      <!-- Insight output format -->
+      <div style="background:#1C1C1A;border-radius:16px;padding:36px 40px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-50px;right:-50px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(184,122,26,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-40px;left:40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+        <div style="position:relative;z-index:1;">
+          <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.28);margin-bottom:14px;">The insight output format</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(18px,2vw,22px);font-weight:400;color:#fff;line-height:1.25;margin-bottom:12px;">Research ends with a named insight, not a topic.</div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7;font-weight:300;margin-bottom:20px;">Five sources produce raw material. The insight is what that material becomes before it enters a brief — one sentence, traceable to a source, that a real buyer would recognise as their own thought.</p>
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(212,168,71,0.7);margin-bottom:12px;font-weight:500;">Insight shape</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(13px,1.3vw,15px);line-height:1.85;color:rgba(255,255,255,0.85);">
+            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">Specific persona</span>
             <span style="color:rgba(255,255,255,0.5);font-style:italic;"> silently </span>
-            <span style="color:rgba(255,255,255,0.22);">[</span><span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">normalized behavior</span><span style="color:rgba(255,255,255,0.22);">]</span>
+            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">normalised behaviour</span>
             <span style="color:rgba(255,255,255,0.5);font-style:italic;"> because they've reframed </span>
-            <span style="color:rgba(255,255,255,0.22);">[</span><span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">real problem</span><span style="color:rgba(255,255,255,0.22);">]</span>
+            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">real problem</span>
             <span style="color:rgba(255,255,255,0.5);font-style:italic;"> as </span>
-            <span style="color:rgba(255,255,255,0.22);">[</span><span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">acceptable excuse</span><span style="color:rgba(255,255,255,0.22);">].</span>
-            <span style="color:rgba(255,255,255,0.5);font-style:italic;"> The decline stays invisible until </span>
-            <span style="color:rgba(255,255,255,0.22);">[</span><span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">downstream consequence</span><span style="color:rgba(255,255,255,0.22);">],</span>
-            <span style="color:rgba(255,255,255,0.5);font-style:italic;"> and even then they don't connect the dots.</span>
+            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">acceptable excuse</span><span style="color:rgba(255,255,255,0.5);font-style:italic;">. The decline stays invisible until </span>
+            <span style="background:rgba(184,122,26,0.2);border:1px solid rgba(184,122,26,0.3);border-radius:3px;padding:1px 6px;color:#D4A847;font-style:italic;">downstream consequence</span><span style="color:rgba(255,255,255,0.5);font-style:italic;">, and even then they don't connect the dots.</span>
           </div>
-          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px;color:rgba(255,255,255,0.28);line-height:1.6;font-weight:300;">If it can't be read in one sentence, it isn't ready. Return to the Research Stack.</div>
+          <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Source test</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Can you name the exact review phrase or data point this came from?</div>
+            </div>
+            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Recognition test</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Would a real buyer nod or wince? Polite agreement is not recognition.</div>
+            </div>
+            <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
+              <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:5px;font-weight:500;">Awareness test</div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.42);line-height:1.55;font-weight:300;">Where in the journey is this buyer when the insight is true for them?</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:32px;position:relative;z-index:1;">
-        <div style="padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;flex:1;">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:6px;font-weight:500;">Source test</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.55;font-weight:300;">Can you point to the exact review phrase or data point this came from?</div>
+      <!-- Production cadence -->
+      <div style="background:rgba(255,255,255,0.55);border:1px solid rgba(28,28,26,0.1);border-radius:16px;padding:36px 40px;">
+        <div style="font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.14em;color:rgba(28,28,26,0.3);margin-bottom:14px;">The production cadence</div>
+        <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:64px;font-style:italic;color:#5B9E9E;line-height:1;">12–20</span>
+          <span style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:rgba(28,28,26,0.45);max-width:80px;line-height:1.4;">distinct ads per cycle</span>
         </div>
-        <div style="padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;flex:1;">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:6px;font-weight:500;">Recognition test</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.55;font-weight:300;">Would a real buyer nod, or just politely agree? Cognitive dissonance is the signal.</div>
-        </div>
-        <div style="padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;flex:1;">
-          <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.25);margin-bottom:6px;font-weight:500;">Awareness test</div>
-          <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.55;font-weight:300;">Where in the journey is this buyer when the insight is true for them?</div>
+        <p style="font-size:13px;color:rgba(28,28,26,0.6);line-height:1.7;font-weight:300;margin-bottom:22px;">The coverage map decides the volume. Count the genuine gaps, brief each with 2–3 hook variants. <strong style="color:#1C1C1A;font-weight:500;">What stays fixed is the rhythm</strong> — two weeks from brief to live, every cycle, without interruption.</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;">
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
+            <div style="background:#D8EDEA;padding:8px 10px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5B9E9E;">Days 1–2</div>
+              <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Brief</div>
+            </div>
+            <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">One per ad. Angle cites its source. Persona named with decision context.</div>
+          </div>
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
+            <div style="background:#F0E4DC;padding:8px 10px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B85C38;">Days 3–7</div>
+              <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Production</div>
+            </div>
+            <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Batched by format. AI compresses what it fits. The map doesn't change.</div>
+          </div>
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
+            <div style="background:#F5E9D4;padding:8px 10px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B87A1A;">Days 8–11</div>
+              <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Edit</div>
+            </div>
+            <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Hook variants as separate files — not swaps inside one timeline.</div>
+          </div>
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
+            <div style="background:#E4EDE0;padding:8px 10px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Days 12–13</div>
+              <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Ship</div>
+            </div>
+            <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Consistent naming so cell-level reading stays possible after launch.</div>
+          </div>
+          <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
+            <div style="background:rgba(28,28,26,0.06);padding:8px 10px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(28,28,26,0.45);">Day 14</div>
+              <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Restart</div>
+            </div>
+            <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Next cycle begins the day this one ships. The account never stops.</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Production Cadence -->
-    <div style="background:rgba(255,255,255,0.55);border:1px solid var(--line);border-radius:20px;padding:36px 44px;">
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start;margin-bottom:28px;">
-        <div>
-          <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">The production cadence</div>
-          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
-            <span style="font-family:var(--display);font-size:56px;font-style:italic;color:var(--teal);line-height:1;">12–20</span>
-            <span style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);max-width:80px;line-height:1.4;">ads per cycle</span>
-          </div>
-          <div style="font-size:12px;color:var(--muted);line-height:1.5;">Map gaps × 2–3 hook variants each</div>
-        </div>
-        <div>
-          <p style="font-size:14.5px;color:var(--ink-60);line-height:1.7;font-weight:300;margin-bottom:0;">The coverage map decides the volume. A mature account briefs 6 to 8 distinct territory gaps per cycle, each with 2 to 3 hook variants — 12 to 20 structurally distinct ads every two weeks. A new account starts with the single highest-priority gap and expands as signal confirms which territories are worth building. What stays fixed is the rhythm. The number scales with the map.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
-          <div style="background:var(--teal-light);padding:9px 14px;">
-            <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--teal);">Days 1–2</div>
-            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Brief</div>
-          </div>
-          <div style="background:white;padding:12px 14px;font-size:12px;color:var(--ink-60);line-height:1.6;font-weight:300;min-height:90px;">One brief per ad. Hook, format, persona, awareness stage named. Every angle cites its source.</div>
-        </div>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
-          <div style="background:var(--rust-light);padding:9px 14px;">
-            <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);">Days 3–7</div>
-            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Production</div>
-          </div>
-          <div style="background:white;padding:12px 14px;font-size:12px;color:var(--ink-60);line-height:1.6;font-weight:300;min-height:90px;">Shoots batched by format. AI compresses this where it fits. The map doesn't change.</div>
-        </div>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
-          <div style="background:var(--amber-light);padding:9px 14px;">
-            <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);">Days 8–11</div>
-            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Edit</div>
-          </div>
-          <div style="background:white;padding:12px 14px;font-size:12px;color:var(--ink-60);line-height:1.6;font-weight:300;min-height:90px;">Hook variants cut as separate creatives, not hook-swaps inside one timeline.</div>
-        </div>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
-          <div style="background:var(--sage-light);padding:9px 14px;">
-            <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Days 12–13</div>
-            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Ship</div>
-          </div>
-          <div style="background:white;padding:12px 14px;font-size:12px;color:var(--ink-60);line-height:1.6;font-weight:300;min-height:90px;">Uploaded with consistent naming so cell-level reading stays possible after launch.</div>
-        </div>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--line);">
-          <div style="background:var(--ink-10);padding:9px 14px;">
-            <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">Day 14</div>
-            <div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px;">Restart</div>
-          </div>
-          <div style="background:white;padding:12px 14px;font-size:12px;color:var(--ink-60);line-height:1.6;font-weight:300;min-height:90px;">Next insight enters the pipeline. The cycle never stops.</div>
-        </div>
-      </div>
     </div>
   </div>
+</section>
 
-  <div class="hub-section-label">Creative Briefs</div>
-  <div class="artifact-list" style="margin-bottom:48px;">
+<div style="max-width:1200px;margin:48px auto 0;padding:0 48px;height:1px;background:rgba(28,28,26,0.08);"></div>
 
-    <a href="roofing-brief.html" class="artifact-card">
-      <div class="artifact-card-tile tile-rust-soft">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      </div>
-      <div class="artifact-card-body">
-        <div class="artifact-card-title">Roofing Creative Brief</div>
-        <div class="artifact-card-desc">The mega brief that produced 9 video variants from one proven formula. Hook lines, regional callout specs for 11 states, isolation logic, and production notes for the crew. Came directly out of the roofing case study.</div>
-      </div>
-      <div class="artifact-card-meta">
-        <span class="artifact-card-tag tag-brief">Creative Brief</span>
-        <span class="artifact-arrow">View →</span>
-      </div>
-    </a>
 
-    <a href="dtc-script-brief.html" class="artifact-card">
-      <div class="artifact-card-tile tile-rust-soft">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+<section class="full-width-section" style="background:#E4EDE0;">
+  <div class="fw-inner">
+    <div class="connect-system-block">
+      <div>
+        <div class="section-label">How the pieces connect</div>
+        <h2 class="section-h2">One question per layer.<br>No layer repeats another.</h2>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:20px;"><strong style="color:#1C1C1A;font-weight:500;">Research</strong> reads the market and surfaces the angles, personas, and hook language that go into the brief. It is the only layer that works from external signal rather than account data.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Coverage</strong> takes that material and maps it across the account. Which personas have creative. Which angles are over-served. What needs to exist before the next round gets briefed. Coverage works from the inside out.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Hooks</strong> decide how each ad opens the territory coverage identified. The hook type is an audience selection decision. Change the hook type and you change which buyer stops scrolling, regardless of what the rest of the ad says.</p>
+        <p style="font-size:15px;color:rgba(28,28,26,0.6);line-height:1.8;font-weight:300;margin-top:12px;"><strong style="color:#1C1C1A;font-weight:500;">Lifecycle</strong> manages a winning ad through its predictable stages. The goal is extension before decay, not reaction after it. When the cycle closes, its data feeds back into research and coverage, and the process starts again.</p>
       </div>
-      <div class="artifact-card-body">
-        <div class="artifact-card-title">DTC Script Brief</div>
-        <div class="artifact-card-desc">The brief that rebuilt the grooming account's script structure around how the buyer actually thinks: identity validation, named mechanism, objection dialog, loss aversion close. Script structure was the only variable that changed.</div>
-      </div>
-      <div class="artifact-card-meta">
-        <span class="artifact-card-tag tag-brief">Script Brief</span>
-        <span class="artifact-arrow">View →</span>
-      </div>
-    </a>
 
+      <div class="signal-field-visual" aria-hidden="true">
+        <div class="signal-line teal" style="left:18%;top:28%;width:28%;transform:rotate(10deg);"></div>
+        <div class="signal-line" style="left:33%;top:42%;width:30%;transform:rotate(-18deg);"></div>
+        <div class="signal-line warm" style="left:52%;top:55%;width:25%;transform:rotate(16deg);"></div>
+        <div class="signal-line" style="left:25%;top:66%;width:42%;transform:rotate(-4deg);"></div>
+
+        <span class="signal-node primary" style="left:16%;top:25%;"></span>
+        <span class="signal-node" style="left:27%;top:31%;"></span>
+        <span class="signal-node warm" style="left:41%;top:34%;"></span>
+        <span class="signal-node" style="left:58%;top:28%;"></span>
+        <span class="signal-node faint" style="left:74%;top:24%;"></span>
+
+        <span class="signal-node" style="left:22%;top:49%;"></span>
+        <span class="signal-node primary" style="left:38%;top:45%;"></span>
+        <span class="signal-node" style="left:53%;top:49%;"></span>
+        <span class="signal-node warm" style="left:67%;top:42%;"></span>
+        <span class="signal-node faint" style="left:82%;top:48%;"></span>
+
+        <span class="signal-node faint" style="left:15%;top:72%;"></span>
+        <span class="signal-node" style="left:31%;top:68%;"></span>
+        <span class="signal-node warm" style="left:49%;top:70%;"></span>
+        <span class="signal-node primary" style="left:66%;top:63%;"></span>
+        <span class="signal-node faint" style="left:80%;top:70%;"></span>
+
+        <div class="signal-caption">
+          <span>Research</span>
+          <span>Coverage</span>
+          <span>Hooks</span>
+          <span>Lifecycle</span>
+        </div>
+      </div>
+
+    </div>
   </div>
+</section>
 
-  <!-- HOOK MATRIX -->
-  <div class="hub-section-label">Hook Matrix</div>
-  <div class="artifact-list" style="margin-bottom:48px;">
-
-    <a href="../playbooks/hook-matrix.html" class="artifact-card">
-      <div class="artifact-card-tile tile-teal-soft">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="artifact-card-body">
-        <div class="artifact-card-title">Hook Matrix</div>
-        <div class="artifact-card-desc">Five hook types mapped against real ads from a flooring and roofing account, including the performance comparison that proved hook type changes the audience, not just creative style. Each hook mapped to type, hypothesis, deployment logic, and outcome.</div>
-      </div>
-      <div class="artifact-card-meta">
-        <span class="artifact-card-tag tag-framework">Matrix</span>
-        <span class="artifact-arrow">View →</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- DIAGNOSTIC FRAMEWORKS -->
-  <div class="hub-section-label">Diagnostic Documents</div>
-  <div class="artifact-list" style="margin-bottom:48px;">
-
-    <a href="new-account-diagnostic.html" class="artifact-card">
-      <div class="artifact-card-tile tile-teal-soft">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <div class="artifact-card-body">
-        <div class="artifact-card-title">New Account Diagnostic</div>
-        <div class="artifact-card-desc">What to look at, in what order, before the first dollar moves. Five audit layers from structure to buyer research, six questions to answer before opening Ads Manager, and a findings template that turns into the first 90-day plan.</div>
-      </div>
-      <div class="artifact-card-meta">
-        <span class="artifact-card-tag tag-scorecard">Diagnostic</span>
-        <span class="artifact-arrow">View →</span>
-      </div>
-    </a>
-
-  </div>
-
-  <!-- CONNECTED CONTENT -->
-  <div class="hub-section-label">This library connects to</div>
-  <div class="connected-grid">
-    <a href="../case-studies/index.html" class="connected-card">
-      <div class="connected-card-k">Proof</div>
-      <div class="connected-card-t">Case Studies</div>
-      <div class="connected-card-d">The accounts this creative library came out of: roofing, grooming, windows, bath, basement, flooring. Each case study links back to the relevant artifact.</div>
-      <div class="connected-card-cta">View all cases →</div>
-    </a>
-    <a href="../playbooks/index.html" class="connected-card">
-      <div class="connected-card-k">Thinking</div>
-      <div class="connected-card-t">Playbooks</div>
-      <div class="connected-card-d">The reasoning behind each artifact. Hooks, diagnosis, coverage, lifecycle. Each doc links to the playbook that explains where it came from.</div>
-      <div class="connected-card-cta">View playbooks →</div>
-    </a>
-    <a href="../creative-lifecycle-hub.html" class="connected-card">
-      <div class="connected-card-k">System</div>
-      <div class="connected-card-t">The Creative System</div>
-      <div class="connected-card-d">How coverage, hooks, lifecycle, and ad examples connect inside the broader creative system.</div>
-      <div class="connected-card-cta">View the system →</div>
-    </a>
-  </div>
-
-</div>
 
 <footer class="sitefoot">
   <span>© GIANCARLO DI NARDO</span>
-  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+  <a href="case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
     ALL CASES
   </a>
-</footer>
-</body>
+</footer></body>
 </html>

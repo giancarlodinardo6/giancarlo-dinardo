@@ -23,7 +23,7 @@
     --amber: #B87A1A;
     --serif: 'Instrument Serif', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --mono:         'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     --muted: #6B655A;
     --line: #D9D2C2;
     --line-2: #C4BCA8;
@@ -217,7 +217,7 @@
    Design system from Claude Design session
    ═══════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&family=Instrument+Serif:ital@0;1&display=swap');
 
 :root {
   --bg:           #F1ECE2;
@@ -238,14 +238,14 @@
   --tile-clay:    #E3B59A;
   --radius:       6px;
   --radius-lg:    10px;
-  --serif:        'Newsreader', 'Iowan Old Style', Georgia, serif;
-  --display:      'Instrument Serif', 'Newsreader', Georgia, serif;
-  --mono:         'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --serif:        'Instrument Serif', Georgia, serif;
+  --display:      'Instrument Serif', Georgia, serif;
+  --mono:         'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --max:          1180px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html, body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', system-ui, sans-serif; font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 a { color: inherit; text-decoration: none; }
 a.link { border-bottom: 1px solid var(--line-2); padding-bottom: 1px; }
 a.link:hover { border-bottom-color: var(--ink); }
@@ -1079,7 +1079,7 @@ h1, h2, h3, h4 { letter-spacing: -0.027em; }
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    font-family: var(--mono, 'JetBrains Mono', monospace);
+    font-family: var(--mono, 'DM Mono', monospace);
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -1560,7 +1560,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:28px;">
 
             <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">01</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">01</div>
               <div>
                 <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name a person in a specific situation?</div>
                 <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">Not a demographic. A moment — the circumstance that makes this true for them right now.</div>
@@ -1568,7 +1568,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
             </div>
 
             <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">02</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">02</div>
               <div>
                 <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name what they tell themselves to avoid acting?</div>
                 <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">The rationalization — not the objection they'd say out loud, but the internal story that makes delay feel reasonable.</div>
@@ -1576,7 +1576,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
             </div>
 
             <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">03</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">03</div>
               <div>
                 <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name the belief that makes inaction feel rational?</div>
                 <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">The frame underneath the rationalization. What they'd have to stop believing for the ad to land.</div>
@@ -1584,7 +1584,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
             </div>
 
             <div style="display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:14px 16px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">04</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;color:#5B9E9E;padding-top:1px;">04</div>
               <div>
                 <div style="font-size:13px;font-weight:500;color:#fff;margin-bottom:3px;">Can you name a consequence they're not connecting to the cause?</div>
                 <div style="font-size:12px;color:rgba(255,255,255,0.35);font-weight:300;line-height:1.5;">Something already happening because of the stuck belief — that they haven't traced back to the real problem.</div>
@@ -1610,7 +1610,7 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
               .ig-trigger[aria-expanded="true"] { background:rgba(255,255,255,0.07); border-bottom:1px solid rgba(255,255,255,0.07); }
               .ig-trigger-left { display:flex; align-items:center; gap:12px; }
               .ig-tag {
-                font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:500;
+                font-family:'DM Mono',monospace; font-size:8px; font-weight:500;
                 text-transform:uppercase; letter-spacing:0.1em;
                 padding:3px 8px; border-radius:999px; white-space:nowrap; flex-shrink:0;
               }
@@ -1633,20 +1633,20 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
                 background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
                 border-radius:7px; margin-bottom:14px;
               }
-              .ig-raw-label { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.45); display:block; margin-bottom:6px; }
+              .ig-raw-label { font-style:normal; font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.45); display:block; margin-bottom:6px; }
               .ig-insight {
                 font-size:13px; color:rgba(255,255,255,0.92); font-weight:300; line-height:1.75;
                 padding:12px 14px;
                 background:rgba(91,158,158,0.12); border:1px solid rgba(91,158,158,0.3);
                 border-radius:7px; margin-bottom:14px;
               }
-              .ig-insight-label { font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:#7ABFB5; display:block; margin-bottom:6px; }
+              .ig-insight-label { font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.1em; color:#7ABFB5; display:block; margin-bottom:6px; }
               .ig-gates { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
               .ig-gate {
                 padding:8px 10px; border-radius:6px;
                 background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
               }
-              .ig-gate-q { font-family:'JetBrains Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:4px; }
+              .ig-gate-q { font-family:'DM Mono',monospace; font-size:8px; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.5); margin-bottom:4px; }
               .ig-gate-a { font-size:11px; color:rgba(255,255,255,0.8); line-height:1.5; font-weight:300; }
               .ig-driver {
                 margin-top:10px; padding:8px 12px; border-radius:6px;
@@ -1837,35 +1837,35 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
         <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;">
           <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
             <div style="background:#D8EDEA;padding:8px 10px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5B9E9E;">Days 1–2</div>
+              <div style="font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5B9E9E;">Days 1–2</div>
               <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Brief</div>
             </div>
             <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">One per ad. Angle cites its source. Persona named with decision context.</div>
           </div>
           <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
             <div style="background:#F0E4DC;padding:8px 10px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B85C38;">Days 3–7</div>
+              <div style="font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B85C38;">Days 3–7</div>
               <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Production</div>
             </div>
             <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Batched by format. AI compresses what it fits. The map doesn't change.</div>
           </div>
           <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
             <div style="background:#F5E9D4;padding:8px 10px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B87A1A;">Days 8–11</div>
+              <div style="font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#B87A1A;">Days 8–11</div>
               <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Edit</div>
             </div>
             <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Hook variants as separate files — not swaps inside one timeline.</div>
           </div>
           <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
             <div style="background:#E4EDE0;padding:8px 10px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Days 12–13</div>
+              <div style="font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:#5A7A54;">Days 12–13</div>
               <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Ship</div>
             </div>
             <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Consistent naming so cell-level reading stays possible after launch.</div>
           </div>
           <div style="border-radius:8px;overflow:hidden;border:1px solid rgba(28,28,26,0.1);">
             <div style="background:rgba(28,28,26,0.06);padding:8px 10px;">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(28,28,26,0.45);">Day 14</div>
+              <div style="font-family:'DM Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(28,28,26,0.45);">Day 14</div>
               <div style="font-size:12px;font-weight:500;color:#1C1C1A;margin-top:2px;">Restart</div>
             </div>
             <div style="background:white;padding:10px;font-size:11px;color:rgba(28,28,26,0.6);line-height:1.55;font-weight:300;min-height:72px;">Next cycle begins the day this one ships. The account never stops.</div>

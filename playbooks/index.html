@@ -6,15 +6,7 @@
 <title>Playbooks — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-/* Override: match case study design system (styles.css sets different bg/color/font) */
-body {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  background: #F5F2EC !important;
-  color: #1C1C1A !important;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
+
 </style>
 <style>
   .pb-wrap { max-width:var(--max); margin:0 auto; padding:40px 48px 80px; }
@@ -158,11 +150,12 @@ body {
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1 || (section === 'lifecycle' && path.indexOf('creative-lifecycle-hub') !== -1)){ link.classList.add('active'); }
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
   });
 })();
 </script>
-
 <div class="page">
 <div class="pb-wrap">
 

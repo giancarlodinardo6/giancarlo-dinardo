@@ -6,15 +6,7 @@
 <title>Hook Matrix — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-/* Override: match case study design system (styles.css sets different bg/color/font) */
-body {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  background: #F5F2EC !important;
-  color: #1C1C1A !important;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
+
 </style>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
 <style>
@@ -549,7 +541,6 @@ body {
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
@@ -560,7 +551,6 @@ body {
     GIANCARLODINARDO.6@GMAIL.COM
   </a>
 </div>
-
 <nav class="mainnav">
   <a href="../index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
@@ -569,12 +559,24 @@ body {
     <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
     <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
-    <a href="../playbooks/index.html" data-section="playbooks" class="active">Playbooks</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
     <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
 
 <div class="matrix-wrap page">
 

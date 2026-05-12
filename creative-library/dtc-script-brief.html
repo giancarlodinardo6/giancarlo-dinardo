@@ -6,8 +6,6 @@
 <title>DTC Script Brief — Giancarlo Di Nardo</title>
 <link rel="stylesheet" href="../styles.css">
 <style>
-/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
-body { font-family: 'DM Sans', system-ui, sans-serif !important; }
 </style>
 <link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg?v=4">
 <style>
@@ -114,7 +112,6 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
@@ -125,7 +122,6 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
     GIANCARLODINARDO.6@GMAIL.COM
   </a>
 </div>
-
 <nav class="mainnav">
   <a href="../index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
@@ -140,6 +136,18 @@ body { font-family: 'DM Sans', system-ui, sans-serif !important; }
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
 
 <div class="artifact-wrap page">
 

@@ -4,42 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Research Stack — Giancarlo Di Nardo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
-  <style>
+<link rel="stylesheet" href="../styles.css">
+<style>
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #F5F2EC;
-    --bg: #F1ECE2;
-    --bg-2: #EAE4D6;
-    --ink: #1C1C1A;
-    --ink-2: #2B2925;
-    --ink-60: rgba(28,28,26,0.6);
-    --ink-30: rgba(28,28,26,0.3);
-    --ink-10: rgba(28,28,26,0.08);
-    --ink-06: rgba(28,28,26,0.05);
-    --muted: #6B655A;
-    --line: #D9D2C2;
-    --line-2: #C4BCA8;
-    --sage: #C8D5C0;
-    --sage-light: #E4EDE0;
-    --rust: #B85C38;
-    --rust-light: #F0E4DC;
-    --teal: #5B9E9E;
-    --teal-light: #D8EDEA;
-    --amber: #B87A1A;
-    --amber-light: #F5E9D4;
-    --serif: 'Instrument Serif', Georgia, serif;
-    --display: 'Instrument Serif', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
-  }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -53,127 +23,7 @@
   }
 
   /* ── TOPBAR ── */
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 48px;
-    gap: 24px;
-  }
-  .cv-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px 7px 12px;
-    border: 1px solid var(--line-2);
-    border-radius: 999px;
-    background: rgba(255,255,255,0.4);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .cv-btn:hover { background: rgba(255,255,255,0.8); }
-  .cv-btn svg { width: 11px; height: 11px; }
-  .email-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink-2);
-    text-decoration: none;
-  }
-  .email-link svg { width: 12px; height: 12px; opacity: 0.7; }
-
   /* ── NAV ── */
-  .mainnav {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    padding: 14px 48px;
-    border-top: 1px dashed var(--line-2);
-    border-bottom: 1px dashed var(--line-2);
-  }
-  .logo-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 0;
-    text-decoration: none;
-    margin-right: 36px;
-    flex-shrink: 0;
-  }
-  .logo-g {
-    font-family: var(--display);
-    font-size: 28px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .logo-div {
-    width: 1px;
-    height: 22px;
-    background: var(--line-2);
-    margin: 0 7px;
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .logo-d {
-    font-family: var(--display);
-    font-size: 28px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--ink);
-    opacity: 0.35;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .mainnav-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-    flex: 1;
-  }
-  .mainnav-links a {
-    font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
-    font-size: 15px;
-    color: var(--muted);
-    font-weight: 500;
-    text-decoration: none;
-    padding-bottom: 2px;
-    border-bottom: 1.5px solid transparent;
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .mainnav-links a:hover { color: var(--ink); }
-  .mainnav-links a.active {
-    color: var(--ink);
-    border-bottom-color: var(--ink-60);
-  }
-  .nav-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 18px;
-    background: var(--ink);
-    color: var(--bg) !important;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 0.15s;
-    flex-shrink: 0;
-  }
-  .nav-cta:hover { opacity: 0.82; }
-
   /* ── HERO ── */
   .hero {
     max-width: 1200px;
@@ -885,22 +735,16 @@
   }
   @media (max-width: 700px) {
     html, body { max-width: 100%; overflow-x: hidden; }
-    .topbar { padding: 10px 20px; }
-    .mainnav { padding: 20px; }
-    .mainnav-links { overflow-x: auto; gap: 20px; }
-    .mainnav-links a { flex: 0 0 auto; font-size: 13px; }
     .hero { padding: 24px 20px 40px; gap: 32px; }
     .divider { margin: 40px auto; padding: 0 20px; }
     .rhythm-days { grid-template-columns: 1fr; }
     .gate-inner { padding: 36px 28px; }
   }
-  .topbar svg, .cv-btn svg, .email-link svg { width: 12px; height: 12px; max-width: 12px; max-height: 12px; flex-shrink: 0; }
-  svg:not([width]):not([height]):not([viewBox]) { max-width: 16px; max-height: 16px; }
+  .topbar svg, .cv-btn svg, svg:not([width]):not([height]):not([viewBox]) { max-width: 16px; max-height: 16px; }
 
 </style>
 </head>
 <body>
-
 <div class="topbar">
   <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
@@ -911,7 +755,6 @@
     GIANCARLODINARDO.6@GMAIL.COM
   </a>
 </div>
-
 <nav class="mainnav">
   <a href="../index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
@@ -926,56 +769,14 @@
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
 </nav>
-
 <script>
 (function(){
   var path = window.location.pathname;
-  var file = path.split('/').pop() || '';
   var links = document.querySelectorAll('.mainnav-links a[data-section]');
-
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    link.classList.remove('active');
-
-    if (section === 'lifecycle') {
-      if (
-        file === 'creative-coverage.html' ||
-        file === 'hooks-are-targeting.html' ||
-        file === 'creative-lifecycle.html' ||
-        file === 'research-sop.html' ||
-        file === 'creative-lifecycle-hub.html'
-      ) {
-        link.classList.add('active');
-      }
-      return;
-    }
-
-    if (section === 'playbooks') {
-      if (
-        path.indexOf('/playbooks/') !== -1 &&
-        file !== 'creative-coverage.html' &&
-        file !== 'hooks-are-targeting.html' &&
-        file !== 'creative-lifecycle.html' &&
-        file !== 'research-sop.html'
-      ) {
-        link.classList.add('active');
-      }
-      return;
-    }
-
-    if (section === 'case-studies' && path.indexOf('/case-studies/') !== -1) {
+    if(path.indexOf(section) !== -1){
       link.classList.add('active');
-      return;
-    }
-
-    if (section === 'frameworks' && path.indexOf('/frameworks/') !== -1) {
-      link.classList.add('active');
-      return;
-    }
-
-    if (section === 'about' && path.indexOf('/about/') !== -1) {
-      link.classList.add('active');
-      return;
     }
   });
 })();

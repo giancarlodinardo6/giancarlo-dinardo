@@ -3,15 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Roofing — Case Study — Giancarlo Di Nardo</title>
-  <style>
-    :root{
-      --cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);
-      --ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.04);
-      --sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;
-      --teal:#5B9E9E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;
-      --serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
-    }
+  <title>Roofing, Case Study | Giancarlo</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
@@ -315,23 +309,12 @@
       display: block;
     }
   </style>
-  <link rel="stylesheet" href="../styles.css">
-<style>
-/* Override: match case study design system */
-body {
-  font-family: 'DM Sans', system-ui, sans-serif !important;
-  background: #F5F2EC !important;
-  color: #1C1C1A !important;
-  font-size: 16px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
+  <style>
 </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
 <body>
-
 <div class="topbar">
   <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
     <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
@@ -342,7 +325,6 @@ body {
     GIANCARLODINARDO.6@GMAIL.COM
   </a>
 </div>
-
 <nav class="mainnav">
   <a href="../index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
@@ -359,9 +341,13 @@ body {
 </nav>
 <script>
 (function(){
-  var path=window.location.pathname;
-  document.querySelectorAll('.mainnav-links a[data-section]').forEach(function(l){
-    if(path.indexOf(l.getAttribute('data-section'))!==-1) l.classList.add('active');
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
   });
 })();
 </script>

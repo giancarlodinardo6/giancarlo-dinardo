@@ -4,25 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Giancarlo Di Nardo · Paid Social & Creative</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --cream: #F1ECE2;
-  --ink: #1A1916;
-  --ink-2: #3A3830;
-  --muted: #8A8579;
-  --teal: #5B9E9E;
-  --rust: #B85C38;
-  --sage: #8FAF8F;
-  --line: rgba(26,25,22,0.1);
-  --serif: 'Instrument Serif', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --mono: 'DM Mono', monospace;
-}
-
 body {
   background: var(--cream);
   color: var(--ink);
@@ -115,61 +99,6 @@ body {
   text-align: center;
   text-decoration: none;
 }
-.logo-mark {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-.logo-g {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 20px;
-  color: var(--ink);
-  line-height: 1;
-  font-style: normal;
-}
-.logo-d {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 20px;
-  color: var(--ink);
-  line-height: 1;
-  font-style: italic;
-}
-.logo-div {
-  width: 1px;
-  height: 14px;
-  background: rgba(26,25,22,0.2);
-  margin: 0 7px;
-}
-.nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-}
-.nav-links a {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-}
-.nav-links a:hover { color: var(--ink); }
-.nav-links a.active { color: var(--ink); }
-.nav-cta {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  border: 1px solid rgba(26,25,22,0.35);
-  padding: 6px 14px;
-  border-radius: 2px;
-}
-
 /* MASTHEAD */
 .masthead {
   padding: 72px 48px 56px;
@@ -800,8 +729,6 @@ footer span {
 
   /* Nav — show hamburger, hide links and desktop CTA */
   .nav { padding: 0 20px; }
-  .nav-links { display: none; }
-  .nav-cta { display: none; }
   .nav-hamburger { display: flex; }
 
   /* Status tag — wrap between availability and location, not mid-text */
@@ -890,7 +817,6 @@ footer span {
 @media (min-width: 769px) and (max-width: 1024px) {
   .wrap { padding: 0; }
   .nav { padding: 0 32px; }
-  .nav-links { gap: 18px; }
   .masthead { padding: 56px 32px 48px; gap: 40px; }
   .masthead h1 { font-size: 64px; }
   .masthead-right { min-width: 260px; }
@@ -907,13 +833,21 @@ footer span {
 </style>
 </head>
 <body>
-<div class="wrap">
-
-<nav class="nav">
+<div class="topbar">
+  <a href="assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
   <a href="index.html" class="logo-mark">
     <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
   </a>
-  <div class="nav-links">
+  <div class="mainnav-links">
     <a href="case-studies/index.html" data-section="case-studies">Case Studies</a>
     <a href="frameworks/index.html" data-section="frameworks">Strategy Maps</a>
     <a href="creative-library/index.html" data-section="creative-library">Creative Library</a>
@@ -922,10 +856,20 @@ footer span {
     <a href="about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
-  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
 </nav>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1){
+      link.classList.add('active');
+    }
+  });
+})();
+</script>
+<div class="wrap">
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobile-menu">

@@ -214,7 +214,97 @@
   }
 
 
+
 /* ── Embedded site header/navigation safety styles ── */
+.topbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 48px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.topbar a,
+.mainnav a { color: var(--ink); text-decoration: none; }
+.cv-btn,
+.email-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-60);
+}
+.cv-btn svg,
+.email-link svg,
+.nav-cta svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  display: block;
+}
+.mainnav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 48px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--serif);
+  font-size: 21px;
+  line-height: 1;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+.logo-div {
+  width: 1px;
+  height: 18px;
+  background: var(--ink-30);
+  display: inline-block;
+}
+.mainnav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex: 1;
+}
+.mainnav-links a {
+  font-size: 13px;
+  color: var(--ink-60);
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.mainnav-links a:hover,
+.mainnav-links a.active { color: var(--ink); }
+.mainnav > .nav-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink) !important;
+  background: var(--ink-10);
+  padding: 8px 18px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .topbar { padding: 14px 24px 0; justify-content: space-between; }
+  .email-link { font-size: 9px; letter-spacing: 0.04em; }
+  .mainnav { padding: 22px 24px 28px; flex-wrap: wrap; }
+  .mainnav-links { order: 3; width: 100%; overflow-x: auto; justify-content: flex-start; gap: 18px; padding-bottom: 4px; }
+}
+
 
 </style>
   <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">

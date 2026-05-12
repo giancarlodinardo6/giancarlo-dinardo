@@ -6,7 +6,7 @@
 <title>The Research Stack — Giancarlo Di Nardo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
   <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
   <style>
@@ -37,7 +37,7 @@
     --serif: 'Instrument Serif', Georgia, serif;
     --display: 'Instrument Serif', Georgia, serif;
     --sans: 'DM Sans', system-ui, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   }
 
   html { scroll-behavior: smooth; }
@@ -143,7 +143,7 @@
     flex: 1;
   }
   .mainnav-links a {
-    font-family: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+    font-family: var(--serif);
     font-size: 15px;
     color: var(--muted);
     font-weight: 500;

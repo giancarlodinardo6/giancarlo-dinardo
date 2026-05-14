@@ -184,6 +184,22 @@
   }
 
 
+
+  /* Layers 01/02/03 sit on dark .proof-section background - needs light pill styling */
+  .lifecycle-entry-card:not(.input-layer) .lec-kicker { color: rgba(255,255,255,0.4); }
+  .lifecycle-entry-card:not(.input-layer) .lec-title { color: rgba(255,255,255,0.88); }
+  .lifecycle-entry-card:not(.input-layer) .lec-desc { color: rgba(255,255,255,0.48); }
+  .lifecycle-entry-card:not(.input-layer) .lec-cta {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.88);
+  }
+  .lifecycle-entry-card:not(.input-layer):hover .lec-cta {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: #fff;
+  }
+
 /* ── Embedded site header/navigation safety styles ── */
 
 </style>

@@ -172,7 +172,7 @@
   letter-spacing: -0.01em;
 }
 .artifact-callout-desc {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13.5px;
   color: rgba(241,236,226,0.55);
   line-height: 1.6;
@@ -237,7 +237,7 @@
   margin-bottom: 3px;
 }
 .artifact-hub-text {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13.5px;
   color: rgba(28,25,22,0.65);
   line-height: 1.4;
@@ -365,17 +365,41 @@
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
 <script>
 (function(){
   var path = window.location.pathname;
-  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1) link.classList.add('active');
   });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
 })();
 </script>
 <section class="hero">
@@ -559,7 +583,7 @@
   <div class="creative-card">
     <div style="margin-bottom:14px; border-radius:10px; overflow:hidden; background: #D8EDEA; border-left: 3px solid #5B9E9E; padding: 24px 20px; display:flex; flex-direction:column; gap:12px;">
       <div style="font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#5B9E9E;">Key insight</div>
-      <p style="font-family: var(--serif); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Don't drop a format entirely before checking if a single market is propping up the average.</p>
+      <p style="font-family: var(--sans); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Don't drop a format entirely before checking if a single market is propping up the average.</p>
       <div style="font-size:12px; color:var(--ink-60); line-height:1.6; margin-top:4px;">The Rhode Island banner had a 57% close rate across four sales — an outlier that would have been lost if the format was cut based on aggregate performance.</div>
     </div>
     <span class="creative-card-tag learning">Learning</span>
@@ -572,7 +596,7 @@
   <div class="creative-card">
     <div style="margin-bottom:14px; border-radius:10px; overflow:hidden; background: #D8EDEA; border-left: 3px solid #5B9E9E; padding: 24px 20px; display:flex; flex-direction:column; gap:12px;">
       <div style="font-size:10px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#5B9E9E;">Key insight</div>
-      <p style="font-family: var(--serif); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Copy written for cold audiences kills warm audience conversions — even when the creative itself is strong.</p>
+      <p style="font-family: var(--sans); font-size:16px; font-style:italic; color:var(--ink); line-height:1.55; margin:0;">Copy written for cold audiences kills warm audience conversions — even when the creative itself is strong.</p>
       <div style="font-size:12px; color:var(--ink-60); line-height:1.6; margin-top:4px;">Location callout copy that works in prospecting signals the wrong intent in retargeting. The same image with urgency and scarcity copy is a different ad for a different job.</div>
     </div>
     <span class="creative-card-tag tested">Tested</span>

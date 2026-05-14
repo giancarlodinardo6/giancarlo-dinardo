@@ -74,7 +74,7 @@
 }
 .brief-title em { font-style: italic; color: var(--muted); }
 .brief-desc {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 16px;
   color: var(--ink-2);
   line-height: 1.65;
@@ -107,7 +107,7 @@
   white-space: nowrap;
 }
 .brief-meta-v {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13px;
   color: var(--ink);
   text-align: right;
@@ -146,7 +146,7 @@
 }
 .brief-section-title em { font-style: italic; color: var(--muted); }
 .brief-prose {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 15.5px;
   color: var(--ink-2);
   line-height: 1.7;
@@ -233,7 +233,7 @@
   margin-bottom: 8px;
 }
 .control-part-name {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13px;
   font-weight: 500;
   color: rgba(241,236,226,0.88);
@@ -241,7 +241,7 @@
   line-height: 1.35;
 }
 .control-part-desc {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 12.5px;
   color: rgba(241,236,226,0.48);
   line-height: 1.5;
@@ -338,7 +338,7 @@
   margin-bottom: 3px;
 }
 .variant-field-v {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13px;
   color: var(--ink-2);
   line-height: 1.55;
@@ -372,7 +372,7 @@
   margin-bottom: 6px;
 }
 .isolation-text-v {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 15px;
   color: var(--ink-2);
   line-height: 1.65;
@@ -458,7 +458,7 @@
   margin-bottom: 6px;
 }
 .brief-field-content {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 14px;
   color: var(--ink-2);
   line-height: 1.6;
@@ -522,7 +522,7 @@
   background: var(--bg-2);
 }
 .region-table td {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13px;
   color: var(--ink-2);
   padding: 10px 12px;
@@ -585,7 +585,7 @@
   margin-bottom: 8px;
 }
 .prod-note-v {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 14px;
   color: var(--ink-2);
   line-height: 1.6;
@@ -640,20 +640,43 @@
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
 <script>
 (function(){
   var path = window.location.pathname;
-  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1) link.classList.add('active');
   });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
 })();
 </script>
-
 <div class="brief-wrap page">
 
   <!-- BREADCRUMB -->

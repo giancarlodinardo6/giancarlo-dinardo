@@ -20,19 +20,19 @@
 .artifact-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
 .artifact-title { font-family: var(--display); font-size: clamp(32px, 4vw, 52px); font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 16px; }
 .artifact-title em { font-style: italic; color: var(--muted); }
-.artifact-desc { font-family: var(--serif); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.artifact-desc { font-family: var(--sans); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
 .artifact-meta-card { background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; min-width: 210px; }
 .artifact-meta-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 18px; border-bottom: 1px solid var(--line); }
 .artifact-meta-row:last-child { border-bottom: none; }
 .artifact-meta-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.artifact-meta-v { font-family: var(--serif); font-size: 13px; color: var(--ink); text-align: right; }
+.artifact-meta-v { font-family: var(--sans); font-size: 13px; color: var(--ink); text-align: right; }
 
 .a-section { margin-bottom: 56px; }
 .a-section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
 .a-section-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--line-2); }
 .a-section-title { font-family: var(--display); font-size: clamp(24px, 3vw, 36px); font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px; }
 .a-section-title em { font-style: italic; color: var(--muted); }
-.a-prose { font-family: var(--serif); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
+.a-prose { font-family: var(--sans); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
 
 /* ── CONTROL CARD ───────────────────────────────────────────────── */
 .control-card { background: var(--tile-black); color: #F1ECE2; border-radius: 14px; padding: 32px 36px; margin-bottom: 24px; position: relative; overflow: hidden; }
@@ -40,7 +40,7 @@
 .control-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(241,236,226,0.08); border: 1px solid rgba(241,236,226,0.14); border-radius: 999px; padding: 4px 12px; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(241,236,226,0.5); margin-bottom: 22px; }
 .control-badge-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rust); }
 .control-hook { font-family: var(--display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 400; line-height: 1.2; color: rgba(241,236,226,0.5); font-style: italic; margin-bottom: 12px; text-decoration: line-through; }
-.control-problem { font-family: var(--serif); font-size: 15px; color: rgba(241,236,226,0.72); line-height: 1.65; max-width: 580px; }
+.control-problem { font-family: var(--sans); font-size: 15px; color: rgba(241,236,226,0.72); line-height: 1.65; max-width: 580px; }
 
 /* ── SEQUENCE BLOCKS ────────────────────────────────────────────── */
 .sequence-wrap { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 24px; }
@@ -50,8 +50,8 @@
 .sequence-num { background: var(--bg-2); border-right: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-style: italic; font-size: 32px; color: var(--line-2); }
 .sequence-body { padding: 20px 24px; }
 .sequence-phase { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.sequence-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
-.sequence-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.sequence-title { font-family: var(--sans); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.sequence-desc { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
 .sequence-note { padding: 20px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
 .sequence-note-k { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .sequence-note-v { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.5; font-style: italic; }
@@ -70,7 +70,7 @@
 .brief-fields.c3 { grid-template-columns: 1fr 1fr 1fr; }
 .brief-field { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
 .brief-field-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.brief-field-content { font-family: var(--serif); font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+.brief-field-content { font-family: var(--sans); font-size: 14px; color: var(--ink-2); line-height: 1.6; }
 .brief-field-content.highlight { color: var(--ink); font-weight: 500; }
 
 /* Script block options */
@@ -80,7 +80,7 @@
 .script-block-content { padding: 12px 16px; }
 .script-block-phase { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
 .script-block-text { font-family: var(--display); font-size: 14px; font-style: italic; color: var(--ink); line-height: 1.4; margin-bottom: 4px; }
-.script-block-note { font-family: var(--serif); font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.script-block-note { font-family: var(--sans); font-size: 12px; color: var(--ink-2); line-height: 1.45; }
 
 /* ── VARIANT SUMMARY ─────────────────────────────────────────────── */
 .variant-row-grid { display: flex; flex-direction: column; gap: 10px; margin-bottom: 48px; }
@@ -89,7 +89,7 @@
 .vrow-cell { padding: 14px 18px; border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; }
 .vrow-cell:last-child { border-right: none; }
 .vrow-k { font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.vrow-v { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
+.vrow-v { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); line-height: 1.45; }
 .vrow-v.hook { font-family: var(--display); font-style: italic; font-size: 14px; color: var(--ink); }
 .vstatus { display: inline-block; padding: 3px 9px; border-radius: 999px; font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.07em; text-transform: uppercase; }
 .vstatus.winner { background: rgba(91,158,158,0.12); color: #2a6a6a; border: 1px solid rgba(91,158,158,0.3); }
@@ -133,20 +133,43 @@
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
 <script>
 (function(){
   var path = window.location.pathname;
-  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1) link.classList.add('active');
   });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
 })();
 </script>
-
 <div class="artifact-wrap page">
 
   <nav class="breadcrumb">

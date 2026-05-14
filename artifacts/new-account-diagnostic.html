@@ -37,7 +37,7 @@
   font-weight: 400; line-height: 1.05; letter-spacing: -0.015em; color: var(--ink); margin: 0 0 16px;
 }
 .artifact-title em { font-style: italic; color: var(--muted); }
-.artifact-desc { font-family: var(--serif); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
+.artifact-desc { font-family: var(--sans); font-size: 16px; color: var(--ink-2); line-height: 1.65; max-width: 560px; }
 .artifact-meta-card {
   background: rgba(255,255,255,0.6); border: 1px solid var(--line);
   border-radius: 12px; overflow: hidden; min-width: 200px;
@@ -48,7 +48,7 @@
 }
 .artifact-meta-row:last-child { border-bottom: none; }
 .artifact-meta-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
-.artifact-meta-v { font-family: var(--serif); font-size: 13px; color: var(--ink); text-align: right; }
+.artifact-meta-v { font-family: var(--sans); font-size: 13px; color: var(--ink); text-align: right; }
 
 .a-section { margin-bottom: 56px; }
 .a-section-label {
@@ -62,7 +62,7 @@
   font-weight: 400; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0 0 12px;
 }
 .a-section-title em { font-style: italic; color: var(--muted); }
-.a-prose { font-family: var(--serif); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
+.a-prose { font-family: var(--sans); font-size: 15.5px; color: var(--ink-2); line-height: 1.7; max-width: 640px; margin-bottom: 28px; }
 
 /* ── AUDIT LAYERS ───────────────────────────────────────────────── */
 .audit-layers { display: flex; flex-direction: column; gap: 0; margin-bottom: 48px; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
@@ -79,15 +79,15 @@
 }
 .audit-layer-body { padding: 22px 24px; }
 .audit-layer-k { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.audit-layer-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
-.audit-layer-desc { font-family: var(--serif); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+.audit-layer-title { font-family: var(--sans); font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.3; }
+.audit-layer-desc { font-family: var(--sans); font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
 .audit-layer-checks { padding: 22px 24px; border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; justify-content: center; }
 .audit-check { display: flex; gap: 10px; align-items: flex-start; }
 .audit-check-box {
   width: 16px; height: 16px; border: 1.5px solid var(--line-2); border-radius: 3px;
   flex-shrink: 0; margin-top: 1px; background: rgba(255,255,255,0.5);
 }
-.audit-check-text { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.audit-check-text { font-family: var(--sans); font-size: 13px; color: var(--ink-2); line-height: 1.5; }
 
 /* ── FINDINGS TABLE ─────────────────────────────────────────────── */
 .findings-wrap { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 48px; }
@@ -100,7 +100,7 @@
   background: var(--bg);
 }
 .findings-table td {
-  font-family: var(--serif); font-size: 13.5px; color: var(--ink-2);
+  font-family: var(--sans); font-size: 13.5px; color: var(--ink-2);
   padding: 14px 20px; border-bottom: 1px solid var(--line); vertical-align: top; line-height: 1.55;
 }
 .findings-table tr:last-child td { border-bottom: none; }
@@ -114,18 +114,18 @@
 .plan-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .plan-card-top { padding: 18px 20px; border-bottom: 1px solid var(--line); background: var(--bg-2); }
 .plan-card-phase { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-.plan-card-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); }
+.plan-card-title { font-family: var(--sans); font-size: 16px; font-weight: 500; color: var(--ink); }
 .plan-card-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
 .plan-item { display: flex; gap: 10px; align-items: flex-start; }
 .plan-item-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--muted); margin-top: 8px; flex-shrink: 0; }
-.plan-item-text { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+.plan-item-text { font-family: var(--sans); font-size: 13px; color: var(--ink-2); line-height: 1.55; }
 
 /* ── OPENING QUESTIONS ──────────────────────────────────────────── */
 .questions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 48px; }
 .question-card { background: rgba(255,255,255,0.5); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
 .question-num { font-family: var(--display); font-style: italic; font-size: 32px; color: var(--line-2); line-height: 1; margin-bottom: 8px; }
-.question-text { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
-.question-why { font-family: var(--serif); font-size: 13px; color: var(--ink-2); line-height: 1.6; }
+.question-text { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 6px; line-height: 1.35; }
+.question-why { font-family: var(--sans); font-size: 13px; color: var(--ink-2); line-height: 1.6; }
 
 .artifact-footer-nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 40px; border-top: 1px solid var(--line); margin-top: 56px; }
 
@@ -174,20 +174,43 @@
     <a href="../about/index.html" data-section="about">About Me</a>
   </div>
   <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Strategy Maps</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
 <script>
 (function(){
   var path = window.location.pathname;
-  var links = document.querySelectorAll('.mainnav-links a[data-section]');
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
   links.forEach(function(link){
     var section = link.getAttribute('data-section');
-    if(path.indexOf(section) !== -1){
-      link.classList.add('active');
-    }
+    if(path.indexOf(section) !== -1) link.classList.add('active');
   });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
 })();
 </script>
-
 <div class="artifact-wrap page">
 
   <nav class="breadcrumb">

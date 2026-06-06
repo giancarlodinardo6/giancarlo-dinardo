@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flooring Contractor: Case Study | Giancarlo</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh;}
+    nav{max-width:1200px;margin:0 auto;padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:var(--serif);font-size:18px;color:var(--ink);text-decoration:none;}
+    .nav-back{font-size:13px;color:var(--ink-60);text-decoration:none;}
+    .nav-back:hover{color:var(--ink);}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:620px;}
+    .prose+.prose{margin-top:20px;}
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:70vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(38px,4.8vw,58px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:28px;}
+    .hero h1 em{font-style:italic;color: #5B9E9E;}
+    .hero-desc{font-size:17px;color:var(--ink-60);line-height:1.7;font-weight:300;max-width:480px;margin-bottom:40px;}
+    .hero-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px 32px;padding-top:32px;border-top:1px solid var(--ink-10);}
+    .hero-meta-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);font-weight:400;}
+    .hero-visual{background:var(--ink);border-radius:20px;padding:40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-start;gap:32px;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.25) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.2) 0%,transparent 70%);}
+    .hero-visual-label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:36px;position:relative;z-index:1;}
+    .hero-stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;position:relative;z-index:1;width:100%;flex:1;}
+    .hero-stat{padding:0 24px 0 0;border-right:1px solid rgba(255,255,255,0.08);}
+    .hero-stat:last-child{padding-right:0;border-right:none;padding-left:24px;}
+    .hero-stat:not(:first-child):not(:last-child){padding:0 24px;}
+    .hero-stat-num{font-family:var(--serif);font-size:48px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .hero-stat-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.6);line-height:1.5;}
+    .hero-visual-footer{font-size:14px;color:rgba(255,255,255,0.55);font-style:italic;position:relative;z-index:1;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+    .context-section{padding:120px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .context-callout{background:var(--rust-light);border-radius:16px;padding:36px;border-left:3px solid var(--rust);}
+    .context-callout-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:16px;font-weight:500;}
+    .context-callout p{font-size:17px;font-family:var(--serif);line-height:1.5;color:var(--ink);font-style:italic;}
+    .context-callout-sub{margin-top:16px;font-size:14px;color:var(--ink-60);font-family:var(--sans);font-style:normal;line-height:1.65;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .process-steps{display:flex;flex-direction:column;gap:24px;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:40px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+    .creative-card{background:white;border-radius:14px;padding:28px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:80px;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.6);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.2);}
+    .results-inner h2{color:white;margin-bottom:16px;font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.5);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;margin-top:40px;}
+    .result-stat{background:rgba(255,255,255,0.04);padding:32px 28px;}
+    .result-num{font-family:var(--serif);font-size:40px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-label{font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.65);margin-bottom:8px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.5;font-weight:300;}
+    .learned-section{padding:48px 48px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-body{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:center;}
+    .learned-items{display:flex;flex-direction:column;gap:32px;}
+    .learned-art{position:relative;height:420px;}
+    .cc-media-wrap.cc-portrait{overflow:hidden;}
+    .cc-media-wrap.cc-portrait video{width:100%;height:auto;display:block;}
+    @media(max-width:900px){.learned-body{grid-template-columns:1fr;}.learned-art{display:none;}}
+    .learned-item{display:flex;gap:24px;align-items:flex-start;}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:28px;padding-top:3px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+    .before-after{padding:40px 48px 32px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+    .ba-card{border-radius:20px;padding:40px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.15);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(91,158,158,0.15);}
+    .ba-label{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:28px;}
+    .before .ba-label{color:var(--rust);}
+    .after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:14px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;margin-top:9px;flex-shrink:0;}
+    .before .ba-dot{background:var(--rust);}
+    .after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+    .disclosure{max-width:1200px;margin:0 auto;padding:32px 48px 80px;font-size:12px;color:var(--ink-30);font-style:italic;line-height:1.6;border-top:1px solid var(--ink-10);}
+    .cta-wrap{max-width:1200px;margin:0 auto;padding:0 48px;}
+    .cta-section{background:var(--ink);margin:0 auto 80px;border-radius:24px;padding:80px 48px;text-align:center;max-width:1104px;}
+    .cta-h2{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:white;line-height:1.2;letter-spacing:-0.02em;margin-bottom:20px;}
+    .cta-h2 em{font-style:italic;color:var(--teal);opacity:0.9;}
+    .cta-desc{font-size:16px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:40px;font-weight:300;}
+    .cta-btn{display:inline-block;background:white;color:var(--ink);font-size:14px;font-weight:500;padding:14px 32px;border-radius:40px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .confirm{display:inline-block;font-size:10px;font-weight:500;padding:2px 7px;border-radius:20px;background:#F5ECD8;color:#B87A1A;letter-spacing:0.06em;text-transform:uppercase;margin-right:6px;vertical-align:middle;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+    @media(max-width:900px){
+      .hero,.context-section,.approach-section,.before-after{grid-template-columns:1fr;}
+      .creative-grid{grid-template-columns:1fr;}
+      .results-grid{grid-template-columns:1fr 1fr;}
+      .hero{padding:60px 24px 0;min-height:auto;}
+      nav,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.disclosure{padding-left:24px;padding-right:24px;}
+      .results-section{padding-left:24px;padding-right:24px;}
+      .cta-section{margin:40px 24px;padding:60px 32px;}
+    }
+  </style>
+<link href="../styles.css" rel="stylesheet"/>
+<style>
+
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+      width: 100%;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+    .cc-media-wrap video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    </style>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
+  <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
+</head>
+<body>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Creative Blueprints</a>
+    <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
+  </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Creative Blueprints</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
+</div>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1) link.classList.add('active');
+  });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
+})();
+</script>
+<section class="hero">
+<div>
+<div class="hero-label">Case Studies / Flooring Contractor</div>
+<h1>It wasn't a creative problem. It just <em>looked like one.</em></h1>
+<p class="hero-desc">A regional flooring contractor had a month of solid creative and a CPL that kept climbing. The issue was not the ads. Testing and scaling were sharing the same campaign and the algorithm had already decided who it liked.</p>
+<div class="hero-meta">
+<div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Flooring Services</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value">$25k → $85k over 6 months</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Role</div><div class="hero-meta-value">Lead Media Buyer</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-visual-label">Five-month performance delta from engagement start</div>
+<div class="hero-stat-grid">
+<div class="hero-stat"><div class="hero-stat-num">44%</div><div class="hero-stat-label">CPL reduction</div></div>
+<div class="hero-stat"><div class="hero-stat-num" style="font-size:clamp(28px,3.2vw,38px);"><span style="color:rgba(255,255,255,0.3);">22%</span> → <span style="color:#5B9E9E;">37%</span></div><div class="hero-stat-label">Set rate improvement within 5 months</div></div>
+<div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Hook types tested to isolate winner</div></div>
+</div>
+<div class="hero-visual-footer">Structure separated first. Creative iteration followed.</div>
+</div>
+</section>
+<section class="context-section">
+<div>
+<div class="section-label">The Situation</div>
+<h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">The account looked like it had a creative problem. It had a structure problem dressed up as one.</h2>
+<p class="prose">When I took on this account it had been in paid ads for three months. A regional flooring contractor operating across three states in the South — Texas, Florida, and Oklahoma — offering multiple coating systems for garages, driveways, patios, and interior spaces. The previous setup had one campaign handling everything: broad cold traffic, retargeting, and testing all sitting together under a CBO. The client had been consistently briefing and delivering new creative assets from their side, four to five concepts a month, all going into that same campaign alongside whatever was already running. What I saw was what I inherited.</p>
+<p class="prose">CPL was sitting at $65 and had drifted up steadily over the prior six weeks. The natural read was that the creative had fatigued. But when I looked at the spend distribution, one ad from the previous month was absorbing roughly 65% of the daily budget. New concepts were each getting $30 to $50 in spend before the algorithm moved on.</p>
+<p class="prose">Nothing new had a fair chance. The algorithm had already settled on a comfortable winner and had no reason to go looking for something else. More creative was not the fix. Separate infrastructure was.</p>
+</div>
+<div>
+<div class="context-callout">
+<div class="context-callout-label">Core constraint</div>
+<p>"Testing and scaling inside the same campaign means your winners always win the budget before the tests have run."</p>
+<div class="context-callout-sub">In this vertical, set rate is the signal that matters most. A CPL that looks acceptable can mask a lead quality problem that only surfaces when the sales team starts making calls. The structural fix had to come first before any creative conclusions could be trusted.</div>
+</div>
+<div style="margin-top:28px;background:var(--ink);border-radius:16px;padding:28px 32px;position:relative;overflow:hidden;">
+<div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.25) 0%,transparent 70%);"></div>
+<div style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px;">Budget allocation: inherited state</div>
+<div style="display:flex;flex-direction:column;gap:10px;position:relative;z-index:1;">
+<div>
+<div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+<span style="font-size:12px;color:rgba(255,255,255,0.6);">Dominant ad (1 ad)</span>
+<span style="font-size:12px;color:rgba(255,255,255,0.85);font-weight:500;">65%</span>
+</div>
+<div style="height:6px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;">
+<div style="width:65%;height:100%;background:#B85C38;border-radius:4px;"></div>
+</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+<span style="font-size:12px;color:rgba(255,255,255,0.6);">New concepts (4–5 ads)</span>
+<span style="font-size:12px;color:rgba(255,255,255,0.85);font-weight:500;">35%</span>
+</div>
+<div style="height:6px;background:rgba(255,255,255,0.08);border-radius:4px;overflow:hidden;">
+<div style="width:35%;height:100%;background:rgba(255,255,255,0.3);border-radius:4px;"></div>
+</div>
+</div>
+</div>
+<div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;color:rgba(255,255,255,0.4);font-style:italic;">Each new concept averaging $30–$50 in spend before the algorithm moved on.</div>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<section class="approach-section">
+<div>
+<div class="section-label">The Approach</div>
+<h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:24px;">Separate the infrastructure. Then read the creative data.</h2>
+<p class="prose">The account was generating leads, but the signal behind them was unclear. It was not obvious which buyer the system was finding or why.</p>
+<div style="margin-top:32px;display:flex;flex-direction:column;gap:12px;">
+<div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sage-light);border-radius:12px;border-left:3px solid var(--sage);">
+<div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--ink);opacity:0.3;line-height:1;">01</div>
+<div style="font-size:13px;color:var(--ink-60);line-height:1.5;">Split testing from scaling: ABO for new concepts, CBO for proven winners only</div>
+</div>
+<div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sage-light);border-radius:12px;border-left:3px solid var(--sage);">
+<div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--ink);opacity:0.3;line-height:1;">02</div>
+<div style="font-size:13px;color:var(--ink-60);line-height:1.5;">Audit every running ad at the set rate level, not just CPL</div>
+</div>
+<div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sage-light);border-radius:12px;border-left:3px solid var(--sage);">
+<div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--ink);opacity:0.3;line-height:1;">03</div>
+<div style="font-size:13px;color:var(--ink-60);line-height:1.5;">Hook type as a deliberate buyer-selection test, not a copy variable</div>
+</div>
+<div style="display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sage-light);border-radius:12px;border-left:3px solid var(--sage);">
+<div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--ink);opacity:0.3;line-height:1;">04</div>
+<div style="font-size:13px;color:var(--ink-60);line-height:1.5;">Geo concentration backed by zip-level data, not geographic ambition</div>
+</div>
+</div>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="process-step-num">01</div>
+<div>
+<div class="process-step-name">Separate testing from scaling before judging creative</div>
+<div class="process-step-desc">The account was producing leads, but the setup made the signal hard to trust. New concepts were competing against proven winners inside the same system, which meant the algorithm protected what already had history. I separated testing from scaling first so future creative reads would mean something.</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">02</div>
+<div>
+<div class="process-step-name">Audit what was actually running</div>
+<div class="process-step-desc">Pulled all-time performance by ad and evaluated at the set rate level, not just CPL. Two ads that looked acceptable on cost per lead had set rates below 15%. Both came off. Budget concentration shifted to the two ads producing qualified leads at a defensible cost.</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">03</div>
+<div>
+<div class="process-step-name">Hook type and format as a buyer selection test</div>
+<div class="process-step-desc">Once the structure was clean and producing readable data, ran a deliberate creative comparison across hook types and formats. Problem-aware angles, process-led videos, benefit checklists, aspirational product showcases, and geo-qualified copy all went through the ABO testing campaign. The goal was not just performance ranking — it was understanding which buyer each angle was finding and how close to the decision they were when the algorithm reached them.</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">04</div>
+<div>
+<div class="process-step-name">Geo concentration for quality</div>
+<div class="process-step-desc">The account was running broad across Texas, Florida, and Oklahoma. Pulled zip-level CPL and set rate data. One state was generating volume but the leads were not converting at the sales level. Reallocated that budget into the two geos producing installs and added location callouts in the headline copy.</div>
+</div>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<section class="creative-section">
+<div class="section-label">Creative</div>
+<h2 style="font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:16px;">Six angles. Two clear winners. One pattern that held across every format tested.</h2>
+<p class="prose">The creative test ran inside the ABO testing campaign with equal daily budget per ad set and the same landing page across all concepts. What came back was not just a performance ranking. It was a map of which angle found which buyer — and how far along the decision that buyer actually was when the algorithm reached them.</p>
+<div class="creative-grid">
+<div class="creative-card">
+<div class="cc-media-wrap">
+  <img src="/assets/images/epoxy-ad1.jpg" alt="Before and after garage floor transformation" loading="lazy">
+</div>
+<div class="creative-card-tag winner">Winner</div>
+<div class="creative-card-title">Problem-aware static + social proof body</div>
+<div class="creative-card-desc">Opened on a side-by-side transformation — stained concrete on the left, clean coated floor on the right. The hook was geo-qualified and direct: "sick and tired of your old concrete floors?" The body leaned into local customer reviews rather than feature claims. Viewers who recognized the problem in the visual were already close to the decision. The downstream numbers confirmed it.</div>
+<div class="creative-card-metric"><strong>Highest set rate</strong> of all formats tested. Promoted to the CBO scaling campaign once it had enough history behind it.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/epoxy-ad3.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag winner">Winner</div>
+<div class="creative-card-title">Process video — installation walkthrough</div>
+<div class="creative-card-desc">Dropped straight into the installation. No hook line, no problem framing — just a worker pouring coating onto bare concrete, the flake broadcast, the leveling, the finished floor. "1-Day Installation" landed mid-video as the key objection answer. Workers visible in the final frame kept it grounded. The process transparency did the trust work that copy usually has to carry.</div>
+<div class="creative-card-metric"><strong>Strong set rate</strong> alongside the static winner. Best cost per qualified lead among the video formats tested.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/epoxy-ad2.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag learning">Learning</div>
+<div class="creative-card-title">Benefit-led video + scarcity hook</div>
+<div class="creative-card-desc">Led with seasonal urgency — "this is the perfect time" — then moved through a structured benefit sequence: speed, durability, warranty. The product differentiation angle (positioned against epoxy as the inferior alternative) generated strong engagement. But the buyer it found was mid-funnel at best — comparing options, not ready to book. The lifetime warranty close drove clicks that did not convert at the same rate downstream.</div>
+<div class="creative-card-metric"><strong>High CTR,</strong> lower set rate. Reached an earlier buyer stage than the problem-aware formats.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/epoxy-ad5.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag learning">Learning</div>
+<div class="creative-card-title">Visual transformation video — soft sell</div>
+<div class="creative-card-desc">The most aesthetic of the formats tested. Camera moved across freshly coated driveways and walkways, landscaping in frame, minimal text. No urgency, no problem framing, no objection handling — purely aspirational. Generated engagement from people who liked what they saw. The leads it produced were the earliest in their thinking and set rate reflected that gap clearly.</div>
+<div class="creative-card-metric"><strong>Lowest set rate</strong> of all formats. Useful for retargeting warm audiences, wrong tool for cold traffic qualification.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap">
+  <img src="/assets/images/epoxy-ad6.jpg" alt="Premium metallic epoxy flooring portfolio across multiple spaces" loading="lazy">
+</div>
+<div class="creative-card-tag tested">Tested</div>
+<div class="creative-card-title">Portfolio showcase — premium finishes</div>
+<div class="creative-card-desc">Four-panel grid of completed installs across different spaces: living room, garage, entryway, feature room. Metallic and artistic finishes front and center. Geo-qualified in the copy ("Hey Oklahoma!") with a luxury positioning angle. Strong for showcasing range. But the viewer it attracted was browsing, not problem-aware — and that distance from the decision showed up in the quality of leads it produced.</div>
+<div class="creative-card-metric"><strong>Mid-table</strong> on set rate. Strong engagement from people not yet close to booking.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap">
+  <img src="/assets/images/epoxy-ad4.jpg" alt="Finished chip flooring garage with color selector" loading="lazy">
+</div>
+<div class="creative-card-tag tested">Tested</div>
+<div class="creative-card-title">Product showcase — color variety static</div>
+<div class="creative-card-desc">Clean finished garage with a color chip selector strip across the bottom. No before state, no problem framing — straight to the aspirational result with variety implied. Attracted people at the earliest stage of consideration: curious about options, not yet convinced they needed to act. Useful context for a retargeting sequence but not a cold traffic qualifying tool.</div>
+<div class="creative-card-metric"><strong>Lowest qualification rate</strong> on cold traffic. Not a standalone cold campaign asset.</div>
+</div>
+</div>
+</section>
+<section class="results-section">
+<div class="results-inner">
+<div class="section-label">Results</div>
+<h2>The structure unlocked the data. The data guided the creative.</h2>
+<p class="prose">The structural changes produced cleaner data within the first month. The creative work that followed was built on a foundation where the numbers meant something. Five months in from the start of the engagement — the account had been live for about eight months total by this point, but the delta below reflects the period of active management.</p>
+<div class="results-grid">
+<div class="result-stat">
+<div class="result-num">$36</div>
+<div class="result-label">Cost per lead</div>
+<div class="result-context">Down from $65 at the start</div>
+</div>
+<div class="result-stat">
+<div class="result-num">44%</div>
+<div class="result-label">CPL reduction</div>
+<div class="result-context">Structural cleanup drove most of this before any creative changes</div>
+</div>
+<div class="result-stat">
+<div class="result-num">37%</div>
+<div class="result-label">Set rate</div>
+<div class="result-context">Up from 22% account-wide at baseline, up from 15% on the worst ads</div>
+</div>
+<div class="result-stat">
+<div class="result-num">2</div>
+<div class="result-label">States (down from 3)</div>
+<div class="result-context">Budget concentrated into geos producing qualified installs</div>
+</div>
+</div>
+</div>
+</section>
+<section class="learned-section">
+<h2>What I took from <em>this one</em></h2>
+<div class="learned-body">
+<div class="learned-items">
+<div class="learned-item">
+<div class="learned-num">01</div>
+<div class="learned-text"><strong>Structural problems produce creative symptoms.</strong> The CPL drift looked like fatigue. It was the algorithm protecting a comfortable winner while new creative starved. The fix was not a better brief. It was a campaign structure that gave new concepts room to generate signal without competing against a proven ad's head start.</div>
+</div>
+<div class="learned-item">
+<div class="learned-num">02</div>
+<div class="learned-text"><strong>Hook type tells you which buyer shows up, not just how many.</strong> The curiosity hook and the problem-aware hook had similar click-through rates. Their set rates were eight points apart. The hook is not just about stopping the scroll. It is selecting for a specific person at a specific stage of the decision. In lead gen, that distinction shows up downstream, not in the ad metrics.</div>
+</div>
+<div class="learned-item">
+<div class="learned-num">03</div>
+<div class="learned-text"><strong>Geographic concentration beats geographic ambition at moderate spend levels.</strong> Running three states at $85k a month sounds like scale, but split three ways each market was getting roughly $28k. That is not enough to build meaningful signal across a spread that wide when the geos have different competitive dynamics. The more useful move was stepping back and reassessing with the client: which geos actually aligned with their growth priorities, and which ones were just generating noise? Concentrating spend in the two markets where installs were closing — with location callouts reinforcing geographic relevance in the creative — improved both CPL and lead quality without changing the total budget. The third state did not get abandoned. It got treated differently at a lower spend level until it could justify more.</div>
+</div>
+</div>
+<div class="learned-art">
+<svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <radialGradient id="lg1" cx="30%" cy="25%" r="60%">
+      <stop offset="0%" stop-color="#5B9E9E" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#5B9E9E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg2" cx="75%" cy="70%" r="55%">
+      <stop offset="0%" stop-color="#B85C38" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#B85C38" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lg3" cx="60%" cy="20%" r="40%">
+      <stop offset="0%" stop-color="#B87A1A" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#B87A1A" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="2.5"/>
+    </filter>
+  </defs>
+  <!-- Background washes -->
+  <rect width="380" height="420" fill="url(#lg1)"/>
+  <rect width="380" height="420" fill="url(#lg2)"/>
+  <rect width="380" height="420" fill="url(#lg3)"/>
+  <!-- Flowing path lines — teal -->
+  <path d="M 20 340 C 80 280 140 320 200 260 S 300 160 360 120" fill="none" stroke="#5B9E9E" stroke-width="1.2" stroke-opacity="0.35" filter="url(#blur1)"/>
+  <path d="M 10 360 C 90 300 160 340 220 270 S 310 150 370 100" fill="none" stroke="#5B9E9E" stroke-width="0.7" stroke-opacity="0.2"/>
+  <path d="M 30 380 C 100 310 180 355 240 285 S 330 180 375 140" fill="none" stroke="#5B9E9E" stroke-width="0.5" stroke-opacity="0.15"/>
+  <!-- Flowing path lines — rust -->
+  <path d="M 380 380 C 300 320 240 360 170 300 S 80 200 20 170" fill="none" stroke="#B85C38" stroke-width="1.0" stroke-opacity="0.25" filter="url(#blur1)"/>
+  <path d="M 380 400 C 310 335 245 375 175 315 S 75 215 10 190" fill="none" stroke="#B85C38" stroke-width="0.6" stroke-opacity="0.15"/>
+  <!-- Diagonal accent lines — amber -->
+  <line x1="60" y1="0" x2="380" y2="300" stroke="#B87A1A" stroke-width="0.5" stroke-opacity="0.12"/>
+  <line x1="0" y1="60" x2="340" y2="420" stroke="#B87A1A" stroke-width="0.4" stroke-opacity="0.08"/>
+  <!-- Scattered dots — teal -->
+  <circle cx="68" cy="110" r="2.5" fill="#5B9E9E" fill-opacity="0.4"/>
+  <circle cx="140" cy="72" r="1.8" fill="#5B9E9E" fill-opacity="0.3"/>
+  <circle cx="220" cy="140" r="3" fill="#5B9E9E" fill-opacity="0.25"/>
+  <circle cx="295" cy="88" r="1.5" fill="#5B9E9E" fill-opacity="0.35"/>
+  <circle cx="340" cy="200" r="2" fill="#5B9E9E" fill-opacity="0.2"/>
+  <!-- Scattered dots — rust -->
+  <circle cx="80" cy="290" r="2" fill="#B85C38" fill-opacity="0.3"/>
+  <circle cx="160" cy="340" r="3" fill="#B85C38" fill-opacity="0.2"/>
+  <circle cx="250" cy="310" r="1.8" fill="#B85C38" fill-opacity="0.25"/>
+  <circle cx="330" cy="370" r="2.5" fill="#B85C38" fill-opacity="0.2"/>
+  <!-- Small geometric markers — ink -->
+  <rect x="108" y="188" width="5" height="5" fill="none" stroke="#1C1C1A" stroke-width="0.8" stroke-opacity="0.15" transform="rotate(20 110 190)"/>
+  <rect x="258" y="238" width="5" height="5" fill="none" stroke="#1C1C1A" stroke-width="0.8" stroke-opacity="0.12" transform="rotate(45 260 240)"/>
+  <rect x="178" y="308" width="4" height="4" fill="none" stroke="#1C1C1A" stroke-width="0.7" stroke-opacity="0.10" transform="rotate(15 180 310)"/>
+  <!-- Horizontal rule accents -->
+  <line x1="40" y1="210" x2="120" y2="210" stroke="#1C1C1A" stroke-width="0.5" stroke-opacity="0.08"/>
+  <line x1="240" y1="170" x2="360" y2="170" stroke="#1C1C1A" stroke-width="0.5" stroke-opacity="0.06"/>
+  <!-- Large ghost circle — teal -->
+  <circle cx="190" cy="200" r="150" fill="none" stroke="#5B9E9E" stroke-width="0.8" stroke-opacity="0.08"/>
+  <circle cx="190" cy="200" r="110" fill="none" stroke="#5B9E9E" stroke-width="0.5" stroke-opacity="0.06"/>
+</svg>
+</div>
+</div>
+</section>
+<div class="before-after">
+<div class="ba-card before">
+<div class="ba-label">Before the work</div>
+<div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><div>Testing and scaling in one CBO with the algorithm deciding allocation before new ads had generated any meaningful signal</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>CPL at $65 with no systematic way to evaluate which ads were producing qualified leads versus raw volume</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Two ads with sub-15% set rates running because their cost per lead looked acceptable in isolation</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Budget spread across three states with no zip-level data showing where leads were actually converting to installs</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Hook type treated as a copy decision rather than a targeting and buyer-stage decision</div></div>
+</div>
+</div>
+<div class="ba-card after">
+<div class="ba-label">After the work</div>
+<div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><div>ABO testing campaign giving each concept equal budget for a minimum of five days before any verdict was drawn</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>CBO scaling campaign running confirmed winners only, with performance history worth trusting behind each one</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Set rate used alongside CPL for all creative decisions, evaluated at the same level as the sales team read the account</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Budget concentrated in two high-converting geos with location callouts reinforcing geographic relevance in the creative</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Hook type tested deliberately to understand which buyer each angle qualifies before any scaling decisions were made</div></div>
+</div>
+</div>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 48px 48px;display:flex;flex-direction:column;gap:12px;">
+<div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+<div style="font-size:18px;margin-top:2px;">→</div>
+<div>
+<div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">The structural fix came from asking the right diagnostic question first</div>
+<div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.65;">The Diagnosis playbook covers how to separate creative problems from structural ones before touching anything in an account. The question this case study starts with (creative problem or structure problem?) is documented there with the signals that point to each. <a href="../playbooks/diagnosis.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+</div>
+</div>
+<div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+<div style="font-size:18px;margin-top:2px;">→</div>
+<div>
+<div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">Why the hook type test was a targeting decision, not a copy decision</div>
+<div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.65;">The Hooks Are Targeting playbook covers how different hook types signal different buyer states to the algorithm and qualify different people. The eight-point set rate gap between the curiosity hook and the problem-aware hook is exactly what that piece explains. <a href="../playbooks/hooks-are-targeting.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a></div>
+</div>
+</div>
+<div style="background:#E4EDE0;border-radius:14px;padding:24px 28px;display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);">
+<div style="font-size:18px;margin-top:2px;">→</div>
+<div>
+<div style="font-size:15px;font-weight:500;color:#1C1C1A;margin-bottom:6px;">The ABO and CBO split is documented in the Creative Coverage playbook</div>
+<div style="font-size:14px;color:rgba(28,28,26,0.6);line-height:1.65;">The three-campaign model behind this fix, why CBO starves new creative in a mixed testing and scaling setup, and how to give each stage its own infrastructure so both actually work. <a href="../playbooks/creative-coverage.html" style="color:#5B9E9E;font-weight:500;text-decoration:none;">Read it →</a>
+</div>
+</div>
+</div>
+</div>
+<div class="divider"></div>
+<footer class="sitefoot">
+<span>© GIANCARLO DI NARDO</span>
+<a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.2" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="6"></circle><path d="M5 7h4M7 5l2 2-2 2"></path></svg>
+    ALL CASES
+  </a>
+</footer></body>
+</html>

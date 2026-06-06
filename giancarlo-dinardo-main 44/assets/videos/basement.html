@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Basement Renovation, Case Study | Giancarlo</title>
+<style>
+    :root{
+      --cream:#F5F2EC;--ink:#1C1C1A;--ink-60:rgba(28,28,26,0.6);--ink-30:rgba(28,28,26,0.3);
+      --ink-10:rgba(28,28,26,0.08);--ink-06:rgba(28,28,26,0.04);
+      --sage:#C8D5C0;--sage-light:#E4EDE0;--rust:#B85C38;--rust-light:#F0E4DC;
+      --teal:#5B9E9E;--teal-light:#D8EDEA;--amber:#B87A1A;--amber-light:#F5ECD8;
+      --serif:'Instrument Serif',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+    .section-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+    .section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--ink-30);}
+    .prose{font-size:16px;color:var(--ink-60);line-height:1.8;font-weight:300;max-width:600px;}
+    .prose+.prose{margin-top:18px;}
+
+    /* HERO */
+    .hero{padding:80px 48px 0;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;min-height:72vh;}
+    .hero-label{font-size:11px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-60);margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+    .hero-label::before{content:'';display:inline-block;width:24px;height:1px;background:var(--ink-30);}
+    .hero h1{font-family:var(--serif);font-size:clamp(36px,4.4vw,54px);line-height:1.1;font-weight:400;letter-spacing:-0.02em;color:var(--ink);margin-bottom:24px;}
+    .hero h1 em{font-style:italic;color:var(--teal);}
+    .hero-desc{font-size:16px;color:var(--ink-60);line-height:1.75;font-weight:300;max-width:480px;margin-bottom:36px;}
+    .hero-meta{display:flex;gap:32px;padding-top:28px;border-top:1px solid var(--ink-10);flex-wrap:wrap;}
+    .hero-meta-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;}
+    .hero-meta-value{font-size:14px;color:var(--ink-60);}
+
+    /* HERO VISUAL */
+    .hero-visual{background:var(--ink);border-radius:20px;padding:36px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:0;}
+    .hero-visual::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(91,158,158,0.22) 0%,transparent 70%);}
+    .hero-visual::after{content:'';position:absolute;bottom:-40px;left:30px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(184,92,56,0.18) 0%,transparent 70%);}
+    .hero-visual-label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:24px;position:relative;z-index:1;}
+    .hero-kpi-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border-radius:12px;overflow:hidden;position:relative;z-index:1;margin-bottom:1px;}
+    .hero-kpi{background:rgba(255,255,255,0.03);padding:20px 18px;}
+    .hero-kpi-num{font-family:var(--serif);font-size:36px;font-style:italic;color:white;line-height:1;margin-bottom:6px;}
+    .hero-kpi-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.5);line-height:1.4;}
+    .hero-kpi.accent .hero-kpi-num{color:var(--teal);}
+    .hero-kpi.span-full{grid-column:1/-1;}
+    .hero-visual-note{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.35);font-style:italic;position:relative;z-index:1;padding-top:14px;border-top:1px solid rgba(255,255,255,0.07);}
+
+    /* REFRAME BANNER */
+    .reframe-banner{background:var(--ink);margin:80px 48px 0;border-radius:20px;padding:48px 56px;max-width:1104px;margin-left:auto;margin-right:auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    .reframe-banner h2{font-family:var(--serif);font-size:clamp(26px,2.8vw,36px);font-weight:400;color:white;letter-spacing:-0.01em;line-height:1.2;}
+    .reframe-banner h2 em{font-style:italic;color:var(--teal);}
+    .reframe-banner p{font-size:15px;color:rgba(255,255,255,0.5);line-height:1.7;font-weight:300;}
+
+    /* SECTIONS */
+    .context-section{padding:100px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+    .approach-section{padding:80px 48px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+    .divider{max-width:1200px;margin:0 auto;padding:0 48px;height:1px;background:var(--ink-10);}
+
+    /* CALLOUT */
+    .callout{background:var(--rust-light);border-radius:16px;padding:32px;border-left:3px solid var(--rust);}
+    .callout-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--rust);margin-bottom:14px;font-weight:500;}
+    .callout p{font-size:16px;font-family:var(--serif);line-height:1.55;color:var(--ink);font-style:italic;}
+    .callout-sub{margin-top:14px;font-size:14px;color:var(--ink-60);font-style:normal;line-height:1.65;}
+
+    /* THE KEY PROOF BLOCK */
+    .proof-block{background:white;border-radius:16px;padding:28px;border:1px solid var(--ink-10);margin-top:24px;}
+    .proof-block-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber);margin-bottom:16px;font-weight:500;display:flex;align-items:center;gap:8px;}
+    .proof-block-label::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--amber);}
+    .proof-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--ink-10);border-radius:10px;overflow:hidden;margin-top:12px;}
+    .proof-cell{background:var(--cream);padding:14px 16px;}
+    .proof-cell-label{font-size:10px;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-30);margin-bottom:4px;}
+    .proof-cell-val{font-size:14px;font-weight:500;color:var(--ink);}
+    .proof-cell-val.bad{color:var(--rust);}
+    .proof-cell-val.good{color:var(--teal);}
+
+    /* PROCESS STEPS */
+    .process-steps{display:flex;flex-direction:column;gap:0;}
+    .process-step{display:flex;gap:20px;align-items:flex-start;padding:20px 0;border-bottom:1px solid var(--ink-10);}
+    .process-step:last-child{border-bottom:none;}
+    .process-step-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:36px;padding-top:2px;}
+    .process-step-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px;}
+    .process-step-desc{font-size:14px;color:var(--ink-60);line-height:1.65;}
+
+    /* INTENT CHART */
+    .intent-visual{background:white;border-radius:16px;padding:28px;border:1px solid var(--ink-10);margin-top:0;}
+    .intent-visual-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:20px;font-weight:500;}
+
+    /* CREATIVE GRID */
+    .creative-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+    .creative-card{background:white;border-radius:14px;padding:26px;border:1px solid var(--ink-10);}
+    .creative-card-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:0.1em;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:12px;}
+    .creative-card-tag.winner{background:var(--teal-light);color:var(--teal);}
+    .creative-card-tag.tested{background:var(--ink-10);color:var(--ink-30);}
+    .creative-card-tag.learning{background:var(--amber-light);color:var(--amber);}
+    .creative-card-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;}
+    .creative-card-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .creative-card-metric{margin-top:14px;padding-top:14px;border-top:1px solid var(--ink-10);font-size:13px;color:var(--ink-60);}
+    .creative-card-metric strong{color:var(--ink);font-weight:500;}
+
+    /* RESULTS */
+    .results-section{background:var(--ink);padding:80px 48px;margin-bottom:0;}
+    .results-inner{max-width:1200px;margin:0 auto;}
+    .results-inner .section-label{color:rgba(255,255,255,0.5);}
+    .results-inner .section-label::before{background:rgba(255,255,255,0.15);}
+    .results-inner h2{color:white;margin-bottom:14px;font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:-0.01em;}
+    .results-inner .prose{color:rgba(255,255,255,0.45);max-width:620px;}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;margin-top:36px;}
+    .result-stat{background:rgba(255,255,255,0.03);padding:28px 24px;}
+    .result-num{font-family:var(--serif);font-size:38px;font-style:italic;color:white;line-height:1;margin-bottom:8px;}
+    .result-num.teal{color:var(--teal);}
+    .result-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.55);margin-bottom:7px;}
+    .result-context{font-size:12px;color:rgba(255,255,255,0.4);line-height:1.5;font-weight:300;}
+
+    /* BENCHMARK CALLOUT IN RESULTS */
+    .benchmark-row{margin-top:24px;background:rgba(91,158,158,0.08);border-radius:12px;padding:20px 24px;border:1px solid rgba(91,158,158,0.15);display:flex;gap:24px;align-items:center;flex-wrap:wrap;}
+    .benchmark-item{display:flex;flex-direction:column;gap:4px;}
+    .benchmark-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);}
+    .benchmark-val{font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);}
+    .benchmark-val.highlight{color:var(--teal);}
+    .benchmark-divider{width:1px;height:36px;background:rgba(255,255,255,0.08);flex-shrink:0;}
+
+    /* LEARNINGS */
+    .learned-section{padding:80px 48px;max-width:1200px;margin:0 auto;}
+    .learned-section h2{font-family:var(--serif);font-size:clamp(28px,3.2vw,38px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:40px;}
+    .learned-section h2 em{font-style:italic;color:var(--teal);}
+    .learned-grid{display:grid;grid-template-columns:1fr 340px;gap:64px;align-items:start;}
+    .learned-items{display:flex;flex-direction:column;gap:28px;}
+    .learned-item{display:flex;gap:22px;align-items:flex-start;padding:24px;background:white;border-radius:14px;border:1px solid var(--ink-10);}
+    .learned-num{font-family:var(--serif);font-size:13px;font-style:italic;color:var(--ink-30);min-width:26px;padding-top:2px;}
+    .learned-text{font-size:15px;color:var(--ink-60);line-height:1.7;font-weight:300;}
+    .learned-text strong{color:var(--ink);font-weight:500;}
+
+    /* BEFORE/AFTER */
+    .before-after{padding:40px 48px 80px;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+    .ba-card{border-radius:20px;padding:36px;}
+    .ba-card.before{background:var(--rust-light);border:1px solid rgba(184,92,56,0.12);}
+    .ba-card.after{background:var(--teal-light);border:1px solid rgba(91,158,158,0.12);}
+    .ba-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:24px;}
+    .before .ba-label{color:var(--rust);}
+    .after .ba-label{color:var(--teal);}
+    .ba-items{display:flex;flex-direction:column;gap:12px;}
+    .ba-item{display:flex;gap:12px;align-items:flex-start;}
+    .ba-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:0.6em;}
+    .before .ba-dot{background:var(--rust);}
+    .after .ba-dot{background:var(--teal);}
+    .ba-item div:last-child{font-size:14px;line-height:1.65;color:var(--ink);}
+
+    /* CROSSREFS */
+    .crossref-wrap{max-width:1200px;margin:0 auto;padding:0 48px 64px;display:flex;flex-direction:column;gap:10px;}
+    .crossref-card{background:var(--sage-light);border-radius:14px;padding:22px 26px;display:flex;gap:14px;align-items:flex-start;border:1px solid rgba(200,213,192,0.4);}
+    .crossref-arrow{font-size:16px;margin-top:1px;color:var(--ink-30);}
+    .crossref-title{font-size:14px;font-weight:500;color:var(--ink);margin-bottom:5px;}
+    .crossref-desc{font-size:13px;color:var(--ink-60);line-height:1.6;}
+    .crossref-link{color:var(--teal);font-weight:500;text-decoration:none;font-size:13px;}
+    .crossref-link:hover{text-decoration:underline;}
+
+    @media(max-width:900px){
+      .hero,.context-section,.approach-section,.before-after,.learned-grid,.reframe-banner{grid-template-columns:1fr;}
+      .creative-grid{grid-template-columns:1fr 1fr;}
+      .results-grid{grid-template-columns:1fr 1fr;}
+      .hero,.context-section,.approach-section,.creative-section,.before-after,.learned-section,.crossref-wrap{padding-left:24px;padding-right:24px;}
+      .reframe-banner{margin:60px 24px 0;padding:36px 28px;}
+      .results-section{padding-left:24px;padding-right:24px;}
+      .learned-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:560px){
+      .creative-grid{grid-template-columns:1fr;}
+      .results-grid{grid-template-columns:1fr 1fr;}
+      .hero{padding-top:60px;min-height:auto;}
+      .proof-row{grid-template-columns:1fr;}
+    }
+  
+/* ── ARTIFACT CALLOUT COMPONENT ─────────────────────────────────── */
+.artifact-callout-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 48px 32px;
+}
+.artifact-callout-block {
+  background: #1A1916;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  margin-bottom: 10px;
+  position: relative;
+}
+.artifact-callout-content {
+  padding: 28px 32px;
+  position: relative;
+  z-index: 1;
+}
+.artifact-callout-eyebrow {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(91,158,158,0.8);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.artifact-callout-eyebrow::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: rgba(91,158,158,0.5);
+}
+.artifact-callout-title {
+  font-family: var(--display);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  color: #F1ECE2;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.artifact-callout-desc {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  color: rgba(241,236,226,0.55);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 20px;
+}
+.artifact-callout-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(91,158,158,0.15);
+  border: 1px solid rgba(91,158,158,0.4);
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5B9E9E;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.artifact-callout-cta:hover {
+  background: rgba(91,158,158,0.25);
+  border-color: rgba(91,158,158,0.65);
+}
+.artifact-callout-cta svg { transition: transform 0.15s; }
+.artifact-callout-cta:hover svg { transform: translateX(3px); }
+.artifact-callout-visual {
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  padding: 24px 20px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.artifact-hub-block {
+  background: rgba(91,158,158,0.08);
+  border: 1px solid rgba(91,158,158,0.22);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+.artifact-hub-block:hover {
+  background: rgba(91,158,158,0.14);
+  border-color: rgba(91,158,158,0.35);
+}
+.artifact-hub-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 3px;
+}
+.artifact-hub-text {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  color: rgba(28,25,22,0.65);
+  line-height: 1.4;
+}
+.artifact-hub-arrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+@media (max-width: 900px) {
+  .artifact-callout-wrap { padding: 0 24px 28px; }
+  .artifact-callout-block { grid-template-columns: 1fr; }
+  .artifact-callout-visual { display: none; }
+  .artifact-callout-content { padding: 24px 24px 22px; }
+}
+@media (max-width: 700px) {
+  .artifact-callout-wrap { padding: 0 20px 24px; }
+  .artifact-callout-desc { font-size: 13px; }
+}
+
+</style>
+<link href="../styles.css" rel="stylesheet"/>
+<style>
+/* Override: restore DM Sans body font (styles.css sets Newsreader globally) */
+body {
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  background: #F5F2EC !important;
+  color: #1C1C1A !important;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+    /* ── AD MEDIA SLOT ───────────────────────────────────────────────── */
+    .cc-media-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: #f0ede7;
+    }
+    .cc-media-wrap.cc-media-dark { background: #111; }
+    .cc-media-wrap img,
+    .cc-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    </style>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
+  <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
+</head>
+<body>
+<div class="topbar">
+<a class="cv-btn" href="../assets/giancarlo-cv.pdf">
+<svg fill="none" stroke="currentColor" stroke-width="1.2" viewbox="0 0 12 12"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"></path></svg>
+    CV
+  </a>
+<a class="email-link" href="mailto:giancarlodinardo.6@gmail.com">
+<svg fill="none" stroke="currentColor" stroke-width="1.2" viewbox="0 0 14 14"><rect height="8" rx="1" width="11" x="1.5" y="3"></rect><path d="M2 4l5 4 5-4"></path></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+<a class="logo-mark" href="../index.html">
+<span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+</a>
+<div class="mainnav-links">
+<a data-section="case-studies" href="../case-studies/index.html">Case Studies</a>
+<a data-section="frameworks" href="../frameworks/index.html">Creative Blueprints</a>
+<a data-section="creative-library" href="../creative-library/index.html">Creative Library</a>
+<a data-section="playbooks" href="../playbooks/index.html">Playbooks</a>
+<a data-section="lifecycle" href="../creative-lifecycle-hub.html">The Creative System</a>
+<a data-section="about" href="../about/index.html">About Me</a>
+</div>
+<a class="nav-cta" href="mailto:giancarlodinardo.6@gmail.com">Get in touch</a>
+</nav>
+<script>
+(function(){
+  var path=window.location.pathname;
+  document.querySelectorAll('.mainnav-links a[data-section]').forEach(function(l){
+    if(path.indexOf(l.getAttribute('data-section'))!==-1) l.classList.add('active');
+  });
+})();
+</script>
+<!-- ═══ HERO ═══════════════════════════════════════════════════════ -->
+<section class="hero">
+<div>
+<div class="hero-label">Case Studies / Basement Renovation</div>
+<h1>How a pre-launch research phase replaced <em>the first month of expensive learning.</em></h1>
+<p class="hero-desc">The client had no pixel history, no proven creative, and no prior account to learn from. The pre-launch research process determined the creative logic, the buyer priority, and the hook structure before a single dollar moved. The ads that performed were built from that work, not discovered by the algorithm. This case is a worked example of the <a href="../playbooks/research-sop.html" style="color:var(--teal, #5B9E9E);text-decoration:none;border-bottom:1px solid currentColor;">Research Stack</a> — the five-source process run end-to-end on a new account with no prior signal.</p>
+<div class="hero-meta">
+<div class="hero-meta-item"><div class="hero-meta-label">Vertical</div><div class="hero-meta-value">Basement Renovation</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Platform</div><div class="hero-meta-value">Meta</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Monthly Spend</div><div class="hero-meta-value">$70k, scaled to $160k</div></div>
+<div class="hero-meta-item"><div class="hero-meta-label">Role</div><div class="hero-meta-value">Lead Media Buyer</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-visual-label">Pre-launch methodology, first 90 days</div>
+<div class="hero-kpi-row">
+<div class="hero-kpi accent">
+<div class="hero-kpi-num">27%</div>
+<div class="hero-kpi-label">Set rate on winning hook concepts by month 2</div>
+</div>
+<div class="hero-kpi">
+<div class="hero-kpi-num">$158</div>
+<div class="hero-kpi-label">CPL at week 8 (category norm: $200-280)</div>
+</div>
+</div>
+<div class="hero-kpi-row" style="margin-top:1px;">
+<div class="hero-kpi">
+<div class="hero-kpi-num">3</div>
+<div class="hero-kpi-label">Buyer personas confirmed before any spend</div>
+</div>
+<div class="hero-kpi">
+<div class="hero-kpi-num">14</div>
+<div class="hero-kpi-label">Concepts launched in first 60 days</div>
+</div>
+</div>
+<div class="hero-visual-note">Four hook types briefed before launch. Research determined which buyer situation each one was built for.</div>
+</div>
+</section>
+<!-- ═══ REFRAME BANNER ══════════════════════════════════════════════ -->
+<div class="reframe-banner">
+<div>
+<h2>The research did not predict performance. It <em>determined what to build.</em></h2>
+</div>
+<div>
+<p>Most new accounts launch on instinct and let Meta sort out who responds. This account launched with a ranked buyer map, a named creative logic, and a frame for evaluating what early data actually meant. The creative that ran was not the output of testing. It was the output of the research phase that came before it.</p>
+</div>
+</div>
+<!-- ═══ SITUATION ══════════════════════════════════════════════════ -->
+<section class="context-section">
+<div>
+<div class="section-label">The Situation</div>
+<h2 style="font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:22px;">Starting from zero only works if you control what Meta learns first.</h2>
+<p class="prose">The client had not run paid social before. No pixel data, no audience learnings, no proven creative, no creative coverage to inherit. The easy move would have been to launch broad, collect leads, and let Meta sort it out.</p>
+<p class="prose">In a high-ticket, high-consideration category that is exactly how an account gets broken early. Cheap leads are not serious. They are not ready. If those are the first signals the algorithm receives, it learns from the wrong people and that learning compounds.</p>
+<p class="prose">Basement renovation homeowners typically sit on the idea for months before they act. The creative challenge was not to explain the service. It was to identify which situation finally makes someone pick up the phone — and which hook logic makes the creative feel like it was made specifically for them.</p>
+</div>
+<div>
+<div class="callout">
+<div class="callout-label">Core constraint</div>
+<p>"Without historical data, the first job is to decide which creative logic you want the account to learn from. The hook determines which buyer shows up. Everything else follows from that."</p>
+<div class="callout-sub">In high-ticket home services, the same homeowner responds differently depending on what the hook asks them to recognize. An aspiration hook leading with the finished lifestyle outcome reaches a different buyer than a financing hook leading with monthly payments — even when the offer is identical. The research defined that distinction before the first ad went live.</div>
+</div>
+<!-- SIGNAL FLOW DIAGRAM -->
+<div class="intent-visual" style="margin-top:24px;">
+<div class="intent-visual-label">From noise to signal, how the brief shaped delivery</div>
+<svg style="width:100%;display:block;" viewbox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Background -->
+<rect fill="#F5F2EC" height="180" rx="8" width="340"></rect>
+<!-- Faint grid -->
+<pattern height="20" id="pgrid" patternunits="userSpaceOnUse" width="20" x="0" y="0">
+<circle cx="10" cy="10" fill="rgba(28,28,26,0.06)" r="0.8"></circle>
+</pattern>
+<rect fill="url(#pgrid)" height="180" rx="8" width="340"></rect>
+<!-- Noise band (wide, scattered) -->
+<path d="M20,130 Q40,80 60,110 Q80,140 100,90 Q120,50 140,80 Q160,110 170,70" fill="none" stroke="rgba(184,92,56,0.2)" stroke-width="1.5"></path>
+<path d="M20,150 Q50,120 80,140 Q110,160 140,120 Q160,100 170,130" fill="none" stroke="rgba(184,92,56,0.12)" stroke-width="1"></path>
+<path d="M20,100 Q55,60 90,85 Q125,110 155,65 Q165,52 170,55" fill="none" stroke="rgba(184,92,56,0.1)" stroke-width="1"></path>
+<!-- Divider: launch point -->
+<line stroke="rgba(28,28,26,0.12)" stroke-dasharray="4 4" stroke-width="1" x1="170" x2="170" y1="20" y2="165"></line>
+<text fill="rgba(28,28,26,0.3)" font-family="monospace" font-size="8" letter-spacing="0.06em" text-anchor="middle" x="162" y="16">LAUNCH</text>
+<!-- Signal line (clean, converging) -->
+<path d="M170,100 Q200,75 230,60 Q265,45 320,38" fill="none" stroke="rgba(91,158,158,0.8)" stroke-width="2.5"></path>
+<!-- Confidence band around signal -->
+<path d="M170,105 Q200,82 230,68 Q265,54 320,48" fill="none" stroke="rgba(91,158,158,0.2)" stroke-width="5"></path>
+<!-- Signal dot -->
+<circle cx="265" cy="48" fill="#5B9E9E" opacity="0.9" r="5"></circle>
+<circle cx="265" cy="48" fill="#5B9E9E" opacity="0.12" r="10"></circle>
+<!-- Persona dots (pre-launch) -->
+<circle cx="60" cy="40" fill="var(--teal)" opacity="0.5" r="6"></circle>
+<text fill="rgba(28,28,26,0.4)" font-family="monospace" font-size="8" text-anchor="middle" x="60" y="30">P1</text>
+<circle cx="110" cy="40" fill="var(--rust)" opacity="0.4" r="6"></circle>
+<text fill="rgba(28,28,26,0.4)" font-family="monospace" font-size="8" text-anchor="middle" x="110" y="30">P2</text>
+<circle cx="150" cy="40" fill="var(--amber)" opacity="0.4" r="6"></circle>
+<text fill="rgba(28,28,26,0.4)" font-family="monospace" font-size="8" text-anchor="middle" x="150" y="30">P3</text>
+<!-- Labels -->
+<text fill="rgba(184,92,56,0.5)" font-family="monospace" font-size="9" letter-spacing="0.06em" text-anchor="middle" x="85" y="170">NOISE / VOLUME</text>
+<text fill="rgba(91,158,158,0.7)" font-family="monospace" font-size="9" letter-spacing="0.06em" text-anchor="middle" x="255" y="170">INTENT SIGNAL</text>
+</svg>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<!-- ═══ APPROACH ═══════════════════════════════════════════════════ -->
+<section class="approach-section">
+<div>
+<div class="section-label">The Approach</div>
+<h2 style="font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:22px;">Four decisions made before the first campaign went live.</h2>
+<p class="prose">The first risk in a new account is not performance. It is launching with the wrong assumptions about who the buyer is and what makes them act. With no pixel history, no prior creative, and no account data to inherit, the only way to brief with confidence was to run the research before spend started.</p>
+<p class="prose" style="margin-top:12px;">That meant two things before personas were even named. First, a reputation audit: searching "basement renovation" and the category broadly to understand what a skeptical homeowner sees before they reach any brand. The results surfaced a consistent pattern — contractors with complaint histories, unfinished job horror stories, pricing opacity. The category had a trust problem that predated this client. Any hook that ignored that context would compete on the wrong level. Second, review mining: reading competitor and category reviews to extract the specific triggering language buyers used. Not what they said about the service — what they said about the moment they decided to act. That language fell into three distinct situations, each with a different urgency level and a different hook logic.</p>
+<!-- INTENT MAP VISUAL -->
+<div style="margin-top:28px;background:white;border-radius:16px;padding:24px;border:1px solid var(--ink-10);">
+<div style="font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-30);margin-bottom:4px;font-weight:500;">Three buyer situations ranked by appointment urgency</div>
+<div style="font-size:12px;color:var(--ink-60);margin-bottom:16px;font-weight:300;">Sourced from review mining and reputation audit — the language buyers used to describe why they finally called.</div>
+<svg style="width:100%;display:block;" viewbox="0 0 300 130" xmlns="http://www.w3.org/2000/svg">
+<!-- P1: Active project / space-conversion — highest urgency -->
+<rect fill="rgba(91,158,158,0.15)" height="28" rx="5" width="260" x="0" y="10"></rect>
+<rect fill="#5B9E9E" height="28" opacity="0.7" rx="5" width="260" x="0" y="10"></rect>
+<text fill="white" font-family="'DM Sans',system-ui,sans-serif" font-size="11" font-weight="500" x="10" y="28">Active project / space-conversion buyer</text>
+<text fill="rgba(91,158,158,0.9)" font-family="monospace" font-size="11" font-weight="500" x="266" y="28">HIGH</text>
+<!-- P2: Earlier-stage aspiration — medium urgency -->
+<rect fill="#B87A1A" height="28" opacity="0.55" rx="5" width="185" x="0" y="52"></rect>
+<text font-family="'DM Sans',system-ui,sans-serif" font-size="11" font-weight="500" x="10" y="70">
+  <tspan fill="white">Aspiration buyer,</tspan><tspan fill="rgba(28,28,26,0.65)"> earlier in decision</tspan>
+</text>
+<text fill="rgba(184,122,26,0.8)" font-family="monospace" font-size="11" font-weight="500" x="266" y="70">MID</text>
+<!-- P3: Financing-led researcher — lower urgency -->
+<rect fill="rgba(28,28,26,0.12)" height="28" rx="5" width="120" x="0" y="94"></rect>
+<text fill="rgba(28,28,26,0.6)" font-family="'DM Sans',system-ui,sans-serif" font-size="11" font-weight="500" x="10" y="112">Financing-led researcher</text>
+<text fill="rgba(28,28,26,0.35)" font-family="monospace" font-size="11" font-weight="500" x="266" y="112">LOW</text>
+</svg>
+<p style="font-size:12px;color:var(--ink-30);line-height:1.5;margin-top:14px;font-style:italic;">Reviews from similar categories showed active-project buyers using language of urgency and inevitability. Aspiration buyers used future-tense outcome language — picturing the space rather than planning the project. Financing researchers asked cost questions without describing a specific use for the room. Those language patterns determined the ranking. Budget priority followed urgency, not assumption.</p>
+</div>
+</div>
+<div class="process-steps">
+<div class="process-step">
+<div class="process-step-num">01</div>
+<div>
+<div class="process-step-name">Map buyer situations by urgency before launch</div>
+<div class="process-step-desc">With no account history, the only signal available was the market itself. The reputation audit confirmed that basement renovation searches surface contractor trust concerns before any brand appears — which meant the ad needed to earn credibility before it could earn interest. Review mining produced the specific buyer language that separated the three situations: active-project buyers described their basement as a problem that had already passed the point of tolerating ("we ran out of space," "the kids need their own room now"). Aspiration buyers used future-tense language about what they wanted the space to become, without any urgency trigger. Financing researchers asked about cost before describing a use for the room. That language pattern — not assumption — determined the urgency ranking. The active-project buyer was closest to a decision. The brief prioritised them first.</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">02</div>
+<div>
+<div class="process-step-name">Define the hook logic: geo-identity and transparent deal rationale as the primary entry points</div>
+<div class="process-step-desc">The reputation audit had established that contractor trust was the category's primary barrier — and that local homeowners responded to proof that the company operated in their area, not just nationally. That pointed directly to geo-identity as a creative decision, not just a targeting one. Putting "WILL COUNTY 📍" in the first frame of the ad told the right viewer it was made for them before any product message landed. The second path the research surfaced was deal skepticism: discounts in home services often read as desperation or poor demand. The "reason why" structure — explaining the deal rationale transparently, tying it to a booked crew and a calendar to fill — gave skeptical buyers a logical frame for acting. Both were briefed as structurally distinct concepts because the research showed they were reaching different people through different decision paths.</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">03</div>
+<div>
+<div class="process-step-name">Brief every concept against a specific buying moment</div>
+<parameter name="new_str"><div class="process-step-name">Brief every concept against a specific buying moment</div>
+<div class="process-step-desc">Each concept was tied to a named trigger and a distinct hook logic. The localized luxury showcase and the reason-why scarcity script led the batch — structurally different entry points for the same high-urgency buyer. The showcase reached the buyer already sold on the idea, using geo-identity and aspiration through range. The scarcity script reached the buyer who needed a logical reason to act now rather than later. A loss-aversion wasted-space hook and a wordless split-screen montage were briefed as complements, each targeting a different moment in the consideration window. The brief answered one question for every ad: what is this person feeling the moment this creative stops them, and does this hook match that moment?</div>
+</div>
+</div>
+<div class="process-step">
+<div class="process-step-num">04</div>
+<div>
+<div class="process-step-name">Evaluate early data against appointment quality, not volume</div>
+<div class="process-step-desc">The first read was set rate and appointment show quality, not CPL. This is what determined where financing belonged in the creative. As a hook it attracted browsers. In the offer stack — free consultation, discount, flexible payment — it removed friction without pulling the wrong lead profile. That distinction only becomes visible when you are reading set rate alongside CPL, not CPL alone.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- THE PROOF THAT MATTERS: FINANCING PLACEMENT STORY — moved here after Approach -->
+<section>
+<div class="proof-block" style="margin-top:0;margin-bottom:0;">
+<div class="proof-block-label">What the approach produced — before the first ad ran</div>
+<p style="font-size:14px;color:var(--ink-60);line-height:1.65;margin-bottom:14px;">Financing was not cut from the creative — it was placed correctly. Research identified it as an offer-stack element that removes friction once the buyer is already interested, not a hook. The localized showcase and the reason-why scarcity script led the batch. Financing appeared in the offer copy of both, after attention had been earned.</p>
+<div class="proof-row">
+<div class="proof-cell">
+<div class="proof-cell-label">Financing as primary hook</div>
+<div class="proof-cell-val bad">Low set rate. Attracted researchers, not buyers ready to act.</div>
+</div>
+<div class="proof-cell">
+<div class="proof-cell-label">Financing in offer stack</div>
+<div class="proof-cell-val good">Removed friction without attracting the wrong lead profile.</div>
+</div>
+<div class="proof-cell">
+<div class="proof-cell-label">Localized luxury showcase</div>
+<div class="proof-cell-val good">Highest set rate. Geo-identity qualified the right buyer before the first product message landed.</div>
+</div>
+<div class="proof-cell">
+<div class="proof-cell-label">Reason why / scarcity script</div>
+<div class="proof-cell-val good">Strong set rate. Transparent deal rationale gave skeptical buyers a logical frame for acting now.</div>
+</div>
+</div>
+<p style="font-size:13px;color:var(--ink-30);line-height:1.55;margin-top:12px;font-style:italic;">Hook logic determines which buyer responds. The research gave us the frame to brief each concept against a specific buying moment before a dollar moved.</p>
+</div>
+</section>
+
+<div class="divider"></div>
+<!-- ═══ CREATIVE ═══════════════════════════════════════════════════ -->
+<section class="creative-section">
+<div class="section-label">Creative</div>
+<h2 style="font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:400;letter-spacing:-0.01em;color:var(--ink);margin-bottom:14px;">Three hook concepts. Seven ads. Each format tested with intention.</h2>
+<p class="prose">The batch was not built from instinct or creative volume. Three structurally distinct hook concepts were identified from the research, then each was tested across multiple footage variations. The read after launch was not just which ad performed — it was which hook logic reached the right buyer, and what that said about where they were in the decision.</p>
+<div class="creative-grid">
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/basement-ad1.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag winner">Winner</div>
+<div class="creative-card-title">Localized luxury showcase</div>
+<div class="creative-card-desc">Opens on a cinematic sweep through a finished luxury basement. The geo overlay — "WILL COUNTY 📍" — appears in the first second, before a single product message lands. Rapid cuts through theaters, saunas, gyms, arcades, recording studios, and custom aquariums prove range. The 20% off installation offer and free consultation CTA follow after aspiration is already established. Two footage variations were tested; the hook logic and script held across both.</div>
+<div class="creative-card-metric"><strong>Strongest set rate of the batch.</strong> Geo-identity confirmed as an active qualifier, not just a targeting layer. Buyers who recognized the location stopped because the ad felt made for them. The aspiration-through-range format reached the high-urgency buyer the research had prioritized — someone already sold on the idea, looking for a contractor they could trust.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/basement-ad2.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag winner">Winner</div>
+<div class="creative-card-title">Reason why / scarcity deal</div>
+<div class="creative-card-desc">Opens with a deliberate mystery hook: "Here's why we're running the biggest basement deal we've ever offered." The ad then explains the logic — crews are booked for 2026, the company wants to fill every calendar slot, so savings are being passed directly to the homeowner. The 26% off installation offer is branded to the year. Authority ("number one in America, 12 years running") lands before scarcity closes: once the calendar fills, the deal disappears and won't come back. Three footage variations were tested across the same script.</div>
+<div class="creative-card-metric"><strong>Strong set rate across all three variations.</strong> The "reason why" structure made the discount feel earned rather than desperate. Explaining the deal rationale — crews booked, calendar to fill — gave skeptical buyers a logical frame for acting. The scarcity close worked because the deal's logic had already been established. Lead quality held across footage variations; the script was the variable that mattered.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/basement-ad5.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag learning">Learning</div>
+<div class="creative-card-title">Loss aversion / wasted space</div>
+<div class="creative-card-desc">Opens on a drone shot of a suburban neighborhood with square footage labels overlaid on a house — "2,000 sq ft" total, "1,200 sq ft" used, "800 sq ft" sitting idle. The hook works on math rather than aspiration: you are already paying for space you are not using. Before/after wipes follow, transitioning raw unfinished basements into finished living rooms. The offer — 20% off installation plus no payments or interest until 2028 — appears after the problem has been made concrete.</div>
+<div class="creative-card-metric"><strong>Useful data on hook framing.</strong> The loss aversion angle attracted buyers who were persuaded by the logical argument but had not yet fully committed emotionally to the project. CPL was competitive, but the set rate trailed the localized showcase. The wasted-space frame spoke to an earlier buyer — someone who needed a reason to act rather than someone already picturing the finished room.</div>
+</div>
+<div class="creative-card">
+<div class="cc-media-wrap cc-media-dark">
+  <video autoplay muted loop playsinline preload="metadata">
+    <source src="/assets/videos/basement-ad4.mp4" type="video/mp4">
+  </video>
+</div>
+<div class="creative-card-tag tested">Tested</div>
+<div class="creative-card-title">Split-screen visual proof montage</div>
+<div class="creative-card-desc">No voiceover. No offer. No CTA copy. A three-panel split screen runs simultaneously — bar area, home theater, kitchen island — cycling through dozens of finished room types in under 20 seconds. The format is designed to overwhelm the viewer with proof of range, forcing rewatches to catch what was missed in the other panels. Brand logo persists throughout. Paired with a "Learn More" button in feed.</div>
+<div class="creative-card-metric"><strong>High scroll-stop, shallower lead profile.</strong> The wordless format drove awareness and reach efficiently. But without an offer or a specific hook to qualify intent, the lead profile that came through was less appointment-ready. Strong as a top-of-funnel touchpoint; not the right format to carry the direct response weight alone.</div>
+</div>
+</div>
+</section>
+<!-- ═══ RESULTS ════════════════════════════════════════════════════ -->
+<section class="results-section">
+<div class="results-inner">
+<div class="section-label">Results</div>
+<h2>The account skipped the usual first phase of expensive learning.</h2>
+<p class="prose">By month two the account had a clear creative hierarchy and better early lead quality than a typical cold launch. The localized luxury showcase was the primary driver. The reason-why scarcity script complemented it across three footage variations. Financing stayed in the offer stack of both where it belonged — removing friction, not defining who entered the funnel. That structure did not emerge from testing. It was determined by the research before the first dollar moved.</p>
+<div class="results-grid">
+<div class="result-stat">
+<div class="result-num teal">27%</div>
+<div class="result-label">Set rate</div>
+<div class="result-context">On aspiration and craftsmanship hook concepts by month two. Up from 19% at account open. The hook logic the research defined produced the strongest appointment signal.</div>
+</div>
+<div class="result-stat">
+<div class="result-num">$158</div>
+<div class="result-label">Cost per lead</div>
+<div class="result-context">Week 8. Before full optimization. Category typically runs $200-280 at maturity. The research gave the first batch a structural advantage.</div>
+</div>
+<div class="result-stat">
+<div class="result-num">14</div>
+<div class="result-label">Concepts launched</div>
+<div class="result-context">First 60 days. Every one tied to a specific buyer intent level, not general creative volume. The brief determined which concepts existed, not instinct.</div>
+</div>
+<div class="result-stat">
+<div class="result-num">3</div>
+<div class="result-label">Personas confirmed</div>
+<div class="result-context">All three pre-launch buyer situations produced a distinct performance signal. The urgency ranking held: active project buyers showed the most appointment intent.</div>
+</div>
+</div>
+<div class="benchmark-row">
+<div class="benchmark-item">
+<div class="benchmark-label">Category CPL at maturity</div>
+<div class="benchmark-val">$200-280</div>
+</div>
+<div class="benchmark-divider"></div>
+<div class="benchmark-item">
+<div class="benchmark-label">This account at week 8</div>
+<div class="benchmark-val highlight">$158</div>
+</div>
+<div class="benchmark-divider"></div>
+<div class="benchmark-item">
+<div class="benchmark-label">Context</div>
+<div class="benchmark-val" style="font-size:13px;color:rgba(255,255,255,0.5);max-width:240px;line-height:1.4;">Before full optimization. Week 8 CPL in a new account reflects the research quality, not account maturity.</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ═══ LEARNINGS ══════════════════════════════════════════════════ -->
+<section class="learned-section">
+<h2>What I took from <em>this one</em></h2>
+<div class="learned-grid">
+<div class="learned-items">
+<div class="learned-item">
+<div class="learned-num">01</div>
+<div class="learned-text"><strong>The hook determines which buyer shows up. Everything else is downstream of that decision.</strong> The localized showcase and the reason-why scarcity script reached different people even though both carried a discount offer. The showcase stopped the buyer already sold on doing this — someone who recognized the geo overlay and the range of finished spaces and felt the ad was made for them. The scarcity script stopped the buyer who needed a logical reason to act now rather than later. The CPL across both was close. The set rate told a different story. The research mapped that distinction. The brief built from it. The data confirmed it.</div>
+</div>
+<div class="learned-item">
+<div class="learned-num">02</div>
+<div class="learned-text"><strong>Explaining the deal is part of the creative strategy, not an afterthought.</strong> The reason-why structure — crews booked, calendar to fill, savings passed directly to you — made a 26% discount feel earned rather than desperate. Discount-led creative in home services often signals margin problems or low demand. Giving the buyer a transparent rationale for the offer neutralized that skepticism before it formed. That distinction only becomes visible when you are reading set rate alongside CPL, not CPL alone.</div>
+</div>
+<div class="learned-item">
+<div class="learned-num">03</div>
+<div class="learned-text"><strong>Geo-specificity baked into the creative does more than targeting can do alone.</strong> Putting the location in the video text overlay — not just in the audience settings — is an active creative decision. It tells the right viewer the ad was made for them before they have processed a single product message. In a category where the homeowner has been sitting on the idea for months, that recognition is what converts a scroll-stop into a lead. The research pointed to location identity as a buyer qualifier. The brief made it the first thing on screen.</div>
+</div>
+</div>
+<!-- VISUAL LEARNINGS CARD -->
+<div style="position:sticky;top:80px;">
+<svg style="width:100%;max-width:300px;display:block;margin:0 auto;" viewbox="0 0 300 460" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1C1C1A" height="460" rx="18" width="300"></rect>
+<pattern height="14" id="sdots" patternunits="userSpaceOnUse" width="14" x="0" y="0">
+<circle cx="7" cy="7" fill="rgba(255,255,255,0.04)" r="0.7"></circle>
+</pattern>
+<rect fill="url(#sdots)" height="460" rx="18" width="300"></rect>
+<!-- Block 01 -->
+<rect fill="rgba(91,158,158,0.07)" height="118" rx="12" stroke="rgba(91,158,158,0.18)" stroke-width="1" width="260" x="20" y="24"></rect>
+<text fill="rgba(255,255,255,0.25)" font-family="monospace" font-size="10" letter-spacing="0.12em" x="36" y="50">01</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="70">Signal quality</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="86">over volume</text>
+<!-- Mini comparison bars -->
+<text fill="rgba(91,158,158,0.6)" font-family="monospace" font-size="9" letter-spacing="0.06em" x="36" y="110">CPL</text>
+<rect fill="rgba(91,158,158,0.4)" height="8" rx="3" width="60" x="58" y="101"></rect>
+<rect fill="rgba(91,158,158,0.4)" height="8" rx="3" width="60" x="128" y="101"></rect>
+<text fill="rgba(184,92,56,0.7)" font-family="monospace" font-size="9" letter-spacing="0.06em" x="36" y="126">SET</text>
+<rect fill="rgba(91,158,158,0.7)" height="8" rx="3" width="80" x="58" y="117"></rect>
+<rect fill="rgba(184,92,56,0.5)" height="8" rx="3" width="18" x="148" y="117"></rect>
+<!-- Block 02 -->
+<rect fill="rgba(184,92,56,0.05)" height="118" rx="12" stroke="rgba(184,92,56,0.15)" stroke-width="1" width="260" x="20" y="160"></rect>
+<text fill="rgba(255,255,255,0.25)" font-family="monospace" font-size="10" letter-spacing="0.12em" x="36" y="186">02</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="206">Personas that</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="222">move budget</text>
+<!-- Intent bubbles -->
+<circle cx="52" cy="252" fill="rgba(91,158,158,0.7)" r="14"></circle>
+<text fill="white" font-family="monospace" font-size="8" text-anchor="middle" x="52" y="256">HIGH</text>
+<circle cx="96" cy="252" fill="rgba(184,122,26,0.5)" r="10"></circle>
+<text fill="white" font-family="monospace" font-size="7" text-anchor="middle" x="96" y="255">MID</text>
+<circle cx="132" cy="252" fill="rgba(255,255,255,0.1)" r="7"></circle>
+<text fill="rgba(255,255,255,0.5)" font-family="monospace" font-size="6" text-anchor="middle" x="132" y="255">LOW</text>
+<text fill="rgba(184,92,56,0.5)" font-family="monospace" font-size="9" letter-spacing="0.05em" x="155" y="256">INTENT</text>
+<!-- Block 03 -->
+<rect fill="rgba(184,122,26,0.05)" height="118" rx="12" stroke="rgba(184,122,26,0.15)" stroke-width="1" width="260" x="20" y="296"></rect>
+<text fill="rgba(255,255,255,0.25)" font-family="monospace" font-size="10" letter-spacing="0.12em" x="36" y="322">03</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="342">Geo-identity</text>
+<text fill="white" font-family="Georgia,serif" font-size="12" font-style="italic" x="36" y="358">as hook logic</text>
+<!-- Location pin visual -->
+<circle cx="52" cy="390" fill="rgba(184,122,26,0.25)" r="12"></circle>
+<circle cx="52" cy="390" fill="rgba(184,122,26,0.5)" r="6"></circle>
+<line stroke="rgba(184,122,26,0.2)" stroke-width="1" x1="70" x2="256" y1="384" y2="384"></line>
+<line stroke="rgba(184,122,26,0.12)" stroke-width="1" x1="70" x2="230" y1="394" y2="394"></line>
+<text fill="rgba(184,122,26,0.5)" font-family="monospace" font-size="8" letter-spacing="0.06em" x="75" y="382">LOCATION IN OVERLAY</text>
+<text fill="rgba(255,255,255,0.15)" font-family="monospace" font-size="8" letter-spacing="0.08em" text-anchor="middle" x="150" y="444">BASEMENT RENOVATION</text>
+</svg>
+</div>
+</div>
+</section>
+<!-- ═══ BEFORE / AFTER ═════════════════════════════════════════════ -->
+<div class="before-after">
+<div class="ba-card before">
+<div class="ba-label">Without the pre-launch phase</div>
+<div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><div>Generic first batch built on assumed pain points rather than a researched map of buyer situations and urgency levels</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Financing as a hook from day one, attracting early-stage browsers and training the algorithm on the wrong lead profile</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>No hook logic distinction, so budget drifts toward volume and CPL instead of appointment quality and set rate</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Weeks of corrective testing that the research phase made unnecessary</div></div>
+</div>
+</div>
+<div class="ba-card after">
+<div class="ba-label">With the pre-launch phase</div>
+<div class="ba-items">
+<div class="ba-item"><div class="ba-dot"></div><div>First batch built from a ranked buyer map with distinct hook briefs for each situation before a dollar moved<br><span style="color:var(--teal);font-size:12px;font-weight:500;">The localized showcase and reason-why scarcity script led the batch and produced the strongest set rate.</span></div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Financing placed in the offer stack — removing friction after attention was earned — rather than as a primary hook</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Scarcity and wasted-space hooks briefed as complements to the primary, each with a named buyer moment and a distinct hook logic</div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Hook logic matched to buyer urgency level — geo-identity and aspiration through range for the buyer already sold on the idea, transparent deal rationale for the buyer who needed a logical reason to act<br><span style="color:var(--teal);font-size:12px;font-weight:500;">CPL at week 8 came in at $158 against a category norm of $200–280.</span></div></div>
+<div class="ba-item"><div class="ba-dot"></div><div>Every subsequent brief had a clearer reason to exist, a specific buyer to speak to, and a hook logic the research had already validated</div></div>
+</div>
+</div>
+</div>
+<!-- ═══ CROSSREFS ══════════════════════════════════════════════════ -->
+<div class="crossref-wrap">
+<div class="crossref-card">
+<div class="crossref-arrow">→</div>
+<div>
+<div class="crossref-title">The Research Stack — the five-source process behind this case</div>
+<div class="crossref-desc">Reputation audit, review mining, persona mapping, past performance, competitor gaps — run in sequence before a brief is written. The pre-launch phase in this case followed that process exactly. <a class="crossref-link" href="../playbooks/research-sop.html">Read the playbook →</a></div>
+</div>
+</div>
+<div class="crossref-card">
+<div class="crossref-arrow">→</div>
+<div>
+<div class="crossref-title">The persona and awareness mapping framework behind the brief</div>
+<div class="crossref-desc">The Roofing creative blueprint shows how to build a creative brief from persona extraction through awareness-level thought mapping. This case applied that same logic, ranking buyer situations by urgency, before a single ad went live. <a class="crossref-link" href="../frameworks/roofing-lead-gen.html">Read it →</a></div>
+</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="artifact-callout-wrap">
+    <div class="artifact-callout-block">
+      <div class="artifact-callout-content">
+        <div class="artifact-callout-eyebrow">Creative Library</div>
+        <div class="artifact-callout-title">New Account Diagnostic</div>
+        <p class="artifact-callout-desc">The five-layer audit framework behind this case — the same pre-launch research process that mapped buyer situations, ranked urgency, and defined the hook logic before the first dollar moved.</p>
+        <a href="../creative-library/new-account-diagnostic.html" class="artifact-callout-cta">
+          View in Creative Library
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="artifact-callout-visual"><svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="100" height="120" style="display:block;opacity:0.9;">
+  <pattern id="acdots" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+    <circle cx="5" cy="5" r="0.7" fill="rgba(91,158,158,0.2)"/>
+  </pattern>
+  <rect width="100" height="120" fill="url(#acdots)"/>
+  <rect x="18" y="20" width="28" height="28" rx="3" fill="none" stroke="rgba(91,158,158,0.5)" stroke-width="1"/>
+  <rect x="24" y="26" width="16" height="16" rx="2" fill="rgba(91,158,158,0.12)" stroke="rgba(91,158,158,0.35)" stroke-width="0.8"/>
+  <line x1="32" y1="26" x2="32" y2="20" stroke="rgba(91,158,158,0.3)" stroke-width="0.8"/>
+  <line x1="46" y1="34" x2="58" y2="34" stroke="rgba(91,158,158,0.25)" stroke-width="0.8" stroke-dasharray="2 2"/>
+  <rect x="58" y="18" width="22" height="10" rx="2" fill="rgba(91,158,158,0.1)" stroke="rgba(91,158,158,0.3)" stroke-width="0.8"/>
+  <rect x="58" y="32" width="22" height="6" rx="2" fill="rgba(91,158,158,0.06)" stroke="rgba(91,158,158,0.2)" stroke-width="0.7"/>
+  <rect x="58" y="42" width="14" height="6" rx="2" fill="rgba(91,158,158,0.06)" stroke="rgba(91,158,158,0.15)" stroke-width="0.7"/>
+  <line x1="18" y1="60" x2="80" y2="60" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+  <circle cx="32" cy="75" r="10" fill="none" stroke="rgba(91,158,158,0.35)" stroke-width="1"/>
+  <circle cx="32" cy="75" r="5" fill="rgba(91,158,158,0.15)"/>
+  <line x1="42" y1="75" x2="80" y2="75" stroke="rgba(91,158,158,0.2)" stroke-width="0.8" stroke-dasharray="3 2"/>
+  <rect x="18" y="92" width="62" height="8" rx="2" fill="rgba(91,158,158,0.08)" stroke="rgba(91,158,158,0.18)" stroke-width="0.7"/>
+  <rect x="18" y="104" width="40" height="8" rx="2" fill="rgba(91,158,158,0.05)" stroke="rgba(91,158,158,0.12)" stroke-width="0.7"/>
+  <circle cx="84" cy="18" r="3" fill="rgba(91,158,158,0.4)"/>
+  <circle cx="84" cy="18" r="6" fill="none" stroke="rgba(91,158,158,0.2)" stroke-width="0.8"/>
+</svg></div>
+    </div>
+  </div>
+<footer class="sitefoot">
+<span>© GIANCARLO DI NARDO</span>
+<a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="1.2" viewbox="0 0 14 14" width="14"><circle cx="7" cy="7" r="6"></circle><path d="M5 7h4M7 5l2 2-2 2"></path></svg>
+    ALL CASES
+  </a>
+</footer>
+</body>
+</html>

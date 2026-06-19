@@ -1,94 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>About · Giancarlo Di Nardo</title>
-<link rel="icon" type="image/svg+xml" href="../assets/favicon-g.svg"/>
-<link rel="stylesheet" href="../ds.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About, Giancarlo Di Nardo</title>
+<link rel="stylesheet" href="../styles.css">
 <style>
-.about{max-width:var(--max);margin:0 auto;padding:50px 40px 30px;display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:start;}
-.about-photo{position:sticky;top:90px;}
-.about-photo .frame{aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);box-shadow:6px 10px 0 rgba(20,30,42,.06);background:var(--bg-warm);}
-.about-photo .frame img{width:100%;height:100%;object-fit:cover;}
-.about-photo .chip{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:13px;font-weight:600;color:var(--ink-2);}
-.about-photo .chip .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);}
-.about h1{font-size:clamp(32px,4vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.02;margin:12px 0 22px;}
-.about h1 em{font-style:normal;color:var(--clay);}
-.about .bio p{font-size:17px;color:var(--ink-2);line-height:1.74;}
-.about .bio p+p{margin-top:16px;}
-.about .bio b{color:var(--ink);font-weight:600;}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:30px 0;}
-.fact{background:var(--paper);padding:20px 22px;}
-.fact .k{font-family:var(--type);font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
-.fact .v{font-size:15px;color:var(--ink);font-weight:500;line-height:1.4;}
-.about-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
-@media(max-width:820px){.about{grid-template-columns:1fr;gap:30px;}.about-photo{position:static;max-width:280px;}.facts{grid-template-columns:1fr;}}
-@media(max-width:680px){.about{padding-left:22px;padding-right:22px;}}
+
 </style>
+<style>
+  .about-grid { display:grid; grid-template-columns:1fr 300px; gap:72px; align-items:start; padding:40px 48px 80px; max-width:var(--max); margin:0 auto; }
+  .about-aside { position:sticky; top:24px; }
+  .aside-photo { width:100%; border-radius:12px; object-fit:cover; object-position:center top; margin-bottom:18px; filter:saturate(0.9); }
+  .aside-card { background:rgba(255,255,255,0.6); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .aside-row { display:flex; justify-content:space-between; align-items:center; padding:12px 18px; border-bottom:1px solid var(--line); }
+  .aside-row:last-child { border-bottom:none; }
+  .aside-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); }
+  .aside-v { font-family:var(--sans); font-size:13.5px; color:var(--ink); }
+  .body-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin:32px 0 10px; display:block; }
+  .body-label:first-child { margin-top:0; }
+  .body-p { font-family:var(--sans); font-size:16px; line-height:1.65; color:var(--ink-2); margin:0 0 14px; }
+  .exp-item { display:flex; gap:16px; padding:14px 0; border-bottom:1px dotted var(--line-2); }
+  .exp-item:last-child { border-bottom:none; }
+  .exp-year { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; color:var(--muted); min-width:70px; padding-top:2px; text-transform:uppercase; }
+  .exp-role { font-family:var(--sans); font-size:14.5px; color:var(--ink); font-weight:500; margin-bottom:2px; }
+  .exp-co { font-family:var(--mono); font-size:10px; letter-spacing:0.06em; color:var(--muted); text-transform:uppercase; }
+  @media(max-width:900px){ .about-grid{grid-template-columns:1fr;gap:36px} .about-aside{position:static} }
+  @media(max-width:700px){ .about-grid{padding:28px 20px 60px} }
+
+  /* Mobile-only intro reordering for the About page */
+  .mobile-intro-frame { display:none; }
+
+  /* Header safety so topbar icons do not render oversized in standalone previews */
+  .topbar svg,
+  .mainnav svg,
+  .sitefoot svg {
+    max-width:14px;
+    max-height:14px;
+    flex-shrink:0;
+  }
+  .cv-btn svg { width:11px; height:11px; }
+  .email-link svg { width:12px; height:12px; opacity:0.7; }
+  .sitefoot svg { width:14px; height:14px; }
+
+  @media(max-width:700px){
+    .about-grid{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+    }
+    .mobile-intro-frame {
+      display:grid;
+      grid-template-columns:72px 1fr;
+      gap:16px;
+      align-items:start;
+      background:rgba(255,255,255,0.6);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+      order:0;
+    }
+    .mobile-intro-photo {
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      object-fit:cover;
+      object-position:center top;
+      border:1px solid var(--line);
+      filter:saturate(0.9);
+    }
+    .mobile-intro-text {
+      font-family:var(--sans);
+      font-size:15px;
+      line-height:1.5;
+      color:var(--ink-2);
+      margin:0;
+    }
+    .about-aside{
+      order:1;
+      position:static;
+    }
+    .about-aside .aside-photo{
+      display:none;
+    }
+    .about-body{
+      order:2;
+    }
+    .about-body > .body-label:first-child,
+    .about-body > .body-p.mobile-duplicate{
+      display:none;
+    }
+  }
+
+
+  .about-read-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:14px 0 24px; }
+  .about-read-card { text-decoration:none; color:inherit; background:rgba(255,255,255,0.5); border:1px solid var(--line); border-radius:12px; padding:18px; display:flex; flex-direction:column; min-height:148px; transition:background .15s, transform .15s; }
+  .about-read-card:hover { background:#fff; transform:translateY(-2px); }
+  .arc-k { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .arc-t { font-family:var(--sans); font-size:15px; line-height:1.3; color:var(--ink); margin-bottom:8px; font-weight:500; }
+  .arc-d { font-family:var(--sans); font-size:13.5px; line-height:1.5; color:var(--ink-2); flex:1; }
+  .arc-cta { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:#5B9E9E; margin-top:14px; }
+  @media(max-width:900px){ .about-read-grid{grid-template-columns:1fr} }
+
+
+@media (max-width: 700px) {
+
+  .about-aside {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 12px;
+  }
+
+  .aside-card {
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .aside-row {
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .aside-v {
+    text-align: right;
+  }
+
+}
+
+</style>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon-g.svg?v=4">
+  <link rel="shortcut icon" href="/assets/favicon-g.svg?v=4">
 </head>
 <body>
-
-<header class="topbar">
-  <a class="tb-cv" href="../assets/giancarlo-cv.pdf">&#8595; CV</a>
-  <a class="tb-mail" href="mailto:giancarlodinardo.6@gmail.com">giancarlodinardo.6@gmail.com</a>
-</header>
-<nav class="nav" id="nav">
-  <div class="nav-in">
-    <a class="logo" href="../index.html" aria-label="Giancarlo Di Nardo"><span class="g">G</span><span class="bar"></span><span class="d">D</span></a>
-    <div class="nav-links">
-      <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
-      <a href="../frameworks/index.html" data-section="frameworks">Creative Blueprints</a>
-      <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
-      <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
-      <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
-      <a href="../about/index.html" data-section="about">About Me</a>
-    </div>
-    <a class="nav-cta" href="mailto:giancarlodinardo.6@gmail.com">Get in touch</a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+<div class="topbar">
+  <a href="../assets/giancarlo-cv.pdf" class="cv-btn">
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 1v8M3 6l3 3 3-3M2 11h8"/></svg>
+    CV
+  </a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="email-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="1.5" y="3" width="11" height="8" rx="1"/><path d="M2 4l5 4 5-4"/></svg>
+    GIANCARLODINARDO.6@GMAIL.COM
+  </a>
+</div>
+<nav class="mainnav">
+  <a href="../index.html" class="logo-mark">
+    <span class="logo-g">G</span><span class="logo-div"></span><span class="logo-d">D</span>
+  </a>
+  <div class="mainnav-links">
+    <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+    <a href="../frameworks/index.html" data-section="frameworks">Creative Blueprints</a>
+    <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+    <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+    <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+    <a href="../about/index.html" data-section="about">About Me</a>
   </div>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="nav-cta">Get in touch</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="../case-studies/index.html">Case Studies</a>
-  <a href="../frameworks/index.html">Creative Blueprints</a>
-  <a href="../creative-library/index.html">Creative Library</a>
-  <a href="../playbooks/index.html">Playbooks</a>
-  <a href="../creative-lifecycle-hub.html">The Creative System</a>
-  <a href="../about/index.html">About Me</a>
-  <a class="cta" href="mailto:giancarlodinardo.6@gmail.com">Get in touch</a>
+  <a href="../case-studies/index.html" data-section="case-studies">Case Studies</a>
+  <a href="../frameworks/index.html" data-section="frameworks">Creative Blueprints</a>
+  <a href="../creative-library/index.html" data-section="creative-library">Creative Library</a>
+  <a href="../playbooks/index.html" data-section="playbooks">Playbooks</a>
+  <a href="../creative-lifecycle-hub.html" data-section="lifecycle">The Creative System</a>
+  <a href="../about/index.html" data-section="about">About Me</a>
+  <a href="mailto:giancarlodinardo.6@gmail.com" class="mob-cta">Get in touch</a>
 </div>
+<script>
+(function(){
+  var path = window.location.pathname;
+  var links = document.querySelectorAll('.mainnav-links a[data-section], .mobile-menu a[data-section]');
+  links.forEach(function(link){
+    var section = link.getAttribute('data-section');
+    if(path.indexOf(section) !== -1) link.classList.add('active');
+  });
+  var btn = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  }
+})();
+</script>
+<div class="about-grid">
 
-<section class="about r">
-  <div class="about-photo">
-    <div class="frame"><img src="../assets/profile.jpg" alt="Giancarlo Di Nardo"/></div>
-    <div class="chip"><span class="dot"></span> Available · full-time, remote</div>
+  <div class="mobile-intro-frame">
+    <img src="../assets/profile.jpg" alt="Giancarlo Di Nardo" class="mobile-intro-photo">
+    <p class="mobile-intro-text">I’ve spent the last 10+ years inside Meta accounts running paid social across lead gen and eCommerce, figuring out why some accounts keep working and others slowly stop.</p>
   </div>
-  <div class="bio">
-    <div class="eyebrow rule">About me</div>
-    <h1>Ten years on Meta, spent learning what <em>keeps working.</em></h1>
-    <p>I'm Giancarlo, a paid social and creative strategist. I've spent the last decade running Meta accounts across lead gen and eCommerce, in-house and on the agency side, long enough to stop trusting one-off wins and start building the systems that make results repeatable.</p>
-    <p>The work I care about sits where <b>creative strategy and media buying are the same job</b>, not two handoffs. A winning ad is a starting point. The real work is understanding why it won and building a method that produces more of them, then giving the account the architecture to scale without frequency becoming a ceiling.</p>
-    <div class="facts">
-      <div class="fact"><div class="k">Focus</div><div class="v">Paid social · creative strategy · media buying</div></div>
-      <div class="fact"><div class="k">Platforms</div><div class="v">Meta, primarily. Lead gen and DTC.</div></div>
-      <div class="fact"><div class="k">Based</div><div class="v">Toronto &amp; Buenos Aires · remote</div></div>
-      <div class="fact"><div class="k">Looking for</div><div class="v">One full-time team to build the system with</div></div>
+
+  <div class="about-body">
+    <span class="body-label">Background</span>
+    <p class="body-p mobile-duplicate">I’ve spent the last 10+ years inside Meta accounts running paid social across lead gen and eCommerce — home services lead gen, large-scale DTC, and everything in between.</p>
+    <p class="body-p">Early on, I thought most performance problems were structural: budgets, targeting, campaign architecture. Over time it became clear that the real leverage sits in how creative is tested, scaled, and replaced — and that most accounts hit their ceiling there, not in the media buying.</p>
+    <p class="body-p">This site is where I’ve tried to make that thinking visible. The case studies come from real account situations. The playbooks are the patterns that kept showing up across verticals.</p>
+
+    <span class="body-label">What I actually do</span>
+    <p class="body-p">Most of my work starts with a diagnosis: is this a creative problem, a structure problem, or an offer problem? Those drive the same output metrics and are easy to confuse. Getting that wrong means fixing the wrong thing for months.</p>
+    <p class="body-p">I focus on three things: what parts of the market we’re actually reaching, who each ad is speaking to, and what happens once something starts to work.</p>
+
+    <span class="body-label">What to read first</span>
+    <p class="body-p">If you want to understand how I think beyond campaign management, these are the best entry points.</p>
+    <div class="about-read-grid">
+      <a href="../creative-lifecycle-hub.html" class="about-read-card">
+        <div class="arc-k">System</div>
+        <div class="arc-t">The Creative System</div>
+        <div class="arc-d">How coverage, hooks, and lifecycle connect inside a paid social account.</div>
+        <div class="arc-cta">Start here</div>
+      </a>
+      <a href="../playbooks/hooks-are-targeting.html" class="about-read-card">
+        <div class="arc-k">Point of view</div>
+        <div class="arc-t">Hooks Are Targeting</div>
+        <div class="arc-d">How creative decisions connect to audience selection and delivery.</div>
+        <div class="arc-cta">Read playbook</div>
+      </a>
+      <a href="../case-studies/index.html" class="about-read-card">
+        <div class="arc-k">Proof</div>
+        <div class="arc-t">Case Studies</div>
+        <div class="arc-d">Real account situations showing diagnosis, testing logic, and performance tradeoffs.</div>
+        <div class="arc-cta">View cases</div>
+      </a>
+      <a href="../creative-library/index.html" class="about-read-card">
+        <div class="arc-k">Creative Library</div>
+        <div class="arc-t">Briefs, scorecards &amp; working documents</div>
+        <div class="arc-d">Briefs, scorecards, matrices, and annotated breakdowns from real accounts.</div>
+        <div class="arc-cta">View working docs</div>
+      </a>
     </div>
-    <p>If that's the seat you're filling, the case studies and playbooks here are the clearest picture of how I think. The CV fills in the rest.</p>
-    <div class="about-cta">
-      <a href="../assets/giancarlo-cv.pdf" class="btn btn-primary">Download CV / résumé</a>
+
+    <span class="body-label">Experience</span>
+    <div>
+      <div class="exp-item">
+        <div class="exp-year">2024–2025</div>
+        <div><div class="exp-role">Senior Performance Marketing Specialist</div><div class="exp-co">Clever Digital Marketing · Remote</div><div class="exp-note">Ran lead generation campaigns for high-ticket home improvement clients across North America, focusing on performance, creative testing, and scaling.</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2022–2024</div>
+        <div><div class="exp-role">Senior Performance Marketer</div><div class="exp-co">Lavin Media · Remote</div><div class="exp-note">Managed paid social for large-scale home improvement companies across the US and Canada with a direct response focus.</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2018–2021</div>
+        <div><div class="exp-role">Senior Media Buyer</div><div class="exp-co">Browze · Hybrid</div><div class="exp-note">Managed $700K+ monthly spend across Facebook, Instagram, TikTok, and Snapchat, generating $16M+ in revenue (2019–2021).</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2017–2018</div>
+        <div><div class="exp-role">Growth Hacker</div><div class="exp-co">RISE Gear · Remote</div><div class="exp-note">Built paid social strategies focused on ROI, cost efficiency, and understanding buyer behavior.</div></div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-year">2015–2017</div>
+        <div><div class="exp-role">Junior Media Buyer (Facebook Ads)</div><div class="exp-co">AN & Associates · On-site</div><div class="exp-note">Managed campaigns across 60+ brands, building foundational Facebook advertising and performance marketing skills.</div></div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;display:flex;gap:10px;flex-wrap:wrap">
+      <a href="../assets/giancarlo-cv.pdf" class="btn">Download CV</a>
       <a href="mailto:giancarlodinardo.6@gmail.com" class="btn btn-ghost">Get in touch</a>
     </div>
   </div>
-</section>
 
-<footer class="sitefoot" style="margin-top:60px;">
-  <div class="sitefoot-in">
-    <span>&copy; Giancarlo Di Nardo · Paid social &amp; creative</span>
-    <a href="../index.html"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3 4 7l5 4"/></svg> Home</a>
-  </div>
+  <aside class="about-aside">
+    <img src="../assets/profile.jpg" alt="Giancarlo Di Nardo" class="aside-photo">
+    <div class="aside-card">
+      <div class="aside-row">
+        <span class="aside-k">Based</span>
+        <span class="aside-v">Toronto — Buenos Aires</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Experience</span>
+        <span class="aside-v">10+ years</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Primary</span>
+        <span class="aside-v">Meta (FB + IG)</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Verticals</span>
+        <span class="aside-v">Lead gen · DTC</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Peak spend</span>
+        <span class="aside-v">$400k–$500k / mo</span>
+      </div>
+      <div class="aside-row">
+        <span class="aside-k">Status</span>
+        <span class="aside-v"><span class="status-dot" style="margin-right:6px"></span>Open to roles</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="sitefoot">
+  <span>© GIANCARLO DI NARDO</span>
+  <a href="../case-studies/index.html" style="display:inline-flex;align-items:center;gap:8px;color:inherit">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="7" cy="7" r="6"/><path d="M5 7h4M7 5l2 2-2 2"/></svg>
+    ALL CASES
+  </a>
 </footer>
-
-<script src="../site.js"></script>
 </body>
 </html>
